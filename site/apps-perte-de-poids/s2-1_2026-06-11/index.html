@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Present the Market — Applications mobiles d'assistance à la perte de poids — Run S2-1 (11 juin 2026)</title>
+  <meta name="description" content="Le marché des applications d'assistance à la perte de poids présenté par KPI business et frameworks stratégiques pertinents — run S2-1, juin 2026.">
+  <style>
+    :root {
+      --ink: #1e293b; --muted: #64748b; --faint: #94a3b8;
+      --line: #e2e8f0; --bg-soft: #f8fafc; --accent: #2563eb; --warn: #b45309;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      color: var(--ink); margin: 0; line-height: 1.6; font-size: 15.5px;
+    }
+    .wrap { max-width: calc(50vw + 550px); margin: 0 auto; padding: 28px 20px 60px; }
+    a { color: var(--accent); }
+    .crumb { font-size: 13px; margin-bottom: 18px; }
+    .crumb a { text-decoration: none; color: var(--muted); }
+    .crumb a:hover { color: var(--accent); }
+    header.report h1 { font-size: 27px; line-height: 1.25; margin: 0 0 6px; }
+    .runmeta { color: var(--muted); font-size: 14px; margin-bottom: 8px; }
+    .seclabel { font-size: 12px; text-transform: uppercase; letter-spacing: .07em; color: var(--accent); font-weight: 700; margin-bottom: 2px; }
+    section { margin-top: 42px; }
+    section > h2 { font-size: 22px; margin: 0 0 14px; }
+    p { margin: 10px 0; }
+    .note { font-size: 13px; color: var(--muted); margin: 8px 0; }
+
+    table.kpi { width: 100%; border-collapse: collapse; font-size: 14.5px; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+    table.kpi th {
+      text-align: left; vertical-align: top; width: 230px;
+      background: var(--bg-soft); padding: 12px 16px; border-bottom: 1px solid var(--line);
+      font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: .03em;
+    }
+    table.kpi td { padding: 12px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    table.kpi tr:last-child th, table.kpi tr:last-child td { border-bottom: none; }
+    table.kpi ul { margin: 0; padding-left: 18px; }
+    table.kpi li { margin-bottom: 4px; }
+    .small { font-size: 12.5px; color: var(--muted); }
+    .status-loss { color: #b91c1c; font-weight: 700; }
+
+    .fw-block { border: 1px solid var(--line); border-radius: 10px; padding: 16px 20px; margin-bottom: 18px; }
+    .fw-block h3 { margin: 0 0 8px; font-size: 17px; }
+    .fw-block h3 a { text-decoration: none; }
+    .fw-block h3 a:hover { text-decoration: underline; }
+    .badge {
+      display: inline-block; vertical-align: 2px; margin-left: 8px;
+      background: #fef3c7; color: var(--warn); font-size: 11px; font-weight: 700;
+      padding: 3px 10px; border-radius: 999px;
+    }
+    .fw-block p { margin: 0; font-size: 14.5px; }
+
+    .sources-list { font-size: 13px; padding-left: 22px; }
+    .sources-list li { margin-bottom: 5px; }
+    .sources-list .pub { color: var(--muted); }
+
+    footer.report {
+      margin-top: 52px; padding-top: 14px; border-top: 1px solid var(--line);
+      font-size: 12.5px; color: var(--faint); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px;
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="crumb"><a href="../">← Marché : applications d'assistance à la perte de poids</a> · <a href="../../">Tous les marchés</a></nav>
+
+  <header class="report">
+    <div class="seclabel">Skill 2 — Present the Market</div>
+    <h1>Applications mobiles d'assistance à la perte de poids</h1>
+    <div class="runmeta">Run S2-1 — 11 juin 2026 · Source : <a href="../s1-2_2026-06-11/">Run S1-2 du 11 juin 2026</a> (données du jour — aucune recherche complémentaire nécessaire)</div>
+  </header>
+
+  <section id="kpis">
+    <h2>1. Les grands KPI business</h2>
+    <table class="kpi"><tbody id="kpi-tbody"></tbody></table>
+    <p class="note">~ = valeur estimée · — = information introuvable. Sauf mention contraire, les chiffres proviennent du run S1 source et de ses 52 références.</p>
+  </section>
+
+  <section id="criteria">
+    <h2>2. Pourquoi ces frameworks-là</h2>
+    <p id="criteria-text"></p>
+  </section>
+
+  <section id="frameworks">
+    <h2>3. Le marché sous l'angle de chaque framework</h2>
+    <div id="frameworks-list"></div>
+  </section>
+
+  <section id="sources">
+    <h2>Sources</h2>
+    <ol class="sources-list" id="sources-list"></ol>
+  </section>
+
+  <footer class="report">
+    <span>Rapport généré par l'agent de veille concurrentielle — Skill 2 « Present the Market » · Run S2-1</span>
+    <span>Dernière mise à jour : <span data-role="last-updated">2026-06-11</span></span>
+  </footer>
+
+</div>
+
+<script>
+const RUN_S2_DATA = {
+  "schema_version": 1,
+  "skill": "present-the-market",
+  "market": { "slug": "apps-perte-de-poids", "label": "Applications mobiles d'assistance à la perte de poids", "language": "fr" },
+  "run": { "number": 1, "date": "2026-06-11" },
+  "source_run": {
+    "skill": "read-the-market",
+    "number": 2,
+    "date": "2026-06-11",
+    "path": "s1-2_2026-06-11/",
+    "age_days": 0,
+    "freshness_warning": false
+  },
+  "kpis": {
+    "definition": "Applications grand public dont la proposition centrale est l'assistance à la perte de poids — tracking nutritionnel, coaching comportemental, compagnon de traitement — hors télésanté pure et laboratoires pharmaceutiques.",
+    "sub_sectors": [
+      {
+        "name": "Plateformes médicalisées (app + téléconsultation + GLP-1)",
+        "size": { "value": "~1,35", "unit": "Md$", "year": 2025, "estimated": true },
+        "share_pct": { "value": 61, "estimated": true }
+      },
+      {
+        "name": "Tracking calorique et nutritionnel",
+        "size": { "value": "~0,45", "unit": "Md$", "year": 2025, "estimated": true },
+        "share_pct": { "value": 20, "estimated": true }
+      },
+      {
+        "name": "Coaching comportemental & IA",
+        "size": { "value": "~0,21", "unit": "Md$", "year": 2025, "estimated": true },
+        "share_pct": { "value": 9, "estimated": true }
+      },
+      {
+        "name": "Compagnons GLP-1 dédiés (suivi de traitement)",
+        "size": { "value": "~0,02", "unit": "Md$", "year": 2025, "estimated": true },
+        "share_pct": { "value": 1, "estimated": true }
+      }
+    ],
+    "rest_of_market_share_pct": { "value": 9, "estimated": true },
+    "sub_sector_method_note": "Ventilation estimée par l'agent à partir des revenus des acteurs du run S1 (aucune donnée analyste segmentaire publique fiable) — parts bouclées à 100 % avec la ligne « reste du marché » (longue traîne : Fastic, Foodvisor, FatSecret, MyNetDiary…).",
+    "global_size": {
+      "value": "~2,2",
+      "unit": "Md$",
+      "year": 2025,
+      "estimated": true,
+      "perimeter_note": "Périmètre du pipeline (apps grand public d'assistance à la perte de poids). Les estimations analystes vont de 1,2 à 5,8 Md$ selon le périmètre retenu (nutrition seule, coaching, exercise+diet). Croissance : ~11-13 %/an."
+    },
+    "dominant_incumbent": {
+      "name": "WeightWatchers (WW International)",
+      "founded": 1963,
+      "revenue": { "value": 748, "unit": "M$", "period_note": "moyenne FY2024 (786 M$) et FY2025 (710,6 M$) — chiffres officiels", "estimated": false },
+      "profit_status": "en perte",
+      "profit_figure": { "value": -62.1, "unit": "M$", "period_note": "perte nette FY2025 (période post-restructuration) ; FY2024 : −345,7 M$, incluant des dépréciations non-cash", "estimated": false }
+    },
+    "geography": {
+      "type": "mondial",
+      "detail": "Dominante nord-américaine et européenne — acteurs globaux, dynamique GLP-1 tirée par les États-Unis ; leaders européens : Yazio (Allemagne), Lifesum (Suède), Simple (Londres) ; acteur médicalisé britannique notable hors données chiffrées : Second Nature (NHS)."
+    }
+  },
+  "selection_criteria": "Quatre caractéristiques de ce marché, établies par le run S1, ont guidé la sélection des frameworks. (1) C'est un marché B2C d'abonnement digital à chaîne de valeur courte : la lecture en filière cède la place aux unit economics — CAC/LTV et péage des stores. (2) Il subit un choc exogène majeur, les médicaments GLP-1, qui impose la grille PESTEL. (3) Son deal flow 2024-2026 est exceptionnellement dense — faillite du leader, deux rachats par MyFitnessPal, Series B de Simple, acquisition d'une pharmacie par Noom : la vue Vitalité s'impose. (4) Sa structure de pouvoir est singulière — stores en fournisseurs incontournables, pharma devenant fournisseur de la proposition de valeur elle-même : terrain idéal pour Porter. Les tailles de marché existent mais avec des périmètres analystes divergents : TAM/SAM/SOM est retenu avec prudence. Les données segmentaires et de perception étant minces, l'arbitrage GE/McKinsey et la carte perceptuelle sont traités en lecture qualitative.",
+  "frameworks": [
+    {
+      "id": "tam-sam-som",
+      "name": "TAM / SAM / SOM",
+      "status": "activé",
+      "doc_anchor": "tam-sam-som",
+      "analysis": "Le TAM — l'ensemble des apps de nutrition et de bien-être alimentaire — pèse ~4,5 à 6 Md$ (2025) selon les périmètres analystes les plus larges. Le SAM — les apps dont la proposition centrale est la perte de poids, périmètre de ce pipeline — est estimé à ~2,2 Md$ (2025), en croissance de ~11-13 %/an. Le SOM d'un entrant différencié s'étalonne sur les trajectoires récentes : Cal AI a atteint ~30 M$ de revenus en 18 mois sur la niche du photo-logging, MacroFactor ~24 M$ sur le macro-tracking scientifique — soit ~1 à 2 % du SAM à horizon 3-5 ans pour une proposition réellement différenciée. Stade de maturité : recomposition — la valeur croît (+13 % de revenus in-app en 2025) mais les volumes stagnent (+0,8 % de téléchargements) : on ne gagne plus en acquisition brute, on gagne en valeur captée par utilisateur."
+    },
+    {
+      "id": "porter",
+      "name": "Porter — 5 forces",
+      "status": "activé",
+      "doc_anchor": "porter",
+      "analysis": "Un marché structurellement sous pression. Rivalité : forte — une dizaine d'acteurs significatifs, les deux leaders concentrant ~60 % des revenus. Nouveaux entrants : barrières produit très basses (Cal AI, créée par deux lycéens, a atteint 15 M de téléchargements en moins de deux ans) mais coût d'acquisition élevé sur un marché saturé en volume. Substituts : la force décisive — les GLP-1 sont un substitut pharmacologique au « régime comportemental » lui-même (12 % des adultes américains en prennent), qui a mis le leader historique en faillite. Fournisseurs : Apple et Google prélèvent 15-30 % de péage sur chaque abonnement ; pour les acteurs médicalisés, la pharma (Novo Nordisk, Eli Lilly) devient un second fournisseur incontournable. Clients : pouvoir élevé — coûts de changement quasi nuls, churn structurellement fort, comparaison facile. Conclusion : la rentabilité durable exige une position défendable — intégration médicale (Noom, WeightWatchers) ou différenciation IA à acquisition organique (viralité de Cal AI)."
+    },
+    {
+      "id": "value-chain",
+      "name": "Value chain — lue en unit economics",
+      "status": "activé",
+      "doc_anchor": "value-chain",
+      "analysis": "La chaîne est courte — développement → stores → abonné — et la lecture pertinente est unitaire. Côté captation : les stores prélèvent 15-30 % de chaque abonnement, premier « maillon » de marge cédé par tout l'écosystème. Côté unit economics : les prix s'étagent de 2,5 $/mois (Cal AI) à ~23 $/mois (WeightWatchers), et la rentabilité est démontrée aux deux extrêmes — Simple est opérationnellement profitable (~160 M$ d'ARR), Cal AI dégageait ~1,4 M$ de marge brute mensuelle avant son rachat. Le mouvement structurel : les plateformes médicalisées déplacent la capture de marge vers le médicament — le rachat d'une pharmacie 503A par Noom (avril 2026) est une intégration verticale assumée pour capter la marge pharmaceutique en plus de l'abonnement."
+    },
+    {
+      "id": "vitalite",
+      "name": "Vitalité (deal flow)",
+      "status": "activé",
+      "doc_anchor": "vitalite",
+      "analysis": "L'argent intelligent est massivement actif — signal d'un marché en transformation rapide, pas d'un marché qui dort. En 24 mois : la faillite-éclair et restructuration du leader historique (1,15 Md$ de dette effacée, mai-juin 2025) ; deux acquisitions par MyFitnessPal (Intent en février 2025, Cal AI closée en décembre 2025) ; une Series B de 35 M$ pour Simple menée par HartBeat Ventures (octobre 2025) ; l'acquisition d'une pharmacie par Noom (avril 2026) ; et une vague de nouveaux entrants sur la niche du compagnon GLP-1 (Shotsy, MeAgain, Pep). La direction des flux est sans ambiguïté : l'IA à faible friction et l'intégration médicale. Quand le n°1 d'audience rachète l'innovateur IA du moment plutôt que de le répliquer, cela dit l'essentiel sur l'endroit où se crée la valeur."
+    },
+    {
+      "id": "pestel",
+      "name": "PESTEL",
+      "status": "activé",
+      "doc_anchor": "pestel",
+      "analysis": "Le choc dominant est techno-sociétal : les GLP-1 (12,4 % des adultes américains en usage perte de poids — plus du double en 18 mois) redéfinissent la proposition de valeur de toute la catégorie. Légal : l'extinction réglementaire du semaglutide « compounded » force la bascule vers les versions de marque et rebat les cartes des offres médicalisées low-cost. Politique : la pression sur les prix des GLP-1 (Noom a témoigné au Sénat américain) peut élargir ou rétrécir le marché du microdosing. Économique : la moitié des utilisateurs américains jugent ces traitements difficiles à payer — l'accessibilité financière est le levier des offres hybrides app+médicament d'entrée de gamme. Socioculturel : la médicalisation de l'obésité destigmatise la demande et déplace le discours du « régime » vers le « traitement ». Environnemental : non significatif sur ce marché."
+    },
+    {
+      "id": "perceptual-map",
+      "name": "Perceptual map",
+      "status": "dégradé",
+      "doc_anchor": "perceptual-map",
+      "analysis": "Lecture qualitative — le run S1 n'a pas collecté de données de perception chiffrées (NPS, enquêtes). Sur les axes perçus prix × promesse : Cal AI et MacroFactor occupent le territoire « outil simple et efficace, prix plancher » ; Simple, le « coach bienveillant accessible » ; Noom, la « transformation psychologique premium » ; WeightWatchers, « l'institution communautaire » en repositionnement médical. L'espace perçu encore disputé : l'accompagnement médicalisé abordable grand public (sous 200 $/mois médicament compris) — c'est exactement la course entre le microdosing de Noom (119-199 $/mois) et le Med+ de WeightWatchers. La version factuelle et interactive de cette carte existe dans le run S1 (graphique de positionnement, cinq dimensions)."
+    },
+    {
+      "id": "ge-mckinsey",
+      "name": "GE / McKinsey 9-box",
+      "status": "dégradé",
+      "doc_anchor": "ge-mckinsey",
+      "analysis": "Arbitrage qualitatif des quatre sous-secteurs — les données segmentaires sont trop minces pour des scores composites chiffrés. Compagnons GLP-1 dédiés : attractivité élevée (croissance du sous-jacent, segment naissant) pour une force compétitive requise faible — la case « investir » d'un entrant agile. Coaching comportemental & IA : attractif et en croissance, mais bataille produit intense — sélectivité, la différenciation IA est la condition d'entrée. Plateformes médicalisées : le plus gros bassin de valeur, mais force requise élevée (régulation, capital, accès pharma) — sélectivité réservée aux acteurs capitalisés. Tracking calorique pur : attractivité déclinante (commoditisé par le photo-logging IA) — récolter ou se différencier, ne pas y entrer frontalement."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "title": "Run S1-2 — Read the Market du 11 juin 2026 (source primaire : tous les faits marché, acteurs et chiffres de ce rapport)",
+      "publisher": "market.shoette.com",
+      "url": "../s1-2_2026-06-11/",
+      "accessed": "2026-06-11",
+      "from_source_run": true
+    },
+    {
+      "id": 2,
+      "title": "Annexe A1 du run source — 52 sources externes détaillées (communiqués financiers, presse économique, données analystes)",
+      "publisher": "market.shoette.com",
+      "url": "../s1-2_2026-06-11/#a1",
+      "accessed": "2026-06-11",
+      "from_source_run": true
+    }
+  ],
+  "last_updated": "2026-06-11"
+};
+</script>
+<script>
+  (function () {
+    const d = RUN_S2_DATA;
+    const k = d.kpis;
+
+    function el(tag, attrs, text) {
+      const n = document.createElement(tag);
+      if (attrs) for (const key in attrs) n.setAttribute(key, attrs[key]);
+      if (text != null) n.textContent = text;
+      return n;
+    }
+    function pct(o) { return (o.estimated ? "~" : "") + o.value + " %"; }
+
+    /* ---- 1. tableau KPI ---- */
+    const tbody = document.getElementById("kpi-tbody");
+    function row(label) {
+      const tr = el("tr");
+      tr.appendChild(el("th", null, label));
+      const td = el("td");
+      tr.appendChild(td);
+      tbody.appendChild(tr);
+      return td;
+    }
+
+    row("Définition du marché").textContent = k.definition;
+
+    const tdSub = row("Principaux sous-secteurs");
+    const ulSub = el("ul");
+    k.sub_sectors.forEach(function (s) { ulSub.appendChild(el("li", null, s.name)); });
+    tdSub.appendChild(ulSub);
+
+    const tdSize = row("Taille du marché mondial");
+    tdSize.appendChild(el("b", null, k.global_size.value + " " + k.global_size.unit + " (" + k.global_size.year + ")"));
+    tdSize.appendChild(el("div", { class: "small" }, k.global_size.perimeter_note));
+
+    const tdShares = row("Taille et part par sous-secteur");
+    const ulShares = el("ul");
+    k.sub_sectors.forEach(function (s) {
+      ulShares.appendChild(el("li", null, s.name + " — " + s.size.value + " " + s.size.unit + " · " + pct(s.share_pct)));
+    });
+    ulShares.appendChild(el("li", null, "Reste du marché (longue traîne) — " + pct(k.rest_of_market_share_pct)));
+    tdShares.appendChild(ulShares);
+    tdShares.appendChild(el("div", { class: "small" }, k.sub_sector_method_note));
+
+    const inc = k.dominant_incumbent;
+    const tdInc = row("Acteur installé dominant");
+    tdInc.appendChild(el("b", null, inc.name));
+    tdInc.appendChild(document.createTextNode(" — créé en " + inc.founded));
+    const rev = el("div");
+    rev.appendChild(document.createTextNode("Chiffre d'affaires : "));
+    rev.appendChild(el("b", null, (inc.revenue.estimated ? "~" : "") + inc.revenue.value + " " + inc.revenue.unit));
+    rev.appendChild(el("span", { class: "small" }, " (" + inc.revenue.period_note + ")"));
+    tdInc.appendChild(rev);
+    const prof = el("div");
+    prof.appendChild(document.createTextNode("Bénéfice : "));
+    prof.appendChild(el("span", { class: inc.profit_status === "en perte" ? "status-loss" : "" }, inc.profit_status));
+    if (inc.profit_figure) {
+      prof.appendChild(document.createTextNode(" — " + inc.profit_figure.value + " " + inc.profit_figure.unit + " "));
+      prof.appendChild(el("span", { class: "small" }, "(" + inc.profit_figure.period_note + ")"));
+    }
+    tdInc.appendChild(prof);
+
+    const tdGeo = row("Géographie");
+    tdGeo.appendChild(el("b", null, "Marché " + k.geography.type));
+    tdGeo.appendChild(el("div", { class: "small" }, k.geography.detail));
+
+    /* ---- 2. critères ---- */
+    document.getElementById("criteria-text").textContent = d.selection_criteria;
+
+    /* ---- 3. frameworks ---- */
+    const list = document.getElementById("frameworks-list");
+    d.frameworks.forEach(function (f) {
+      const block = el("section", { class: "fw-block", id: "fw-" + f.id });
+      const h3 = el("h3");
+      h3.appendChild(el("a", { href: "../../focus-skill-2/#" + f.doc_anchor }, f.name));
+      if (f.status === "dégradé") h3.appendChild(el("span", { class: "badge" }, "lecture qualitative"));
+      block.appendChild(h3);
+      block.appendChild(el("p", null, f.analysis));
+      list.appendChild(block);
+    });
+
+    /* ---- sources ---- */
+    const ol = document.getElementById("sources-list");
+    d.sources.forEach(function (s) {
+      const li = el("li");
+      li.appendChild(el("a", { href: s.url, rel: "noopener" }, s.title));
+      li.appendChild(el("span", { class: "pub" }, " — " + s.publisher + " (consulté le " + s.accessed + ")"));
+      ol.appendChild(li);
+    });
+  })();
+</script>
+</body>
+</html>

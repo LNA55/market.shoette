@@ -1,0 +1,130 @@
+{
+  "schema_version": 1,
+  "skill": "present-the-market",
+  "market": { "slug": "apps-perte-de-poids", "label": "Applications mobiles d'assistance à la perte de poids", "language": "fr" },
+  "run": { "number": 1, "date": "2026-06-11" },
+  "source_run": {
+    "skill": "read-the-market",
+    "number": 2,
+    "date": "2026-06-11",
+    "path": "s1-2_2026-06-11/",
+    "age_days": 0,
+    "freshness_warning": false
+  },
+  "kpis": {
+    "definition": "Applications grand public dont la proposition centrale est l'assistance à la perte de poids — tracking nutritionnel, coaching comportemental, compagnon de traitement — hors télésanté pure et laboratoires pharmaceutiques.",
+    "sub_sectors": [
+      {
+        "name": "Plateformes médicalisées (app + téléconsultation + GLP-1)",
+        "size": { "value": "~1,35", "unit": "Md$", "year": 2025, "estimated": true },
+        "share_pct": { "value": 61, "estimated": true }
+      },
+      {
+        "name": "Tracking calorique et nutritionnel",
+        "size": { "value": "~0,45", "unit": "Md$", "year": 2025, "estimated": true },
+        "share_pct": { "value": 20, "estimated": true }
+      },
+      {
+        "name": "Coaching comportemental & IA",
+        "size": { "value": "~0,21", "unit": "Md$", "year": 2025, "estimated": true },
+        "share_pct": { "value": 9, "estimated": true }
+      },
+      {
+        "name": "Compagnons GLP-1 dédiés (suivi de traitement)",
+        "size": { "value": "~0,02", "unit": "Md$", "year": 2025, "estimated": true },
+        "share_pct": { "value": 1, "estimated": true }
+      }
+    ],
+    "rest_of_market_share_pct": { "value": 9, "estimated": true },
+    "sub_sector_method_note": "Ventilation estimée par l'agent à partir des revenus des acteurs du run S1 (aucune donnée analyste segmentaire publique fiable) — parts bouclées à 100 % avec la ligne « reste du marché » (longue traîne : Fastic, Foodvisor, FatSecret, MyNetDiary…).",
+    "global_size": {
+      "value": "~2,2",
+      "unit": "Md$",
+      "year": 2025,
+      "estimated": true,
+      "perimeter_note": "Périmètre du pipeline (apps grand public d'assistance à la perte de poids). Les estimations analystes vont de 1,2 à 5,8 Md$ selon le périmètre retenu (nutrition seule, coaching, exercise+diet). Croissance : ~11-13 %/an."
+    },
+    "dominant_incumbent": {
+      "name": "WeightWatchers (WW International)",
+      "founded": 1963,
+      "revenue": { "value": 748, "unit": "M$", "period_note": "moyenne FY2024 (786 M$) et FY2025 (710,6 M$) — chiffres officiels", "estimated": false },
+      "profit_status": "en perte",
+      "profit_figure": { "value": -62.1, "unit": "M$", "period_note": "perte nette FY2025 (période post-restructuration) ; FY2024 : −345,7 M$, incluant des dépréciations non-cash", "estimated": false }
+    },
+    "geography": {
+      "type": "mondial",
+      "detail": "Dominante nord-américaine et européenne — acteurs globaux, dynamique GLP-1 tirée par les États-Unis ; leaders européens : Yazio (Allemagne), Lifesum (Suède), Simple (Londres) ; acteur médicalisé britannique notable hors données chiffrées : Second Nature (NHS)."
+    }
+  },
+  "selection_criteria": "Quatre caractéristiques de ce marché, établies par le run S1, ont guidé la sélection des frameworks. (1) C'est un marché B2C d'abonnement digital à chaîne de valeur courte : la lecture en filière cède la place aux unit economics — CAC/LTV et péage des stores. (2) Il subit un choc exogène majeur, les médicaments GLP-1, qui impose la grille PESTEL. (3) Son deal flow 2024-2026 est exceptionnellement dense — faillite du leader, deux rachats par MyFitnessPal, Series B de Simple, acquisition d'une pharmacie par Noom : la vue Vitalité s'impose. (4) Sa structure de pouvoir est singulière — stores en fournisseurs incontournables, pharma devenant fournisseur de la proposition de valeur elle-même : terrain idéal pour Porter. Les tailles de marché existent mais avec des périmètres analystes divergents : TAM/SAM/SOM est retenu avec prudence. Les données segmentaires et de perception étant minces, l'arbitrage GE/McKinsey et la carte perceptuelle sont traités en lecture qualitative.",
+  "frameworks": [
+    {
+      "id": "tam-sam-som",
+      "name": "TAM / SAM / SOM",
+      "status": "activé",
+      "doc_anchor": "tam-sam-som",
+      "analysis": "Le TAM — l'ensemble des apps de nutrition et de bien-être alimentaire — pèse ~4,5 à 6 Md$ (2025) selon les périmètres analystes les plus larges. Le SAM — les apps dont la proposition centrale est la perte de poids, périmètre de ce pipeline — est estimé à ~2,2 Md$ (2025), en croissance de ~11-13 %/an. Le SOM d'un entrant différencié s'étalonne sur les trajectoires récentes : Cal AI a atteint ~30 M$ de revenus en 18 mois sur la niche du photo-logging, MacroFactor ~24 M$ sur le macro-tracking scientifique — soit ~1 à 2 % du SAM à horizon 3-5 ans pour une proposition réellement différenciée. Stade de maturité : recomposition — la valeur croît (+13 % de revenus in-app en 2025) mais les volumes stagnent (+0,8 % de téléchargements) : on ne gagne plus en acquisition brute, on gagne en valeur captée par utilisateur."
+    },
+    {
+      "id": "porter",
+      "name": "Porter — 5 forces",
+      "status": "activé",
+      "doc_anchor": "porter",
+      "analysis": "Un marché structurellement sous pression. Rivalité : forte — une dizaine d'acteurs significatifs, les deux leaders concentrant ~60 % des revenus. Nouveaux entrants : barrières produit très basses (Cal AI, créée par deux lycéens, a atteint 15 M de téléchargements en moins de deux ans) mais coût d'acquisition élevé sur un marché saturé en volume. Substituts : la force décisive — les GLP-1 sont un substitut pharmacologique au « régime comportemental » lui-même (12 % des adultes américains en prennent), qui a mis le leader historique en faillite. Fournisseurs : Apple et Google prélèvent 15-30 % de péage sur chaque abonnement ; pour les acteurs médicalisés, la pharma (Novo Nordisk, Eli Lilly) devient un second fournisseur incontournable. Clients : pouvoir élevé — coûts de changement quasi nuls, churn structurellement fort, comparaison facile. Conclusion : la rentabilité durable exige une position défendable — intégration médicale (Noom, WeightWatchers) ou différenciation IA à acquisition organique (viralité de Cal AI)."
+    },
+    {
+      "id": "value-chain",
+      "name": "Value chain — lue en unit economics",
+      "status": "activé",
+      "doc_anchor": "value-chain",
+      "analysis": "La chaîne est courte — développement → stores → abonné — et la lecture pertinente est unitaire. Côté captation : les stores prélèvent 15-30 % de chaque abonnement, premier « maillon » de marge cédé par tout l'écosystème. Côté unit economics : les prix s'étagent de 2,5 $/mois (Cal AI) à ~23 $/mois (WeightWatchers), et la rentabilité est démontrée aux deux extrêmes — Simple est opérationnellement profitable (~160 M$ d'ARR), Cal AI dégageait ~1,4 M$ de marge brute mensuelle avant son rachat. Le mouvement structurel : les plateformes médicalisées déplacent la capture de marge vers le médicament — le rachat d'une pharmacie 503A par Noom (avril 2026) est une intégration verticale assumée pour capter la marge pharmaceutique en plus de l'abonnement."
+    },
+    {
+      "id": "vitalite",
+      "name": "Vitalité (deal flow)",
+      "status": "activé",
+      "doc_anchor": "vitalite",
+      "analysis": "L'argent intelligent est massivement actif — signal d'un marché en transformation rapide, pas d'un marché qui dort. En 24 mois : la faillite-éclair et restructuration du leader historique (1,15 Md$ de dette effacée, mai-juin 2025) ; deux acquisitions par MyFitnessPal (Intent en février 2025, Cal AI closée en décembre 2025) ; une Series B de 35 M$ pour Simple menée par HartBeat Ventures (octobre 2025) ; l'acquisition d'une pharmacie par Noom (avril 2026) ; et une vague de nouveaux entrants sur la niche du compagnon GLP-1 (Shotsy, MeAgain, Pep). La direction des flux est sans ambiguïté : l'IA à faible friction et l'intégration médicale. Quand le n°1 d'audience rachète l'innovateur IA du moment plutôt que de le répliquer, cela dit l'essentiel sur l'endroit où se crée la valeur."
+    },
+    {
+      "id": "pestel",
+      "name": "PESTEL",
+      "status": "activé",
+      "doc_anchor": "pestel",
+      "analysis": "Le choc dominant est techno-sociétal : les GLP-1 (12,4 % des adultes américains en usage perte de poids — plus du double en 18 mois) redéfinissent la proposition de valeur de toute la catégorie. Légal : l'extinction réglementaire du semaglutide « compounded » force la bascule vers les versions de marque et rebat les cartes des offres médicalisées low-cost. Politique : la pression sur les prix des GLP-1 (Noom a témoigné au Sénat américain) peut élargir ou rétrécir le marché du microdosing. Économique : la moitié des utilisateurs américains jugent ces traitements difficiles à payer — l'accessibilité financière est le levier des offres hybrides app+médicament d'entrée de gamme. Socioculturel : la médicalisation de l'obésité destigmatise la demande et déplace le discours du « régime » vers le « traitement ». Environnemental : non significatif sur ce marché."
+    },
+    {
+      "id": "perceptual-map",
+      "name": "Perceptual map",
+      "status": "dégradé",
+      "doc_anchor": "perceptual-map",
+      "analysis": "Lecture qualitative — le run S1 n'a pas collecté de données de perception chiffrées (NPS, enquêtes). Sur les axes perçus prix × promesse : Cal AI et MacroFactor occupent le territoire « outil simple et efficace, prix plancher » ; Simple, le « coach bienveillant accessible » ; Noom, la « transformation psychologique premium » ; WeightWatchers, « l'institution communautaire » en repositionnement médical. L'espace perçu encore disputé : l'accompagnement médicalisé abordable grand public (sous 200 $/mois médicament compris) — c'est exactement la course entre le microdosing de Noom (119-199 $/mois) et le Med+ de WeightWatchers. La version factuelle et interactive de cette carte existe dans le run S1 (graphique de positionnement, cinq dimensions)."
+    },
+    {
+      "id": "ge-mckinsey",
+      "name": "GE / McKinsey 9-box",
+      "status": "dégradé",
+      "doc_anchor": "ge-mckinsey",
+      "analysis": "Arbitrage qualitatif des quatre sous-secteurs — les données segmentaires sont trop minces pour des scores composites chiffrés. Compagnons GLP-1 dédiés : attractivité élevée (croissance du sous-jacent, segment naissant) pour une force compétitive requise faible — la case « investir » d'un entrant agile. Coaching comportemental & IA : attractif et en croissance, mais bataille produit intense — sélectivité, la différenciation IA est la condition d'entrée. Plateformes médicalisées : le plus gros bassin de valeur, mais force requise élevée (régulation, capital, accès pharma) — sélectivité réservée aux acteurs capitalisés. Tracking calorique pur : attractivité déclinante (commoditisé par le photo-logging IA) — récolter ou se différencier, ne pas y entrer frontalement."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "title": "Run S1-2 — Read the Market du 11 juin 2026 (source primaire : tous les faits marché, acteurs et chiffres de ce rapport)",
+      "publisher": "market.shoette.com",
+      "url": "../s1-2_2026-06-11/",
+      "accessed": "2026-06-11",
+      "from_source_run": true
+    },
+    {
+      "id": 2,
+      "title": "Annexe A1 du run source — 52 sources externes détaillées (communiqués financiers, presse économique, données analystes)",
+      "publisher": "market.shoette.com",
+      "url": "../s1-2_2026-06-11/#a1",
+      "accessed": "2026-06-11",
+      "from_source_run": true
+    }
+  ],
+  "last_updated": "2026-06-11"
+}
