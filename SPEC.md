@@ -38,9 +38,9 @@ Construction d'un agent de veille concurrentielle **réutilisable sur plusieurs 
 
 ### Infrastructure
 
-- **Hébergement** : OVH mutualisé, accès SSH + FTP
-- **Répertoire cible** : répertoire dédié (ex. `market/`) à la racine de l'hébergement, sur lequel pointe le sous-domaine `market.shoette.com`
-- **Déploiement** : génération locale → upload via `rsync` over SSH (ou git pull côté serveur)
+- **Hébergement** : OVH mutualisé (`cluster014`), accès FTP via lftp — identifiants dans `~/.netrc` (login `shoette`)
+- **Répertoire cible** : `market/` à la racine de l'hébergement (créé, confirmé vide le 2026-06-11) — le sous-domaine `market.shoette.com` doit pointer dessus
+- **Déploiement** : génération locale → `./deploy.sh` (lftp `mirror -R` de `site/` vers `market/` ; `--dry-run` disponible ; garde-fou intégré : refuse tout chemin distant ne contenant pas « market »)
 - **Interactivité** : graphique 2b côté navigateur — SVG + vanilla JS sur mesure recommandé (ou D3 via CDN) ; les besoins (calques, bordures double/triple, lignes de liaison, export annoté) sont trop spécifiques pour une lib de charts classique
 
 ## Architecture web (validée)
@@ -166,8 +166,10 @@ Write in the same language as the input.
 
 # Reste à faire
 
-- [ ] Finaliser le support technique (intégration stack dans la skill ou doc séparée)
-- [ ] Créer le sous-domaine `market.shoette.com` (DNS OVH)
+- [x] Cadrage technique complet (2026-06-11)
+- [x] Structure locale + script de déploiement + Git (2026-06-11)
+- [x] Accès distant opérationnel : lftp/FTP via `~/.netrc`, répertoire `market/` créé et vérifié vide (2026-06-11)
+- [ ] Sous-domaine `market.shoette.com` → à créer dans le manager OVH (Multisite) en le faisant pointer sur `market/`
 - [ ] Écrire le SKILL.md final + tester sur un marché réel (ex : chaussure)
 - [ ] Définir les Skills 2 à 5
 

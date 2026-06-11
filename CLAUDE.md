@@ -10,6 +10,6 @@ Agent de veille concurrentielle réutilisable multi-marchés, organisé en 5 ski
 - Pipeline en 2 étapes : (1) récupération des données — les données brutes ne sont pas conservées ; (2) fabrication des pages.
 - Pas de base de données : les données structurées sont versionnées en `data.json` par dossier de run.
 - Pages parent (accueil, marché) : ne réécrire QUE la zone entre `<!-- RUNS:START -->` et `<!-- RUNS:END -->`. Le reste de la page appartient à Elena, ne jamais l'écraser.
-- Déploiement : répertoire dédié `market/` sur l'hébergement OVH (sous-domaine `market.shoette.com`). Runs déclenchés manuellement par Elena dans Claude Code.
+- Déploiement : `./deploy.sh` (lftp, hôte `ftp.cluster014.hosting.ovh.net`, identifiants dans `~/.netrc`) vers le répertoire distant `market/` — **l'unique répertoire distant autorisé pour ce projet**. Sous-domaine : `market.shoette.com`. Runs déclenchés manuellement par Elena dans Claude Code.
 - Langue de travail avec Elena : français. Les outputs de l'agent suivent la langue de l'input.
 - Sur l'hébergement shoette.com, ne jamais toucher au répertoire `cv/` (projet séparé).

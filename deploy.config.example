@@ -1,15 +1,10 @@
 # Copie ce fichier vers deploy.config et remplis les valeurs.
 # deploy.config est ignoré par Git (il ne quitte jamais cette machine).
+# Authentification : automatique via ~/.netrc.
 
-# Serveur SSH OVH — manager OVH > Web Cloud > Hébergements > shoette.com > onglet FTP-SSH
-SSH_HOST="ssh.cluster0XX.hosting.ovh.net"
+# Serveur FTP OVH — manager OVH > Web Cloud > Hébergements > shoette.com > onglet FTP-SSH
+FTP_HOST="ftp.cluster014.hosting.ovh.net"
 
-# Login principal (le même que pour le FTP)
-SSH_USER="ton-login"
-
-# Port SSH (22 chez OVH mutualisé)
-SSH_PORT="22"
-
-# Chemin du répertoire du sous-domaine sur le serveur, relatif au home.
-# On le confirmera ensemble à la première connexion (probablement "market" ou "www/market").
+# Chemin du répertoire distant, relatif à la racine FTP.
+# Garde-fou : doit contenir "market", sinon le script refuse de déployer.
 REMOTE_PATH="market"

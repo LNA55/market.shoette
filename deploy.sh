@@ -1,19 +1,17 @@
 #!/bin/bash
-# deploy.sh — déploie le contenu de site/ vers le répertoire market/ sur OVH
+# deploy.sh — déploie le contenu de site/ vers le répertoire market/ sur OVH, via lftp (FTP)
 #
 # Usage :
 #   ./deploy.sh --dry-run   → simulation : montre ce qui serait transféré, ne transfère rien
 #   ./deploy.sh             → déploiement réel
 #
-# Les infos de connexion vivent dans deploy.config (non versionné).
-# Première installation : cp deploy.config.example deploy.config, puis remplir.
+# Authentification : automatique via ~/.netrc (login shoette).
+# Les paramètres vivent dans deploy.config (non versionné).
 
 set -euo pipefail
 cd "$(dirname "$0")"
 
 CONFIG="deploy.config"
-KEY="$HOME/.ssh/id_ed25519_ovh_market"
-
 if [[ ! -f "$CONFIG" ]]; then
   echo "❌ $CONFIG introuvable."
   echo "   → cp deploy.config.example deploy.config, puis remplis les valeurs."
@@ -22,10 +20,8 @@ fi
 # shellcheck source=deploy.config.example
 source "$CONFIG"
 
-: "${SSH_HOST:?SSH_HOST manquant dans deploy.config}"
-: "${SSH_USER:?SSH_USER manquant dans deploy.config}"
+: "${FTP_HOST:?FTP_HOST manquant dans deploy.config}"
 : "${REMOTE_PATH:?REMOTE_PATH manquant dans deploy.config}"
-SSH_PORT="${SSH_PORT:-22}"
 
 # Garde-fou : on ne déploie QUE vers un chemin contenant "market".
 # Protège cv/ et tout le reste de l'hébergement contre une erreur de config.
@@ -40,10 +36,11 @@ if [[ "${1:-}" == "--dry-run" ]]; then
   echo "🔍 Mode simulation — aucun fichier ne sera transféré."
 fi
 
-echo "🚀 site/ → $SSH_USER@$SSH_HOST:$REMOTE_PATH/"
-rsync -avz $DRY \
-  -e "ssh -p $SSH_PORT -i $KEY" \
-  --exclude '.DS_Store' \
-  site/ "$SSH_USER@$SSH_HOST:$REMOTE_PATH/"
+echo "🚀 site/ → ftp://$FTP_HOST/$REMOTE_PATH/"
+# Contraintes lftp découvertes au test :
+#  - les commandes -e doivent tenir sur UNE ligne (le multiligne casse la session) ;
+#  - le « pwd » initial force la connexion, sans quoi mirror --dry-run échoue (« Non connecté »).
+LFTP_CMDS="set net:timeout 20; set net:max-retries 2; pwd; mirror -R $DRY --verbose --exclude-glob .DS_Store site/ $REMOTE_PATH/; bye"
+lftp -e "$LFTP_CMDS" "$FTP_HOST"
 
 echo "✅ Terminé."
