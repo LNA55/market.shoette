@@ -4,6 +4,8 @@ Agent de veille concurrentielle réutilisable multi-marchés, organisé en 5 ski
 
 **Lis `SPEC.md` avant toute tâche** — il contient la spécification complète (skills, stack, architecture web, contraintes OVH, questions ouvertes).
 
+Les skills du pipeline vivent dans `.claude/skills/` (Skill 1 : `read-the-market`, avec ses contrats dans `references/`).
+
 ## Règles
 
 - **Site 100% statique** : tout est généré en local puis uploadé vers OVH. Aucun code côté serveur (pas de PHP, Node ou Python). L'interactivité tourne côté navigateur (vanilla JS / SVG).

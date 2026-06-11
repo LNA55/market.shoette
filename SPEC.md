@@ -169,8 +169,10 @@ Write in the same language as the input.
 - [x] Cadrage technique complet (2026-06-11)
 - [x] Structure locale + script de déploiement + Git (2026-06-11)
 - [x] Accès distant opérationnel : lftp/FTP via `~/.netrc`, répertoire `market/` créé et vérifié vide (2026-06-11)
-- [ ] Sous-domaine `market.shoette.com` → à créer dans le manager OVH (Multisite) en le faisant pointer sur `market/`
-- [ ] Écrire le SKILL.md final + tester sur un marché réel (ex : chaussure)
+- [x] Sous-domaine `market.shoette.com` en ligne, sert le site (vérifié le 2026-06-11)
+- [x] SKILL.md de la Skill 1 écrit — `.claude/skills/read-the-market/` (2026-06-11)
+- [ ] Construire le moteur du graphique 2b : `site/assets/positioning-chart-v1.{js,css}` (dernier prérequis avant un run)
+- [ ] Run de test sur un marché réel (ex : chaussure) + ajustements du skill
 - [ ] Définir les Skills 2 à 5
 
 # Questions ouvertes
