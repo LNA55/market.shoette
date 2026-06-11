@@ -4,13 +4,16 @@
 
 ```
 site/
-├── index.html                       accueil — liste des marchés (zone MARKETS)
+├── index.html                       accueil — liste des marchés (zone MARKETS) + liens « La méthode »
+├── .htaccess                        règles de cache (HTML revalidé, assets versionnés cachés)
+├── how-it-works/                    ┐
+├── focus-skill-1/ … focus-skill-4/  ┘ pages statiques de documentation — domaine d'Elena, l'agent n'y touche JAMAIS sauf demande explicite
 ├── assets/
-│   ├── site.css                     charte des pages parent (non versionnée — pages non figées)
+│   ├── site.css                     charte des pages parent + documentation (non versionnée — pages non figées)
 │   ├── positioning-chart-v1.js     moteur du graphique 2b (versionné)
 │   └── positioning-chart-v1.css
 └── [slug]/
-    ├── index.html                   page marché — liste des runs (zone RUNS)
+    ├── index.html                   page marché — sections par skill (zones RUNS-SKILL1..4)
     └── [N]_[date]/
         ├── index.html               le rapport du run (figé)
         └── data.json                canevas de données du run
