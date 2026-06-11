@@ -32,7 +32,7 @@ Goal: identify all significant players and read the market's structure. Use web 
 - Record every source used (title, publisher, URL, access date) for Annex A1; collect sector jargon for Annex A2 along the way.
 - Raw gathered material is **not persisted**. Only the structured data (`data.json`) and the source references survive the run.
 
-For breadth, you may fan out research to subagents (e.g. one per player group or source family) and consolidate the results yourself.
+For breadth, fan out research to subagents (e.g. one per player group or source family) and consolidate the results yourself. **Run research subagents on the Sonnet tier** (Agent tool with `model: "sonnet"`) — per the project's model split (acted 2026-06-11), data collection doesn't need the top tier; your consolidation step re-verifies inconsistencies.
 
 ## Step 3 — Build `data.json`
 
@@ -52,7 +52,7 @@ Structure contract: [references/site-contracts.md](references/site-contracts.md)
 
 1. **Section 1 — Executive Summary**: a market framing of about half a page — the reading grid for everything that follows, grounded in concrete market realities; the structuring dimensions; the stated assumptions. It is **not** a summary of players.
 2. **Section 2a — Market Share & Growth**: the short maturity summary and the chosen reference period with its rationale, then a static SVG scatter (Y = current market share %, X = growth over the reference period). Estimated figures visibly flagged; no-data players listed below the chart.
-3. **Section 2b — Player Positioning Chart**: the interactive chart mounted from the shared engine with this run's data and default channel config, preceded by the paragraph explaining the dimension ranking and how to read the default view.
+3. **Section 2b — Player Positioning Chart**: the interactive chart mounted from the shared engine with this run's data and default channel config, preceded by the paragraph explaining the dimension ranking and how to read the default view. **Below the chart, a data table**: all players (sorted by market share, descending) × market share, growth and every dimension — rendered in JS from `RUN_DATA` (single source of truth, no divergence possible), estimates prefixed `~`, missing values `—`.
 4. **Annexes**: A1 Sources (all of them, URL + access date when available), A2 Sector Lexicon (key terms, short definitions in both French and English, oriented to a newcomer).
 5. A visible **last-updated date** (`<span data-role="last-updated">`) — the only element Skill 3 may rewrite later.
 
@@ -76,4 +76,4 @@ Edit **only between the markers** — everything else on these pages belongs to 
 
 - **Frozen runs**: never modify a past run's directory (except the last-updated field — Skill 3's job, not yours).
 - Estimates always flagged; significant players never silently dropped.
-- Run this skill on the top model tier (Fable/Opus class) — it carries the research, the strategic reading and the chart generation.
+- **Models** (split acted 2026-06-11): orchestration, consolidation, strategic reading and report writing run on the best model available in the session; research subagents run on the Sonnet tier (`model: "sonnet"`). The 2b chart engine is **never rebuilt during a run** — engine evolutions happen in dedicated sessions with the best model available at that time.

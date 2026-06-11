@@ -57,10 +57,11 @@ market.shoette.com/chaussure/2_2026-09-11    → run 2 (cycle suivant), etc.
 - Page d'accueil + page marché (« pages parent ») mises à jour à chaque run par **édition de zone balisée** : l'agent ne réécrit que la liste des runs entre `<!-- RUNS:START -->` et `<!-- RUNS:END -->`, le reste de la page est modifiable à la main et jamais écrasé (validé 2026-06-11)
 - Versionning des données par marché : `data.json` par dossier de run — remplace la BDD (validé 2026-06-11)
 
-## Modèles recommandés
+## Modèles (répartition actée le 2026-06-11)
 
-- **Sonnet 4.6** : recherche, structuration, rédaction (Section 1, 2a, Annexes, Skills 2/3)
-- **Fable / Opus** : génération d'UI complexe (Section 2b) + raisonnement stratégique (Skills 4/5)
+- **Sonnet (4.6+)** : sous-agents de recherche de la Skill 1 (collecte web) — `model: "sonnet"` dans l'outil Agent
+- **Meilleur modèle disponible dans la session** : orchestration, consolidation, rédaction, raisonnement stratégique (Skills 4/5)
+- **Moteur du graphique 2b** : jamais reconstruit pendant un run — ses évolutions se font en sessions dédiées, avec le meilleur modèle disponible à ce moment-là
 
 ---
 
@@ -177,7 +178,7 @@ Write in the same language as the input.
 
 # Questions ouvertes
 
-1. **Optimisation Skill 1 — répartition des modèles** *(en suspens le 2026-06-11, rappel programmé pour le 2026-06-12)* : encoder dans le SKILL.md la recherche sur Sonnet 4.6 (consolidation/stratégie/2b restant sur Fable) ; en option, fan-out en 5-6 agents étroits au lieu de 3 larges. Contexte : run 1 = ~35 min, tout sur Fable.
+Aucune — la répartition des modèles a été actée le 2026-06-11 (le rappel du 12/06 est annulé).
 
 # Décisions actées
 
@@ -188,3 +189,5 @@ Write in the same language as the input.
 - **2026-06-11 — Pages de runs** : statiques, une par run, générées au moment du run puis figées.
 - **2026-06-11 — MySQL supprimé.** Les données structurées sont versionnées en `data.json` par run (un fichier par dossier de run, doublé par Git en local).
 - **2026-06-11 — Pages parent : édition par zone balisée.** L'agent réécrit uniquement la liste des runs entre `<!-- RUNS:START -->` et `<!-- RUNS:END -->` ; le reste de la page appartient à Elena (modifiable à la main, jamais écrasé).
+- **2026-06-11 — Répartition des modèles actée** : sous-agents de recherche sur Sonnet ; orchestration, consolidation, rédaction et stratégie sur le meilleur modèle disponible dans la session. Le moteur 2b n'est jamais reconstruit pendant un run — ses évolutions se font en sessions dédiées avec le meilleur modèle disponible.
+- **2026-06-11 — Tableau de données ajouté au contrat du rapport** : sous le graphique 2b, tous les acteurs × toutes les dimensions, généré depuis RUN_DATA (source unique).

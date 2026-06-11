@@ -1,0 +1,1110 @@
+{
+  "schema_version": 1,
+  "market": {
+    "slug": "apps-perte-de-poids",
+    "label": "Applications mobiles d'assistance à la perte de poids",
+    "input": "le marché des applications mobiles d'assistance à la perte de poids",
+    "language": "fr",
+    "geo_scope": "Mondial (données majoritairement États-Unis et Europe)",
+    "assumptions": [
+      "Périmètre retenu : applications grand public dont la proposition centrale est l'assistance à la perte de poids (tracking nutritionnel, coaching comportemental, compagnon de traitement). Les plateformes de télésanté pure (Hims & Hers, Ro) et les laboratoires pharmaceutiques sont hors périmètre, mais traités comme force de redéfinition des frontières.",
+      "Parts de marché = parts des revenus annuels estimés 2025 du périmètre (~2,2 Md$, cohérent avec l'estimation Grand View Research de 2,14 Md$ pour 2024). La plupart des acteurs étant des sociétés privées, presque toutes les valeurs sont des estimations, signalées « ~ ».",
+      "Croissance = croissance estimée de la part de marché sur 12 mois (croissance des revenus de l'acteur rapportée à la croissance du marché, ~+12 %/an).",
+      "L'input ne précisait pas de géographie : périmètre mondial retenu, les acteurs dominants étant globaux.",
+      "Run 2, même jour que le run 1 : données et sources strictement identiques au run 1 (collectées le 2026-06-11) — l'objet de ce run est l'ajout du tableau de données sous le graphique 2b (évolution du format de rapport). Prochaine collecte : run suivant."
+    ]
+  },
+  "run": {
+    "number": 2,
+    "date": "2026-06-11"
+  },
+  "reading": {
+    "maturity_summary": "Marché simultanément en consolidation (faillite éclair de WeightWatchers bouclée en 42 jours mi-2025, rachats de Cal AI et d'Intent par MyFitnessPal, vagues de licenciements chez Noom) et en re-disruption par deux vecteurs : les médicaments GLP-1, qui déplacent la proposition de valeur du régime comportemental vers l'accompagnement médical, et le tracking photo par IA qui supprime la friction de saisie. La catégorie croît en valeur (+13 % de revenus in-app en 2025) mais stagne en volume (+0,8 % de téléchargements) : un marché mûr en acquisition, en redéfinition de frontières plutôt qu'en déclin.",
+    "reference_period": {
+      "choice": "1y",
+      "options": [
+        "6m",
+        "1y",
+        "3y"
+      ],
+      "rationale": "Les événements structurels décisifs se concentrent sur les 12 derniers mois : sortie de faillite de WeightWatchers (juin-juillet 2025), rachat de Cal AI clos en décembre 2025, lancement de l'AI Coach MyFitnessPal (juin 2026). 6 mois ne couvrirait pas l'arc complet de la restructuration WW ; 3 ans mélangerait l'ère pré-GLP-1 — un autre marché — avec l'actuelle."
+    },
+    "dimensions": [
+      {
+        "id": "integration_medicale",
+        "label": "Intégration médicale & GLP-1",
+        "rank": 1,
+        "type": "numeric",
+        "unit": "/10",
+        "description": "Degré d'intégration de la dimension médicale : 0 = tracker pur, 5 = fonctions compagnon GLP-1, 10 = plateforme avec téléconsultation, prescription et pharmacie intégrée. La ligne de fracture stratégique du marché depuis 2024.",
+        "scale": {
+          "min": 0,
+          "max": 10
+        }
+      },
+      {
+        "id": "prix_mensuel",
+        "label": "Prix mensuel effectif ($)",
+        "rank": 2,
+        "type": "numeric",
+        "unit": "$/mois",
+        "description": "Coût mensuel effectif de l'offre payante de référence (plan annuel ramené au mois, hors médicaments). De 2,5 $ (Cal AI) à ~23 $ (WeightWatchers) : un écart de 1 à 10 qui segmente les clientèles.",
+        "scale": {
+          "min": 0,
+          "max": 30
+        }
+      },
+      {
+        "id": "personnalisation_ia",
+        "label": "Personnalisation IA",
+        "rank": 3,
+        "type": "numeric",
+        "unit": "/10",
+        "description": "Profondeur des capacités IA : reconnaissance photo des repas, coach conversationnel, ajustement algorithmique des cibles, prédictions santé. Le nouveau champ de bataille produit depuis 2024-2025.",
+        "scale": {
+          "min": 0,
+          "max": 10
+        }
+      },
+      {
+        "id": "modele_accompagnement",
+        "label": "Modèle d'accompagnement",
+        "rank": 4,
+        "type": "ordinal",
+        "description": "Qui accompagne l'utilisateur : libre-service (outil seul), coach IA, ou programme médicalisé (cliniciens + prescription).",
+        "scale": {
+          "values": [
+            "libre-service",
+            "coach IA",
+            "programme médicalisé"
+          ]
+        }
+      },
+      {
+        "id": "largeur_fonctionnelle",
+        "label": "Largeur fonctionnelle",
+        "rank": 5,
+        "type": "ordinal",
+        "description": "Étendue de la couverture : mono-fonction (un usage), spécialiste (nutrition/poids complet), plateforme (poids + activité + sommeil + communauté + santé).",
+        "scale": {
+          "values": [
+            "mono-fonction",
+            "spécialiste",
+            "plateforme"
+          ]
+        }
+      }
+    ],
+    "default_channels": {
+      "y": "market_share",
+      "x_color": "prix_mensuel",
+      "size": "personnalisation_ia",
+      "opacity": "modele_accompagnement",
+      "border": "largeur_fonctionnelle"
+    },
+    "default_config_rationale": "L'intégration médicale & GLP-1 est classée première : c'est elle qui sépare aujourd'hui les gagnants des perdants — elle est affectée à l'axe Y, recouvert par défaut par la part de marché (basculez Y sur « Intégration médicale & GLP-1 » pour la vue structurelle). Le prix (rang 2, axe X + couleur) révèle la segmentation des clientèles : plus un marqueur est à droite et foncé, plus l'offre est chère. La personnalisation IA (rang 3, taille) montre où se joue la bataille produit : les gros marqueurs sont les mieux armés. Le modèle d'accompagnement (rang 4, opacité) et la largeur fonctionnelle (rang 5, bordure) complètent la lecture.",
+    "export_note": "Lecture : hauteur = part de marché estimée (revenus 2025, périmètre apps grand public ~2,2 Md$) ; position horizontale et intensité de couleur = prix mensuel effectif ; taille = personnalisation IA ; opacité = modèle d'accompagnement ; bordure = largeur fonctionnelle. Toutes valeurs ~estimées. Première observation : la valeur migre des compteurs de calories généralistes vers deux pôles — les plateformes médicalisées GLP-1 (Noom, WeightWatchers) et les apps IA à faible friction (Cal AI, Simple, MacroFactor) ; le milieu non différencié s'érode."
+  },
+  "players": [
+    {
+      "id": "weightwatchers",
+      "name": "WeightWatchers",
+      "market_share_pct": {
+        "value": 31,
+        "estimated": true
+      },
+      "growth_pct": {
+        "value": -20,
+        "estimated": true
+      },
+      "dimensions": {
+        "integration_medicale": {
+          "value": 9,
+          "estimated": true,
+          "note": "WeightWatchers Clinic : téléconsultation + prescription GLP-1 ; programmes Med+ et GLP-1"
+        },
+        "prix_mensuel": {
+          "value": 23,
+          "estimated": true,
+          "note": "prix du plan digital Core non publié — estimation ; Med+ : 25 $/mois (3 mois) puis 74 $/mois"
+        },
+        "personnalisation_ia": {
+          "value": 3,
+          "estimated": true,
+          "note": "fonctionnalités IA annoncées seulement en décembre 2025 — en retard sur le marché"
+        },
+        "modele_accompagnement": {
+          "value": "programme médicalisé",
+          "estimated": false
+        },
+        "largeur_fonctionnelle": {
+          "value": "plateforme",
+          "estimated": false
+        }
+      },
+      "card": {
+        "summary": "Le pionnier historique (1963), passé par une faillite éclair en 2025 causée par l'onde GLP-1, ressorti désendetté et repositionné sur le clinique et la santé des femmes. Revenus officiels en baisse mais activité clinique en forte croissance.",
+        "facts": [
+          "Revenus FY2025 : 710,6 M$ (officiel), en baisse ; guidance 2026 : 620-635 M$",
+          "2,8 M d'abonnés fin 2025, dont 130 000 cliniques (+42 % sur un an)",
+          "Chapter 11 déposé le 6 mai 2025, bouclé en 42 jours : 1,15 Md$ de dette effacée",
+          "Pivot : programme ménopause (Queen Latifah), Med+ GLP-1 ; départ de la CEO Tara Comonte (mars 2026)"
+        ],
+        "source_ids": [
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13
+        ]
+      }
+    },
+    {
+      "id": "noom",
+      "name": "Noom",
+      "market_share_pct": {
+        "value": 29,
+        "estimated": true
+      },
+      "growth_pct": {
+        "value": -2,
+        "estimated": true
+      },
+      "dimensions": {
+        "integration_medicale": {
+          "value": 9,
+          "estimated": true,
+          "note": "Noom Med : prescription GLP-1, microdosing, rachat d'une pharmacie 503A (avril 2026)"
+        },
+        "prix_mensuel": {
+          "value": 17.4,
+          "estimated": false,
+          "note": "plan annuel ; 70 $/mois en mensuel ; programmes GLP-1 à partir de 119-199 $/mois"
+        },
+        "personnalisation_ia": {
+          "value": 8,
+          "estimated": true,
+          "note": "Face Scan, prédiction glycémique, coaching assisté par LLM"
+        },
+        "modele_accompagnement": {
+          "value": "programme médicalisé",
+          "estimated": false
+        },
+        "largeur_fonctionnelle": {
+          "value": "plateforme",
+          "estimated": false
+        }
+      },
+      "card": {
+        "summary": "Le champion du coaching comportemental (psychologie/CBT), en pivot accéléré vers la plateforme médicalisée : prescription GLP-1, microdosing, et depuis avril 2026 sa propre pharmacie. Le programme historique décline, le médical explose.",
+        "facts": [
+          "ARR estimé entre 650 M$ et 1 Md$ (estimations Sacra divergentes — société privée)",
+          "Programmes GLP-1 : 100 M$ de run-rate atteints en 4 mois (sept. 2024 → fév. 2025)",
+          "Acquisition de la pharmacie Tailor Made Compounding (avril 2026) — intégration verticale",
+          "Licenciements début 2025 sur le coaching historique ; free tier + IA (Face Scan) fin 2025"
+        ],
+        "source_ids": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      }
+    },
+    {
+      "id": "myfitnesspal",
+      "name": "MyFitnessPal",
+      "market_share_pct": {
+        "value": 14,
+        "estimated": true
+      },
+      "growth_pct": {
+        "value": -16,
+        "estimated": true
+      },
+      "dimensions": {
+        "integration_medicale": {
+          "value": 2,
+          "estimated": true,
+          "note": "suivi de doses GLP-1 et contenus dédiés, mais ni téléconsultation ni prescription"
+        },
+        "prix_mensuel": {
+          "value": 6.7,
+          "estimated": false,
+          "note": "Premium 79,99 $/an ; Premium+ 99,99 $/an"
+        },
+        "personnalisation_ia": {
+          "value": 6,
+          "estimated": true,
+          "note": "Meal Scan photo, Voice Log, AI Coach lancé le 10 juin 2026 ; renforcé par le rachat de Cal AI"
+        },
+        "modele_accompagnement": {
+          "value": "coach IA",
+          "estimated": true,
+          "note": "bascule du libre-service vers le coach IA avec le lancement de juin 2026"
+        },
+        "largeur_fonctionnelle": {
+          "value": "plateforme",
+          "estimated": false
+        }
+      },
+      "card": {
+        "summary": "Le plus gros tracker du monde (220 M d'inscrits, 30 M+ d'utilisateurs actifs mensuels), devenu consolidateur : rachats d'Intent (fév. 2025) puis de Cal AI (déc. 2025) pour combler son retard IA. Revenus en léger déclin malgré la domination d'audience.",
+        "facts": [
+          "Revenus 2025 : ~310 M$ (-5,7 % sur un an, estimation Business of Apps)",
+          "App fitness n°1 mondiale par revenus in-app (janv. 2025 : ~16 M$ sur le mois)",
+          "Rachat de Cal AI clos en décembre 2025 (annoncé mars 2026), équipe de 7 intégrée",
+          "AI Coach lancé le 10 juin 2026 — la veille de ce run"
+        ],
+        "source_ids": [
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ]
+      }
+    },
+    {
+      "id": "simple",
+      "name": "Simple",
+      "market_share_pct": {
+        "value": 7,
+        "estimated": true
+      },
+      "growth_pct": {
+        "value": 43,
+        "estimated": true
+      },
+      "dimensions": {
+        "integration_medicale": {
+          "value": 1,
+          "estimated": true,
+          "note": "positionnement « avec ou sans GLP-1 », pas de prescription"
+        },
+        "prix_mensuel": {
+          "value": 4.5,
+          "estimated": true,
+          "note": "~50-60 $/an ; ~15 $/mois en mensuel"
+        },
+        "personnalisation_ia": {
+          "value": 9,
+          "estimated": true,
+          "note": "coach IA Avo : photo, check-ins adaptatifs, mémoire long-terme — 19 M de messages de coaching sur janv. 2025"
+        },
+        "modele_accompagnement": {
+          "value": "coach IA",
+          "estimated": false
+        },
+        "largeur_fonctionnelle": {
+          "value": "spécialiste",
+          "estimated": false
+        }
+      },
+      "card": {
+        "summary": "L'app de jeûne intermittent devenue le coach IA de perte de poids le plus abouti du marché. Croissance la plus rapide des acteurs établis, profitable, adossée à l'écosystème Palta.",
+        "facts": [
+          "ARR ~160 M$ (oct. 2025), après 100 M$ de revenus 2024 (+64 %)",
+          "700-800 000 abonnés payants ; 20 M+ de téléchargements",
+          "Series B de 35 M$ menée par HartBeat Ventures (Kevin Hart), oct. 2025",
+          "Étude sur 50 000+ utilisateurs : 42 % atteignent ≥5 % de perte de poids à un an"
+        ],
+        "source_ids": [
+          22,
+          23,
+          24
+        ]
+      }
+    },
+    {
+      "id": "yazio",
+      "name": "Yazio",
+      "market_share_pct": {
+        "value": 3,
+        "estimated": true
+      },
+      "growth_pct": {
+        "value": 3,
+        "estimated": true
+      },
+      "dimensions": {
+        "integration_medicale": {
+          "value": 0,
+          "estimated": false
+        },
+        "prix_mensuel": {
+          "value": 4,
+          "estimated": false,
+          "note": "Pro 47,90 $/an"
+        },
+        "personnalisation_ia": {
+          "value": 5,
+          "estimated": true,
+          "note": "scanner photo IA lancé en juin 2025 (réservé au tier Pro)"
+        },
+        "modele_accompagnement": {
+          "value": "libre-service",
+          "estimated": false
+        },
+        "largeur_fonctionnelle": {
+          "value": "spécialiste",
+          "estimated": false
+        }
+      },
+      "card": {
+        "summary": "Le leader européen du comptage calorique (n°1 en Europe depuis 2019), passé le cap des 100 millions d'utilisateurs cumulés en mai 2025. Société privée discrète : revenus non publics, part de marché très incertaine.",
+        "facts": [
+          "100 M+ d'utilisateurs cumulés (mai 2025) ; 150+ pays, 20 langues",
+          "Revenus non publiés — estimations tierces très divergentes (6 à 100 M$) ; ~70 M$ retenus ici, fiabilité faible",
+          "Rebranding complet en octobre 2025 ; ~120 employés fin 2025",
+          "Rumeur de rachat par Groupe SEB non confirmée (agrégateurs uniquement — à écarter)"
+        ],
+        "source_ids": [
+          25,
+          26
+        ]
+      }
+    },
+    {
+      "id": "cal_ai",
+      "name": "Cal AI",
+      "market_share_pct": {
+        "value": 1.5,
+        "estimated": true
+      },
+      "growth_pct": {
+        "value": 115,
+        "estimated": true
+      },
+      "dimensions": {
+        "integration_medicale": {
+          "value": 0,
+          "estimated": false
+        },
+        "prix_mensuel": {
+          "value": 2.5,
+          "estimated": false,
+          "note": "29,99 $/an ou 2,49 $/mois — le moins cher du panel"
+        },
+        "personnalisation_ia": {
+          "value": 8,
+          "estimated": true,
+          "note": "IA-native : comptage calorique par photo, ~90 % de précision revendiquée"
+        },
+        "modele_accompagnement": {
+          "value": "libre-service",
+          "estimated": false
+        },
+        "largeur_fonctionnelle": {
+          "value": "mono-fonction",
+          "estimated": false
+        }
+      },
+      "card": {
+        "summary": "Le phénomène du marché : créée en mai 2024 par deux lycéens de 17 ans, 15 M+ de téléchargements en moins de deux ans grâce au comptage photo IA et au marketing d'influence. Rachetée par MyFitnessPal (closing déc. 2025) — le symbole de la vague IA-native.",
+        "facts": [
+          "15 M+ de téléchargements (mars 2026) ; ~30 000/jour à l'été 2025",
+          "~30 M$ de revenus annuels (le fondateur revendique >50 M$ d'ARR à la vente)",
+          "Rachat par MyFitnessPal clos en décembre 2025, montant non divulgué",
+          "25 % de ses téléchargements proviennent de requêtes App Store liées à l'IA"
+        ],
+        "source_ids": [
+          18,
+          19,
+          20,
+          21
+        ]
+      }
+    },
+    {
+      "id": "lose_it",
+      "name": "Lose It!",
+      "market_share_pct": {
+        "value": 1.2,
+        "estimated": true
+      },
+      "growth_pct": {
+        "value": -11,
+        "estimated": true
+      },
+      "dimensions": {
+        "integration_medicale": {
+          "value": 0,
+          "estimated": false
+        },
+        "prix_mensuel": {
+          "value": 3.3,
+          "estimated": false,
+          "note": "Premium 39,99 $/an (promos fréquentes à 19,99 $)"
+        },
+        "personnalisation_ia": {
+          "value": 5,
+          "estimated": true,
+          "note": "Snap It! (photo), Say It! (voix) — saisie 3,5× plus rapide selon l'éditeur"
+        },
+        "modele_accompagnement": {
+          "value": "libre-service",
+          "estimated": false
+        },
+        "largeur_fonctionnelle": {
+          "value": "spécialiste",
+          "estimated": false
+        }
+      },
+      "card": {
+        "summary": "Compteur de calories historique (2008, Boston), simple et bon marché. Position stable mais sans relais de croissance visible — pas de programme médical, IA rattrapée par les natifs.",
+        "facts": [
+          "40 M+ de téléchargements cumulés",
+          "~25-28 M$/an de revenus in-app (estimation Sensor Tower, run-rate)",
+          "Aucune levée ni opération corporate depuis des années — propriété FitNow, Inc."
+        ],
+        "source_ids": [
+          30,
+          31,
+          32
+        ]
+      }
+    },
+    {
+      "id": "macrofactor",
+      "name": "MacroFactor",
+      "market_share_pct": {
+        "value": 1.1,
+        "estimated": true
+      },
+      "growth_pct": {
+        "value": 80,
+        "estimated": true
+      },
+      "dimensions": {
+        "integration_medicale": {
+          "value": 0,
+          "estimated": false
+        },
+        "prix_mensuel": {
+          "value": 6,
+          "estimated": false,
+          "note": "71,99 $/an — prix jamais augmentés depuis 2021"
+        },
+        "personnalisation_ia": {
+          "value": 7,
+          "estimated": true,
+          "note": "coaching algorithmique (ajustement hebdo automatique des cibles) + photo logging (avril 2025)"
+        },
+        "modele_accompagnement": {
+          "value": "coach IA",
+          "estimated": true,
+          "note": "coach algorithmique sans humain"
+        },
+        "largeur_fonctionnelle": {
+          "value": "spécialiste",
+          "estimated": false
+        }
+      },
+      "card": {
+        "summary": "Le macro-tracker « scientifique » de Stronger By Science, en hypercroissance organique sur l'audience fitness. Pas de version gratuite : quasi tous les utilisateurs sont payants.",
+        "facts": [
+          "400 000 utilisateurs (sept. 2025), +116 % sur un an (officiel)",
+          "~24 M$/an de revenus estimés (Sensor Tower)",
+          "Extension MacroFactor Workouts lancée en janvier 2026 — au-delà de la nutrition"
+        ],
+        "source_ids": [
+          32,
+          33
+        ]
+      }
+    },
+    {
+      "id": "lifesum",
+      "name": "Lifesum",
+      "market_share_pct": {
+        "value": 0.9,
+        "estimated": true
+      },
+      "growth_pct": {
+        "value": -6,
+        "estimated": true
+      },
+      "dimensions": {
+        "integration_medicale": {
+          "value": 2,
+          "estimated": true,
+          "note": "contenu compagnon GLP-1 + biomarqueurs (tests sanguins Lykon), pas de prescription"
+        },
+        "prix_mensuel": {
+          "value": 6,
+          "estimated": true,
+          "note": "30,99 à 99,99 $/an selon région — tests de prix multiples"
+        },
+        "personnalisation_ia": {
+          "value": 6,
+          "estimated": true,
+          "note": "tracker « multimodal IA » (photo, voix, texte) — qualité de reconnaissance critiquée par des utilisateurs"
+        },
+        "modele_accompagnement": {
+          "value": "coach IA",
+          "estimated": true
+        },
+        "largeur_fonctionnelle": {
+          "value": "plateforme",
+          "estimated": true,
+          "note": "extension biomarqueurs via le rachat de Lykon (2024)"
+        }
+      },
+      "card": {
+        "summary": "Le suédois du tracking nutrition (65 M+ d'utilisateurs), en quête de relais : rachat de Lykon (biomarqueurs), pivot IA multimodal, et recherche active d'investisseurs depuis mi-2025.",
+        "facts": [
+          "Ventes nettes FY2023/24 : 220 M SEK (~21 M$) — comptes suédois, chiffre solide",
+          "Rachat de Lykon (n°1 allemand des tests biomarqueurs), juin 2024",
+          "Intérêt d'investisseurs confirmé par le président, juillet 2025 — aucune transaction finalisée"
+        ],
+        "source_ids": [
+          27,
+          28,
+          29
+        ]
+      }
+    },
+    {
+      "id": "cronometer",
+      "name": "Cronometer",
+      "market_share_pct": {
+        "value": 0.4,
+        "estimated": true
+      },
+      "growth_pct": {
+        "value": -2,
+        "estimated": true
+      },
+      "dimensions": {
+        "integration_medicale": {
+          "value": 1,
+          "estimated": true,
+          "note": "intégration CGM Dexcom (glucose) — angle santé métabolique, pas de programme médical"
+        },
+        "prix_mensuel": {
+          "value": 5,
+          "estimated": false,
+          "note": "Gold 59,99 $/an"
+        },
+        "personnalisation_ia": {
+          "value": 4,
+          "estimated": true,
+          "note": "Photo Log et Voice Log (tier Gold)"
+        },
+        "modele_accompagnement": {
+          "value": "libre-service",
+          "estimated": false
+        },
+        "largeur_fonctionnelle": {
+          "value": "spécialiste",
+          "estimated": false
+        }
+      },
+      "card": {
+        "summary": "Le tracker « de précision » : 84+ micronutriments, base alimentaire vérifiée, synchronisation Dexcom/Oura/Whoop. Niche santé-longévité fidèle, croissance modeste.",
+        "facts": [
+          "15 M d'utilisateurs revendiqués (site officiel, juin 2026)",
+          "Revenus estimés ~4 à 11 M$/an (sources divergentes — ~8 M$ retenus, fiabilité faible)",
+          "Investissement de croissance TT Capital Partners (sept. 2023)"
+        ],
+        "source_ids": [
+          32,
+          34,
+          35
+        ]
+      }
+    }
+  ],
+  "players_without_data": [
+    {
+      "name": "Fastic",
+      "why_significant": "App allemande de jeûne intermittent revendiquant 10 à 30 M d'utilisateurs/téléchargements selon les sources, pivot IA (« AI Food Calorie Scanner », coach Fasty), forte présence DACH et US.",
+      "what_was_searched": "Revenus 2024/2025, abonnés payants, actualité corporate récente — introuvables (aucune communication depuis la levée de 2020).",
+      "source_ids": [
+        36,
+        37
+      ]
+    },
+    {
+      "name": "Foodvisor",
+      "why_significant": "Pionnier français de la reconnaissance photo des repas (2018), 15 M+ de téléchargements revendiqués (mai 2026).",
+      "what_was_searched": "Revenus, abonnés, MAU, actualité corporate — introuvables ; quasi-silence depuis la levée de 2019 (6,2 M$ au total).",
+      "source_ids": [
+        38,
+        39
+      ]
+    },
+    {
+      "name": "Second Nature",
+      "why_significant": "L'acteur le plus médicalisé du Royaume-Uni : programme comportemental commissionné par le NHS (250 000+ patients adressés depuis 2017), prescription Wegovy/Mounjaro (149-249 £/mois), partenariat avec l'assureur Vitality.",
+      "what_was_searched": "Revenus, clientèle privée totale — introuvables (comptes Companies House non détaillés).",
+      "source_ids": [
+        40,
+        41
+      ]
+    },
+    {
+      "name": "Shotsy / MeAgain (compagnons GLP-1)",
+      "why_significant": "Nouvelle catégorie 2025-2026 : apps dédiées au suivi des injections GLP-1, effets secondaires et apport protéique. Shotsy : 250 000+ utilisateurs actifs mensuels ; MeAgain : 372 000 inscrits. Le segment à surveiller pour le prochain run.",
+      "what_was_searched": "Revenus, prix, financements — introuvables (acteurs trop récents).",
+      "source_ids": [
+        42
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "title": "Noom revenue, valuation & funding",
+      "publisher": "Sacra",
+      "url": "https://sacra.com/c/noom/",
+      "accessed": "2026-06-11"
+    },
+    {
+      "id": 2,
+      "title": "Noom Launches Microdose GLP-1 Program",
+      "publisher": "BioSpace (communiqué Noom)",
+      "url": "https://www.biospace.com/press-releases/noom-launches-microdose-glp-1-program-enabling-weight-loss-without-the-side-effects-and-priced-at-119-to-start-including-medication-and-microhabits-program",
+      "accessed": "2026-06-11"
+    },
+    {
+      "id": 3,
+      "title": "Noom Acquires Licensed 503A Pharmacy Tailor Made Compounding",
+      "publisher": "GlobeNewswire / Axios Pro",
+      "url": "https://www.globenewswire.com/news-release/2026/04/01/3266689/0/en/",
+      "accessed": "2026-06-11"
+    },
+    {
+      "id": 4,
+      "title": "Noom confirms layoffs at the digital health platform",
+      "publisher": "NJBIZ",
+      "url": "https://njbiz.com/noom-confirms-layoffs-at-the-digital-health-platform/",
+      "accessed": "2026-06-11"
+    },
+    {
+      "id": 5,
+      "title": "Noom Cost: New Monthly Pricing",
+      "publisher": "PrettySweet",
+      "url": "https://prettysweet.com/noom-cost/",
+      "accessed": "2026-06-11"
+    },
+    {
+      "id": 6,
+      "title": "WeightWatchers Q4 & FY2025 Results",
+      "publisher": "StockTitan (communiqué WW)",
+      "url": "https://www.stocktitan.net/news/WW/weight-watchers-announces-fourth-quarter-and-full-year-2025-c398fxu68jbx.html",
+      "accessed": "2026-06-11"
+    },
+    {
+      "id": 7,
+      "title": "WeightWatchers Q3 2025 Results",
+      "publisher": "GlobeNewswire",
+      "url": "https://www.globenewswire.com/news-release/2025/11/06/3182384/0/en/WeightWatchers-Announces-Third-Quarter-2025-Results.html",
+      "accessed": "2026-06-11"
+    },
+    {
+      "id": 8,
+      "title": "WW International Q4 & FY2024 Results",
+      "publisher": "GlobeNewswire",
+      "url": "https://www.globenewswire.com/news-release/2025/2/27/3034270/0/en/",
+      "accessed": "2026-06-11"
+    },
+    {
+      "id": 9,
+      "title": "WeightWatchers files for bankruptcy",
+      "publisher": "CNN Business",
+      "url": "https://www.cnn.com/2025/05/06/business/weight-watchers-bankruptcy",
+      "accessed": "2026-06-11"
+    },
+    {
+      "id": 10,
+      "title": "WeightWatchers Completes Financial Reorganization",
+      "publisher": "Simpson Thacher",
+      "url": "https://www.stblaw.com/about-us/news/view/2025/06/25/weightwatchers-completes-financial-reorganization-following-chapter-11-plan-approval",
+      "accessed": "2026-06-11"
+    },
+    {
+      "id": 11,
+      "title": "WeightWatchers Exits Bankruptcy, Launches Menopause Program, Relists on Nasdaq",
+      "publisher": "StockTitan",
+      "url": "https://www.stocktitan.net/news/WGHTQ/weight-watchers-completes-financial-reorganization-strengthens-j9rb1av3e2up.html",
+      "accessed": "2026-06-11"
+    },
+    {
+      "id": 12,
+      "title": "8-K WW International — départ de la CEO Tara Comonte",
+      "publisher": "SEC",
+      "url": "https://www.sec.gov/Archives/edgar/data/105319/000119312526141944/d73119dex991.htm",
+      "accessed": "2026-06-11"
+    },
+    {
+      "id": 13,
+      "title": "Compare plans & pricing",
+      "publisher": "WeightWatchers.com",
+      "url": "https://www.weightwatchers.com/us/plans",
+      "accessed": "2026-06-11"
+    },
+    {
+      "id": 14,
+      "title": "MyFitnessPal Revenue and Usage Statistics (2026)",
+      "publisher": "Business of Apps",
+      "url": "https://www.businessofapps.com/data/myfitnesspal-statistics/",
+      "accessed": "2026-06-11"
+    },
+    {
+      "id": 15,
+      "title": "MyFitnessPal Revenue and User Statistics",
+      "publisher": "Mobile Marketing Reads",
+      "url": "https://mobilemarketingreads.com/myfitnesspal-revenue-and-user-statistics/",
+      "accessed": "2026-06-11"
+    },
+    {
+      "id": 16,
+      "title": "MyFitnessPal Introduces AI Coach",
+      "publisher": "GlobeNewswire (communiqué)",
+      "url": "https://www.globenewswire.com/news-release/2026/06/10/3309733/0/en/MyFitnessPal-Introduces-AI-Coach-to-Deliver-Personalized-Nutrition-Guidance-Rooted-in-20-Years-of-Nutrition-Expertise.html",
+      "accessed": "2026-06-11"
+    },
+    {
+      "id": 17,
+      "title": "MyFitnessPal 2025 Summer Release (Meal Scan, Voice Log)",
+      "publisher": "PR Newswire",
+      "url": "https://www.prnewswire.com/news-releases/myfitnesspal-announces-its-2025-summer-release-302536319.html",
+      "accessed": "2026-06-11"
+    },
+    {
+      "id": 18,
+      "title": "MyFitnessPal Acquires Cal AI",
+      "publisher": "GlobeNewswire (communiqué)",
+      "url": "https://www.globenewswire.com/news-release/2026/03/02/3247439/0/en/MyFitnessPal-Acquires-Cal-AI-Expanding-on-its-Position-as-the-Leading-Player-in-Digital-Nutrition-Tracking.html",
+      "accessed": "2026-06-11"
+    },
+    {
+      "id": 19,
+      "title": "MyFitnessPal has acquired Cal AI, the viral calorie app built by teens",
+      "publisher": "TechCrunch",
+      "url": "https://techcrunch.com/2026/03/02/myfitnesspal-has-acquired-cal-ai-the-viral-calorie-app-built-by-teens/",
+      "accessed": "2026-06-11"
+    },
+    {
+      "id": 20,
+      "title": "Photo calorie app Cal AI, downloaded over a million times, was built by two teenagers",
+      "publisher": "TechCrunch",
+      "url": "https://techcrunch.com/2025/03/16/photo-calorie-app-cal-ai-downloaded-over-a-million-times-was-built-by-two-teenagers/",
+      "accessed": "2026-06-11"
+    },
+    {
+      "id": 21,
+      "title": "Cal AI: How a teenage CEO built a fast-growing calorie-tracking app",
+      "publisher": "CNBC",
+      "url": "https://www.cnbc.com/2025/09/06/cal-ai-how-a-teenage-ceo-built-a-fast-growing-calorie-tracking-app.html",
+      "accessed": "2026-06-11"
+    },
+    {
+      "id": 22,
+      "title": "Simple Life raises $35M Series B to scale its AI health coach",
+      "publisher": "PR Newswire (communiqué)",
+      "url": "https://www.prnewswire.com/news-releases/simple-life-raises-35m-series-b-to-scale-its-ai-health-coach-for-lasting-weight-loss-302578878.html",
+      "accessed": "2026-06-11"
+    },
+    {
+      "id": 23,
+      "title": "Kevin Hart's VC firm leads $35M Series B for weight-loss app Simple",
+      "publisher": "TechCrunch",
+      "url": "https://techcrunch.com/2025/10/01/kevin-harts-vc-firm-leads-35m-series-b-for-weight-loss-app-simple/",
+      "accessed": "2026-06-11"
+    },
+    {
+      "id": 24,
+      "title": "Simple App Pricing 2026",
+      "publisher": "NutriScan",
+      "url": "https://nutriscan.app/blog/posts/simple-app-pricing-2026-free-vs-premium-coaching-20a26c6873",
+      "accessed": "2026-06-11"
+    },
+    {
+      "id": 25,
+      "title": "Yazio Factsheet (officiel)",
+      "publisher": "Yazio",
+      "url": "https://filecontent.yazio.com/press/factsheet-yazio-en.pdf",
+      "accessed": "2026-06-11"
+    },
+    {
+      "id": 26,
+      "title": "YAZIO Pricing 2026: Free vs PRO",
+      "publisher": "NutriScan",
+      "url": "https://nutriscan.app/blog/posts/yazio-pricing-2026-free-vs-pro-what-pro-unlocks-33b26f8fc7",
+      "accessed": "2026-06-11"
+    },
+    {
+      "id": 27,
+      "title": "Swedish health app Lifesum attracts interest from potential investors",
+      "publisher": "MAInsights (citant Dagens Industri)",
+      "url": "https://www.mainsights.io/ma-news/swedish-health-app-lifesum-attracts-interest-from-potential-investors-amid-strategic-expansion",
+      "accessed": "2026-06-11"
+    },
+    {
+      "id": 28,
+      "title": "Lifesum Shakes Up European Wellness with Lykon Acquisition",
+      "publisher": "PRNewswire (communiqué)",
+      "url": "https://www.prnewswire.com/news-releases/lifesum-shakes-up-european-wellness-with-transformative-lykon-acquisition-302171999.html",
+      "accessed": "2026-06-11"
+    },
+    {
+      "id": 29,
+      "title": "Lifesum Pricing 2026",
+      "publisher": "NutriScan",
+      "url": "https://nutriscan.app/blog/posts/lifesum-pricing-2026-premium-monthly-yearly-dfa27db3b2",
+      "accessed": "2026-06-11"
+    },
+    {
+      "id": 30,
+      "title": "Is Lose It Premium Worth It? 2026 Cost & Feature Review",
+      "publisher": "FitBudd",
+      "url": "https://www.fitbudd.com/post/lose-it-premium-review",
+      "accessed": "2026-06-11"
+    },
+    {
+      "id": 31,
+      "title": "Lose It! Finds AI-Powered Logging Boosts Weight Loss Success",
+      "publisher": "ACCESS Newswire (communiqué)",
+      "url": "https://www.accessnewswire.com/newsroom/en/publishing-and-media/lose-it-finds-ai-powered-logging-boosts-weight-loss-success-and-greater-nutrit-1015267",
+      "accessed": "2026-06-11"
+    },
+    {
+      "id": 32,
+      "title": "Fiches Sensor Tower (Lose It!, Lifesum, MacroFactor, Cronometer) — estimations",
+      "publisher": "Sensor Tower",
+      "url": "https://app.sensortower.com/",
+      "accessed": "2026-06-11"
+    },
+    {
+      "id": 33,
+      "title": "The 2025 MacroFactor Annual Report",
+      "publisher": "MacroFactor",
+      "url": "https://macrofactor.com/annual-report-2025/",
+      "accessed": "2026-06-11"
+    },
+    {
+      "id": 34,
+      "title": "Cronometer — site officiel et tarifs Gold",
+      "publisher": "Cronometer",
+      "url": "https://cronometer.com/gold/",
+      "accessed": "2026-06-11"
+    },
+    {
+      "id": 35,
+      "title": "Cronometer revenue (estimation)",
+      "publisher": "GetLatka",
+      "url": "https://getlatka.com/companies/cronometer-software",
+      "accessed": "2026-06-11"
+    },
+    {
+      "id": 36,
+      "title": "Fastic AI Food Calorie Scanner (fiche App Store US)",
+      "publisher": "Apple App Store",
+      "url": "https://apps.apple.com/us/app/fastic-ai-food-calorie-scanner/id1459260306",
+      "accessed": "2026-06-11"
+    },
+    {
+      "id": 37,
+      "title": "Fastic",
+      "publisher": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Fastic",
+      "accessed": "2026-06-11"
+    },
+    {
+      "id": 38,
+      "title": "Foodvisor Worth It in 2026? Review",
+      "publisher": "NutriScan",
+      "url": "https://nutriscan.app/blog/posts/foodvisor-worth-it-2026-review-73e3363135",
+      "accessed": "2026-06-11"
+    },
+    {
+      "id": 39,
+      "title": "Foodvisor raises $4.5 million to track what you eat using AI",
+      "publisher": "TechCrunch",
+      "url": "https://techcrunch.com/2019/11/28/foodvisor-raises-4-5-million-to-track-what-you-eat-using-ai/",
+      "accessed": "2026-06-11"
+    },
+    {
+      "id": 40,
+      "title": "Second Nature — programmes NHS et GLP-1",
+      "publisher": "Second Nature (site officiel)",
+      "url": "https://www.secondnature.io/us/guides/lifestyle/weight-loss-programmes/second-nature-for-free-on-the-nhs",
+      "accessed": "2026-06-11"
+    },
+    {
+      "id": 41,
+      "title": "Second Nature Review UK (2026)",
+      "publisher": "HomeCooks",
+      "url": "https://home-cooks.co.uk/pages/review-second-nature",
+      "accessed": "2026-06-11"
+    },
+    {
+      "id": 42,
+      "title": "GLP-1 Apps: Helpful Companions or False Sense of Security?",
+      "publisher": "Medscape",
+      "url": "https://www.medscape.com/viewarticle/glp-1-apps-helpful-companions-or-false-sense-security-2026a1000i9n",
+      "accessed": "2026-06-11"
+    },
+    {
+      "id": 43,
+      "title": "Poll: 1 in 8 Adults Currently Taking a GLP-1",
+      "publisher": "KFF Health Tracking Poll",
+      "url": "https://www.kff.org/public-opinion/poll-1-in-8-adults-say-they-are-currently-taking-a-glp-1-drug-for-weight-loss-diabetes-or-another-condition-even-as-half-say-the-drugs-are-difficult-to-afford/",
+      "accessed": "2026-06-11"
+    },
+    {
+      "id": 44,
+      "title": "1 in 8 Americans Now Use GLP-1 Drugs (données Gallup)",
+      "publisher": "Statista",
+      "url": "https://www.statista.com/chart/35919/key-figures-usage-and-opinion-glp-1-medication-weight-loss-drugs-in-the-united-states/",
+      "accessed": "2026-06-11"
+    },
+    {
+      "id": 45,
+      "title": "Health and Fitness Apps See Surging Revenue Fueled by AI",
+      "publisher": "Sensor Tower",
+      "url": "https://sensortower.com/blog/health-and-fitness-apps-ai",
+      "accessed": "2026-06-11"
+    },
+    {
+      "id": 46,
+      "title": "State of Mobile Health & Fitness Apps 2025",
+      "publisher": "Sensor Tower",
+      "url": "https://sensortower.com/blog/state-of-mobile-health-and-fitness-in-2025",
+      "accessed": "2026-06-11"
+    },
+    {
+      "id": 47,
+      "title": "Diet And Nutrition Apps Market Size — Industry Report 2030",
+      "publisher": "Grand View Research",
+      "url": "https://www.grandviewresearch.com/industry-analysis/diet-nutrition-apps-market-report",
+      "accessed": "2026-06-11"
+    },
+    {
+      "id": 48,
+      "title": "Diet And Nutrition Apps Market — 2030 Growth Trends",
+      "publisher": "Mordor Intelligence",
+      "url": "https://www.mordorintelligence.com/industry-reports/diet-and-nutrition-apps-market",
+      "accessed": "2026-06-11"
+    },
+    {
+      "id": 49,
+      "title": "Weight Watchers files for bankruptcy protection",
+      "publisher": "NPR",
+      "url": "https://www.npr.org/2025/05/07/nx-s1-5389591/weight-watchers-files-for-bankruptcy-protection",
+      "accessed": "2026-06-11"
+    },
+    {
+      "id": 50,
+      "title": "Strategic Consolidation of Digital Nutrition (analyse MFP × Cal AI)",
+      "publisher": "Healthcare.digital",
+      "url": "https://www.healthcare.digital/single-post/strategic-consolidation-of-digital-nutrition-analysis-of-the-myfitnesspal-acquisition-of-cal-ai",
+      "accessed": "2026-06-11"
+    },
+    {
+      "id": 51,
+      "title": "Nutrition Apps — Worldwide Market Forecast",
+      "publisher": "Statista",
+      "url": "https://www.statista.com/outlook/hmo/digital-health/digital-fitness-well-being/health-wellness-coaching/nutrition-apps/worldwide",
+      "accessed": "2026-06-11"
+    },
+    {
+      "id": 52,
+      "title": "WeightWatchers Introduces New Menopause Program",
+      "publisher": "MedCity News",
+      "url": "https://medcitynews.com/2025/09/weightwatchers-menopause-women/",
+      "accessed": "2026-06-11"
+    }
+  ],
+  "lexicon": [
+    {
+      "term": "GLP-1",
+      "fr": "Classe de médicaments (agonistes du récepteur GLP-1 : sémaglutide = Ozempic/Wegovy, tirzépatide = Mounjaro/Zepbound) initialement antidiabétiques, devenus le traitement de référence de l'obésité — et la force qui a redessiné ce marché.",
+      "en": "Drug class (GLP-1 receptor agonists: semaglutide = Ozempic/Wegovy, tirzepatide = Mounjaro/Zepbound), originally for diabetes, now the leading obesity treatment — and the force that reshaped this market."
+    },
+    {
+      "term": "Compagnon GLP-1 (GLP-1 companion)",
+      "fr": "Application conçue pour accompagner un traitement GLP-1 : suivi des injections, des effets secondaires, de l'apport en protéines, préservation de la masse musculaire.",
+      "en": "App designed to support a GLP-1 treatment: injection tracking, side effects, protein intake, muscle preservation."
+    },
+    {
+      "term": "GLP-1 composés (compounded)",
+      "fr": "Versions préparées en pharmacie (hors marque) du sémaglutide/tirzépatide, vendues moins cher pendant les pénuries ; en voie d'extinction réglementaire au profit des versions de marque.",
+      "en": "Pharmacy-compounded (non-branded) versions of semaglutide/tirzepatide, sold cheaper during shortages; being regulated out in favor of branded versions."
+    },
+    {
+      "term": "Microdosing GLP-1",
+      "fr": "Protocoles à doses réduites de GLP-1 (offre Noom) — positionnement prix réduit / effets secondaires atténués.",
+      "en": "Reduced-dose GLP-1 protocols (Noom's offer) — positioned on lower price / milder side effects."
+    },
+    {
+      "term": "Changement comportemental (behavior change)",
+      "fr": "Paradigme historique des apps de perte de poids : psychologie, habitudes, coaching (cœur du modèle Noom) — désormais vendu comme complément d'adhérence aux GLP-1.",
+      "en": "The historical paradigm of weight-loss apps: psychology, habits, coaching (core of Noom's model) — now sold as a GLP-1 adherence companion."
+    },
+    {
+      "term": "CICO (Calories In, Calories Out)",
+      "fr": "Principe du déficit calorique sur lequel reposent les compteurs de calories.",
+      "en": "The calorie-deficit principle underlying calorie counters."
+    },
+    {
+      "term": "Saisie alimentaire (food logging)",
+      "fr": "Journalisation des repas ; sa friction est le principal facteur d'abandon des trackers.",
+      "en": "Meal journaling; its friction is the main churn driver for trackers."
+    },
+    {
+      "term": "Saisie photo (photo logging)",
+      "fr": "Estimation des calories et macros par photo via IA — la réduction de friction qui a fait le succès de Cal AI.",
+      "en": "AI-based calorie/macro estimation from a photo — the friction reduction behind Cal AI's rise."
+    },
+    {
+      "term": "Suivi des macros (macro tracking)",
+      "fr": "Suivi des macronutriments (protéines, glucides, lipides) — central pour les utilisateurs GLP-1 (apport protéique).",
+      "en": "Tracking macronutrients (protein, carbs, fat) — central for GLP-1 users (protein intake)."
+    },
+    {
+      "term": "Food noise",
+      "fr": "Terme de l'écosystème GLP-1 désignant les pensées alimentaires intrusives que les médicaments suppriment.",
+      "en": "GLP-1-ecosystem term for the intrusive food thoughts the drugs suppress."
+    },
+    {
+      "term": "Freemium",
+      "fr": "Modèle gratuit avec abonnement premium — dominant dans la catégorie.",
+      "en": "Free tier plus premium subscription — the category's dominant model."
+    },
+    {
+      "term": "Churn / rétention",
+      "fr": "Attrition des abonnés / part des utilisateurs encore actifs après N jours. Benchmark : >30 % à 30 jours revendiqué par Cal AI.",
+      "en": "Subscriber attrition / share of users still active after N days. Benchmark: >30% at 30 days claimed by Cal AI."
+    },
+    {
+      "term": "MAU",
+      "fr": "Utilisateurs actifs mensuels (Monthly Active Users) — à distinguer des téléchargements cumulés, souvent mis en avant par les éditeurs.",
+      "en": "Monthly Active Users — distinct from cumulative downloads, which publishers often headline."
+    },
+    {
+      "term": "ARR / run-rate",
+      "fr": "Revenu annuel récurrent / extrapolation annualisée d'un revenu récent.",
+      "en": "Annual recurring revenue / annualized extrapolation of recent revenue."
+    },
+    {
+      "term": "IAP (in-app purchase)",
+      "fr": "Achats intégrés — base des revenus mesurés par Sensor Tower (exclut abonnements hors stores, publicité, B2B).",
+      "en": "In-app purchases — the basis of Sensor Tower revenue estimates (excludes off-store subscriptions, ads, B2B)."
+    },
+    {
+      "term": "Télésanté DTC",
+      "fr": "Prescription et délivrance à distance, en direct au consommateur (Hims & Hers, Ro, Noom Med, WeightWatchers Clinic).",
+      "en": "Direct-to-consumer telehealth: remote prescription and fulfillment (Hims & Hers, Ro, Noom Med, WeightWatchers Clinic)."
+    }
+  ],
+  "last_updated": "2026-06-11"
+}
