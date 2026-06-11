@@ -111,5 +111,6 @@ Tous les champs en texte libre sont rédigés dans la langue du run. Toute valeu
 - **`players[].card`** : alimente la fiche détaillée ouverte au clic sur un marqueur (panneau latéral droit).
 - **`source_ids`** : références vers `sources[].id` — la traçabilité passe par là (les données brutes ne sont pas conservées).
 - **`reading.export_note`** : repris tel quel par le moteur 2b dans le bloc d'annotations des exports PNG/SVG (avec la légende des canaux, les calques actifs et la date). À générer à chaque run.
+- **`reading.values_methodology`** : liste de `{"label", "note"}` — une entrée par colonne du tableau de données (part de marché, croissance, puis chaque dimension). Chaque note explique comment lire les valeurs : unité et devise utilisées ; si les valeurs sources partageaient cette devise ou ont été converties (si conversion : devise d'origine + taux de change appliqué) ; signification des scores 0-10 ; ce qui est inclus/exclu. Rendue sous le tableau dans le bloc « Comment lire ces valeurs ».
 - **`last_updated`** : seul champ qu'une Skill 3 réécrit dans un run publié.
 - **Stabilité des `id`** (acteurs et dimensions) : slugs ASCII stables d'un run à l'autre — la Skill 3 s'en sert pour apparier les données entre runs.

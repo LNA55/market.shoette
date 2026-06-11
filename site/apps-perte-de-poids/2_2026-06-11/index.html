@@ -208,6 +208,11 @@
         <tbody></tbody>
       </table>
     </div>
+
+    <div class="assumptions" id="table-notes" style="margin-top:12px">
+      <h2>Comment lire ces valeurs</h2>
+      <ul></ul>
+    </div>
   </section>
 
   <!-- ================================================================ Annexes -->
@@ -339,7 +344,37 @@ const RUN_DATA = {
       "border": "largeur_fonctionnelle"
     },
     "default_config_rationale": "L'intégration médicale & GLP-1 est classée première : c'est elle qui sépare aujourd'hui les gagnants des perdants — elle est affectée à l'axe Y, recouvert par défaut par la part de marché (basculez Y sur « Intégration médicale & GLP-1 » pour la vue structurelle). Le prix (rang 2, axe X + couleur) révèle la segmentation des clientèles : plus un marqueur est à droite et foncé, plus l'offre est chère. La personnalisation IA (rang 3, taille) montre où se joue la bataille produit : les gros marqueurs sont les mieux armés. Le modèle d'accompagnement (rang 4, opacité) et la largeur fonctionnelle (rang 5, bordure) complètent la lecture.",
-    "export_note": "Lecture : hauteur = part de marché estimée (revenus 2025, périmètre apps grand public ~2,2 Md$) ; position horizontale et intensité de couleur = prix mensuel effectif ; taille = personnalisation IA ; opacité = modèle d'accompagnement ; bordure = largeur fonctionnelle. Toutes valeurs ~estimées. Première observation : la valeur migre des compteurs de calories généralistes vers deux pôles — les plateformes médicalisées GLP-1 (Noom, WeightWatchers) et les apps IA à faible friction (Cal AI, Simple, MacroFactor) ; le milieu non différencié s'érode."
+    "export_note": "Lecture : hauteur = part de marché estimée (revenus 2025, périmètre apps grand public ~2,2 Md$) ; position horizontale et intensité de couleur = prix mensuel effectif ; taille = personnalisation IA ; opacité = modèle d'accompagnement ; bordure = largeur fonctionnelle. Toutes valeurs ~estimées. Première observation : la valeur migre des compteurs de calories généralistes vers deux pôles — les plateformes médicalisées GLP-1 (Noom, WeightWatchers) et les apps IA à faible friction (Cal AI, Simple, MacroFactor) ; le milieu non différencié s'érode.",
+    "values_methodology": [
+      {
+        "label": "Part de marché (%)",
+        "note": "Part des revenus annuels estimés 2025 de l'acteur dans le périmètre retenu (~2,2 Md$). Les revenus sources sont en dollars US ; une seule conversion a été nécessaire — Lifesum, dont les comptes sont publiés en couronnes suédoises : 220 M SEK ≈ 21 M$, au taux appliqué de 1 $ ≈ 10,5 SEK. Toutes les parts sont des estimations (~)."
+      },
+      {
+        "label": "Croissance 12 mois (%)",
+        "note": "Croissance estimée de la part de marché sur la période de référence (1 an) : croissance des revenus de l'acteur rapportée à celle du marché (~+12 %/an). Une valeur négative signifie que l'acteur croît moins vite que le marché, ou décroît."
+      },
+      {
+        "label": "Intégration médicale & GLP-1 (0-10)",
+        "note": "Score attribué par l'agent : 0 = tracker pur, 5 = fonctions compagnon GLP-1 (suivi de doses, contenus dédiés), 10 = téléconsultation + prescription + pharmacie intégrée."
+      },
+      {
+        "label": "Prix mensuel effectif ($)",
+        "note": "Dollars US, tarifs publics du marché américain — tous les prix sources étaient déjà exprimés en USD, aucune conversion appliquée. Plan annuel ramené au mois. Hors coût des médicaments : les programmes GLP-1 (Noom, WeightWatchers) se chiffrent à 119-449 $/mois selon le médicament et la dose."
+      },
+      {
+        "label": "Personnalisation IA (0-10)",
+        "note": "Score attribué par l'agent d'après les capacités documentées : reconnaissance photo des repas, coach conversationnel, ajustement algorithmique des cibles, prédictions santé."
+      },
+      {
+        "label": "Modèle d'accompagnement",
+        "note": "Catégorie qualitative : libre-service (outil seul) / coach IA / programme médicalisé (cliniciens et prescription)."
+      },
+      {
+        "label": "Largeur fonctionnelle",
+        "note": "Catégorie qualitative : mono-fonction (un usage unique) / spécialiste (couverture nutrition-poids complète) / plateforme (poids + activité + communauté + santé)."
+      }
+    ]
   },
   "players": [
     {
@@ -1382,6 +1417,22 @@ const RUN_DATA = {
         tr.appendChild(td);
       });
       tbody.appendChild(tr);
+    });
+  })();
+
+  // Notes de lecture des valeurs — depuis RUN_DATA.reading.values_methodology
+  (function () {
+    const box = document.getElementById("table-notes");
+    const list = box ? box.querySelector("ul") : null;
+    const notes = (RUN_DATA.reading || {}).values_methodology || [];
+    if (!list || !notes.length) { if (box) box.hidden = true; return; }
+    notes.forEach(function (n) {
+      const li = document.createElement("li");
+      const b = document.createElement("b");
+      b.textContent = n.label + " : ";
+      li.appendChild(b);
+      li.appendChild(document.createTextNode(n.note));
+      list.appendChild(li);
     });
   })();
 

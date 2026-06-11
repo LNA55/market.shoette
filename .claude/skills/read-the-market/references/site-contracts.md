@@ -51,7 +51,7 @@ Réécrire **uniquement** entre les balises. Tout le reste de ces pages appartie
 
 Zone d'une skill sans run : `<p class="empty">Pas encore de run — skill en cours de définition.</p>`
 
-Zone Skill 1 (runs du plus récent au plus ancien ; sous-titre fixe) :
+Zone Skill 1 — **runs du plus ancien au plus récent : Run 1 en premier, les suivants dessous** (préférence Elena, 2026-06-11 ; vaut pour les sections de toutes les skills). Sous-titre fixe :
 
 ```html
 <!-- RUNS-SKILL1:START — zone gérée par l'agent, ne pas éditer à la main -->

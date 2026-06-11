@@ -52,7 +52,7 @@ Structure contract: [references/site-contracts.md](references/site-contracts.md)
 
 1. **Section 1 — Executive Summary**: a market framing of about half a page — the reading grid for everything that follows, grounded in concrete market realities; the structuring dimensions; the stated assumptions. It is **not** a summary of players.
 2. **Section 2a — Market Share & Growth**: the short maturity summary and the chosen reference period with its rationale, then a static SVG scatter (Y = current market share %, X = growth over the reference period). Estimated figures visibly flagged; no-data players listed below the chart.
-3. **Section 2b — Player Positioning Chart**: the interactive chart mounted from the shared engine with this run's data and default channel config, preceded by the paragraph explaining the dimension ranking and how to read the default view. **Below the chart, a data table**: all players (sorted by market share, descending) × market share, growth and every dimension — rendered in JS from `RUN_DATA` (single source of truth, no divergence possible), estimates prefixed `~`, missing values `—`.
+3. **Section 2b — Player Positioning Chart**: the interactive chart mounted from the shared engine with this run's data and default channel config, preceded by the paragraph explaining the dimension ranking and how to read the default view. **Below the chart, a data table**: all players (sorted by market share, descending) × market share, growth and every dimension — rendered in JS from `RUN_DATA` (single source of truth, no divergence possible), estimates prefixed `~`, missing values `—`. **Below the table, a reading-notes block** (« Comment lire ces valeurs »), rendered from `reading.values_methodology` — one entry per table column stating: the unit and currency used; whether source values shared that currency or were converted (if converted: the original currency and the exchange rate applied); what 0-10 scores mean; what is included/excluded (e.g. medication costs).
 4. **Annexes**: A1 Sources (all of them, URL + access date when available), A2 Sector Lexicon (key terms, short definitions in both French and English, oriented to a newcomer).
 5. A visible **last-updated date** (`<span data-role="last-updated">`) — the only element Skill 3 may rewrite later.
 
@@ -62,7 +62,7 @@ The run data is both inlined in the page (`const RUN_DATA = {...}`) and written 
 
 Edit **only between the markers** — everything else on these pages belongs to Elena (exact formats and the market-index template: [references/site-contracts.md](references/site-contracts.md)):
 
-- `site/[slug]/index.html` — create from the template if this is the market's first run; rewrite the list inside `<!-- RUNS-SKILL1:START -->` / `<!-- RUNS-SKILL1:END -->` (all Skill 1 runs, newest first). The page has one section per skill (1-4) — never touch the other skills' zones.
+- `site/[slug]/index.html` — create from the template if this is the market's first run; rewrite the list inside `<!-- RUNS-SKILL1:START -->` / `<!-- RUNS-SKILL1:END -->` (all Skill 1 runs, **oldest first: Run 1 on top** — Elena's preference, 2026-06-11). The page has one section per skill (1-4) — never touch the other skills' zones.
 - `site/index.html` — rewrite the list inside `<!-- MARKETS:START -->` / `<!-- MARKETS:END -->` (markets alphabetical, each with run count and last-run date).
 
 ## Step 6 — Deploy, verify, commit
