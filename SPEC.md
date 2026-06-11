@@ -177,7 +177,7 @@ Write in the same language as the input.
 
 # Questions ouvertes
 
-Aucune — le cadrage technique est complet (2026-06-11).
+1. **Optimisation Skill 1 — répartition des modèles** *(en suspens le 2026-06-11, rappel programmé pour le 2026-06-12)* : encoder dans le SKILL.md la recherche sur Sonnet 4.6 (consolidation/stratégie/2b restant sur Fable) ; en option, fan-out en 5-6 agents étroits au lieu de 3 larges. Contexte : run 1 = ~35 min, tout sur Fable.
 
 # Décisions actées
 
