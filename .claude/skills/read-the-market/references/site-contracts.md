@@ -6,6 +6,7 @@
 site/
 ├── index.html                       accueil — liste des marchés (zone MARKETS)
 ├── assets/
+│   ├── site.css                     charte des pages parent (non versionnée — pages non figées)
 │   ├── positioning-chart-v1.js     moteur du graphique 2b (versionné)
 │   └── positioning-chart-v1.css
 └── [slug]/
@@ -15,27 +16,43 @@ site/
         └── data.json                canevas de données du run
 ```
 
+## Charte des pages parent
+
+Les pages parent (accueil + pages marché) partagent `assets/site.css` — style moderne et chaleureux validé par Elena (2026-06-11) : fond crème `#faf7f1`, encre indigo `#1b1f3b`, accent `#3b3bd8`, cartes blanches arrondies (18px), typographie **Plus Jakarta Sans** (Google Fonts, poids 400/500/700/800). Elles ne sont pas figées : `site.css` peut évoluer librement (contrairement au moteur 2b, versionné). Les pages de run, elles, gardent leurs styles inline (autonomes et figées).
+
 ## Zones balisées — pages parent
 
 Réécrire **uniquement** entre les balises. Tout le reste de ces pages appartient à Elena. Les pages parent sont en français, quel que soit la langue des runs.
 
-**Accueil — `site/index.html`** (marchés par ordre alphabétique) :
+**Accueil — `site/index.html`** (marchés par ordre alphabétique ; dates en français long « 11 juin 2026 ») :
 
 ```html
 <!-- MARKETS:START — zone gérée par l'agent, ne pas éditer à la main -->
-<ul>
-  <li><a href="chaussure/">Chaussure</a> — 2 runs, dernier le 11/09/2026</li>
+<ul class="cards">
+  <li><a class="card" href="[slug]/">
+    <span class="card-body">
+      <span class="card-title">[Label du marché]</span>
+      <span class="card-meta">[N] run(s) · dernier le [date longue]</span>
+    </span>
+    <span class="card-arrow">→</span>
+  </a></li>
 </ul>
 <!-- MARKETS:END -->
 ```
 
-**Page marché — `site/[slug]/index.html`** (runs du plus récent au plus ancien) :
+**Page marché — `site/[slug]/index.html`** (runs du plus récent au plus ancien ; sous-titre fixe) :
 
 ```html
 <!-- RUNS:START — zone gérée par l'agent, ne pas éditer à la main -->
-<ul>
-  <li><a href="2_2026-09-11/">Run 2 — 11/09/2026</a></li>
-  <li><a href="1_2026-06-11/">Run 1 — 11/06/2026</a></li>
+<ul class="cards">
+  <li><a class="card" href="[N]_[date-iso]/">
+    <span class="run-num">Run [N]</span>
+    <span class="card-body">
+      <span class="card-title">[date longue]</span>
+      <span class="card-meta">Executive summary · parts de marché · positionnement interactif · sources</span>
+    </span>
+    <span class="card-arrow">→</span>
+  </a></li>
 </ul>
 <!-- RUNS:END -->
 ```
@@ -49,17 +66,40 @@ Réécrire **uniquement** entre les balises. Tout le reste de ces pages appartie
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>[Label du marché] — Veille concurrentielle</title>
+  <meta name="description" content="[Une phrase de présentation du marché.]">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/site.css">
 </head>
 <body>
-  <p><a href="../">← Tous les marchés</a></p>
-  <h1>[Label du marché]</h1>
-  <p>[Une phrase de présentation du marché — Elena peut la retoucher librement.]</p>
+<div class="shell">
 
-  <!-- RUNS:START — zone gérée par l'agent, ne pas éditer à la main -->
-  <ul>
-    <li><a href="1_[date]/">Run 1 — [date]</a></li>
-  </ul>
-  <!-- RUNS:END -->
+  <header class="topbar">
+    <a class="brand" href="../">market<span class="dot">.</span>shoette</a>
+    <a class="crumb" href="../">← Tous les marchés</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <span class="kicker">Marché suivi</span>
+      <h1>[Label du marché]</h1>
+      <p class="lede">[Une ou deux phrases de présentation du marché — Elena peut les retoucher librement.]</p>
+    </section>
+
+    <h2 class="section-title">Runs</h2>
+
+    <!-- RUNS:START — zone gérée par l'agent, ne pas éditer à la main -->
+    [liste des runs au format défini ci-dessus]
+    <!-- RUNS:END -->
+  </main>
+
+  <footer class="sitefoot">
+    <span>Généré par l'agent de veille concurrentielle</span>
+    <span><a href="../">market.shoette.com</a></span>
+  </footer>
+
+</div>
 </body>
 </html>
 ```
