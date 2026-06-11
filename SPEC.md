@@ -172,7 +172,7 @@ Write in the same language as the input.
 - [x] Sous-domaine `market.shoette.com` en ligne, sert le site (vérifié le 2026-06-11)
 - [x] SKILL.md de la Skill 1 écrit — `.claude/skills/read-the-market/` (2026-06-11)
 - [x] Moteur du graphique 2b construit : `site/assets/positioning-chart-v1.{js,css}` + démo locale `dev/demo-2b.html` (2026-06-11) — **en attente de validation d'Elena sur la démo**
-- [ ] Run de test — marché décidé le 2026-06-11 : **applications mobiles d'assistance à la perte de poids** (pas la chaussure). Ne pas lancer sans le go explicite d'Elena. Ajustements du skill à la suite.
+- [x] Run de test exécuté et déployé (2026-06-11, go d'Elena) : **applications mobiles d'assistance à la perte de poids** — https://market.shoette.com/apps-perte-de-poids/1_2026-06-11/ — en attente des retours d'Elena pour ajuster le skill
 - [ ] Définir les Skills 2 à 5
 
 # Questions ouvertes
