@@ -48,7 +48,7 @@ Réécrire **uniquement** entre les balises. Tout le reste de ces pages appartie
 | Section | Zone | Géré par |
 |---|---|---|
 | Skill 1 — Read the Market | `RUNS-SKILL1:START` / `END` | Skill 1 (cette skill) |
-| Skill 2 — Present the Market | `RUNS-SKILL2:START` / `END` | Skill 2 (à définir) |
+| Skill 2 — Present the Market | `RUNS-SKILL2:START` / `END` | Skill 2 (`present-the-market`) |
 | Skill 3 — Position MY product in the Market | `RUNS-SKILL3:START` / `END` | Skill 3 (à définir) |
 | Skill 4 — Strategy recommendation | `RUNS-SKILL4:START` / `END` | Skill 4 (à définir) |
 

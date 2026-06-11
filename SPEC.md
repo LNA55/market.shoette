@@ -175,7 +175,8 @@ Write in the same language as the input.
 - [x] SKILL.md de la Skill 1 écrit — `.claude/skills/read-the-market/` (2026-06-11)
 - [x] Moteur du graphique 2b construit : `site/assets/positioning-chart-v1.{js,css}` + démo locale `dev/demo-2b.html` (2026-06-11) — **en attente de validation d'Elena sur la démo**
 - [x] Run de test exécuté et déployé (2026-06-11, go d'Elena) : **applications mobiles d'assistance à la perte de poids** — https://market.shoette.com/apps-perte-de-poids/s1-1_2026-06-11/ — en attente des retours d'Elena pour ajuster le skill
-- [ ] Définir ensemble les Skills 2 (Present the Market — V1 en cours de spécification), 3 (Position MY product) et 4 (Strategy recommendation)
+- [x] Skill 2 V1 spécifiée et rédigée — `.claude/skills/present-the-market/` (2026-06-11) ; premier run en attente du go d'Elena
+- [ ] Définir ensemble les Skills 3 (Position MY product) et 4 (Strategy recommendation)
 
 # Questions ouvertes
 
@@ -193,4 +194,12 @@ Write in the same language as the input.
 - **2026-06-11 — Répartition des modèles actée** : sous-agents de recherche sur Sonnet ; orchestration, consolidation, rédaction et stratégie sur le meilleur modèle disponible dans la session. Le moteur 2b n'est jamais reconstruit pendant un run — ses évolutions se font en sessions dédiées avec le meilleur modèle disponible.
 - **2026-06-11 — Tableau de données ajouté au contrat du rapport** : sous le graphique 2b, tous les acteurs × toutes les dimensions, généré depuis RUN_DATA (source unique).
 - **2026-06-11 — Schéma d'URL des runs par skill : `[marché]/s[K]-[N]_[date]/`** (ex. `s1-1_2026-06-11`, `s2-1_…`). Les runs Skill 1 existants ont été renommés `s1-*` ; redirections 301 en place pour les anciennes URLs.
-- **2026-06-11 — Skill 2 (cadrage) : le SWOT est exclu de l'analyse produite par la Skill 2.** Il exige un point de vue défini (« mon produit ») et appartient aux Skills 3/4. Il reste documenté sur la page focus-skill-2, qui rassemble tous les frameworks. Principe en discussion pour la Skill 2 : sélection des frameworks par règles (activé / dégradé en qualitatif / écarté avec justification), nourries par l'intention du run + le data.json de la Skill 1 + la disponibilité des données.
+- **2026-06-11 — Skill 2 (cadrage) : le SWOT est exclu de l'analyse produite par la Skill 2.** Il exige un point de vue défini (« mon produit ») et appartient aux Skills 3/4. Il reste documenté sur la page focus-skill-2, qui rassemble tous les frameworks. Principe validé : sélection des frameworks par règles (activé / dégradé en qualitatif / écarté avec justification), nourries par la nature du marché (data.json S1) + la disponibilité des données.
+- **2026-06-11 — Skill 2 V1, cadrage validé (points 1-4)** :
+  (a) **Déroulé** : au lancement, proposer les marchés ayant des runs Skill 1 en choix cliquables → partir de la page et du data.json du **dernier run S1** du marché choisi ; recherche en ligne **en complément seulement**.
+  (b) **Livrable** : page de run + data.json sous `[marché]/s2-[N]_[date]/`, zone `RUNS-SKILL2`.
+  (c) **Tableau KPI fixe** : définition du marché + principaux sous-secteurs ; taille mondiale + taille et part de chaque sous-secteur (ligne « reste du marché », bouclage à 100 %) ; **acteur installé dominant** — nom, date de création, CA annuel (moyenne des 2 derniers exercices si disponibles, sinon dernier connu en le disant), **bénéfice noté « en perte / rentable / à l'équilibre / information introuvable » + chiffre si on l'a** ; géographie du marché (mondial / régional / local avec pays). Conventions : `~` estimé, `—` introuvable, fourchettes autorisées, sources citées.
+  (d) **Fraîcheur** : si le dernier run S1 a plus de 3 mois, le signaler en tête et proposer de relancer une Skill 1 d'abord, sans bloquer.
+  (e) **Frameworks : seuls les retenus apparaissent dans le rapport** (choix Elena) — le texte des critères explique la sélection sans lister les écartés.
+  (f) **Intention implicite en V1** : angle unique « évaluer l'opportunité du marché » ; paramètre explicite envisageable en V2.
+  (g) **Modèles** : analyse/rédaction sur le meilleur modèle de la session ; compléments de recherche via 1-2 sous-agents Sonnet.

@@ -1,0 +1,94 @@
+# Contrats de la Skill 2 — page de run, data.json, zone balisée
+
+## Page de run S2 — structure
+
+- **Autonome et figée** : styles inline dans le `<head>`, même charte de rapport que les runs S1 (encre `#1e293b`, accent `#2563eb`, boîtes douces) ; conteneur fluide `max-width: calc(50vw + 550px)`.
+- **Ordre du document** :
+  1. Fil d'Ariane : ← page marché · Tous les marchés
+  2. En-tête : « Present the Market — [label du marché] », Run S2-[N], date, **lien vers le run S1 source** (avec sa date) — et l'avertissement de fraîcheur si le run source a plus de 3 mois
+  3. **Section 1 — Tableau des KPI business** (structure fixe V1, 6 rangées)
+  4. **Section 2 — Critères de sélection des frameworks** (texte court : quels faits du marché ont guidé les choix ; frameworks retenus uniquement)
+  5. **Section 3 — Le marché sous l'angle de chaque framework** : un bloc par framework retenu, titre lié à sa fiche `/focus-skill-2/#[ancre]`, statut affiché si « dégradé en qualitatif »
+  6. Sources (S1 source distinguée des compléments en ligne)
+  7. Pied : généré par la Skill 2 + `<span data-role="last-updated">[date]</span>`
+- **Données** : inlinées (`const RUN_S2_DATA = {...}`) et écrites dans `data.json` — strictement identiques.
+
+## `data.json` S2 — schéma (v1)
+
+```json
+{
+  "schema_version": 1,
+  "skill": "present-the-market",
+  "market": { "slug": "...", "label": "...", "language": "fr" },
+  "run": { "number": 1, "date": "2026-06-12" },
+  "source_run": {
+    "skill": "read-the-market",
+    "number": 2,
+    "date": "2026-06-11",
+    "path": "s1-2_2026-06-11/",
+    "age_days": 1,
+    "freshness_warning": false
+  },
+  "kpis": {
+    "definition": "Définition du marché en une phrase.",
+    "sub_sectors": [
+      {
+        "name": "...",
+        "size": { "value": 0, "unit": "Md$", "year": 2025, "estimated": true },
+        "share_pct": { "value": 0, "estimated": true }
+      }
+    ],
+    "rest_of_market_share_pct": { "value": 0, "estimated": true },
+    "global_size": { "value": "2,1-5,8", "unit": "Md$", "year": 2025, "estimated": true, "perimeter_note": "périmètres analystes divergents" },
+    "dominant_incumbent": {
+      "name": "...",
+      "founded": 1963,
+      "revenue": { "value": 0, "unit": "M$", "period_note": "moyenne FY2024-FY2025", "estimated": false },
+      "profit_status": "en perte | rentable | à l'équilibre | information introuvable",
+      "profit_figure": { "value": 0, "unit": "M$", "period_note": "...", "estimated": false }
+    },
+    "geography": { "type": "mondial | régional | local", "detail": "précision (région, pays)" }
+  },
+  "selection_criteria": "Texte court : les faits du marché qui ont guidé la sélection.",
+  "frameworks": [
+    {
+      "id": "porter",
+      "name": "Porter — 5 forces",
+      "status": "activé | dégradé",
+      "doc_anchor": "porter",
+      "analysis": "Le paragraphe d'analyse du marché sous cet angle."
+    }
+  ],
+  "sources": [
+    { "id": 1, "title": "Run S1-2 du 2026-06-11", "publisher": "market.shoette.com", "url": "../s1-2_2026-06-11/", "accessed": "2026-06-12", "from_source_run": true },
+    { "id": 2, "title": "...", "publisher": "...", "url": "https://...", "accessed": "2026-06-12", "from_source_run": false }
+  ],
+  "last_updated": "2026-06-12"
+}
+```
+
+Notes :
+- `profit_status` est toujours rempli (les 4 valeurs possibles) ; `profit_figure` est `null` quand introuvable.
+- `frameworks[].id` et `doc_anchor` = les ancres de la page de documentation : `tam-sam-som`, `porter`, `value-chain`, `bcg`, `perceptual-map`, `vitalite`, `pestel`, `ge-mckinsey`. Jamais `swot` (hors périmètre).
+- Les parts (`sub_sectors[].share_pct` + `rest_of_market_share_pct`) doivent boucler à ~100 %.
+
+## Zone `RUNS-SKILL2` — format
+
+Runs du plus ancien au plus récent (Run 1 en premier). Même format de carte que la zone Skill 1 :
+
+```html
+<!-- RUNS-SKILL2:START — zone gérée par l'agent, ne pas éditer à la main -->
+<ul class="cards">
+  <li><a class="card" href="s2-[N]_[date-iso]/">
+    <span class="run-num">Run [N]</span>
+    <span class="card-body">
+      <span class="card-title">[date longue]</span>
+      <span class="card-meta">Tableau KPI business · frameworks pertinents · sources</span>
+    </span>
+    <span class="card-arrow">→</span>
+  </a></li>
+</ul>
+<!-- RUNS-SKILL2:END -->
+```
+
+État vide (avant le premier run) : `<p class="empty">Pas encore de run — skill en cours de définition.</p>`
