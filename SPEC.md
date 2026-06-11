@@ -179,7 +179,7 @@ Write in the same language as the input.
 
 # Questions ouvertes
 
-Aucune — la répartition des modèles a été actée le 2026-06-11 (le rappel du 12/06 est annulé).
+1. **Skill 2 — l'intention du run** (posée le 2026-06-11) : paramètre explicite au lancement de la skill (défaut « évaluer l'opportunité du marché ») ou toujours implicite ? L'intention pilote la sélection des frameworks.
 
 # Décisions actées
 
@@ -192,3 +192,4 @@ Aucune — la répartition des modèles a été actée le 2026-06-11 (le rappel 
 - **2026-06-11 — Pages parent : édition par zone balisée.** L'agent réécrit uniquement la liste des runs entre `<!-- RUNS:START -->` et `<!-- RUNS:END -->` ; le reste de la page appartient à Elena (modifiable à la main, jamais écrasé).
 - **2026-06-11 — Répartition des modèles actée** : sous-agents de recherche sur Sonnet ; orchestration, consolidation, rédaction et stratégie sur le meilleur modèle disponible dans la session. Le moteur 2b n'est jamais reconstruit pendant un run — ses évolutions se font en sessions dédiées avec le meilleur modèle disponible.
 - **2026-06-11 — Tableau de données ajouté au contrat du rapport** : sous le graphique 2b, tous les acteurs × toutes les dimensions, généré depuis RUN_DATA (source unique).
+- **2026-06-11 — Skill 2 (cadrage) : le SWOT est exclu de l'analyse produite par la Skill 2.** Il exige un point de vue défini (« mon produit ») et appartient aux Skills 3/4. Il reste documenté sur la page focus-skill-2, qui rassemble tous les frameworks. Principe en discussion pour la Skill 2 : sélection des frameworks par règles (activé / dégradé en qualitatif / écarté avec justification), nourries par l'intention du run + le data.json de la Skill 1 + la disponibilité des données.
