@@ -247,6 +247,31 @@ h1 {
   white-space: nowrap;
 }
 .fw-note { display: block; margin-top: 7px; font-size: 11.5px; color: var(--muted); }
+a.fw { text-decoration: none; transition: background 0.15s ease, transform 0.15s ease; }
+a.fw:hover { background: #dcdcf8; transform: translateY(-1px); }
+
+/* fiches framework (bas de page Focus Skill 2) */
+.fw-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 22px 26px;
+  margin-bottom: 14px;
+  scroll-margin-top: 24px;
+}
+.fw-card h3 { margin: 0 0 3px; font-size: 17.5px; letter-spacing: -0.01em; }
+.fw-origin { color: var(--muted); font-size: 12.5px; margin: 0 0 10px; }
+.fw-q { font-style: italic; color: var(--accent-ink); font-size: 14px; margin: 0 0 10px; }
+.fw-card p { font-size: 14.5px; margin: 8px 0; line-height: 1.65; }
+.fw-back {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 12.5px;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--muted);
+}
+.fw-back:hover { color: var(--accent); }
 
 /* ---------- pied de page ---------- */
 

@@ -25,7 +25,8 @@
       <p class="lede">Skill en cours de définition.</p>
     </section>
 
-    <h2 class="doc-section-h">Analyse stratégique : quel outil pour quel objectif ?</h2>
+    <h2 class="doc-section-h" id="analyse-strategique" style="scroll-margin-top:24px">Analyse stratégique : quel outil pour quel objectif ?</h2>
+    <p class="lede" style="font-size:14.5px;margin-bottom:18px">Cliquez sur un framework pour lire sa fiche en bas de page.</p>
 
     <div class="doc-table-wrap">
       <table class="doc-table">
@@ -42,7 +43,7 @@
               <li><b>CAGR</b> : taux de croissance annuel moyen du marché (%)</li>
               <li><b>Stade de maturité</b> : émergent / croissance / mature / déclin</li>
             </ul></td>
-            <td><span class="fw">TAM / SAM / SOM</span></td>
+            <td><a class="fw" href="#tam-sam-som">TAM / SAM / SOM</a></td>
           </tr>
           <tr>
             <td class="q">Ce marché est-il structurellement rentable ? Qui a le pouvoir ?</td>
@@ -53,7 +54,7 @@
               <li><b>Pouvoir clients</b> : peuvent-ils négocier les prix à la baisse ?</li>
               <li><b>Churn sectoriel</b> : % de clients qui changent de fournisseur par an</li>
             </ul></td>
-            <td><span class="fw">Porter — 5 forces</span></td>
+            <td><a class="fw" href="#porter">Porter — 5 forces</a></td>
           </tr>
           <tr>
             <td class="q">Où se capture la marge dans la filière ?</td>
@@ -64,7 +65,7 @@
               <li><b>LTV</b> : revenu total généré par un client sur sa durée de vie (€)</li>
               <li><b>Ratio LTV/CAC</b> : &gt;3 = sain</li>
             </ul></td>
-            <td><span class="fw">Value chain</span></td>
+            <td><a class="fw" href="#value-chain">Value chain</a></td>
           </tr>
           <tr>
             <td class="q">Où sont les positions fortes/faibles des acteurs ?</td>
@@ -73,7 +74,7 @@
               <li><b>Croissance du segment</b> : % annuel par segment</li>
               <li><b>Poids dans le CA</b> : % que chaque produit/segment représente dans le revenu d'un acteur</li>
             </ul></td>
-            <td><span class="fw">BCG Matrix</span></td>
+            <td><a class="fw" href="#bcg">BCG Matrix</a></td>
           </tr>
           <tr>
             <td class="q">Comment les offres sont perçues ? Où sont les espaces vides ?</td>
@@ -82,7 +83,7 @@
               <li><b>NPS</b> : score de recommandation client (-100 à +100)</li>
               <li><b>Attributs perçus</b> : notes sur qualité, style, service… (enquêtes, avis clients)</li>
             </ul></td>
-            <td><span class="fw">Perceptual map</span></td>
+            <td><a class="fw" href="#perceptual-map">Perceptual map</a></td>
           </tr>
           <tr>
             <td class="q">L'argent intelligent y croit-il ? À quelle vitesse ça se disrupte ?</td>
@@ -92,7 +93,7 @@
               <li><b>Nouveaux entrants</b> : combien de créations/an</li>
               <li><b>Intensité R&amp;D</b> : brevets déposés, % du CA investi en R&amp;D</li>
             </ul></td>
-            <td><span class="fw">Vitalité</span><span class="fw-note">(vue « deal flow »)</span></td>
+            <td><a class="fw" href="#vitalite">Vitalité</a><span class="fw-note">(vue « deal flow »)</span></td>
           </tr>
           <tr>
             <td class="q">Quelles forces externes peuvent tuer ou doper le marché ?</td>
@@ -101,7 +102,7 @@
               <li><b>Cyclicité / saisonnalité</b> : % de variation du CA selon période</li>
               <li><b>Exposition macro</b> : sensibilité aux taux, change, matières premières</li>
             </ul></td>
-            <td><span class="fw">PESTEL</span></td>
+            <td><a class="fw" href="#pestel">PESTEL</a></td>
           </tr>
           <tr>
             <td class="q">Quels segments méritent l'investissement ?</td>
@@ -109,18 +110,101 @@
               <li><b>Attractivité par segment</b> : score composite taille × croissance × marge</li>
               <li><b>Force compétitive</b> : score composite part de marché × marque × structure de coûts</li>
             </ul></td>
-            <td><span class="fw">GE / McKinsey 9-box</span></td>
+            <td><a class="fw" href="#ge-mckinsey">GE / McKinsey 9-box</a></td>
           </tr>
           <tr>
             <td class="q">Conclusion : faut-il y aller, et par où ?</td>
             <td><ul class="kpis">
               <li>Synthèse qualitative de tous les KPI ci-dessus, organisée en forces / faiblesses / opportunités / menaces</li>
             </ul></td>
-            <td><span class="fw">SWOT</span></td>
+            <td><a class="fw" href="#swot">SWOT</a></td>
           </tr>
         </tbody>
       </table>
     </div>
+
+    <h2 class="doc-section-h" style="margin-top:52px">Les frameworks, un par un</h2>
+
+    <article class="fw-card" id="tam-sam-som">
+      <h3>TAM / SAM / SOM</h3>
+      <p class="fw-origin">Vocabulaire standard du capital-risque et du business planning.</p>
+      <p class="fw-q">« Le gâteau vaut-il l'effort ? Marché en expansion ou en déclin ? »</p>
+      <p>Trois cercles emboîtés pour dimensionner un marché. Le <b>TAM</b> (Total Addressable Market) est la demande totale théorique si tout le monde achetait. Le <b>SAM</b> (Serviceable Addressable Market) restreint aux clients que ton type d'offre peut techniquement et géographiquement servir. Le <b>SOM</b> (Serviceable Obtainable Market) est ce que tu peux réalistement capturer à 3-5 ans, compte tenu de la concurrence et de tes moyens — le seul des trois chiffres qui engage.</p>
+      <p>Couplé au CAGR et au stade de maturité, il dit si le jeu en vaut la chandelle. Piège classique : les TAM gonflés calculés « top-down » (x % d'un marché géant) — préférer le calcul « bottom-up » : nombre de clients atteignables × panier annuel réaliste.</p>
+      <a class="fw-back" href="#analyse-strategique">↑ Retour au tableau</a>
+    </article>
+
+    <article class="fw-card" id="porter">
+      <h3>Porter — 5 forces</h3>
+      <p class="fw-origin">Michael Porter, Harvard Business School, 1979.</p>
+      <p class="fw-q">« Ce marché est-il structurellement rentable ? Qui a le pouvoir ? »</p>
+      <p>La rentabilité d'un secteur ne dépend pas que du talent des acteurs : elle est structurelle. Cinq forces la déterminent — l'intensité de la rivalité entre concurrents, la menace des nouveaux entrants, la menace des produits de substitution, le pouvoir de négociation des fournisseurs et celui des clients.</p>
+      <p>Plus les forces sont fortes, plus les marges sont sous pression. La lecture utile : identifier <b>où est le pouvoir</b> dans la filière, donc qui capte la valeur — et si une position défendable y est possible (barrières à l'entrée, coûts de changement, marque).</p>
+      <a class="fw-back" href="#analyse-strategique">↑ Retour au tableau</a>
+    </article>
+
+    <article class="fw-card" id="value-chain">
+      <h3>Value chain</h3>
+      <p class="fw-origin">Michael Porter, « Competitive Advantage », 1985.</p>
+      <p class="fw-q">« Où se capture la marge dans la filière ? »</p>
+      <p>Décomposer la filière en maillons — conception, production, distribution, vente, service — et mesurer la marge captée à chaque étape. Le constat est souvent contre-intuitif : le maillon le plus visible n'est pas forcément celui qui gagne de l'argent.</p>
+      <p>La vue « par maillon » (marges brutes, EBITDA des leaders) se complète d'une vue unitaire côté client : le <b>CAC</b> (ce que coûte l'acquisition d'un client) face à la <b>LTV</b> (ce qu'il rapporte sur sa durée de vie). Un ratio LTV/CAC supérieur à 3 est le seuil de bonne santé communément admis.</p>
+      <a class="fw-back" href="#analyse-strategique">↑ Retour au tableau</a>
+    </article>
+
+    <article class="fw-card" id="bcg">
+      <h3>BCG Matrix</h3>
+      <p class="fw-origin">Bruce Henderson, Boston Consulting Group, 1970.</p>
+      <p class="fw-q">« Où sont les positions fortes/faibles des acteurs ? »</p>
+      <p>Une matrice 2×2 qui croise la <b>croissance du marché</b> (attractivité) et la <b>part de marché relative</b> — ta part divisée par celle du leader (mesure de force). Quatre cases : les vedettes (investir), les vaches à lait (traire pour financer le reste), les dilemmes (trancher vite) et les poids morts (désinvestir).</p>
+      <p>Appliquée aux acteurs d'un marché plutôt qu'à un portefeuille, elle révèle qui est en position de force sur quel segment — et quels segments un challenger peut attaquer sans affronter le leader de front.</p>
+      <a class="fw-back" href="#analyse-strategique">↑ Retour au tableau</a>
+    </article>
+
+    <article class="fw-card" id="perceptual-map">
+      <h3>Perceptual map</h3>
+      <p class="fw-origin">Cartographie perceptuelle — marketing classique, années 1960-70.</p>
+      <p class="fw-q">« Comment les offres sont perçues ? Où sont les espaces vides ? »</p>
+      <p>Positionner les offres sur des axes d'attributs <b>tels que les clients les perçoivent</b> — prix, qualité, style, service — à partir d'enquêtes, d'avis clients ou de NPS. La carte montre les territoires saturés et, surtout, les espaces vides.</p>
+      <p>Un espace vide est soit une opportunité de positionnement, soit l'absence de demande — c'est l'enquête qui tranche. C'est exactement la logique du graphique de positionnement interactif de la Skill 1, qui encode jusqu'à cinq dimensions simultanément.</p>
+      <a class="fw-back" href="#analyse-strategique">↑ Retour au tableau</a>
+    </article>
+
+    <article class="fw-card" id="vitalite">
+      <h3>Vitalité <span style="font-weight:500;font-size:13px;color:var(--muted)">(vue « deal flow »)</span></h3>
+      <p class="fw-origin">Grille d'analyse type investisseur — pas un framework académique.</p>
+      <p class="fw-q">« L'argent intelligent y croit-il ? À quelle vitesse ça se disrupte ? »</p>
+      <p>Lire la vitalité d'un marché par l'argent et le mouvement : montants levés sur 12-24 mois, nombre et taille des acquisitions, rythme de création d'entreprises, intensité R&amp;D (brevets, % du CA investi).</p>
+      <p>L'« argent intelligent » anticipe : un secteur qui lève beaucoup va se transformer vite ; un secteur sans aucun deal dort — ou est verrouillé par ses incumbents. Les M&amp;A disent aussi qui consolide : quand le n°1 d'audience rachète l'innovateur IA du moment, c'est un signal de marché à part entière.</p>
+      <a class="fw-back" href="#analyse-strategique">↑ Retour au tableau</a>
+    </article>
+
+    <article class="fw-card" id="pestel">
+      <h3>PESTEL</h3>
+      <p class="fw-origin">Dérivé de l'analyse PEST de Francis Aguilar (1967), étendue aux volets environnemental et légal.</p>
+      <p class="fw-q">« Quelles forces externes peuvent tuer ou doper le marché ? »</p>
+      <p>Balayer six familles de forces macro — <b>P</b>olitique, <b>É</b>conomique, <b>S</b>ocioculturel, <b>T</b>echnologique, <b>E</b>nvironnemental, <b>L</b>égal — qui s'imposent à tous les acteurs, indépendamment de leurs mérites.</p>
+      <p>C'est le framework des chocs exogènes. Exemple tiré du premier run de ce site : l'arrivée des médicaments GLP-1 — un choc à la fois technologique, réglementaire et socioculturel — a envoyé le leader historique des apps de perte de poids en faillite en moins de deux ans.</p>
+      <a class="fw-back" href="#analyse-strategique">↑ Retour au tableau</a>
+    </article>
+
+    <article class="fw-card" id="ge-mckinsey">
+      <h3>GE / McKinsey 9-box</h3>
+      <p class="fw-origin">McKinsey pour General Electric, années 1970 — en réponse aux limites de la matrice BCG.</p>
+      <p class="fw-q">« Quels segments méritent l'investissement ? »</p>
+      <p>Une matrice 3×3 qui croise <b>l'attractivité du marché</b> (score composite : taille × croissance × marge) et la <b>force compétitive</b> (part de marché × marque × structure de coûts). Neuf cases, trois zones de décision : investir/croître, sélectivité, récolter/désinvestir.</p>
+      <p>Plus nuancée que la BCG (des scores composites plutôt que deux KPI bruts), mais plus subjective aussi : la pondération des critères est un choix — à expliciter pour que l'analyse soit auditable.</p>
+      <a class="fw-back" href="#analyse-strategique">↑ Retour au tableau</a>
+    </article>
+
+    <article class="fw-card" id="swot">
+      <h3>SWOT</h3>
+      <p class="fw-origin">Attribué aux travaux d'Albert Humphrey, Stanford, années 1960.</p>
+      <p class="fw-q">« Conclusion : faut-il y aller, et par où ? »</p>
+      <p>Quatre quadrants croisant l'interne — <b>forces</b> et <b>faiblesses</b> — et l'externe — <b>opportunités</b> et <b>menaces</b>. Sa valeur n'est pas d'apporter une donnée nouvelle : c'est l'outil de synthèse qui organise tout ce que les frameworks précédents ont établi.</p>
+      <p>Bien utilisé, il vient en dernier et chaque case cite ses sources (les KPI des analyses amont). Mal utilisé, il vient en premier et se remplit d'intuitions — c'est le piège à éviter.</p>
+      <a class="fw-back" href="#analyse-strategique">↑ Retour au tableau</a>
+    </article>
   </main>
 
   <footer class="sitefoot">
