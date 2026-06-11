@@ -57,7 +57,12 @@ Then write the report's section 2 — titled **« Remarques sur le marché et ch
 
 ## Step 4 — Framework analyses
 
-One section per retained framework: a short paragraph or two answering the framework's core questions **for this market**, grounded in the KPI table and the S1 facts (keep the `~` flags). Each section title links to the framework's documentation fiche: `/focus-skill-2/#[anchor]`.
+One section per retained framework, containing in order:
+
+1. The title, linked to the framework's documentation fiche (`/focus-skill-2/#[anchor]`), with the « lecture qualitative » badge when dégradé.
+2. **The framework's objective sentence** (`objective` in the data) — the « question » verbatim from the documentation page (e.g. « Où se capture la marge dans la filière ? »).
+3. A short paragraph or two answering those questions **for this market**, grounded in the KPI table and the S1 facts (keep the `~` flags).
+4. **A market-specific visualization when relevant** — the framework's canonical diagram **filled with this market's actual data** (figures, players, events), drawn as inline SVG in the report charte, large and readable (~660px wide — bigger than the generic doc-page schematics), with a one-line caption. Examples: TAM/SAM/SOM circles with the amounts, Porter boxes annotated with the market's forces, a real deal-flow timeline, PESTEL cells filled per letter.
 
 ## Step 5 — Build the page + data.json
 

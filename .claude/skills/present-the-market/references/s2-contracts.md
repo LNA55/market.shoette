@@ -8,7 +8,7 @@
   2. En-tête : « Present the Market — [label du marché] », Run S2-[N], date, **lien vers le run S1 source** (avec sa date) — et l'avertissement de fraîcheur si le run source a plus de 3 mois
   3. **Section 1 — Tableau des KPI business** (structure fixe V1, 6 rangées)
   4. **Section 2 — « Remarques sur le marché et choix de la méthodologie d'analyse adaptée »** : une ligne d'intro puis une liste structurée, un élément par remarque (fait du marché → choix méthodologique induit) ; frameworks retenus uniquement
-  5. **Section 3 — Le marché sous l'angle de chaque framework** : un bloc par framework retenu, titre lié à sa fiche `/focus-skill-2/#[ancre]`, statut affiché si « dégradé en qualitatif »
+  5. **Section 3 — Le marché sous l'angle de chaque framework** : un bloc par framework retenu — titre lié à sa fiche `/focus-skill-2/#[ancre]` (badge si « dégradé en qualitatif »), **phrase-objectif du framework** en italique accent (champ `objective`, reprise verbatim de la page de documentation), paragraphe d'analyse, puis **visualisation spécifique au marché quand pertinent** : le schéma canonique rempli avec les données réelles du run (SVG inline, ~660px de large, légende d'une ligne). Mécanique de page : SVG dans `<div id="viz-templates" hidden>` avec `data-viz="[id]"` + `data-caption`, montés par le rendu JS dans chaque bloc.
   6. Sources (S1 source distinguée des compléments en ligne)
   7. Pied : généré par la Skill 2 + `<span data-role="last-updated">[date]</span>`
 - **Données** : inlinées (`const RUN_S2_DATA = {...}`) et écrites dans `data.json` — strictement identiques.
@@ -59,6 +59,7 @@
       "name": "Porter — 5 forces",
       "status": "activé | dégradé",
       "doc_anchor": "porter",
+      "objective": "« Ce marché est-il structurellement rentable ? Qui a le pouvoir ? » — la question du framework, verbatim de la page de documentation",
       "analysis": "Le paragraphe d'analyse du marché sous cet angle."
     }
   ],

@@ -29,6 +29,10 @@
     .note { font-size: 13px; color: var(--muted); margin: 8px 0; }
     #criteria-text ul { margin: 8px 0 0; padding-left: 20px; }
     #criteria-text li { margin-bottom: 9px; }
+    .fw-obj { font-style: italic; color: var(--accent); font-size: 14.5px; margin: 0 0 10px; }
+    .fw-fig { margin: 18px auto 4px; max-width: 660px; }
+    .fw-fig svg { display: block; width: 100%; height: auto; }
+    .fig-cap { font-size: 12px; color: var(--muted); text-align: center; margin-top: 7px; }
 
     table.kpi { width: 100%; border-collapse: collapse; font-size: 14.5px; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
     table.kpi th {
@@ -101,6 +105,214 @@
     <span>Dernière mise à jour : <span data-role="last-updated">2026-06-11</span></span>
   </footer>
 
+</div>
+
+<div id="viz-templates" hidden>
+  <div data-viz="tam-sam-som" data-caption="Dimensionnement du marché — toutes valeurs estimées (~), périmètres analystes divergents">
+<svg viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, sans-serif" role="img" aria-label="TAM, SAM et SOM du marché avec les montants estimés">
+  <circle cx="185" cy="150" r="128" fill="#dbeafe"/>
+  <circle cx="185" cy="183" r="82" fill="#93c5fd"/>
+  <circle cx="185" cy="237" r="30" fill="#2563eb"/>
+  <text x="185" y="62" text-anchor="middle" font-size="15" font-weight="700" fill="#1d4ed8">TAM</text>
+  <text x="185" y="136" text-anchor="middle" font-size="14" font-weight="700" fill="#1e3a8a">SAM</text>
+  <text x="185" y="242" text-anchor="middle" font-size="12.5" font-weight="700" fill="#ffffff">SOM</text>
+  <line x1="305" y1="60" x2="368" y2="60" stroke="#cbd5e1"/>
+  <text x="378" y="56" font-size="13.5" font-weight="700" fill="#1e293b">~4,5 à 6 Md$ (2025)</text>
+  <text x="378" y="74" font-size="12.5" fill="#64748b">toutes les apps de nutrition et de bien-être alimentaire</text>
+  <line x1="264" y1="160" x2="368" y2="160" stroke="#cbd5e1"/>
+  <text x="378" y="156" font-size="13.5" font-weight="700" fill="#1e293b">~2,2 Md$ (2025) · +11-13 %/an</text>
+  <text x="378" y="174" font-size="12.5" fill="#64748b">les apps d'assistance à la perte de poids (périmètre du pipeline)</text>
+  <line x1="217" y1="237" x2="368" y2="237" stroke="#cbd5e1"/>
+  <text x="378" y="233" font-size="13.5" font-weight="700" fill="#1e293b">~20 à 50 M$ à 3-5 ans</text>
+  <text x="378" y="251" font-size="12.5" fill="#64748b">SOM d'un entrant différencié — étalonné sur Cal AI (~30 M$</text>
+  <text x="378" y="267" font-size="12.5" fill="#64748b">en 18 mois) et MacroFactor (~24 M$)</text>
+</svg>
+  </div>
+  <div data-viz="porter" data-caption="Les cinq forces, annotées avec les faits du run S1 — le substitut pharmacologique est la force décisive">
+<svg viewBox="0 0 700 380" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, sans-serif" role="img" aria-label="Les cinq forces de Porter appliquées au marché">
+  <line x1="350" y1="86" x2="350" y2="144" stroke="#93c5fd" stroke-width="2"/><polygon points="343,142 357,142 350,152" fill="#2563eb"/>
+  <line x1="350" y1="294" x2="350" y2="246" stroke="#93c5fd" stroke-width="2"/><polygon points="343,248 357,248 350,238" fill="#2563eb"/>
+  <line x1="220" y1="194" x2="242" y2="194" stroke="#93c5fd" stroke-width="2"/><polygon points="240,187 240,201 250,194" fill="#2563eb"/>
+  <line x1="480" y1="194" x2="458" y2="194" stroke="#93c5fd" stroke-width="2"/><polygon points="460,187 460,201 450,194" fill="#2563eb"/>
+  <rect x="240" y="8" width="220" height="78" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="350" y="30" text-anchor="middle" font-size="13" font-weight="700" fill="#1e293b">Nouveaux entrants</text>
+  <text x="350" y="49" text-anchor="middle" font-size="12" fill="#1e293b">barrières produit très basses</text>
+  <text x="350" y="67" text-anchor="middle" font-size="11.5" fill="#64748b">Cal AI : 15 M de téléchargements en 18 mois</text>
+  <rect x="240" y="294" width="220" height="78" rx="10" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.5"/>
+  <text x="350" y="316" text-anchor="middle" font-size="13" font-weight="700" fill="#b91c1c">Substituts — LE CHOC</text>
+  <text x="350" y="335" text-anchor="middle" font-size="12" fill="#1e293b">GLP-1 : 12 % des adultes US sous traitement</text>
+  <text x="350" y="353" text-anchor="middle" font-size="11.5" fill="#64748b">a mis le leader historique en faillite</text>
+  <rect x="8" y="152" width="212" height="84" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="114" y="174" text-anchor="middle" font-size="13" font-weight="700" fill="#1e293b">Fournisseurs — FORT</text>
+  <text x="114" y="193" text-anchor="middle" font-size="12" fill="#1e293b">stores : péage 15-30 %</text>
+  <text x="114" y="211" text-anchor="middle" font-size="11.5" fill="#64748b">+ pharma (Novo, Lilly)</text>
+  <text x="114" y="226" text-anchor="middle" font-size="11.5" fill="#64748b">pour les acteurs médicalisés</text>
+  <rect x="480" y="152" width="212" height="84" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="586" y="174" text-anchor="middle" font-size="13" font-weight="700" fill="#1e293b">Clients — FORT</text>
+  <text x="586" y="193" text-anchor="middle" font-size="12" fill="#1e293b">churn structurellement élevé</text>
+  <text x="586" y="211" text-anchor="middle" font-size="11.5" fill="#64748b">coût de changement quasi nul,</text>
+  <text x="586" y="226" text-anchor="middle" font-size="11.5" fill="#64748b">comparaison facile</text>
+  <rect x="250" y="152" width="200" height="84" rx="12" fill="#2563eb"/>
+  <text x="350" y="180" text-anchor="middle" font-size="13.5" font-weight="700" fill="#ffffff">Rivalité — FORTE</text>
+  <text x="350" y="200" text-anchor="middle" font-size="11.5" fill="#dbeafe">une dizaine d'acteurs significatifs</text>
+  <text x="350" y="217" text-anchor="middle" font-size="11.5" fill="#dbeafe">les 2 leaders : ~60 % des revenus</text>
+</svg>
+  </div>
+  <div data-viz="value-chain" data-caption="Une chaîne à trois maillons — et la marge qui migre vers le médicament">
+<svg viewBox="0 0 700 260" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, sans-serif" role="img" aria-label="Chaîne de valeur courte du marché, lue en unit economics">
+  <polygon points="10,30 200,30 220,75 200,120 10,120 30,75" fill="#dbeafe"/>
+  <text x="115" y="70" text-anchor="middle" font-size="13" font-weight="700" fill="#1e293b">Développement</text>
+  <text x="115" y="89" text-anchor="middle" font-size="12" fill="#64748b">de l'app</text>
+  <polygon points="230,30 440,30 460,75 440,120 230,120 250,75" fill="#93c5fd"/>
+  <text x="348" y="66" text-anchor="middle" font-size="13" font-weight="700" fill="#1e293b">Stores Apple / Google</text>
+  <text x="348" y="86" text-anchor="middle" font-size="11.5" fill="#1e3a8a">péage de 15-30 %</text>
+  <text x="348" y="102" text-anchor="middle" font-size="11.5" fill="#1e3a8a">sur chaque abonnement</text>
+  <polygon points="470,30 660,30 680,75 660,120 470,120 490,75" fill="#2563eb"/>
+  <text x="578" y="68" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">Abonné</text>
+  <text x="578" y="88" text-anchor="middle" font-size="11.5" fill="#dbeafe">2,5 à 23 $/mois</text>
+  <circle cx="20" cy="156" r="4" fill="#2563eb"/>
+  <text x="32" y="160" font-size="12.5" fill="#1e293b">Rentabilité démontrée aux deux extrêmes : Simple, opérationnellement profitable (~160 M$ d'ARR)</text>
+  <circle cx="20" cy="180" r="4" fill="#2563eb"/>
+  <text x="32" y="184" font-size="12.5" fill="#1e293b">Cal AI : ~1,4 M$ de marge brute mensuelle avant son rachat</text>
+  <rect x="120" y="204" width="460" height="44" rx="10" fill="none" stroke="#b45309" stroke-dasharray="6 4" stroke-width="1.5"/>
+  <text x="350" y="222" text-anchor="middle" font-size="12" font-weight="700" fill="#b45309">Le mouvement en cours : capter la marge du médicament</text>
+  <text x="350" y="239" text-anchor="middle" font-size="11.5" fill="#b45309">Noom × pharmacie 503A (avril 2026) — intégration verticale</text>
+</svg>
+  </div>
+  <div data-viz="vitalite" data-caption="24 mois de deal flow — l'argent converge vers l'IA à faible friction et l'intégration médicale">
+<svg viewBox="0 0 700 270" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, sans-serif" role="img" aria-label="Frise des opérations du marché entre 2025 et 2026">
+  <line x1="40" y1="140" x2="670" y2="140" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="50" y="160" font-size="11" fill="#94a3b8">janv. 2025</text>
+  <line x1="455" y1="135" x2="455" y2="145" stroke="#94a3b8"/>
+  <text x="455" y="160" font-size="11" fill="#94a3b8" text-anchor="middle">janv. 2026</text>
+  <line x1="84" y1="140" x2="84" y2="98" stroke="#cbd5e1"/>
+  <circle cx="84" cy="140" r="6" fill="#2563eb"/>
+  <text x="84" y="78" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1e293b">MyFitnessPal rachète Intent</text>
+  <text x="84" y="93" text-anchor="middle" font-size="11" fill="#64748b">février 2025</text>
+  <line x1="185" y1="140" x2="185" y2="182" stroke="#fecaca"/>
+  <circle cx="185" cy="140" r="7" fill="#b91c1c"/>
+  <text x="185" y="200" text-anchor="middle" font-size="12.5" font-weight="700" fill="#b91c1c">Faillite éclair WeightWatchers</text>
+  <text x="185" y="215" text-anchor="middle" font-size="11" fill="#64748b">1,15 Md$ de dette effacée — mai-juin 2025</text>
+  <line x1="354" y1="140" x2="354" y2="98" stroke="#cbd5e1"/>
+  <circle cx="354" cy="140" r="6" fill="#2563eb"/>
+  <text x="354" y="78" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1e293b">Series B Simple — 35 M$</text>
+  <text x="354" y="93" text-anchor="middle" font-size="11" fill="#64748b">octobre 2025 (HartBeat Ventures)</text>
+  <line x1="421" y1="140" x2="421" y2="182" stroke="#cbd5e1"/>
+  <circle cx="421" cy="140" r="6" fill="#2563eb"/>
+  <text x="438" y="200" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1e293b">MyFitnessPal rachète Cal AI</text>
+  <text x="438" y="215" text-anchor="middle" font-size="11" fill="#64748b">closing décembre 2025</text>
+  <line x1="556" y1="140" x2="556" y2="98" stroke="#cbd5e1"/>
+  <circle cx="556" cy="140" r="6" fill="#2563eb"/>
+  <text x="556" y="78" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1e293b">Noom rachète une pharmacie</text>
+  <text x="556" y="93" text-anchor="middle" font-size="11" fill="#64748b">503A — avril 2026</text>
+  <text x="40" y="252" font-size="12" fill="#64748b">— et en continu : la vague des compagnons GLP-1 (Shotsy, MeAgain, Pep), nouveaux entrants 2025-2026</text>
+</svg>
+  </div>
+  <div data-viz="pestel" data-caption="Six familles de forces externes — le choc technologique et sociétal des GLP-1 domine tout">
+<svg viewBox="0 0 700 330" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, sans-serif" role="img" aria-label="Grille PESTEL appliquée au marché">
+  <rect x="10" y="10" width="218" height="148" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <circle cx="34" cy="36" r="14" fill="#dbeafe"/><text x="34" y="41" text-anchor="middle" font-size="13" font-weight="800" fill="#1d4ed8">P</text>
+  <text x="58" y="33" font-size="12" font-weight="700" fill="#1e293b">Politique</text>
+  <text x="22" y="68" font-size="11.5" fill="#1e293b">Pression sur les prix des GLP-1 —</text>
+  <text x="22" y="85" font-size="11.5" fill="#1e293b">Noom a témoigné au Sénat</text>
+  <text x="22" y="102" font-size="11.5" fill="#1e293b">américain.</text>
+  <rect x="241" y="10" width="218" height="148" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <circle cx="265" cy="36" r="14" fill="#dbeafe"/><text x="265" y="41" text-anchor="middle" font-size="13" font-weight="800" fill="#1d4ed8">É</text>
+  <text x="289" y="33" font-size="12" font-weight="700" fill="#1e293b">Économique</text>
+  <text x="253" y="68" font-size="11.5" fill="#1e293b">La moitié des utilisateurs US jugent</text>
+  <text x="253" y="85" font-size="11.5" fill="#1e293b">les traitements difficiles à payer</text>
+  <text x="253" y="102" font-size="11.5" fill="#1e293b">→ espace pour le low-cost</text>
+  <text x="253" y="119" font-size="11.5" fill="#1e293b">(microdosing).</text>
+  <rect x="472" y="10" width="218" height="148" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <circle cx="496" cy="36" r="14" fill="#dbeafe"/><text x="496" y="41" text-anchor="middle" font-size="13" font-weight="800" fill="#1d4ed8">S</text>
+  <text x="520" y="33" font-size="12" font-weight="700" fill="#1e293b">Socioculturel</text>
+  <text x="484" y="68" font-size="11.5" fill="#1e293b">Médicalisation de l'obésité :</text>
+  <text x="484" y="85" font-size="11.5" fill="#1e293b">destigmatisation, « food noise » —</text>
+  <text x="484" y="102" font-size="11.5" fill="#1e293b">le discours passe du régime</text>
+  <text x="484" y="119" font-size="11.5" fill="#1e293b">au traitement.</text>
+  <rect x="10" y="168" width="218" height="148" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <circle cx="34" cy="194" r="14" fill="#2563eb"/><text x="34" y="199" text-anchor="middle" font-size="13" font-weight="800" fill="#ffffff">T</text>
+  <text x="58" y="191" font-size="12" font-weight="700" fill="#1d4ed8">Technologique — LE CHOC</text>
+  <text x="22" y="226" font-size="11.5" fill="#1e293b">GLP-1 : 12,4 % des adultes US</text>
+  <text x="22" y="243" font-size="11.5" fill="#1e293b">en usage perte de poids,</text>
+  <text x="22" y="260" font-size="11.5" fill="#1e293b">×2 en 18 mois. S'y ajoute l'IA</text>
+  <text x="22" y="277" font-size="11.5" fill="#1e293b">(photo-logging) côté produit.</text>
+  <rect x="241" y="168" width="218" height="148" rx="10" fill="#fafaf9" stroke="#e2e8f0" stroke-dasharray="4 4"/>
+  <circle cx="265" cy="194" r="14" fill="#f1f5f9"/><text x="265" y="199" text-anchor="middle" font-size="13" font-weight="800" fill="#94a3b8">E</text>
+  <text x="289" y="191" font-size="12" font-weight="700" fill="#94a3b8">Environnemental</text>
+  <text x="253" y="226" font-size="11.5" fill="#94a3b8">Non significatif sur ce marché.</text>
+  <rect x="472" y="168" width="218" height="148" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+  <circle cx="496" cy="194" r="14" fill="#dbeafe"/><text x="496" y="199" text-anchor="middle" font-size="13" font-weight="800" fill="#1d4ed8">L</text>
+  <text x="520" y="191" font-size="12" font-weight="700" fill="#1e293b">Légal</text>
+  <text x="484" y="226" font-size="11.5" fill="#1e293b">Extinction réglementaire du</text>
+  <text x="484" y="243" font-size="11.5" fill="#1e293b">semaglutide « compounded »</text>
+  <text x="484" y="260" font-size="11.5" fill="#1e293b">→ bascule forcée vers les</text>
+  <text x="484" y="277" font-size="11.5" fill="#1e293b">versions de marque.</text>
+</svg>
+  </div>
+  <div data-viz="perceptual-map" data-caption="Lecture qualitative (positions estimées par l'agent, sans données d'enquête) — version factuelle : graphique interactif du run S1">
+<svg viewBox="0 0 700 380" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, sans-serif" role="img" aria-label="Carte perceptuelle qualitative des acteurs du marché">
+  <line x1="70" y1="320" x2="670" y2="320" stroke="#94a3b8" stroke-width="1.5"/>
+  <line x1="70" y1="320" x2="70" y2="40" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="80" y="344" font-size="11.5" fill="#64748b">Outil en libre-service</text>
+  <text x="665" y="344" font-size="11.5" fill="#64748b" text-anchor="end">Accompagnement / transformation</text>
+  <text x="30" y="180" font-size="11.5" fill="#64748b" text-anchor="middle" transform="rotate(-90 30 180)">Prix perçu (bas → élevé)</text>
+  <circle cx="150" cy="290" r="24" fill="#2563eb" opacity="0.85"/>
+  <text x="150" y="294" text-anchor="middle" font-size="11" font-weight="700" fill="#ffffff">Cal AI</text>
+  <circle cx="130" cy="238" r="20" fill="#60a5fa" opacity="0.85"/>
+  <text x="130" y="242" text-anchor="middle" font-size="10.5" font-weight="700" fill="#ffffff">Yazio</text>
+  <circle cx="218" cy="252" r="22" fill="#60a5fa" opacity="0.85"/>
+  <text x="218" y="249" text-anchor="middle" font-size="9" font-weight="700" fill="#ffffff">Macro-</text>
+  <text x="218" y="260" text-anchor="middle" font-size="9" font-weight="700" fill="#ffffff">Factor</text>
+  <circle cx="350" cy="218" r="24" fill="#3b82f6" opacity="0.85"/>
+  <text x="350" y="222" text-anchor="middle" font-size="10.5" font-weight="700" fill="#ffffff">Simple</text>
+  <circle cx="498" cy="118" r="26" fill="#1d4ed8" opacity="0.9"/>
+  <text x="498" y="122" text-anchor="middle" font-size="11" font-weight="700" fill="#ffffff">Noom</text>
+  <circle cx="612" cy="92" r="28" fill="#1e3a8a" opacity="0.9"/>
+  <text x="612" y="89" text-anchor="middle" font-size="9" font-weight="700" fill="#ffffff">Weight-</text>
+  <text x="612" y="100" text-anchor="middle" font-size="9" font-weight="700" fill="#ffffff">Watchers</text>
+  <ellipse cx="528" cy="226" rx="100" ry="56" fill="none" stroke="#b45309" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="528" y="218" text-anchor="middle" font-size="11.5" font-weight="700" fill="#b45309">espace disputé :</text>
+  <text x="528" y="234" text-anchor="middle" font-size="11" fill="#b45309">le médicalisé abordable (&lt;200 $/mois)</text>
+  <text x="528" y="250" text-anchor="middle" font-size="10.5" fill="#b45309">Noom microdose vs WW Med+</text>
+</svg>
+  </div>
+  <div data-viz="ge-mckinsey" data-caption="Arbitrage qualitatif des quatre sous-secteurs — scores composites non chiffrés (données segmentaires minces)">
+<svg viewBox="0 0 700 390" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, sans-serif" role="img" aria-label="Matrice GE McKinsey qualitative des quatre sous-secteurs">
+  <rect x="90" y="20" width="187" height="100" fill="#bfdbfe"/>
+  <rect x="277" y="20" width="187" height="100" fill="#bfdbfe"/>
+  <rect x="464" y="20" width="186" height="100" fill="#dbeafe"/>
+  <rect x="90" y="120" width="187" height="100" fill="#bfdbfe"/>
+  <rect x="277" y="120" width="187" height="100" fill="#dbeafe"/>
+  <rect x="464" y="120" width="186" height="100" fill="#f1f5f9"/>
+  <rect x="90" y="220" width="187" height="100" fill="#dbeafe"/>
+  <rect x="277" y="220" width="187" height="100" fill="#f1f5f9"/>
+  <rect x="464" y="220" width="186" height="100" fill="#f1f5f9"/>
+  <line x1="277" y1="20" x2="277" y2="320" stroke="#ffffff" stroke-width="3"/>
+  <line x1="464" y1="20" x2="464" y2="320" stroke="#ffffff" stroke-width="3"/>
+  <line x1="90" y1="120" x2="650" y2="120" stroke="#ffffff" stroke-width="3"/>
+  <line x1="90" y1="220" x2="650" y2="220" stroke="#ffffff" stroke-width="3"/>
+  <rect x="90" y="20" width="560" height="300" fill="none" stroke="#e2e8f0"/>
+  <rect x="103" y="52" width="160" height="36" rx="18" fill="#ffffff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="183" y="74" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1e293b">Compagnons GLP-1</text>
+  <rect x="285" y="46" width="170" height="48" rx="14" fill="#ffffff" stroke="#2563eb"/>
+  <text x="370" y="66" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1e293b">Coaching</text>
+  <text x="370" y="82" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1e293b">comportemental &amp; IA</text>
+  <rect x="472" y="46" width="170" height="48" rx="14" fill="#ffffff" stroke="#2563eb"/>
+  <text x="557" y="66" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1e293b">Plateformes</text>
+  <text x="557" y="82" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1e293b">médicalisées</text>
+  <rect x="285" y="246" width="170" height="48" rx="14" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="370" y="266" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1e293b">Tracking</text>
+  <text x="370" y="282" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1e293b">calorique pur</text>
+  <text x="40" y="170" font-size="11.5" fill="#64748b" text-anchor="middle" transform="rotate(-90 40 170)">Attractivité du sous-secteur</text>
+  <text x="84" y="32" font-size="10.5" fill="#64748b" text-anchor="end">forte</text>
+  <text x="84" y="315" font-size="10.5" fill="#64748b" text-anchor="end">faible</text>
+  <text x="370" y="348" text-anchor="middle" font-size="11.5" fill="#64748b">Force compétitive requise pour un entrant (faible → élevée)</text>
+  <rect x="90" y="364" width="11" height="11" fill="#bfdbfe"/><text x="106" y="374" font-size="10.5" fill="#64748b">Investir</text>
+  <rect x="170" y="364" width="11" height="11" fill="#dbeafe"/><text x="186" y="374" font-size="10.5" fill="#64748b">Sélectivité</text>
+  <rect x="266" y="364" width="11" height="11" fill="#f1f5f9"/><text x="282" y="374" font-size="10.5" fill="#64748b">Récolter / éviter</text>
+</svg>
+  </div>
 </div>
 
 <script>
@@ -231,49 +443,56 @@ const RUN_S2_DATA = {
       "name": "TAM / SAM / SOM",
       "status": "activé",
       "doc_anchor": "tam-sam-som",
-      "analysis": "Le TAM — l'ensemble des apps de nutrition et de bien-être alimentaire — pèse ~4,5 à 6 Md$ (2025) selon les périmètres analystes les plus larges. Le SAM — les apps dont la proposition centrale est la perte de poids, périmètre de ce pipeline — est estimé à ~2,2 Md$ (2025), en croissance de ~11-13 %/an. Le SOM d'un entrant différencié s'étalonne sur les trajectoires récentes : Cal AI a atteint ~30 M$ de revenus en 18 mois sur la niche du photo-logging, MacroFactor ~24 M$ sur le macro-tracking scientifique — soit ~1 à 2 % du SAM à horizon 3-5 ans pour une proposition réellement différenciée. Stade de maturité : recomposition — la valeur croît (+13 % de revenus in-app en 2025) mais les volumes stagnent (+0,8 % de téléchargements) : on ne gagne plus en acquisition brute, on gagne en valeur captée par utilisateur."
+      "analysis": "Le TAM — l'ensemble des apps de nutrition et de bien-être alimentaire — pèse ~4,5 à 6 Md$ (2025) selon les périmètres analystes les plus larges. Le SAM — les apps dont la proposition centrale est la perte de poids, périmètre de ce pipeline — est estimé à ~2,2 Md$ (2025), en croissance de ~11-13 %/an. Le SOM d'un entrant différencié s'étalonne sur les trajectoires récentes : Cal AI a atteint ~30 M$ de revenus en 18 mois sur la niche du photo-logging, MacroFactor ~24 M$ sur le macro-tracking scientifique — soit ~1 à 2 % du SAM à horizon 3-5 ans pour une proposition réellement différenciée. Stade de maturité : recomposition — la valeur croît (+13 % de revenus in-app en 2025) mais les volumes stagnent (+0,8 % de téléchargements) : on ne gagne plus en acquisition brute, on gagne en valeur captée par utilisateur.",
+      "objective": "« Le gâteau vaut-il l'effort ? Marché en expansion ou en déclin ? »"
     },
     {
       "id": "porter",
       "name": "Porter — 5 forces",
       "status": "activé",
       "doc_anchor": "porter",
-      "analysis": "Un marché structurellement sous pression. Rivalité : forte — une dizaine d'acteurs significatifs, les deux leaders concentrant ~60 % des revenus. Nouveaux entrants : barrières produit très basses (Cal AI, créée par deux lycéens, a atteint 15 M de téléchargements en moins de deux ans) mais coût d'acquisition élevé sur un marché saturé en volume. Substituts : la force décisive — les GLP-1 sont un substitut pharmacologique au « régime comportemental » lui-même (12 % des adultes américains en prennent), qui a mis le leader historique en faillite. Fournisseurs : Apple et Google prélèvent 15-30 % de péage sur chaque abonnement ; pour les acteurs médicalisés, la pharma (Novo Nordisk, Eli Lilly) devient un second fournisseur incontournable. Clients : pouvoir élevé — coûts de changement quasi nuls, churn structurellement fort, comparaison facile. Conclusion : la rentabilité durable exige une position défendable — intégration médicale (Noom, WeightWatchers) ou différenciation IA à acquisition organique (viralité de Cal AI)."
+      "analysis": "Un marché structurellement sous pression. Rivalité : forte — une dizaine d'acteurs significatifs, les deux leaders concentrant ~60 % des revenus. Nouveaux entrants : barrières produit très basses (Cal AI, créée par deux lycéens, a atteint 15 M de téléchargements en moins de deux ans) mais coût d'acquisition élevé sur un marché saturé en volume. Substituts : la force décisive — les GLP-1 sont un substitut pharmacologique au « régime comportemental » lui-même (12 % des adultes américains en prennent), qui a mis le leader historique en faillite. Fournisseurs : Apple et Google prélèvent 15-30 % de péage sur chaque abonnement ; pour les acteurs médicalisés, la pharma (Novo Nordisk, Eli Lilly) devient un second fournisseur incontournable. Clients : pouvoir élevé — coûts de changement quasi nuls, churn structurellement fort, comparaison facile. Conclusion : la rentabilité durable exige une position défendable — intégration médicale (Noom, WeightWatchers) ou différenciation IA à acquisition organique (viralité de Cal AI).",
+      "objective": "« Ce marché est-il structurellement rentable ? Qui a le pouvoir ? »"
     },
     {
       "id": "value-chain",
       "name": "Value chain — lue en unit economics",
       "status": "activé",
       "doc_anchor": "value-chain",
-      "analysis": "La chaîne est courte — développement → stores → abonné — et la lecture pertinente est unitaire. Côté captation : les stores prélèvent 15-30 % de chaque abonnement, premier « maillon » de marge cédé par tout l'écosystème. Côté unit economics : les prix s'étagent de 2,5 $/mois (Cal AI) à ~23 $/mois (WeightWatchers), et la rentabilité est démontrée aux deux extrêmes — Simple est opérationnellement profitable (~160 M$ d'ARR), Cal AI dégageait ~1,4 M$ de marge brute mensuelle avant son rachat. Le mouvement structurel : les plateformes médicalisées déplacent la capture de marge vers le médicament — le rachat d'une pharmacie 503A par Noom (avril 2026) est une intégration verticale assumée pour capter la marge pharmaceutique en plus de l'abonnement."
+      "analysis": "La chaîne est courte — développement → stores → abonné — et la lecture pertinente est unitaire. Côté captation : les stores prélèvent 15-30 % de chaque abonnement, premier « maillon » de marge cédé par tout l'écosystème. Côté unit economics : les prix s'étagent de 2,5 $/mois (Cal AI) à ~23 $/mois (WeightWatchers), et la rentabilité est démontrée aux deux extrêmes — Simple est opérationnellement profitable (~160 M$ d'ARR), Cal AI dégageait ~1,4 M$ de marge brute mensuelle avant son rachat. Le mouvement structurel : les plateformes médicalisées déplacent la capture de marge vers le médicament — le rachat d'une pharmacie 503A par Noom (avril 2026) est une intégration verticale assumée pour capter la marge pharmaceutique en plus de l'abonnement.",
+      "objective": "« Où se capture la marge dans la filière ? »"
     },
     {
       "id": "vitalite",
       "name": "Vitalité (deal flow)",
       "status": "activé",
       "doc_anchor": "vitalite",
-      "analysis": "L'argent intelligent est massivement actif — signal d'un marché en transformation rapide, pas d'un marché qui dort. En 24 mois : la faillite-éclair et restructuration du leader historique (1,15 Md$ de dette effacée, mai-juin 2025) ; deux acquisitions par MyFitnessPal (Intent en février 2025, Cal AI closée en décembre 2025) ; une Series B de 35 M$ pour Simple menée par HartBeat Ventures (octobre 2025) ; l'acquisition d'une pharmacie par Noom (avril 2026) ; et une vague de nouveaux entrants sur la niche du compagnon GLP-1 (Shotsy, MeAgain, Pep). La direction des flux est sans ambiguïté : l'IA à faible friction et l'intégration médicale. Quand le n°1 d'audience rachète l'innovateur IA du moment plutôt que de le répliquer, cela dit l'essentiel sur l'endroit où se crée la valeur."
+      "analysis": "L'argent intelligent est massivement actif — signal d'un marché en transformation rapide, pas d'un marché qui dort. En 24 mois : la faillite-éclair et restructuration du leader historique (1,15 Md$ de dette effacée, mai-juin 2025) ; deux acquisitions par MyFitnessPal (Intent en février 2025, Cal AI closée en décembre 2025) ; une Series B de 35 M$ pour Simple menée par HartBeat Ventures (octobre 2025) ; l'acquisition d'une pharmacie par Noom (avril 2026) ; et une vague de nouveaux entrants sur la niche du compagnon GLP-1 (Shotsy, MeAgain, Pep). La direction des flux est sans ambiguïté : l'IA à faible friction et l'intégration médicale. Quand le n°1 d'audience rachète l'innovateur IA du moment plutôt que de le répliquer, cela dit l'essentiel sur l'endroit où se crée la valeur.",
+      "objective": "« L'argent intelligent y croit-il ? À quelle vitesse ça se disrupte ? »"
     },
     {
       "id": "pestel",
       "name": "PESTEL",
       "status": "activé",
       "doc_anchor": "pestel",
-      "analysis": "Le choc dominant est techno-sociétal : les GLP-1 (12,4 % des adultes américains en usage perte de poids — plus du double en 18 mois) redéfinissent la proposition de valeur de toute la catégorie. Légal : l'extinction réglementaire du semaglutide « compounded » force la bascule vers les versions de marque et rebat les cartes des offres médicalisées low-cost. Politique : la pression sur les prix des GLP-1 (Noom a témoigné au Sénat américain) peut élargir ou rétrécir le marché du microdosing. Économique : la moitié des utilisateurs américains jugent ces traitements difficiles à payer — l'accessibilité financière est le levier des offres hybrides app+médicament d'entrée de gamme. Socioculturel : la médicalisation de l'obésité destigmatise la demande et déplace le discours du « régime » vers le « traitement ». Environnemental : non significatif sur ce marché."
+      "analysis": "Le choc dominant est techno-sociétal : les GLP-1 (12,4 % des adultes américains en usage perte de poids — plus du double en 18 mois) redéfinissent la proposition de valeur de toute la catégorie. Légal : l'extinction réglementaire du semaglutide « compounded » force la bascule vers les versions de marque et rebat les cartes des offres médicalisées low-cost. Politique : la pression sur les prix des GLP-1 (Noom a témoigné au Sénat américain) peut élargir ou rétrécir le marché du microdosing. Économique : la moitié des utilisateurs américains jugent ces traitements difficiles à payer — l'accessibilité financière est le levier des offres hybrides app+médicament d'entrée de gamme. Socioculturel : la médicalisation de l'obésité destigmatise la demande et déplace le discours du « régime » vers le « traitement ». Environnemental : non significatif sur ce marché.",
+      "objective": "« Quelles forces externes peuvent tuer ou doper le marché ? »"
     },
     {
       "id": "perceptual-map",
       "name": "Perceptual map",
       "status": "dégradé",
       "doc_anchor": "perceptual-map",
-      "analysis": "Lecture qualitative — le run S1 n'a pas collecté de données de perception chiffrées (NPS, enquêtes). Sur les axes perçus prix × promesse : Cal AI et MacroFactor occupent le territoire « outil simple et efficace, prix plancher » ; Simple, le « coach bienveillant accessible » ; Noom, la « transformation psychologique premium » ; WeightWatchers, « l'institution communautaire » en repositionnement médical. L'espace perçu encore disputé : l'accompagnement médicalisé abordable grand public (sous 200 $/mois médicament compris) — c'est exactement la course entre le microdosing de Noom (119-199 $/mois) et le Med+ de WeightWatchers. La version factuelle et interactive de cette carte existe dans le run S1 (graphique de positionnement, cinq dimensions)."
+      "analysis": "Lecture qualitative — le run S1 n'a pas collecté de données de perception chiffrées (NPS, enquêtes). Sur les axes perçus prix × promesse : Cal AI et MacroFactor occupent le territoire « outil simple et efficace, prix plancher » ; Simple, le « coach bienveillant accessible » ; Noom, la « transformation psychologique premium » ; WeightWatchers, « l'institution communautaire » en repositionnement médical. L'espace perçu encore disputé : l'accompagnement médicalisé abordable grand public (sous 200 $/mois médicament compris) — c'est exactement la course entre le microdosing de Noom (119-199 $/mois) et le Med+ de WeightWatchers. La version factuelle et interactive de cette carte existe dans le run S1 (graphique de positionnement, cinq dimensions).",
+      "objective": "« Comment les offres sont perçues ? Où sont les espaces vides ? »"
     },
     {
       "id": "ge-mckinsey",
       "name": "GE / McKinsey 9-box",
       "status": "dégradé",
       "doc_anchor": "ge-mckinsey",
-      "analysis": "Arbitrage qualitatif des quatre sous-secteurs — les données segmentaires sont trop minces pour des scores composites chiffrés. Compagnons GLP-1 dédiés : attractivité élevée (croissance du sous-jacent, segment naissant) pour une force compétitive requise faible — la case « investir » d'un entrant agile. Coaching comportemental & IA : attractif et en croissance, mais bataille produit intense — sélectivité, la différenciation IA est la condition d'entrée. Plateformes médicalisées : le plus gros bassin de valeur, mais force requise élevée (régulation, capital, accès pharma) — sélectivité réservée aux acteurs capitalisés. Tracking calorique pur : attractivité déclinante (commoditisé par le photo-logging IA) — récolter ou se différencier, ne pas y entrer frontalement."
+      "analysis": "Arbitrage qualitatif des quatre sous-secteurs — les données segmentaires sont trop minces pour des scores composites chiffrés. Compagnons GLP-1 dédiés : attractivité élevée (croissance du sous-jacent, segment naissant) pour une force compétitive requise faible — la case « investir » d'un entrant agile. Coaching comportemental & IA : attractif et en croissance, mais bataille produit intense — sélectivité, la différenciation IA est la condition d'entrée. Plateformes médicalisées : le plus gros bassin de valeur, mais force requise élevée (régulation, capital, accès pharma) — sélectivité réservée aux acteurs capitalisés. Tracking calorique pur : attractivité déclinante (commoditisé par le photo-logging IA) — récolter ou se différencier, ne pas y entrer frontalement.",
+      "objective": "« Quels segments méritent l'investissement ? »"
     }
   ],
   "sources": [
@@ -380,7 +599,16 @@ const RUN_S2_DATA = {
       h3.appendChild(el("a", { href: "../../focus-skill-2/#" + f.doc_anchor }, f.name));
       if (f.status === "dégradé") h3.appendChild(el("span", { class: "badge" }, "lecture qualitative"));
       block.appendChild(h3);
+      if (f.objective) block.appendChild(el("p", { class: "fw-obj" }, f.objective));
       block.appendChild(el("p", null, f.analysis));
+      const tpl = document.querySelector('#viz-templates [data-viz="' + f.id + '"]');
+      if (tpl) {
+        const fig = el("figure", { class: "fw-fig" });
+        while (tpl.firstChild) fig.appendChild(tpl.firstChild);
+        const cap = tpl.getAttribute("data-caption");
+        if (cap) fig.appendChild(el("figcaption", { class: "fig-cap" }, cap));
+        block.appendChild(fig);
+      }
       list.appendChild(block);
     });
 
