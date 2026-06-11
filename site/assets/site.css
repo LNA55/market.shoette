@@ -107,8 +107,10 @@ h1 {
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--muted);
-  margin: 0 0 18px;
+  margin: 52px 0 18px;
 }
+.section-title:first-of-type { margin-top: 0; }
+.section-title .sk { color: var(--accent); }
 
 /* ---------- cartes (marchés et runs) ---------- */
 

@@ -8,13 +8,14 @@ Construction d'un agent de veille concurrentielle **réutilisable sur plusieurs 
 
 **Modèle mental validé** : l'« agent », c'est Claude Code en local qui orchestre les skills. Chaque exécution complète = un « run » daté qui produit des pages statiques autonomes (HTML + JS pour l'interactif), déployées sur OVH. **Le site est 100% statique — aucun code côté serveur.** Toute l'intelligence tourne en local.
 
-## Les 5 skills prévues
+## Les skills du pipeline (taxonomie actée le 2026-06-11)
 
-1. **Read the Market** — identifier les acteurs + lire le marché *(spécifiée ci-dessous)*
-2. **Canevas de données** — créer un canevas de données structurées sur ce marché
-3. **Mise à jour périodique** — compléter et mettre à jour ces données périodiquement
-4. **Positionnement** — analyser mon produit/offre et me positionner dans le marché
-5. **Recommandations** — produire une analyse et des recommandations stratégiques alignées sur mes objectifs
+1. **Skill 1 — Read the Market** — identifier les acteurs + lire le marché *(spécifiée ci-dessous, opérationnelle)*
+2. **Skill 2 — Present the Market** — *(à définir ensemble)*
+3. **Skill 3 — Position MY product in the Market** — *(à définir ensemble)*
+4. **Skill 4 — Strategy recommendation** — *(à définir ensemble)*
+
+> Cette taxonomie en 4 skills remplace le découpage initial en 5 (l'ancien « canevas de données » et la « mise à jour périodique » seront redistribués dans les Skills 2-4 lors de leur spécification). La page de chaque marché est sectionnée par skill, avec une zone balisée par skill (`RUNS-SKILL1` à `RUNS-SKILL4`).
 
 ## Stack technique
 
@@ -174,7 +175,7 @@ Write in the same language as the input.
 - [x] SKILL.md de la Skill 1 écrit — `.claude/skills/read-the-market/` (2026-06-11)
 - [x] Moteur du graphique 2b construit : `site/assets/positioning-chart-v1.{js,css}` + démo locale `dev/demo-2b.html` (2026-06-11) — **en attente de validation d'Elena sur la démo**
 - [x] Run de test exécuté et déployé (2026-06-11, go d'Elena) : **applications mobiles d'assistance à la perte de poids** — https://market.shoette.com/apps-perte-de-poids/1_2026-06-11/ — en attente des retours d'Elena pour ajuster le skill
-- [ ] Définir les Skills 2 à 5
+- [ ] Définir ensemble les Skills 2 (Present the Market), 3 (Position MY product) et 4 (Strategy recommendation) — y compris le schéma d'URL de leurs runs
 
 # Questions ouvertes
 

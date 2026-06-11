@@ -1,0 +1,16 @@
+# market.shoette.com — règles de cache
+# Les pages HTML et les data.json évoluent (nouveaux runs, mises à jour Skill 3) :
+# toujours revalider auprès du serveur.
+<IfModule mod_headers.c>
+  <FilesMatch "\.(html|json)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+  # Assets versionnés : un changement = un nouveau nom de fichier, donc cache long.
+  <FilesMatch "positioning-chart-v[0-9]+\.(js|css)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  # Charte des pages parent : cache court (évolue avec le site).
+  <FilesMatch "^site\.css$">
+    Header set Cache-Control "public, max-age=3600"
+  </FilesMatch>
+</IfModule>

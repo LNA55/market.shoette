@@ -40,10 +40,21 @@ Réécrire **uniquement** entre les balises. Tout le reste de ces pages appartie
 <!-- MARKETS:END -->
 ```
 
-**Page marché — `site/[slug]/index.html`** (runs du plus récent au plus ancien ; sous-titre fixe) :
+**Page marché — `site/[slug]/index.html`** : la page est sectionnée **par skill** (décision Elena, 2026-06-11). Quatre sections, chacune avec sa propre zone balisée — chaque skill n'écrit QUE dans la sienne :
+
+| Section | Zone | Géré par |
+|---|---|---|
+| Skill 1 — Read the Market | `RUNS-SKILL1:START` / `END` | Skill 1 (cette skill) |
+| Skill 2 — Present the Market | `RUNS-SKILL2:START` / `END` | Skill 2 (à définir) |
+| Skill 3 — Position MY product in the Market | `RUNS-SKILL3:START` / `END` | Skill 3 (à définir) |
+| Skill 4 — Strategy recommendation | `RUNS-SKILL4:START` / `END` | Skill 4 (à définir) |
+
+Zone d'une skill sans run : `<p class="empty">Pas encore de run — skill en cours de définition.</p>`
+
+Zone Skill 1 (runs du plus récent au plus ancien ; sous-titre fixe) :
 
 ```html
-<!-- RUNS:START — zone gérée par l'agent, ne pas éditer à la main -->
+<!-- RUNS-SKILL1:START — zone gérée par l'agent, ne pas éditer à la main -->
 <ul class="cards">
   <li><a class="card" href="[N]_[date-iso]/">
     <span class="run-num">Run [N]</span>
@@ -54,7 +65,7 @@ Réécrire **uniquement** entre les balises. Tout le reste de ces pages appartie
     <span class="card-arrow">→</span>
   </a></li>
 </ul>
-<!-- RUNS:END -->
+<!-- RUNS-SKILL1:END -->
 ```
 
 ## Template de page marché (à créer au premier run d'un marché)
@@ -87,11 +98,29 @@ Réécrire **uniquement** entre les balises. Tout le reste de ces pages appartie
       <p class="lede">[Une ou deux phrases de présentation du marché — Elena peut les retoucher librement.]</p>
     </section>
 
-    <h2 class="section-title">Runs</h2>
+    <h2 class="section-title"><span class="sk">Skill 1</span> — Read the Market</h2>
 
-    <!-- RUNS:START — zone gérée par l'agent, ne pas éditer à la main -->
-    [liste des runs au format défini ci-dessus]
-    <!-- RUNS:END -->
+    <!-- RUNS-SKILL1:START — zone gérée par l'agent, ne pas éditer à la main -->
+    [liste des runs Skill 1 au format défini ci-dessus]
+    <!-- RUNS-SKILL1:END -->
+
+    <h2 class="section-title"><span class="sk">Skill 2</span> — Present the Market</h2>
+
+    <!-- RUNS-SKILL2:START — zone gérée par l'agent, ne pas éditer à la main -->
+    <p class="empty">Pas encore de run — skill en cours de définition.</p>
+    <!-- RUNS-SKILL2:END -->
+
+    <h2 class="section-title"><span class="sk">Skill 3</span> — Position MY product in the Market</h2>
+
+    <!-- RUNS-SKILL3:START — zone gérée par l'agent, ne pas éditer à la main -->
+    <p class="empty">Pas encore de run — skill en cours de définition.</p>
+    <!-- RUNS-SKILL3:END -->
+
+    <h2 class="section-title"><span class="sk">Skill 4</span> — Strategy recommendation</h2>
+
+    <!-- RUNS-SKILL4:START — zone gérée par l'agent, ne pas éditer à la main -->
+    <p class="empty">Pas encore de run — skill en cours de définition.</p>
+    <!-- RUNS-SKILL4:END -->
   </main>
 
   <footer class="sitefoot">

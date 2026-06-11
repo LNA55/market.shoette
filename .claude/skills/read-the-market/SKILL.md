@@ -62,7 +62,7 @@ The run data is both inlined in the page (`const RUN_DATA = {...}`) and written 
 
 Edit **only between the markers** — everything else on these pages belongs to Elena (exact formats and the market-index template: [references/site-contracts.md](references/site-contracts.md)):
 
-- `site/[slug]/index.html` — create from the template if this is the market's first run; rewrite the list inside `<!-- RUNS:START -->` / `<!-- RUNS:END -->` (all runs, newest first).
+- `site/[slug]/index.html` — create from the template if this is the market's first run; rewrite the list inside `<!-- RUNS-SKILL1:START -->` / `<!-- RUNS-SKILL1:END -->` (all Skill 1 runs, newest first). The page has one section per skill (1-4) — never touch the other skills' zones.
 - `site/index.html` — rewrite the list inside `<!-- MARKETS:START -->` / `<!-- MARKETS:END -->` (markets alphabetical, each with run count and last-run date).
 
 ## Step 6 — Deploy, verify, commit
