@@ -7,7 +7,7 @@
   1. Fil d'Ariane : ← page marché · Tous les marchés
   2. En-tête : « Present the Market — [label du marché] », Run S2-[N], date, **lien vers le run S1 source** (avec sa date) — et l'avertissement de fraîcheur si le run source a plus de 3 mois
   3. **Section 1 — Tableau des KPI business** (structure fixe V1, 6 rangées)
-  4. **Section 2 — Critères de sélection des frameworks** (texte court : quels faits du marché ont guidé les choix ; frameworks retenus uniquement)
+  4. **Section 2 — « Remarques sur le marché et choix de la méthodologie d'analyse adaptée »** : une ligne d'intro puis une liste structurée, un élément par remarque (fait du marché → choix méthodologique induit) ; frameworks retenus uniquement
   5. **Section 3 — Le marché sous l'angle de chaque framework** : un bloc par framework retenu, titre lié à sa fiche `/focus-skill-2/#[ancre]`, statut affiché si « dégradé en qualitatif »
   6. Sources (S1 source distinguée des compléments en ligne)
   7. Pied : généré par la Skill 2 + `<span data-role="last-updated">[date]</span>`
@@ -49,7 +49,10 @@
     },
     "geography": { "type": "mondial | régional | local", "detail": "précision (région, pays)" }
   },
-  "selection_criteria": "Texte court : les faits du marché qui ont guidé la sélection.",
+  "selection_criteria": {
+    "intro": "Ligne d'introduction de la section 2.",
+    "points": ["Une remarque par élément : fait du marché → choix méthodologique induit.", "..."]
+  },
   "frameworks": [
     {
       "id": "porter",

@@ -53,7 +53,7 @@ Three tiers: **activé** / **dégradé en qualitatif** (relevant but data too th
 
 **SWOT : hors périmètre par décision (2026-06-11)** — il exige un point de vue (« mon produit ») et appartient aux Skills 3/4. Ne jamais l'inclure ; pas besoin de justifier son absence.
 
-Then write the **criteria text** (short): which facts about *this* market drove the selection. **Per Elena's decision (2026-06-11): the report shows retained frameworks only** — do not list the rejected ones.
+Then write the report's section 2 — titled **« Remarques sur le marché et choix de la méthodologie d'analyse adaptée »** : a short intro line, then a **structured list, one line per remark** (never a dense paragraph) — each remark states a fact about *this* market and the methodological choice it drives (« fait → choix »). **Per Elena's decision (2026-06-11): the report shows retained frameworks only** — do not list the rejected ones.
 
 ## Step 4 — Framework analyses
 

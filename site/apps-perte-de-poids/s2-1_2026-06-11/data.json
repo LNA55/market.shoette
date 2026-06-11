@@ -1,8 +1,15 @@
 {
   "schema_version": 1,
   "skill": "present-the-market",
-  "market": { "slug": "apps-perte-de-poids", "label": "Applications mobiles d'assistance à la perte de poids", "language": "fr" },
-  "run": { "number": 1, "date": "2026-06-11" },
+  "market": {
+    "slug": "apps-perte-de-poids",
+    "label": "Applications mobiles d'assistance à la perte de poids",
+    "language": "fr"
+  },
+  "run": {
+    "number": 1,
+    "date": "2026-06-11"
+  },
   "source_run": {
     "skill": "read-the-market",
     "number": 2,
@@ -16,26 +23,61 @@
     "sub_sectors": [
       {
         "name": "Plateformes médicalisées (app + téléconsultation + GLP-1)",
-        "size": { "value": "~1,35", "unit": "Md$", "year": 2025, "estimated": true },
-        "share_pct": { "value": 61, "estimated": true }
+        "size": {
+          "value": "~1,35",
+          "unit": "Md$",
+          "year": 2025,
+          "estimated": true
+        },
+        "share_pct": {
+          "value": 61,
+          "estimated": true
+        }
       },
       {
         "name": "Tracking calorique et nutritionnel",
-        "size": { "value": "~0,45", "unit": "Md$", "year": 2025, "estimated": true },
-        "share_pct": { "value": 20, "estimated": true }
+        "size": {
+          "value": "~0,45",
+          "unit": "Md$",
+          "year": 2025,
+          "estimated": true
+        },
+        "share_pct": {
+          "value": 20,
+          "estimated": true
+        }
       },
       {
         "name": "Coaching comportemental & IA",
-        "size": { "value": "~0,21", "unit": "Md$", "year": 2025, "estimated": true },
-        "share_pct": { "value": 9, "estimated": true }
+        "size": {
+          "value": "~0,21",
+          "unit": "Md$",
+          "year": 2025,
+          "estimated": true
+        },
+        "share_pct": {
+          "value": 9,
+          "estimated": true
+        }
       },
       {
         "name": "Compagnons GLP-1 dédiés (suivi de traitement)",
-        "size": { "value": "~0,02", "unit": "Md$", "year": 2025, "estimated": true },
-        "share_pct": { "value": 1, "estimated": true }
+        "size": {
+          "value": "~0,02",
+          "unit": "Md$",
+          "year": 2025,
+          "estimated": true
+        },
+        "share_pct": {
+          "value": 1,
+          "estimated": true
+        }
       }
     ],
-    "rest_of_market_share_pct": { "value": 9, "estimated": true },
+    "rest_of_market_share_pct": {
+      "value": 9,
+      "estimated": true
+    },
     "sub_sector_method_note": "Ventilation estimée par l'agent à partir des revenus des acteurs du run S1 (aucune donnée analyste segmentaire publique fiable) — parts bouclées à 100 % avec la ligne « reste du marché » (longue traîne : Fastic, Foodvisor, FatSecret, MyNetDiary…).",
     "global_size": {
       "value": "~2,2",
@@ -47,16 +89,36 @@
     "dominant_incumbent": {
       "name": "WeightWatchers (WW International)",
       "founded": 1963,
-      "revenue": { "value": 748, "unit": "M$", "period_note": "moyenne FY2024 (786 M$) et FY2025 (710,6 M$) — chiffres officiels", "estimated": false },
+      "revenue": {
+        "value": 748,
+        "unit": "M$",
+        "period_note": "moyenne FY2024 (786 M$) et FY2025 (710,6 M$) — chiffres officiels",
+        "estimated": false
+      },
       "profit_status": "en perte",
-      "profit_figure": { "value": -62.1, "unit": "M$", "period_note": "perte nette FY2025 (période post-restructuration) ; FY2024 : −345,7 M$, incluant des dépréciations non-cash", "estimated": false }
+      "profit_figure": {
+        "value": -62.1,
+        "unit": "M$",
+        "period_note": "perte nette FY2025 (période post-restructuration) ; FY2024 : −345,7 M$, incluant des dépréciations non-cash",
+        "estimated": false
+      }
     },
     "geography": {
       "type": "mondial",
       "detail": "Dominante nord-américaine et européenne — acteurs globaux, dynamique GLP-1 tirée par les États-Unis ; leaders européens : Yazio (Allemagne), Lifesum (Suède), Simple (Londres) ; acteur médicalisé britannique notable hors données chiffrées : Second Nature (NHS)."
     }
   },
-  "selection_criteria": "Quatre caractéristiques de ce marché, établies par le run S1, ont guidé la sélection des frameworks. (1) C'est un marché B2C d'abonnement digital à chaîne de valeur courte : la lecture en filière cède la place aux unit economics — CAC/LTV et péage des stores. (2) Il subit un choc exogène majeur, les médicaments GLP-1, qui impose la grille PESTEL. (3) Son deal flow 2024-2026 est exceptionnellement dense — faillite du leader, deux rachats par MyFitnessPal, Series B de Simple, acquisition d'une pharmacie par Noom : la vue Vitalité s'impose. (4) Sa structure de pouvoir est singulière — stores en fournisseurs incontournables, pharma devenant fournisseur de la proposition de valeur elle-même : terrain idéal pour Porter. Les tailles de marché existent mais avec des périmètres analystes divergents : TAM/SAM/SOM est retenu avec prudence. Les données segmentaires et de perception étant minces, l'arbitrage GE/McKinsey et la carte perceptuelle sont traités en lecture qualitative.",
+  "selection_criteria": {
+    "intro": "Les remarques suivantes, établies par le run S1, ont guidé le choix de la méthodologie d'analyse :",
+    "points": [
+      "Marché B2C d'abonnement digital, à chaîne de valeur courte → la lecture en filière cède la place aux unit economics (CAC/LTV, péage des stores).",
+      "Choc exogène majeur en cours — les médicaments GLP-1 → la grille PESTEL s'impose.",
+      "Deal flow 2024-2026 exceptionnellement dense (faillite du leader, deux rachats par MyFitnessPal, Series B de Simple, acquisition d'une pharmacie par Noom) → la vue Vitalité s'impose.",
+      "Structure de pouvoir singulière — stores en fournisseurs incontournables, pharma devenant fournisseur de la proposition de valeur elle-même → terrain idéal pour Porter.",
+      "Des tailles de marché existent, mais avec des périmètres analystes divergents (1,2 à 5,8 Md$) → TAM/SAM/SOM retenu, avec prudence.",
+      "Données segmentaires et de perception minces → l'arbitrage GE/McKinsey et la carte perceptuelle sont traités en lecture qualitative."
+    ]
+  },
   "frameworks": [
     {
       "id": "tam-sam-som",
