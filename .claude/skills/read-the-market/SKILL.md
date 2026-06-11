@@ -5,15 +5,15 @@ description: Skill 1 of the competitive-intelligence pipeline. Runs a full marke
 
 # Read the Market — Skill 1
 
-One execution of this skill = **one run**: a dated, frozen report page + its `data.json`, published at `https://market.shoette.com/[slug]/[N]_[date]/`, plus updated parent pages.
+One execution of this skill = **one run**: a dated, frozen report page + its `data.json`, published at `https://market.shoette.com/[slug]/s1-[N]_[date]/`, plus updated parent pages. (URL scheme for all skills: `s[K]-[N]_[date]` — decided 2026-06-11.)
 
 Work from the MARKET project root (where `deploy.sh` lives). Remote scope: the `market/` directory only — never write anywhere else on the hosting.
 
 ## Step 0 — Resolve the run context
 
 1. **Market slug**: lowercase ASCII, no accents or spaces (e.g. `chaussure`, `sneakers-us`). If the market already exists under `site/`, reuse its slug.
-2. **Run number `N`**: list `site/[slug]/` — N = highest existing run number + 1 (first run: 1).
-3. **Date**: today, `YYYY-MM-DD` → output directory `site/[slug]/[N]_[date]/`.
+2. **Run number `N`**: list the `s1-*` directories in `site/[slug]/` — N = highest existing Skill 1 run number + 1 (first run: 1).
+3. **Date**: today, `YYYY-MM-DD` → output directory `site/[slug]/s1-[N]_[date]/`.
 4. **Language**: the input language. All user-facing output (report, charts, annexes) is written in it. Parent pages stay in French.
 5. **Pre-flight**: check that the chart engine exists (`site/assets/positioning-chart-v*.js`). If missing, stop and tell Elena it must be built first.
 
@@ -69,7 +69,7 @@ Edit **only between the markers** — everything else on these pages belongs to 
 
 1. `./deploy.sh --dry-run` — review the transfer list (only the expected files).
 2. `./deploy.sh`
-3. Verify: lftp listing of the new remote directory, then fetch `https://market.shoette.com/[slug]/[N]_[date]/` and confirm it serves.
+3. Verify: lftp listing of the new remote directory, then fetch `https://market.shoette.com/[slug]/s1-[N]_[date]/` and confirm it serves.
 4. `git add -A && git commit -m "Run [N] — [slug] ([date])"`.
 
 ## Rules

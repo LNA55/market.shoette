@@ -174,8 +174,8 @@ Write in the same language as the input.
 - [x] Sous-domaine `market.shoette.com` en ligne, sert le site (vérifié le 2026-06-11)
 - [x] SKILL.md de la Skill 1 écrit — `.claude/skills/read-the-market/` (2026-06-11)
 - [x] Moteur du graphique 2b construit : `site/assets/positioning-chart-v1.{js,css}` + démo locale `dev/demo-2b.html` (2026-06-11) — **en attente de validation d'Elena sur la démo**
-- [x] Run de test exécuté et déployé (2026-06-11, go d'Elena) : **applications mobiles d'assistance à la perte de poids** — https://market.shoette.com/apps-perte-de-poids/1_2026-06-11/ — en attente des retours d'Elena pour ajuster le skill
-- [ ] Définir ensemble les Skills 2 (Present the Market), 3 (Position MY product) et 4 (Strategy recommendation) — y compris le schéma d'URL de leurs runs
+- [x] Run de test exécuté et déployé (2026-06-11, go d'Elena) : **applications mobiles d'assistance à la perte de poids** — https://market.shoette.com/apps-perte-de-poids/s1-1_2026-06-11/ — en attente des retours d'Elena pour ajuster le skill
+- [ ] Définir ensemble les Skills 2 (Present the Market — V1 en cours de spécification), 3 (Position MY product) et 4 (Strategy recommendation)
 
 # Questions ouvertes
 
@@ -192,4 +192,5 @@ Write in the same language as the input.
 - **2026-06-11 — Pages parent : édition par zone balisée.** L'agent réécrit uniquement la liste des runs entre `<!-- RUNS:START -->` et `<!-- RUNS:END -->` ; le reste de la page appartient à Elena (modifiable à la main, jamais écrasé).
 - **2026-06-11 — Répartition des modèles actée** : sous-agents de recherche sur Sonnet ; orchestration, consolidation, rédaction et stratégie sur le meilleur modèle disponible dans la session. Le moteur 2b n'est jamais reconstruit pendant un run — ses évolutions se font en sessions dédiées avec le meilleur modèle disponible.
 - **2026-06-11 — Tableau de données ajouté au contrat du rapport** : sous le graphique 2b, tous les acteurs × toutes les dimensions, généré depuis RUN_DATA (source unique).
+- **2026-06-11 — Schéma d'URL des runs par skill : `[marché]/s[K]-[N]_[date]/`** (ex. `s1-1_2026-06-11`, `s2-1_…`). Les runs Skill 1 existants ont été renommés `s1-*` ; redirections 301 en place pour les anciennes URLs.
 - **2026-06-11 — Skill 2 (cadrage) : le SWOT est exclu de l'analyse produite par la Skill 2.** Il exige un point de vue défini (« mon produit ») et appartient aux Skills 3/4. Il reste documenté sur la page focus-skill-2, qui rassemble tous les frameworks. Principe en discussion pour la Skill 2 : sélection des frameworks par règles (activé / dégradé en qualitatif / écarté avec justification), nourries par l'intention du run + le data.json de la Skill 1 + la disponibilité des données.

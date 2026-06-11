@@ -14,7 +14,7 @@ site/
 │   └── positioning-chart-v1.css
 └── [slug]/
     ├── index.html                   page marché — sections par skill (zones RUNS-SKILL1..4)
-    └── [N]_[date]/
+    └── s1-[N]_[date]/               un run de la Skill 1 (schéma commun : s[K]-[N]_[date] — s2-, s3-, s4- pour les autres skills)
         ├── index.html               le rapport du run (figé)
         └── data.json                canevas de données du run
 ```
@@ -59,7 +59,7 @@ Zone Skill 1 — **runs du plus ancien au plus récent : Run 1 en premier, les s
 ```html
 <!-- RUNS-SKILL1:START — zone gérée par l'agent, ne pas éditer à la main -->
 <ul class="cards">
-  <li><a class="card" href="[N]_[date-iso]/">
+  <li><a class="card" href="s1-[N]_[date-iso]/">
     <span class="run-num">Run [N]</span>
     <span class="card-body">
       <span class="card-title">[date longue]</span>
