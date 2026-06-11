@@ -193,29 +193,39 @@
       <p class="fw-q">« Où se capture la marge dans la filière ? »</p>
       <div class="fw-body">
         <div class="fw-text">
-          <p>Décomposer la filière en maillons — conception, production, distribution, vente, service — et mesurer la marge captée à chaque étape. Le constat est souvent contre-intuitif : le maillon le plus visible n'est pas forcément celui qui gagne de l'argent.</p>
-          <p>La vue « par maillon » (marges brutes, EBITDA des leaders) se complète d'une vue unitaire côté client : le <b>CAC</b> (ce que coûte l'acquisition d'un client) face à la <b>LTV</b> (ce qu'il rapporte sur sa durée de vie). Un ratio LTV/CAC supérieur à 3 est le seuil de bonne santé communément admis.</p>
+          <p>Le modèle canonique de Porter représente l'entreprise comme un enchaînement de <b>cinq activités principales</b> — logistique interne, production, logistique externe, marketing &amp; vente, services — porté par <b>quatre fonctions de soutien</b> qui traversent toute la chaîne : infrastructure de l'entreprise, gestion des ressources humaines, développement technologique, approvisionnements. La <b>marge</b> est ce qui reste quand la valeur créée excède le coût de l'ensemble de ces activités.</p>
+          <p>Appliquée à un marché entier, la même logique se lit par maillon de filière (production, distribution, retail…) : où la marge se capture-t-elle ? Le constat est souvent contre-intuitif — le maillon le plus visible n'est pas forcément celui qui gagne de l'argent. La vue se complète côté client : le <b>CAC</b> (ce que coûte l'acquisition d'un client) face à la <b>LTV</b> (ce qu'il rapporte sur sa durée de vie), avec un ratio LTV/CAC supérieur à 3 comme seuil de bonne santé.</p>
         </div>
         <figure class="fw-viz">
-          <svg viewBox="0 0 320 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Chaîne de valeur : maillons successifs et marge captée par maillon">
-            <polygon points="8,12 54,12 66,32 54,52 8,52 20,32" fill="#ececfb" stroke="#c9c9f4"/>
-            <text x="36" y="36" text-anchor="middle" font-size="8.5" font-weight="600" fill="#1b1f3b">Conception</text>
-            <polygon points="68,12 114,12 126,32 114,52 68,52 80,32" fill="#ececfb" stroke="#c9c9f4"/>
-            <text x="96" y="36" text-anchor="middle" font-size="8.5" font-weight="600" fill="#1b1f3b">Production</text>
-            <polygon points="128,12 174,12 186,32 174,52 128,52 140,32" fill="#ececfb" stroke="#c9c9f4"/>
-            <text x="156" y="36" text-anchor="middle" font-size="8.5" font-weight="600" fill="#1b1f3b">Distribution</text>
-            <polygon points="188,12 234,12 246,32 234,52 188,52 200,32" fill="#ececfb" stroke="#c9c9f4"/>
-            <text x="216" y="36" text-anchor="middle" font-size="8.5" font-weight="600" fill="#1b1f3b">Vente</text>
-            <polygon points="248,12 294,12 306,32 294,52 248,52 260,32" fill="#3b3bd8"/>
-            <text x="278" y="36" text-anchor="middle" font-size="8.5" font-weight="700" fill="#ffffff">Marge</text>
-            <line x1="8" y1="102" x2="246" y2="102" stroke="#ece7de" stroke-width="1.5"/>
-            <rect x="28" y="90" width="16" height="12" fill="#3b3bd8" opacity="0.55"/>
-            <rect x="88" y="82" width="16" height="20" fill="#3b3bd8" opacity="0.55"/>
-            <rect x="148" y="93" width="16" height="9" fill="#3b3bd8" opacity="0.55"/>
-            <rect x="208" y="76" width="16" height="26" fill="#3b3bd8" opacity="0.55"/>
-            <text x="8" y="120" font-size="9" fill="#6e7191">marge captée par maillon (illustratif)</text>
+          <svg viewBox="0 0 320 196" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Chaîne de valeur de Porter : quatre fonctions de soutien au-dessus de cinq activités principales, la marge à la pointe de la flèche">
+            <text x="8" y="12" font-size="8" fill="#6e7191" font-style="italic">Activités de soutien</text>
+            <polygon points="8,18 250,18 265.5,37 8,37" fill="#ececfb" stroke="#ffffff" stroke-width="1.5"/>
+            <text x="14" y="30.5" font-size="8" font-weight="600" fill="#1b1f3b">Infrastructure de l'entreprise</text>
+            <polygon points="8,37 265.5,37 281,56 8,56" fill="#ececfb" stroke="#ffffff" stroke-width="1.5"/>
+            <text x="14" y="49.5" font-size="8" font-weight="600" fill="#1b1f3b">Gestion des ressources humaines</text>
+            <polygon points="8,56 281,56 296.5,75 8,75" fill="#ececfb" stroke="#ffffff" stroke-width="1.5"/>
+            <text x="14" y="68.5" font-size="8" font-weight="600" fill="#1b1f3b">Développement technologique</text>
+            <polygon points="8,75 296.5,75 312,94 8,94" fill="#ececfb" stroke="#ffffff" stroke-width="1.5"/>
+            <text x="14" y="87.5" font-size="8" font-weight="600" fill="#1b1f3b">Approvisionnements</text>
+            <polygon points="8,94 46,94 54,132 46,170 8,170 16,132" fill="#c9c9f4" stroke="#ffffff" stroke-width="1.5"/>
+            <text x="33" y="128" text-anchor="middle" font-size="8" font-weight="600" fill="#1b1f3b">Logistique</text>
+            <text x="33" y="139" text-anchor="middle" font-size="8" font-weight="600" fill="#1b1f3b">interne</text>
+            <polygon points="54,94 92,94 100,132 92,170 54,170 62,132" fill="#c9c9f4" stroke="#ffffff" stroke-width="1.5"/>
+            <text x="79" y="134" text-anchor="middle" font-size="8" font-weight="600" fill="#1b1f3b">Production</text>
+            <polygon points="100,94 138,94 146,132 138,170 100,170 108,132" fill="#c9c9f4" stroke="#ffffff" stroke-width="1.5"/>
+            <text x="125" y="128" text-anchor="middle" font-size="8" font-weight="600" fill="#1b1f3b">Logistique</text>
+            <text x="125" y="139" text-anchor="middle" font-size="8" font-weight="600" fill="#1b1f3b">externe</text>
+            <polygon points="146,94 184,94 192,132 184,170 146,170 154,132" fill="#c9c9f4" stroke="#ffffff" stroke-width="1.5"/>
+            <text x="171" y="128" text-anchor="middle" font-size="8" font-weight="600" fill="#1b1f3b">Marketing</text>
+            <text x="171" y="139" text-anchor="middle" font-size="8" font-weight="600" fill="#1b1f3b">&amp; vente</text>
+            <polygon points="192,94 230,94 238,132 230,170 192,170 200,132" fill="#c9c9f4" stroke="#ffffff" stroke-width="1.5"/>
+            <text x="217" y="134" text-anchor="middle" font-size="8" font-weight="600" fill="#1b1f3b">Services</text>
+            <polygon points="238,94 312,94 250,170 238,170 246,132" fill="#3b3bd8"/>
+            <text x="268" y="116" text-anchor="middle" font-size="9.5" font-weight="700" fill="#ffffff">Marge</text>
+            <polygon points="8,18 250,18 312,94 250,170 8,170" fill="none" stroke="#c9c9f4"/>
+            <text x="8" y="186" font-size="8" fill="#6e7191" font-style="italic">Activités principales</text>
           </svg>
-          <figcaption class="fw-cap">La marge ne se répartit pas également le long de la filière</figcaption>
+          <figcaption class="fw-cap">Cinq activités principales, quatre fonctions de soutien, la marge à la pointe</figcaption>
         </figure>
       </div>
       <a class="fw-back" href="#analyse-strategique">↑ Retour au tableau</a>
