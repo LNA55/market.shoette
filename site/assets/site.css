@@ -35,7 +35,9 @@ body {
 
 ::selection { background: var(--accent-soft); color: var(--accent-ink); }
 
-.shell { max-width: 880px; margin: 0 auto; padding: 40px 24px 80px; }
+/* Largeur fluide : marges latérales = la moitié de celles d'un conteneur fixe de 880px,
+   à toute largeur d'écran — aucun saut de breakpoint (validé Elena, 2026-06-11). */
+.shell { max-width: calc(50vw + 440px); margin: 0 auto; padding: 40px 24px 80px; }
 
 /* ---------- barre haute ---------- */
 
@@ -255,11 +257,11 @@ a.fw:hover { background: #dcdcf8; transform: translateY(-1px); }
   background: var(--card);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  padding: 22px 26px;
-  margin-bottom: 14px;
+  padding: 24px 28px;
+  margin-bottom: 36px;
   scroll-margin-top: 24px;
 }
-.fw-card h3 { margin: 0 0 3px; font-size: 17.5px; letter-spacing: -0.01em; }
+.fw-card h3 { margin: 0 0 4px; font-size: 21px; letter-spacing: -0.015em; }
 .fw-origin { color: var(--muted); font-size: 12.5px; margin: 0 0 10px; }
 .fw-q { font-style: italic; color: var(--accent-ink); font-size: 14px; margin: 0 0 10px; }
 .fw-card p { font-size: 14.5px; margin: 8px 0; line-height: 1.65; }
@@ -276,7 +278,7 @@ a.fw:hover { background: #dcdcf8; transform: translateY(-1px); }
 /* visuel de framework (schéma SVG à droite du texte) */
 .fw-body { display: flex; gap: 26px; align-items: center; }
 .fw-text { flex: 1; min-width: 0; }
-.fw-viz { flex: none; width: 290px; margin: 0; }
+.fw-viz { flex: none; width: 232px; margin: 0; }
 .fw-viz svg { display: block; width: 100%; height: auto; }
 .fw-cap { font-size: 11.5px; color: var(--muted); text-align: center; margin-top: 6px; }
 @media (max-width: 720px) {
