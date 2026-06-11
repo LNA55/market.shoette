@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DÉMO — moteur du graphique 2b (données fictives)</title>
+  <link rel="stylesheet" href="../site/assets/positioning-chart-v1.css">
+  <style>
+    body { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; margin: 24px auto; max-width: 1180px; padding: 0 16px; color: #1e293b; }
+    .demo-banner { background: #fef3c7; border: 1px solid #fcd34d; border-radius: 8px; padding: 10px 14px; font-size: 14px; margin-bottom: 18px; }
+    h1 { font-size: 22px; }
+  </style>
+</head>
+<body>
+  <h1>Moteur du graphique 2b — page de démo</h1>
+  <div class="demo-banner">⚠️ <strong>Données 100 % fictives</strong> — marché et acteurs inventés pour tester le moteur. Cette page vit dans <code>dev/</code> et n'est jamais déployée.</div>
+
+  <div id="positioning-chart"></div>
+
+  <script>
+    const RUN_DATA = {
+      schema_version: 1,
+      market: {
+        slug: "demo-fitness",
+        label: "Marché fictif des applications de fitness",
+        input: "démo du moteur 2b",
+        language: "fr",
+        geo_scope: "France (fictif)",
+        assumptions: ["Toutes les données de cette page sont inventées."]
+      },
+      run: { number: 0, date: "2026-06-11" },
+      reading: {
+        maturity_summary: "Marché fictif en consolidation rapide (démo).",
+        reference_period: { choice: "1y", options: ["6m", "1y", "3y"], rationale: "Démo." },
+        dimensions: [
+          { id: "modele_economique", label: "Modèle économique", rank: 1, type: "ordinal",
+            scale: { values: ["gratuit", "freemium", "abonnement", "premium"] },
+            description: "Comment l'app monétise." },
+          { id: "prix_mensuel", label: "Prix mensuel (€)", rank: 2, type: "numeric", unit: "€",
+            scale: { min: 0, max: 30 }, description: "Prix de l'offre payante de référence." },
+          { id: "personnalisation_ia", label: "Personnalisation IA", rank: 3, type: "numeric",
+            scale: { min: 0, max: 10 }, description: "Degré de personnalisation algorithmique." },
+          { id: "largeur_fonctionnelle", label: "Largeur fonctionnelle", rank: 4, type: "ordinal",
+            scale: { values: ["mono-fonction", "spécialiste", "plateforme"] },
+            description: "Étendue de la couverture fonctionnelle." },
+          { id: "ancrage_medical", label: "Ancrage médical", rank: 5, type: "numeric",
+            scale: { min: 0, max: 10 }, description: "Caution scientifique et médicale." }
+        ],
+        default_channels: {
+          y: "market_share",
+          x_color: "prix_mensuel",
+          size: "personnalisation_ia",
+          opacity: "largeur_fonctionnelle",
+          border: "ancrage_medical"
+        },
+        default_config_rationale: "Démo : part de marché en Y, prix en X+couleur, IA en taille, largeur en opacité, ancrage médical en bordure.",
+        export_note: "Lecture (démo) : plus un marqueur est haut, plus la part de marché est grande ; plus il est à droite et foncé, plus l'app est chère ; plus il est gros, plus la personnalisation IA est poussée. Première observation fictive : le segment premium à fort ancrage médical concentre la croissance."
+      },
+      players: [
+        { id: "fitloop", name: "Fitloop",
+          market_share_pct: { value: 26, estimated: true },
+          growth_pct: { value: 12, estimated: true },
+          dimensions: {
+            modele_economique: { value: "freemium", estimated: false },
+            prix_mensuel: { value: 12, estimated: false },
+            personnalisation_ia: { value: 7, estimated: true },
+            largeur_fonctionnelle: { value: "plateforme", estimated: false },
+            ancrage_medical: { value: 4, estimated: true }
+          },
+          card: { summary: "Leader fictif, plateforme généraliste freemium.",
+                  facts: ["20 M d'utilisateurs (fictif)", "Lancé en 2019 (fictif)"], source_ids: [1] } },
+        { id: "nutrizen", name: "NutriZen",
+          market_share_pct: { value: 18, estimated: false },
+          growth_pct: { value: 26, estimated: true },
+          dimensions: {
+            modele_economique: { value: "abonnement", estimated: false },
+            prix_mensuel: { value: 19, estimated: false },
+            personnalisation_ia: { value: 9, estimated: true },
+            largeur_fonctionnelle: { value: "spécialiste", estimated: false },
+            ancrage_medical: { value: 8, estimated: false }
+          },
+          card: { summary: "Challenger fictif à forte caution médicale.",
+                  facts: ["Croissance la plus rapide du panel (fictif)"], source_ids: [1, 2] } },
+        { id: "trackora", name: "Trackora",
+          market_share_pct: { value: 14, estimated: true },
+          growth_pct: { value: -4, estimated: true },
+          dimensions: {
+            modele_economique: { value: "freemium", estimated: false },
+            prix_mensuel: { value: 8, estimated: true },
+            personnalisation_ia: { value: 3, estimated: true },
+            largeur_fonctionnelle: { value: "spécialiste", estimated: false },
+            ancrage_medical: { value: 2, estimated: true }
+          },
+          card: { summary: "Acteur historique fictif en déclin lent.", facts: [], source_ids: [2] } },
+        { id: "kalo", name: "Kalo",
+          market_share_pct: { value: 11, estimated: false },
+          growth_pct: { value: 8, estimated: false },
+          dimensions: {
+            modele_economique: { value: "premium", estimated: false },
+            prix_mensuel: { value: 29, estimated: false },
+            personnalisation_ia: { value: 8, estimated: false },
+            largeur_fonctionnelle: { value: "plateforme", estimated: true },
+            ancrage_medical: { value: 9, estimated: false }
+          },
+          card: { summary: "Premium médicalisé fictif.", facts: ["Partenariats cliniques (fictif)"], source_ids: [1] } },
+        { id: "movedaily", name: "MoveDaily",
+          market_share_pct: { value: 9, estimated: true },
+          growth_pct: { value: 15, estimated: true },
+          dimensions: {
+            modele_economique: { value: "gratuit", estimated: false },
+            prix_mensuel: { value: 0, estimated: false },
+            personnalisation_ia: { value: 5, estimated: true },
+            largeur_fonctionnelle: { value: "mono-fonction", estimated: false },
+            ancrage_medical: { value: 1, estimated: true }
+          },
+          card: { summary: "App gratuite financée par la publicité (fictif).", facts: [], source_ids: [2] } },
+        { id: "slimcoach", name: "SlimCoach",
+          market_share_pct: { value: 7, estimated: true },
+          growth_pct: { value: 31, estimated: true },
+          dimensions: {
+            modele_economique: { value: "abonnement", estimated: false },
+            prix_mensuel: { value: 24, estimated: true },
+            personnalisation_ia: { value: 10, estimated: true },
+            largeur_fonctionnelle: { value: "spécialiste", estimated: false },
+            ancrage_medical: { value: 6, estimated: true }
+          },
+          card: { summary: "Coaching IA pur, croissance rapide (fictif).", facts: [], source_ids: [1] } },
+        { id: "pesoapp", name: "PesoApp",
+          market_share_pct: { value: 5, estimated: true },
+          growth_pct: { value: 2, estimated: true },
+          dimensions: {
+            modele_economique: { value: "freemium", estimated: true },
+            prix_mensuel: { value: 6, estimated: true },
+            largeur_fonctionnelle: { value: "mono-fonction", estimated: true }
+          },
+          card: { summary: "Petit acteur fictif — données partielles (teste les valeurs manquantes).", facts: [], source_ids: [] } },
+        { id: "fitminimal", name: "FitMinimal",
+          growth_pct: { value: 18, estimated: true },
+          dimensions: {
+            modele_economique: { value: "premium", estimated: true },
+            prix_mensuel: { value: 27, estimated: true },
+            personnalisation_ia: { value: 6, estimated: true }
+          },
+          card: { summary: "Part de marché inconnue — teste la bande « Y inconnu ».", facts: [], source_ids: [] } }
+      ],
+      players_without_data: [
+        { name: "GlowFit", why_significant: "Très visible sur les réseaux (fictif).",
+          what_was_searched: "Part de marché, prix — rien de quantitatif trouvé (fictif).", source_ids: [] }
+      ],
+      sources: [
+        { id: 1, title: "Rapport fictif du marché du fitness 2026", publisher: "Institut Démo", url: "https://example.com/rapport", accessed: "2026-06-11" },
+        { id: 2, title: "Article de presse fictif", publisher: "Démo Presse", url: "https://example.com/article", accessed: "2026-06-11" }
+      ],
+      lexicon: [
+        { term: "Freemium", fr: "Modèle gratuit avec options payantes.", en: "Free tier with paid upgrades." }
+      ],
+      last_updated: "2026-06-11"
+    };
+  </script>
+  <script src="../site/assets/positioning-chart-v1.js"></script>
+  <script>
+    PositioningChart.mount(document.getElementById("positioning-chart"), RUN_DATA, { lang: RUN_DATA.market.language });
+  </script>
+</body>
+</html>

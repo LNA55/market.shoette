@@ -1,0 +1,161 @@
+/* PositioningChart v1 — styles du moteur 2b (panneau, calques, tooltip, fiche acteur)
+   Le SVG du graphique est stylé par attributs (autonomie de l'export) — pas ici. */
+
+.pc-root {
+  position: relative;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: #1e293b;
+}
+
+/* ---------- panneau de contrôle ---------- */
+
+.pc-panel {
+  display: grid;
+  grid-template-columns: 1.2fr 1.4fr 1fr;
+  gap: 12px;
+  padding: 12px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+@media (max-width: 860px) { .pc-panel { grid-template-columns: 1fr; } }
+
+.pc-section-title {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #475569;
+  margin-bottom: 8px;
+}
+
+.pc-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 4px 0;
+  font-size: 13px;
+}
+
+.pc-chlabel { width: 140px; flex: none; color: #475569; }
+.pc-chsel { flex: 1; min-width: 0; font-size: 13px; padding: 3px 4px; border: 1px solid #cbd5e1; border-radius: 6px; background: #fff; }
+
+.pc-btn {
+  font-size: 12.5px;
+  padding: 5px 10px;
+  margin-top: 6px;
+  border: 1px solid #cbd5e1;
+  border-radius: 7px;
+  background: #fff;
+  cursor: pointer;
+  color: #1e293b;
+}
+.pc-btn:hover { background: #eef2f7; }
+
+.pc-hint { font-size: 11px; color: #94a3b8; margin-top: 6px; }
+.pc-axhint { text-transform: none; font-weight: 400; letter-spacing: 0; }
+.pc-lockedhint { color: #b45309; }
+
+.pc-adddim { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; align-items: center; }
+.pc-adddim input[type="text"] { flex: 1; min-width: 120px; font-size: 12.5px; padding: 4px 6px; border: 1px solid #cbd5e1; border-radius: 6px; }
+.pc-adddim input[type="number"] { width: 56px; font-size: 12.5px; padding: 4px; border: 1px solid #cbd5e1; border-radius: 6px; }
+.pc-adddim select { font-size: 12.5px; padding: 4px; border: 1px solid #cbd5e1; border-radius: 6px; background: #fff; }
+.pc-adddim .pc-btn { margin-top: 0; }
+
+/* ---------- calques ---------- */
+
+.pc-layer {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 7px;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 13px;
+}
+.pc-layer:hover { background: #eef2f7; }
+.pc-layer.pc-active { background: #e0e9ff; border-color: #b7c8f7; }
+.pc-layer.pc-dropover { outline: 2px dashed #64748b; outline-offset: -2px; }
+
+.pc-drag { cursor: grab; color: #94a3b8; font-size: 13px; }
+.pc-swatch { width: 11px; height: 11px; border-radius: 3px; flex: none; }
+.pc-icon {
+  border: none; background: none; cursor: pointer;
+  font-size: 13px; padding: 1px 3px; line-height: 1;
+}
+.pc-icon:hover { transform: scale(1.15); }
+.pc-layername { flex: 1; min-width: 60px; font-size: 13px; border: 1px solid transparent; border-radius: 5px; padding: 2px 4px; background: transparent; }
+.pc-layername:hover, .pc-layername:focus { border-color: #cbd5e1; background: #fff; }
+.pc-layername-fixed { flex: 1; font-size: 12.5px; color: #334155; font-style: italic; }
+.pc-layeropacity { width: 64px; flex: none; }
+
+/* ---------- zone graphique ---------- */
+
+.pc-stage { display: flex; gap: 10px; align-items: stretch; }
+.pc-svgwrap {
+  flex: 1;
+  min-width: 0;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background: #fff;
+  overflow: hidden;
+}
+.pc-svg { display: block; width: 100%; height: auto; }
+
+/* ---------- fiche acteur ---------- */
+
+.pc-side {
+  width: 290px;
+  flex: none;
+  position: relative;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background: #fff;
+  padding: 14px;
+  font-size: 13px;
+  overflow-y: auto;
+  max-height: 600px;
+}
+.pc-side h3 { margin: 0 26px 6px 0; font-size: 16px; }
+.pc-side h4 { margin: 12px 0 4px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: #475569; }
+.pc-side p { margin: 4px 0; color: #334155; }
+.pc-side ul { margin: 4px 0; padding-left: 18px; }
+.pc-side-close { position: absolute; top: 8px; right: 8px; color: #64748b; }
+.pc-side-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+.pc-side-table td { padding: 4px 6px; border-top: 1px solid #f1f5f9; vertical-align: top; }
+.pc-side-table td:first-child { color: #64748b; width: 55%; }
+.pc-side-note { font-size: 11px; color: #94a3b8; font-weight: 400; }
+.pc-side-sources li { margin-bottom: 3px; }
+.pc-side a { color: #2563eb; }
+
+/* ---------- pied & tooltip ---------- */
+
+.pc-foot {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #94a3b8;
+  margin-top: 6px;
+  padding: 0 4px;
+}
+
+.pc-tooltip {
+  position: absolute;
+  z-index: 50;
+  pointer-events: none;
+  background: #0f172a;
+  color: #f1f5f9;
+  border-radius: 8px;
+  padding: 8px 11px;
+  font-size: 12px;
+  max-width: 260px;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.25);
+}
+.pc-tooltip strong { font-size: 13px; }
+.pc-tt-layer { color: #94a3b8; font-size: 11px; }
+.pc-tt-row { display: flex; justify-content: space-between; gap: 14px; margin-top: 3px; }
+.pc-tt-row span { color: #cbd5e1; }
+
+.pc-exportrow { margin-top: 8px; }

@@ -54,7 +54,8 @@ Tous les champs en texte libre sont rédigés dans la langue du run. Toute valeu
       "opacity": "id_dimension_rang4",
       "border": "id_dimension_rang5"
     },
-    "default_config_rationale": "Paragraphe : pourquoi ce classement des dimensions, et comment lire la configuration par défaut."
+    "default_config_rationale": "Paragraphe : pourquoi ce classement des dimensions, et comment lire la configuration par défaut.",
+    "export_note": "Texte intégré aux exports PNG/SVG du graphique 2b : clé de lecture + une première observation du marché. 2 à 4 phrases."
   },
   "players": [
     {
@@ -109,5 +110,6 @@ Tous les champs en texte libre sont rédigés dans la langue du run. Toute valeu
 - **`players[].dimensions`** : une dimension peut manquer pour un acteur (valeur introuvable) — l'omettre et, si utile, l'expliquer en `note` ailleurs. Le moteur du graphique gère l'absence (canal neutre pour ce marqueur).
 - **`players[].card`** : alimente la fiche détaillée ouverte au clic sur un marqueur (panneau latéral droit).
 - **`source_ids`** : références vers `sources[].id` — la traçabilité passe par là (les données brutes ne sont pas conservées).
+- **`reading.export_note`** : repris tel quel par le moteur 2b dans le bloc d'annotations des exports PNG/SVG (avec la légende des canaux, les calques actifs et la date). À générer à chaque run.
 - **`last_updated`** : seul champ qu'une Skill 3 réécrit dans un run publié.
 - **Stabilité des `id`** (acteurs et dimensions) : slugs ASCII stables d'un run à l'autre — la Skill 3 s'en sert pour apparier les données entre runs.

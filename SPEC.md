@@ -171,7 +171,7 @@ Write in the same language as the input.
 - [x] Accès distant opérationnel : lftp/FTP via `~/.netrc`, répertoire `market/` créé et vérifié vide (2026-06-11)
 - [x] Sous-domaine `market.shoette.com` en ligne, sert le site (vérifié le 2026-06-11)
 - [x] SKILL.md de la Skill 1 écrit — `.claude/skills/read-the-market/` (2026-06-11)
-- [ ] Construire le moteur du graphique 2b : `site/assets/positioning-chart-v1.{js,css}` (dernier prérequis avant un run)
+- [x] Moteur du graphique 2b construit : `site/assets/positioning-chart-v1.{js,css}` + démo locale `dev/demo-2b.html` (2026-06-11) — **en attente de validation d'Elena sur la démo**
 - [ ] Run de test — marché décidé le 2026-06-11 : **applications mobiles d'assistance à la perte de poids** (pas la chaussure). Ne pas lancer sans le go explicite d'Elena. Ajustements du skill à la suite.
 - [ ] Définir les Skills 2 à 5
 

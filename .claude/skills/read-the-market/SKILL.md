@@ -41,6 +41,7 @@ Schema and field-by-field notes: [references/data-schema.md](references/data-sch
 - the ranked `dimensions` drive the 2b default configuration (`default_channels`: Y starts on market share per spec; rank 2 → X+Color, rank 3 → size, rank 4 → opacity, rank 5 → border);
 - every quantitative value carries its `estimated` flag;
 - `players_without_data`, `sources` and `lexicon` are part of the file;
+- `reading.export_note` (reading key + one first market observation) is embedded by the chart engine in its PNG/SVG exports — write it at every run;
 - player and dimension `id`s are stable slugs — Skill 3 matches on them across runs.
 
 Write it to the run directory.
