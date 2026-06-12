@@ -215,7 +215,17 @@ h1 {
 
 /* ---------- navigation documentation (volontairement discrète — le cœur de la page, ce sont les marchés) ---------- */
 
-.docnav { margin-top: 76px; }
+.docnav {
+  margin-top: 150px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+/* quand la navigation doc est présente, le footer se rattache à elle (zone de pied unique) */
+main:has(.docnav) + .sitefoot {
+  margin-top: 22px;
+  padding-top: 0;
+  border-top: none;
+}
 .docnav-title {
   display: block;
   font-size: 11.5px;
