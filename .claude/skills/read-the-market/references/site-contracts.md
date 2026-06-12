@@ -52,6 +52,8 @@ Réécrire **uniquement** entre les balises. Tout le reste de ces pages appartie
 | Skill 3 — Position MY product in the Market | `RUNS-SKILL3:START` / `END` | Skill 3 (à définir) |
 | Skill 4 — Strategy recommendation | `RUNS-SKILL4:START` / `END` | Skill 4 (à définir) |
 
+**Affichage utilisateur : « Step N »** (décision Elena, 2026-06-12) — le nommage interne (skills, zones `RUNS-SKILLN`) ne change pas.
+
 Zone d'une skill sans run : `<p class="empty">Pas encore de run — skill en cours de définition.</p>`
 
 Zone Skill 1 — **runs du plus ancien au plus récent : Run 1 en premier, les suivants dessous** (préférence Elena, 2026-06-11 ; vaut pour les sections de toutes les skills). Sous-titre fixe :
@@ -102,25 +104,25 @@ Zone Skill 1 — **runs du plus ancien au plus récent : Run 1 en premier, les s
       <p class="lede">[Une ou deux phrases de présentation du marché — Elena peut les retoucher librement.]</p>
     </section>
 
-    <h2 class="section-title"><span class="sk">Skill 1</span> — Read the Market</h2>
+    <h2 class="section-title"><span class="sk">Step 1</span> — Read the Market</h2>
 
     <!-- RUNS-SKILL1:START — zone gérée par l'agent, ne pas éditer à la main -->
     [liste des runs Skill 1 au format défini ci-dessus]
     <!-- RUNS-SKILL1:END -->
 
-    <h2 class="section-title"><span class="sk">Skill 2</span> — Present the Market</h2>
+    <h2 class="section-title"><span class="sk">Step 2</span> — Present the Market</h2>
 
     <!-- RUNS-SKILL2:START — zone gérée par l'agent, ne pas éditer à la main -->
     <p class="empty">Pas encore de run — skill en cours de définition.</p>
     <!-- RUNS-SKILL2:END -->
 
-    <h2 class="section-title"><span class="sk">Skill 3</span> — Position MY product in the Market</h2>
+    <h2 class="section-title"><span class="sk">Step 3</span> — Position MY product in the Market</h2>
 
     <!-- RUNS-SKILL3:START — zone gérée par l'agent, ne pas éditer à la main -->
     <p class="empty">Pas encore de run — skill en cours de définition.</p>
     <!-- RUNS-SKILL3:END -->
 
-    <h2 class="section-title"><span class="sk">Skill 4</span> — Strategy recommendation</h2>
+    <h2 class="section-title"><span class="sk">Step 4</span> — Strategy recommendation</h2>
 
     <!-- RUNS-SKILL4:START — zone gérée par l'agent, ne pas éditer à la main -->
     <p class="empty">Pas encore de run — skill en cours de définition.</p>
@@ -143,7 +145,7 @@ Zone Skill 1 — **runs du plus ancien au plus récent : Run 1 en premier, les s
 - **Autonome** : les styles du rapport sont inline dans le `<head>` (les runs sont figés ; pas de CSS partagé pour le texte du rapport).
 - **Conteneur fluide** : `max-width: calc(50vw + 550px)` sur le conteneur principal — marges latérales réduites de moitié par rapport à un conteneur fixe de 1100px, à toute largeur d'écran, sans breakpoint (règle de design validée par Elena le 2026-06-11, cohérente avec les pages parent).
 - **Seules dépendances externes** : `../../assets/positioning-chart-vN.js` et `.css` (versionnés, voir plus bas).
-- **Ordre du document** : en-tête (label du marché, run N, date, hypothèses) → Section 1 Executive Summary → Section 2a → Section 2b → Annexe A1 Sources → Annexe A2 Lexique → pied de page (« généré par l'agent… » + `<span data-role="last-updated">[date]</span>`).
+- **Ordre du document** : en-tête uniforme des runs (décision Elena, 2026-06-12) — **h1 = label du marché**, puis **`seclabel` « Step 1 — Read the Market »**, puis la **ligne runmeta inchangée** (« Run N — date · Périmètre … · Rapport généré par l'agent… »), puis les hypothèses → Section 1 Executive Summary → Section 2a → Section 2b → Annexe A1 Sources → Annexe A2 Lexique → pied de page (« généré par l'agent… » + `<span data-role="last-updated">[date]</span>`).
 - **Données** : inlinées dans la page (`<script>const RUN_DATA = {...}</script>`) **et** écrites dans `data.json`. Les deux doivent rester identiques (l'inline évite toute requête ; le fichier sert à la Skill 3).
 - **Section 2a** : SVG statique généré dans la page — nuage de points, Y = part de marché (%), X = croissance sur la période de référence, nom près de chaque point, valeurs estimées préfixées « ~ », liste visible des acteurs sans données sous le graphique.
 - **Tableau de données 2b** : sous le graphique, un tableau de tous les acteurs (triés par part de marché décroissante) × (part, croissance, toutes les dimensions), généré en JS depuis `RUN_DATA` — source unique, aucune divergence possible. Estimations préfixées « ~ », valeurs manquantes « — ».
