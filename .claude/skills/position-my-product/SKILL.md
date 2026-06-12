@@ -1,6 +1,6 @@
 ---
 name: position-my-product
-description: Skill 3 of the competitive-intelligence pipeline — Position MY product in the Market. Places a new project (Elena's) on the interactive positioning chart (2b) of a market already analyzed, and publishes a short positioning note. Use when Elena asks to launch Skill 3, "lance la skill 3", "positionne mon produit / mon projet", or gives a new project to position on a market that has Skill 1 runs.
+description: Skill 3 of the competitive-intelligence pipeline — Position MY product in the Market. Places a new project (Elena's) on the interactive positioning chart (2b) of a market already analyzed, and publishes a short positioning note. Use when Elena asks to launch Skill 3, "lance la skill 3", "positionne mon produit / mon projet", or gives a new project to position on a market that has Skill 1 and Skill 2 runs.
 ---
 
 # Position MY product — Skill 3
@@ -12,14 +12,14 @@ Work from the MARKET project root. Remote scope: the `market/` directory only.
 ## Step 0 — Gather the inputs (interactive)
 
 1. **The project** — a free-text description or a source URL (e.g. `https://w.shoette.com/`). If a URL is given, fetch and read it to understand the offer.
-2. **The market** — scan `site/*/` for markets having at least one `s1-*` run and ask Elena which one via clickable options (AskUserQuestion), as Skill 2 does. Elena may instead paste the S1/S2 run links directly.
+2. **The market** — scan `site/*/` for markets having at least one `s1-*` run **and** at least one `s2-*` run (both are required — Elena's rule, 2026-06-12) and ask Elena which one via clickable options (AskUserQuestion), as Skill 2 does. Elena may instead paste the S1/S2 run links directly. A market with S1 runs but no S2 run is not eligible: say so and propose to launch Skill 2 first.
 3. **Optional** — extra market info from Elena; when used, cite it as « information fournie par Elena ».
 4. If the material is too thin to score the project on the market's dimensions, ask **at most 2-3 targeted questions** — never a form-like interrogation.
 
 ## Step 1 — Load the source runs
 
 1. **S1 source run (required)** = the latest `s1-*` of the market (or the one Elena linked): its `data.json` provides the dimensions, scales and players of the 2b chart.
-2. **S2 run (context)** = the latest `s2-*` when it exists: the KPI table and retained frameworks feed the analysis paragraph. No S2 run → say so and continue.
+2. **S2 run (required)** = the latest `s2-*` of the market: the KPI table and retained frameworks feed the analysis paragraph. No S2 run → **stop**: Skill 3 depends on the existence of a Skill 2 run for the same market (Elena's rule, 2026-06-12) — propose to launch Skill 2 first.
 3. **Freshness**: if the S1 source is older than **3 months**, flag it prominently in the note (and tell Elena), suggesting a fresh Skill 1 run first — without blocking.
 4. **Engine prerequisite**: check that the chart engine supports the `is_mine` marker style. If not, stop and tell Elena the engine session must happen first — the engine never evolves during a run (rule acted 2026-06-11).
 5. Run number `N` = highest existing `s3-*` + 1 (first run: 1). Date = today. Language = the source run's. Output: `site/[slug]/s3-[N]_[date]/`.

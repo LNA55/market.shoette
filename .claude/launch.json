@@ -9,9 +9,9 @@
     },
     {
       "name": "root",
-      "runtimeExecutable": "ruby",
-      "runtimeArgs": ["-run", "-e", "httpd", ".", "-p", "8744"],
-      "port": 8744
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-c", "import os; os.chdir('/tmp'); from http.server import HTTPServer, SimpleHTTPRequestHandler; HTTPServer(('127.0.0.1', 8746), SimpleHTTPRequestHandler).serve_forever()"],
+      "port": 8746
     }
   ]
 }

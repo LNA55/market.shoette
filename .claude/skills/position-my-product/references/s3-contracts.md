@@ -5,7 +5,7 @@
 - **Autonome et figée** : styles inline dans le `<head>`, même charte de rapport que les runs S1/S2 (encre `#1e293b`, accent `#2563eb`, boîtes douces) ; conteneur fluide `max-width: calc(50vw + 550px)`.
 - **Ordre du document** :
   1. En-tête de site sticky (uniforme sur le sous-domaine) : logo My Market Data (lien accueil) + fil d'Ariane « ← Marché : [label] · Accueil » — structure, CSS et géométrie strictement identiques aux runs existants.
-  2. En-tête uniforme des runs : **h1 = label du marché**, puis **`seclabel` « Step 3 — Position MY product »**, puis la **ligne runmeta** : « Run S3-[N] — [date] · Projet : [nom] · Source : [lien run S1 avec sa date] (+ [lien run S2 avec sa date] si présent) » + avertissement de fraîcheur si le run S1 source a plus de 3 mois.
+  2. En-tête uniforme des runs : **h1 = label du marché**, puis **`seclabel` « Step 3 — Position MY product »**, puis la **ligne runmeta** : « Run S3-[N] — [date] · Projet : [nom] · Sources : [lien run S1 avec sa date] · [lien run S2 avec sa date] » + avertissement de fraîcheur si le run S1 source a plus de 3 mois.
   3. **Section 1 — Le projet** : nom, 2-3 lignes de description, lien vers la source (site du projet) quand elle existe. Mentionner que les valeurs du projet sont déclaratives (site du projet / Elena), à la différence des valeurs sourcées des concurrents.
   4. **Section 2 — Le positionnement** : tableau compact — une ligne par dimension du graphique 2b : nom de la dimension → valeur attribuée (conventions `~` estimé, « déclaré ») → justification en une ligne. La part de marché vaut toujours `0 %` (nouveau projet — règle d'Elena, 2026-06-12). Sous le tableau, **le lien vers le graphique enrichi** : `../s1-[n]_[date]/#s2b`, libellé explicite (« Voir le projet sur le graphique interactif du marché »).
   5. **Section 3 — Analyse du graphique** : un paragraphe — où le projet atterrit, voisins immédiats, espaces vides, clés de lecture — et la **configuration de lecture recommandée** (quelles dimensions sur quels canaux visuels pour bien voir le projet, puisqu'il est à 0 % sur l'axe Y par défaut).
@@ -54,7 +54,7 @@
 ```
 
 Notes :
-- `source_runs.s2` est `null` si le marché n'a pas de run S2.
+- `source_runs.s2` est toujours renseigné : **un run S2 sur le même marché est requis pour lancer la Skill 3** (règle d'Elena, 2026-06-12) — sans lui, la skill s'arrête et propose de lancer la Skill 2 d'abord.
 - `positioning.dimensions` reprend exactement les `dim_id` du run S1 source — mêmes identifiants, mêmes échelles.
 - `growth_pct` est `null` (non applicable à un nouveau projet) ; `market_share_pct.value` vaut toujours `0`.
 

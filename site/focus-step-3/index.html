@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Focus on Step 3 — Position MY product in the Market — Veille concurrentielle</title>
-  <meta name="description" content="Step 3 — Position MY product in the Market : analyser mon produit et me positionner dans le marché.">
+  <meta name="description" content="Step 3 — Position MY product in the Market : comment lancer la skill, ce qu'elle fait (le projet ajouté au graphique de la Step 1), et ce que contient la page de run.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -23,10 +23,80 @@
     <section class="hero">
       <span class="kicker">Documentation · Step 3</span>
       <h1>Focus on Step 3<br>Position MY product in the Market</h1>
-      <p class="lede">Skill en cours de définition.</p>
+      <p class="lede">Le marché a été lu (Step 1) puis analysé (Step 2). La Step 3 inverse le regard : elle place <b>un projet à moi</b> au milieu des acteurs de ce marché, sur le graphique de positionnement déjà construit.</p>
     </section>
 
-    <div class="placeholder">Page en construction — le contenu arrive bientôt.</div>
+    <h2 class="doc-section-h">À quoi sert cette étape</h2>
+    <p>Les deux premières étapes regardent le monde : qui sont les acteurs, combien ils pèsent, comment le marché se structure. La Step 3 y introduit <b>un nouveau projet — le mien</b> : elle l'évalue sur chacune des dimensions qui structurent le marché, et le pose sur le graphique interactif au milieu de ses futurs concurrents. On voit d'un coup d'œil de qui le projet est proche, de qui il s'éloigne, et quels espaces du marché restent vides.</p>
+    <p>Comme les autres étapes, chaque exécution produit un <b>run daté et figé</b> : une note de positionnement, listée sur la page du marché. Si le projet pivote ou si le marché bouge, on relance — et l'historique des positionnements reste consultable.</p>
+
+    <h2 class="doc-section-h" style="margin-top:52px">Comment la lancer</h2>
+    <p>Dans Claude Code, entrer <b>« lance la skill 3 »</b> ou <b>« positionne mon projet »</b>, avec les inputs suivants :</p>
+    <ul class="kpis" style="margin:10px 0 0">
+      <li><b>Le projet</b> — une description libre, ou un lien vers sa source (par exemple le site du projet : l'agent le lit pour comprendre l'offre).</li>
+      <li><b>Le marché</b> — l'agent propose la liste des marchés déjà étudiés ; on choisit d'un clic. On peut aussi coller directement les liens des runs Step 1 et Step 2 concernés.</li>
+      <li><b>En option</b> — toute information complémentaire que j'ai sur le marché ; elle est citée comme telle dans la note.</li>
+    </ul>
+    <p style="margin-top:14px"><b>Prérequis :</b> le lancement de la Step 3 dépend de l'existence d'un <b>run Step 2 sur le même sujet</b> (en plus du run Step 1, qui porte le graphique). Si le marché n'a pas encore été passé par la Step 2, la skill s'arrête et propose de la lancer d'abord. Si la matière fournie ne suffit pas pour évaluer le projet sur les dimensions du marché, l'agent pose au plus 2-3 questions ciblées.</p>
+
+    <h2 class="doc-section-h" style="margin-top:52px">Ce que fait la skill</h2>
+
+    <article class="fw-card">
+      <h3>1 · Le projet entre dans le graphique de la Step 1</h3>
+      <div class="fw-body">
+        <div class="fw-text">
+          <p>La skill évalue le projet sur <b>chaque dimension du graphique de positionnement</b> du dernier run Step 1 — mêmes échelles, mêmes conventions que les concurrents — puis l'ajoute au graphique interactif <b>et</b> au tableau de données qui l'accompagne. Le projet y porte un marqueur distinctif <b>✺</b> (rayons autour du cercle, nom en gras) : impossible de le confondre avec un acteur du marché.</p>
+          <p>L'enrichissement est <b>strictement additif</b> : les données des concurrents ne sont jamais retouchées, et la date d'origine du graphique reste intacte — une mention datée « <i>Graphique enrichi des infos sur le nouveau projet [nom], le [date]</i> » s'ajoute simplement à côté.</p>
+          <p>Sa part de marché vaut <b>0 % par définition</b> — c'est un nouveau projet. La lecture intéressante se fait donc sur les autres dimensions : prix, modèle, ancrage, personnalisation… celles que le lecteur peut affecter aux canaux visuels du graphique.</p>
+        </div>
+        <figure class="fw-viz">
+          <svg viewBox="0 0 300 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Le graphique de positionnement : des cercles concurrents, et en bas le projet avec son marqueur à rayons">
+            <line x1="36" y1="18" x2="36" y2="200" stroke="#c9c9f4" stroke-width="1.5"/>
+            <line x1="36" y1="200" x2="284" y2="200" stroke="#c9c9f4" stroke-width="1.5"/>
+            <text x="42" y="14" font-size="10" font-weight="700" fill="#2e2eb8">Part de marché</text>
+            <circle cx="112" cy="52" r="16" fill="#c9c9f4" stroke="#b3b3ef"/>
+            <circle cx="196" cy="88" r="13" fill="#ececfb" stroke="#c9c9f4"/>
+            <circle cx="86" cy="124" r="11" fill="#ececfb" stroke="#c9c9f4"/>
+            <circle cx="236" cy="144" r="10" fill="#c9c9f4" stroke="#b3b3ef"/>
+            <g transform="translate(150,182)">
+              <circle r="13" fill="#3b3bd8" stroke="#2e2eb8"/>
+              <line x1="16" y1="0" x2="21" y2="0" stroke="#2e2eb8" stroke-width="1.6" stroke-linecap="round"/>
+              <line x1="11.3" y1="11.3" x2="14.8" y2="14.8" stroke="#2e2eb8" stroke-width="1.6" stroke-linecap="round"/>
+              <line x1="0" y1="16" x2="0" y2="21" stroke="#2e2eb8" stroke-width="1.6" stroke-linecap="round"/>
+              <line x1="-11.3" y1="11.3" x2="-14.8" y2="14.8" stroke="#2e2eb8" stroke-width="1.6" stroke-linecap="round"/>
+              <line x1="-16" y1="0" x2="-21" y2="0" stroke="#2e2eb8" stroke-width="1.6" stroke-linecap="round"/>
+              <line x1="-11.3" y1="-11.3" x2="-14.8" y2="-14.8" stroke="#2e2eb8" stroke-width="1.6" stroke-linecap="round"/>
+              <line x1="0" y1="-16" x2="0" y2="-21" stroke="#2e2eb8" stroke-width="1.6" stroke-linecap="round"/>
+              <line x1="11.3" y1="-11.3" x2="14.8" y2="-14.8" stroke="#2e2eb8" stroke-width="1.6" stroke-linecap="round"/>
+            </g>
+            <text x="178" y="186" font-size="11" font-weight="700" fill="#2e2eb8">Mon projet</text>
+          </svg>
+          <figcaption class="fw-cap">Le projet rejoint le graphique de la Step 1 — marqueur ✺, part de marché à 0 %</figcaption>
+        </figure>
+      </div>
+    </article>
+
+    <article class="fw-card">
+      <h3>2 · Une page dédiée à ce run</h3>
+      <p>La skill génère aussi une <b>note de positionnement</b> — la page du run Step 3 — qui contient, dans l'ordre :</p>
+      <ul class="kpis" style="margin:10px 0 0">
+        <li><b>Le projet</b> — son nom, sa description en quelques lignes, le lien vers sa source.</li>
+        <li><b>Le positionnement</b> — un tableau compact : chaque dimension du marché, la valeur attribuée au projet, et la justification en une ligne ; puis <b>le lien vers le graphique enrichi</b>, dans le run Step 1 d'origine.</li>
+        <li><b>L'analyse du graphique</b> — un paragraphe avec les informations importantes et les clés de lecture : où le projet atterrit, ses voisins immédiats, les espaces vides — et la configuration du graphique recommandée pour bien le voir (le projet étant à 0 % sur l'axe vertical par défaut).</li>
+      </ul>
+      <p style="margin-top:12px">Les valeurs du projet viennent de sa source ou de moi — elles sont <b>déclaratives</b>, et la note le dit explicitement, à la différence des valeurs des concurrents qui sont sourcées publiquement.</p>
+    </article>
+
+    <h2 class="doc-section-h" style="margin-top:52px">Où retrouver le run</h2>
+    <p>Le lien vers la page du run apparaît dans la <b>section Step 3 de la page principale du marché</b> (par exemple <a href="../apps-perte-de-poids/">Applications mobiles d'assistance à la perte de poids</a>), comme les runs des autres étapes. Le graphique enrichi, lui, vit toujours à sa place d'origine : dans le run Step 1 du marché.</p>
+
+    <h2 class="doc-section-h" style="margin-top:52px">Les conventions de lecture</h2>
+    <ul class="kpis" style="margin:10px 0 0">
+      <li><b>✺</b> à côté d'un nom : mon projet — sur le graphique, dans l'infobulle et sur la fiche détaillée.</li>
+      <li>Part de marché du projet : <b>0 %</b>, toujours — un nouveau projet n'en a pas encore ; sa croissance est notée « — » (non applicable).</li>
+      <li>Valeurs du projet <b>déclaratives</b> (sa source, ou moi) ; valeurs des concurrents <b>sourcées</b> ; <b>~</b> = estimation, comme partout sur le site.</li>
+      <li>Les runs restent <b>figés</b> : la Step 3 ne fait qu'ajouter son projet au graphique — rien d'existant n'est modifié, et la mention d'enrichissement est datée.</li>
+    </ul>
   </main>
 
   <footer class="sitefoot">
