@@ -53,7 +53,7 @@ Three tiers: **activé** / **dégradé en qualitatif** (relevant but data too th
 
 **SWOT : hors périmètre par décision (2026-06-11)** — il exige un point de vue (« mon produit ») et appartient aux Skills 3/4. Ne jamais l'inclure ; pas besoin de justifier son absence.
 
-> Cette table de décision est aussi publiée sur la page de documentation (`/focus-skill-2/#regles-selection`) — **garder les deux synchronisées** quand les règles évoluent.
+> Cette table de décision est aussi publiée sur la page de documentation (`/focus-step-2/#regles-selection`) — **garder les deux synchronisées** quand les règles évoluent.
 
 Then write the report's section 2 — titled **« Remarques sur le marché et choix de la méthodologie d'analyse adaptée »** : a short intro line, then a **structured list, one line per remark** (never a dense paragraph) — each remark states a fact about *this* market and the methodological choice it drives (« fait → choix »). **Per Elena's decision (2026-06-11): the report shows retained frameworks only** — do not list the rejected ones.
 
@@ -61,7 +61,7 @@ Then write the report's section 2 — titled **« Remarques sur le marché et ch
 
 One section per retained framework, containing in order:
 
-1. The title, linked to the framework's documentation fiche (`/focus-skill-2/#[anchor]`), with the « lecture qualitative » badge when dégradé.
+1. The title, linked to the framework's documentation fiche (`/focus-step-2/#[anchor]`), with the « lecture qualitative » badge when dégradé.
 2. **The framework's objective sentence** (`objective` in the data) — the « question » verbatim from the documentation page (e.g. « Où se capture la marge dans la filière ? »).
 3. A short paragraph or two answering those questions **for this market**, grounded in the KPI table and the S1 facts (keep the `~` flags).
 4. **A market-specific visualization when relevant** — the framework's canonical diagram **filled with this market's actual data** (figures, players, events), drawn as inline SVG in the report charte, large and readable (~660px wide — bigger than the generic doc-page schematics), with a one-line caption. Examples: TAM/SAM/SOM circles with the amounts, Porter boxes annotated with the market's forces, a real deal-flow timeline, PESTEL cells filled per letter.

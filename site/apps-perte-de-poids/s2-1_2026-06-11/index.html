@@ -623,7 +623,7 @@ const RUN_S2_DATA = {
     d.frameworks.forEach(function (f) {
       const block = el("section", { class: "fw-block", id: "fw-" + f.id });
       const h3 = el("h3");
-      h3.appendChild(el("a", { href: "../../focus-skill-2/#" + f.doc_anchor }, f.name));
+      h3.appendChild(el("a", { href: "../../focus-step-2/#" + f.doc_anchor }, f.name));
       if (f.status === "dégradé") h3.appendChild(el("span", { class: "badge" }, "lecture qualitative"));
       block.appendChild(h3);
       if (f.objective) block.appendChild(el("p", { class: "fw-obj" }, f.objective));

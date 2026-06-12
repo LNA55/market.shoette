@@ -7,7 +7,7 @@ site/
 ├── index.html                       accueil — liste des marchés (zone MARKETS) + liens « La méthode »
 ├── .htaccess                        règles de cache (HTML revalidé, assets versionnés cachés)
 ├── how-it-works/                    ┐
-├── focus-skill-1/ … focus-skill-4/  ┘ pages statiques de documentation — domaine d'Elena, l'agent n'y touche JAMAIS sauf demande explicite
+├── focus-step-1/ … focus-step-4/  ┘ pages statiques de documentation — domaine d'Elena, l'agent n'y touche JAMAIS sauf demande explicite
 ├── assets/
 │   ├── site.css                     charte des pages parent + documentation (non versionnée — pages non figées)
 │   ├── positioning-chart-v1.js     moteur du graphique 2b (versionné)

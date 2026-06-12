@@ -184,7 +184,8 @@ Write in the same language as the input.
 
 # Décisions actées
 
-- **2026-06-12 — Pages de documentation renommées « Focus on Step N »** (titres, cartes de l'accueil et kickers) — les skills du pipeline gardent leur nom interne « Skill » ; les URLs `focus-skill-N/` restent inchangées (les pages de runs pointent vers leurs ancres).
+- **2026-06-12 — Pages de documentation renommées « Focus on Step N »** (titres, cartes de l'accueil, kickers), puis **URLs renommées `focus-step-N/`** (redirections 301 depuis `focus-skill-N/`, tous les liens internes et contrats mis à jour). Les skills du pipeline gardent leur nom interne « Skill ».
+- **2026-06-12 — Page Focus on Step 1 remplie** : documentation étape par étape de la Skill 1 telle qu'en vigueur ce jour, avec **snapshot téléchargeable daté** de son SKILL.md (`skill-1-read-the-market_2026-06-12.md`). Principe : à chaque évolution notable de la skill, publier un nouveau snapshot daté plutôt que d'écraser l'ancien.
 
 - **2026-06-11 — Site 100% statique.** PHP abandonné : tout est généré en local puis uploadé.
 - **2026-06-11 — Pipeline en 2 étapes** : (1) récupération des données, (2) fabrication des pages. Les données brutes de l'étape 1 ne sont pas conservées.
@@ -196,7 +197,7 @@ Write in the same language as the input.
 - **2026-06-11 — Répartition des modèles actée** : sous-agents de recherche sur Sonnet ; orchestration, consolidation, rédaction et stratégie sur le meilleur modèle disponible dans la session. Le moteur 2b n'est jamais reconstruit pendant un run — ses évolutions se font en sessions dédiées avec le meilleur modèle disponible.
 - **2026-06-11 — Tableau de données ajouté au contrat du rapport** : sous le graphique 2b, tous les acteurs × toutes les dimensions, généré depuis RUN_DATA (source unique).
 - **2026-06-11 — Schéma d'URL des runs par skill : `[marché]/s[K]-[N]_[date]/`** (ex. `s1-1_2026-06-11`, `s2-1_…`). Les runs Skill 1 existants ont été renommés `s1-*` ; redirections 301 en place pour les anciennes URLs.
-- **2026-06-11 — Skill 2 (cadrage) : le SWOT est exclu de l'analyse produite par la Skill 2.** Il exige un point de vue défini (« mon produit ») et appartient aux Skills 3/4. Il reste documenté sur la page focus-skill-2, qui rassemble tous les frameworks. Principe validé : sélection des frameworks par règles (activé / dégradé en qualitatif / écarté avec justification), nourries par la nature du marché (data.json S1) + la disponibilité des données.
+- **2026-06-11 — Skill 2 (cadrage) : le SWOT est exclu de l'analyse produite par la Skill 2.** Il exige un point de vue défini (« mon produit ») et appartient aux Skills 3/4. Il reste documenté sur la page focus-step-2, qui rassemble tous les frameworks. Principe validé : sélection des frameworks par règles (activé / dégradé en qualitatif / écarté avec justification), nourries par la nature du marché (data.json S1) + la disponibilité des données.
 - **2026-06-11 — Skill 2 V1, cadrage validé (points 1-4)** :
   (a) **Déroulé** : au lancement, proposer les marchés ayant des runs Skill 1 en choix cliquables → partir de la page et du data.json du **dernier run S1** du marché choisi ; recherche en ligne **en complément seulement**.
   (b) **Livrable** : page de run + data.json sous `[marché]/s2-[N]_[date]/`, zone `RUNS-SKILL2`.
