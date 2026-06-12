@@ -179,7 +179,8 @@ Write in the same language as the input.
 - [x] Skill 3 V1 spécifiée et rédigée — `.claude/skills/position-my-product/` (2026-06-12)
 - [x] Session moteur 2b dédiée (2026-06-12) : marqueur « mon projet » (`is_mine`) — rayons radiaux, nom en gras, badge tooltip/fiche, note de légende et ligne d'export conditionnelles ; rétro-compatible (rendu strictement inchangé sans `is_mine`), vérifié sur la démo. Le premier run S3 est débloqué.
 - [x] Premier run S3-1 exécuté et déployé (2026-06-12) : « What is wrong with me » (w.shoette.com) positionné sur le marché apps-perte-de-poids — graphique du run S1-2 enrichi + note https://market.shoette.com/apps-perte-de-poids/s3-1_2026-06-12/
-- [x] Skill 4 V1 spécifiée et rédigée — `.claude/skills/strategy-recommendation/` (2026-06-12) ; premier run en attente du go d'Elena (cible : « What is wrong with me » sur apps-perte-de-poids)
+- [x] Skill 4 V1 spécifiée et rédigée — `.claude/skills/strategy-recommendation/` (2026-06-12)
+- [x] Premier run S4-1 exécuté et déployé (2026-06-12) : recommandations stratégiques pour « What is wrong with me » — https://market.shoette.com/apps-perte-de-poids/s4-1_2026-06-12/ — **le pipeline complet (Skills 1→4) a tourné de bout en bout sur un marché réel**
 
 # Questions ouvertes
 
