@@ -12,7 +12,7 @@ Construction d'un agent de veille concurrentielle **réutilisable sur plusieurs 
 
 1. **Skill 1 — Read the Market** — identifier les acteurs + lire le marché *(spécifiée ci-dessous, opérationnelle)*
 2. **Skill 2 — Present the Market** — *(à définir ensemble)*
-3. **Skill 3 — Position MY product in the Market** — *(à définir ensemble)*
+3. **Skill 3 — Position MY product in the Market** — *(spécifiée le 2026-06-12, V1 — premier run en attente du prérequis moteur)*
 4. **Skill 4 — Strategy recommendation** — *(à définir ensemble)*
 
 > Cette taxonomie en 4 skills remplace le découpage initial en 5 (l'ancien « canevas de données » et la « mise à jour périodique » seront redistribués dans les Skills 2-4 lors de leur spécification). La page de chaque marché est sectionnée par skill, avec une zone balisée par skill (`RUNS-SKILL1` à `RUNS-SKILL4`).
@@ -34,7 +34,7 @@ Construction d'un agent de veille concurrentielle **réutilisable sur plusieurs 
 | Données **structurées** (canevas Skill 2 : acteurs, dimensions, valeurs) | Conservées — `data.json` par run, à côté du HTML *(validé 2026-06-11)* |
 | **Sources** | Pas copiées, mais référencées (URL + date d'accès) en Annexe A1 |
 
-- Le `data.json` par run sert à la fois de source au graphique 2b et d'historique versionné pour la Skill 3 (qui lit le data.json du run N−1 pour produire le run N).
+- Le `data.json` par run sert à la fois de source au graphique 2b + tableau (source unique) et d'historique versionné d'un run à l'autre. La Skill 3 l'enrichit de façon strictement additive : ajout du projet positionné, sans toucher aux données existantes *(décision 2026-06-12)*.
 - **MySQL : supprimé** *(validé 2026-06-11)* — le versionning par dossiers de runs (+ Git en local) remplace entièrement la BDD.
 
 ### Infrastructure
@@ -154,7 +154,7 @@ Provide a short paragraph explaining why you ranked the dimensions in this order
 
 - Include all significant players. Flag estimated values explicitly.
 - List separately any player that appears significant but for whom no data could be found — do not silently omit them.
-- Display date of last update. This field will be updated by Skill 3.
+- Display date of last update. Skill 3 never changes this date — it appends a dated enrichment mention next to it (« Graphique enrichi des infos sur le nouveau projet [nom], le [date] ») *(amendé le 2026-06-12)*.
 
 Write in the same language as the input.
 
@@ -176,13 +176,24 @@ Write in the same language as the input.
 - [x] Moteur du graphique 2b construit : `site/assets/positioning-chart-v1.{js,css}` + démo locale `dev/demo-2b.html` (2026-06-11) — **en attente de validation d'Elena sur la démo**
 - [x] Run de test exécuté et déployé (2026-06-11, go d'Elena) : **applications mobiles d'assistance à la perte de poids** — https://market.shoette.com/apps-perte-de-poids/s1-1_2026-06-11/ — en attente des retours d'Elena pour ajuster le skill
 - [x] Skill 2 V1 spécifiée et rédigée — `.claude/skills/present-the-market/` (2026-06-11) ; premier run en attente du go d'Elena
-- [ ] Définir ensemble les Skills 3 (Position MY product) et 4 (Strategy recommendation)
+- [x] Skill 3 V1 spécifiée et rédigée — `.claude/skills/position-my-product/` (2026-06-12)
+- [ ] Session moteur 2b dédiée : marqueur distinctif « mon projet » (`is_mine`) — prérequis au premier run S3
+- [ ] Définir ensemble la Skill 4 (Strategy recommendation)
 
 # Questions ouvertes
 
 1. **Skill 2 — l'intention du run** (posée le 2026-06-11) : paramètre explicite au lancement de la skill (défaut « évaluer l'opportunité du marché ») ou toujours implicite ? L'intention pilote la sélection des frameworks.
 
 # Décisions actées
+
+- **2026-06-12 — Skill 3 V1, cadrage validé** :
+  (a) **Objet** : positionner un nouveau projet (description libre ou URL, ex. w.shoette.com) sur le graphique 2b du dernier run S1 du marché, avec une note courte. Inputs : le projet, le marché (runs S1 + S2 en contexte), infos optionnelles d'Elena ; au plus 2-3 questions ciblées si la matière manque.
+  (b) **Enrichissement du run S1 — unique exception au principe « runs figés », périmètre strict et additif** : le projet est ajouté à `RUN_DATA`/`data.json` (flag `is_mine`) → il apparaît automatiquement dans le graphique interactif **et** le tableau (source unique). **Aucune donnée des concurrents n'est retouchée. La date « Dernière mise à jour » existante reste intacte** — on ajoute à côté la mention « Graphique enrichi des infos sur le nouveau projet [nom], le [date du run S3] ». Re-run du même projet → mise à jour de son entrée ; autre projet → entrée supplémentaire.
+  (c) **Part de marché toujours 0 %** (un nouveau projet n'en a pas, par définition) ; croissance non applicable — ce sont les autres dimensions qui portent la lecture. Les valeurs du projet sont **déclaratives** (site du projet / Elena), distinguées des valeurs sourcées des concurrents.
+  (d) **Livrable** : note courte sous `[marché]/s3-[N]_[date]/` (zone `RUNS-SKILL3`) — le projet (2-3 lignes + lien), le tableau du positionnement (dimension → valeur + justification), **le lien vers le graphique enrichi** (`#s2b` du run S1), un paragraphe d'analyse avec clés de lecture et configuration de calques recommandée. Pas de SWOT ni de frameworks en V1 — réservés à la Skill 4.
+  (e) **Prérequis moteur** : marqueur visuellement distinct pour `is_mine`, à ajouter au moteur 2b en session dédiée **avant** le premier run S3 (le moteur n'évolue jamais pendant un run).
+  (f) **Publication** : le run S3 est déployé comme les autres par défaut ; un mode confidentiel (local seulement) sera envisagé si un projet le demande.
+  (g) **Modèles** : pas de fan-out de recherche — lecture du site du projet, analyse et rédaction sur le meilleur modèle de la session ; au plus 1 sous-agent Sonnet si le site du projet est volumineux.
 
 - **2026-06-12 — Pages de documentation renommées « Focus on Step N »** (titres, cartes de l'accueil, kickers), puis **URLs renommées `focus-step-N/`** (redirections 301 depuis `focus-skill-N/`, tous les liens internes et contrats mis à jour). Les skills du pipeline gardent leur nom interne « Skill ».
 - **2026-06-12 — Page Focus on Step 1 réorganisée (2e itération)** : la page parent documente désormais **le livrable** (à quoi sert l'étape, le rapport dans l'ordre de lecture, les conventions, un exemple réel) ; la documentation du **process** (étape par étape + snapshot téléchargeable) vit dans la page enfant `focus-step-1/process-skill-11juin2026/`. Modèle à suivre pour les futures pages Focus : livrable en parent, process en enfant daté.
