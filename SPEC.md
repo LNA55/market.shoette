@@ -175,10 +175,11 @@ Write in the same language as the input.
 - [x] SKILL.md de la Skill 1 écrit — `.claude/skills/read-the-market/` (2026-06-11)
 - [x] Moteur du graphique 2b construit : `site/assets/positioning-chart-v1.{js,css}` + démo locale `dev/demo-2b.html` (2026-06-11) — **en attente de validation d'Elena sur la démo**
 - [x] Run de test exécuté et déployé (2026-06-11, go d'Elena) : **applications mobiles d'assistance à la perte de poids** — https://market.shoette.com/apps-perte-de-poids/s1-1_2026-06-11/ — en attente des retours d'Elena pour ajuster le skill
-- [x] Skill 2 V1 spécifiée et rédigée — `.claude/skills/present-the-market/` (2026-06-11) ; premier run en attente du go d'Elena
+- [x] Skill 2 V1 spécifiée et rédigée — `.claude/skills/present-the-market/` (2026-06-11) ; premier run S2-1 exécuté et déployé le 2026-06-11 (apps-perte-de-poids)
 - [x] Skill 3 V1 spécifiée et rédigée — `.claude/skills/position-my-product/` (2026-06-12)
 - [x] Session moteur 2b dédiée (2026-06-12) : marqueur « mon projet » (`is_mine`) — rayons radiaux, nom en gras, badge tooltip/fiche, note de légende et ligne d'export conditionnelles ; rétro-compatible (rendu strictement inchangé sans `is_mine`), vérifié sur la démo. Le premier run S3 est débloqué.
-- [ ] Définir ensemble la Skill 4 (Strategy recommendation)
+- [x] Premier run S3-1 exécuté et déployé (2026-06-12) : « What is wrong with me » (w.shoette.com) positionné sur le marché apps-perte-de-poids — graphique du run S1-2 enrichi + note https://market.shoette.com/apps-perte-de-poids/s3-1_2026-06-12/
+- [ ] Définir ensemble la Skill 4 (Strategy recommendation) — Elena a annoncé vouloir des recommandations stratégiques sur le projet positionné par le run S3-1
 
 # Questions ouvertes
 
