@@ -184,6 +184,8 @@ Write in the same language as the input.
 
 # Décisions actées
 
+- **2026-06-12 — Pages de documentation renommées « Focus on Step N »** (titres, cartes de l'accueil et kickers) — les skills du pipeline gardent leur nom interne « Skill » ; les URLs `focus-skill-N/` restent inchangées (les pages de runs pointent vers leurs ancres).
+
 - **2026-06-11 — Site 100% statique.** PHP abandonné : tout est généré en local puis uploadé.
 - **2026-06-11 — Pipeline en 2 étapes** : (1) récupération des données, (2) fabrication des pages. Les données brutes de l'étape 1 ne sont pas conservées.
 - **2026-06-11 — Répertoire OVH dédié** : le projet vit dans son propre répertoire (ex. `market/`) sur l'hébergement, pointé par le sous-domaine. La règle « uniquement cv/ » du projet CV reste valable pour le reste de l'hébergement.
