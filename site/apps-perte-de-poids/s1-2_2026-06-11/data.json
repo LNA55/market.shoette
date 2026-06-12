@@ -649,6 +649,69 @@
           35
         ]
       }
+    },
+    {
+      "id": "what_is_wrong_with_me",
+      "name": "What is wrong with me",
+      "is_mine": true,
+      "added_by_run": {
+        "skill": "position-my-product",
+        "run": "s3-1_2026-06-12",
+        "date": "2026-06-12"
+      },
+      "market_share_pct": {
+        "value": 0,
+        "estimated": false,
+        "note": "nouveau projet — beta sur liste d'attente, pas encore sur le marché"
+      },
+      "growth_pct": {
+        "value": null,
+        "estimated": false,
+        "note": "non applicable (nouveau projet)"
+      },
+      "dimensions": {
+        "integration_medicale": {
+          "value": 3,
+          "estimated": true,
+          "declared": true,
+          "note": "lit les documents médicaux (photos d'analyses, comptes rendus) et croise avec la littérature — mais « not a medical device » : ni programme clinique, ni fonctions GLP-1 dédiées, ni prescription"
+        },
+        "prix_mensuel": {
+          "value": null,
+          "estimated": false,
+          "declared": true,
+          "note": "prix non annoncé — beta sur liste d'attente"
+        },
+        "personnalisation_ia": {
+          "value": 9,
+          "estimated": true,
+          "declared": true,
+          "note": "IA conversationnelle vocale (détection d'intonation), lecture multimodale (photos, documents multilingues), corrélations multi-signaux pondérées — déclaratif (site), non vérifié en production"
+        },
+        "modele_accompagnement": {
+          "value": "coach IA",
+          "estimated": false,
+          "declared": true,
+          "note": "on parle à l'app, elle investigue et répond — pas de cliniciens"
+        },
+        "largeur_fonctionnelle": {
+          "value": "mono-fonction",
+          "estimated": true,
+          "declared": true,
+          "note": "un seul usage sur ce marché : l'enquête sur les causes du blocage pondéral — agrège de nombreux signaux (sommeil, stress, cycle, météo…) mais sans tracking calorique, plans de repas ni communauté"
+        }
+      },
+      "card": {
+        "summary": "Journal de santé conversationnel à IA (« The AI health journal you talk to ») : on lui parle, il agrège des centaines de signaux (voix, photos, documents, sommeil, cycle, météo) et surface des corrélations pondérées. Positionné ici sur l'usage : comprendre pourquoi la perte de poids ne vient pas — personnes en situation d'obésité (IMC > 30), premier test visé : utilisateurs GLP-1 sans réponse marquée. Beta sur liste d'attente.",
+        "facts": [
+          "Statut : beta — recrutement par liste d'attente, prix non annoncé",
+          "Cible de lancement déclarée : IMC > 30, blocage pondéral malgré de nombreuses tentatives ; premier test : utilisateurs Ozempic/Wegovy/Mounjaro sans perte de poids ni d'appétit marquées",
+          "« Not a medical device » — données hébergées en UE (RGPD, HDS), chiffrement AES-256",
+          "Source : https://w.shoette.com/ (déclaratif — site du projet + cadrage d'Elena)",
+          "Positionné par le Run S3-1 du 2026-06-12"
+        ],
+        "source_ids": []
+      }
     }
   ],
   "players_without_data": [
@@ -1136,5 +1199,14 @@
       "en": "Direct-to-consumer telehealth: remote prescription and fulfillment (Hims & Hers, Ro, Noom Med, WeightWatchers Clinic)."
     }
   ],
-  "last_updated": "2026-06-11"
+  "last_updated": "2026-06-11",
+  "enrichments": [
+    {
+      "skill": "position-my-product",
+      "run": "s3-1_2026-06-12",
+      "date": "2026-06-12",
+      "player_id": "what_is_wrong_with_me",
+      "mention": "Graphique enrichi des infos sur le nouveau projet What is wrong with me, le 2026-06-12"
+    }
+  ]
 }

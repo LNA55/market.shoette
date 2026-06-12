@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "skill": "position-my-product",
+  "market": {
+    "slug": "apps-perte-de-poids",
+    "label": "Applications mobiles d'assistance à la perte de poids",
+    "language": "fr"
+  },
+  "run": {
+    "number": 1,
+    "date": "2026-06-12"
+  },
+  "source_runs": {
+    "s1": {
+      "number": 2,
+      "date": "2026-06-11",
+      "path": "../s1-2_2026-06-11/",
+      "age_days": 1,
+      "freshness_warning": false
+    },
+    "s2": {
+      "number": 1,
+      "date": "2026-06-11",
+      "path": "../s2-1_2026-06-11/"
+    }
+  },
+  "project": {
+    "id": "what_is_wrong_with_me",
+    "name": "What is wrong with me",
+    "source_url": "https://w.shoette.com/",
+    "summary": "Journal de santé conversationnel à IA (« The AI health journal you talk to ») : on lui parle — voix, photos, documents médicaux — il se connecte aux signaux du quotidien (sommeil, stress, cycle, météo, calendrier) et surface des corrélations pondérées pour répondre à « pourquoi ça ne va pas ». Beta sur liste d'attente ; « not a medical device » ; données hébergées en UE (RGPD, HDS).",
+    "extra_info_from_elena": "Angle de lancement déclaré : l'enquête sur le blocage pondéral — personnes en situation d'obésité (IMC > 30) coincées dans un fort surpoids malgré de nombreuses tentatives ; premier test visé : utilisateurs de GLP-1 (Ozempic, Wegovy, Mounjaro) sans forte perte de poids ni perte d'appétit."
+  },
+  "positioning": {
+    "market_share_pct": {
+      "value": 0,
+      "estimated": false,
+      "note": "nouveau projet — beta sur liste d'attente, pas encore sur le marché"
+    },
+    "growth_pct": null,
+    "dimensions": {
+      "integration_medicale": {
+        "value": 3,
+        "estimated": true,
+        "declared": true,
+        "rationale": "Lit les documents médicaux (photos d'analyses, comptes rendus) et croise avec la littérature — mais « not a medical device » : ni programme clinique, ni fonctions GLP-1 dédiées, ni prescription."
+      },
+      "prix_mensuel": {
+        "value": null,
+        "estimated": false,
+        "declared": true,
+        "rationale": "Prix non annoncé à ce stade (recrutement par liste d'attente)."
+      },
+      "personnalisation_ia": {
+        "value": 9,
+        "estimated": true,
+        "declared": true,
+        "rationale": "IA conversationnelle vocale (détection d'intonation), lecture multimodale (photos, documents multilingues), corrélations multi-signaux pondérées — promesse du site, non vérifiée en production."
+      },
+      "modele_accompagnement": {
+        "value": "coach IA",
+        "estimated": false,
+        "declared": true,
+        "rationale": "On parle à l'app, elle investigue et répond — pas de cliniciens dans la boucle."
+      },
+      "largeur_fonctionnelle": {
+        "value": "mono-fonction",
+        "estimated": true,
+        "declared": true,
+        "rationale": "Un seul usage sur ce marché : l'enquête sur les causes du blocage pondéral — agrège de nombreux signaux mais sans tracking calorique, plans de repas ni communauté."
+      }
+    }
+  },
+  "enriched_chart": {
+    "href": "../s1-2_2026-06-11/#s2b",
+    "enriched_on": "2026-06-12"
+  },
+  "analysis": {
+    "paragraph": "Sur la configuration par défaut (part de marché en hauteur), What is wrong with me se pose tout en bas du graphique, à 0 % — mécanique pour un projet en liste d'attente ; ce n'est pas là que se joue la lecture. Sur les dimensions structurantes, le projet occupe une position qu'aucun acteur du panel n'occupe. En intégration médicale (~3/10), il se tient seul dans le couloir vide du marché : le panel se scinde en deux blocs — les trackers et coachs grand public entre 0 et 2 (MyFitnessPal, Simple, Cal AI, Yazio, Lose It!, MacroFactor, Lifesum, Cronometer) et le duo médicalisé à 9 (WeightWatchers, Noom) ; entre 3 et 8, personne. Les seuls acteurs qui s'en approcheraient — les compagnons GLP-1 type Shotsy ou MeAgain, autour de 5 — sont précisément ceux pour lesquels le run S1 n'a pas trouvé de données chiffrées : les voisins les plus proches du projet sont invisibles sur le graphique. En personnalisation IA (~9/10, déclaratif), le projet rejoint le trio de tête aux côtés de Simple (9), Cal AI (8) et Noom (8) — avec une différence de nature : chez eux, l'IA exécute un programme (logger, coacher, ajuster des cibles) ; ici, elle instruit une enquête (corréler des centaines de signaux pour expliquer un blocage). En modèle d'accompagnement, il se range avec les coachs IA (Simple, MacroFactor, MyFitnessPal, Lifesum) ; en largeur fonctionnelle, il ne partage la case mono-fonction qu'avec Cal AI — deux produits mono-usage à IA forte, aux usages opposés : photographier ses calories vs comprendre pourquoi rien ne fonctionne. Le prix est la seule dimension sans valeur (non annoncé). Enfin, la cible déclarée — IMC > 30, blocage persistant, et d'abord les utilisateurs GLP-1 sans réponse marquée — place le projet dans l'angle mort du marché tel que lu par les runs S1/S2 : les plateformes médicalisées (61 % du marché) vendent l'accès au traitement, les compagnons GLP-1 naissants (~1 % du marché) en organisent le suivi, mais personne n'adresse ceux pour qui le traitement ne tient pas sa promesse.",
+    "reading_keys": [
+      "Le couloir 3-8 d'intégration médicale est vide : entre les trackers grand public (0-2) et les plateformes de prescription (9), seul What is wrong with me s'y tient — en compagnie des compagnons GLP-1, hors graphique faute de données.",
+      "L'IA du projet joue dans le trio de tête du marché (~9/10, déclaratif, avec Simple, Cal AI et Noom) — mais pour une fonction qu'aucun concurrent ne propose : enquêter sur les causes plutôt qu'exécuter un programme.",
+      "Son seul voisin structurel mono-fonction × IA forte est Cal AI — à l'usage exactement inverse : logger des calories vs expliquer un blocage.",
+      "0 % de part et prix non annoncé : la position dit le potentiel, pas la traction — toutes les valeurs du projet sont déclaratives, à revérifier au lancement."
+    ],
+    "recommended_view": "Position Y = Personnalisation IA · Position X + Couleur = Intégration médicale & GLP-1 · Taille = Part de marché · Opacité = Modèle d'accompagnement. Sur cette vue, le projet apparaît en haut du graphique, seul dans le couloir médian de l'axe horizontal — son marqueur ✺ minuscule au milieu des géants dit exactement sa situation : la bonne case, sans la traction."
+  },
+  "sources": [
+    {
+      "id": 1,
+      "title": "Site du projet — What is wrong with me",
+      "url": "https://w.shoette.com/",
+      "accessed": "2026-06-12",
+      "declared": true
+    },
+    {
+      "id": 2,
+      "title": "Cadrage d'Elena : cible et angle de lancement",
+      "accessed": "2026-06-12",
+      "declared": true
+    },
+    {
+      "id": 3,
+      "title": "Run S1-2 du 11 juin 2026",
+      "publisher": "market.shoette.com",
+      "url": "../s1-2_2026-06-11/",
+      "accessed": "2026-06-12",
+      "from_source_run": true
+    },
+    {
+      "id": 4,
+      "title": "Run S2-1 du 11 juin 2026",
+      "publisher": "market.shoette.com",
+      "url": "../s2-1_2026-06-11/",
+      "accessed": "2026-06-12",
+      "from_source_run": true
+    }
+  ],
+  "last_updated": "2026-06-12"
+}
