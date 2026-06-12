@@ -185,6 +185,7 @@ Write in the same language as the input.
 # Décisions actées
 
 - **2026-06-12 — Pages de documentation renommées « Focus on Step N »** (titres, cartes de l'accueil, kickers), puis **URLs renommées `focus-step-N/`** (redirections 301 depuis `focus-skill-N/`, tous les liens internes et contrats mis à jour). Les skills du pipeline gardent leur nom interne « Skill ».
+- **2026-06-12 — Page Focus on Step 1 réorganisée (2e itération)** : la page parent documente désormais **le livrable** (à quoi sert l'étape, le rapport dans l'ordre de lecture, les conventions, un exemple réel) ; la documentation du **process** (étape par étape + snapshot téléchargeable) vit dans la page enfant `focus-step-1/process-skill-11juin2026/`. Modèle à suivre pour les futures pages Focus : livrable en parent, process en enfant daté.
 - **2026-06-12 — Page Focus on Step 1 remplie** : documentation étape par étape de la Skill 1 telle qu'en vigueur ce jour, avec **snapshot téléchargeable daté** de son SKILL.md (`skill-1-read-the-market_2026-06-12.md`). Principe : à chaque évolution notable de la skill, publier un nouveau snapshot daté plutôt que d'écraser l'ancien.
 
 - **2026-06-11 — Site 100% statique.** PHP abandonné : tout est généré en local puis uploadé.

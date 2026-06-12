@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Focus on Step 1 — Read the Market — Veille concurrentielle</title>
-  <meta name="description" content="Ce que fait la Step 1 — Read the Market, étape par étape : de l'input brut au rapport de marché publié. Documentation de la version du 12 juin 2026.">
+  <meta name="description" content="À quoi sert la Step 1 — Read the Market, et comment lire son livrable : hypothèses, executive summary, parts de marché, positionnement interactif, annexes.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -23,76 +23,69 @@
     <section class="hero">
       <span class="kicker">Documentation · Step 1</span>
       <h1>Focus on Step 1<br>Read the Market</h1>
-      <p class="lede">Ce que fait la Step 1, étape par étape — de l'input brut au rapport de marché publié. Cette page documente la version de la skill en vigueur au <b>12 juin 2026</b> ; sa définition exacte est téléchargeable en bas de page.</p>
+      <p class="lede">La première lecture d'un marché : à quoi sert cette étape, et comment lire le rapport qu'elle produit.</p>
     </section>
 
-    <h2 class="doc-section-h">Ce qu'un run produit</h2>
-    <p>Une exécution de la skill = <b>un run</b> : un rapport figé et daté, publié sous <code>market.shoette.com/[marché]/s1-[N]_[date]/</code>, accompagné de son <code>data.json</code> — le canevas de données structurées qui alimente le graphique interactif et servira aux skills suivantes. À chaque run, la page du marché et l'accueil sont mis à jour.</p>
-    <p>Le rapport contient quatre blocs :</p>
+    <h2 class="doc-section-h">À quoi sert cette étape</h2>
+    <p>Cette étape <b>débroussaille le marché</b> : elle en établit les grilles de lecture, identifie les acteurs qui comptent et pose les premiers ordres de grandeur — qui pèse combien, qui monte, qui décline. C'est le socle de toute la suite : les étapes d'analyse, de positionnement et de recommandation raisonneront à partir de ce qu'elle a établi.</p>
+    <p>Chaque exécution produit un <b>rapport daté et figé</b> (un « run »), listé sur la page du marché. Les runs s'accumulent au fil des cycles : on peut toujours revenir à une lecture passée et mesurer ce qui a changé.</p>
+
+    <h2 class="doc-section-h" style="margin-top:52px">Le livrable, dans l'ordre de lecture</h2>
+
+    <article class="fw-card">
+      <h3>Les hypothèses retenues</h3>
+      <p>Le rapport s'ouvre sur le cadre : le périmètre exact du marché étudié (ce qui en fait partie, ce qui en est exclu), la zone géographique, et la façon dont les chiffres sont mesurés. Quand la demande initiale était incomplète, les choix faits pour la compléter sont affichés ici, noir sur blanc — on sait toujours de quoi parle le rapport avant de le lire.</p>
+    </article>
+
+    <article class="fw-card">
+      <h3>L'executive summary — la grille de lecture</h3>
+      <p>Une demi-page qui donne les clés du marché : les <b>dimensions qui structurent réellement la concurrence</b> — celles qu'un acheteur ou un investisseur exigeant utiliserait pour comparer les offres —, les sous-secteurs, les codes et les forces à l'œuvre. Ce n'est volontairement pas un résumé des acteurs : c'est la grille avec laquelle tout le reste du rapport se lit.</p>
+    </article>
+
+    <article class="fw-card">
+      <h3>Part de marché &amp; croissance</h3>
+      <p>D'abord le contexte : le stade de maturité du marché et la période de référence choisie pour mesurer la croissance (avec la justification de ce choix). Puis le graphique : chaque acteur positionné selon son poids (hauteur) et sa dynamique (horizontale) — on voit d'un coup d'œil qui domine, qui accélère, qui perd du terrain. Les acteurs qui semblent compter mais pour lesquels aucune donnée chiffrée n'a été trouvée sont <b>listés sous le graphique</b> : leur absence est visible, jamais silencieuse.</p>
+    </article>
+
+    <article class="fw-card">
+      <h3>Le positionnement interactif</h3>
+      <p>Le cœur du livrable : chaque acteur est un cercle qui encode <b>jusqu'à cinq dimensions à la fois</b> — position verticale, position horizontale et couleur, taille, opacité, type de bordure. Le lecteur n'est pas passif : il peut changer les dimensions affectées à chaque canal, créer des calques pour comparer plusieurs vues, cliquer un acteur pour ouvrir sa fiche détaillée (faits marquants, valeurs, sources), et exporter le graphique en PNG ou SVG — l'export embarque la légende, la date et une clé de lecture. En dessous, le <b>tableau de toutes les valeurs</b> pour une lecture directe, suivi du bloc « Comment lire ces valeurs » : unités, devises, conversions appliquées, signification des échelles.</p>
+    </article>
+
+    <article class="fw-card">
+      <h3>Les annexes</h3>
+      <p>La traçabilité et l'accessibilité du rapport. <b>A1 — Sources</b> : chaque référence utilisée, avec son lien et sa date de consultation — les affirmations du rapport se vérifient. <b>A2 — Lexique</b> : les termes et le jargon du secteur, définis en français et en anglais, pour qu'un nouveau venu sur ce marché puisse lire le rapport sans dictionnaire.</p>
+    </article>
+
+    <h2 class="doc-section-h" style="margin-top:52px">Les conventions de lecture</h2>
     <ul class="kpis" style="margin:10px 0 0">
-      <li><b>Executive Summary</b> — le cadrage du marché en une demi-page : les dimensions qui le structurent (la grille de lecture de tout le reste), et les hypothèses prises sur l'input.</li>
-      <li><b>2a — Part de marché &amp; croissance</b> — le nuage de points part × croissance, précédé du stade de maturité et du choix justifié de la période de référence.</li>
-      <li><b>2b — Positionnement interactif</b> — le graphique à 5 canaux visuels (calques, fiches acteurs, export annoté), suivi du tableau de toutes les valeurs et du bloc « Comment lire ces valeurs » (unités, devises, conversions).</li>
-      <li><b>Annexes</b> — A1 : toutes les sources (URL + date de consultation) ; A2 : le lexique du secteur, défini en français et en anglais.</li>
+      <li><b>~</b> devant une valeur : estimation — le chiffre exact n'était pas public, l'ordre de grandeur est argumenté.</li>
+      <li><b>—</b> : information introuvable, et dite comme telle.</li>
+      <li>Un rapport est <b>figé à sa date</b> : il photographie le marché à un instant donné ; les évolutions se lisent en comparant les runs.</li>
+      <li>La date de <b>« dernière mise à jour »</b> figure en pied de rapport.</li>
     </ul>
 
-    <h2 class="doc-section-h" style="margin-top:52px">Le déroulé, étape par étape</h2>
-
-    <article class="fw-card">
-      <h3>Étape 0 — Résoudre le contexte du run</h3>
-      <p>La skill identifie le marché (slug ASCII, réutilisé si le marché existe déjà), calcule le numéro du run (dernier run S1 + 1), fixe la date du jour — d'où le dossier <code>s1-[N]_[date]</code> — et adopte la langue de l'input pour tout le rapport (les pages parent du site restent en français). Un contrôle préalable vérifie que le moteur du graphique interactif existe : sans lui, la skill refuse de démarrer.</p>
-    </article>
-
-    <article class="fw-card">
-      <h3>Étape 1 — Interpréter l'input</h3>
-      <p>L'input peut être un secteur, un besoin exprimé en langage naturel, une zone géographique — ou n'importe quelle combinaison. S'il est incomplet, la skill infère le marché le plus probable et <b>affiche ses hypothèses en tête de rapport</b> plutôt que de demander. Elle ne pose une question de clarification que si l'input est trop ambigu pour avancer.</p>
-    </article>
-
-    <article class="fw-card">
-      <h3>Étape 2 — Rechercher</h3>
-      <p>Des sous-agents de recherche partent en parallèle sur le web (presse économique internationale et presse spécialisée du secteur) — ils tournent sur un modèle économique (Sonnet), la consolidation restant au meilleur modèle de la session. Ils établissent : le stade de maturité du marché, qui détermine la période de référence (6 mois, 1 an ou 3 ans, choix justifié) ; les dimensions qui structurent le marché, classées par importance ; et pour chaque acteur significatif, la part de marché estimée, la croissance et une valeur par dimension. Trois règles absolues : <b>toute estimation est signalée</b>, <b>aucun acteur significatif n'est omis en silence</b> (faute de données chiffrées, il est listé à part avec ce qui a été cherché), et <b>les données brutes ne sont pas conservées</b> — seules survivent les données structurées et les références des sources.</p>
-    </article>
-
-    <article class="fw-card">
-      <h3>Étape 3 — Construire le canevas de données</h3>
-      <p>Tout est consolidé dans un <code>data.json</code> au schéma fixe : le classement des dimensions y pilote la configuration par défaut du graphique interactif (rang 2 → position X + couleur, rang 3 → taille, etc.) ; chaque valeur porte son drapeau « estimé » ; les identifiants des acteurs et des dimensions sont des slugs stables, conçus pour être appariés d'un run à l'autre par les skills suivantes ; et la note d'export (clé de lecture + première observation du marché) y est rédigée pour être embarquée dans les exports PNG/SVG du graphique.</p>
-    </article>
-
-    <article class="fw-card">
-      <h3>Étape 4 — Générer la page du run</h3>
-      <p>La page est autonome et figée : les données y sont inlinées <i>et</i> écrites dans le <code>data.json</code> voisin — strictement identiques. Le graphique 2a est un SVG statique généré pour ce run ; le 2b est monté sur le <b>moteur partagé et versionné</b> du site (construit une fois, jamais reconstruit pendant un run) ; sous le graphique, le tableau de toutes les valeurs puis les notes de lecture — unité et devise utilisées, conversions éventuelles avec taux de change, signification des échelles. La page se termine par les annexes et le champ « dernière mise à jour », seul élément qu'une future skill aura le droit de modifier.</p>
-    </article>
-
-    <article class="fw-card">
-      <h3>Étape 5 — Mettre à jour les pages parent</h3>
-      <p>La page du marché (section Step 1) et l'accueil sont mis à jour <b>uniquement entre leurs balises</b> <code>RUNS-SKILL1</code> et <code>MARKETS</code> — les runs du plus ancien au plus récent, Run 1 en premier. Tout le reste de ces pages appartient à Elena et n'est jamais écrasé. Au premier run d'un marché, la page marché est créée depuis le template du site.</p>
-    </article>
-
-    <article class="fw-card">
-      <h3>Étape 6 — Déployer, vérifier, committer</h3>
-      <p>Déploiement en deux temps : une simulation (<code>--dry-run</code>) pour contrôler la liste des fichiers, puis l'envoi réel — vers le répertoire <code>market/</code> de l'hébergement exclusivement, un garde-fou du script refusant tout autre chemin. La skill vérifie ensuite que les pages répondent en ligne, puis committe le run dans Git : chaque run est versionné, l'historique est rejouable.</p>
-    </article>
-
-    <h2 class="doc-section-h" style="margin-top:52px">Les garde-fous</h2>
-    <ul class="kpis" style="margin:10px 0 0">
-      <li><b>Estimations toujours signalées</b> — le préfixe « ~ » suit chaque valeur estimée, du data.json jusqu'aux exports.</li>
-      <li><b>Jamais d'omission silencieuse</b> — un acteur sans données chiffrées reste visible, avec la trace de ce qui a été cherché.</li>
-      <li><b>Runs figés</b> — un run publié n'est jamais modifié (hors champ « dernière mise à jour », réservé à une skill future).</li>
-      <li><b>Périmètre distant strict</b> — la skill n'écrit que dans le répertoire <code>market/</code> de l'hébergement.</li>
-      <li><b>Modèles répartis</b> — recherche sur Sonnet, orchestration et rédaction sur le meilleur modèle disponible.</li>
-      <li><b>Traçabilité</b> — sources datées en annexe, données structurées versionnées par Git, données brutes jetées.</li>
-    </ul>
-
-    <h2 class="doc-section-h" id="telechargement" style="margin-top:52px">La définition exacte, en téléchargement</h2>
-    <p>La skill évoluera. Cette page et le fichier ci-dessous documentent sa définition <b>telle qu'elle est en vigueur le 12 juin 2026</b> — copie exacte du document qui pilote la skill à cette date.</p>
+    <h2 class="doc-section-h" style="margin-top:52px">Voir un exemple réel</h2>
 
     <ul class="cards" style="margin-top:14px">
-      <li><a class="card" href="skill-1-read-the-market_2026-06-12.md" download>
+      <li><a class="card" href="../apps-perte-de-poids/s1-2_2026-06-11/">
         <span class="card-body">
-          <span class="card-title">SKILL.md — Read the Market</span>
-          <span class="card-meta">Snapshot du 12 juin 2026 · Markdown · la définition pilotant la skill à cette date</span>
+          <span class="card-title">Run S1-2 — Applications mobiles d'assistance à la perte de poids</span>
+          <span class="card-meta">11 juin 2026 · le livrable complet sur un marché réel</span>
         </span>
-        <span class="card-arrow">↓</span>
+        <span class="card-arrow">→</span>
+      </a></li>
+    </ul>
+
+    <h2 class="doc-section-h" style="margin-top:52px">Pour aller plus loin</h2>
+
+    <ul class="cards" style="margin-top:14px">
+      <li><a class="card" href="process-skill-11juin2026/">
+        <span class="card-body">
+          <span class="card-title">Le process de la Step 1, étape par étape</span>
+          <span class="card-meta">Comment le rapport est fabriqué — version du 11 juin 2026, avec la définition téléchargeable</span>
+        </span>
+        <span class="card-arrow">→</span>
       </a></li>
     </ul>
   </main>

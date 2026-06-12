@@ -7,6 +7,8 @@ Redirect 301 /focus-skill-1 /focus-step-1
 Redirect 301 /focus-skill-2 /focus-step-2
 Redirect 301 /focus-skill-3 /focus-step-3
 Redirect 301 /focus-skill-4 /focus-step-4
+# Snapshot de la Step 1 déplacé dans la page enfant process (2026-06-12)
+Redirect 301 /focus-step-1/skill-1-read-the-market_2026-06-12.md /focus-step-1/process-skill-11juin2026/skill-1-read-the-market_2026-06-12.md
 
 # market.shoette.com — règles de cache
 # Les pages HTML et les data.json évoluent (nouveaux runs, mises à jour Skill 3) :
