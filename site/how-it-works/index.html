@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>How it works — Veille concurrentielle</title>
-  <meta name="description" content="Comment l'agent de veille concurrentielle lit un marché : le pipeline en quatre skills, les runs datés, les données versionnées.">
+  <meta name="description" content="Comment fonctionne My Market Data : un agent lit des marchés en quatre étapes et publie des rapports datés — les runs — qui s'accumulent au fil des cycles.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -23,10 +23,29 @@
     <section class="hero">
       <span class="kicker">Documentation</span>
       <h1>How it works</h1>
-      <p class="lede">Comment l'agent lit un marché : le pipeline en quatre skills, les runs datés, les données versionnées.</p>
+      <p class="lede">Un agent lit des marchés, étape par étape, et publie ici ses lectures — datées, sourcées, comparables dans le temps.</p>
     </section>
 
-    <div class="placeholder">Page en construction — le contenu arrive bientôt.</div>
+    <h2 class="doc-section-h">L'idée</h2>
+    <p>My Market Data est animé par un <b>agent de veille concurrentielle</b>, conçu pour être réutilisable sur n'importe quel marché. Son process est découpé en <b>étapes</b> : chacune fait une chose précise, produit un livrable daté, et nourrit la suivante. L'agent travaille hors ligne — recherche, analyse, fabrication des rapports — puis publie le résultat sur ce site, entièrement statique.</p>
+
+    <h2 class="doc-section-h" style="margin-top:48px">Le pipeline, en quatre étapes</h2>
+    <ul class="kpis" style="margin:10px 0 0">
+      <li><b><a href="../focus-step-1/">Step 1 — Read the Market</a></b> : débroussailler le marché — ses grilles de lecture, ses principaux acteurs, les premiers ordres de grandeur.</li>
+      <li><b><a href="../focus-step-2/">Step 2 — Present the Market</a></b> : présenter le marché par ses grands KPI business et les frameworks d'analyse pertinents pour <i>ce</i> marché-là.</li>
+      <li><b><a href="../focus-step-3/">Step 3 — Position MY product in the Market</a></b> : situer mon produit dans ce paysage <span class="docnav-title" style="display:inline;letter-spacing:0;text-transform:none;font-size:12.5px">(en cours de définition)</span>.</li>
+      <li><b><a href="../focus-step-4/">Step 4 — Strategy recommendation</a></b> : conclure — des recommandations stratégiques alignées sur mes objectifs <span class="docnav-title" style="display:inline;letter-spacing:0;text-transform:none;font-size:12.5px">(en cours de définition)</span>.</li>
+    </ul>
+
+    <h2 class="doc-section-h" style="margin-top:48px">Les runs</h2>
+    <p>Chaque exécution d'une étape produit un <b>run</b> : un rapport figé et daté, publié sur la page de son marché. Les runs ne sont jamais modifiés après publication — ils photographient le marché à un instant donné. Au fil des cycles, ils s'accumulent : <b>l'évolution d'un marché se lit en comparant ses runs</b>.</p>
+
+    <h2 class="doc-section-h" style="margin-top:48px">Les données</h2>
+    <ul class="kpis" style="margin:10px 0 0">
+      <li><b>Les données structurées sont conservées</b> — chaque run embarque son canevas de données (acteurs, dimensions, valeurs), versionné, qui alimente les graphiques et les étapes suivantes.</li>
+      <li><b>Les données brutes ne sont pas conservées</b> — articles et pages consultés sont jetés après le run ; la traçabilité passe par les sources, toutes référencées et datées en annexe.</li>
+      <li><b>Les estimations sont signalées</b> — le préfixe « ~ » accompagne toute valeur estimée, et un acteur sans données chiffrées est listé visiblement, jamais omis en silence.</li>
+    </ul>
   </main>
 
   <footer class="sitefoot">
