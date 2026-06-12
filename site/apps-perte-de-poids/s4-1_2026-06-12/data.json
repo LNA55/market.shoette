@@ -1,0 +1,386 @@
+{
+  "schema_version": 1,
+  "skill": "strategy-recommendation",
+  "market": {
+    "slug": "apps-perte-de-poids",
+    "label": "Applications mobiles d'assistance à la perte de poids",
+    "language": "fr"
+  },
+  "run": {
+    "number": 1,
+    "date": "2026-06-12"
+  },
+  "source_runs": {
+    "s3": {
+      "number": 1,
+      "date": "2026-06-12",
+      "path": "../s3-1_2026-06-12/",
+      "age_days": 0,
+      "freshness_warning": false
+    },
+    "s1": {
+      "number": 2,
+      "date": "2026-06-11",
+      "path": "../s1-2_2026-06-11/",
+      "age_days": 1,
+      "freshness_warning": false
+    },
+    "s2": {
+      "number": 1,
+      "date": "2026-06-11",
+      "path": "../s2-1_2026-06-11/",
+      "age_days": 1,
+      "freshness_warning": false
+    }
+  },
+  "project": {
+    "id": "what_is_wrong_with_me",
+    "name": "What is wrong with me",
+    "source_url": "https://w.shoette.com/"
+  },
+  "declared_inputs": {
+    "mix": {
+      "produit": null,
+      "prix": null,
+      "promotion": null,
+      "place": null
+    },
+    "constraints": null
+  },
+  "market_summary": {
+    "as_of": "2026-06-11",
+    "data_age_note": "Synthèse pure des runs S1-2 et S2-1 du 11 juin 2026 (1 jour) — aucun rafraîchissement web.",
+    "points": [
+      "Marché ~2,2 Md$ (2025), ~11-13 %/an — en recomposition : valeur +13 %, volumes +0,8 %.",
+      "61 % de la valeur captée par les plateformes médicalisées ; compagnons GLP-1 : catégorie naissante (~1 %), sans leader.",
+      "Choc GLP-1 : 12,4 % des adultes US — substitut au régime comportemental, faillite-éclair du leader historique (mai 2025).",
+      "Top 2 (WW ~31 %, Noom ~29 %) = ~60 % des revenus ; churn élevé ; péage stores 15-30 %.",
+      "Deal flow dense : faillite WW, rachats Intent + Cal AI par MyFitnessPal, Series B Simple 35 M$, pharmacie Noom — direction : IA à faible friction + intégration médicale.",
+      "Trajectoire de référence d'un entrant différencié : ~1-2 % du marché en 3-5 ans (Cal AI ~30 M$ en 18 mois, MacroFactor ~24 M$)."
+    ]
+  },
+  "positioning_summary": {
+    "points": [
+      "Seul dans le couloir d'intégration médicale 3-8, entre trackers (0-2) et plateformes de prescription (9) ; voisins conceptuels (compagnons GLP-1) hors graphique faute de données.",
+      "IA ~9/10 (déclaratif) — trio de tête avec Simple, Cal AI, Noom — pour une fonction inédite : enquêter sur les causes au lieu d'exécuter un programme.",
+      "Mono-fonction assumé (seul avec Cal AI) : ni tracking, ni plans, ni communauté.",
+      "PDM 0 %, prix non annoncé, beta sur liste d'attente — position = potentiel, pas traction ; tout est déclaratif."
+    ]
+  },
+  "swot": {
+    "strengths": [
+      {
+        "point": "Seul dans le couloir médian du marché (intégration médicale ~3, couloir 3-8 vide)",
+        "basis": "S3"
+      },
+      {
+        "point": "IA conversationnelle multimodale au niveau du trio de tête (~9/10)",
+        "basis": "S3 — déclaratif"
+      },
+      {
+        "point": "Fonction inédite sur ce marché : expliquer le blocage plutôt que prescrire un programme",
+        "basis": "S3"
+      },
+      {
+        "point": "Privacy UE affichée (RGPD, HDS, AES-256) sur des données ultra-sensibles",
+        "basis": "déclaratif (site du projet)"
+      }
+    ],
+    "weaknesses": [
+      {
+        "point": "Beta sur liste d'attente : promesse produit entièrement déclarative, rien de vérifié en production",
+        "basis": "S3"
+      },
+      {
+        "point": "0 % de part, zéro notoriété face à des acteurs à dizaines de millions d'utilisateurs",
+        "basis": "S1"
+      },
+      {
+        "point": "Ni tracker ni programme : risque de déception d'attente sur ce marché (mono-fonction)",
+        "basis": "S3"
+      },
+      {
+        "point": "Prix non défini ; « not a medical device » sur un marché médicalisé à 61 %",
+        "basis": "S3 + S2"
+      }
+    ],
+    "opportunities": [
+      {
+        "point": "La vague GLP-1 (12,4 % des adultes US) fabrique une population massive de traités — donc de déçus du traitement, l'angle mort du marché",
+        "basis": "S2 (PESTEL) + S3"
+      },
+      {
+        "point": "Catégorie compagnon GLP-1 naissante (~1 %), sans leader",
+        "basis": "S2"
+      },
+      {
+        "point": "Deal flow dense — le marché rachète l'innovation plutôt que la répliquer (précédent Cal AI)",
+        "basis": "S2 (vitalité)"
+      },
+      {
+        "point": "Leaders fragilisés : WW −20 %, MyFitnessPal −16 % de croissance",
+        "basis": "S1"
+      }
+    ],
+    "threats": [
+      {
+        "point": "Rivalité forte : top 2 = ~60 % des revenus, churn élevé, coûts de changement nuls",
+        "basis": "S2 (Porter)"
+      },
+      {
+        "point": "WW Clinic / Noom Med peuvent ajouter un module « pourquoi ça ne marche pas »",
+        "basis": "S1 (cards)"
+      },
+      {
+        "point": "Péage des stores : 15-30 % de chaque abonnement",
+        "basis": "S2 (value chain)"
+      },
+      {
+        "point": "Si les traitements progressent (doses, formes orales), le segment des non-répondeurs peut se réduire",
+        "basis": "raisonnement sur S2 (PESTEL)"
+      }
+    ]
+  },
+  "marketing_mix": {
+    "produit": {
+      "declared": null,
+      "verdict": null,
+      "recommendation": "Rester un produit d'enquête (aucun tracking calorique, aucun programme — case commoditisée) ; faire du journal de traitement GLP-1 (dates, doses, effets ressentis) un signal de première classe à corréler ; ajouter l'export « dossier d'enquête » destiné à la consultation médicale — complément assumé, jamais substitut.",
+      "supporting_data": [
+        "S3 : mono-fonction × IA ~9 — la position défendable est l'investigation",
+        "S2 GE/McKinsey : tracking calorique = attractivité déclinante ; compagnon GLP-1 = case « investir »",
+        "S2 Porter : position défendable = intégration médicale OU différenciation IA organique"
+      ]
+    },
+    "prix": {
+      "declared": null,
+      "verdict": null,
+      "recommendation": "~9-14 $/mois en abonnement annuel — référence de lancement ~12 $/mois facturé annuellement (~144 $/an), mensuel sans engagement ~19 $/mois pour orienter vers l'annuel ; beta gratuite pour la cohorte test GLP-1 (la valeur à capter est la preuve, pas le revenu) ; fourchette à retester dès les premières enquêtes réussies.",
+      "supporting_data": [
+        "S1 : fourchette marché ~2,5-23 $/mois ; moyenne ~7,8, médiane ~5,5",
+        "S1 : deux blocs — trackers 2,5-6,7 $/mois, programmes médicalisés 17,4-23 $/mois",
+        "S2 : valeur par utilisateur en hausse (+13 %), rentabilité démontrée aux deux extrêmes de prix"
+      ]
+    },
+    "promotion": {
+      "declared": null,
+      "verdict": null,
+      "recommendation": "Zéro acquisition payante au lancement : (1) les enquêtes anonymisées et consenties comme contenu — le moteur organique ; (2) la voix du fondateur-patient (Elena appartient à la cible — si elle s'y sent à l'aise) ; (3) la privacy UE en étendard de confiance.",
+      "supporting_data": [
+        "S2 Porter/TAM : CAC élevé, volumes saturés (+0,8 %) — la voie démontrée est l'organique (Cal AI : 15 M de téléchargements en <2 ans)",
+        "S2 PESTEL : destigmatisation — le discours passe du régime au traitement",
+        "S3 : cible précise, identifiable, à douleur forte"
+      ]
+    },
+    "place": {
+      "declared": null,
+      "verdict": null,
+      "recommendation": "Web-first pour la beta (zéro péage, itération rapide, relation directe — la waitlist existe déjà) ; stores au lancement public, en gardant la souscription web comme canal de référence ; canal employeurs/payeurs préparé mais pas ouvert pendant la beta.",
+      "supporting_data": [
+        "S2 value chain : péage stores 15-30 % — premier maillon de marge cédé",
+        "S3 : beta web déjà en place (w.shoette.com)",
+        "Signaux B2B2C en section 5 (Omada, Noom SmartRx)"
+      ]
+    }
+  },
+  "other_recommendations": [
+    {
+      "theme": "cible",
+      "recommendation": "Tenir la niche non-répondeurs GLP-1 ; résister à l'élargissement « app santé générale » avant les preuves.",
+      "rationale": "L'angle mort établi par S3 est la seule position non disputée ; la généralisation viendra des preuves, pas l'inverse."
+    },
+    {
+      "theme": "lancement",
+      "recommendation": "La preuve avant la croissance — métrique de pilotage : le temps jusqu'à la première corrélation utile par utilisateur.",
+      "rationale": "La faiblesse n°1 (tout déclaratif) ne se corrige que par la beta ; c'est le chiffre que partenaires et investisseurs demanderont."
+    },
+    {
+      "theme": "produit/données",
+      "recommendation": "Architecturer dès la beta la production consentie, anonymisée et agrégée d'insights sur la non-réponse aux GLP-1.",
+      "rationale": "C'est la donnée que pharma, télésanté et payeurs recherchent — et l'actif défendable que la copie d'interface ne réplique pas."
+    },
+    {
+      "theme": "défense",
+      "recommendation": "Préparer la réponse à la réplication (WW Clinic, Noom Med) : vitesse, spécialisation revendiquée, et adossement à un partenaire si la traction vient.",
+      "rationale": "La fenêtre est courte — les consolidateurs rachètent l'innovation (précédent Cal AI) mais savent aussi la copier."
+    }
+  ],
+  "partnership_targets": [
+    {
+      "name": "Novo Nordisk",
+      "category": "pharma GLP-1",
+      "deal_type": "partenariat d'envergure",
+      "logic": "La NNPP cherche explicitement des apps améliorant les outcomes GLP-1 ; 25 % de non-répondeurs = churn médicamenteux que W peut expliquer et réduire.",
+      "signals": "NNPP (2025-06-18) ; réseau WW/NovoCare (2025-07), Talkspace, accord Hims & Hers (2026-03-09).",
+      "source_ids": [
+        7,
+        8
+      ]
+    },
+    {
+      "name": "Eli Lilly",
+      "category": "pharma GLP-1",
+      "deal_type": "partenariat (intégration LillyDirect)",
+      "logic": "Même besoin sur Zepbound/Mounjaro ; modèle = intégration de tiers, pas d'acquisition.",
+      "signals": "LillyDirect (2024-01-04) ; Omada intégré à Employer Connect (2026-05).",
+      "source_ids": [
+        9,
+        13
+      ]
+    },
+    {
+      "name": "Oura",
+      "category": "wearable",
+      "deal_type": "acquisition / partenariat data",
+      "logic": "Le ring capte les signaux, W les fait parler — complémentarité maximale ; mais Oura avance seul sur le territoire (menace en germe) : fenêtre courte, approcher tôt via partenariat API.",
+      "signals": "Acquisition Veri (2024-09-11) ; GLP-1 Insights dans le Ring 5 (2026-05-29).",
+      "source_ids": [
+        10
+      ]
+    },
+    {
+      "name": "Whoop",
+      "category": "wearable",
+      "deal_type": "acquisition / partenariat data",
+      "logic": "Trajectoire parallèle à Oura, appétit d'actifs logiciels différenciants avant IPO.",
+      "signals": "Rachat Anyot (2025) ; Advanced Labs × Quest (2025-09) ; IPO envisagée.",
+      "source_ids": [
+        11
+      ]
+    },
+    {
+      "name": "Ro",
+      "category": "télésanté obésité",
+      "deal_type": "partenariat clinique",
+      "logic": "Ro valorise sa donnée patients comme actif de recherche ; W détecte et documente les non-répondeurs → Ro ajuste les protocoles ; l'export « dossier d'enquête » est le véhicule.",
+      "signals": "Collaboration Amgen, 8 abstracts ObesityWeek 2025, étude peer-reviewed (2025-10).",
+      "source_ids": [
+        12
+      ]
+    },
+    {
+      "name": "WeightWatchers / Noom",
+      "category": "consolidateurs du panel",
+      "deal_type": "rachat (brique produit)",
+      "logic": "WW se reconstruit en acteur médical intégré ; Noom s'étend au-delà du poids — une brique « investigation de la non-réponse » s'insère dans leurs offres ; précédent : MyFitnessPal a racheté Cal AI plutôt que répliquer.",
+      "signals": "WW : Sequence 132 M$ (2023), distributeur NovoCare (2025) ; Noom : pharmacie 503A (2026-04-01), SmartRx, Highmark.",
+      "source_ids": [
+        8,
+        13
+      ]
+    },
+    {
+      "name": "Omada Health / payeurs-employeurs",
+      "category": "B2B2C santé",
+      "deal_type": "distribution B2B2C",
+      "logic": "Là où la non-réponse a un coût chiffrable : détecter tôt un non-répondeur = cesser de payer un traitement inefficace — l'app se rembourse d'elle-même.",
+      "signals": "GLP-1 Flex Care ; intégration Lilly Employer Connect (2026-05) ; Noom vend déjà l'économie GLP-1 aux employeurs.",
+      "source_ids": [
+        13
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "title": "Run S3-1 du 2026-06-12",
+      "publisher": "market.shoette.com",
+      "url": "../s3-1_2026-06-12/",
+      "accessed": "2026-06-12",
+      "from_source_run": true
+    },
+    {
+      "id": 2,
+      "title": "Run S1-2 du 2026-06-11",
+      "publisher": "market.shoette.com",
+      "url": "../s1-2_2026-06-11/",
+      "accessed": "2026-06-12",
+      "from_source_run": true
+    },
+    {
+      "id": 3,
+      "title": "Run S2-1 du 2026-06-11",
+      "publisher": "market.shoette.com",
+      "url": "../s2-1_2026-06-11/",
+      "accessed": "2026-06-12",
+      "from_source_run": true
+    },
+    {
+      "id": 4,
+      "title": "Cadrage d'Elena — cible, mix non déclaré, aucune contrainte",
+      "accessed": "2026-06-12",
+      "declared": true
+    },
+    {
+      "id": 5,
+      "title": "Scientific American — Why Ozempic and Wegovy don't cause weight loss for everyone",
+      "url": "https://www.scientificamerican.com/article/why-ozempic-and-wegovy-dont-cause-weight-loss-for-everyone/",
+      "accessed": "2026-06-12",
+      "from_source_run": false
+    },
+    {
+      "id": 6,
+      "title": "Expert Opinion on Pharmacotherapy (Taylor & Francis, 2025) — prédicteurs de réponse aux GLP-1RA",
+      "url": "https://www.tandfonline.com/doi/full/10.1080/14656566.2025.2517802",
+      "accessed": "2026-06-12",
+      "from_source_run": false
+    },
+    {
+      "id": 7,
+      "title": "Novo Nordisk Partner Platform — pharmaceutical-technology.com (2025-06-18)",
+      "url": "https://www.pharmaceutical-technology.com/news/novo-nordisk-digital-health-partners-improve-glp1ra/",
+      "accessed": "2026-06-12",
+      "from_source_run": false
+    },
+    {
+      "id": 8,
+      "title": "Réseau Novo : WW/NovoCare (pharmaceuticalcommerce.com, 2025-07-01) ; Hims & Hers (statnews.com, 2026-03-09) ; WW × Sequence (mobihealthnews.com)",
+      "url": "https://www.statnews.com/2026/03/09/novo-nordisk-wegovy-hims-hers-deal/",
+      "accessed": "2026-06-12",
+      "from_source_run": false
+    },
+    {
+      "id": 9,
+      "title": "Lancement LillyDirect — prnewswire.com (2024-01-04)",
+      "url": "https://www.prnewswire.com/news-releases/lilly-launches-end-to-end-digital-healthcare-experience-through-lillydirect-302025738.html",
+      "accessed": "2026-06-12",
+      "from_source_run": false
+    },
+    {
+      "id": 10,
+      "title": "Oura : acquisition Veri (businesswire.com, 2024-09-11) ; GLP-1 Insights Ring 5 (hitconsultant.net, 2026-05-29)",
+      "url": "https://hitconsultant.net/2026/05/29/oura-ring-5-launches-clinical-health-radar/",
+      "accessed": "2026-06-12",
+      "from_source_run": false
+    },
+    {
+      "id": 11,
+      "title": "Whoop : Anyot + IPO (insider.fitt.co) ; Advanced Labs (whoop.com, 2025-09)",
+      "url": "https://www.whoop.com/us/en/thelocker/whoop-advanced-labs/",
+      "accessed": "2026-06-12",
+      "from_source_run": false
+    },
+    {
+      "id": 12,
+      "title": "Ro × Amgen, ObesityWeek 2025 — ro.co/press (2025-10)",
+      "url": "https://ro.co/press/obesity-week-2025/",
+      "accessed": "2026-06-12",
+      "from_source_run": false
+    },
+    {
+      "id": 13,
+      "title": "Noom pharmacie 503A (globenewswire.com, 2026-04-01) ; WW × LillyDirect (2025-04-29) ; Omada GLP-1 Flex Care (investors.omadahealth.com, 2026-05) ; Noom SmartRx (noom.com)",
+      "url": "https://www.globenewswire.com/news-release/2026/04/01/3266689/0/en/Noom-Acquires-Licensed-503A-Pharmacy-Accelerating-the-Next-Era-of-Preventive-Care-and-Enabling-Nooms-Expansion-Beyond-Weight-Health.html",
+      "accessed": "2026-06-12",
+      "from_source_run": false
+    },
+    {
+      "id": 14,
+      "title": "Statut des apps d'investigation comparables (Guava Health, Bearable, Visible) — crunchbase.com",
+      "url": "https://www.crunchbase.com/organization/guava-health",
+      "accessed": "2026-06-12",
+      "from_source_run": false
+    }
+  ],
+  "last_updated": "2026-06-12"
+}
