@@ -1,10 +1,10 @@
 # Projet MARKET — Agent de veille concurrentielle
 
-Agent de veille concurrentielle réutilisable multi-marchés, organisé en 5 skills (pipeline). Génération locale avec Claude Code → déploiement sur OVH mutualisé (`market.shoette.com`).
+Agent de veille concurrentielle réutilisable multi-marchés, organisé en 4 skills (pipeline). Génération locale avec Claude Code → déploiement sur OVH mutualisé (`market.shoette.com`).
 
 **Lis `SPEC.md` avant toute tâche** — il contient la spécification complète (skills, stack, architecture web, contraintes OVH, questions ouvertes).
 
-Les skills du pipeline vivent dans `.claude/skills/` — Skill 1 : `read-the-market`, Skill 2 : `present-the-market`, Skill 3 : `position-my-product` (chacune avec ses contrats dans `references/`). Schéma d'URL des runs : `[marché]/s[K]-[N]_[date]/`.
+Les skills du pipeline vivent dans `.claude/skills/` — Skill 1 : `read-the-market`, Skill 2 : `present-the-market`, Skill 3 : `position-my-product`, Skill 4 : `strategy-recommendation` (chacune avec ses contrats dans `references/`). Schéma d'URL des runs : `[marché]/s[K]-[N]_[date]/`.
 
 ## Règles
 

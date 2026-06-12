@@ -13,7 +13,7 @@ Construction d'un agent de veille concurrentielle **réutilisable sur plusieurs 
 1. **Skill 1 — Read the Market** — identifier les acteurs + lire le marché *(spécifiée ci-dessous, opérationnelle)*
 2. **Skill 2 — Present the Market** — *(à définir ensemble)*
 3. **Skill 3 — Position MY product in the Market** — *(spécifiée le 2026-06-12, V1 — premier run en attente du prérequis moteur)*
-4. **Skill 4 — Strategy recommendation** — *(à définir ensemble)*
+4. **Skill 4 — Strategy recommendation** — *(spécifiée le 2026-06-12, V1 — premier run en attente)*
 
 > Cette taxonomie en 4 skills remplace le découpage initial en 5 (l'ancien « canevas de données » et la « mise à jour périodique » seront redistribués dans les Skills 2-4 lors de leur spécification). La page de chaque marché est sectionnée par skill, avec une zone balisée par skill (`RUNS-SKILL1` à `RUNS-SKILL4`).
 
@@ -179,13 +179,22 @@ Write in the same language as the input.
 - [x] Skill 3 V1 spécifiée et rédigée — `.claude/skills/position-my-product/` (2026-06-12)
 - [x] Session moteur 2b dédiée (2026-06-12) : marqueur « mon projet » (`is_mine`) — rayons radiaux, nom en gras, badge tooltip/fiche, note de légende et ligne d'export conditionnelles ; rétro-compatible (rendu strictement inchangé sans `is_mine`), vérifié sur la démo. Le premier run S3 est débloqué.
 - [x] Premier run S3-1 exécuté et déployé (2026-06-12) : « What is wrong with me » (w.shoette.com) positionné sur le marché apps-perte-de-poids — graphique du run S1-2 enrichi + note https://market.shoette.com/apps-perte-de-poids/s3-1_2026-06-12/
-- [ ] Définir ensemble la Skill 4 (Strategy recommendation) — Elena a annoncé vouloir des recommandations stratégiques sur le projet positionné par le run S3-1
+- [x] Skill 4 V1 spécifiée et rédigée — `.claude/skills/strategy-recommendation/` (2026-06-12) ; premier run en attente du go d'Elena (cible : « What is wrong with me » sur apps-perte-de-poids)
 
 # Questions ouvertes
 
 1. **Skill 2 — l'intention du run** (posée le 2026-06-11) : paramètre explicite au lancement de la skill (défaut « évaluer l'opportunité du marché ») ou toujours implicite ? L'intention pilote la sélection des frameworks.
 
 # Décisions actées
+
+- **2026-06-12 — Skill 4 V1, cadrage validé** (structure 1-4 posée par Elena, arbitrages du même jour) :
+  (a) **Objet** : recommandations stratégiques pour le projet positionné par la Skill 3. **Prérequis : un run S3 sur le même marché et le même projet** (la chaîne garantit S1/S2). Rapport en 5 sections : résumé du marché, résumé du positionnement, SWOT, marketing mix, recommandations & partenariats.
+  (b) **Sections 1-2 = synthèse pure des runs existants** (choix Elena) — aucun rafraîchissement web des données de marché ; l'âge de chaque run source est affiché en tête, règle des 3 mois inchangée (signaler, proposer de relancer, ne pas bloquer).
+  (c) **SWOT en section dédiée** (choix Elena) — conformément à la décision du 2026-06-11 qui le réservait aux Skills 3/4 : interne (forces/faiblesses) × externe (opportunités/menaces), chaque entrée ancrée dans un fait S1/S2/S3 ou une déclaration d'Elena ; grille 2×2 en SVG inline.
+  (d) **Marketing mix (4P) conditionnel** : choix déclarés par Elena au lancement → verdict franc (jamais complaisant, contredit par les données si les données contredisent) ; choix non déclarés → recommandations chiffrées quand les runs le permettent (ex. prix : fourchette concurrents du run S1 → fourchette recommandée + modalité d'abonnement).
+  (e) **Section partenariats/sorties** façon analyste M&A : entreprises nommées, logique stratégique, type d'opération (partenariat / rachat / fusion / investisseur), signaux observables. **Seule section autorisée à la recherche web** (1-2 sous-agents Sonnet, faits cités URL + date) — les acquéreurs plausibles débordent du panel S1.
+  (f) **Publication standard** (choix Elena : « tout publier ») ; à terme, Elena prévoit une **protection par mot de passe du site, probablement par marché** — hors périmètre de la skill, à traiter en session site le moment venu.
+  (g) **Livrable** : `[marché]/s4-[N]_[date]/` (zone `RUNS-SKILL4`), page + data.json identiques ; la Skill 4 ne modifie aucun autre run (aucune exception au principe « runs figés », contrairement à la S3). Modèles : raisonnement sur le meilleur modèle de la session, recherches M&A sur Sonnet.
 
 - **2026-06-12 — Skill 3 V1, cadrage validé** :
   (a) **Objet** : positionner un nouveau projet (description libre ou URL, ex. w.shoette.com) sur le graphique 2b du dernier run S1 du marché, avec une note courte. Inputs : le projet, le marché, infos optionnelles d'Elena ; au plus 2-3 questions ciblées si la matière manque. **Prérequis (précisé le 2026-06-12) : le marché doit avoir au moins un run S1 ET un run S2** — sans run S2 sur le même sujet, la skill s'arrête et propose de lancer la Skill 2 d'abord.
