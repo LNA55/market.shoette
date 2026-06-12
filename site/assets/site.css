@@ -50,10 +50,13 @@ body {
   -webkit-backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--line);
 }
+/* Géométrie IDENTIQUE sur toutes les pages du sous-domaine (y compris les runs) :
+   le logo ne bouge jamais d'une page à l'autre. Toute modification ici doit être
+   répercutée dans le CSS inline des pages de runs. */
 .siteheader-inner {
-  max-width: calc(50vw + 440px);
+  max-width: calc(50vw + 550px);
   margin: 0 auto;
-  padding: 11px 24px;
+  padding: 11px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -72,7 +75,6 @@ body {
   text-decoration: none;
 }
 .brand .dot { color: var(--coral); }
-.topnote { font-size: 13.5px; color: var(--muted); font-weight: 500; }
 .crumb {
   font-size: 13.5px;
   font-weight: 600;
@@ -319,6 +321,5 @@ a.fw:hover { background: #dcdcf8; transform: translateY(-1px); }
 
 @media (max-width: 560px) {
   .shell { padding-top: 24px; }
-  .siteheader-inner { padding: 10px 16px; }
   .card { padding: 18px 20px; gap: 14px; }
 }

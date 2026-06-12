@@ -90,7 +90,7 @@ Zone Skill 1 — **runs du plus ancien au plus récent : Run 1 en premier, les s
 <header class="siteheader">
   <div class="siteheader-inner">
     <a class="brand" href="../">My Market Data<span class="dot">.</span></a>
-    <a class="crumb" href="../">← Tous les marchés</a>
+    <a class="crumb" href="../">← Accueil</a>
   </div>
 </header>
 <div class="shell">
@@ -139,7 +139,7 @@ Zone Skill 1 — **runs du plus ancien au plus récent : Run 1 en premier, les s
 
 ## Page de run — structure
 
-- **En-tête de site sticky** (uniforme sur tout le sous-domaine, décision Elena 2026-06-12) : barre fine `position: sticky` en haut de page — fond crème translucide flouté, logo `My Market Data<span class="dot">.</span>` (lien `../../` vers l'accueil) à gauche, fil d'Ariane `← Marché : [label] · Tous les marchés` à droite. CSS de l'en-tête inline (copier depuis un run existant), police Plus Jakarta Sans (poids 800 seul) chargée pour la marque uniquement. Prévoir `[id] { scroll-margin-top: 70px; }` pour les ancres.
+- **En-tête de site sticky** (uniforme sur tout le sous-domaine, décision Elena 2026-06-12) : barre fine `position: sticky` en haut de page — fond crème translucide flouté, logo `My Market Data<span class="dot">.</span>` (lien `../../` vers l'accueil) à gauche, fil d'Ariane `← Marché : [label] · Accueil` à droite (la page précédente d'abord, puis chaque niveau jusqu'à l'accueil ; le lien vers l'accueil s'appelle toujours « Accueil »). CSS de l'en-tête inline (copier depuis un run existant), police Plus Jakarta Sans (poids 800 seul) chargée pour la marque uniquement. **Géométrie strictement identique sur toutes les pages du sous-domaine** : `.siteheader-inner { max-width: calc(50vw + 550px); padding: 11px 20px; }` — le logo ne bouge jamais d'une page à l'autre ; toute évolution doit être répercutée dans `site.css` ET dans les runs. Prévoir `[id] { scroll-margin-top: 70px; }` pour les ancres.
 - **Autonome** : les styles du rapport sont inline dans le `<head>` (les runs sont figés ; pas de CSS partagé pour le texte du rapport).
 - **Conteneur fluide** : `max-width: calc(50vw + 550px)` sur le conteneur principal — marges latérales réduites de moitié par rapport à un conteneur fixe de 1100px, à toute largeur d'écran, sans breakpoint (règle de design validée par Elena le 2026-06-11, cohérente avec les pages parent).
 - **Seules dépendances externes** : `../../assets/positioning-chart-vN.js` et `.css` (versionnés, voir plus bas).
