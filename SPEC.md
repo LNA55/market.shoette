@@ -177,7 +177,7 @@ Write in the same language as the input.
 - [x] Run de test exécuté et déployé (2026-06-11, go d'Elena) : **applications mobiles d'assistance à la perte de poids** — https://market.shoette.com/apps-perte-de-poids/s1-1_2026-06-11/ — en attente des retours d'Elena pour ajuster le skill
 - [x] Skill 2 V1 spécifiée et rédigée — `.claude/skills/present-the-market/` (2026-06-11) ; premier run en attente du go d'Elena
 - [x] Skill 3 V1 spécifiée et rédigée — `.claude/skills/position-my-product/` (2026-06-12)
-- [ ] Session moteur 2b dédiée : marqueur distinctif « mon projet » (`is_mine`) — prérequis au premier run S3
+- [x] Session moteur 2b dédiée (2026-06-12) : marqueur « mon projet » (`is_mine`) — rayons radiaux, nom en gras, badge tooltip/fiche, note de légende et ligne d'export conditionnelles ; rétro-compatible (rendu strictement inchangé sans `is_mine`), vérifié sur la démo. Le premier run S3 est débloqué.
 - [ ] Définir ensemble la Skill 4 (Strategy recommendation)
 
 # Questions ouvertes

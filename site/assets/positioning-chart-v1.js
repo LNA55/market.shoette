@@ -8,6 +8,11 @@
  *
  * Version figée : correctifs rétro-compatibles uniquement.
  * Changement d'API ou de comportement => nouveau fichier positioning-chart-v2.js.
+ *
+ * 2026-06-12 — ajout rétro-compatible (session moteur dédiée, Skill 3) :
+ * marqueur « mon projet » via players[].is_mine (rayons radiaux, nom en gras,
+ * badge tooltip/fiche, note de légende et ligne d'export conditionnelles).
+ * Sans is_mine dans les données, le rendu est strictement inchangé.
  */
 (function () {
   "use strict";
@@ -30,6 +35,7 @@
       exportLabel: "Exporter :",
       lastUpdated: "Dernière mise à jour",
       estimatedNote: "~ = valeur estimée",
+      myProject: "mon projet",
       close: "✕", sourcesT: "Sources", factsT: "Faits marquants",
       lockTip: "Verrouiller (figer cette vue)", visTip: "Afficher / masquer",
       delTip: "Supprimer le calque", dragTip: "Glisser pour réordonner",
@@ -62,6 +68,7 @@
       exportLabel: "Export:",
       lastUpdated: "Last updated",
       estimatedNote: "~ = estimated value",
+      myProject: "my project",
       close: "✕", sourcesT: "Sources", factsT: "Key facts",
       lockTip: "Lock (save this view)", visTip: "Show / hide",
       delTip: "Delete layer", dragTip: "Drag to reorder",
@@ -321,7 +328,9 @@
       '  <aside class="pc-side" hidden></aside>' +
       "</div>" +
       '<div class="pc-foot">' +
-      '  <span class="pc-estnote">' + esc(t.estimatedNote) + "</span>" +
+      '  <span class="pc-estnote">' + esc(t.estimatedNote) +
+      ((this.data.players || []).some(function (p) { return p.is_mine; }) ? ' <span class="pc-minenote">· ✺ = ' + esc(t.myProject) + "</span>" : "") +
+      "</span>" +
       (this.data.last_updated ? '  <span class="pc-updated">' + esc(t.lastUpdated) + " : " + esc(this.data.last_updated) + "</span>" : "") +
       "</div>" +
       '<div class="pc-tooltip" hidden></div>';
@@ -706,12 +715,30 @@
           mg.appendChild(svgEl("circle", { r: Math.max(1, m.r - 7), fill: "none", stroke: m.stroke, "stroke-width": 1 }));
         }
 
+        /* marqueur « mon projet » (Skill 3) : rayons radiaux hors du cercle —
+           aucune collision avec les canaux bordure/couleur/taille/opacité */
+        if (p.is_mine) {
+          for (let k = 0; k < 8; k++) {
+            const a = (k * Math.PI) / 4;
+            mg.appendChild(svgEl("line", {
+              x1: (m.r + 3) * Math.cos(a), y1: (m.r + 3) * Math.sin(a),
+              x2: (m.r + 9) * Math.cos(a), y2: (m.r + 9) * Math.sin(a),
+              stroke: "#0f172a", "stroke-width": 1.7, "stroke-linecap": "round",
+            }));
+          }
+        }
+
         /* nom : dans le marqueur si la place le permet, sinon à côté */
         const name = p.name || p.id;
         const fits = name.length * 6.4 < (m.r - 3) * 2;
-        const label = fits
-          ? svgEl("text", { y: 4, "font-size": 11, fill: "#fff", "text-anchor": "middle", "font-weight": 600, "pointer-events": "none" })
-          : svgEl("text", { x: m.r + 5, y: 4, "font-size": 11, fill: "#334155", "text-anchor": "start", "pointer-events": "none" });
+        const labelAttrs = fits
+          ? { y: 4, "font-size": 11, fill: "#fff", "text-anchor": "middle", "font-weight": 600, "pointer-events": "none" }
+          : { x: m.r + 5, y: 4, "font-size": 11, fill: "#334155", "text-anchor": "start", "pointer-events": "none" };
+        if (p.is_mine) {
+          labelAttrs["font-weight"] = fits ? 800 : 700;
+          if (!fits) { labelAttrs.x = m.r + 12; labelAttrs.fill = "#0f172a"; }
+        }
+        const label = svgEl("text", labelAttrs);
         label.textContent = name;
         mg.appendChild(label);
 
@@ -758,6 +785,7 @@
       { key: "border", label: t.chBorder },
     ];
     let html = "<strong>" + esc(p.name || p.id) + "</strong>";
+    if (p.is_mine) html += ' <span class="pc-tt-mine">✺ ' + esc(t.myProject) + "</span>";
     if (this.layers.filter((l) => l.visible).length > 1) {
       html += ' <span class="pc-tt-layer">· ' + esc(layer.name) + "</span>";
     }
@@ -809,7 +837,7 @@
     }).join("");
     this.$side.innerHTML =
       '<button type="button" class="pc-icon pc-side-close" data-action="side-close" title="' + esc(t.close) + '">✕</button>' +
-      "<h3>" + esc(p.name || p.id) + "</h3>" +
+      "<h3>" + esc(p.name || p.id) + (p.is_mine ? ' <span class="pc-side-mine">✺ ' + esc(t.myProject) + "</span>" : "") + "</h3>" +
       (card.summary ? "<p>" + esc(card.summary) + "</p>" : "") +
       (card.facts && card.facts.length ? "<h4>" + esc(t.factsT) + "</h4><ul>" + card.facts.map((f) => "<li>" + esc(f) + "</li>").join("") + "</ul>" : "") +
       "<table class='pc-side-table'>" + dimsRows + "</table>" +
@@ -840,6 +868,9 @@
       lines.push({ text: "   " + ch[1] + " : " + (dim ? dim.label : dimId), size: 11, gap: 14 });
     });
     lines.push({ text: t.estimatedNote, size: 10, gap: 16 });
+    if ((data.players || []).some(function (p) { return p.is_mine; })) {
+      lines.push({ text: "✺ = " + t.myProject, size: 10, gap: 16 });
+    }
     const note = (data.reading && data.reading.export_note) || "";
     if (note) {
       lines.push({ text: t.readingKeyT + " :", size: 11, weight: 700, gap: 15 });

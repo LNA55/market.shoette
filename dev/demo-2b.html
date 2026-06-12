@@ -141,7 +141,20 @@
             prix_mensuel: { value: 27, estimated: true },
             personnalisation_ia: { value: 6, estimated: true }
           },
-          card: { summary: "Part de marché inconnue — teste la bande « Y inconnu ».", facts: [], source_ids: [] } }
+          card: { summary: "Part de marché inconnue — teste la bande « Y inconnu ».", facts: [], source_ids: [] } },
+        { id: "wello", name: "Wello", is_mine: true,
+          added_by_run: { skill: "position-my-product", run: "s3-0_2026-06-12", date: "2026-06-12" },
+          market_share_pct: { value: 0, estimated: false, note: "nouveau projet — pas encore sur le marché (démo Skill 3)" },
+          growth_pct: { value: null, estimated: false, note: "non applicable (nouveau projet)" },
+          dimensions: {
+            modele_economique: { value: "abonnement", estimated: false, declared: true },
+            prix_mensuel: { value: 15, estimated: false, declared: true },
+            personnalisation_ia: { value: 9, estimated: true, declared: true },
+            largeur_fonctionnelle: { value: "spécialiste", estimated: false, declared: true },
+            ancrage_medical: { value: 7, estimated: true, declared: true }
+          },
+          card: { summary: "MON projet (fictif) — teste le marqueur « mon projet » ajouté par la Skill 3 : rayons radiaux, nom en gras, badge, note de légende.",
+                  facts: ["Source : https://example.com/wello (déclaratif)", "Positionné par le Run S3-0 (démo)"], source_ids: [] } }
       ],
       players_without_data: [
         { name: "GlowFit", why_significant: "Très visible sur les réseaux (fictif).",
