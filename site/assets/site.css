@@ -37,17 +37,33 @@ body {
 
 /* Largeur fluide : marges latérales = la moitié de celles d'un conteneur fixe de 880px,
    à toute largeur d'écran — aucun saut de breakpoint (validé Elena, 2026-06-11). */
-.shell { max-width: calc(50vw + 440px); margin: 0 auto; padding: 40px 24px 80px; }
+.shell { max-width: calc(50vw + 440px); margin: 0 auto; padding: 32px 24px 80px; }
 
-/* ---------- barre haute ---------- */
+/* ---------- en-tête de site (sticky, fin, uniforme sur tout le sous-domaine) ---------- */
 
-.topbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 64px;
+.siteheader {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(250, 247, 241, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
 }
+.siteheader-inner {
+  max-width: calc(50vw + 440px);
+  margin: 0 auto;
+  padding: 11px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.siteheader .brand { font-size: 15.5px; }
+.siteheader .crumb { margin-bottom: 0; }
+
+/* décalage des ancres sous l'en-tête sticky */
+[id] { scroll-margin-top: 74px; }
 .brand {
   font-weight: 800;
   font-size: 17px;
@@ -259,7 +275,7 @@ a.fw:hover { background: #dcdcf8; transform: translateY(-1px); }
   border-radius: var(--radius);
   padding: 24px 28px;
   margin-bottom: 36px;
-  scroll-margin-top: 24px;
+  scroll-margin-top: 76px;
 }
 .fw-card h3 { margin: 0 0 4px; font-size: 21px; letter-spacing: -0.015em; }
 .fw-origin { color: var(--muted); font-size: 12.5px; margin: 0 0 10px; }
@@ -302,7 +318,7 @@ a.fw:hover { background: #dcdcf8; transform: translateY(-1px); }
 .sitefoot a { color: var(--muted); }
 
 @media (max-width: 560px) {
-  .shell { padding-top: 28px; }
-  .topbar { margin-bottom: 44px; }
+  .shell { padding-top: 24px; }
+  .siteheader-inner { padding: 10px 16px; }
   .card { padding: 18px 20px; gap: 14px; }
 }

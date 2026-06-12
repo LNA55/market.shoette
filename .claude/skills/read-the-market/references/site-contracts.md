@@ -87,12 +87,13 @@ Zone Skill 1 — **runs du plus ancien au plus récent : Run 1 en premier, les s
   <link rel="stylesheet" href="../assets/site.css">
 </head>
 <body>
-<div class="shell">
-
-  <header class="topbar">
+<header class="siteheader">
+  <div class="siteheader-inner">
     <a class="brand" href="../">My Market Data<span class="dot">.</span></a>
     <a class="crumb" href="../">← Tous les marchés</a>
-  </header>
+  </div>
+</header>
+<div class="shell">
 
   <main>
     <section class="hero">
@@ -138,7 +139,8 @@ Zone Skill 1 — **runs du plus ancien au plus récent : Run 1 en premier, les s
 
 ## Page de run — structure
 
-- **Autonome** : les styles du rapport sont inline dans le `<head>` (les runs sont figés ; pas de CSS partagé pour le texte).
+- **En-tête de site sticky** (uniforme sur tout le sous-domaine, décision Elena 2026-06-12) : barre fine `position: sticky` en haut de page — fond crème translucide flouté, logo `My Market Data<span class="dot">.</span>` (lien `../../` vers l'accueil) à gauche, fil d'Ariane `← Marché : [label] · Tous les marchés` à droite. CSS de l'en-tête inline (copier depuis un run existant), police Plus Jakarta Sans (poids 800 seul) chargée pour la marque uniquement. Prévoir `[id] { scroll-margin-top: 70px; }` pour les ancres.
+- **Autonome** : les styles du rapport sont inline dans le `<head>` (les runs sont figés ; pas de CSS partagé pour le texte du rapport).
 - **Conteneur fluide** : `max-width: calc(50vw + 550px)` sur le conteneur principal — marges latérales réduites de moitié par rapport à un conteneur fixe de 1100px, à toute largeur d'écran, sans breakpoint (règle de design validée par Elena le 2026-06-11, cohérente avec les pages parent).
 - **Seules dépendances externes** : `../../assets/positioning-chart-vN.js` et `.css` (versionnés, voir plus bas).
 - **Ordre du document** : en-tête (label du marché, run N, date, hypothèses) → Section 1 Executive Summary → Section 2a → Section 2b → Annexe A1 Sources → Annexe A2 Lexique → pied de page (« généré par l'agent… » + `<span data-role="last-updated">[date]</span>`).

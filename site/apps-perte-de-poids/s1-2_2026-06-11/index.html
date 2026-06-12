@@ -6,6 +6,9 @@
   <title>Applications mobiles d'assistance à la perte de poids — Run 2 (11 juin 2026)</title>
   <meta name="description" content="Lecture du marché des applications mobiles d'assistance à la perte de poids : acteurs, parts de marché, positionnement — run 2, juin 2026.">
   <link rel="stylesheet" href="../../assets/positioning-chart-v1.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@800&display=swap" rel="stylesheet">
   <style>
     :root {
       --ink: #1e293b; --muted: #64748b; --faint: #94a3b8;
@@ -71,12 +74,36 @@
       margin-top: 56px; padding-top: 14px; border-top: 1px solid var(--line);
       font-size: 12.5px; color: var(--faint); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px;
     }
+
+    /* en-tête de site sticky, uniforme sur tout le sous-domaine */
+    .siteheader {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(250, 247, 241, 0.92);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid #ece7de;
+    }
+    .siteheader-inner {
+      max-width: calc(50vw + 550px); margin: 0 auto; padding: 11px 20px;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    }
+    .siteheader .brand {
+      font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+      font-weight: 800; font-size: 15.5px; letter-spacing: -0.02em;
+      color: #1b1f3b; text-decoration: none;
+    }
+    .siteheader .dot { color: #f4684f; }
+    .siteheader .crumb { margin-bottom: 0; }
+    [id] { scroll-margin-top: 70px; }
   </style>
 </head>
 <body>
+<header class="siteheader">
+  <div class="siteheader-inner">
+    <a class="brand" href="../../">My Market Data<span class="dot">.</span></a>
+    <nav class="crumb"><a href="../">← Marché : applications d'assistance à la perte de poids</a> · <a href="../../">Tous les marchés</a></nav>
+  </div>
+</header>
 <div class="wrap">
-
-  <nav class="crumb"><a href="../">← Marché : applications d'assistance à la perte de poids</a> · <a href="../../">Tous les marchés</a></nav>
 
   <header class="report">
     <h1>Applications mobiles d'assistance à la perte de poids</h1>

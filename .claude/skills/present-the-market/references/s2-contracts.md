@@ -4,7 +4,7 @@
 
 - **Autonome et figée** : styles inline dans le `<head>`, même charte de rapport que les runs S1 (encre `#1e293b`, accent `#2563eb`, boîtes douces) ; conteneur fluide `max-width: calc(50vw + 550px)`.
 - **Ordre du document** :
-  1. Fil d'Ariane : ← page marché · Tous les marchés
+  1. En-tête de site sticky (uniforme sur le sous-domaine) : logo My Market Data (lien accueil) + fil d'Ariane « ← page marché · Tous les marchés » — même structure et CSS que les runs S1 existants
   2. En-tête : « Present the Market — [label du marché] », Run S2-[N], date, **lien vers le run S1 source** (avec sa date) — et l'avertissement de fraîcheur si le run source a plus de 3 mois
   3. **Section 1 — Tableau des KPI business** (structure fixe V1, 6 rangées)
   4. **Section 2 — « Remarques sur le marché et choix de la méthodologie d'analyse adaptée »** : une ligne d'intro puis une liste structurée, un élément par remarque (fait du marché → choix méthodologique induit) ; frameworks retenus uniquement
