@@ -2,7 +2,7 @@
 
 ## Page de run S2 — structure
 
-- **Autonome et figée** : styles inline dans le `<head>`, même charte de rapport que les runs S1 (encre `#1e293b`, accent `#2563eb`, boîtes douces) ; conteneur fluide `max-width: calc(50vw + 550px)`.
+- **Autonome et figée** : styles inline dans le `<head>`, même charte de rapport que les runs S1 (encre `#1e293b`, accent `#2563eb`, boîtes douces) ; conteneur fluide `max-width: calc(50vw + 550px)`. Charge aussi `../../assets/sitefoot.js` juste avant `</body>` (pied de page « La méthode » commun au sous-domaine — cf. contrats Skill 1).
 - **Ordre du document** :
   1. En-tête de site sticky (uniforme sur le sous-domaine) : logo My Market Data (lien accueil) + fil d'Ariane « ← Marché : [label] · Accueil » — structure, CSS et géométrie strictement identiques aux runs S1 existants (le logo ne bouge jamais d'une page à l'autre)
   2. En-tête uniforme des runs (décision Elena, 2026-06-12) : **h1 = label du marché**, puis **`seclabel` « Step 2 — Present the Market »**, puis la **ligne runmeta inchangée** — « Run S2-[N] — [date] · Source : [lien vers le run S1 source avec sa date] (+ avertissement de fraîcheur si le run source a plus de 3 mois) »

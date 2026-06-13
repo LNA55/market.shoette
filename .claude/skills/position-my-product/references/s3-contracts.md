@@ -2,7 +2,7 @@
 
 ## Page de run S3 (la note) — structure
 
-- **Autonome et figée** : styles inline dans le `<head>`, même charte de rapport que les runs S1/S2 (encre `#1e293b`, accent `#2563eb`, boîtes douces) ; conteneur fluide `max-width: calc(50vw + 550px)`.
+- **Autonome et figée** : styles inline dans le `<head>`, même charte de rapport que les runs S1/S2 (encre `#1e293b`, accent `#2563eb`, boîtes douces) ; conteneur fluide `max-width: calc(50vw + 550px)`. Charge aussi `../../assets/sitefoot.js` juste avant `</body>` (pied de page « La méthode » commun au sous-domaine — cf. contrats Skill 1).
 - **Ordre du document** :
   1. En-tête de site sticky (uniforme sur le sous-domaine) : logo My Market Data (lien accueil) + fil d'Ariane « ← Marché : [label] · Accueil » — structure, CSS et géométrie strictement identiques aux runs existants.
   2. En-tête uniforme des runs : **h1 = label du marché**, puis **`seclabel` « Step 3 — Position MY product »**, puis la **ligne runmeta** : « Run S3-[N] — [date] · Projet : [nom] · Sources : [lien run S1 avec sa date] · [lien run S2 avec sa date] » + avertissement de fraîcheur si le run S1 source a plus de 3 mois.

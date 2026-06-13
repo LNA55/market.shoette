@@ -2,7 +2,7 @@
 
 ## Page de run S4 — structure
 
-- **Autonome et figée** : styles inline dans le `<head>`, même charte de rapport que les runs S1/S2/S3 (encre `#1e293b`, accent `#2563eb`, boîtes douces) ; conteneur fluide `max-width: calc(50vw + 550px)` ; en-tête de site sticky identique aux autres runs.
+- **Autonome et figée** : styles inline dans le `<head>`, même charte de rapport que les runs S1/S2/S3 (encre `#1e293b`, accent `#2563eb`, boîtes douces) ; conteneur fluide `max-width: calc(50vw + 550px)` ; en-tête de site sticky identique aux autres runs. Charge aussi `../../assets/sitefoot.js` juste avant `</body>` (pied de page « La méthode » commun au sous-domaine — cf. contrats Skill 1).
 - **Ordre du document** :
   1. En-tête de site sticky : logo My Market Data (lien accueil) + fil d'Ariane « ← Marché : [label] · Accueil ».
   2. En-tête uniforme des runs : **h1 = label du marché**, puis **`seclabel` « Step 4 — Strategy recommendation »**, puis la **ligne runmeta** : « Run S4-[N] — [date] · Projet : [nom] · Sources : [lien run S3 + date] · [lien run S1 + date] · [lien run S2 + date] » + avertissement de fraîcheur si une source a plus de 3 mois.
