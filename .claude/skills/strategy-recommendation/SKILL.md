@@ -1,6 +1,6 @@
 ---
 name: strategy-recommendation
-description: Skill 4 of the competitive-intelligence pipeline — Strategy recommendation. Builds strategic recommendations for Elena's project positioned by Skill 3 — market summary, positioning summary, dedicated SWOT, marketing-mix (4P) advice, other key recommendations and M&A/partnership targets. Use when Elena asks to launch Skill 4, "lance la skill 4", "recommandations stratégiques", or asks for strategic advice on a project already positioned by Skill 3.
+description: Skill 4 of the competitive-intelligence pipeline — Strategy recommendation. Builds strategic recommendations for Elena's project positioned by Skill 3 — a clear GO / NO GO verdict, market summary, positioning summary, dedicated SWOT, marketing-mix (4P) advice, other key recommendations and M&A/partnership targets. Use when Elena asks to launch Skill 4, "lance la skill 4", "recommandations stratégiques", or asks for strategic advice on a project already positioned by Skill 3.
 ---
 
 # Strategy recommendation — Skill 4
@@ -44,17 +44,26 @@ Each block shows: the supporting data (with run citations), the reasoning, the r
 1. **Recommandations essentielles** — only what materially matters beyond the 4P (product, target, launch, communication, distribution…): a short prioritized list, each item = recommendation + rationale.
 2. **Partenariats & sorties (M&A)** — written as a seasoned M&A analyst / investor would: a list of named companies, each with the strategic logic (why THEM for this project), the plausible deal type (partenariat d'envergure / rachat / fusion / investisseur), and observable signals (comparable deals, stated strategies). Candidates go beyond the S1 panel (pharma, wearables, telehealth, insurers…) — **this is the only section where web research is allowed**: fan out **1-2 Sonnet subagents** (Agent tool, `model: "sonnet"`) for targeted lookups, every external fact cited with URL + date, distinguished from run-sourced facts.
 
-## Step 6 — Build the page + data.json
+## Step 6 — The GO / NO GO verdict (decided last, rendered first — Elena's decision, 2026-06-13)
+
+Synthesize the whole analysis (sections 1-5: market, positioning, SWOT, mix, partnerships) into ONE binary verdict answering the entrepreneur/investor's question: « Faut-il creuser ce projet sur ce marché ? »
+
+- **Binary headline, no « maybe »**: the big word is **GO** or **NO GO**. A conditional GO is allowed, but the condition lives in the rationale — it never softens the word.
+- **Frankness over complacency** (same rule as the mix): a **NO GO** when the analysis warrants it — a verdict that can't say no is worthless. The decision follows the sections; it never flatters the project.
+- Fields: `decision` (`GO` | `NO GO`), `question`, `answer` (one punchy line), `rationale` (why — grounded in the sections), `condition` (the honest caveat: what a GO hinges on, or what would flip a NO GO).
+- **Rendered as a large square card at the very top of the page**, under the title (after the runmeta, before the age banner): green for GO, red for NO GO — CSS classes `verdict-go` / `verdict-nogo` (see contracts).
+
+## Step 7 — Build the page + data.json
 
 Contracts: [references/s4-contracts.md](references/s4-contracts.md) — page structure, data schema, zone format. Uniform run header (h1 = market label, seclabel « Step 4 — Strategy recommendation », runmeta with project + the three source runs and their dates). Data inlined (`const RUN_S4_DATA = {...}`) **and** written as `data.json`, identical. Autonomous page, report charte, frozen run.
 
-## Step 7 — Update the parent pages
+## Step 8 — Update the parent pages
 
 - `RUNS-SKILL4` zone of `site/[slug]/index.html`: all S4 runs, oldest first, card format with the project name in the card meta (see contracts).
 - Home `MARKETS` zone: run count + last-run date.
 - Never touch the other skills' zones.
 
-## Step 8 — Deploy, verify, commit
+## Step 9 — Deploy, verify, commit
 
 1. `./deploy.sh --dry-run` — expected: the new `s4-*` directory + parent pages, nothing else (Skill 4 modifies no source run).
 2. `./deploy.sh`
@@ -65,7 +74,7 @@ Contracts: [references/s4-contracts.md](references/s4-contracts.md) — page str
 
 - **Sections 1-2 are pure synthesis** of existing runs — no web refresh of market data (Elena's rule, 2026-06-12); data ages stated plainly.
 - **Web research is limited to the partnership/M&A section**, cited and distinguished from run-sourced facts.
-- **Frankness over complacency**: Elena's declared choices get a real verdict, contradicted by data when the data contradicts them.
+- **Frankness over complacency**: Elena's declared choices get a real verdict, contradicted by data when the data contradicts them. The same applies to the overall **GO / NO GO** — it is binary, decided from the full synthesis, and must be able to say NO.
 - Conventions everywhere: `~` estimated, `—` not found, declarative values flagged; a recommendation displays its uncertainty.
 - Skill 4 touches no other run — frozen runs, no exception.
 - Publication: standard, like every run (Elena, 2026-06-12 — site-wide or per-market password planned later, out of this skill's scope).

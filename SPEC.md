@@ -188,6 +188,8 @@ Write in the same language as the input.
 
 # Décisions actées
 
+- **2026-06-13 — Skill 4 : cadre verdict GO / NO GO en tête de rapport** (demande d'Elena, généralisée à la skill). Chaque run S4 s'ouvre, juste sous le titre, sur un **grand encart carré** affichant un verdict **binaire** — GO (vert) ou NO GO (rouge) — répondant à « Faut-il creuser ce projet sur ce marché ? ». Décidé en dernier (synthèse des sections 1-5), affiché en premier ; il doit pouvoir dire NON (franchise, même règle que le mix). Champ `verdict` ajouté au schéma `data.json` ; classes CSS `verdict-go` / `verdict-nogo`. Inscrit dans SKILL.md (Step 6) et les contrats. Appliqué rétroactivement au run S4-1 (GO conditionnel pour « What is wrong with me »).
+
 - **2026-06-12 — Skill 4 V1, cadrage validé** (structure 1-4 posée par Elena, arbitrages du même jour) :
   (a) **Objet** : recommandations stratégiques pour le projet positionné par la Skill 3. **Prérequis : un run S3 sur le même marché et le même projet** (la chaîne garantit S1/S2). Rapport en 5 sections : résumé du marché, résumé du positionnement, SWOT, marketing mix, recommandations & partenariats.
   (b) **Sections 1-2 = synthèse pure des runs existants** (choix Elena) — aucun rafraîchissement web des données de marché ; l'âge de chaque run source est affiché en tête, règle des 3 mois inchangée (signaler, proposer de relancer, ne pas bloquer).
