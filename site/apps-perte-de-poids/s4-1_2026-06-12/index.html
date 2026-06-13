@@ -78,6 +78,20 @@
     .siteheader .dot { color: #f4684f; }
     .siteheader .crumb { margin-bottom: 0; font-size: 13.5px; font-weight: 600; }
     [id] { scroll-margin-top: 70px; }
+
+    .verdict-banner { display: flex; gap: 26px; align-items: center; margin: 22px 0 6px; padding: 26px 30px; border-radius: 18px; }
+    .verdict-go { background: linear-gradient(135deg, #ecfdf5, #d1fae5); border: 2px solid #10b981; }
+    .verdict-nogo { background: linear-gradient(135deg, #fef2f2, #fee2e2); border: 2px solid #ef4444; }
+    .verdict-emblem { flex: none; width: 156px; height: 156px; border-radius: 22px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
+    .verdict-go .verdict-emblem { background: linear-gradient(160deg, #10b981, #047857); box-shadow: 0 14px 34px rgba(5, 150, 105, .38); }
+    .verdict-nogo .verdict-emblem { background: linear-gradient(160deg, #ef4444, #b91c1c); box-shadow: 0 14px 34px rgba(185, 28, 28, .35); }
+    .verdict-check { font-size: 42px; line-height: 1; color: #fff; }
+    .verdict-word { font-family: "Plus Jakarta Sans", system-ui, sans-serif; font-weight: 800; font-size: 50px; line-height: 1; letter-spacing: .03em; color: #fff; }
+    .verdict-kicker { font-size: 11.5px; text-transform: uppercase; letter-spacing: .08em; font-weight: 700; color: #059669; margin-bottom: 4px; }
+    .verdict-q { font-size: 14.5px; color: #475569; font-weight: 600; }
+    .verdict-a { font-size: 30px; line-height: 1.15; font-weight: 800; color: #065f46; margin: 3px 0 10px; letter-spacing: -.015em; }
+    .verdict-why { font-size: 14px; color: #1e293b; margin: 0; line-height: 1.62; }
+    @media (max-width: 640px) { .verdict-banner { flex-direction: column; text-align: center; padding: 22px; } .verdict-emblem { width: 130px; height: 130px; } }
   </style>
 </head>
 <body>
@@ -94,6 +108,19 @@
     <h1>Applications mobiles d'assistance à la perte de poids</h1>
     <div class="seclabel">Step 4 — Strategy recommendation</div>
     <div class="runmeta">Run S4-1 — 12 juin 2026 · Projet : What is wrong with me · Sources : <a href="../s3-1_2026-06-12/">Run S3-1 du 12 juin 2026</a> · <a href="../s1-2_2026-06-11/">Run S1-2 du 11 juin 2026</a> · <a href="../s2-1_2026-06-11/">Run S2-1 du 11 juin 2026</a></div>
+    <div class="verdict-banner verdict-go" role="status" aria-label="Verdict de l'analyse : GO">
+      <div class="verdict-emblem">
+        <span class="verdict-check">✓</span>
+        <span class="verdict-word">GO</span>
+      </div>
+      <div class="verdict-text">
+        <div class="verdict-kicker">Le verdict de l'analyse, en un mot</div>
+        <div class="verdict-q">Creuser « What is wrong with me » dans la perte de poids ?</div>
+        <div class="verdict-a">Oui — l'angle vaut l'effort.</div>
+        <p class="verdict-why">Un segment réel et documenté (~23-25 % de non-répondeurs GLP-1), un angle mort qu'aucun acteur ne sert, des géants fragilisés et un intérêt M&amp;A déjà présent (Novo, Oura). <b>À une condition :</b> creuser cette niche précise — pas le marché généraliste — et produire des preuves vite, avant que les grands ne répliquent.</p>
+      </div>
+    </div>
+
     <div class="agebanner">Sections 1-2 : <b>synthèse pure des runs existants</b> — données de marché du 11 juin 2026 (1 jour), positionnement du 12 juin 2026 (jour J), aucun rafraîchissement web. Seule la section 5 (partenariats &amp; sorties) s'appuie sur une recherche web du 12 juin 2026, sources citées. Aucun choix de marketing mix déclaré par Elena pour ce run → les 4 P reçoivent des recommandations.</div>
   </header>
 
@@ -304,6 +331,13 @@ const RUN_S4_DATA = {
     "s2": { "number": 1, "date": "2026-06-11", "path": "../s2-1_2026-06-11/", "age_days": 1, "freshness_warning": false }
   },
   "project": { "id": "what_is_wrong_with_me", "name": "What is wrong with me", "source_url": "https://w.shoette.com/" },
+  "verdict": {
+    "decision": "GO",
+    "question": "Creuser « What is wrong with me » dans le marché de la perte de poids ?",
+    "answer": "Oui — l'angle vaut l'effort.",
+    "rationale": "Segment réel et documenté (~23-25 % de non-répondeurs GLP-1), angle mort qu'aucun acteur ne sert, géants fragilisés, intérêt M&A déjà présent (Novo, Oura).",
+    "condition": "Creuser cette niche précise — pas le marché généraliste — et produire des preuves vite, avant réplication par les grands acteurs."
+  },
   "declared_inputs": {
     "mix": { "produit": null, "prix": null, "promotion": null, "place": null },
     "constraints": null

@@ -38,6 +38,13 @@
     "name": "What is wrong with me",
     "source_url": "https://w.shoette.com/"
   },
+  "verdict": {
+    "decision": "GO",
+    "question": "Creuser « What is wrong with me » dans le marché de la perte de poids ?",
+    "answer": "Oui — l'angle vaut l'effort.",
+    "rationale": "Segment réel et documenté (~23-25 % de non-répondeurs GLP-1), angle mort qu'aucun acteur ne sert, géants fragilisés, intérêt M&A déjà présent (Novo, Oura).",
+    "condition": "Creuser cette niche précise — pas le marché généraliste — et produire des preuves vite, avant réplication par les grands acteurs."
+  },
   "declared_inputs": {
     "mix": {
       "produit": null,
