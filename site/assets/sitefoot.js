@@ -1,23 +1,26 @@
-/* sitefoot.js — injecte la navigation « La méthode » dans le pied de page de toutes
-   les pages du sous-domaine market. Source unique (décision Elena, 2026-06-13).
+/* sitefoot.js — pied de page commun à TOUTES les pages du sous-domaine market.
+   Source unique (décision Elena, 2026-06-13) — pendant du siteheader.js.
 
-   Autonome : porte son propre CSS et fonctionne que site.css soit chargé ou non
-   (les pages de run ont leurs styles inline). Les variables --muted/--accent/--line
-   sont définies aussi bien par site.css que par les runs ; des fallbacks couvrent
-   le cas où elles manqueraient.
+   Génère l'intégralité du footer : présentation, liens « La méthode », liens
+   « Marchés étudiés », mentions légales. Identique partout, aucun footer en dur
+   dans les pages.
 
-   Le chemin de base vers la racine du site est déduit du src de ce script
-   (".../assets/sitefoot.js"), donc robuste à toute profondeur de page et en file://. */
+   Autonome : porte son propre CSS (valeurs en dur, aucune dépendance à site.css),
+   déduit le chemin racine de son propre src. Injecté en fin de <body>, hors du
+   conteneur centré → bandeau pleine largeur, visuellement distinct du corps.
+   Placé en bas de page (sous le pli) : n'impacte pas le rendu au-dessus du pli.
+
+   ── Ajouter un marché : ajouter une entrée à MARKETS ci-dessous. ──
+*/
 (function () {
   "use strict";
 
-  // Base relative jusqu'à la racine du site, déduite du src de CE script ("" / "../" / "../../").
   var self = document.currentScript;
   var src = (self && self.getAttribute("src")) || "";
-  var base = src.replace(/assets\/sitefoot\.js(?:[?#].*)?$/, "");
+  var base = src.replace(/assets\/sitefoot\.js(?:[?#].*)?$/, "") || "./";
 
-  // Liens « La méthode », dans l'ordre du pipeline.
-  var LINKS = [
+  // « La méthode » — pages de documentation, dans l'ordre du pipeline.
+  var METHODE = [
     ["how-it-works/", "How it works"],
     ["focus-step-1/", "Focus on Step 1"],
     ["focus-step-2/", "Focus on Step 2"],
@@ -25,65 +28,134 @@
     ["focus-step-4/", "Focus on Step 4"]
   ];
 
-  var STYLE_ID = "foot-method-style";
+  // « Marchés étudiés » — un [slug/, label] par marché (étendre à chaque nouveau marché).
+  var MARCHES = [
+    ["apps-perte-de-poids/", "Applications mobiles d'assistance à la perte de poids"]
+  ];
+
+  var ABOUT = "Études de marché générées par un agent IA : acteurs, parts de marché, " +
+    "positionnement interactif et recommandations stratégiques — un rapport daté à chaque cycle.";
+
+  var STYLE_ID = "sitefoot-style";
   var CSS =
-    ".foot-method{flex:0 0 100%;display:flex;flex-wrap:wrap;align-items:baseline;" +
-      "gap:4px 0;margin-bottom:14px;padding-bottom:13px;" +
-      "border-bottom:1px solid var(--line,#e2e8f0);}" +
-    ".foot-method-title{font-size:11.5px;font-weight:700;text-transform:uppercase;" +
-      "letter-spacing:.08em;color:var(--muted,#64748b);opacity:.75;margin-right:16px;}" +
-    ".foot-method-links{font-size:13px;display:flex;flex-wrap:wrap;align-items:baseline;}" +
-    ".foot-method-links a{color:var(--muted,#64748b);text-decoration:none;font-weight:600;}" +
-    ".foot-method-links a:hover{color:var(--accent,#2563eb);}" +
-    ".foot-method-sep{margin:0 10px;color:var(--faint,#94a3b8);opacity:.7;}";
+    ".sitefoot{margin-top:40px;background:#f1efe9;border-top:1px solid #e4ded3;" +
+      "color:#6e7191;font-family:system-ui,-apple-system,'Segoe UI',sans-serif;" +
+      "font-size:13px;line-height:1.5;}" +
+    ".sitefoot-inner{max-width:calc(50vw + 550px);margin:0 auto;padding:34px 20px 28px;}" +
+    ".sitefoot-top{display:flex;flex-wrap:wrap;gap:26px 48px;}" +
+    ".sitefoot-about{flex:1 1 260px;min-width:230px;}" +
+    ".sitefoot-brand{font-family:'Plus Jakarta Sans',system-ui,sans-serif;font-weight:800;" +
+      "font-size:15px;letter-spacing:-.02em;color:#1b1f3b;text-decoration:none;}" +
+    ".sitefoot-brand .dot{color:#f4684f;}" +
+    ".sitefoot-about p{margin:9px 0 0;max-width:42ch;color:#6e7191;}" +
+    ".sitefoot-group{flex:0 0 auto;}" +
+    ".sitefoot-h{display:block;font-size:11px;font-weight:700;text-transform:uppercase;" +
+      "letter-spacing:.08em;color:#9a93a8;margin:0 0 9px;}" +
+    ".sitefoot-group ul{list-style:none;margin:0;padding:0;}" +
+    ".sitefoot-group li{margin:0 0 7px;}" +
+    ".sitefoot-group a{color:#6e7191;text-decoration:none;font-weight:600;}" +
+    ".sitefoot-group a:hover{color:#3b3bd8;}" +
+    ".sitefoot-legal{margin-top:26px;padding-top:16px;border-top:1px solid #e4ded3;" +
+      "display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 24px;" +
+      "font-size:12px;color:#9a93a8;}" +
+    ".sitefoot-legal a{color:#9a93a8;text-decoration:none;}" +
+    ".sitefoot-legal a:hover{color:#3b3bd8;}" +
+    "@media (max-width:560px){.sitefoot-inner{padding:28px 18px 24px;}" +
+      ".sitefoot-top{gap:22px 32px;}.sitefoot-legal{flex-direction:column;}}";
 
   function injectStyle() {
     if (document.getElementById(STYLE_ID)) return;
     var s = document.createElement("style");
     s.id = STYLE_ID;
     s.textContent = CSS;
-    document.head.appendChild(s);
+    (document.head || document.documentElement).appendChild(s);
   }
 
-  function buildNav() {
-    var nav = document.createElement("nav");
-    nav.className = "foot-method";
-    nav.setAttribute("aria-label", "La méthode");
-
-    var title = document.createElement("span");
-    title.className = "foot-method-title";
-    title.textContent = "La méthode";
-    nav.appendChild(title);
-
-    var links = document.createElement("span");
-    links.className = "foot-method-links";
-    LINKS.forEach(function (item, i) {
-      if (i > 0) {
-        var sep = document.createElement("span");
-        sep.className = "foot-method-sep";
-        sep.setAttribute("aria-hidden", "true");
-        sep.textContent = "·";
-        links.appendChild(sep);
-      }
+  function linkList(items) {
+    var ul = document.createElement("ul");
+    items.forEach(function (it) {
+      var li = document.createElement("li");
       var a = document.createElement("a");
-      a.href = base + item[0];
-      a.textContent = item[1];
-      links.appendChild(a);
+      a.href = base + it[0];
+      a.textContent = it[1];
+      li.appendChild(a);
+      ul.appendChild(li);
     });
-    nav.appendChild(links);
+    return ul;
+  }
+
+  function group(label, items) {
+    var nav = document.createElement("nav");
+    nav.className = "sitefoot-group";
+    nav.setAttribute("aria-label", label);
+    var h = document.createElement("span");
+    h.className = "sitefoot-h";
+    h.textContent = label;
+    nav.appendChild(h);
+    nav.appendChild(linkList(items));
     return nav;
   }
 
-  function inject() {
-    var foot = document.querySelector("footer.sitefoot, footer.report");
-    if (!foot || foot.querySelector(".foot-method")) return; // rien à faire / déjà injecté
-    injectStyle();
-    foot.insertBefore(buildNav(), foot.firstChild);
+  function build() {
+    var foot = document.createElement("footer");
+    foot.className = "sitefoot";
+    foot.setAttribute("role", "contentinfo");
+
+    var inner = document.createElement("div");
+    inner.className = "sitefoot-inner";
+
+    var top = document.createElement("div");
+    top.className = "sitefoot-top";
+
+    // colonne présentation
+    var about = document.createElement("div");
+    about.className = "sitefoot-about";
+    var brand = document.createElement("a");
+    brand.className = "sitefoot-brand";
+    brand.href = base;
+    brand.appendChild(document.createTextNode("My Market Data"));
+    var dot = document.createElement("span");
+    dot.className = "dot";
+    dot.textContent = ".";
+    brand.appendChild(dot);
+    about.appendChild(brand);
+    var p = document.createElement("p");
+    p.textContent = ABOUT;
+    about.appendChild(p);
+    top.appendChild(about);
+
+    top.appendChild(group("La méthode", METHODE));
+    top.appendChild(group("Marchés étudiés", MARCHES));
+    inner.appendChild(top);
+
+    // mentions légales
+    var legal = document.createElement("div");
+    legal.className = "sitefoot-legal";
+    var l1 = document.createElement("span");
+    l1.textContent = "© 2026 My Market Data — études générées par IA, données estimées fournies à titre indicatif.";
+    var l2 = document.createElement("span");
+    l2.appendChild(document.createTextNode("Hébergé par OVH · "));
+    var dom = document.createElement("a");
+    dom.href = base;
+    dom.textContent = "market.shoette.com";
+    l2.appendChild(dom);
+    legal.appendChild(l1);
+    legal.appendChild(l2);
+    inner.appendChild(legal);
+
+    foot.appendChild(inner);
+    return foot;
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", inject);
-  } else {
+  function inject() {
+    if (document.querySelector(".sitefoot")) return; // déjà présent
+    injectStyle();
+    document.body.appendChild(build());
+  }
+
+  if (document.body) {
     inject();
+  } else {
+    document.addEventListener("DOMContentLoaded", inject);
   }
 })();
