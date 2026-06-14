@@ -39,49 +39,13 @@ body {
    à toute largeur d'écran — aucun saut de breakpoint (validé Elena, 2026-06-11). */
 .shell { max-width: calc(50vw + 440px); margin: 0 auto; padding: 32px 24px 80px; }
 
-/* ---------- en-tête de site (sticky, fin, uniforme sur tout le sous-domaine) ---------- */
-
-.siteheader {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: rgba(250, 247, 241, 0.92);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--line);
-}
-/* Géométrie IDENTIQUE sur toutes les pages du sous-domaine (y compris les runs) :
-   le logo ne bouge jamais d'une page à l'autre. Toute modification ici doit être
-   répercutée dans le CSS inline des pages de runs. */
-.siteheader-inner {
-  max-width: calc(50vw + 550px);
-  margin: 0 auto;
-  padding: 11px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-}
-.siteheader .brand { font-size: 15.5px; }
-.siteheader .crumb { margin-bottom: 0; }
+/* ---------- en-tête de site ---------- */
+/* Le header (logo + fil d'Ariane) est injecté par assets/siteheader.js — source
+   unique pour tout le sous-domaine, runs compris (décision Elena, 2026-06-13).
+   Ne plus redéfinir .siteheader / .brand / .crumb ici : tout vit dans le composant. */
 
 /* décalage des ancres sous l'en-tête sticky */
 [id] { scroll-margin-top: 74px; }
-.brand {
-  font-weight: 800;
-  font-size: 17px;
-  letter-spacing: -0.02em;
-  color: var(--ink);
-  text-decoration: none;
-}
-.brand .dot { color: var(--coral); }
-.crumb {
-  font-size: 13.5px;
-  font-weight: 600;
-  color: var(--muted);
-  text-decoration: none;
-}
-.crumb:hover { color: var(--accent); }
 
 /* ---------- héros ---------- */
 

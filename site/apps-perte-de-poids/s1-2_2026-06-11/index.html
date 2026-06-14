@@ -76,33 +76,11 @@
     }
 
     /* en-tête de site sticky, uniforme sur tout le sous-domaine */
-    .siteheader {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(250, 247, 241, 0.92);
-      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-      border-bottom: 1px solid #ece7de;
-    }
-    .siteheader-inner {
-      max-width: calc(50vw + 550px); margin: 0 auto; padding: 11px 20px;
-      display: flex; align-items: center; justify-content: space-between; gap: 16px;
-    }
-    .siteheader .brand {
-      font-family: "Plus Jakarta Sans", system-ui, sans-serif;
-      font-weight: 800; font-size: 15.5px; letter-spacing: -0.02em;
-      color: #1b1f3b; text-decoration: none;
-    }
-    .siteheader .dot { color: #f4684f; }
-    .siteheader .crumb { margin-bottom: 0; font-size: 13.5px; font-weight: 600; }
     [id] { scroll-margin-top: 70px; }
   </style>
 </head>
 <body>
-<header class="siteheader">
-  <div class="siteheader-inner">
-    <a class="brand" href="../../">My Market Data<span class="dot">.</span></a>
-    <nav class="crumb"><a href="../">← Marché : applications d'assistance à la perte de poids</a> · <a href="../../">Accueil</a></nav>
-  </div>
-</header>
+<script src="../../assets/siteheader.js" data-crumb="parent" data-parent-label="Marché : applications d&#x27;assistance à la perte de poids" data-parent-href="../"></script>
 <div class="wrap">
 
   <header class="report">
