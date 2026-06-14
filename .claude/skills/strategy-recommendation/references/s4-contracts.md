@@ -2,7 +2,7 @@
 
 ## Page de run S4 — structure
 
-- **Autonome et figée** : styles inline dans le `<head>`, même charte de rapport que les runs S1/S2/S3 (encre `#1e293b`, accent `#2563eb`, boîtes douces) ; conteneur fluide `max-width: calc(50vw + 550px)`. Charge `../../assets/siteheader.js` en tête de `<body>` (en-tête commun) et `../../assets/sitefoot.js` juste avant `</body>` (pied « La méthode ») — composants communs au sous-domaine, cf. contrats Skill 1.
+- **Autonome et figée** : styles inline dans le `<head>`, même charte de rapport que les runs S1/S2/S3 (encre `#1e293b`, accent `#2563eb`, boîtes douces) ; conteneur fluide `max-width: calc(50vw + 550px)`. Charge `../../assets/siteheader.js` en tête de `<body>` (en-tête commun) et `../../assets/sitefoot.js` juste avant `</body>` (footer commun) — composants communs au sous-domaine, cf. contrats Skill 1.
 - **Ordre du document** :
   1. **En-tête de site** : injecté par le composant commun `assets/siteheader.js` (source unique) — placer `<script src="../../assets/siteheader.js" data-crumb="parent" data-parent-label="Marché : [label]" data-parent-href="../"></script>` en tête de `<body>`. **Ne jamais coder le header ni son CSS en dur** (cf. contrats Skill 1).
   2. En-tête uniforme des runs : **h1 = label du marché**, puis **`seclabel` « Step 4 — Strategy recommendation »**, puis la **ligne runmeta** : « Run S4-[N] — [date] · Projet : [nom] · Sources : [lien run S3 + date] · [lien run S1 + date] · [lien run S2 + date] » + avertissement de fraîcheur si une source a plus de 3 mois.
@@ -14,7 +14,7 @@
   8. **Section 4 — Marketing mix (4P)** : un bloc par P (Produit, Prix, Promotion, Place). Chaque bloc : **donnée d'appui** (citée runs), **raisonnement**, puis **verdict sur le choix déclaré d'Elena** (franc, jamais complaisant) OU **recommandation** (chiffrée quand les runs le permettent — fourchette + modalité pour le prix).
   9. **Section 5 — Recommandations essentielles & partenariats** : (a) liste priorisée de recommandations transverses (recommandation + justification) ; (b) **cibles de partenariat / sortie** : entreprises nommées — logique stratégique, type d'opération plausible (partenariat d'envergure / rachat / fusion / investisseur), signaux observables. Seule section nourrie de recherche web (sous-agents Sonnet), faits externes cités URL + date.
   10. Sources : runs sources d'abord, compléments web de la section 5 ensuite, distingués.
-  11. Pied : « Rapport généré par l'agent de veille concurrentielle — Step 4 « Strategy recommendation » · Run S4-[N] » + `<span data-role="last-updated">[date]</span>`.
+  11. **Footer commun** : injecté par `sitefoot.js` (présentation, méthode, marchés, légal). Le run n'a **plus de pied propre** — son numéro et sa date figurent dans la ligne *runmeta* en tête.
 - **Données** : inlinées (`const RUN_S4_DATA = {...}`) et écrites dans `data.json` — strictement identiques.
 
 ## `data.json` S4 — schéma (v1)

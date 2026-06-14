@@ -2,7 +2,7 @@
 
 ## Page de run S3 (la note) — structure
 
-- **Autonome et figée** : styles inline dans le `<head>`, même charte de rapport que les runs S1/S2 (encre `#1e293b`, accent `#2563eb`, boîtes douces) ; conteneur fluide `max-width: calc(50vw + 550px)`. Charge `../../assets/siteheader.js` en tête de `<body>` (en-tête commun) et `../../assets/sitefoot.js` juste avant `</body>` (pied « La méthode ») — composants communs au sous-domaine, cf. contrats Skill 1.
+- **Autonome et figée** : styles inline dans le `<head>`, même charte de rapport que les runs S1/S2 (encre `#1e293b`, accent `#2563eb`, boîtes douces) ; conteneur fluide `max-width: calc(50vw + 550px)`. Charge `../../assets/siteheader.js` en tête de `<body>` (en-tête commun) et `../../assets/sitefoot.js` juste avant `</body>` (footer commun) — composants communs au sous-domaine, cf. contrats Skill 1.
 - **Ordre du document** :
   1. **En-tête de site** : injecté par le composant commun `assets/siteheader.js` (source unique) — placer `<script src="../../assets/siteheader.js" data-crumb="parent" data-parent-label="Marché : [label]" data-parent-href="../"></script>` en tête de `<body>`. **Ne jamais coder le header ni son CSS en dur** (cf. contrats Skill 1).
   2. En-tête uniforme des runs : **h1 = label du marché**, puis **`seclabel` « Step 3 — Position MY product »**, puis la **ligne runmeta** : « Run S3-[N] — [date] · Projet : [nom] · Sources : [lien run S1 avec sa date] · [lien run S2 avec sa date] » + avertissement de fraîcheur si le run S1 source a plus de 3 mois.
@@ -10,7 +10,7 @@
   4. **Section 2 — Le positionnement** : tableau compact — une ligne par dimension du graphique 2b : nom de la dimension → valeur attribuée (conventions `~` estimé, « déclaré ») → justification en une ligne. La part de marché vaut toujours `0 %` (nouveau projet — règle d'Elena, 2026-06-12). Sous le tableau, **le lien vers le graphique enrichi** : `../s1-[n]_[date]/#s2b`, libellé explicite (« Voir le projet sur le graphique interactif du marché »).
   5. **Section 3 — Analyse du graphique** : un paragraphe — où le projet atterrit, voisins immédiats, espaces vides, clés de lecture — et la **configuration de lecture recommandée** (quelles dimensions sur quels canaux visuels pour bien voir le projet, puisqu'il est à 0 % sur l'axe Y par défaut).
   6. Sources : site du projet (marqué déclaratif), runs sources S1/S2, infos fournies par Elena le cas échéant.
-  7. Pied : généré par la Skill 3 + `<span data-role="last-updated">[date]</span>`.
+  7. **Footer commun** : injecté par `sitefoot.js`. Le run n'a **plus de pied propre** (numéro + date dans la ligne *runmeta* en tête).
 - **Données** : inlinées (`const RUN_S3_DATA = {...}`) et écrites dans `data.json` — strictement identiques.
 
 ## `data.json` S3 — schéma (v1)

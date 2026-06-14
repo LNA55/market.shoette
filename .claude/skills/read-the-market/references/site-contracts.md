@@ -4,14 +4,15 @@
 
 ```
 site/
-├── index.html                       accueil — liste des marchés (zone MARKETS) ; en-tête injecté par siteheader.js, nav « La méthode » au pied par sitefoot.js
+├── index.html                       accueil — liste des marchés (zone MARKETS) ; en-tête injecté par siteheader.js, footer complet par sitefoot.js
 ├── .htaccess                        règles de cache (HTML revalidé, assets versionnés cachés)
 ├── how-it-works/                    ┐
 ├── focus-step-1/ … focus-step-4/  ┘ pages statiques de documentation — domaine d'Elena, l'agent n'y touche JAMAIS sauf demande explicite
 ├── assets/
 │   ├── site.css                     charte des pages parent + documentation (non versionnée — pages non figées)
 │   ├── siteheader.js                injecte l'en-tête (logo + fil d'Ariane) en tête de body — chargé par TOUTES les pages (non versionné)
-│   ├── sitefoot.js                  injecte la nav « La méthode » au pied de page — chargé par TOUTES les pages (non versionné)
+│   ├── siteheader.js                injecte l'en-tête (logo + fil d'Ariane) — chargé par TOUTES les pages (non versionné)
+│   ├── sitefoot.js                  génère le footer complet (présentation, méthode, marchés, légal) — chargé par TOUTES les pages (non versionné)
 │   ├── positioning-chart-v1.js     moteur du graphique 2b (versionné)
 │   └── positioning-chart-v1.css
 └── [slug]/
@@ -125,12 +126,6 @@ Zone Skill 1 — **runs du plus ancien au plus récent : Run 1 en premier, les s
     <p class="empty">Pas encore de run — skill en cours de définition.</p>
     <!-- RUNS-SKILL4:END -->
   </main>
-
-  <footer class="sitefoot">
-    <span>Généré par l'agent de veille concurrentielle</span>
-    <span><a href="../">market.shoette.com</a></span>
-  </footer>
-
 </div>
   <script src="../assets/sitefoot.js"></script>
 </body>
@@ -143,7 +138,7 @@ Zone Skill 1 — **runs du plus ancien au plus récent : Run 1 en premier, les s
 - **Autonome** : les styles du rapport sont inline dans le `<head>` (les runs sont figés ; pas de CSS partagé pour le texte du rapport).
 - **Conteneur fluide** : `max-width: calc(50vw + 550px)` sur le conteneur principal — marges latérales réduites de moitié par rapport à un conteneur fixe de 1100px, à toute largeur d'écran, sans breakpoint (règle de design validée par Elena le 2026-06-11, cohérente avec les pages parent).
 - **Dépendances externes** : `../../assets/positioning-chart-vN.js` et `.css` (versionnés, voir plus bas) ; `../../assets/siteheader.js` (en-tête commun) et `../../assets/sitefoot.js` (pied « La méthode » commun) — voir sections dédiées en fin de contrat.
-- **Ordre du document** : en-tête uniforme des runs (décision Elena, 2026-06-12) — **h1 = label du marché**, puis **`seclabel` « Step 1 — Read the Market »**, puis la **ligne runmeta inchangée** (« Run N — date · Périmètre … · Rapport généré par l'agent… »), puis les hypothèses → Section 1 Executive Summary → Section 2a → Section 2b → Annexe A1 Sources → Annexe A2 Lexique → pied de page (« généré par l'agent… » + `<span data-role="last-updated">[date]</span>`).
+- **Ordre du document** : en-tête uniforme des runs (décision Elena, 2026-06-12) — **h1 = label du marché**, puis **`seclabel` « Step 1 — Read the Market »**, puis la **ligne runmeta inchangée** (« Run N — date · Périmètre … · Rapport généré par l'agent… »), puis les hypothèses → Section 1 Executive Summary → Section 2a → Section 2b → Annexe A1 Sources → Annexe A2 Lexique. Footer commun injecté par `sitefoot.js` (pas de pied propre au run).
 - **Données** : inlinées dans la page (`<script>const RUN_DATA = {...}</script>`) **et** écrites dans `data.json`. Les deux doivent rester identiques (l'inline évite toute requête ; le fichier sert à la Skill 3).
 - **Section 2a** : SVG statique généré dans la page — nuage de points, Y = part de marché (%), X = croissance sur la période de référence, nom près de chaque point, valeurs estimées préfixées « ~ », liste visible des acteurs sans données sous le graphique.
 - **Tableau de données 2b** : sous le graphique, un tableau de tous les acteurs (triés par part de marché décroissante) × (part, croissance, toutes les dimensions), généré en JS depuis `RUN_DATA` — source unique, aucune divergence possible. Estimations préfixées « ~ », valeurs manquantes « — ».
@@ -164,13 +159,9 @@ Zone Skill 1 — **runs du plus ancien au plus récent : Run 1 en premier, les s
 - Un run référence **la dernière version existante au moment de sa génération**, et la garde pour toujours (runs figés).
 - Correctif rétro-compatible → patcher la version en place est permis. Changement de comportement ou d'API → **nouveau fichier `vN+1`** ; ne jamais casser les runs publiés.
 
-## Champ « dernière mise à jour »
+## Date du run
 
-```html
-<span data-role="last-updated">2026-06-11</span>
-```
-
-Seul élément d'un run publié que la Skill 3 a le droit de réécrire.
+La date du run figure dans la **ligne *runmeta*** en tête de page et dans `data.json` (`last_updated`). Elle n'est **jamais réécrite** (décision 2026-06-12) — il n'y a plus de `<span data-role="last-updated">` ni de pied propre au run (remplacés par le footer commun `sitefoot.js`).
 
 ## En-tête de site — toutes les pages (décision Elena, 2026-06-13)
 
@@ -181,10 +172,11 @@ Seul élément d'un run publié que la Skill 3 a le droit de réécrire.
 - **Autonome** : porte son propre CSS (valeurs canoniques + fallbacks `--line`), fonctionne même sans `site.css` (runs). Injection idempotente.
 - **Règle** : toute page générée (run ou parent) **doit** charger ce script ; aucun header en dur.
 
-## Pied de page « La méthode » — toutes les pages (décision Elena, 2026-06-13)
+## Footer commun — toutes les pages (décision Elena, 2026-06-13)
 
-`assets/sitefoot.js` injecte la navigation « La méthode » (How it works · Focus on Step 1→4) **en tête du pied de page de toutes les pages** du sous-domaine — pages parent (`footer.sitefoot`) comme pages de run (`footer.report`). C'est la **source unique** : ne jamais coder ces liens en dur dans une page.
+`assets/sitefoot.js` **génère l'intégralité du footer** (identique partout) : présentation, liens « La méthode » (How it works · Focus on Step 1→4), liens « Marchés étudiés », mentions légales. **Source unique** : ne jamais coder de `<footer>` ni son CSS en dur dans une page.
 
-- **Inclusion** : `<script src="[base]assets/sitefoot.js"></script>` juste avant `</body>`, où `[base]` suit la profondeur de la page (`` à la racine, `../` en profondeur 1, `../../` pour un run). Le script déduit lui-même son chemin de base de son propre `src` ; les liens se résolvent donc correctement à toute profondeur (et en `file://`).
-- **Autonome** : il porte son propre CSS (variables `--muted`/`--accent`/`--line` + fallbacks) et fonctionne même sur les pages de run, qui ne chargent pas `site.css`. Rien à ajouter dans les styles inline d'un run. Injection idempotente (jamais deux fois).
-- **Règle** : toute page générée par une skill (run ou page parent) **doit** charger ce script.
+- **Inclusion** : `<script src="[base]assets/sitefoot.js"></script>` juste avant `</body>`, `[base]` selon la profondeur (`` racine, `../`, `../../`). Le script déduit son chemin de base de son `src` (liens corrects à toute profondeur, en `file://`).
+- **Rendu** : bandeau **pleine largeur** injecté en fin de `<body>` (hors du conteneur centré), fond distinct discret (`#f1efe9`, bord haut), responsive (colonnes → pile sous 560px). Autonome (CSS en dur), idempotent. Étant sous le pli, n'impacte pas le rendu au-dessus du pli.
+- **Maintenance** : ajouter un nouveau marché = ajouter une entrée `["[slug]/", "[label]"]` au tableau `MARCHES` en tête de `sitefoot.js` (la Skill 1, qui crée un marché, doit le faire — comme elle ajoute la carte sur l'accueil).
+- **Règle** : toute page générée (run ou parent) **doit** charger ce script ; aucun footer en dur. Les pages de run n'ont plus de pied propre (le n° de run et la date restent dans la ligne *runmeta* en tête de run).
