@@ -2,9 +2,9 @@
 
 ## Page de run S2 — structure
 
-- **Autonome et figée** : styles inline dans le `<head>`, même charte de rapport que les runs S1 (encre `#1e293b`, accent `#2563eb`, boîtes douces) ; conteneur fluide `max-width: calc(50vw + 550px)`. Charge aussi `../../assets/sitefoot.js` juste avant `</body>` (pied de page « La méthode » commun au sous-domaine — cf. contrats Skill 1).
+- **Autonome et figée** : styles inline dans le `<head>`, même charte de rapport que les runs S1 (encre `#1e293b`, accent `#2563eb`, boîtes douces) ; conteneur fluide `max-width: calc(50vw + 550px)`. Charge `../../assets/siteheader.js` en tête de `<body>` (en-tête commun) et `../../assets/sitefoot.js` juste avant `</body>` (pied « La méthode ») — composants communs au sous-domaine, cf. contrats Skill 1.
 - **Ordre du document** :
-  1. En-tête de site sticky (uniforme sur le sous-domaine) : logo My Market Data (lien accueil) + fil d'Ariane « ← Marché : [label] · Accueil » — structure, CSS et géométrie strictement identiques aux runs S1 existants (le logo ne bouge jamais d'une page à l'autre)
+  1. **En-tête de site** : injecté par le composant commun `assets/siteheader.js` (source unique) — placer `<script src="../../assets/siteheader.js" data-crumb="parent" data-parent-label="Marché : [label]" data-parent-href="../"></script>` en tête de `<body>`. **Ne jamais coder le header ni son CSS en dur** (cf. contrats Skill 1).
   2. En-tête uniforme des runs (décision Elena, 2026-06-12) : **h1 = label du marché**, puis **`seclabel` « Step 2 — Present the Market »**, puis la **ligne runmeta inchangée** — « Run S2-[N] — [date] · Source : [lien vers le run S1 source avec sa date] (+ avertissement de fraîcheur si le run source a plus de 3 mois) »
   3. **Section 1 — Tableau des KPI business** (structure fixe V1, 6 rangées)
   4. **Section 2 — « Remarques sur le marché et choix de la méthodologie d'analyse adaptée »** : une ligne d'intro puis une liste structurée, un élément par remarque (fait du marché → choix méthodologique induit) ; frameworks retenus uniquement

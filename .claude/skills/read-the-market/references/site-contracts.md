@@ -4,12 +4,13 @@
 
 ```
 site/
-├── index.html                       accueil — liste des marchés (zone MARKETS) ; nav « La méthode » injectée au pied de page par sitefoot.js
+├── index.html                       accueil — liste des marchés (zone MARKETS) ; en-tête injecté par siteheader.js, nav « La méthode » au pied par sitefoot.js
 ├── .htaccess                        règles de cache (HTML revalidé, assets versionnés cachés)
 ├── how-it-works/                    ┐
 ├── focus-step-1/ … focus-step-4/  ┘ pages statiques de documentation — domaine d'Elena, l'agent n'y touche JAMAIS sauf demande explicite
 ├── assets/
 │   ├── site.css                     charte des pages parent + documentation (non versionnée — pages non figées)
+│   ├── siteheader.js                injecte l'en-tête (logo + fil d'Ariane) en tête de body — chargé par TOUTES les pages (non versionné)
 │   ├── sitefoot.js                  injecte la nav « La méthode » au pied de page — chargé par TOUTES les pages (non versionné)
 │   ├── positioning-chart-v1.js     moteur du graphique 2b (versionné)
 │   └── positioning-chart-v1.css
@@ -90,12 +91,7 @@ Zone Skill 1 — **runs du plus ancien au plus récent : Run 1 en premier, les s
   <link rel="stylesheet" href="../assets/site.css">
 </head>
 <body>
-<header class="siteheader">
-  <div class="siteheader-inner">
-    <a class="brand" href="../">My Market Data<span class="dot">.</span></a>
-    <a class="crumb" href="../">← Accueil</a>
-  </div>
-</header>
+<script src="../assets/siteheader.js" data-crumb="accueil"></script>
 <div class="shell">
 
   <main>
@@ -143,10 +139,10 @@ Zone Skill 1 — **runs du plus ancien au plus récent : Run 1 en premier, les s
 
 ## Page de run — structure
 
-- **En-tête de site sticky** (uniforme sur tout le sous-domaine, décision Elena 2026-06-12) : barre fine `position: sticky` en haut de page — fond crème translucide flouté, logo `My Market Data<span class="dot">.</span>` (lien `../../` vers l'accueil) à gauche, fil d'Ariane `← Marché : [label] · Accueil` à droite (la page précédente d'abord, puis chaque niveau jusqu'à l'accueil ; le lien vers l'accueil s'appelle toujours « Accueil »). CSS de l'en-tête inline (copier depuis un run existant), police Plus Jakarta Sans (poids 800 seul) chargée pour la marque uniquement. **Géométrie strictement identique sur toutes les pages du sous-domaine** : `.siteheader-inner { max-width: calc(50vw + 550px); padding: 11px 20px; }` — le logo ne bouge jamais d'une page à l'autre ; toute évolution doit être répercutée dans `site.css` ET dans les runs. Prévoir `[id] { scroll-margin-top: 70px; }` pour les ancres.
+- **En-tête de site** : injecté par le composant commun `assets/siteheader.js` (source unique, décision Elena 2026-06-13) — placer `<script src="../../assets/siteheader.js" data-crumb="parent" data-parent-label="Marché : [label]" data-parent-href="../"></script>` **en tête de `<body>`**. **Ne plus coder le `<header>` ni son CSS en dur** (le CSS `.siteheader` inline a été retiré des runs). Le composant porte la police Plus Jakarta Sans pour la marque ; prévoir `[id] { scroll-margin-top: 70px; }` dans les styles inline du run pour le décalage des ancres sous l'en-tête. Détail du composant en fin de contrat.
 - **Autonome** : les styles du rapport sont inline dans le `<head>` (les runs sont figés ; pas de CSS partagé pour le texte du rapport).
 - **Conteneur fluide** : `max-width: calc(50vw + 550px)` sur le conteneur principal — marges latérales réduites de moitié par rapport à un conteneur fixe de 1100px, à toute largeur d'écran, sans breakpoint (règle de design validée par Elena le 2026-06-11, cohérente avec les pages parent).
-- **Dépendances externes** : `../../assets/positioning-chart-vN.js` et `.css` (versionnés, voir plus bas) ; `../../assets/sitefoot.js` (pied de page « La méthode » commun — voir section dédiée en fin de contrat).
+- **Dépendances externes** : `../../assets/positioning-chart-vN.js` et `.css` (versionnés, voir plus bas) ; `../../assets/siteheader.js` (en-tête commun) et `../../assets/sitefoot.js` (pied « La méthode » commun) — voir sections dédiées en fin de contrat.
 - **Ordre du document** : en-tête uniforme des runs (décision Elena, 2026-06-12) — **h1 = label du marché**, puis **`seclabel` « Step 1 — Read the Market »**, puis la **ligne runmeta inchangée** (« Run N — date · Périmètre … · Rapport généré par l'agent… »), puis les hypothèses → Section 1 Executive Summary → Section 2a → Section 2b → Annexe A1 Sources → Annexe A2 Lexique → pied de page (« généré par l'agent… » + `<span data-role="last-updated">[date]</span>`).
 - **Données** : inlinées dans la page (`<script>const RUN_DATA = {...}</script>`) **et** écrites dans `data.json`. Les deux doivent rester identiques (l'inline évite toute requête ; le fichier sert à la Skill 3).
 - **Section 2a** : SVG statique généré dans la page — nuage de points, Y = part de marché (%), X = croissance sur la période de référence, nom près de chaque point, valeurs estimées préfixées « ~ », liste visible des acteurs sans données sous le graphique.
@@ -175,6 +171,15 @@ Zone Skill 1 — **runs du plus ancien au plus récent : Run 1 en premier, les s
 ```
 
 Seul élément d'un run publié que la Skill 3 a le droit de réécrire.
+
+## En-tête de site — toutes les pages (décision Elena, 2026-06-13)
+
+`assets/siteheader.js` injecte l'en-tête (logo `My Market Data.` + fil d'Ariane) **en tête du `<body>` de toutes les pages** du sous-domaine. C'est la **source unique** : ne jamais coder le `<header class="siteheader">` ni son CSS en dur (ni dans `site.css`, ni inline dans un run).
+
+- **Inclusion** : `<script src="[base]assets/siteheader.js" [data-*]></script>` placé **en premier dans `<body>`** (synchrone → en-tête inséré avant la peinture, sans flash, sans réservation de hauteur). `[base]` suit la profondeur ; le script déduit lui-même son chemin de base de son propre `src`.
+- **Fil d'Ariane piloté par data-\*** sur la balise : rien → logo seul (accueil) ; `data-crumb="accueil"` → « ← Accueil » (pages de profondeur 1 : marché, doc) ; `data-crumb="parent" data-parent-label="…" data-parent-href="…"` → « ← [parent] · Accueil » (runs : `data-parent-label="Marché : [label]"`, `data-parent-href="../"`).
+- **Autonome** : porte son propre CSS (valeurs canoniques + fallbacks `--line`), fonctionne même sans `site.css` (runs). Injection idempotente.
+- **Règle** : toute page générée (run ou parent) **doit** charger ce script ; aucun header en dur.
 
 ## Pied de page « La méthode » — toutes les pages (décision Elena, 2026-06-13)
 
