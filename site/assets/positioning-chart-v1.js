@@ -13,6 +13,11 @@
  * marqueur « mon projet » via players[].is_mine (rayons radiaux, nom en gras,
  * badge tooltip/fiche, note de légende et ligne d'export conditionnelles).
  * Sans is_mine dans les données, le rendu est strictement inchangé.
+ *
+ * 2026-06-13 — correctif lisibilité axe X (rétro-compatible) : étiquettes
+ * d'extrémité ancrées vers l'intérieur (plus de débordement/coupe), libellés
+ * ordinaux longs repliés sur 2 lignes, titre de l'axe recentré sous les
+ * étiquettes (fin de la collision titre/étiquette de droite). MARGIN.b 52→66.
  */
 (function () {
   "use strict";
@@ -93,7 +98,7 @@
   const HUES = [221, 4, 158, 33, 262, 190, 320, 80];          // une teinte par calque
   const BORDER_TYPES = ["dashed-loose", "dashed-tight", "solid", "double", "triple"];
   const VB_W = 960, VB_H = 560;
-  const MARGIN = { t: 26, r: 30, b: 52, l: 70 };
+  const MARGIN = { t: 26, r: 30, b: 66, l: 70 };
   const NA_BAND_H = 30;
   const SVGNS = "http://www.w3.org/2000/svg";
 
@@ -639,29 +644,48 @@
     }
     const xDim = this.dim(active.config.x_color);
     axes.appendChild(svgEl("line", { x1: g.x0, y1: g.y1, x2: g.x1, y2: g.y1, stroke: "#94a3b8", "stroke-width": 1 }));
+    // anti-débordement : 1re étiquette calée à gauche, dernière à droite, le reste centré
+    const xAnchor = function (i, count) {
+      if (count <= 1) return "middle";
+      if (i === 0) return "start";
+      if (i === count - 1) return "end";
+      return "middle";
+    };
+    let xLabelLines = 1; // nb max de lignes occupées par les étiquettes (place le titre dessous)
     if (xDim) {
-      const xLab = svgEl("text", { x: g.x1, y: g.y1 + 36, "font-size": 12, fill: "#475569", "font-weight": 600, "text-anchor": "end" });
-      xLab.textContent = xDim.label + " " + t.axisOfActive;
-      axes.appendChild(xLab);
       if (xDim.type === "numeric") {
         const s = this.numericScale(xDim);
         for (let i = 0; i <= 4; i++) {
           const v = s.min + (i / 4) * (s.max - s.min);
           const x = g.x0 + (i / 4) * (g.x1 - g.x0);
-          const txt = svgEl("text", { x: x, y: g.y1 + 18, "font-size": 11, fill: "#64748b", "text-anchor": "middle" });
+          const txt = svgEl("text", { x: x, y: g.y1 + 18, "font-size": 11, fill: "#64748b", "text-anchor": xAnchor(i, 5) });
           txt.textContent = fmtNum(v);
           axes.appendChild(txt);
         }
       } else {
         const vals = this.ordinalValues(xDim);
+        // largeur disponible par étiquette (~6px/caractère) → repli des libellés longs, 2 lignes max
+        const slot = vals.length > 1 ? (g.x1 - g.x0) / (vals.length - 1) : (g.x1 - g.x0);
+        const maxChars = Math.max(7, Math.floor((slot - 8) / 6.2));
         vals.forEach(function (v, i) {
           const n = vals.length > 1 ? i / (vals.length - 1) : 0.5;
           const x = g.x0 + n * (g.x1 - g.x0);
-          const txt = svgEl("text", { x: x, y: g.y1 + 18, "font-size": 11, fill: "#64748b", "text-anchor": "middle" });
-          txt.textContent = String(v);
+          let lines = wrapText(String(v), maxChars);
+          if (lines.length > 2) lines = [lines[0], lines.slice(1).join(" ")];
+          xLabelLines = Math.max(xLabelLines, lines.length);
+          const txt = svgEl("text", { x: x, y: g.y1 + 18, "font-size": 11, fill: "#64748b", "text-anchor": xAnchor(i, vals.length) });
+          lines.forEach(function (ln, li) {
+            const ts = svgEl("tspan", { x: x, dy: li === 0 ? 0 : 12 });
+            ts.textContent = ln;
+            txt.appendChild(ts);
+          });
           axes.appendChild(txt);
         });
       }
+      // titre de l'axe X : centré, SOUS les étiquettes (ne percute jamais l'étiquette de droite)
+      const xLab = svgEl("text", { x: (g.x0 + g.x1) / 2, y: g.y1 + 18 + xLabelLines * 12 + 8, "font-size": 12, fill: "#475569", "font-weight": 600, "text-anchor": "middle" });
+      xLab.textContent = xDim.label + " " + t.axisOfActive;
+      axes.appendChild(xLab);
     } else {
       const note = svgEl("text", { x: (g.x0 + g.x1) / 2, y: g.y1 + 18, "font-size": 11, fill: "#94a3b8", "text-anchor": "middle" });
       note.textContent = t.alignedY;
