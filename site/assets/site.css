@@ -1,23 +1,37 @@
 /* ============================================================
-   Charte des pages parent (accueil + pages marché)
-   Style : moderne et chaleureux — fond crème, indigo profond,
-   cartes arrondies, typographie Plus Jakarta Sans.
+   Charte des pages parent + documentation — design system
+   « My Market Data » (acté 2026-06-14, propagé depuis le
+   handoff de l'étape 2). Palette chaude, marque coral, système
+   de signaux, typographies Hanken Grotesk / IBM Plex Mono /
+   Instrument Serif (injectées par siteheader.js).
    Non versionné : les pages parent ne sont pas figées et se
    déploient toujours avec ce fichier.
    ============================================================ */
 
 :root {
-  --bg: #faf7f1;
-  --ink: #1b1f3b;
-  --muted: #6e7191;
-  --accent: #3b3bd8;
-  --accent-ink: #2e2eb8;
-  --accent-soft: #ececfb;
-  --coral: #f4684f;
-  --card: #ffffff;
-  --line: #ece7de;
-  --line-hover: #ddd5c8;
-  --radius: 18px;
+  /* surfaces / encre (neutre chaud) */
+  --paper: #faf8f4;   --bg: #faf8f4;
+  --surface: #ffffff; --card: #ffffff;
+  --surface-2: #f4f1ea; --inset: #f7f5f0;
+  --ink: #1a1c22;     --ink-2: #494d59;  --ink-3: #868a93;  --muted: #868a93;
+  --line: #e7e2d8;    --line-2: #efebe2; --line-hover: #ddd5c8;
+
+  /* système de signaux */
+  --brand: #F4684F;   --brand-ink: #cf4733; --brand-wash: #fdece7; --brand-line: #f7cabd; --coral: #F4684F;
+  --accent: #2f6bff;  --accent-ink: #1f53e0; --accent-wash: #eaf1ff; --accent-line: #c9dbff; --accent-soft: #eaf1ff;
+  --risk: #d8412f;    --risk-ink: #b32a1c;  --risk-wash: #fcebe8;  --risk-line: #f3c8c1;
+  --watch: #c07d12;   --watch-ink: #9c6309; --watch-wash: #fbf1df; --watch-line: #ecd6a8;
+  --good: #1f9d5b;    --good-wash: #e6f5ed;
+
+  /* type */
+  --sans: 'Hanken Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mono: 'IBM Plex Mono', ui-monospace, monospace;
+  --serif: 'Instrument Serif', Georgia, serif;
+
+  /* géométrie */
+  --radius: 18px; --r-lg: 18px; --r-md: 13px; --r-sm: 9px;
+  --shadow: 0 1px 2px rgba(26,28,34,.04), 0 8px 28px -12px rgba(26,28,34,.10);
+  --shadow-sm: 0 1px 2px rgba(26,28,34,.05), 0 2px 8px -4px rgba(26,28,34,.06);
 }
 
 * { box-sizing: border-box; }
@@ -26,23 +40,24 @@ html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  background: var(--bg);
+  background: var(--paper);
   color: var(--ink);
-  font-family: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
-  line-height: 1.65;
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
-::selection { background: var(--accent-soft); color: var(--accent-ink); }
+::selection { background: var(--accent-wash); color: var(--accent-ink); }
 
 /* Largeur fluide : marges latérales = la moitié de celles d'un conteneur fixe de 880px,
    à toute largeur d'écran — aucun saut de breakpoint (validé Elena, 2026-06-11). */
 .shell { max-width: calc(50vw + 440px); margin: 0 auto; padding: 32px 24px 80px; }
 
 /* ---------- en-tête de site ---------- */
-/* Le header (logo + fil d'Ariane) est injecté par assets/siteheader.js — source
-   unique pour tout le sous-domaine, runs compris (décision Elena, 2026-06-13).
-   Ne plus redéfinir .siteheader / .brand / .crumb ici : tout vit dans le composant. */
+/* Le header (logo + fil d'Ariane + barre de progression) est injecté par
+   assets/siteheader.js — source unique pour tout le sous-domaine, runs compris. */
 
 /* décalage des ancres sous l'en-tête sticky */
 [id] { scroll-margin-top: 74px; }
@@ -55,30 +70,34 @@ body {
   position: absolute;
   top: -120px; right: -80px;
   width: 420px; height: 420px;
-  background: radial-gradient(closest-side, rgba(59, 59, 216, 0.07), transparent 70%);
+  background: radial-gradient(closest-side, rgba(244, 104, 79, 0.07), transparent 70%);
   pointer-events: none;
 }
 .kicker {
   display: inline-block;
-  background: var(--accent-soft);
-  color: var(--accent-ink);
-  font-size: 12.5px;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  padding: 6px 14px;
+  background: var(--brand-wash);
+  color: var(--brand-ink);
+  border: 1px solid var(--brand-line);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 6px 13px;
   border-radius: 999px;
   margin-bottom: 20px;
 }
 h1 {
-  font-size: clamp(30px, 5vw, 44px);
-  line-height: 1.12;
-  letter-spacing: -0.025em;
+  font-size: clamp(30px, 5vw, 46px);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
   font-weight: 800;
   margin: 0 0 16px;
+  text-wrap: balance;
 }
 .lede {
   font-size: 17px;
-  color: var(--muted);
+  color: var(--ink-2);
   max-width: 640px;
   margin: 0;
 }
@@ -86,15 +105,16 @@ h1 {
 /* ---------- sections ---------- */
 
 .section-title {
-  font-size: 13px;
-  font-weight: 700;
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--muted);
+  letter-spacing: 0.12em;
+  color: var(--ink-3);
   margin: 52px 0 18px;
 }
 .section-title:first-of-type { margin-top: 0; }
-.section-title .sk { color: var(--accent); }
+.section-title .sk { color: var(--brand-ink); }
 
 /* ---------- cartes (marchés et runs) ---------- */
 
@@ -109,7 +129,7 @@ h1 {
   display: flex;
   align-items: center;
   gap: 18px;
-  background: var(--card);
+  background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 22px 26px;
@@ -119,11 +139,11 @@ h1 {
 }
 .card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 32px rgba(27, 31, 59, 0.09);
+  box-shadow: var(--shadow);
   border-color: var(--line-hover);
 }
 .card:focus-visible {
-  outline: 3px solid var(--accent);
+  outline: 3px solid var(--brand);
   outline-offset: 2px;
 }
 .card-body { min-width: 0; }
@@ -136,14 +156,14 @@ h1 {
 }
 .card-meta {
   display: block;
-  color: var(--muted);
+  color: var(--ink-3);
   font-size: 13.5px;
   margin-top: 3px;
 }
 .card-arrow {
   margin-left: auto;
   flex: none;
-  color: var(--accent);
+  color: var(--brand);
   font-weight: 700;
   font-size: 19px;
   transition: transform 0.18s ease;
@@ -152,18 +172,19 @@ h1 {
 
 .run-num {
   flex: none;
-  background: var(--accent);
+  background: var(--brand);
   color: #fff;
-  font-weight: 800;
-  font-size: 12.5px;
-  letter-spacing: 0.02em;
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.04em;
   border-radius: 999px;
   padding: 7px 14px;
 }
 
 .empty {
-  color: var(--muted);
-  background: var(--card);
+  color: var(--ink-3);
+  background: var(--surface);
   border: 1px dashed var(--line-hover);
   border-radius: var(--radius);
   padding: 22px 26px;
@@ -177,7 +198,7 @@ h1 {
 .cards.compact .card-title { font-size: 15px; }
 .cards.compact .card-meta { font-size: 12.5px; }
 
-/* ---------- navigation documentation (volontairement discrète — le cœur de la page, ce sont les marchés) ---------- */
+/* ---------- navigation documentation (volontairement discrète) ---------- */
 
 .docnav {
   margin-top: 150px;
@@ -186,13 +207,13 @@ h1 {
 }
 .docnav-title {
   display: block;
-  font-size: 11.5px;
-  font-weight: 700;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--muted);
-  opacity: 0.75;
-  margin-bottom: 7px;
+  letter-spacing: 0.12em;
+  color: var(--ink-3);
+  margin-bottom: 9px;
 }
 .docnav-links {
   font-size: 13.5px;
@@ -202,107 +223,113 @@ h1 {
   row-gap: 4px;
 }
 .docnav-links a {
-  color: var(--muted);
+  color: var(--ink-2);
   text-decoration: none;
   font-weight: 600;
 }
-.docnav-links a:hover { color: var(--accent); }
+.docnav-links a:hover { color: var(--brand-ink); }
 .docnav-links .sep { margin: 0 10px; color: var(--line-hover); }
 
 /* ---------- pages de documentation ---------- */
 
 .placeholder {
-  background: var(--card);
+  background: var(--surface);
   border: 1px dashed var(--line-hover);
   border-radius: var(--radius);
   padding: 30px;
-  color: var(--muted);
+  color: var(--ink-3);
   font-size: 15px;
 }
 
 .doc-section-h {
-  font-size: 21px;
+  font-size: 22px;
   font-weight: 800;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.02em;
   margin: 0 0 16px;
 }
 
 .doc-table-wrap {
   overflow-x: auto;
-  background: var(--card);
+  background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius);
 }
 .doc-table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 760px; }
 .doc-table th {
   text-align: left;
-  font-size: 12px;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--muted);
+  letter-spacing: 0.08em;
+  color: var(--ink-3);
   padding: 15px 18px 12px;
-  border-bottom: 2px solid var(--line);
+  border-bottom: 1px solid var(--line);
 }
-.doc-table td { padding: 16px 18px; border-bottom: 1px solid var(--line); vertical-align: top; line-height: 1.55; }
+.doc-table td { padding: 16px 18px; border-bottom: 1px solid var(--line-2); vertical-align: top; line-height: 1.55; }
 .doc-table tr:last-child td { border-bottom: none; }
 .doc-table td.q { font-weight: 600; min-width: 190px; max-width: 240px; }
 
 .kpis { list-style: none; margin: 0; padding: 0; }
-.kpis li { margin-bottom: 7px; padding-left: 14px; position: relative; }
-.kpis li::before { content: "·"; position: absolute; left: 2px; color: var(--accent); font-weight: 800; }
+.kpis li { margin-bottom: 7px; padding-left: 16px; position: relative; }
+.kpis li::before { content: ""; position: absolute; left: 2px; top: 0.62em; width: 6px; height: 6px; border-radius: 50%; background: var(--brand); }
 .kpis li:last-child { margin-bottom: 0; }
 
 .fw {
   display: inline-block;
-  background: var(--accent-soft);
+  background: var(--accent-wash);
   color: var(--accent-ink);
-  font-weight: 700;
-  font-size: 12.5px;
+  border: 1px solid var(--accent-line);
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.02em;
   padding: 6px 13px;
   border-radius: 999px;
   white-space: nowrap;
 }
-.fw-note { display: block; margin-top: 7px; font-size: 11.5px; color: var(--muted); }
+.fw-note { display: block; margin-top: 7px; font-size: 11.5px; color: var(--ink-3); }
 a.fw { text-decoration: none; transition: background 0.15s ease, transform 0.15s ease; }
-a.fw:hover { background: #dcdcf8; transform: translateY(-1px); }
+a.fw:hover { background: #dde9ff; transform: translateY(-1px); }
 
 /* fiches framework (bas de page Focus Skill 2) */
 .fw-card {
-  background: var(--card);
+  background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: var(--radius);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sm);
   padding: 24px 28px;
-  margin-bottom: 36px;
-  scroll-margin-top: 76px;
+  margin-bottom: 30px;
+  scroll-margin-top: 86px;
 }
-.fw-card h3 { margin: 0 0 4px; font-size: 21px; letter-spacing: -0.015em; }
-.fw-origin { color: var(--muted); font-size: 12.5px; margin: 0 0 10px; }
-.fw-q { font-style: italic; color: var(--accent-ink); font-size: 14px; margin: 0 0 10px; }
-.fw-card p { font-size: 14.5px; margin: 8px 0; line-height: 1.65; }
+.fw-card h3 { margin: 0 0 4px; font-size: 22px; font-weight: 800; letter-spacing: -0.02em; }
+.fw-origin { color: var(--ink-3); font-family: var(--mono); font-size: 12px; margin: 0 0 12px; }
+.fw-q { font-family: var(--serif); font-style: italic; color: var(--accent-ink); font-size: 18px; line-height: 1.3; margin: 0 0 12px; }
+.fw-card p { font-size: 14.5px; color: var(--ink-2); margin: 8px 0; line-height: 1.65; }
 .fw-back {
   display: inline-block;
   margin-top: 10px;
-  font-size: 12.5px;
-  font-weight: 600;
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
   text-decoration: none;
-  color: var(--muted);
+  color: var(--ink-3);
 }
-.fw-back:hover { color: var(--accent); }
+.fw-back:hover { color: var(--brand-ink); }
 
 /* visuel de framework (schéma SVG à droite du texte) */
 .fw-body { display: flex; gap: 26px; align-items: center; }
 .fw-text { flex: 1; min-width: 0; }
 .fw-viz { flex: none; width: 232px; margin: 0; }
 .fw-viz svg { display: block; width: 100%; height: auto; }
-.fw-cap { font-size: 11.5px; color: var(--muted); text-align: center; margin-top: 6px; }
+.fw-cap { font-family: var(--mono); font-size: 11px; color: var(--ink-3); text-align: center; margin-top: 8px; }
 @media (max-width: 720px) {
   .fw-body { flex-direction: column; align-items: stretch; }
   .fw-viz { width: 100%; max-width: 340px; margin: 0 auto; }
 }
 
 /* ---------- pied de page ---------- */
-/* Le footer (présentation, La méthode, Marchés étudiés, mentions légales) est
-   généré par assets/sitefoot.js — source unique, runs compris. Rien à styler ici. */
+/* Le footer est généré par assets/sitefoot.js — source unique, runs compris. */
 
 @media (max-width: 560px) {
   .shell { padding-top: 24px; }

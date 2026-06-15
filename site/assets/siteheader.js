@@ -29,19 +29,39 @@
   var parentHref = (self && self.getAttribute("data-parent-href")) || "../";
 
   var STYLE_ID = "siteheader-style";
+  var FONTS_ID = "mmd-fonts";
+  // Design system : barre translucide chaude + barre de progression au scroll (cf. design Step 2).
   var CSS =
     ".siteheader{position:sticky;top:0;z-index:100;" +
-      "background:rgba(250,247,241,.92);" +
-      "-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);" +
-      "border-bottom:1px solid var(--line,#ece7de);}" +
+      "background:rgba(250,248,244,.85);" +
+      "-webkit-backdrop-filter:saturate(1.4) blur(14px);backdrop-filter:saturate(1.4) blur(14px);" +
+      "border-bottom:1px solid var(--line-2,#efebe2);}" +
     ".siteheader-inner{max-width:calc(50vw + 550px);margin:0 auto;padding:11px 20px;" +
       "display:flex;align-items:center;justify-content:space-between;gap:16px;}" +
-    ".siteheader .brand{font-family:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;" +
-      "font-weight:800;font-size:15.5px;letter-spacing:-.02em;color:#1b1f3b;text-decoration:none;}" +
+    ".siteheader .brand{font-family:'Hanken Grotesk','Plus Jakarta Sans',system-ui,-apple-system,sans-serif;" +
+      "font-weight:800;font-size:18px;letter-spacing:-.015em;color:var(--ink,#1a1c22);text-decoration:none;" +
+      "white-space:nowrap;flex:none;}" +
+    ".siteheader .crumb{text-align:right;}" +
     ".siteheader .brand .dot{color:#f4684f;}" +
-    ".siteheader .crumb{margin:0;font-size:13.5px;font-weight:600;color:#6e7191;text-decoration:none;}" +
+    ".siteheader .crumb{margin:0;font-family:'Hanken Grotesk',system-ui,-apple-system,sans-serif;" +
+      "font-size:13.5px;font-weight:600;color:#6e7191;text-decoration:none;}" +
     ".siteheader .crumb a{color:#6e7191;text-decoration:none;}" +
-    ".siteheader .crumb a:hover,.siteheader a.crumb:hover{color:#3b3bd8;}";
+    ".siteheader .crumb a:hover,.siteheader a.crumb:hover{color:#3b3bd8;}" +
+    ".siteheader .progress{position:absolute;left:0;bottom:-1px;height:2px;width:0;" +
+      "background:var(--accent,#2f6bff);transition:width .1s linear;}" +
+    "@media print{.siteheader{display:none!important;}}";
+
+  // Polices du design system (Hanken Grotesk + IBM Plex Mono), injectées une fois pour
+  // tout le sous-domaine. Instrument Serif (questions des frameworks) est chargée par
+  // les pages de rapport qui en ont besoin.
+  function injectFonts() {
+    if (document.getElementById(FONTS_ID)) return;
+    var l = document.createElement("link");
+    l.id = FONTS_ID;
+    l.rel = "stylesheet";
+    l.href = "https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap";
+    (document.head || document.documentElement).appendChild(l);
+  }
 
   function injectStyle() {
     if (document.getElementById(STYLE_ID)) return;
@@ -98,14 +118,37 @@
     var c = crumbEl();
     if (c) inner.appendChild(c);
     header.appendChild(inner);
+    var prog = document.createElement("span");
+    prog.className = "progress";
+    header.appendChild(prog);
     return header;
+  }
+
+  // Barre de progression : largeur = part de la page déjà parcourue.
+  function setupProgress() {
+    var prog = document.querySelector(".siteheader .progress");
+    if (!prog) return;
+    function update() {
+      var h = document.documentElement;
+      var max = h.scrollHeight - h.clientHeight;
+      var p = max > 0 ? (h.scrollTop || document.body.scrollTop) / max : 0;
+      prog.style.width = (p * 100).toFixed(2) + "%";
+    }
+    var ticking = false;
+    window.addEventListener("scroll", function () {
+      if (!ticking) { window.requestAnimationFrame(function () { update(); ticking = false; }); ticking = true; }
+    }, { passive: true });
+    window.addEventListener("resize", update, { passive: true });
+    update();
   }
 
   function inject() {
     if (document.querySelector(".siteheader")) return; // déjà présent
+    injectFonts();
     injectStyle();
     var parent = (self && self.parentNode) || document.body;
     parent.insertBefore(build(), parent.firstChild);
+    setupProgress();
   }
 
   // Script placé en tête de <body> → body disponible, insertion immédiate (avant peinture).

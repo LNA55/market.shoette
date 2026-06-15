@@ -28,7 +28,7 @@ Work from the MARKET project root. Remote scope: the `market/` directory only.
 
 ## Step 3 — Section 3 : SWOT (dedicated section — Elena's decision, 2026-06-12)
 
-The SWOT lives HERE (excluded from Skill 2 on 2026-06-11 because it requires the « my product » viewpoint). Strengths / Weaknesses = internal (product promise, stage, declarative data, beta status); Opportunities / Threats = external (market structure, GLP-1 wave, regulation, competitors' moves) — all grounded in S1/S2/S3 facts, conventions kept. Render as the canonical 2×2 grid, inline SVG in the report charte (~660px), plus one reading paragraph.
+The SWOT lives HERE (excluded from Skill 2 on 2026-06-11 because it requires the « my product » viewpoint). Strengths / Weaknesses = internal (product promise, stage, declarative data, beta status); Opportunities / Threats = external (market structure, GLP-1 wave, regulation, competitors' moves) — all grounded in S1/S2/S3 facts, conventions kept. Render as the canonical 2×2 grid **in CSS** (`.swot` → `.quad--s` blue/accent, `.quad--w` amber/watch, `.quad--o` green/good, `.quad--t` red/risk), each entry carrying a `.basis` provenance tag (S1/S2/S3 or declarative), plus one reading paragraph.
 
 ## Step 4 — Section 4 : Marketing mix (4P)
 
@@ -51,11 +51,11 @@ Synthesize the whole analysis (sections 1-5: market, positioning, SWOT, mix, par
 - **Binary headline, no « maybe »**: the big word is **GO** or **NO GO**. A conditional GO is allowed, but the condition lives in the rationale — it never softens the word.
 - **Frankness over complacency** (same rule as the mix): a **NO GO** when the analysis warrants it — a verdict that can't say no is worthless. The decision follows the sections; it never flatters the project.
 - Fields: `decision` (`GO` | `NO GO`), `question`, `answer` (one punchy line), `rationale` (why — grounded in the sections), `condition` (the honest caveat: what a GO hinges on, or what would flip a NO GO).
-- **Rendered as a large square card at the very top of the page**, under the title (after the runmeta, before the age banner): green for GO, red for NO GO — CSS classes `verdict-go` / `verdict-nogo` (see contracts).
+- **Rendered as a large card in the hero**, after the byline and before the age banner: green for GO, red for NO GO — CSS classes `.verdict--go` / `.verdict--nogo` (design system, see contracts).
 
 ## Step 7 — Build the page + data.json
 
-Contracts: [references/s4-contracts.md](references/s4-contracts.md) — page structure, data schema, zone format. Uniform run header (h1 = market label, seclabel « Step 4 — Strategy recommendation », runmeta with project + the three source runs and their dates). Data inlined (`const RUN_S4_DATA = {...}`) **and** written as `data.json`, identical. Autonomous page, report charte, frozen run.
+Contracts: [references/s4-contracts.md](references/s4-contracts.md) — page structure, data schema, zone format. **Design system « My Market Data »** (acté 2026-06-14): copy the canonical run `s4-1_2026-06-12`'s inline `<style>` and only change the data; hero with the eyebrow market chip + « Étape 4. » (`.step-no`) + « Recommandation stratégique » + byline (project + the three source runs and their dates). Data inlined (`const RUN_S4_DATA = {...}`) **and** written as `data.json`, identical. Autonomous, frozen run.
 
 ## Step 8 — Update the parent pages
 

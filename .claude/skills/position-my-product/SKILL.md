@@ -49,7 +49,7 @@ Contracts: [references/s3-contracts.md](references/s3-contracts.md) — page str
 2. **Le positionnement** — a small table: dimension → assigned value (with `~` / declared flags) + one-line rationale; then the **link to the enriched chart**: `../s1-[n]_[date]/#s2b`.
 3. **Analyse du graphique** — one paragraph: where the project lands, nearest neighbours, empty spaces, reading keys — including the **recommended layer/channel configuration**: the project sits at 0% on the default Y axis (market share), so tell the reader which dimensions to map on which visual channels to actually see it.
 
-No SWOT, no frameworks in V1 — they belong to Skill 4. Data inlined (`const RUN_S3_DATA = {...}`) **and** written as `data.json`, identical. The page is autonomous (inline styles, report charte, fluid container) — it is a frozen run.
+No SWOT, no frameworks in V1 — they belong to Skill 4. Data inlined (`const RUN_S3_DATA = {...}`) **and** written as `data.json`, identical. The page is autonomous (**design-system CSS inline**, fluid container) — a frozen run in the « My Market Data » design system (acté 2026-06-14): copy the canonical run `s3-1_2026-06-12` (hero, `.def` table, `.chart-link`, `.keys`, `.reco`) and only change the data.
 
 ## Step 5 — Update the parent pages
 

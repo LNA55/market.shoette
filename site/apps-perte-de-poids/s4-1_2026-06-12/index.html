@@ -3,103 +3,181 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Strategy recommendation — Applications mobiles d'assistance à la perte de poids — Run S4-1 (12 juin 2026)</title>
+  <title>Recommandation stratégique — Applications mobiles d'assistance à la perte de poids — Run S4-1 (12 juin 2026)</title>
   <meta name="description" content="Recommandations stratégiques pour What is wrong with me sur le marché des applications d'assistance à la perte de poids — SWOT, marketing mix, partenariats et sorties. Run S4-1, juin 2026.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <style>
+    /* Design system « My Market Data » — run figé, CSS inline. */
     :root {
-      --ink: #1e293b; --muted: #64748b; --faint: #94a3b8;
-      --line: #e2e8f0; --bg-soft: #f8fafc; --accent: #2563eb; --warn: #b45309;
+      --paper:#faf8f4; --surface:#ffffff; --surface-2:#f4f1ea; --inset:#f7f5f0;
+      --ink:#1a1c22; --ink-2:#494d59; --ink-3:#868a93; --line:#e7e2d8; --line-2:#efebe2;
+      --brand:#F4684F; --brand-ink:#cf4733; --brand-wash:#fdece7; --brand-line:#f7cabd;
+      --accent:#2f6bff; --accent-ink:#1f53e0; --accent-wash:#eaf1ff; --accent-line:#c9dbff;
+      --risk:#d8412f; --risk-ink:#b32a1c; --risk-wash:#fcebe8; --risk-line:#f3c8c1;
+      --watch:#c07d12; --watch-ink:#9c6309; --watch-wash:#fbf1df; --watch-line:#ecd6a8;
+      --good:#1f9d5b; --good-ink:#157a45; --good-wash:#e6f5ed; --good-line:#b6e2c8;
+      --sans:'Hanken Grotesk',system-ui,sans-serif; --mono:'IBM Plex Mono',ui-monospace,monospace; --serif:'Instrument Serif',Georgia,serif;
+      --r-lg:18px; --r-md:13px; --r-sm:9px; --maxw:1180px; --gutter:clamp(20px,5vw,56px);
+      --shadow:0 1px 2px rgba(26,28,34,.04),0 8px 28px -12px rgba(26,28,34,.10);
+      --shadow-sm:0 1px 2px rgba(26,28,34,.05),0 2px 8px -4px rgba(26,28,34,.06);
     }
-    * { box-sizing: border-box; }
-    body {
-      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-      color: var(--ink); margin: 0; line-height: 1.6; font-size: 15.5px;
-    }
-    .wrap { max-width: calc(50vw + 550px); margin: 0 auto; padding: 28px 20px 60px; }
-    a { color: var(--accent); }
-    header.report h1 { font-size: 27px; line-height: 1.25; margin: 0 0 6px; }
-    .runmeta { color: var(--muted); font-size: 14px; margin-bottom: 8px; }
-    .seclabel { font-size: 12px; text-transform: uppercase; letter-spacing: .07em; color: var(--accent); font-weight: 700; margin-bottom: 2px; }
-    .agebanner {
-      margin-top: 14px; border: 1px solid var(--line); border-left: 3px solid var(--accent);
-      background: var(--bg-soft); border-radius: 0 10px 10px 0; padding: 10px 16px;
-      font-size: 13.5px; color: var(--muted);
-    }
-    section { margin-top: 42px; }
-    section > h2 { font-size: 22px; margin: 0 0 14px; }
-    p { margin: 10px 0; }
-    .note { font-size: 13px; color: var(--muted); margin: 8px 0; }
-    .declared {
-      display: inline-block; vertical-align: 1px; margin-left: 6px;
-      background: #eef2ff; color: #3730a3; font-size: 10.5px; font-weight: 700;
-      padding: 2px 8px; border-radius: 999px; text-transform: uppercase; letter-spacing: .04em;
-    }
-    ul.pts { margin: 8px 0 0; padding-left: 20px; }
-    ul.pts li { margin-bottom: 9px; }
-    .fig { margin: 18px auto 4px; max-width: 660px; }
-    .fig svg { display: block; width: 100%; height: auto; }
-    .fig-cap { font-size: 12px; color: var(--muted); text-align: center; margin-top: 7px; }
-    .p-block { border: 1px solid var(--line); border-radius: 10px; padding: 16px 20px; margin-bottom: 18px; }
-    .p-block h3 { margin: 0 0 8px; font-size: 17px; }
-    .p-block .data { font-size: 13.5px; color: var(--muted); border-left: 3px solid var(--line); padding: 4px 12px; margin: 10px 0; }
-    .p-block .reco-line { border-left: 3px solid var(--accent); background: var(--bg-soft); padding: 10px 14px; border-radius: 0 8px 8px 0; margin-top: 12px; }
-    table.targets { width: 100%; border-collapse: collapse; font-size: 14px; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
-    table.targets th { text-align: left; background: var(--bg-soft); padding: 10px 14px; border-bottom: 1px solid var(--line); font-size: 12.5px; color: var(--muted); text-transform: uppercase; letter-spacing: .03em; }
-    table.targets td { padding: 11px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
-    table.targets tr:last-child td { border-bottom: none; }
-    table.targets td:first-child { font-weight: 700; white-space: nowrap; }
-    .dealtype { display: inline-block; background: #eef2ff; color: #3730a3; font-size: 11px; font-weight: 700; padding: 2px 9px; border-radius: 999px; white-space: nowrap; }
-    .src { font-size: 11.5px; color: var(--faint); }
-    ol.sources-list { padding-left: 20px; font-size: 13.5px; color: var(--muted); }
-    ol.sources-list li { margin-bottom: 6px; }
-    [id] { scroll-margin-top: 70px; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; scroll-padding-top:70px; }
+    body { margin:0; font-family:var(--sans); background:var(--paper); color:var(--ink); font-size:17px; line-height:1.6; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; }
+    ::selection { background:var(--accent-wash); color:var(--accent-ink); }
+    a { color:inherit; }
+    .num { font-variant-numeric:tabular-nums; }
+    .shell { max-width:var(--maxw); margin:0 auto; padding-inline:var(--gutter); }
+    [id] { scroll-margin-top:70px; }
 
-    .verdict-banner { display: flex; gap: 26px; align-items: center; margin: 22px 0 6px; padding: 26px 30px; border-radius: 18px; }
-    .verdict-go { background: linear-gradient(135deg, #ecfdf5, #d1fae5); border: 2px solid #10b981; }
-    .verdict-nogo { background: linear-gradient(135deg, #fef2f2, #fee2e2); border: 2px solid #ef4444; }
-    .verdict-emblem { flex: none; width: 156px; height: 156px; border-radius: 22px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
-    .verdict-go .verdict-emblem { background: linear-gradient(160deg, #10b981, #047857); box-shadow: 0 14px 34px rgba(5, 150, 105, .38); }
-    .verdict-nogo .verdict-emblem { background: linear-gradient(160deg, #ef4444, #b91c1c); box-shadow: 0 14px 34px rgba(185, 28, 28, .35); }
-    .verdict-check { font-size: 42px; line-height: 1; color: #fff; }
-    .verdict-word { font-family: "Plus Jakarta Sans", system-ui, sans-serif; font-weight: 800; font-size: 50px; line-height: 1; letter-spacing: .03em; color: #fff; }
-    .verdict-kicker { font-size: 11.5px; text-transform: uppercase; letter-spacing: .08em; font-weight: 700; color: #059669; margin-bottom: 4px; }
-    .verdict-q { font-size: 14.5px; color: #475569; font-weight: 600; }
-    .verdict-a { font-size: 30px; line-height: 1.15; font-weight: 800; color: #065f46; margin: 3px 0 10px; letter-spacing: -.015em; }
-    .verdict-why { font-size: 14px; color: #1e293b; margin: 0; line-height: 1.62; }
-    @media (max-width: 640px) { .verdict-banner { flex-direction: column; text-align: center; padding: 22px; } .verdict-emblem { width: 130px; height: 130px; } }
+    /* hero */
+    .hero { padding:clamp(34px,6vw,68px) 0 22px; }
+    .hero__market { display:inline-flex; align-items:center; gap:9px; font-family:var(--mono); font-size:12.5px; letter-spacing:.03em; color:var(--ink-2); background:var(--surface); border:1px solid var(--line); border-radius:999px; padding:6px 14px 6px 11px; margin-bottom:24px; text-decoration:none; }
+    .hero__market .tag { font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-3); white-space:nowrap; padding-right:9px; border-right:1px solid var(--line); }
+    .hero__market .swatch { width:7px; height:7px; border-radius:2px; background:var(--brand); }
+    .hero h1 { font-size:clamp(38px,6vw,72px); line-height:1.0; letter-spacing:-.03em; font-weight:800; margin:0 0 20px; max-width:18ch; text-wrap:balance; }
+    .hero h1 .step-no { color:var(--brand); }
+    .hero__byline { margin-top:18px; font-size:15.5px; line-height:1.55; color:var(--ink-2); max-width:78ch; }
+    .hero__byline strong { color:var(--ink); font-weight:700; }
+    .hero__byline a { color:var(--accent-ink); text-decoration:none; font-weight:600; border-bottom:1px solid var(--accent-line); }
+
+    /* verdict GO / NO GO */
+    .verdict { display:flex; gap:26px; align-items:center; margin:26px 0 4px; padding:26px 30px; border-radius:var(--r-lg); border:1.5px solid; }
+    .verdict--go { background:var(--good-wash); border-color:var(--good-line); }
+    .verdict--nogo { background:var(--risk-wash); border-color:var(--risk-line); }
+    .verdict__emblem { flex:none; width:150px; height:150px; border-radius:22px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; box-shadow:var(--shadow); }
+    .verdict--go .verdict__emblem { background:linear-gradient(160deg,#23b06a,#157a45); }
+    .verdict--nogo .verdict__emblem { background:linear-gradient(160deg,#e0503c,#b32a1c); }
+    .verdict__mark { font-size:40px; line-height:1; color:#fff; }
+    .verdict__word { font-family:var(--sans); font-weight:800; font-size:46px; line-height:1; letter-spacing:.02em; color:#fff; }
+    .verdict__kicker { font-family:var(--mono); font-size:10.5px; text-transform:uppercase; letter-spacing:.12em; font-weight:600; color:var(--ink-3); margin-bottom:6px; }
+    .verdict__q { font-size:14.5px; color:var(--ink-2); font-weight:600; }
+    .verdict__a { font-size:clamp(24px,3vw,30px); line-height:1.12; font-weight:800; letter-spacing:-.02em; margin:4px 0 10px; }
+    .verdict--go .verdict__a { color:var(--good-ink); }
+    .verdict--nogo .verdict__a { color:var(--risk-ink); }
+    .verdict__why { font-size:14px; color:var(--ink-2); margin:0; line-height:1.62; max-width:74ch; }
+    .verdict__why b { color:var(--ink); }
+    @media (max-width:640px) { .verdict { flex-direction:column; text-align:center; padding:22px; } }
+
+    /* bandeau d'âge / méthode */
+    .agebanner { margin-top:16px; border:1px solid var(--line); border-left:3px solid var(--accent); background:var(--surface); border-radius:0 var(--r-md) var(--r-md) 0; padding:12px 18px; font-size:13.5px; color:var(--ink-2); line-height:1.55; }
+    .agebanner b { color:var(--ink); }
+
+    /* section scaffold */
+    .section { padding:clamp(40px,6vw,62px) 0 4px; }
+    .section__head { display:flex; gap:18px; align-items:baseline; margin-bottom:24px; }
+    .section__no { font-family:var(--mono); font-size:14px; font-weight:600; color:var(--brand-ink); border:1px solid var(--brand-line); background:var(--brand-wash); width:36px; height:36px; border-radius:10px; display:grid; place-items:center; flex:none; }
+    .section__title { font-size:clamp(24px,3vw,32px); font-weight:800; letter-spacing:-.025em; line-height:1.1; margin:0; }
+    .section__purpose { color:var(--ink-2); font-size:15px; margin-top:6px; max-width:64ch; }
+    .divider { height:1px; background:var(--line-2); border:0; margin:0; }
+    .prose p { font-size:15.5px; color:var(--ink-2); line-height:1.65; margin:0 0 14px; max-width:80ch; }
+    .prose p strong, .prose p b { color:var(--ink); }
+    .note { font-family:var(--mono); font-size:12px; color:var(--ink-3); line-height:1.55; margin:12px 0 0; max-width:82ch; }
+    .note a { color:var(--accent-ink); text-decoration:none; border-bottom:1px solid var(--accent-line); }
+
+    /* listes à puces (coral) */
+    .pts { list-style:none; margin:14px 0 0; padding:0; display:grid; gap:11px; }
+    .pts li { display:flex; gap:12px; align-items:baseline; font-size:15px; color:var(--ink-2); line-height:1.6; }
+    .pts li::before { content:""; width:6px; height:6px; border-radius:50%; background:var(--brand); flex:none; transform:translateY(-3px); }
+    .pts li b { color:var(--ink); }
+    .pts a { color:var(--accent-ink); text-decoration:none; border-bottom:1px solid var(--accent-line); }
+
+    /* SWOT 2×2 */
+    .swot { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:6px; }
+    .swot__band { grid-column:1 / -1; font-family:var(--mono); font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-3); margin:8px 0 -4px; }
+    .quad { border:1px solid var(--line); border-radius:var(--r-md); padding:18px 20px; background:var(--surface); }
+    .quad h4 { margin:0 0 12px; font-size:15px; font-weight:800; letter-spacing:-.01em; }
+    .quad ul { list-style:none; margin:0; padding:0; display:grid; gap:9px; }
+    .quad li { font-size:13.5px; color:var(--ink-2); line-height:1.5; padding-left:14px; position:relative; }
+    .quad li::before { content:""; position:absolute; left:0; top:.55em; width:5px; height:5px; border-radius:50%; }
+    .quad .basis { font-family:var(--mono); font-size:10px; color:var(--ink-3); white-space:nowrap; }
+    .quad--s { background:var(--accent-wash); border-color:var(--accent-line); }
+    .quad--s h4 { color:var(--accent-ink); } .quad--s li::before { background:var(--accent); }
+    .quad--w { background:var(--watch-wash); border-color:var(--watch-line); }
+    .quad--w h4 { color:var(--watch-ink); } .quad--w li::before { background:var(--watch); }
+    .quad--o { background:var(--good-wash); border-color:var(--good-line); }
+    .quad--o h4 { color:var(--good-ink); } .quad--o li::before { background:var(--good); }
+    .quad--t { background:var(--risk-wash); border-color:var(--risk-line); }
+    .quad--t h4 { color:var(--risk-ink); } .quad--t li::before { background:var(--risk); }
+    @media (max-width:720px) { .swot { grid-template-columns:1fr; } }
+
+    /* marketing mix — 4 P */
+    .pblock { border:1px solid var(--line); border-radius:var(--r-md); background:var(--surface); box-shadow:var(--shadow-sm); padding:20px 24px; margin-bottom:16px; }
+    .pblock h3 { margin:0 0 12px; font-size:18px; font-weight:800; letter-spacing:-.01em; }
+    .pblock__data { font-size:13px; color:var(--ink-3); border-left:2px solid var(--line); padding:4px 14px; margin:0 0 12px; line-height:1.55; }
+    .pblock__reco { font-size:14.5px; color:var(--ink-2); line-height:1.65; margin:0; }
+    .pblock__reco b:first-child { color:var(--ink); }
+
+    /* table cibles M&A */
+    .targets { width:100%; border-collapse:collapse; font-size:14px; }
+    .targets th { text-align:left; font-family:var(--mono); font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-3); padding:12px 14px; border-bottom:1px solid var(--line); }
+    .targets td { padding:14px; border-bottom:1px solid var(--line-2); vertical-align:top; color:var(--ink-2); line-height:1.55; }
+    .targets tr:last-child td { border-bottom:none; }
+    .targets td:first-child { font-weight:700; color:var(--ink); white-space:nowrap; }
+    .targets-wrap { overflow-x:auto; border:1px solid var(--line); border-radius:var(--r-md); background:var(--surface); margin-top:8px; }
+    .targets { min-width:720px; }
+    .dealtype { display:inline-block; font-family:var(--mono); font-size:10.5px; font-weight:600; letter-spacing:.04em; color:var(--accent-ink); background:var(--accent-wash); border:1px solid var(--accent-line); padding:3px 9px; border-radius:999px; white-space:nowrap; }
+    .src { font-family:var(--mono); font-size:11px; color:var(--ink-3); }
+
+    /* sources */
+    .sources { list-style:none; margin:0; padding:0; display:grid; gap:11px; counter-reset:src; }
+    .sources li { display:grid; grid-template-columns:auto 1fr; gap:14px; align-items:baseline; padding:13px 0; border-top:1px solid var(--line-2); font-size:13.5px; color:var(--ink-2); line-height:1.5; }
+    .sources li::before { counter-increment:src; content:counter(src,decimal-leading-zero); font-family:var(--mono); font-size:13px; color:var(--ink-3); }
+    .sources a { color:var(--accent-ink); text-decoration:none; font-weight:600; border-bottom:1px solid var(--accent-line); word-break:break-word; }
+
+    h3.subh { font-size:17px; font-weight:800; letter-spacing:-.01em; margin:26px 0 10px; }
+
+    @media (max-width:720px) {
+      body { font-size:16px; }
+      .section__head { gap:14px; }
+      .pblock { padding:18px 18px; }
+    }
+    @media print { .siteheader,.sitefoot { display:none !important; } .pblock,.quad,.verdict { box-shadow:none !important; break-inside:avoid; } }
+    @media (prefers-reduced-motion:reduce) { * { scroll-behavior:auto !important; transition:none !important; } }
   </style>
 </head>
 <body>
-
 <script src="../../assets/siteheader.js" data-crumb="parent" data-parent-label="Marché : applications d&#x27;assistance à la perte de poids" data-parent-href="../"></script>
-<div class="wrap">
 
-  <header class="report">
-    <h1>Applications mobiles d'assistance à la perte de poids</h1>
-    <div class="seclabel">Step 4 — Strategy recommendation</div>
-    <div class="runmeta">Run S4-1 — 12 juin 2026 · Projet : What is wrong with me · Sources : <a href="../s3-1_2026-06-12/">Run S3-1 du 12 juin 2026</a> · <a href="../s1-2_2026-06-11/">Run S1-2 du 11 juin 2026</a> · <a href="../s2-1_2026-06-11/">Run S2-1 du 11 juin 2026</a></div>
-    <div class="verdict-banner verdict-go" role="status" aria-label="Verdict de l'analyse : GO">
-      <div class="verdict-emblem">
-        <span class="verdict-check">✓</span>
-        <span class="verdict-word">GO</span>
-      </div>
-      <div class="verdict-text">
-        <div class="verdict-kicker">Le verdict de l'analyse, en un mot</div>
-        <div class="verdict-q">Creuser « What is wrong with me » dans la perte de poids ?</div>
-        <div class="verdict-a">Oui — l'angle vaut l'effort.</div>
-        <p class="verdict-why">Un segment réel et documenté (~23-25 % de non-répondeurs GLP-1), un angle mort qu'aucun acteur ne sert, des géants fragilisés et un intérêt M&amp;A déjà présent (Novo, Oura). <b>À une condition :</b> creuser cette niche précise — pas le marché généraliste — et produire des preuves vite, avant que les grands ne répliquent.</p>
-      </div>
+<a id="top"></a>
+
+<section class="hero"><div class="shell">
+  <a class="hero__market" href="../" title="Marché étudié">
+    <span class="swatch"></span>
+    <span class="tag">Marché étudié</span>
+    <span>Applications mobiles d'assistance à la perte de poids</span>
+  </a>
+  <h1><span class="step-no">Étape 4.</span><br>Recommandation stratégique</h1>
+  <p class="hero__byline">Run <strong>S4-1</strong>, publié le 12 juin 2026 — projet <strong>What is wrong with me</strong>, à partir des <a href="../s3-1_2026-06-12/">Run S3-1</a>, <a href="../s1-2_2026-06-11/">Run S1-2</a> et <a href="../s2-1_2026-06-11/">Run S2-1</a>.</p>
+
+  <div class="verdict verdict--go" role="status" aria-label="Verdict de l'analyse : GO">
+    <div class="verdict__emblem">
+      <span class="verdict__mark">✓</span>
+      <span class="verdict__word">GO</span>
     </div>
+    <div class="verdict__text">
+      <div class="verdict__kicker">Le verdict de l'analyse, en un mot</div>
+      <div class="verdict__q">Creuser « What is wrong with me » dans la perte de poids ?</div>
+      <div class="verdict__a">Oui — l'angle vaut l'effort.</div>
+      <p class="verdict__why">Un segment réel et documenté (~23-25 % de non-répondeurs GLP-1), un angle mort qu'aucun acteur ne sert, des géants fragilisés et un intérêt M&amp;A déjà présent (Novo, Oura). <b>À une condition :</b> creuser cette niche précise — pas le marché généraliste — et produire des preuves vite, avant que les grands ne répliquent.</p>
+    </div>
+  </div>
 
-    <div class="agebanner">Sections 1-2 : <b>synthèse pure des runs existants</b> — données de marché du 11 juin 2026 (1 jour), positionnement du 12 juin 2026 (jour J), aucun rafraîchissement web. Seule la section 5 (partenariats &amp; sorties) s'appuie sur une recherche web du 12 juin 2026, sources citées. Aucun choix de marketing mix déclaré par Elena pour ce run → les 4 P reçoivent des recommandations.</div>
-  </header>
+  <div class="agebanner">Sections 1-2 : <b>synthèse pure des runs existants</b> — données de marché du 11 juin 2026 (1 jour), positionnement du 12 juin 2026 (jour J), aucun rafraîchissement web. Seule la section 5 (partenariats &amp; sorties) s'appuie sur une recherche web du 12 juin 2026, sources citées. Aucun choix de marketing mix déclaré par Elena pour ce run → les 4 P reçoivent des recommandations.</div>
+</div></section>
 
-  <section id="marche">
-    <h2>1 · Le marché, au 11 juin 2026</h2>
-    <p>Le marché des applications grand public dont la proposition centrale est l'assistance à la perte de poids pèse <b>~2,2 Md$ (2025)</b>, en croissance de ~11-13 %/an — mais c'est un marché en <b>recomposition, pas en expansion tranquille</b> : la valeur monte (+13 % de revenus in-app en 2025) tandis que les volumes stagnent (+0,8 % de téléchargements). On n'y gagne plus en acquisition brute, on y gagne en valeur captée par utilisateur.</p>
+<div class="shell"><main>
+
+  <section class="section" id="marche">
+    <div class="section__head">
+      <span class="section__no">01</span>
+      <div><h2 class="section__title">Le marché, au 11 juin 2026</h2></div>
+    </div>
+    <div class="prose">
+      <p>Le marché des applications grand public dont la proposition centrale est l'assistance à la perte de poids pèse <b>~2,2 Md$ (2025)</b>, en croissance de ~11-13 %/an — mais c'est un marché en <b>recomposition, pas en expansion tranquille</b> : la valeur monte (+13 % de revenus in-app en 2025) tandis que les volumes stagnent (+0,8 % de téléchargements). On n'y gagne plus en acquisition brute, on y gagne en valeur captée par utilisateur.</p>
+    </div>
     <ul class="pts">
       <li><b>Structure</b> : les plateformes médicalisées (app + téléconsultation + GLP-1) captent <b>~61 %</b> de la valeur ; le tracking calorique ~20 % (commoditisé par le photo-logging IA) ; le coaching comportemental &amp; IA ~9 % ; les compagnons GLP-1 dédiés ~1 % — une catégorie naissante, sans leader.</li>
       <li><b>Le choc structurant</b> : les GLP-1 — 12,4 % des adultes américains en usage perte de poids, plus du double en 18 mois — sont un substitut pharmacologique au « régime comportemental » lui-même. Ils ont mis le leader historique (WeightWatchers, 31 % de part, 1963) en faillite-éclair en mai 2025, dont il est sorti désendetté et repositionné médical.</li>
@@ -110,9 +188,16 @@
     <p class="note">Toutes valeurs ~ estimées — synthèse des runs <a href="../s1-2_2026-06-11/">S1-2</a> et <a href="../s2-1_2026-06-11/">S2-1</a> du 11 juin 2026.</p>
   </section>
 
-  <section id="positionnement">
-    <h2>2 · Le positionnement du projet</h2>
-    <p><b>What is wrong with me</b> (<a href="https://w.shoette.com/" target="_blank" rel="noopener">w.shoette.com</a>) est un journal de santé conversationnel à IA : on lui parle — voix, photos, documents médicaux — il corrèle des centaines de signaux pour expliquer un blocage. Positionné ici sur l'usage déclaré par Elena : <b>l'enquête sur le blocage pondéral</b> — IMC &gt; 30, échecs répétés, et d'abord les utilisateurs de GLP-1 sans réponse marquée. Beta sur liste d'attente, « not a medical device », données hébergées en UE.</p>
+  <hr class="divider">
+
+  <section class="section" id="positionnement">
+    <div class="section__head">
+      <span class="section__no">02</span>
+      <div><h2 class="section__title">Le positionnement du projet</h2></div>
+    </div>
+    <div class="prose">
+      <p><b>What is wrong with me</b> (<a href="https://w.shoette.com/" target="_blank" rel="noopener">w.shoette.com</a>) est un journal de santé conversationnel à IA : on lui parle — voix, photos, documents médicaux — il corrèle des centaines de signaux pour expliquer un blocage. Positionné ici sur l'usage déclaré par Elena : <b>l'enquête sur le blocage pondéral</b> — IMC &gt; 30, échecs répétés, et d'abord les utilisateurs de GLP-1 sans réponse marquée. Beta sur liste d'attente, « not a medical device », données hébergées en UE.</p>
+    </div>
     <ul class="pts">
       <li><b>Il occupe seul le couloir vide du marché</b> : intégration médicale ~3/10, entre les trackers grand public (0-2) et les plateformes de prescription (9) — ses plus proches voisins conceptuels, les compagnons GLP-1, sont absents du graphique faute de données publiques.</li>
       <li><b>Son IA joue dans le trio de tête</b> (~9/10, déclaratif — avec Simple, Cal AI, Noom), mais pour une fonction inédite sur ce marché : <b>enquêter sur les causes</b> plutôt qu'exécuter un programme.</li>
@@ -122,99 +207,104 @@
     <p class="note">Synthèse du run <a href="../s3-1_2026-06-12/">S3-1</a> du 12 juin 2026 — le projet est visible sur le <a href="../s1-2_2026-06-11/#s2b">graphique interactif du marché</a> (marqueur ✺).</p>
   </section>
 
-  <section id="swot">
-    <h2>3 · SWOT</h2>
-    <figure class="fig">
-      <svg viewBox="0 0 700 560" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, sans-serif" role="img" aria-label="SWOT de What is wrong with me sur le marché des applications de perte de poids">
-        <text x="350" y="20" text-anchor="middle" font-size="13" font-weight="700" fill="#475569">INTERNE — le projet</text>
-        <rect x="10" y="34" width="335" height="240" rx="10" fill="#eff6ff" stroke="#bfdbfe"/>
-        <text x="28" y="62" font-size="15" font-weight="800" fill="#1d4ed8">S · Forces</text>
-        <text x="28" y="88" font-size="12.5" fill="#1e293b">
-          <tspan x="28" dy="0">• Seul dans le couloir médian du marché</tspan>
-          <tspan x="28" dy="18">(intégration médicale ~3, couloir 3-8 vide — S3)</tspan>
-          <tspan x="28" dy="26">• IA conversationnelle multimodale au niveau</tspan>
-          <tspan x="28" dy="18">du trio de tête (~9/10, déclaratif — S3)</tspan>
-          <tspan x="28" dy="26">• Une fonction qu'aucun concurrent n'offre :</tspan>
-          <tspan x="28" dy="18">expliquer le blocage, pas prescrire un programme</tspan>
-          <tspan x="28" dy="26">• Privacy UE affichée (RGPD, HDS, AES-256) —</tspan>
-          <tspan x="28" dy="18">rare sur un marché de données ultra-sensibles</tspan>
-        </text>
-        <rect x="355" y="34" width="335" height="240" rx="10" fill="#fff7ed" stroke="#fed7aa"/>
-        <text x="373" y="62" font-size="15" font-weight="800" fill="#c2410c">W · Faiblesses</text>
-        <text x="373" y="88" font-size="12.5" fill="#1e293b">
-          <tspan x="373" dy="0">• Beta sur liste d'attente : promesse produit</tspan>
-          <tspan x="373" dy="18">entièrement déclarative, rien de vérifié (S3)</tspan>
-          <tspan x="373" dy="26">• 0 % de part, zéro notoriété — face à des</tspan>
-          <tspan x="373" dy="18">acteurs à dizaines de millions d'utilisateurs (S1)</tspan>
-          <tspan x="373" dy="26">• Ni tracker ni programme : risque de déception</tspan>
-          <tspan x="373" dy="18">d'attente sur CE marché (mono-fonction — S3)</tspan>
-          <tspan x="373" dy="26">• Prix non défini ; « not a medical device »</tspan>
-          <tspan x="373" dy="18">sur un marché qui se médicalise (61 % — S2)</tspan>
-        </text>
-        <rect x="10" y="286" width="335" height="240" rx="10" fill="#f0fdf4" stroke="#bbf7d0"/>
-        <text x="28" y="314" font-size="15" font-weight="800" fill="#15803d">O · Opportunités</text>
-        <text x="28" y="340" font-size="12.5" fill="#1e293b">
-          <tspan x="28" dy="0">• La vague GLP-1 (12,4 % des adultes US — S2)</tspan>
-          <tspan x="28" dy="18">crée une population massive de traités… et donc</tspan>
-          <tspan x="28" dy="18">de déçus du traitement — l'angle mort du marché</tspan>
-          <tspan x="28" dy="26">• La catégorie compagnon GLP-1 est naissante,</tspan>
-          <tspan x="28" dy="18">minuscule (~1 %) et sans leader (S2)</tspan>
-          <tspan x="28" dy="26">• Deal flow dense : les acquéreurs rachètent</tspan>
-          <tspan x="28" dy="18">l'innovation plutôt que la répliquer (Cal AI — S2)</tspan>
-          <tspan x="28" dy="26">• Les géants sont fragilisés : WW −20 %,</tspan>
-          <tspan x="28" dy="18">MyFitnessPal −16 % de croissance (S1)</tspan>
-        </text>
-        <rect x="355" y="286" width="335" height="240" rx="10" fill="#fef2f2" stroke="#fecaca"/>
-        <text x="373" y="314" font-size="15" font-weight="800" fill="#b91c1c">T · Menaces</text>
-        <text x="373" y="340" font-size="12.5" fill="#1e293b">
-          <tspan x="373" dy="0">• Rivalité forte : top 2 = ~60 % des revenus,</tspan>
-          <tspan x="373" dy="18">churn élevé, coûts de changement nuls (S2)</tspan>
-          <tspan x="373" dy="26">• WW Clinic et Noom Med peuvent ajouter un</tspan>
-          <tspan x="373" dy="18">module « pourquoi ça ne marche pas » (S1)</tspan>
-          <tspan x="373" dy="26">• Péage des stores : 15-30 % de chaque</tspan>
-          <tspan x="373" dy="18">abonnement cédés à Apple/Google (S2)</tspan>
-          <tspan x="373" dy="26">• Si les traitements progressent (doses, oraux),</tspan>
-          <tspan x="373" dy="18">le segment des non-répondeurs peut se réduire</tspan>
-        </text>
-        <text x="350" y="552" text-anchor="middle" font-size="13" font-weight="700" fill="#475569">EXTERNE — le marché</text>
-      </svg>
-      <figcaption class="fig-cap">SWOT de « What is wrong with me » sur ce marché — chaque entrée renvoie au run qui la fonde (S1, S2, S3) ou au déclaratif du projet.</figcaption>
-    </figure>
-    <p><b>Lecture.</b> La force singulière du projet — être seul sur la question « pourquoi ça bloque » au milieu d'un marché qui ne sait que prescrire des programmes — rencontre une opportunité réelle : la vague GLP-1 fabrique mécaniquement des déçus du traitement, et la catégorie qui pourrait les servir n'a pas de leader. Mais les deux faiblesses critiques se répondent : tout est déclaratif (beta), et le projet n'a ni la notoriété ni les moyens d'un marché où le top 2 capte 60 % de la valeur. La stratégie qui en découle est presque écrite d'avance : <b>produire des preuves vite</b> (chaque enquête réussie est un actif), sur une <b>niche étroite et douloureuse</b> que les géants n'adressent pas — avant que WW Clinic ou Noom Med ne s'y mettent, et avant que les traitements ne progressent.</p>
+  <hr class="divider">
+
+  <section class="section" id="swot">
+    <div class="section__head">
+      <span class="section__no">03</span>
+      <div><h2 class="section__title">SWOT</h2>
+        <p class="section__purpose">Interne (forces, faiblesses) × externe (opportunités, menaces) — chaque entrée ancrée dans le run qui la fonde.</p>
+      </div>
+    </div>
+    <div class="swot">
+      <div class="swot__band">Interne — le projet</div>
+      <div class="quad quad--s">
+        <h4>S · Forces</h4>
+        <ul>
+          <li>Seul dans le couloir médian du marché (intégration médicale ~3, couloir 3-8 vide) <span class="basis">S3</span></li>
+          <li>IA conversationnelle multimodale au niveau du trio de tête (~9/10) <span class="basis">S3 — déclaratif</span></li>
+          <li>Fonction inédite sur ce marché : expliquer le blocage plutôt que prescrire un programme <span class="basis">S3</span></li>
+          <li>Privacy UE affichée (RGPD, HDS, AES-256) sur des données ultra-sensibles <span class="basis">déclaratif</span></li>
+        </ul>
+      </div>
+      <div class="quad quad--w">
+        <h4>W · Faiblesses</h4>
+        <ul>
+          <li>Beta sur liste d'attente : promesse produit entièrement déclarative, rien de vérifié en production <span class="basis">S3</span></li>
+          <li>0 % de part, zéro notoriété face à des acteurs à dizaines de millions d'utilisateurs <span class="basis">S1</span></li>
+          <li>Ni tracker ni programme : risque de déception d'attente sur ce marché (mono-fonction) <span class="basis">S3</span></li>
+          <li>Prix non défini ; « not a medical device » sur un marché médicalisé à 61 % <span class="basis">S3 + S2</span></li>
+        </ul>
+      </div>
+      <div class="swot__band">Externe — le marché</div>
+      <div class="quad quad--o">
+        <h4>O · Opportunités</h4>
+        <ul>
+          <li>La vague GLP-1 (12,4 % des adultes US) fabrique une population massive de traités — donc de déçus du traitement, l'angle mort du marché <span class="basis">S2 + S3</span></li>
+          <li>Catégorie compagnon GLP-1 naissante (~1 %), sans leader <span class="basis">S2</span></li>
+          <li>Deal flow dense — le marché rachète l'innovation plutôt que la répliquer (précédent Cal AI) <span class="basis">S2</span></li>
+          <li>Leaders fragilisés : WW −20 %, MyFitnessPal −16 % de croissance <span class="basis">S1</span></li>
+        </ul>
+      </div>
+      <div class="quad quad--t">
+        <h4>T · Menaces</h4>
+        <ul>
+          <li>Rivalité forte : top 2 = ~60 % des revenus, churn élevé, coûts de changement nuls <span class="basis">S2</span></li>
+          <li>WW Clinic / Noom Med peuvent ajouter un module « pourquoi ça ne marche pas » <span class="basis">S1</span></li>
+          <li>Péage des stores : 15-30 % de chaque abonnement <span class="basis">S2</span></li>
+          <li>Si les traitements progressent (doses, formes orales), le segment des non-répondeurs peut se réduire <span class="basis">S2</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="prose" style="margin-top:22px">
+      <p><b>Lecture.</b> La force singulière du projet — être seul sur la question « pourquoi ça bloque » au milieu d'un marché qui ne sait que prescrire des programmes — rencontre une opportunité réelle : la vague GLP-1 fabrique mécaniquement des déçus du traitement, et la catégorie qui pourrait les servir n'a pas de leader. Mais les deux faiblesses critiques se répondent : tout est déclaratif (beta), et le projet n'a ni la notoriété ni les moyens d'un marché où le top 2 capte 60 % de la valeur. La stratégie qui en découle est presque écrite d'avance : <b>produire des preuves vite</b> (chaque enquête réussie est un actif), sur une <b>niche étroite et douloureuse</b> que les géants n'adressent pas — avant que WW Clinic ou Noom Med ne s'y mettent, et avant que les traitements ne progressent.</p>
+    </div>
   </section>
 
-  <section id="mix">
-    <h2>4 · Marketing mix — recommandations (aucun choix déclaré)</h2>
+  <hr class="divider">
 
-    <div class="p-block">
+  <section class="section" id="mix">
+    <div class="section__head">
+      <span class="section__no">04</span>
+      <div><h2 class="section__title">Marketing mix — recommandations</h2>
+        <p class="section__purpose">Aucun choix de mix déclaré par Elena → les 4 P reçoivent des recommandations chiffrées quand les runs le permettent.</p>
+      </div>
+    </div>
+
+    <div class="pblock">
       <h3>Produit</h3>
-      <div class="data">Données d'appui : positionnement mono-fonction × IA ~9 (S3) ; le tracking calorique pur est commoditisé, attractivité déclinante (S2 — GE/McKinsey) ; la case « compagnon GLP-1 » est la case « investir » d'un entrant agile (S2) ; position défendable requise : intégration médicale ou différenciation IA organique (S2 — Porter).</div>
-      <p><b>Recommandation : rester un produit d'enquête, et construire le pont GLP-1 — sans franchir la ligne médicale.</b> Ne pas ajouter de tracking calorique ni de programme : c'est la case commoditisée du marché, et la dilution détruirait la seule position défendable du projet (l'investigation). En revanche, pour la cible de lancement, le journal de traitement doit devenir un signal de première classe : dates d'injection, dose, effets ressentis, à corréler avec le reste — c'est exactement la promesse « comprendre pourquoi ça ne répond pas ». Compléter par un <b>export « dossier d'enquête » destiné à la consultation médicale</b> : il renforce le statut de complément (pas de substitut), désamorce la contrainte « not a medical device », et fait de chaque médecin un prescripteur potentiel de l'app.</p>
+      <div class="pblock__data">Données d'appui : positionnement mono-fonction × IA ~9 (S3) ; le tracking calorique pur est commoditisé, attractivité déclinante (S2 — GE/McKinsey) ; la case « compagnon GLP-1 » est la case « investir » d'un entrant agile (S2) ; position défendable requise : intégration médicale ou différenciation IA organique (S2 — Porter).</div>
+      <p class="pblock__reco"><b>Recommandation : rester un produit d'enquête, et construire le pont GLP-1 — sans franchir la ligne médicale.</b> Ne pas ajouter de tracking calorique ni de programme : c'est la case commoditisée du marché, et la dilution détruirait la seule position défendable du projet (l'investigation). En revanche, pour la cible de lancement, le journal de traitement doit devenir un signal de première classe : dates d'injection, dose, effets ressentis, à corréler avec le reste — c'est exactement la promesse « comprendre pourquoi ça ne répond pas ». Compléter par un <b>export « dossier d'enquête » destiné à la consultation médicale</b> : il renforce le statut de complément (pas de substitut), désamorce la contrainte « not a medical device », et fait de chaque médecin un prescripteur potentiel de l'app.</p>
     </div>
 
-    <div class="p-block">
+    <div class="pblock">
       <h3>Prix</h3>
-      <div class="data">Données d'appui (S1, prix mensuels effectifs, ~ estimés) : fourchette du marché 2,5-23 $/mois ; moyenne ~7,8 $/mois, médiane ~5,5 $/mois ; deux blocs nets — trackers et coachs grand public 2,5-6,7 $/mois (Cal AI 2,5, Lose It! 3,3, Yazio 4, Simple 4,5, Cronometer 5, MacroFactor/Lifesum 6, MyFitnessPal 6,7), programmes médicalisés 17,4-23 $/mois (Noom, WeightWatchers). S2 : la valeur par utilisateur croît (+13 %), la rentabilité est démontrée aux deux extrêmes du spectre de prix.</div>
-      <p><b>Recommandation : ~9-14 $/mois en abonnement annuel — au-dessus des trackers, sous les programmes.</b> Le prix de réserve du marché montre que la promesse « au-delà du simple tracking » se paie : le bloc médicalisé tient 17-23 $/mois. Sans cliniciens, le projet ne peut pas prétendre à ce bloc — mais sa promesse d'investigation personnalisée vaut une prime nette sur le logger à 5 $. Concrètement : <b>~12 $/mois facturé annuellement (~144 $/an)</b> comme prix de référence au lancement public, un mensuel sans engagement plus cher (~19 $/mois) pour orienter vers l'annuel, et la <b>beta gratuite</b> pour la cohorte test GLP-1 — à ce stade, la valeur à capter est la preuve, pas le revenu. Fourchette à retester dès les premières enquêtes réussies : une corrélation qui débloque des mois d'errance justifierait l'inverse — un prix premium assumé.</p>
+      <div class="pblock__data">Données d'appui (S1, prix mensuels effectifs, ~ estimés) : fourchette du marché 2,5-23 $/mois ; moyenne ~7,8 $/mois, médiane ~5,5 $/mois ; deux blocs nets — trackers et coachs grand public 2,5-6,7 $/mois (Cal AI 2,5, Lose It! 3,3, Yazio 4, Simple 4,5, Cronometer 5, MacroFactor/Lifesum 6, MyFitnessPal 6,7), programmes médicalisés 17,4-23 $/mois (Noom, WeightWatchers). S2 : la valeur par utilisateur croît (+13 %), la rentabilité est démontrée aux deux extrêmes du spectre de prix.</div>
+      <p class="pblock__reco"><b>Recommandation : ~9-14 $/mois en abonnement annuel — au-dessus des trackers, sous les programmes.</b> Le prix de réserve du marché montre que la promesse « au-delà du simple tracking » se paie : le bloc médicalisé tient 17-23 $/mois. Sans cliniciens, le projet ne peut pas prétendre à ce bloc — mais sa promesse d'investigation personnalisée vaut une prime nette sur le logger à 5 $. Concrètement : <b>~12 $/mois facturé annuellement (~144 $/an)</b> comme prix de référence au lancement public, un mensuel sans engagement plus cher (~19 $/mois) pour orienter vers l'annuel, et la <b>beta gratuite</b> pour la cohorte test GLP-1 — à ce stade, la valeur à capter est la preuve, pas le revenu. Fourchette à retester dès les premières enquêtes réussies : une corrélation qui débloque des mois d'errance justifierait l'inverse — un prix premium assumé.</p>
     </div>
 
-    <div class="p-block">
+    <div class="pblock">
       <h3>Promotion</h3>
-      <div class="data">Données d'appui : coût d'acquisition élevé sur un marché saturé en volume (+0,8 % de téléchargements) — la voie démontrée est l'organique (viralité de Cal AI : 15 M de téléchargements en moins de deux ans, créée par deux lycéens) (S2 — Porter, TAM/SAM/SOM) ; la médicalisation destigmatise la demande, le discours passe du « régime » au « traitement » (S2 — PESTEL) ; cible S3 : précise, identifiable, à douleur forte.</div>
-      <p><b>Recommandation : zéro acquisition payante au lancement — une preuve qui se raconte.</b> Le marché punit le paid (CAC élevé, churn fort) et récompense l'organique différencié. Trois leviers alignés avec le produit : (1) <b>les enquêtes elles-mêmes comme contenu</b> — chaque corrélation découverte (anonymisée, consentie) est une histoire que la cible reconnaît instantanément, le moteur organique du projet ; (2) <b>la voix du fondateur-patient</b> — Elena appartient à la cible qu'elle vise (information fournie par Elena) : sur un marché qui se destigmatise, l'authenticité « je cherche ma propre réponse » porte plus que n'importe quelle pub — à utiliser si et seulement si elle s'y sent à l'aise ; (3) <b>la privacy UE en étendard</b> : sur des données aussi intimes, « jamais vendues, jamais utilisées pour entraîner l'IA d'autrui » est un différenciateur de confiance face aux géants américains du panel.</p>
+      <div class="pblock__data">Données d'appui : coût d'acquisition élevé sur un marché saturé en volume (+0,8 % de téléchargements) — la voie démontrée est l'organique (viralité de Cal AI : 15 M de téléchargements en moins de deux ans, créée par deux lycéens) (S2 — Porter, TAM/SAM/SOM) ; la médicalisation destigmatise la demande, le discours passe du « régime » au « traitement » (S2 — PESTEL) ; cible S3 : précise, identifiable, à douleur forte.</div>
+      <p class="pblock__reco"><b>Recommandation : zéro acquisition payante au lancement — une preuve qui se raconte.</b> Le marché punit le paid (CAC élevé, churn fort) et récompense l'organique différencié. Trois leviers alignés avec le produit : (1) <b>les enquêtes elles-mêmes comme contenu</b> — chaque corrélation découverte (anonymisée, consentie) est une histoire que la cible reconnaît instantanément, le moteur organique du projet ; (2) <b>la voix du fondateur-patient</b> — Elena appartient à la cible qu'elle vise (information fournie par Elena) : sur un marché qui se destigmatise, l'authenticité « je cherche ma propre réponse » porte plus que n'importe quelle pub — à utiliser si et seulement si elle s'y sent à l'aise ; (3) <b>la privacy UE en étendard</b> : sur des données aussi intimes, « jamais vendues, jamais utilisées pour entraîner l'IA d'autrui » est un différenciateur de confiance face aux géants américains du panel.</p>
     </div>
 
-    <div class="p-block">
+    <div class="pblock">
       <h3>Place (distribution)</h3>
-      <div class="data">Données d'appui : Apple et Google prélèvent 15-30 % de chaque abonnement — premier maillon de marge cédé par tout l'écosystème (S2 — value chain) ; la beta du projet est déjà web-first (liste d'attente sur w.shoette.com — S3) ; signaux B2B2C en section 5 (programmes employeurs GLP-1).</div>
-      <p><b>Recommandation : web-first pour la beta, stores au lancement public, B2B2C en second étage.</b> Garder la beta sur le web : zéro péage, itération rapide, relation directe avec la cohorte test. Au lancement public, les stores deviennent incontournables (l'usage quotidien mobile est la norme du panel) — mais conserver la souscription web comme canal de référence pour préserver la marge là où c'est possible. Ne pas se disperser vers le canal employeurs/assureurs pendant la beta — mais le préparer : c'est là que la promesse « détecter les non-répondeurs tôt » a une valeur économique directe (cf. section 5).</p>
+      <div class="pblock__data">Données d'appui : Apple et Google prélèvent 15-30 % de chaque abonnement — premier maillon de marge cédé par tout l'écosystème (S2 — value chain) ; la beta du projet est déjà web-first (liste d'attente sur w.shoette.com — S3) ; signaux B2B2C en section 5 (programmes employeurs GLP-1).</div>
+      <p class="pblock__reco"><b>Recommandation : web-first pour la beta, stores au lancement public, B2B2C en second étage.</b> Garder la beta sur le web : zéro péage, itération rapide, relation directe avec la cohorte test. Au lancement public, les stores deviennent incontournables (l'usage quotidien mobile est la norme du panel) — mais conserver la souscription web comme canal de référence pour préserver la marge là où c'est possible. Ne pas se disperser vers le canal employeurs/assureurs pendant la beta — mais le préparer : c'est là que la promesse « détecter les non-répondeurs tôt » a une valeur économique directe (cf. section 5).</p>
     </div>
   </section>
 
-  <section id="recos">
-    <h2>5 · Recommandations essentielles &amp; partenariats</h2>
+  <hr class="divider">
 
-    <h3 style="font-size:17px;margin:18px 0 8px">Les recommandations qui comptent au-delà du mix</h3>
+  <section class="section" id="recos">
+    <div class="section__head">
+      <span class="section__no">05</span>
+      <div><h2 class="section__title">Recommandations essentielles &amp; partenariats</h2></div>
+    </div>
+
+    <h3 class="subh">Les recommandations qui comptent au-delà du mix</h3>
     <ul class="pts">
       <li><b>1 · Tenir la niche, résister à l'élargissement.</b> Le projet est par nature une app de santé générale ; sur ce marché, sa force est d'attaquer par le segment le plus douloureux et le moins servi — les non-répondeurs GLP-1 (angle mort établi par S3). L'élargissement (« app santé pour tous ») avant d'avoir des preuves diluerait la seule position défendable. La généralisation viendra des preuves, pas l'inverse.</li>
       <li><b>2 · La preuve avant la croissance.</b> La faiblesse n°1 (tout est déclaratif) ne se corrige ni par le marketing ni par le prix : seule la beta la corrige. Métrique de pilotage recommandée : le <b>temps jusqu'à la première corrélation utile</b> par utilisateur — c'est la promesse du produit rendue mesurable, et le chiffre qu'investisseurs et partenaires demanderont.</li>
@@ -222,71 +312,79 @@
       <li><b>4 · Préparer la réponse à la réplication.</b> WW Clinic et Noom Med ont l'audience et l'intérêt pour ajouter un module « pourquoi ça ne marche pas ». La fenêtre du projet est courte : elle se défend par la vitesse (preuves publiées), la spécialisation revendiquée, et — si la traction vient — par l'adossement à l'un des partenaires ci-dessous avant que la réplication n'arrive.</li>
     </ul>
 
-    <h3 style="font-size:17px;margin:26px 0 8px">Cibles de partenariat &amp; de sortie — lecture M&amp;A</h3>
-    <p class="note">Section nourrie d'une recherche web du 12 juin 2026 (seule section du rapport l'autorisant) — chaque fait externe est sourcé. Fait fondateur : <b>le segment des non-répondeurs est documenté cliniquement</b> — jusqu'à ~23-25 % des patients sous semaglutide perdent moins de 5 % de leur poids, et une dose plus élevée ne réduit pas cette proportion <span class="src">[Scientific American, 2025-10-27 ; revue Taylor &amp; Francis 2025 : prédicteurs génétiques et phénotypiques identifiés, la non-réponse à 6 mois prédit l'échec à 12 mois]</span>. Un quart des traités, sans réponse organisée du marché : c'est le terrain de chasse du projet — et l'argument central de chaque ligne ci-dessous.</p>
-    <table class="targets">
-      <tr><th>Cible</th><th>Opération plausible</th><th>Logique stratégique &amp; signaux observables</th></tr>
-      <tr>
-        <td>Novo Nordisk</td>
-        <td><span class="dealtype">partenariat d'envergure</span></td>
-        <td>Le partenaire le plus directement aligné : sa <b>Partner Platform (NNPP)</b> cherche explicitement des apps de coaching, scan et composition corporelle pour améliorer les outcomes sous GLP-1 <span class="src">[pharmaceutical-technology.com, 2025-06-18]</span> ; réseau reconstruit à marche forcée — WeightWatchers/NovoCare (juil. 2025), Talkspace/WeGoTogether, accord Hims &amp; Hers (mars 2026) <span class="src">[pharmaceuticalcommerce.com ; statnews.com, 2026-03-09]</span>. Une app qui explique la non-réponse traite SON problème : 25 % de patients déçus sont 25 % de churn médicamenteux.</td>
-      </tr>
-      <tr>
-        <td>Eli Lilly</td>
-        <td><span class="dealtype">partenariat (intégration)</span></td>
-        <td>Même logique sur Zepbound/Mounjaro, mais un modèle différent : LillyDirect intègre des partenaires tiers plutôt que d'acquérir <span class="src">[prnewswire.com, 2024-01-04]</span> ; vient d'intégrer Omada à son Employer Connect (mai 2026). La porte d'entrée : figurer dans cet écosystème comme module « réponse au traitement ».</td>
-      </tr>
-      <tr>
-        <td>Oura</td>
-        <td><span class="dealtype">acquisition / partenariat data</span></td>
-        <td><b>Le signal le plus chaud du lot — et une menace en germe</b> : Oura a racheté Veri, app de santé métabolique (sept. 2024) et vient de lancer « GLP-1 Insights » dans le Ring 5 (mai 2026) — dose, effets secondaires, corrélation sommeil <span class="src">[businesswire.com, 2024-09-11 ; hitconsultant.net, 2026-05-29]</span>. Le ring capte les signaux ; W les fait parler. Complémentarité produit maximale — mais s'ils le construisent seuls, la fenêtre se ferme. À approcher tôt (partenariat API d'abord).</td>
-      </tr>
-      <tr>
-        <td>Whoop</td>
-        <td><span class="dealtype">acquisition / partenariat data</span></td>
-        <td>Trajectoire parallèle à Oura : rachat d'Anyot (glucose non-invasif, 2025), Advanced Labs avec Quest (sept. 2025), IPO envisagée — un acquéreur en quête de couches logicielles différenciantes avant cotation <span class="src">[insider.fitt.co ; whoop.com, 2025-09]</span>.</td>
-      </tr>
-      <tr>
-        <td>Ro</td>
-        <td><span class="dealtype">partenariat clinique</span></td>
-        <td>Ro a fait de sa donnée patients un actif stratégique : collaboration de recherche avec Amgen, 8 abstracts à ObesityWeek 2025, publication peer-reviewed <span class="src">[ro.co/press, 2025-10]</span>. Le pont naturel : W détecte et documente les non-répondeurs → Ro ajuste le protocole. Co-études possibles — et l'export « dossier d'enquête » (cf. Produit) en est le véhicule.</td>
-      </tr>
-      <tr>
-        <td>WeightWatchers / Noom</td>
-        <td><span class="dealtype">rachat (brique produit)</span></td>
-        <td>Les consolidateurs du panel : WW se reconstruit en acteur médical intégré (Sequence 132 M$ en 2023, distributeur NovoCare 2025) <span class="src">[mobihealthnews.com]</span> ; Noom s'étend au-delà du poids — pharmacie 503A (avr. 2026), programme SmartRx employeurs, partenariat Highmark <span class="src">[globenewswire.com, 2026-04-01 ; noom.com]</span>. Le précédent qui fait foi : MyFitnessPal a <b>racheté</b> Cal AI plutôt que de le répliquer (S2). Une brique « investigation de la non-réponse » s'insère exactement dans leurs offres médicalisées.</td>
-      </tr>
-      <tr>
-        <td>Omada Health / payeurs</td>
-        <td><span class="dealtype">distribution B2B2C</span></td>
-        <td>Le canal où la non-réponse a un coût chiffrable : Omada lance GLP-1 Flex Care pour employeurs et intègre Lilly Employer Connect (mai 2026) <span class="src">[investors.omadahealth.com, 2026-05]</span> ; Noom vend déjà aux employeurs l'économie sur les GLP-1. L'argument de W pour ce canal : détecter tôt un non-répondeur, c'est arrêter de payer ~1 000 $/mois de traitement inefficace — l'app se rembourse d'elle-même.</td>
-      </tr>
-    </table>
+    <h3 class="subh">Cibles de partenariat &amp; de sortie — lecture M&amp;A</h3>
+    <p class="note">Section nourrie d'une recherche web du 12 juin 2026 (seule section du rapport l'autorisant) — chaque fait externe est sourcé. Fait fondateur : <b>le segment des non-répondeurs est documenté cliniquement</b> — jusqu'à ~23-25 % des patients sous semaglutide perdent moins de 5 % de leur poids, et une dose plus élevée ne réduit pas cette proportion <span class="src">[Scientific American, 2025-10-27 ; revue Taylor &amp; Francis 2025]</span>. Un quart des traités, sans réponse organisée du marché : c'est le terrain de chasse du projet — et l'argument central de chaque ligne ci-dessous.</p>
+    <div class="targets-wrap">
+      <table class="targets">
+        <tr><th>Cible</th><th>Opération plausible</th><th>Logique stratégique &amp; signaux observables</th></tr>
+        <tr>
+          <td>Novo Nordisk</td>
+          <td><span class="dealtype">partenariat d'envergure</span></td>
+          <td>Le partenaire le plus directement aligné : sa <b>Partner Platform (NNPP)</b> cherche explicitement des apps de coaching, scan et composition corporelle pour améliorer les outcomes sous GLP-1 <span class="src">[pharmaceutical-technology.com, 2025-06-18]</span> ; réseau reconstruit à marche forcée — WeightWatchers/NovoCare (juil. 2025), Talkspace/WeGoTogether, accord Hims &amp; Hers (mars 2026) <span class="src">[pharmaceuticalcommerce.com ; statnews.com, 2026-03-09]</span>. Une app qui explique la non-réponse traite SON problème : 25 % de patients déçus sont 25 % de churn médicamenteux.</td>
+        </tr>
+        <tr>
+          <td>Eli Lilly</td>
+          <td><span class="dealtype">partenariat (intégration)</span></td>
+          <td>Même logique sur Zepbound/Mounjaro, mais un modèle différent : LillyDirect intègre des partenaires tiers plutôt que d'acquérir <span class="src">[prnewswire.com, 2024-01-04]</span> ; vient d'intégrer Omada à son Employer Connect (mai 2026). La porte d'entrée : figurer dans cet écosystème comme module « réponse au traitement ».</td>
+        </tr>
+        <tr>
+          <td>Oura</td>
+          <td><span class="dealtype">acquisition / partenariat data</span></td>
+          <td><b>Le signal le plus chaud du lot — et une menace en germe</b> : Oura a racheté Veri, app de santé métabolique (sept. 2024) et vient de lancer « GLP-1 Insights » dans le Ring 5 (mai 2026) — dose, effets secondaires, corrélation sommeil <span class="src">[businesswire.com, 2024-09-11 ; hitconsultant.net, 2026-05-29]</span>. Le ring capte les signaux ; W les fait parler. Complémentarité produit maximale — mais s'ils le construisent seuls, la fenêtre se ferme. À approcher tôt (partenariat API d'abord).</td>
+        </tr>
+        <tr>
+          <td>Whoop</td>
+          <td><span class="dealtype">acquisition / partenariat data</span></td>
+          <td>Trajectoire parallèle à Oura : rachat d'Anyot (glucose non-invasif, 2025), Advanced Labs avec Quest (sept. 2025), IPO envisagée — un acquéreur en quête de couches logicielles différenciantes avant cotation <span class="src">[insider.fitt.co ; whoop.com, 2025-09]</span>.</td>
+        </tr>
+        <tr>
+          <td>Ro</td>
+          <td><span class="dealtype">partenariat clinique</span></td>
+          <td>Ro a fait de sa donnée patients un actif stratégique : collaboration de recherche avec Amgen, 8 abstracts à ObesityWeek 2025, publication peer-reviewed <span class="src">[ro.co/press, 2025-10]</span>. Le pont naturel : W détecte et documente les non-répondeurs → Ro ajuste le protocole. Co-études possibles — et l'export « dossier d'enquête » (cf. Produit) en est le véhicule.</td>
+        </tr>
+        <tr>
+          <td>WeightWatchers / Noom</td>
+          <td><span class="dealtype">rachat (brique produit)</span></td>
+          <td>Les consolidateurs du panel : WW se reconstruit en acteur médical intégré (Sequence 132 M$ en 2023, distributeur NovoCare 2025) <span class="src">[mobihealthnews.com]</span> ; Noom s'étend au-delà du poids — pharmacie 503A (avr. 2026), programme SmartRx employeurs, partenariat Highmark <span class="src">[globenewswire.com, 2026-04-01 ; noom.com]</span>. Le précédent qui fait foi : MyFitnessPal a <b>racheté</b> Cal AI plutôt que de le répliquer (S2). Une brique « investigation de la non-réponse » s'insère exactement dans leurs offres médicalisées.</td>
+        </tr>
+        <tr>
+          <td>Omada Health / payeurs</td>
+          <td><span class="dealtype">distribution B2B2C</span></td>
+          <td>Le canal où la non-réponse a un coût chiffrable : Omada lance GLP-1 Flex Care pour employeurs et intègre Lilly Employer Connect (mai 2026) <span class="src">[investors.omadahealth.com, 2026-05]</span> ; Noom vend déjà aux employeurs l'économie sur les GLP-1. L'argument de W pour ce canal : détecter tôt un non-répondeur, c'est arrêter de payer ~1 000 $/mois de traitement inefficace — l'app se rembourse d'elle-même.</td>
+        </tr>
+      </table>
+    </div>
     <p class="note">Hors panel : les apps d'investigation comparables (Bearable, Visible, Guava Health) restent indépendantes — aucune acquisition recensée à ce jour <span class="src">[crunchbase.com]</span> : la catégorie « journal d'enquête santé » n'a pas encore été consolidée. Être le premier consolidé — ou le consolidateur — est une issue plausible à 3-5 ans.</p>
   </section>
 
-  <section id="sources">
-    <h2>Sources</h2>
-    <ol class="sources-list">
-      <li><a href="../s3-1_2026-06-12/">Run S3-1 du 12 juin 2026</a> — positionnement du projet (valeurs déclaratives)</li>
-      <li><a href="../s1-2_2026-06-11/">Run S1-2 du 11 juin 2026</a> — acteurs, dimensions, prix effectifs, parts et croissances</li>
-      <li><a href="../s2-1_2026-06-11/">Run S2-1 du 11 juin 2026</a> — KPI, structure du marché, frameworks (Porter, value chain, vitalité, PESTEL)</li>
-      <li>Cadrage d'Elena (12 juin 2026) : cible de lancement, aucun choix de mix déclaré, aucune contrainte — déclaratif</li>
-      <li>Scientific American — « Why Ozempic and Wegovy don't cause weight loss for everyone » (2025-10-27, consulté le 2026-06-12) — ~23-25 % de non-répondeurs</li>
-      <li>Taylor &amp; Francis (Expert Opinion on Pharmacotherapy, 2025, consulté le 2026-06-12) — prédicteurs de réponse aux GLP-1RA</li>
-      <li>pharmaceutical-technology.com (2025-06-18, consulté le 2026-06-12) — Novo Nordisk Partner Platform</li>
-      <li>pharmaceuticalcommerce.com (2025-07-01) · statnews.com (2026-03-09) — réseau de distribution Novo (WW, Hims &amp; Hers), consultés le 2026-06-12</li>
-      <li>prnewswire.com (2024-01-04, consulté le 2026-06-12) — lancement LillyDirect</li>
-      <li>businesswire.com (2024-09-11) · hitconsultant.net (2026-05-29) — Oura : acquisition Veri, GLP-1 Insights Ring 5, consultés le 2026-06-12</li>
-      <li>insider.fitt.co (2025) · whoop.com (2025-09) — Whoop : Anyot, Advanced Labs, IPO, consultés le 2026-06-12</li>
-      <li>ro.co/press (2025-10, consulté le 2026-06-12) — Ro × Amgen, ObesityWeek 2025</li>
-      <li>globenewswire.com (2026-04-01 ; 2025-04-29) · noom.com · investors.omadahealth.com (2026-05) — Noom pharmacie 503A et SmartRx ; WW × LillyDirect ; Omada GLP-1 Flex Care, consultés le 2026-06-12</li>
-      <li>crunchbase.com (consulté le 2026-06-12) — statut des apps d'investigation comparables (Guava Health, Bearable, Visible)</li>
+  <hr class="divider">
+
+  <section class="section" id="sources">
+    <div class="section__head">
+      <span class="section__no">06</span>
+      <div><h2 class="section__title">Sources</h2></div>
+    </div>
+    <ol class="sources">
+      <li><span><a href="../s3-1_2026-06-12/">Run S3-1 du 12 juin 2026</a> — positionnement du projet (valeurs déclaratives)</span></li>
+      <li><span><a href="../s1-2_2026-06-11/">Run S1-2 du 11 juin 2026</a> — acteurs, dimensions, prix effectifs, parts et croissances</span></li>
+      <li><span><a href="../s2-1_2026-06-11/">Run S2-1 du 11 juin 2026</a> — KPI, structure du marché, frameworks (Porter, value chain, vitalité, PESTEL)</span></li>
+      <li><span>Cadrage d'Elena (12 juin 2026) : cible de lancement, aucun choix de mix déclaré, aucune contrainte — déclaratif</span></li>
+      <li><span>Scientific American — « Why Ozempic and Wegovy don't cause weight loss for everyone » (2025-10-27, consulté le 2026-06-12) — ~23-25 % de non-répondeurs</span></li>
+      <li><span>Taylor &amp; Francis (Expert Opinion on Pharmacotherapy, 2025, consulté le 2026-06-12) — prédicteurs de réponse aux GLP-1RA</span></li>
+      <li><span>pharmaceutical-technology.com (2025-06-18, consulté le 2026-06-12) — Novo Nordisk Partner Platform</span></li>
+      <li><span>pharmaceuticalcommerce.com (2025-07-01) · statnews.com (2026-03-09) — réseau de distribution Novo (WW, Hims &amp; Hers), consultés le 2026-06-12</span></li>
+      <li><span>prnewswire.com (2024-01-04, consulté le 2026-06-12) — lancement LillyDirect</span></li>
+      <li><span>businesswire.com (2024-09-11) · hitconsultant.net (2026-05-29) — Oura : acquisition Veri, GLP-1 Insights Ring 5, consultés le 2026-06-12</span></li>
+      <li><span>insider.fitt.co (2025) · whoop.com (2025-09) — Whoop : Anyot, Advanced Labs, IPO, consultés le 2026-06-12</span></li>
+      <li><span>ro.co/press (2025-10, consulté le 2026-06-12) — Ro × Amgen, ObesityWeek 2025</span></li>
+      <li><span>globenewswire.com (2026-04-01 ; 2025-04-29) · noom.com · investors.omadahealth.com (2026-05) — Noom pharmacie 503A et SmartRx ; WW × LillyDirect ; Omada GLP-1 Flex Care, consultés le 2026-06-12</span></li>
+      <li><span>crunchbase.com (consulté le 2026-06-12) — statut des apps d'investigation comparables (Guava Health, Bearable, Visible)</span></li>
     </ol>
   </section>
 
+</main></div>
 
-</div>
+<script src="../../assets/sitefoot.js"></script>
 
 <script>
 const RUN_S4_DATA = {
@@ -413,6 +511,5 @@ const RUN_S4_DATA = {
   "last_updated": "2026-06-12"
 };
 </script>
-  <script src="../../assets/sitefoot.js"></script>
 </body>
 </html>

@@ -3,328 +3,528 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Present the Market — Applications mobiles d'assistance à la perte de poids — Run S2-1 (11 juin 2026)</title>
+  <title>Présenter le marché — Applications mobiles d'assistance à la perte de poids — Run S2-1 (11 juin 2026)</title>
   <meta name="description" content="Le marché des applications d'assistance à la perte de poids présenté par KPI business et frameworks stratégiques pertinents — run S2-1, juin 2026.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <style>
+    /* ============================================================
+       My Market Data — gabarit rapport (design system, run figé)
+       Tokens + corps de page. En-tête et pied = composants communs
+       (siteheader.js / sitefoot.js), qui portent leur propre CSS.
+       ============================================================ */
     :root {
-      --ink: #1e293b; --muted: #64748b; --faint: #94a3b8;
-      --line: #e2e8f0; --bg-soft: #f8fafc; --accent: #2563eb; --warn: #b45309;
+      --paper:#faf8f4; --surface:#ffffff; --surface-2:#f4f1ea; --inset:#f7f5f0;
+      --ink:#1a1c22; --ink-2:#494d59; --ink-3:#868a93; --line:#e7e2d8; --line-2:#efebe2;
+      --brand:#F4684F; --brand-ink:#cf4733; --brand-wash:#fdece7; --brand-line:#f7cabd;
+      --accent:#2f6bff; --accent-ink:#1f53e0; --accent-wash:#eaf1ff; --accent-line:#c9dbff;
+      --risk:#d8412f; --risk-ink:#b32a1c; --risk-wash:#fcebe8; --risk-line:#f3c8c1;
+      --watch:#c07d12; --watch-ink:#9c6309; --watch-wash:#fbf1df; --watch-line:#ecd6a8;
+      --good:#1f9d5b; --good-wash:#e6f5ed;
+      --sans:'Hanken Grotesk',system-ui,sans-serif;
+      --mono:'IBM Plex Mono',ui-monospace,monospace;
+      --serif:'Instrument Serif',Georgia,serif;
+      --r-lg:18px; --r-md:13px; --r-sm:9px; --maxw:1180px; --gutter:clamp(20px,5vw,56px);
+      --header-h:52px;
+      --shadow:0 1px 2px rgba(26,28,34,.04),0 8px 28px -12px rgba(26,28,34,.10);
+      --shadow-sm:0 1px 2px rgba(26,28,34,.05),0 2px 8px -4px rgba(26,28,34,.06);
     }
-    * { box-sizing: border-box; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; scroll-padding-top:108px; }
     body {
-      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-      color: var(--ink); margin: 0; line-height: 1.6; font-size: 15.5px;
+      margin:0; font-family:var(--sans); background:var(--paper); color:var(--ink);
+      font-size:17px; line-height:1.6; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
     }
-    .wrap { max-width: calc(50vw + 550px); margin: 0 auto; padding: 28px 20px 60px; }
-    a { color: var(--accent); }
-    .crumb { font-size: 13px; margin-bottom: 18px; }
-    .crumb a { text-decoration: none; color: var(--muted); }
-    .crumb a:hover { color: var(--accent); }
-    header.report h1 { font-size: 27px; line-height: 1.25; margin: 0 0 6px; }
-    .runmeta { color: var(--muted); font-size: 14px; margin-bottom: 8px; }
-    .seclabel { font-size: 12px; text-transform: uppercase; letter-spacing: .07em; color: var(--accent); font-weight: 700; margin-bottom: 2px; }
-    section { margin-top: 42px; }
-    section > h2 { font-size: 22px; margin: 0 0 14px; }
-    p { margin: 10px 0; }
-    .note { font-size: 13px; color: var(--muted); margin: 8px 0; }
-    #criteria-text ul { margin: 8px 0 0; padding-left: 20px; }
-    #criteria-text li { margin-bottom: 9px; }
-    .fw-obj { font-style: italic; color: var(--accent); font-size: 14.5px; margin: 0 0 10px; }
-    .fw-fig { margin: 18px auto 4px; max-width: 660px; }
-    .fw-fig svg { display: block; width: 100%; height: auto; }
-    .fig-cap { font-size: 12px; color: var(--muted); text-align: center; margin-top: 7px; }
+    ::selection { background:var(--accent-wash); color:var(--accent-ink); }
+    a { color:inherit; }
 
-    table.kpi { width: 100%; border-collapse: collapse; font-size: 14.5px; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
-    table.kpi th {
-      text-align: left; vertical-align: top; width: 230px;
-      background: var(--bg-soft); padding: 12px 16px; border-bottom: 1px solid var(--line);
-      font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: .03em;
+    /* shared text atoms */
+    .eyebrow { font-family:var(--mono); font-size:12px; font-weight:500; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-3); }
+    .mono { font-family:var(--mono); }
+    .serif-q { font-family:var(--serif); font-style:italic; font-size:1.32em; line-height:1.32; color:var(--accent-ink); letter-spacing:.1px; }
+    .num { font-variant-numeric:tabular-nums; }
+    .shell { max-width:var(--maxw); margin:0 auto; padding-inline:var(--gutter); }
+    .lead { color:var(--ink-2); }
+    strong, b { font-weight:700; color:var(--ink); }
+    .t-risk { color:var(--risk-ink); font-weight:700; }
+    .t-watch { color:var(--watch-ink); font-weight:700; }
+    .t-good { color:var(--good); font-weight:700; }
+
+    /* ---- Hero ---- */
+    .hero { padding:clamp(36px,6vw,72px) 0 32px; }
+    .hero__market { display:inline-flex; align-items:center; gap:9px; font-family:var(--mono); font-size:12.5px; letter-spacing:.03em; color:var(--ink-2); background:var(--surface); border:1px solid var(--line); border-radius:999px; padding:6px 14px 6px 11px; margin-bottom:26px; text-decoration:none; }
+    .hero__market .tag { font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-3); white-space:nowrap; padding-right:9px; border-right:1px solid var(--line); }
+    .hero__market .swatch { width:7px; height:7px; border-radius:2px; background:var(--brand); }
+    .hero h1 { font-size:clamp(40px,6.4vw,78px); line-height:1.0; letter-spacing:-.03em; font-weight:800; margin:0 0 22px; max-width:16ch; text-wrap:balance; }
+    .hero h1 .step-no { color:var(--brand); }
+    .hero__byline { margin-top:20px; font-size:15.5px; line-height:1.55; color:var(--ink-2); max-width:72ch; }
+    .hero__byline strong { color:var(--ink); font-weight:700; }
+    .hero__byline a { color:var(--accent-ink); text-decoration:none; font-weight:600; border-bottom:1px solid var(--accent-line); }
+    .hero__byline a:hover { border-bottom-color:var(--accent-ink); }
+    .hero__byline .fresh { color:var(--good); font-weight:600; white-space:nowrap; }
+    .hero__byline .fresh::before { content:""; display:inline-block; width:7px; height:7px; border-radius:50%; background:var(--good); margin-right:7px; vertical-align:middle; }
+    .hero__byline .warn { color:var(--watch-ink); font-weight:600; }
+
+    /* ---- Step tracker ---- */
+    .track { display:flex; align-items:baseline; flex-wrap:wrap; gap:8px 26px; margin:18px 0 2px; }
+    .track__step { text-decoration:none; color:inherit; }
+    .track__name { font-size:13px; color:var(--ink-3); white-space:nowrap; }
+    .track__step.is-active .track__name { color:var(--ink); font-weight:600; }
+    .track__step.is-done .track__name { color:var(--ink-3); }
+    .track__step.is-todo .track__name { color:var(--ink-3); opacity:.65; }
+    a.track__step:hover .track__name { color:var(--ink); text-decoration:underline; text-underline-offset:3px; }
+
+    /* ---- At-a-glance KPI band ---- */
+    .glance { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+    .kpi { background:var(--surface); border:1px solid var(--line); border-radius:var(--r-md); padding:20px 20px 22px; display:flex; flex-direction:column; gap:8px; min-height:150px; }
+    .kpi__label { font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3); }
+    .kpi__value { font-size:clamp(28px,3.2vw,40px); font-weight:800; letter-spacing:-.03em; line-height:1; margin-top:auto; }
+    .kpi__value small { font-size:.5em; font-weight:600; color:inherit; letter-spacing:0; margin-left:.18em; }
+    .kpi__note { font-size:12.5px; color:var(--ink-3); line-height:1.4; }
+    .kpi--shock { background:var(--risk-wash); border-color:var(--risk-line); }
+    .kpi--shock .kpi__label { color:var(--risk-ink); }
+    .kpi--shock .kpi__value { color:var(--risk-ink); }
+    .kpi--shock .kpi__note { color:var(--risk-ink); opacity:.8; }
+
+    /* ---- Signal legend (page foot) ---- */
+    .legend { display:flex; flex-wrap:wrap; gap:8px 22px; margin-top:22px; font-family:var(--mono); font-size:12px; color:var(--ink-2); }
+    .legend span { display:inline-flex; align-items:center; gap:8px; }
+    .legend i { width:10px; height:10px; border-radius:3px; display:inline-block; }
+    .legend .l-fact { background:var(--accent); }
+    .legend .l-risk { background:var(--risk); }
+    .legend .l-watch { background:var(--watch); }
+    .legend--foot { margin-top:64px; padding:22px 0 4px; gap:12px 26px; border-top:1px solid var(--line-2); justify-content:center; align-items:center; }
+    .legend__title { font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-3); margin-right:4px; }
+
+    /* ---- In-page nav (rail, scrollable on all viewports) ---- */
+    .secnav { position:sticky; top:var(--header-h); z-index:50; display:block; background:color-mix(in srgb, var(--paper) 86%, transparent); -webkit-backdrop-filter:saturate(1.4) blur(14px); backdrop-filter:saturate(1.4) blur(14px); border-top:1px solid var(--line-2); border-bottom:1px solid var(--line-2); margin-top:clamp(40px,7vw,80px); }
+    .secnav__in { max-width:var(--maxw); margin:0 auto; padding:0 var(--gutter); display:flex; align-items:center; gap:3px; height:47px; overflow-x:auto; scrollbar-width:none; }
+    .secnav__in::-webkit-scrollbar { display:none; }
+    .navlink { font-family:var(--mono); font-size:12.5px; color:var(--ink-3); text-decoration:none; white-space:nowrap; padding:7px 11px; border-radius:8px; transition:.14s; letter-spacing:.01em; display:inline-flex; align-items:baseline; gap:6px; }
+    .navlink .n { opacity:.55; font-size:11px; }
+    .navlink:hover { color:var(--ink); background:var(--surface-2); }
+    .navlink.is-active { color:var(--brand-ink); background:var(--brand-wash); font-weight:600; }
+
+    /* ---- Section scaffold ---- */
+    .section { padding:clamp(46px,7vw,78px) 0 4px; }
+    .section__head { display:flex; gap:20px; align-items:baseline; margin-bottom:34px; }
+    .section__no { font-family:var(--mono); font-size:14px; font-weight:600; color:var(--brand-ink); border:1px solid var(--brand-line); background:var(--brand-wash); width:38px; height:38px; border-radius:10px; display:grid; place-items:center; flex:none; }
+    .section__title { font-size:clamp(26px,3.4vw,38px); font-weight:800; letter-spacing:-.025em; line-height:1.08; margin:0; }
+    .section__purpose { color:var(--ink-2); font-size:15px; margin-top:7px; max-width:60ch; }
+    .divider { height:1px; background:var(--line-2); border:0; margin:0; }
+
+    /* ---- Market definition ---- */
+    .def { border-top:1px solid var(--line); }
+    .def__row { display:grid; grid-template-columns:248px 1fr; gap:28px; padding:22px 4px; border-bottom:1px solid var(--line-2); }
+    .def__key { font-family:var(--mono); font-size:12px; letter-spacing:.07em; text-transform:uppercase; color:var(--ink-3); padding-top:2px; }
+    .def__val { font-size:15.5px; color:var(--ink); }
+    .def__val .big { font-size:19px; font-weight:700; }
+    .def__val .muted { color:var(--ink-3); font-size:14px; }
+    .def__val ul { margin:0; padding:0; list-style:none; display:grid; gap:9px; }
+    .def__val li { display:flex; gap:12px; align-items:baseline; }
+    .def__val li .lead-dot { width:6px; height:6px; border-radius:50%; background:var(--brand); flex:none; transform:translateY(-2px); }
+    .def__val li .share { margin-left:auto; font-family:var(--mono); font-size:13px; color:var(--ink-2); white-space:nowrap; padding-left:14px; }
+    .def__foot { font-family:var(--mono); font-size:12px; color:var(--ink-3); padding:16px 4px 0; }
+
+    /* ---- Methodology ---- */
+    .method { display:grid; gap:12px; }
+    .method__row { display:grid; grid-template-columns:1fr auto 220px; align-items:center; gap:22px; background:var(--surface); border:1px solid var(--line); border-radius:var(--r-md); padding:18px 22px; }
+    .method__obs { font-size:15px; color:var(--ink); }
+    .method__arrow { color:var(--ink-3); font-family:var(--mono); font-size:18px; }
+    .method__fw { justify-self:end; text-align:right; font-family:var(--mono); font-size:12.5px; font-weight:600; letter-spacing:.02em; color:var(--accent-ink); background:var(--accent-wash); border:1px solid var(--accent-line); padding:7px 13px; border-radius:999px; white-space:nowrap; }
+
+    /* ---- Framework card — shared anatomy ---- */
+    .fw { display:grid; gap:30px; }
+    .fwc { background:var(--surface); border:1px solid var(--line); border-radius:var(--r-lg); box-shadow:var(--shadow-sm); overflow:hidden; }
+    .fwc__head { padding:28px clamp(22px,3vw,40px) 0; }
+    .fwc__bar { display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:16px; }
+    .fwc__idx { font-family:var(--mono); font-size:12px; color:var(--ink-3); letter-spacing:.08em; }
+    .fwc__name { font-size:clamp(21px,2.6vw,27px); font-weight:800; letter-spacing:-.02em; margin:0; }
+    .fwc__name a { color:inherit; text-decoration:none; }
+    .fwc__name a:hover { text-decoration:underline; text-underline-offset:3px; text-decoration-color:var(--line); }
+    .badge { font-family:var(--mono); font-size:10.5px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; padding:4px 10px; border-radius:999px; white-space:nowrap; }
+    .badge--qual { background:var(--watch-wash); color:var(--watch-ink); border:1px solid var(--watch-line); }
+    .badge--shock { background:var(--risk-wash); color:var(--risk-ink); border:1px solid var(--risk-line); }
+    .fwc__q { margin:0 0 18px; }
+    .fwc__body { padding:0 clamp(22px,3vw,40px); }
+    .fwc__body p { font-size:15px; line-height:1.62; color:var(--ink-2); margin:0 0 16px; }
+    .fwc__viz { margin:8px clamp(10px,2vw,20px) 0; padding:clamp(20px,3vw,40px); background:var(--inset); border-top:1px solid var(--line-2); }
+    .fwc.has-inset .fwc__viz { border-radius:0; }
+    .fwc__cap { font-family:var(--mono); font-size:12px; color:var(--ink-3); text-align:center; padding:18px clamp(22px,3vw,40px) 26px; line-height:1.5; }
+
+    /* TAM / SAM / SOM */
+    .tss { display:grid; grid-template-columns:minmax(220px,300px) 1fr; gap:clamp(24px,4vw,56px); align-items:center; }
+    .tss__circles { position:relative; aspect-ratio:1; width:100%; max-width:300px; justify-self:center; }
+    .tss__c { position:absolute; border-radius:50%; display:flex; justify-content:center; left:50%; transform:translateX(-50%); }
+    .tss__c span { font-family:var(--mono); font-size:13px; font-weight:600; letter-spacing:.06em; margin-top:11px; }
+    .tss__tam { width:100%; height:100%; bottom:0; background:var(--accent-wash); border:1px solid var(--accent-line); }
+    .tss__tam span { color:var(--accent-ink); }
+    .tss__sam { width:66%; height:66%; bottom:0; background:#cfe0ff; }
+    .tss__sam span { color:var(--accent-ink); }
+    .tss__som { width:32%; height:32%; bottom:0; background:var(--accent); }
+    .tss__som span { color:#fff; margin-top:7px; font-size:11px; }
+    .tss__rows { display:grid; gap:4px; }
+    .tss__row { padding:14px 0; border-bottom:1px dashed var(--line); }
+    .tss__row:last-child { border-bottom:0; }
+    .tss__row .k { font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3); }
+    .tss__row .v { font-size:17px; font-weight:700; letter-spacing:-.01em; margin:2px 0 1px; }
+    .tss__row .d { font-size:13px; color:var(--ink-3); }
+    .tss__row--som .v { color:var(--accent-ink); }
+
+    /* Porter 5 forces */
+    .porter { display:grid; grid-template-columns:repeat(3,1fr); grid-template-rows:auto auto auto; gap:14px; max-width:920px; margin:0 auto; }
+    .force { border:1px solid var(--line); background:var(--surface); border-radius:var(--r-md); padding:15px 17px; text-align:center; }
+    .force h5 { margin:0 0 6px; font-size:14px; font-weight:700; letter-spacing:.01em; }
+    .force .meta { font-family:var(--mono); font-size:11px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; }
+    .force p { margin:6px 0 0; font-size:12.5px; color:var(--ink-3); line-height:1.4; }
+    .force--top { grid-column:2; grid-row:1; }
+    .force--left { grid-column:1; grid-row:2; }
+    .force--center { grid-column:2; grid-row:2; background:var(--accent); border-color:var(--accent); color:#fff; display:flex; flex-direction:column; justify-content:center; box-shadow:var(--shadow); }
+    .force--right { grid-column:3; grid-row:2; }
+    .force--bottom { grid-column:2; grid-row:3; }
+    .force--center h5 { font-size:16px; }
+    .force--center .meta { color:#cfe0ff; }
+    .force--center p { color:#e7eeff; }
+    .force--center .lab { color:rgba(255,255,255,.85); }
+    .force .lab { font-family:var(--mono); font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-3); display:block; margin-bottom:5px; }
+    .force--shock { border-color:var(--risk-line); background:var(--risk-wash); }
+    .force--shock h5, .force--shock .meta { color:var(--risk-ink); }
+    .force--high .meta { color:var(--watch-ink); }
+
+    /* Value chain */
+    .vchain { display:flex; gap:6px; flex-wrap:wrap; }
+    .link { flex:1; min-width:150px; padding:20px 22px 20px 30px; position:relative; clip-path:polygon(0 0, calc(100% - 18px) 0, 100% 50%, calc(100% - 18px) 100%, 0 100%, 18px 50%); text-align:center; }
+    .link:first-child { clip-path:polygon(0 0, calc(100% - 18px) 0, 100% 50%, calc(100% - 18px) 100%, 0 100%); padding-left:22px; }
+    .link h5 { margin:0; font-size:15px; font-weight:700; }
+    .link .sub { font-family:var(--mono); font-size:12px; margin-top:5px; }
+    .link--1 { background:var(--accent-wash); color:var(--accent-ink); }
+    .link--1 .sub { color:var(--ink-3); }
+    .link--2 { background:#bcd3ff; color:var(--accent-ink); }
+    .link--2 .sub { color:var(--accent-ink); opacity:.8; }
+    .link--3 { background:var(--accent); color:#fff; }
+    .link--3 .sub { color:#dbe7ff; }
+    .vchain__notes { display:grid; gap:8px; margin-top:18px; }
+    .vchain__notes .n { display:flex; gap:11px; align-items:baseline; font-size:13.5px; color:var(--ink-2); }
+    .vchain__notes .n::before { content:""; width:6px; height:6px; border-radius:50%; background:var(--accent); flex:none; transform:translateY(-2px); }
+    .movement { margin-top:18px; border:1.5px dashed var(--watch-line); background:var(--watch-wash); border-radius:var(--r-md); padding:15px 20px; text-align:center; }
+    .movement .h { color:var(--watch-ink); font-weight:700; font-size:14px; }
+    .movement .d { color:var(--watch-ink); font-size:13px; opacity:.85; font-family:var(--mono); margin-top:3px; }
+
+    /* Timeline (deal flow) */
+    .tl { position:relative; padding:96px 0 104px; }
+    .tl__axis { position:absolute; left:0; right:0; top:50%; height:2px; background:var(--line); }
+    .tl__ev { position:absolute; top:50%; transform:translate(-50%,-50%); display:flex; flex-direction:column; align-items:center; }
+    .tl__node { width:14px; height:14px; border-radius:50%; background:var(--accent); border:3px solid var(--paper); box-shadow:0 0 0 1px var(--accent); z-index:2; }
+    .tl__ev--shock .tl__node { background:var(--risk); box-shadow:0 0 0 1px var(--risk); }
+    .tl__lbl { position:absolute; width:138px; text-align:center; left:50%; transform:translateX(-50%); }
+    .tl__lbl h6 { margin:0 0 2px; font-size:12.5px; font-weight:700; line-height:1.22; }
+    .tl__lbl span { font-family:var(--mono); font-size:10.5px; color:var(--ink-3); line-height:1.3; display:block; }
+    .tl__ev--up .tl__lbl { bottom:30px; }
+    .tl__ev--down .tl__lbl { top:30px; }
+    .tl__ev--up .tl__stem, .tl__ev--down .tl__stem { position:absolute; width:1px; background:var(--line); left:50%; }
+    .tl__ev--up .tl__stem { bottom:7px; height:16px; }
+    .tl__ev--down .tl__stem { top:7px; height:16px; }
+    .tl__ev--shock .tl__lbl h6 { color:var(--risk-ink); }
+
+    /* PESTEL */
+    .pestel { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+    .pcard { border:1px solid var(--line); background:var(--surface); border-radius:var(--r-md); padding:18px; }
+    .pcard__h { display:flex; align-items:center; gap:11px; margin-bottom:10px; }
+    .pcard__l { width:30px; height:30px; border-radius:8px; display:grid; place-items:center; font-weight:800; font-size:15px; flex:none; background:var(--accent-wash); color:var(--accent-ink); }
+    .pcard__t { font-size:14.5px; font-weight:700; }
+    .pcard p { margin:0; font-size:13px; color:var(--ink-2); line-height:1.5; }
+    .pcard--shock { border-color:var(--risk-line); background:var(--risk-wash); }
+    .pcard--shock .pcard__l { background:var(--risk); color:#fff; }
+    .pcard--shock .pcard__t { color:var(--risk-ink); }
+    .pcard--shock p { color:var(--risk-ink); }
+    .pcard--mute { opacity:.62; }
+
+    /* Perceptual map */
+    .pmap { position:relative; aspect-ratio:16/9; min-height:360px; border-left:2px solid var(--ink); border-bottom:2px solid var(--ink); margin:10px 40px 44px 70px; }
+    .pmap__ylab { position:absolute; left:-44px; top:0; bottom:0; writing-mode:vertical-rl; transform:rotate(180deg); display:flex; align-items:center; justify-content:center; font-family:var(--mono); font-size:11px; letter-spacing:.08em; color:var(--ink-3); white-space:nowrap; }
+    .pmap__xlab { position:absolute; bottom:-30px; font-family:var(--mono); font-size:11.5px; color:var(--ink-2); transform:translateX(-50%); }
+    .pmap__xlab.l { left:16%; } .pmap__xlab.r { left:80%; }
+    .bub { position:absolute; transform:translate(-50%,50%); border-radius:50%; display:grid; place-items:center; text-align:center; color:#fff; font-weight:700; font-size:12px; box-shadow:var(--shadow-sm); }
+    .bub.b-lo { background:#9cc0ff; color:var(--accent-ink); }
+    .bub.b-mid { background:#5e8dff; }
+    .bub.b-hi { background:var(--accent); }
+    .zone { position:absolute; transform:translate(-50%,50%); border:1.5px dashed var(--watch); border-radius:50%; display:grid; place-items:center; text-align:center; padding:14px; }
+    .zone span { font-family:var(--mono); color:var(--watch-ink); font-size:11px; line-height:1.4; }
+    .zone span b { display:block; }
+
+    /* GE / McKinsey 9-box */
+    .nbox { display:grid; grid-template-columns:64px 1fr; grid-template-rows:1fr 50px; gap:0; max-width:760px; margin:0 auto; }
+    .nbox__y { grid-column:1; grid-row:1; position:relative; }
+    .nbox__y span { position:absolute; left:50%; font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3); transform:rotate(-90deg) translateX(-50%); transform-origin:center; white-space:nowrap; }
+    .nbox__y .hi { top:14px; } .nbox__y .lo { bottom:14px; }
+    .nbox__y .ax { top:0; bottom:0; left:0; right:0; width:auto; transform:rotate(180deg); transform-origin:center; writing-mode:vertical-rl; display:flex; align-items:center; justify-content:center; }
+    .nbox__grid { grid-column:2; grid-row:1; display:grid; grid-template-columns:repeat(3,1fr); grid-template-rows:repeat(3,1fr); gap:6px; aspect-ratio:3/2; }
+    .cell { border-radius:var(--r-sm); display:grid; place-items:center; padding:10px; text-align:center; position:relative; }
+    .cell.invest { background:#bcd3ff; }
+    .cell.select { background:#e3edff; }
+    .cell.harvest { background:#f0eee8; }
+    .chip { background:var(--surface); border:1.5px solid var(--accent); border-radius:999px; padding:9px 14px; font-size:12.5px; font-weight:700; line-height:1.2; box-shadow:var(--shadow-sm); }
+    .cell.harvest .chip { border-color:var(--ink-3); }
+    .nbox__x { grid-column:2; grid-row:2; display:flex; align-items:center; justify-content:center; font-family:var(--mono); font-size:11.5px; color:var(--ink-2); padding-top:10px; }
+    .nbox__leg { display:flex; justify-content:center; gap:22px; margin-top:18px; font-family:var(--mono); font-size:11.5px; color:var(--ink-2); }
+    .nbox__leg span { display:inline-flex; align-items:center; gap:7px; }
+    .nbox__leg i { width:11px; height:11px; border-radius:3px; }
+    .nbox__leg .i1 { background:#bcd3ff; } .nbox__leg .i2 { background:#e3edff; } .nbox__leg .i3 { background:#f0eee8; }
+
+    /* ---- Sources ---- */
+    .sources { display:grid; gap:14px; counter-reset:src; }
+    .source { display:grid; grid-template-columns:auto 1fr; gap:16px; align-items:baseline; padding:16px 0; border-top:1px solid var(--line-2); }
+    .source__n { counter-increment:src; font-family:var(--mono); font-size:13px; color:var(--ink-3); }
+    .source__n::before { content:counter(src, decimal-leading-zero); }
+    .source a { color:var(--accent-ink); text-decoration:none; font-weight:600; border-bottom:1px solid var(--accent-line); }
+    .source .where { color:var(--ink-3); font-family:var(--mono); font-size:12.5px; }
+
+    /* ---- Responsive ---- */
+    @media (max-width:1000px) {
+      .glance { grid-template-columns:repeat(2,1fr); }
+      .pestel { grid-template-columns:repeat(2,1fr); }
     }
-    table.kpi td { padding: 12px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
-    table.kpi tr:last-child th, table.kpi tr:last-child td { border-bottom: none; }
-    table.kpi ul { margin: 0; padding-left: 18px; }
-    table.kpi li { margin-bottom: 4px; }
-    .small { font-size: 12.5px; color: var(--muted); }
-    .status-loss { color: #b91c1c; font-weight: 700; }
-
-    .fw-block { border: 1px solid var(--line); border-radius: 10px; padding: 16px 20px; margin-bottom: 18px; }
-    .fw-block h3 { margin: 0 0 8px; font-size: 17px; }
-    .fw-block h3 a { text-decoration: none; }
-    .fw-block h3 a:hover { text-decoration: underline; }
-    .badge {
-      display: inline-block; vertical-align: 2px; margin-left: 8px;
-      background: #fef3c7; color: var(--warn); font-size: 11px; font-weight: 700;
-      padding: 3px 10px; border-radius: 999px;
+    @media (max-width:720px) {
+      body { font-size:16px; }
+      .glance { grid-template-columns:1fr 1fr; gap:10px; }
+      .kpi { min-height:124px; padding:16px; }
+      .def__row { grid-template-columns:1fr; gap:8px; }
+      .def__val li .share { margin-left:auto; }
+      .method__row { grid-template-columns:1fr; gap:12px; text-align:left; }
+      .method__arrow { display:none; }
+      .method__fw { justify-self:start; text-align:left; }
+      .section__head { flex-direction:row; gap:14px; }
+      .tss { grid-template-columns:1fr; gap:28px; }
+      .pestel { grid-template-columns:1fr; }
+      .vchain { flex-direction:column; }
+      .link, .link:first-child { clip-path:none !important; border-radius:var(--r-sm); }
+      .porter { grid-template-columns:1fr; }
+      .force--top, .force--left, .force--center, .force--right, .force--bottom { grid-column:1; grid-row:auto; }
+      .force--center { order:-1; }
+      .tl { padding:0; }
+      .tl__axis { left:7px; right:auto; top:0; bottom:0; width:2px; height:auto; }
+      .tl__ev { position:relative; top:auto; left:0 !important; transform:none; flex-direction:row; align-items:flex-start; gap:16px; padding:14px 0; }
+      .tl__node { margin-left:1px; margin-top:3px; }
+      .tl__stem { display:none; }
+      .tl__lbl { position:relative; width:auto; text-align:left; left:auto; transform:none; top:auto !important; bottom:auto !important; }
     }
-    .fw-block p { margin: 0; font-size: 14.5px; }
-
-    .sources-list { font-size: 13px; padding-left: 22px; }
-    .sources-list li { margin-bottom: 5px; }
-    .sources-list .pub { color: var(--muted); }
-
-
-    /* en-tête de site sticky, uniforme sur tout le sous-domaine */
-    [id] { scroll-margin-top: 70px; }
+    @media (max-width:460px) {
+      .glance { grid-template-columns:1fr; }
+    }
+    @media print {
+      :root { --paper:#fff; }
+      .secnav { display:none !important; }
+      body { font-size:11.5pt; }
+      .fwc, .kpi, .method__row, .pcard { box-shadow:none !important; break-inside:avoid; }
+      .section { padding:22px 0 0 !important; }
+      .hero { padding:12px 0 18px !important; }
+      a { text-decoration:none !important; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { scroll-behavior:auto !important; transition:none !important; }
+    }
   </style>
 </head>
 <body>
 <script src="../../assets/siteheader.js" data-crumb="parent" data-parent-label="Marché : applications d&#x27;assistance à la perte de poids" data-parent-href="../"></script>
-<div class="wrap">
 
-  <header class="report">
-    <h1>Applications mobiles d'assistance à la perte de poids</h1>
-    <div class="seclabel">Step 2 — Present the Market</div>
-    <div class="runmeta">Run S2-1 — 11 juin 2026 · Source : <a href="../s1-2_2026-06-11/">Run S1-2 du 11 juin 2026</a> (données du jour — aucune recherche complémentaire nécessaire)</div>
-  </header>
+<a id="top"></a>
 
-  <section id="kpis">
-    <h2>1. Les grands KPI business</h2>
-    <table class="kpi"><tbody id="kpi-tbody"></tbody></table>
-    <p class="note">~ = valeur estimée · — = information introuvable. Sauf mention contraire, les chiffres proviennent du run S1 source et de ses 52 références.</p>
+<!-- HERO -->
+<section class="hero"><div class="shell" id="hero-mount"></div></section>
+
+<!-- AT A GLANCE -->
+<section class="shell" aria-label="D'un coup d'œil"><div class="glance" id="glance-mount"></div></section>
+
+<!-- IN-PAGE NAV (sticks under the header on scroll) -->
+<nav class="secnav" aria-label="Sommaire"><div class="secnav__in" id="secnav-mount"></div></nav>
+
+<!-- MAIN -->
+<div class="shell"><main>
+
+  <section class="section" id="definition">
+    <div class="section__head">
+      <span class="section__no">01</span>
+      <div>
+        <h2 class="section__title">Définition du marché</h2>
+        <p class="section__purpose">Ce que recouvre le marché, sa taille, qui le domine — la base commune à tous les frameworks ci-dessous.</p>
+      </div>
+    </div>
+    <div class="def" id="def-mount"></div>
   </section>
 
-  <section id="criteria">
-    <h2>2. Remarques sur le marché et choix de la méthodologie d'analyse adaptée</h2>
-    <div id="criteria-text"></div>
+  <hr class="divider">
+
+  <section class="section" id="methodo">
+    <div class="section__head">
+      <span class="section__no">02</span>
+      <div>
+        <h2 class="section__title">Choix des frameworks</h2>
+        <p class="section__purpose">Chaque caractéristique du marché appelle la grille la mieux adaptée pour le lire. Les observations du run S1 ont guidé la sélection.</p>
+      </div>
+    </div>
+    <div class="method" id="method-mount"></div>
   </section>
 
-  <section id="frameworks">
-    <h2>3. Le marché sous l'angle de chaque framework</h2>
-    <div id="frameworks-list"></div>
+  <hr class="divider">
+
+  <section class="section" id="frameworks">
+    <div class="section__head">
+      <span class="section__no">03</span>
+      <div>
+        <h2 class="section__title">Le marché, framework par framework</h2>
+        <p class="section__purpose">Sept angles sur le même marché. Chaque carte s'ouvre sur la question à laquelle elle répond.</p>
+      </div>
+    </div>
+    <div class="fw" id="fw-mount"></div>
   </section>
 
-  <section id="sources">
-    <h2>Sources</h2>
-    <ol class="sources-list" id="sources-list"></ol>
+  <hr class="divider">
+
+  <section class="section" id="sources">
+    <div class="section__head">
+      <span class="section__no">04</span>
+      <div><h2 class="section__title">Sources</h2></div>
+    </div>
+    <div class="sources" id="sources-mount"></div>
   </section>
 
+</main></div>
 
+<!-- signal legend (page foot) -->
+<div class="shell">
+  <div class="legend legend--foot" aria-hidden="true">
+    <span class="legend__title">Clé de lecture</span>
+    <span><i class="l-fact"></i> <span>Fait structurel</span></span>
+    <span><i class="l-risk"></i> <span>Menace / choc</span></span>
+    <span><i class="l-watch"></i> <span>Opportunité disputée</span></span>
+    <span class="mono" style="color:var(--ink-3)">~ <span>= valeur estimée</span></span>
+  </div>
 </div>
 
+<script src="../../assets/sitefoot.js"></script>
+
+<!-- ===== Gabarits de diagrammes (remplis avec les données réelles du run, montés par le rendu JS) ===== -->
 <div id="viz-templates" hidden>
-  <div data-viz="tam-sam-som" data-caption="Dimensionnement du marché — toutes valeurs estimées (~), périmètres analystes divergents">
-<svg viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, sans-serif" role="img" aria-label="TAM, SAM et SOM du marché avec les montants estimés">
-  <circle cx="185" cy="150" r="128" fill="#dbeafe"/>
-  <circle cx="185" cy="183" r="82" fill="#93c5fd"/>
-  <circle cx="185" cy="237" r="30" fill="#2563eb"/>
-  <text x="185" y="62" text-anchor="middle" font-size="15" font-weight="700" fill="#1d4ed8">TAM</text>
-  <text x="185" y="136" text-anchor="middle" font-size="14" font-weight="700" fill="#1e3a8a">SAM</text>
-  <text x="185" y="242" text-anchor="middle" font-size="12.5" font-weight="700" fill="#ffffff">SOM</text>
-  <line x1="305" y1="60" x2="368" y2="60" stroke="#cbd5e1"/>
-  <text x="378" y="56" font-size="13.5" font-weight="700" fill="#1e293b">~4,5 à 6 Md$ (2025)</text>
-  <text x="378" y="74" font-size="12.5" fill="#64748b">toutes les apps de nutrition et de bien-être alimentaire</text>
-  <line x1="264" y1="160" x2="368" y2="160" stroke="#cbd5e1"/>
-  <text x="378" y="156" font-size="13.5" font-weight="700" fill="#1e293b">~2,2 Md$ (2025) · +11-13 %/an</text>
-  <text x="378" y="174" font-size="12.5" fill="#64748b">les apps d'assistance à la perte de poids (périmètre du pipeline)</text>
-  <line x1="217" y1="237" x2="368" y2="237" stroke="#cbd5e1"/>
-  <text x="378" y="233" font-size="13.5" font-weight="700" fill="#1e293b">~20 à 50 M$ à 3-5 ans</text>
-  <text x="378" y="251" font-size="12.5" fill="#64748b">SOM d'un entrant différencié — étalonné sur Cal AI (~30 M$</text>
-  <text x="378" y="267" font-size="12.5" fill="#64748b">en 18 mois) et MacroFactor (~24 M$)</text>
-</svg>
+
+  <div data-viz="tam-sam-som">
+    <div class="tss">
+      <div class="tss__circles">
+        <div class="tss__c tss__tam"><span>TAM</span></div>
+        <div class="tss__c tss__sam"><span>SAM</span></div>
+        <div class="tss__c tss__som"><span>SOM</span></div>
+      </div>
+      <div class="tss__rows">
+        <div class="tss__row"><div class="k">TAM</div><div class="v num">~4,5 à 6 Md$ (2025)</div><div class="d">toutes les apps de nutrition et de bien-être alimentaire</div></div>
+        <div class="tss__row"><div class="k">SAM</div><div class="v num">~2,2 Md$ (2025) · +11-13 %/an</div><div class="d">les apps d'assistance à la perte de poids (périmètre du pipeline)</div></div>
+        <div class="tss__row tss__row--som"><div class="k">SOM</div><div class="v num">~20 à 50 M$ à 3-5 ans</div><div class="d">entrant différencié — étalonné sur Cal AI (~30 M$ en 18 mois) et MacroFactor (~24 M$)</div></div>
+      </div>
+    </div>
   </div>
-  <div data-viz="porter" data-caption="Les cinq forces, annotées avec les faits du run S1 — le substitut pharmacologique est la force décisive">
-<svg viewBox="0 0 700 380" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, sans-serif" role="img" aria-label="Les cinq forces de Porter appliquées au marché">
-  <line x1="350" y1="86" x2="350" y2="144" stroke="#93c5fd" stroke-width="2"/><polygon points="343,142 357,142 350,152" fill="#2563eb"/>
-  <line x1="350" y1="294" x2="350" y2="246" stroke="#93c5fd" stroke-width="2"/><polygon points="343,248 357,248 350,238" fill="#2563eb"/>
-  <line x1="220" y1="194" x2="242" y2="194" stroke="#93c5fd" stroke-width="2"/><polygon points="240,187 240,201 250,194" fill="#2563eb"/>
-  <line x1="480" y1="194" x2="458" y2="194" stroke="#93c5fd" stroke-width="2"/><polygon points="460,187 460,201 450,194" fill="#2563eb"/>
-  <rect x="240" y="8" width="220" height="78" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
-  <text x="350" y="30" text-anchor="middle" font-size="13" font-weight="700" fill="#1e293b">Nouveaux entrants</text>
-  <text x="350" y="49" text-anchor="middle" font-size="12" fill="#1e293b">barrières produit très basses</text>
-  <text x="350" y="67" text-anchor="middle" font-size="11.5" fill="#64748b">Cal AI : 15 M de téléchargements en 18 mois</text>
-  <rect x="240" y="294" width="220" height="78" rx="10" fill="#fef2f2" stroke="#b91c1c" stroke-width="1.5"/>
-  <text x="350" y="316" text-anchor="middle" font-size="13" font-weight="700" fill="#b91c1c">Substituts — LE CHOC</text>
-  <text x="350" y="335" text-anchor="middle" font-size="12" fill="#1e293b">GLP-1 : 12 % des adultes US sous traitement</text>
-  <text x="350" y="353" text-anchor="middle" font-size="11.5" fill="#64748b">a mis le leader historique en faillite</text>
-  <rect x="8" y="152" width="212" height="84" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
-  <text x="114" y="174" text-anchor="middle" font-size="13" font-weight="700" fill="#1e293b">Fournisseurs — FORT</text>
-  <text x="114" y="193" text-anchor="middle" font-size="12" fill="#1e293b">stores : péage 15-30 %</text>
-  <text x="114" y="211" text-anchor="middle" font-size="11.5" fill="#64748b">+ pharma (Novo, Lilly)</text>
-  <text x="114" y="226" text-anchor="middle" font-size="11.5" fill="#64748b">pour les acteurs médicalisés</text>
-  <rect x="480" y="152" width="212" height="84" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
-  <text x="586" y="174" text-anchor="middle" font-size="13" font-weight="700" fill="#1e293b">Clients — FORT</text>
-  <text x="586" y="193" text-anchor="middle" font-size="12" fill="#1e293b">churn structurellement élevé</text>
-  <text x="586" y="211" text-anchor="middle" font-size="11.5" fill="#64748b">coût de changement quasi nul,</text>
-  <text x="586" y="226" text-anchor="middle" font-size="11.5" fill="#64748b">comparaison facile</text>
-  <rect x="250" y="152" width="200" height="84" rx="12" fill="#2563eb"/>
-  <text x="350" y="180" text-anchor="middle" font-size="13.5" font-weight="700" fill="#ffffff">Rivalité — FORTE</text>
-  <text x="350" y="200" text-anchor="middle" font-size="11.5" fill="#dbeafe">une dizaine d'acteurs significatifs</text>
-  <text x="350" y="217" text-anchor="middle" font-size="11.5" fill="#dbeafe">les 2 leaders : ~60 % des revenus</text>
-</svg>
+
+  <div data-viz="porter">
+    <div class="porter">
+      <div class="force force--top force--high"><span class="lab">Nouveaux entrants</span><div class="meta">Barrières très basses</div><p>Cal AI : 15 M de téléchargements en 18 mois</p></div>
+      <div class="force force--left"><span class="lab">Fournisseurs</span><h5>FORT</h5><div class="meta">Stores : péage 15-30 %</div><p>+ pharma (Novo, Lilly) pour les acteurs médicalisés</p></div>
+      <div class="force force--center"><span class="lab">Rivalité</span><h5>FORTE</h5><p>une dizaine d'acteurs · les 2 leaders ≈ 60 % des revenus</p></div>
+      <div class="force force--right"><span class="lab">Clients</span><h5>FORT</h5><div class="meta">Churn structurellement élevé</div><p>Coût de changement quasi nul, comparaison facile</p></div>
+      <div class="force force--bottom force--shock"><span class="lab">Substituts</span><h5>LE CHOC</h5><div class="meta">GLP-1 : 12 % des adultes US sous traitement</div><p>a mis le leader historique en faillite</p></div>
+    </div>
   </div>
-  <div data-viz="value-chain" data-caption="Une chaîne à trois maillons — et la marge qui migre vers le médicament">
-<svg viewBox="0 0 700 260" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, sans-serif" role="img" aria-label="Chaîne de valeur courte du marché, lue en unit economics">
-  <polygon points="10,30 200,30 220,75 200,120 10,120 30,75" fill="#dbeafe"/>
-  <text x="115" y="70" text-anchor="middle" font-size="13" font-weight="700" fill="#1e293b">Développement</text>
-  <text x="115" y="89" text-anchor="middle" font-size="12" fill="#64748b">de l'app</text>
-  <polygon points="230,30 440,30 460,75 440,120 230,120 250,75" fill="#93c5fd"/>
-  <text x="348" y="66" text-anchor="middle" font-size="13" font-weight="700" fill="#1e293b">Stores Apple / Google</text>
-  <text x="348" y="86" text-anchor="middle" font-size="11.5" fill="#1e3a8a">péage de 15-30 %</text>
-  <text x="348" y="102" text-anchor="middle" font-size="11.5" fill="#1e3a8a">sur chaque abonnement</text>
-  <polygon points="470,30 660,30 680,75 660,120 470,120 490,75" fill="#2563eb"/>
-  <text x="578" y="68" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">Abonné</text>
-  <text x="578" y="88" text-anchor="middle" font-size="11.5" fill="#dbeafe">2,5 à 23 $/mois</text>
-  <circle cx="20" cy="156" r="4" fill="#2563eb"/>
-  <text x="32" y="160" font-size="12.5" fill="#1e293b">Rentabilité démontrée aux deux extrêmes : Simple, opérationnellement profitable (~160 M$ d'ARR)</text>
-  <circle cx="20" cy="180" r="4" fill="#2563eb"/>
-  <text x="32" y="184" font-size="12.5" fill="#1e293b">Cal AI : ~1,4 M$ de marge brute mensuelle avant son rachat</text>
-  <rect x="120" y="204" width="460" height="44" rx="10" fill="none" stroke="#b45309" stroke-dasharray="6 4" stroke-width="1.5"/>
-  <text x="350" y="222" text-anchor="middle" font-size="12" font-weight="700" fill="#b45309">Le mouvement en cours : capter la marge du médicament</text>
-  <text x="350" y="239" text-anchor="middle" font-size="11.5" fill="#b45309">Noom × pharmacie 503A (avril 2026) — intégration verticale</text>
-</svg>
+
+  <div data-viz="value-chain">
+    <div class="vchain">
+      <div class="link link--1"><h5>Développement</h5><div class="sub">de l'app</div></div>
+      <div class="link link--2"><h5>Stores Apple / Google</h5><div class="sub">péage 15-30 % sur chaque abonnement</div></div>
+      <div class="link link--3"><h5>Abonné</h5><div class="sub num">2,5 → 23 $/mois</div></div>
+    </div>
+    <div class="vchain__notes">
+      <div class="n">Rentabilité démontrée aux deux extrêmes : Simple, opérationnellement profitable (~160 M$ d'ARR)</div>
+      <div class="n">Cal AI : ~1,4 M$ de marge brute mensuelle avant son rachat</div>
+    </div>
+    <div class="movement">
+      <div class="h">Le mouvement en cours : capter la marge du médicament</div>
+      <div class="d">Noom × pharmacie 503A (avril 2026) — intégration verticale</div>
+    </div>
   </div>
-  <div data-viz="vitalite" data-caption="24 mois de deal flow — l'argent converge vers l'IA à faible friction et l'intégration médicale">
-<svg viewBox="0 0 700 270" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, sans-serif" role="img" aria-label="Frise des opérations du marché entre 2025 et 2026">
-  <line x1="40" y1="140" x2="670" y2="140" stroke="#94a3b8" stroke-width="1.5"/>
-  <text x="50" y="160" font-size="11" fill="#94a3b8">janv. 2025</text>
-  <line x1="455" y1="135" x2="455" y2="145" stroke="#94a3b8"/>
-  <text x="455" y="160" font-size="11" fill="#94a3b8" text-anchor="middle">janv. 2026</text>
-  <line x1="84" y1="140" x2="84" y2="98" stroke="#cbd5e1"/>
-  <circle cx="84" cy="140" r="6" fill="#2563eb"/>
-  <text x="84" y="78" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1e293b">MyFitnessPal rachète Intent</text>
-  <text x="84" y="93" text-anchor="middle" font-size="11" fill="#64748b">février 2025</text>
-  <line x1="185" y1="140" x2="185" y2="182" stroke="#fecaca"/>
-  <circle cx="185" cy="140" r="7" fill="#b91c1c"/>
-  <text x="185" y="200" text-anchor="middle" font-size="12.5" font-weight="700" fill="#b91c1c">Faillite éclair WeightWatchers</text>
-  <text x="185" y="215" text-anchor="middle" font-size="11" fill="#64748b">1,15 Md$ de dette effacée — mai-juin 2025</text>
-  <line x1="354" y1="140" x2="354" y2="98" stroke="#cbd5e1"/>
-  <circle cx="354" cy="140" r="6" fill="#2563eb"/>
-  <text x="354" y="78" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1e293b">Series B Simple — 35 M$</text>
-  <text x="354" y="93" text-anchor="middle" font-size="11" fill="#64748b">octobre 2025 (HartBeat Ventures)</text>
-  <line x1="421" y1="140" x2="421" y2="182" stroke="#cbd5e1"/>
-  <circle cx="421" cy="140" r="6" fill="#2563eb"/>
-  <text x="438" y="200" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1e293b">MyFitnessPal rachète Cal AI</text>
-  <text x="438" y="215" text-anchor="middle" font-size="11" fill="#64748b">closing décembre 2025</text>
-  <line x1="556" y1="140" x2="556" y2="98" stroke="#cbd5e1"/>
-  <circle cx="556" cy="140" r="6" fill="#2563eb"/>
-  <text x="556" y="78" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1e293b">Noom rachète une pharmacie</text>
-  <text x="556" y="93" text-anchor="middle" font-size="11" fill="#64748b">503A — avril 2026</text>
-  <text x="40" y="252" font-size="12" fill="#64748b">— et en continu : la vague des compagnons GLP-1 (Shotsy, MeAgain, Pep), nouveaux entrants 2025-2026</text>
-</svg>
+
+  <div data-viz="vitalite">
+    <div class="tl">
+      <div class="tl__axis"></div>
+      <div class="tl__ev tl__ev--up" style="left:13%"><div class="tl__stem"></div><div class="tl__node"></div><div class="tl__lbl"><h6>MyFitnessPal rachète Intent</h6><span>février 2025</span></div></div>
+      <div class="tl__ev tl__ev--down tl__ev--shock" style="left:31%"><div class="tl__stem"></div><div class="tl__node"></div><div class="tl__lbl"><h6>Faillite éclair WeightWatchers</h6><span>1,15 Md$ de dette effacée — mai-juin 2025</span></div></div>
+      <div class="tl__ev tl__ev--up" style="left:52%"><div class="tl__stem"></div><div class="tl__node"></div><div class="tl__lbl"><h6>Series B Simple — 35 M$</h6><span>octobre 2025 (HartBeat Ventures)</span></div></div>
+      <div class="tl__ev tl__ev--down" style="left:69%"><div class="tl__stem"></div><div class="tl__node"></div><div class="tl__lbl"><h6>MyFitnessPal rachète Cal AI</h6><span>closing décembre 2025</span></div></div>
+      <div class="tl__ev tl__ev--up" style="left:88%"><div class="tl__stem"></div><div class="tl__node"></div><div class="tl__lbl"><h6>Noom rachète une pharmacie</h6><span>503A — avril 2026</span></div></div>
+    </div>
+    <div class="vchain__notes" style="margin-top:18px">
+      <div class="n">Et en continu : la vague des compagnons GLP-1 (Shotsy, MeAgain, Pep), nouveaux entrants 2025-2026</div>
+    </div>
   </div>
-  <div data-viz="pestel" data-caption="Six familles de forces externes — le choc technologique et sociétal des GLP-1 domine tout">
-<svg viewBox="0 0 700 330" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, sans-serif" role="img" aria-label="Grille PESTEL appliquée au marché">
-  <rect x="10" y="10" width="218" height="148" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
-  <circle cx="34" cy="36" r="14" fill="#dbeafe"/><text x="34" y="41" text-anchor="middle" font-size="13" font-weight="800" fill="#1d4ed8">P</text>
-  <text x="58" y="33" font-size="12" font-weight="700" fill="#1e293b">Politique</text>
-  <text x="22" y="68" font-size="11.5" fill="#1e293b">Pression sur les prix des GLP-1 —</text>
-  <text x="22" y="85" font-size="11.5" fill="#1e293b">Noom a témoigné au Sénat</text>
-  <text x="22" y="102" font-size="11.5" fill="#1e293b">américain.</text>
-  <rect x="241" y="10" width="218" height="148" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
-  <circle cx="265" cy="36" r="14" fill="#dbeafe"/><text x="265" y="41" text-anchor="middle" font-size="13" font-weight="800" fill="#1d4ed8">É</text>
-  <text x="289" y="33" font-size="12" font-weight="700" fill="#1e293b">Économique</text>
-  <text x="253" y="68" font-size="11.5" fill="#1e293b">La moitié des utilisateurs US jugent</text>
-  <text x="253" y="85" font-size="11.5" fill="#1e293b">les traitements difficiles à payer</text>
-  <text x="253" y="102" font-size="11.5" fill="#1e293b">→ espace pour le low-cost</text>
-  <text x="253" y="119" font-size="11.5" fill="#1e293b">(microdosing).</text>
-  <rect x="472" y="10" width="218" height="148" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
-  <circle cx="496" cy="36" r="14" fill="#dbeafe"/><text x="496" y="41" text-anchor="middle" font-size="13" font-weight="800" fill="#1d4ed8">S</text>
-  <text x="520" y="33" font-size="12" font-weight="700" fill="#1e293b">Socioculturel</text>
-  <text x="484" y="68" font-size="11.5" fill="#1e293b">Médicalisation de l'obésité :</text>
-  <text x="484" y="85" font-size="11.5" fill="#1e293b">destigmatisation, « food noise » —</text>
-  <text x="484" y="102" font-size="11.5" fill="#1e293b">le discours passe du régime</text>
-  <text x="484" y="119" font-size="11.5" fill="#1e293b">au traitement.</text>
-  <rect x="10" y="168" width="218" height="148" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
-  <circle cx="34" cy="194" r="14" fill="#2563eb"/><text x="34" y="199" text-anchor="middle" font-size="13" font-weight="800" fill="#ffffff">T</text>
-  <text x="58" y="191" font-size="12" font-weight="700" fill="#1d4ed8">Technologique — LE CHOC</text>
-  <text x="22" y="226" font-size="11.5" fill="#1e293b">GLP-1 : 12,4 % des adultes US</text>
-  <text x="22" y="243" font-size="11.5" fill="#1e293b">en usage perte de poids,</text>
-  <text x="22" y="260" font-size="11.5" fill="#1e293b">×2 en 18 mois. S'y ajoute l'IA</text>
-  <text x="22" y="277" font-size="11.5" fill="#1e293b">(photo-logging) côté produit.</text>
-  <rect x="241" y="168" width="218" height="148" rx="10" fill="#fafaf9" stroke="#e2e8f0" stroke-dasharray="4 4"/>
-  <circle cx="265" cy="194" r="14" fill="#f1f5f9"/><text x="265" y="199" text-anchor="middle" font-size="13" font-weight="800" fill="#94a3b8">E</text>
-  <text x="289" y="191" font-size="12" font-weight="700" fill="#94a3b8">Environnemental</text>
-  <text x="253" y="226" font-size="11.5" fill="#94a3b8">Non significatif sur ce marché.</text>
-  <rect x="472" y="168" width="218" height="148" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
-  <circle cx="496" cy="194" r="14" fill="#dbeafe"/><text x="496" y="199" text-anchor="middle" font-size="13" font-weight="800" fill="#1d4ed8">L</text>
-  <text x="520" y="191" font-size="12" font-weight="700" fill="#1e293b">Légal</text>
-  <text x="484" y="226" font-size="11.5" fill="#1e293b">Extinction réglementaire du</text>
-  <text x="484" y="243" font-size="11.5" fill="#1e293b">semaglutide « compounded »</text>
-  <text x="484" y="260" font-size="11.5" fill="#1e293b">→ bascule forcée vers les</text>
-  <text x="484" y="277" font-size="11.5" fill="#1e293b">versions de marque.</text>
-</svg>
+
+  <div data-viz="pestel">
+    <div class="pestel">
+      <div class="pcard"><div class="pcard__h"><span class="pcard__l">P</span><span class="pcard__t">Politique</span></div><p>Pression sur les prix des GLP-1 — Noom a témoigné au Sénat américain.</p></div>
+      <div class="pcard"><div class="pcard__h"><span class="pcard__l">É</span><span class="pcard__t">Économique</span></div><p>La moitié des utilisateurs US jugent les traitements difficiles à payer → espace pour le low-cost (microdosing).</p></div>
+      <div class="pcard"><div class="pcard__h"><span class="pcard__l">S</span><span class="pcard__t">Socioculturel</span></div><p>Médicalisation de l'obésité : destigmatisation, « food noise » — le discours passe du régime au traitement.</p></div>
+      <div class="pcard pcard--shock"><div class="pcard__h"><span class="pcard__l">T</span><span class="pcard__t">Technologique — LE CHOC</span></div><p>GLP-1 : 12,4 % des adultes US en usage perte de poids, ×2 en 18 mois. S'y ajoute l'IA (photo-logging) côté produit.</p></div>
+      <div class="pcard pcard--mute"><div class="pcard__h"><span class="pcard__l">E</span><span class="pcard__t">Environnemental</span></div><p>Non significatif sur ce marché.</p></div>
+      <div class="pcard"><div class="pcard__h"><span class="pcard__l">L</span><span class="pcard__t">Légal</span></div><p>Extinction réglementaire du semaglutide « compounded » → bascule forcée vers les versions de marque.</p></div>
+    </div>
   </div>
-  <div data-viz="perceptual-map" data-caption="Lecture qualitative (positions estimées par l'agent, sans données d'enquête) — version factuelle : graphique interactif du run S1">
-<svg viewBox="0 0 700 380" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, sans-serif" role="img" aria-label="Carte perceptuelle qualitative des acteurs du marché">
-  <line x1="70" y1="320" x2="670" y2="320" stroke="#94a3b8" stroke-width="1.5"/>
-  <line x1="70" y1="320" x2="70" y2="40" stroke="#94a3b8" stroke-width="1.5"/>
-  <text x="80" y="344" font-size="11.5" fill="#64748b">Outil en libre-service</text>
-  <text x="665" y="344" font-size="11.5" fill="#64748b" text-anchor="end">Accompagnement / transformation</text>
-  <text x="30" y="180" font-size="11.5" fill="#64748b" text-anchor="middle" transform="rotate(-90 30 180)">Prix perçu (bas → élevé)</text>
-  <circle cx="150" cy="290" r="24" fill="#2563eb" opacity="0.85"/>
-  <text x="150" y="294" text-anchor="middle" font-size="11" font-weight="700" fill="#ffffff">Cal AI</text>
-  <circle cx="130" cy="238" r="20" fill="#60a5fa" opacity="0.85"/>
-  <text x="130" y="242" text-anchor="middle" font-size="10.5" font-weight="700" fill="#ffffff">Yazio</text>
-  <circle cx="218" cy="252" r="22" fill="#60a5fa" opacity="0.85"/>
-  <text x="218" y="249" text-anchor="middle" font-size="9" font-weight="700" fill="#ffffff">Macro-</text>
-  <text x="218" y="260" text-anchor="middle" font-size="9" font-weight="700" fill="#ffffff">Factor</text>
-  <circle cx="350" cy="218" r="24" fill="#3b82f6" opacity="0.85"/>
-  <text x="350" y="222" text-anchor="middle" font-size="10.5" font-weight="700" fill="#ffffff">Simple</text>
-  <circle cx="498" cy="118" r="26" fill="#1d4ed8" opacity="0.9"/>
-  <text x="498" y="122" text-anchor="middle" font-size="11" font-weight="700" fill="#ffffff">Noom</text>
-  <circle cx="612" cy="92" r="28" fill="#1e3a8a" opacity="0.9"/>
-  <text x="612" y="89" text-anchor="middle" font-size="9" font-weight="700" fill="#ffffff">Weight-</text>
-  <text x="612" y="100" text-anchor="middle" font-size="9" font-weight="700" fill="#ffffff">Watchers</text>
-  <ellipse cx="528" cy="226" rx="100" ry="56" fill="none" stroke="#b45309" stroke-width="1.5" stroke-dasharray="6 4"/>
-  <text x="528" y="218" text-anchor="middle" font-size="11.5" font-weight="700" fill="#b45309">espace disputé :</text>
-  <text x="528" y="234" text-anchor="middle" font-size="11" fill="#b45309">le médicalisé abordable (&lt;200 $/mois)</text>
-  <text x="528" y="250" text-anchor="middle" font-size="10.5" fill="#b45309">Noom microdose vs WW Med+</text>
-</svg>
+
+  <div data-viz="perceptual-map">
+    <div class="pmap">
+      <div class="pmap__ylab">Prix perçu (bas → élevé)</div>
+      <div class="pmap__xlab l">Outil en libre-service</div>
+      <div class="pmap__xlab r">Accompagnement / transformation</div>
+      <div class="bub b-lo" style="left:16%;bottom:24%;width:60px;height:60px">Yazio</div>
+      <div class="bub b-hi" style="left:25%;bottom:12%;width:64px;height:64px">Cal&nbsp;AI</div>
+      <div class="bub b-lo" style="left:35%;bottom:30%;width:64px;height:64px;font-size:11px">Macro-Factor</div>
+      <div class="bub b-mid" style="left:51%;bottom:46%;width:70px;height:70px">Simple</div>
+      <div class="bub b-hi" style="left:62%;bottom:82%;width:70px;height:70px">Noom</div>
+      <div class="bub b-hi" style="left:83%;bottom:84%;width:72px;height:72px;font-size:10.5px">Weight-Watchers</div>
+      <div class="zone" style="left:80%;bottom:32%;width:210px;height:120px"><span><b>espace disputé :</b> le médicalisé abordable (&lt;200 $/mois) · Noom microdose vs WW Med+</span></div>
+    </div>
   </div>
-  <div data-viz="ge-mckinsey" data-caption="Arbitrage qualitatif des quatre sous-secteurs — scores composites non chiffrés (données segmentaires minces)">
-<svg viewBox="0 0 700 390" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, sans-serif" role="img" aria-label="Matrice GE McKinsey qualitative des quatre sous-secteurs">
-  <rect x="90" y="20" width="187" height="100" fill="#bfdbfe"/>
-  <rect x="277" y="20" width="187" height="100" fill="#bfdbfe"/>
-  <rect x="464" y="20" width="186" height="100" fill="#dbeafe"/>
-  <rect x="90" y="120" width="187" height="100" fill="#bfdbfe"/>
-  <rect x="277" y="120" width="187" height="100" fill="#dbeafe"/>
-  <rect x="464" y="120" width="186" height="100" fill="#f1f5f9"/>
-  <rect x="90" y="220" width="187" height="100" fill="#dbeafe"/>
-  <rect x="277" y="220" width="187" height="100" fill="#f1f5f9"/>
-  <rect x="464" y="220" width="186" height="100" fill="#f1f5f9"/>
-  <line x1="277" y1="20" x2="277" y2="320" stroke="#ffffff" stroke-width="3"/>
-  <line x1="464" y1="20" x2="464" y2="320" stroke="#ffffff" stroke-width="3"/>
-  <line x1="90" y1="120" x2="650" y2="120" stroke="#ffffff" stroke-width="3"/>
-  <line x1="90" y1="220" x2="650" y2="220" stroke="#ffffff" stroke-width="3"/>
-  <rect x="90" y="20" width="560" height="300" fill="none" stroke="#e2e8f0"/>
-  <rect x="103" y="52" width="160" height="36" rx="18" fill="#ffffff" stroke="#2563eb" stroke-width="1.5"/>
-  <text x="183" y="74" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1e293b">Compagnons GLP-1</text>
-  <rect x="285" y="46" width="170" height="48" rx="14" fill="#ffffff" stroke="#2563eb"/>
-  <text x="370" y="66" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1e293b">Coaching</text>
-  <text x="370" y="82" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1e293b">comportemental &amp; IA</text>
-  <rect x="472" y="46" width="170" height="48" rx="14" fill="#ffffff" stroke="#2563eb"/>
-  <text x="557" y="66" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1e293b">Plateformes</text>
-  <text x="557" y="82" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1e293b">médicalisées</text>
-  <rect x="285" y="246" width="170" height="48" rx="14" fill="#ffffff" stroke="#94a3b8"/>
-  <text x="370" y="266" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1e293b">Tracking</text>
-  <text x="370" y="282" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1e293b">calorique pur</text>
-  <text x="40" y="170" font-size="11.5" fill="#64748b" text-anchor="middle" transform="rotate(-90 40 170)">Attractivité du sous-secteur</text>
-  <text x="84" y="32" font-size="10.5" fill="#64748b" text-anchor="end">forte</text>
-  <text x="84" y="315" font-size="10.5" fill="#64748b" text-anchor="end">faible</text>
-  <text x="370" y="348" text-anchor="middle" font-size="11.5" fill="#64748b">Force compétitive requise pour un entrant (faible → élevée)</text>
-  <rect x="90" y="364" width="11" height="11" fill="#bfdbfe"/><text x="106" y="374" font-size="10.5" fill="#64748b">Investir</text>
-  <rect x="170" y="364" width="11" height="11" fill="#dbeafe"/><text x="186" y="374" font-size="10.5" fill="#64748b">Sélectivité</text>
-  <rect x="266" y="364" width="11" height="11" fill="#f1f5f9"/><text x="282" y="374" font-size="10.5" fill="#64748b">Récolter / éviter</text>
-</svg>
+
+  <div data-viz="ge-mckinsey">
+    <div class="nbox">
+      <div class="nbox__y"><span class="hi">forte</span><span class="ax">Attractivité du sous-secteur</span><span class="lo">faible</span></div>
+      <div class="nbox__grid">
+        <div class="cell invest"><div class="chip">Compagnons GLP-1</div></div>
+        <div class="cell invest"><div class="chip">Coaching comportemental &amp; IA</div></div>
+        <div class="cell select"><div class="chip">Plateformes médicalisées</div></div>
+        <div class="cell invest"></div>
+        <div class="cell select"><div class="chip">Tracking calorique pur</div></div>
+        <div class="cell harvest"></div>
+        <div class="cell select"></div>
+        <div class="cell harvest"></div>
+        <div class="cell harvest"></div>
+      </div>
+      <div class="nbox__x">Force compétitive requise pour un entrant (faible → élevée)</div>
+    </div>
+    <div class="nbox__leg">
+      <span><i class="i1"></i> <span>Investir</span></span>
+      <span><i class="i2"></i> <span>Sélectivité</span></span>
+      <span><i class="i3"></i> <span>Récolter / éviter</span></span>
+    </div>
   </div>
+
 </div>
 
 <script>
 const RUN_S2_DATA = {
-  "schema_version": 1,
+  "schema_version": 2,
   "skill": "present-the-market",
   "market": {
     "slug": "apps-perte-de-poids",
     "label": "Applications mobiles d'assistance à la perte de poids",
     "language": "fr"
   },
-  "run": {
-    "number": 1,
-    "date": "2026-06-11"
-  },
+  "step": { "number": 2, "title": "Présenter le marché" },
+  "run": { "number": 1, "date": "2026-06-11" },
   "source_run": {
     "skill": "read-the-market",
     "number": 2,
@@ -333,292 +533,340 @@ const RUN_S2_DATA = {
     "age_days": 0,
     "freshness_warning": false
   },
+  "pipeline": [
+    { "name": "Lire le marché", "href": "../s1-2_2026-06-11/", "state": "done" },
+    { "name": "Présenter le marché", "href": "", "state": "active" },
+    { "name": "Positionner mon produit", "href": "../s3-1_2026-06-12/", "state": "done" },
+    { "name": "Recommandation stratégique", "href": "../s4-1_2026-06-12/", "state": "done" }
+  ],
+  "glance": [
+    { "label": "Marché (SAM)", "value": "2,2", "unit": "Md$", "note": "2025 · périmètre apps perte de poids · TAM 4,5–6 Md$" },
+    { "label": "Croissance", "value": "+11–13", "unit": "%/an", "note": "Revenus in-app · volumes de téléchargement ~stables" },
+    { "label": "Concentration", "value": "~60", "unit": "%", "note": "des revenus captés par les 2 leaders · ~10 acteurs significatifs" },
+    { "label": "Choc GLP-1", "value": "12,4", "unit": "%", "note": "des adultes US en usage perte de poids · ×2 en 18 mois", "shock": true }
+  ],
   "kpis": {
     "definition": "Applications grand public dont la proposition centrale est l'assistance à la perte de poids — tracking nutritionnel, coaching comportemental, compagnon de traitement — hors télésanté pure et laboratoires pharmaceutiques.",
     "sub_sectors": [
-      {
-        "name": "Plateformes médicalisées (app + téléconsultation + GLP-1)",
-        "size": {
-          "value": "~1,35",
-          "unit": "Md$",
-          "year": 2025,
-          "estimated": true
-        },
-        "share_pct": {
-          "value": 61,
-          "estimated": true
-        }
-      },
-      {
-        "name": "Tracking calorique et nutritionnel",
-        "size": {
-          "value": "~0,45",
-          "unit": "Md$",
-          "year": 2025,
-          "estimated": true
-        },
-        "share_pct": {
-          "value": 20,
-          "estimated": true
-        }
-      },
-      {
-        "name": "Coaching comportemental & IA",
-        "size": {
-          "value": "~0,21",
-          "unit": "Md$",
-          "year": 2025,
-          "estimated": true
-        },
-        "share_pct": {
-          "value": 9,
-          "estimated": true
-        }
-      },
-      {
-        "name": "Compagnons GLP-1 dédiés (suivi de traitement)",
-        "size": {
-          "value": "~0,02",
-          "unit": "Md$",
-          "year": 2025,
-          "estimated": true
-        },
-        "share_pct": {
-          "value": 1,
-          "estimated": true
-        }
-      }
+      { "name": "Plateformes médicalisées (app + téléconsultation + GLP-1)", "size": { "value": "~1,35", "unit": "Md$", "year": 2025, "estimated": true }, "share_pct": { "value": 61, "estimated": true } },
+      { "name": "Tracking calorique et nutritionnel", "size": { "value": "~0,45", "unit": "Md$", "year": 2025, "estimated": true }, "share_pct": { "value": 20, "estimated": true } },
+      { "name": "Coaching comportemental & IA", "size": { "value": "~0,21", "unit": "Md$", "year": 2025, "estimated": true }, "share_pct": { "value": 9, "estimated": true } },
+      { "name": "Compagnons GLP-1 dédiés (suivi de traitement)", "size": { "value": "~0,02", "unit": "Md$", "year": 2025, "estimated": true }, "share_pct": { "value": 1, "estimated": true } }
     ],
-    "rest_of_market_share_pct": {
-      "value": 9,
-      "estimated": true
-    },
+    "rest_of_market_share_pct": { "value": 9, "estimated": true },
     "sub_sector_method_note": "Ventilation estimée par l'agent à partir des revenus des acteurs du run S1 (aucune donnée analyste segmentaire publique fiable) — parts bouclées à 100 % avec la ligne « reste du marché » (longue traîne : Fastic, Foodvisor, FatSecret, MyNetDiary…).",
-    "global_size": {
-      "value": "~2,2",
-      "unit": "Md$",
-      "year": 2025,
-      "estimated": true,
-      "perimeter_note": "Périmètre du pipeline (apps grand public d'assistance à la perte de poids). Les estimations analystes vont de 1,2 à 5,8 Md$ selon le périmètre retenu (nutrition seule, coaching, exercise+diet). Croissance : ~11-13 %/an."
-    },
+    "global_size": { "value": "~2,2", "unit": "Md$", "year": 2025, "estimated": true, "perimeter_note": "Périmètre du pipeline (apps grand public d'assistance à la perte de poids). Les estimations analystes vont de 1,2 à 5,8 Md$ selon le périmètre retenu (nutrition seule, coaching, exercise+diet). Croissance : ~11-13 %/an." },
     "dominant_incumbent": {
       "name": "WeightWatchers (WW International)",
       "founded": 1963,
-      "revenue": {
-        "value": 748,
-        "unit": "M$",
-        "period_note": "moyenne FY2024 (786 M$) et FY2025 (710,6 M$) — chiffres officiels",
-        "estimated": false
-      },
+      "revenue": { "value": 748, "unit": "M$", "period_note": "moyenne FY2024 (786 M$) et FY2025 (710,6 M$) — chiffres officiels", "estimated": false },
       "profit_status": "en perte",
-      "profit_figure": {
-        "value": -62.1,
-        "unit": "M$",
-        "period_note": "perte nette FY2025 (période post-restructuration) ; FY2024 : −345,7 M$, incluant des dépréciations non-cash",
-        "estimated": false
-      }
+      "profit_figure": { "value": -62.1, "unit": "M$", "period_note": "perte nette FY2025 (période post-restructuration) ; FY2024 : −345,7 M$, incluant des dépréciations non-cash", "estimated": false }
     },
-    "geography": {
-      "type": "mondial",
-      "detail": "Dominante nord-américaine et européenne — acteurs globaux, dynamique GLP-1 tirée par les États-Unis ; leaders européens : Yazio (Allemagne), Lifesum (Suède), Simple (Londres) ; acteur médicalisé britannique notable hors données chiffrées : Second Nature (NHS)."
-    }
+    "geography": { "type": "mondial", "detail": "Dominante nord-américaine et européenne — acteurs globaux, dynamique GLP-1 tirée par les États-Unis ; leaders européens : Yazio (Allemagne), Lifesum (Suède), Simple (Londres) ; acteur médicalisé britannique notable hors données chiffrées : Second Nature (NHS)." }
   },
-  "selection_criteria": {
+  "methodology": {
     "intro": "Les remarques suivantes, établies par le run S1, ont guidé le choix de la méthodologie d'analyse :",
-    "points": [
-      "Marché B2C d'abonnement digital, à chaîne de valeur courte → la lecture en filière cède la place aux unit economics (CAC/LTV, péage des stores).",
-      "Choc exogène majeur en cours — les médicaments GLP-1 → la grille PESTEL s'impose.",
-      "Deal flow 2024-2026 exceptionnellement dense (faillite du leader, deux rachats par MyFitnessPal, Series B de Simple, acquisition d'une pharmacie par Noom) → la vue Vitalité s'impose.",
-      "Structure de pouvoir singulière — stores en fournisseurs incontournables, pharma devenant fournisseur de la proposition de valeur elle-même → terrain idéal pour Porter.",
-      "Des tailles de marché existent, mais avec des périmètres analystes divergents (1,2 à 5,8 Md$) → TAM/SAM/SOM retenu, avec prudence.",
-      "Données segmentaires et de perception minces → l'arbitrage GE/McKinsey et la carte perceptuelle sont traités en lecture qualitative."
+    "rows": [
+      { "observation": "Marché B2C d'abonnement digital, à chaîne de valeur courte", "framework": "Chaîne de valeur · unit economics" },
+      { "observation": "Choc exogène majeur en cours — les médicaments GLP-1", "framework": "PESTEL" },
+      { "observation": "Deal flow 2024-2026 exceptionnellement dense (faillite du leader, deux rachats MyFitnessPal, Series B Simple, pharmacie Noom)", "framework": "Vitalité (deal flow)" },
+      { "observation": "Structure de pouvoir singulière — stores incontournables, pharma devenant fournisseur de la proposition de valeur", "framework": "Porter — 5 forces" },
+      { "observation": "Tailles de marché à périmètres analystes divergents (1,2-5,8 Md$)", "framework": "TAM / SAM / SOM" },
+      { "observation": "Données segmentaires et de perception minces", "framework": "9-box & carte perceptuelle (qualitatif)" }
     ]
   },
   "frameworks": [
     {
       "id": "tam-sam-som",
       "name": "TAM / SAM / SOM",
+      "nav": "TAM/SAM/SOM",
       "status": "activé",
       "doc_anchor": "tam-sam-som",
+      "badge": null,
+      "objective": "« Le gâteau vaut-il l'effort ? Marché en expansion ou en déclin ? »",
       "analysis": "Le TAM — l'ensemble des apps de nutrition et de bien-être alimentaire — pèse ~4,5 à 6 Md$ (2025) selon les périmètres analystes les plus larges. Le SAM — les apps dont la proposition centrale est la perte de poids, périmètre de ce pipeline — est estimé à ~2,2 Md$ (2025), en croissance de ~11-13 %/an. Le SOM d'un entrant différencié s'étalonne sur les trajectoires récentes : Cal AI a atteint ~30 M$ de revenus en 18 mois sur la niche du photo-logging, MacroFactor ~24 M$ sur le macro-tracking scientifique — soit ~1 à 2 % du SAM à horizon 3-5 ans pour une proposition réellement différenciée. Stade de maturité : recomposition — la valeur croît (+13 % de revenus in-app en 2025) mais les volumes stagnent (+0,8 % de téléchargements) : on ne gagne plus en acquisition brute, on gagne en valeur captée par utilisateur.",
-      "objective": "« Le gâteau vaut-il l'effort ? Marché en expansion ou en déclin ? »"
+      "caption": "Dimensionnement du marché — toutes valeurs estimées (~), périmètres analystes divergents."
     },
     {
       "id": "porter",
       "name": "Porter — 5 forces",
+      "nav": "Porter",
       "status": "activé",
       "doc_anchor": "porter",
+      "badge": { "type": "shock", "label": "Substituts = force décisive" },
+      "objective": "« Ce marché est-il structurellement rentable ? Qui a le pouvoir ? »",
       "analysis": "Un marché structurellement sous pression. Rivalité : forte — une dizaine d'acteurs significatifs, les deux leaders concentrant ~60 % des revenus. Nouveaux entrants : barrières produit très basses (Cal AI, créée par deux lycéens, a atteint 15 M de téléchargements en moins de deux ans) mais coût d'acquisition élevé sur un marché saturé en volume. Substituts : la force décisive — les GLP-1 sont un substitut pharmacologique au « régime comportemental » lui-même (12 % des adultes américains en prennent), qui a mis le leader historique en faillite. Fournisseurs : Apple et Google prélèvent 15-30 % de péage sur chaque abonnement ; pour les acteurs médicalisés, la pharma (Novo Nordisk, Eli Lilly) devient un second fournisseur incontournable. Clients : pouvoir élevé — coûts de changement quasi nuls, churn structurellement fort, comparaison facile. Conclusion : la rentabilité durable exige une position défendable — intégration médicale (Noom, WeightWatchers) ou différenciation IA à acquisition organique (viralité de Cal AI).",
-      "objective": "« Ce marché est-il structurellement rentable ? Qui a le pouvoir ? »"
+      "caption": "Les cinq forces, annotées avec les faits du run S1 — le substitut pharmacologique est la force décisive."
     },
     {
       "id": "value-chain",
       "name": "Value chain — lue en unit economics",
+      "nav": "Chaîne de valeur",
       "status": "activé",
       "doc_anchor": "value-chain",
+      "badge": null,
+      "objective": "« Où se capture la marge dans la filière ? »",
       "analysis": "La chaîne est courte — développement → stores → abonné — et la lecture pertinente est unitaire. Côté captation : les stores prélèvent 15-30 % de chaque abonnement, premier « maillon » de marge cédé par tout l'écosystème. Côté unit economics : les prix s'étagent de 2,5 $/mois (Cal AI) à ~23 $/mois (WeightWatchers), et la rentabilité est démontrée aux deux extrêmes — Simple est opérationnellement profitable (~160 M$ d'ARR), Cal AI dégageait ~1,4 M$ de marge brute mensuelle avant son rachat. Le mouvement structurel : les plateformes médicalisées déplacent la capture de marge vers le médicament — le rachat d'une pharmacie 503A par Noom (avril 2026) est une intégration verticale assumée pour capter la marge pharmaceutique en plus de l'abonnement.",
-      "objective": "« Où se capture la marge dans la filière ? »"
+      "caption": "Une chaîne à trois maillons — et la marge qui migre vers le médicament."
     },
     {
       "id": "vitalite",
       "name": "Vitalité (deal flow)",
+      "nav": "Deal flow",
       "status": "activé",
       "doc_anchor": "vitalite",
+      "badge": null,
+      "objective": "« L'argent intelligent y croit-il ? À quelle vitesse ça se disrupte ? »",
       "analysis": "L'argent intelligent est massivement actif — signal d'un marché en transformation rapide, pas d'un marché qui dort. En 24 mois : la faillite-éclair et restructuration du leader historique (1,15 Md$ de dette effacée, mai-juin 2025) ; deux acquisitions par MyFitnessPal (Intent en février 2025, Cal AI closée en décembre 2025) ; une Series B de 35 M$ pour Simple menée par HartBeat Ventures (octobre 2025) ; l'acquisition d'une pharmacie par Noom (avril 2026) ; et une vague de nouveaux entrants sur la niche du compagnon GLP-1 (Shotsy, MeAgain, Pep). La direction des flux est sans ambiguïté : l'IA à faible friction et l'intégration médicale. Quand le n°1 d'audience rachète l'innovateur IA du moment plutôt que de le répliquer, cela dit l'essentiel sur l'endroit où se crée la valeur.",
-      "objective": "« L'argent intelligent y croit-il ? À quelle vitesse ça se disrupte ? »"
+      "caption": "24 mois de deal flow — l'argent converge vers l'IA à faible friction et l'intégration médicale."
     },
     {
       "id": "pestel",
       "name": "PESTEL",
+      "nav": "PESTEL",
       "status": "activé",
       "doc_anchor": "pestel",
+      "badge": null,
+      "objective": "« Quelles forces externes peuvent tuer ou doper le marché ? »",
       "analysis": "Le choc dominant est techno-sociétal : les GLP-1 (12,4 % des adultes américains en usage perte de poids — plus du double en 18 mois) redéfinissent la proposition de valeur de toute la catégorie. Légal : l'extinction réglementaire du semaglutide « compounded » force la bascule vers les versions de marque et rebat les cartes des offres médicalisées low-cost. Politique : la pression sur les prix des GLP-1 (Noom a témoigné au Sénat américain) peut élargir ou rétrécir le marché du microdosing. Économique : la moitié des utilisateurs américains jugent ces traitements difficiles à payer — l'accessibilité financière est le levier des offres hybrides app+médicament d'entrée de gamme. Socioculturel : la médicalisation de l'obésité destigmatise la demande et déplace le discours du « régime » vers le « traitement ». Environnemental : non significatif sur ce marché.",
-      "objective": "« Quelles forces externes peuvent tuer ou doper le marché ? »"
+      "caption": "Six forces externes — la techno-sociétale (GLP-1) est le choc qui recompose la catégorie."
     },
     {
       "id": "perceptual-map",
       "name": "Perceptual map",
+      "nav": "Carte perceptuelle",
       "status": "dégradé",
       "doc_anchor": "perceptual-map",
+      "badge": { "type": "qual", "label": "Lecture qualitative" },
+      "objective": "« Comment les offres sont perçues ? Où sont les espaces vides ? »",
       "analysis": "Lecture qualitative — le run S1 n'a pas collecté de données de perception chiffrées (NPS, enquêtes). Sur les axes perçus prix × promesse : Cal AI et MacroFactor occupent le territoire « outil simple et efficace, prix plancher » ; Simple, le « coach bienveillant accessible » ; Noom, la « transformation psychologique premium » ; WeightWatchers, « l'institution communautaire » en repositionnement médical. L'espace perçu encore disputé : l'accompagnement médicalisé abordable grand public (sous 200 $/mois médicament compris) — c'est exactement la course entre le microdosing de Noom (119-199 $/mois) et le Med+ de WeightWatchers. La version factuelle et interactive de cette carte existe dans le run S1 (graphique de positionnement, cinq dimensions).",
-      "objective": "« Comment les offres sont perçues ? Où sont les espaces vides ? »"
+      "caption": "Lecture qualitative (positions estimées par l'agent, sans données d'enquête) — version factuelle : graphique interactif du run S1."
     },
     {
       "id": "ge-mckinsey",
       "name": "GE / McKinsey 9-box",
+      "nav": "9-box",
       "status": "dégradé",
       "doc_anchor": "ge-mckinsey",
+      "badge": { "type": "qual", "label": "Lecture qualitative" },
+      "objective": "« Quels segments méritent l'investissement ? »",
       "analysis": "Arbitrage qualitatif des quatre sous-secteurs — les données segmentaires sont trop minces pour des scores composites chiffrés. Compagnons GLP-1 dédiés : attractivité élevée (croissance du sous-jacent, segment naissant) pour une force compétitive requise faible — la case « investir » d'un entrant agile. Coaching comportemental & IA : attractif et en croissance, mais bataille produit intense — sélectivité, la différenciation IA est la condition d'entrée. Plateformes médicalisées : le plus gros bassin de valeur, mais force requise élevée (régulation, capital, accès pharma) — sélectivité réservée aux acteurs capitalisés. Tracking calorique pur : attractivité déclinante (commoditisé par le photo-logging IA) — récolter ou se différencier, ne pas y entrer frontalement.",
-      "objective": "« Quels segments méritent l'investissement ? »"
+      "caption": "Arbitrage qualitatif des quatre sous-secteurs — scores composites non chiffrés (données segmentaires minces)."
     }
   ],
   "sources": [
-    {
-      "id": 1,
-      "title": "Run S1-2 — Read the Market du 11 juin 2026 (source primaire : tous les faits marché, acteurs et chiffres de ce rapport)",
-      "publisher": "market.shoette.com",
-      "url": "../s1-2_2026-06-11/",
-      "accessed": "2026-06-11",
-      "from_source_run": true
-    },
-    {
-      "id": 2,
-      "title": "Annexe A1 du run source — 52 sources externes détaillées (communiqués financiers, presse économique, données analystes)",
-      "publisher": "market.shoette.com",
-      "url": "../s1-2_2026-06-11/#a1",
-      "accessed": "2026-06-11",
-      "from_source_run": true
-    }
+    { "id": 1, "title": "Run S1-2 — Read the Market du 11 juin 2026 (source primaire : tous les faits marché, acteurs et chiffres de ce rapport)", "publisher": "market.shoette.com", "url": "../s1-2_2026-06-11/", "accessed": "2026-06-11", "from_source_run": true },
+    { "id": 2, "title": "Annexe A1 du run source — 52 sources externes détaillées (communiqués financiers, presse économique, données analystes)", "publisher": "market.shoette.com", "url": "../s1-2_2026-06-11/#a1", "accessed": "2026-06-11", "from_source_run": true }
   ],
   "last_updated": "2026-06-11"
 };
 </script>
+
 <script>
-  (function () {
-    const d = RUN_S2_DATA;
-    const k = d.kpis;
-
-    function el(tag, attrs, text) {
-      const n = document.createElement(tag);
-      if (attrs) for (const key in attrs) n.setAttribute(key, attrs[key]);
-      if (text != null) n.textContent = text;
-      return n;
+(function () {
+  "use strict";
+  var D = RUN_S2_DATA;
+  var MONTHS = ["janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre"];
+  function longDate(iso) { if (!iso) return ""; var p = iso.split("-"); return parseInt(p[2], 10) + " " + MONTHS[parseInt(p[1], 10) - 1] + " " + p[0]; }
+  function code(stepNo, runNo) { return "S" + stepNo + "-" + runNo; }
+  function el(tag, attrs, kids) {
+    var n = document.createElement(tag);
+    if (attrs) for (var k in attrs) {
+      if (k === "html") n.innerHTML = attrs[k];
+      else if (k === "text") n.textContent = attrs[k];
+      else n.setAttribute(k, attrs[k]);
     }
-    function pct(o) { return (o.estimated ? "~" : "") + o.value + " %"; }
+    if (kids != null) (Array.isArray(kids) ? kids : [kids]).forEach(function (c) {
+      if (c == null) return;
+      n.appendChild(typeof c === "object" ? c : document.createTextNode(String(c)));
+    });
+    return n;
+  }
 
-    /* ---- 1. tableau KPI ---- */
-    const tbody = document.getElementById("kpi-tbody");
-    function row(label) {
-      const tr = el("tr");
-      tr.appendChild(el("th", null, label));
-      const td = el("td");
-      tr.appendChild(td);
-      tbody.appendChild(tr);
-      return td;
+  /* ---------- HERO ---------- */
+  var hero = document.getElementById("hero-mount");
+  var step = D.step, run = D.run, src = D.source_run;
+
+  hero.appendChild(el("a", { class: "hero__market", href: "../", title: "Marché étudié" }, [
+    el("span", { class: "swatch" }),
+    el("span", { class: "tag" }, "Marché étudié"),
+    el("span", null, D.market.label)
+  ]));
+
+  hero.appendChild(el("h1", null, [
+    el("span", { class: "step-no" }, "Étape " + step.number + "."),
+    el("br"),
+    document.createTextNode(step.title)
+  ]));
+
+  var srcCode = src.path.split("_")[0].toUpperCase();
+  var srcHref = "../" + src.path;
+  var freshHtml;
+  if (src.freshness_warning) freshHtml = "<span class=\"warn\">run source de plus de 3 mois — à rafraîchir</span>";
+  else if (src.age_days === 0) freshHtml = "<span class=\"fresh\">données du jour</span>, aucune recherche complémentaire nécessaire";
+  else freshHtml = "données du run source (" + longDate(src.date) + ")";
+  hero.appendChild(el("p", { class: "hero__byline", html:
+    "Run <strong>" + code(step.number, run.number) + "</strong>, publié le " + longDate(run.date) +
+    " à partir du <a href=\"" + srcHref + "\">Run " + srcCode + "</a> — " + freshHtml + "." }));
+
+  var track = el("nav", { class: "track", "aria-label": "Étapes de l'analyse" });
+  D.pipeline.forEach(function (s) {
+    track.appendChild(el("a", { class: "track__step is-" + s.state, href: s.href || "#" },
+      el("span", { class: "track__name" }, s.name)));
+  });
+  hero.appendChild(track);
+
+  /* ---------- AT A GLANCE ---------- */
+  var glance = document.getElementById("glance-mount");
+  D.glance.forEach(function (g) {
+    var val = el("span", { class: "kpi__value num" }, g.value);
+    if (g.unit) val.appendChild(el("small", null, g.unit));
+    glance.appendChild(el("div", { class: "kpi" + (g.shock ? " kpi--shock" : "") }, [
+      el("span", { class: "kpi__label" }, g.label),
+      val,
+      el("span", { class: "kpi__note" }, g.note)
+    ]));
+  });
+
+  /* ---------- IN-PAGE NAV ---------- */
+  var nav = document.getElementById("secnav-mount");
+  function navlink(href, numTxt, label) {
+    var kids = [];
+    if (numTxt) kids.push(el("span", { class: "n" }, numTxt));
+    kids.push(el("span", null, label));
+    return el("a", { class: "navlink", href: href }, kids);
+  }
+  nav.appendChild(navlink("#definition", "01", "Définition"));
+  nav.appendChild(navlink("#methodo", "02", "Choix des frameworks"));
+  D.frameworks.forEach(function (f) { nav.appendChild(navlink("#fw-" + f.id, "", f.nav)); });
+  nav.appendChild(navlink("#sources", "04", "Sources"));
+
+  /* ---------- SECTION 1 — DEFINITION ---------- */
+  var k = D.kpis;
+  var def = document.getElementById("def-mount");
+  function defRow(key, valKids, last) {
+    var v = el("div", { class: "def__val" });
+    (Array.isArray(valKids) ? valKids : [valKids]).forEach(function (x) { if (x) v.appendChild(x); });
+    var row = el("div", { class: "def__row" }, [el("div", { class: "def__key" }, key), v]);
+    if (last) row.style.borderBottom = "0";
+    def.appendChild(row);
+  }
+  function dot() { return el("span", { class: "lead-dot" }); }
+
+  defRow("Définition", el("div", null, k.definition));
+
+  var ulSub = el("ul");
+  k.sub_sectors.forEach(function (s) { ulSub.appendChild(el("li", null, [dot(), document.createTextNode(s.name)])); });
+  defRow("Sous-secteurs", ulSub);
+
+  var big = el("div", { class: "big num" }, k.global_size.value + " " + k.global_size.unit + " ");
+  big.appendChild(el("span", { class: "muted" }, "(" + k.global_size.year + ")"));
+  defRow("Taille mondiale", [big, el("div", { class: "muted" }, k.global_size.perimeter_note)]);
+
+  var ulShare = el("ul");
+  k.sub_sectors.forEach(function (s) {
+    var li = el("li", null, [dot(), document.createTextNode(s.name)]);
+    li.appendChild(el("span", { class: "share num" }, s.size.value + " " + s.size.unit + " · " + s.share_pct.value + " %"));
+    ulShare.appendChild(li);
+  });
+  var liRest = el("li", null, [dot(), document.createTextNode("Reste du marché (longue traîne)")]);
+  liRest.appendChild(el("span", { class: "share num" }, (k.rest_of_market_share_pct.estimated ? "~" : "") + k.rest_of_market_share_pct.value + " %"));
+  ulShare.appendChild(liRest);
+  defRow("Part par sous-secteur", [ulShare, el("div", { class: "muted", style: "margin-top:12px" }, k.sub_sector_method_note)]);
+
+  var inc = k.dominant_incumbent;
+  var incBox = el("div");
+  incBox.appendChild(el("div", null, [el("strong", null, inc.name), document.createTextNode(" — créé en " + inc.founded)]));
+  var revDiv = el("div", { style: "margin-top:6px" }, "Chiffre d'affaires : ");
+  revDiv.appendChild(el("strong", null, (inc.revenue.estimated ? "~" : "") + inc.revenue.value + " " + inc.revenue.unit));
+  revDiv.appendChild(el("span", { class: "muted" }, " (" + inc.revenue.period_note + ")"));
+  incBox.appendChild(revDiv);
+  var profDiv = el("div", { style: "margin-top:4px" }, "Bénéfice : ");
+  profDiv.appendChild(el("span", { class: inc.profit_status === "en perte" ? "t-risk" : "" }, inc.profit_status));
+  if (inc.profit_figure) {
+    profDiv.appendChild(document.createTextNode(" — " + inc.profit_figure.value + " " + inc.profit_figure.unit + " "));
+    profDiv.appendChild(el("span", { class: "muted" }, "(" + inc.profit_figure.period_note + ")"));
+  }
+  incBox.appendChild(profDiv);
+  defRow("Acteur dominant", incBox);
+
+  var geoBox = el("div");
+  geoBox.appendChild(el("div", { class: "big", style: "font-size:17px" }, "Marché " + k.geography.type));
+  geoBox.appendChild(el("div", { class: "muted" }, k.geography.detail));
+  defRow("Géographie", geoBox, true);
+
+  def.appendChild(el("div", { class: "def__foot" }, "~ = valeur estimée · — = information introuvable. Sauf mention contraire, les chiffres proviennent du run S1 source et de ses 52 références."));
+
+  /* ---------- SECTION 2 — METHODOLOGY ---------- */
+  var method = document.getElementById("method-mount");
+  D.methodology.rows.forEach(function (r) {
+    method.appendChild(el("div", { class: "method__row" }, [
+      el("div", { class: "method__obs" }, r.observation),
+      el("div", { class: "method__arrow" }, "→"),
+      el("div", { class: "method__fw" }, r.framework)
+    ]));
+  });
+
+  /* ---------- SECTION 3 — FRAMEWORKS ---------- */
+  var fw = document.getElementById("fw-mount");
+  D.frameworks.forEach(function (f, i) {
+    var bar = el("div", { class: "fwc__bar" }, [
+      el("span", { class: "fwc__idx" }, String.fromCharCode(65 + i)),
+      el("h3", { class: "fwc__name" }, el("a", { href: "../../focus-step-2/#" + f.doc_anchor }, f.name))
+    ]);
+    if (f.badge) bar.appendChild(el("span", { class: "badge badge--" + f.badge.type }, f.badge.label));
+
+    var head = el("div", { class: "fwc__head" }, bar);
+    if (f.objective) head.appendChild(el("p", { class: "fwc__q serif-q" }, f.objective));
+
+    var art = el("article", { class: "fwc", id: "fw-" + f.id }, [head, el("div", { class: "fwc__body" }, el("p", null, f.analysis))]);
+
+    var tpl = document.querySelector('#viz-templates [data-viz="' + f.id + '"]');
+    if (tpl) {
+      var viz = el("div", { class: "fwc__viz" });
+      while (tpl.firstChild) viz.appendChild(tpl.firstChild);
+      art.appendChild(viz);
+      art.classList.add("has-inset");
     }
+    if (f.caption) art.appendChild(el("p", { class: "fwc__cap" }, f.caption));
+    fw.appendChild(art);
+  });
 
-    row("Définition du marché").textContent = k.definition;
+  /* ---------- SECTION 4 — SOURCES ---------- */
+  var srcWrap = document.getElementById("sources-mount");
+  D.sources.forEach(function (s) {
+    var d = el("div", null, [
+      el("a", { href: s.url, rel: "noopener" }, s.title),
+      el("span", { class: "where" }, " — " + s.publisher + " (consulté le " + s.accessed + ")")
+    ]);
+    srcWrap.appendChild(el("div", { class: "source" }, [el("span", { class: "source__n" }), d]));
+  });
 
-    const tdSub = row("Principaux sous-secteurs");
-    const ulSub = el("ul");
-    k.sub_sectors.forEach(function (s) { ulSub.appendChild(el("li", null, s.name)); });
-    tdSub.appendChild(ulSub);
-
-    const tdSize = row("Taille du marché mondial");
-    tdSize.appendChild(el("b", null, k.global_size.value + " " + k.global_size.unit + " (" + k.global_size.year + ")"));
-    tdSize.appendChild(el("div", { class: "small" }, k.global_size.perimeter_note));
-
-    const tdShares = row("Taille et part par sous-secteur");
-    const ulShares = el("ul");
-    k.sub_sectors.forEach(function (s) {
-      ulShares.appendChild(el("li", null, s.name + " — " + s.size.value + " " + s.size.unit + " · " + pct(s.share_pct)));
-    });
-    ulShares.appendChild(el("li", null, "Reste du marché (longue traîne) — " + pct(k.rest_of_market_share_pct)));
-    tdShares.appendChild(ulShares);
-    tdShares.appendChild(el("div", { class: "small" }, k.sub_sector_method_note));
-
-    const inc = k.dominant_incumbent;
-    const tdInc = row("Acteur installé dominant");
-    tdInc.appendChild(el("b", null, inc.name));
-    tdInc.appendChild(document.createTextNode(" — créé en " + inc.founded));
-    const rev = el("div");
-    rev.appendChild(document.createTextNode("Chiffre d'affaires : "));
-    rev.appendChild(el("b", null, (inc.revenue.estimated ? "~" : "") + inc.revenue.value + " " + inc.revenue.unit));
-    rev.appendChild(el("span", { class: "small" }, " (" + inc.revenue.period_note + ")"));
-    tdInc.appendChild(rev);
-    const prof = el("div");
-    prof.appendChild(document.createTextNode("Bénéfice : "));
-    prof.appendChild(el("span", { class: inc.profit_status === "en perte" ? "status-loss" : "" }, inc.profit_status));
-    if (inc.profit_figure) {
-      prof.appendChild(document.createTextNode(" — " + inc.profit_figure.value + " " + inc.profit_figure.unit + " "));
-      prof.appendChild(el("span", { class: "small" }, "(" + inc.profit_figure.period_note + ")"));
+  /* ---------- SCROLL-SPY (rail) ---------- */
+  var links = Array.prototype.slice.call(document.querySelectorAll(".navlink"));
+  var rail = document.querySelector(".secnav__in");
+  var ids = [];
+  links.forEach(function (a) { var id = a.getAttribute("href").slice(1); if (ids.indexOf(id) === -1) ids.push(id); });
+  var sections = ids.map(function (id) { return document.getElementById(id); });
+  var lastId = null;
+  function spy() {
+    var pos = window.scrollY + 130;
+    var activeId = ids[0];
+    for (var i = 0; i < sections.length; i++) { if (sections[i] && sections[i].offsetTop <= pos) activeId = ids[i]; }
+    links.forEach(function (a) { a.classList.toggle("is-active", a.getAttribute("href") === "#" + activeId); });
+    if (activeId !== lastId && rail) {
+      var act = rail.querySelector(".navlink.is-active");
+      if (act) { rail.scrollTo({ left: Math.max(0, act.offsetLeft - rail.clientWidth / 2 + act.clientWidth / 2), behavior: "smooth" }); }
+      lastId = activeId;
     }
-    tdInc.appendChild(prof);
-
-    const tdGeo = row("Géographie");
-    tdGeo.appendChild(el("b", null, "Marché " + k.geography.type));
-    tdGeo.appendChild(el("div", { class: "small" }, k.geography.detail));
-
-    /* ---- 2. remarques & méthodologie ---- */
-    const crit = document.getElementById("criteria-text");
-    crit.appendChild(el("p", null, d.selection_criteria.intro));
-    const critUl = el("ul");
-    d.selection_criteria.points.forEach(function (pt) {
-      critUl.appendChild(el("li", null, pt));
-    });
-    crit.appendChild(critUl);
-
-    /* ---- 3. frameworks ---- */
-    const list = document.getElementById("frameworks-list");
-    d.frameworks.forEach(function (f) {
-      const block = el("section", { class: "fw-block", id: "fw-" + f.id });
-      const h3 = el("h3");
-      h3.appendChild(el("a", { href: "../../focus-step-2/#" + f.doc_anchor }, f.name));
-      if (f.status === "dégradé") h3.appendChild(el("span", { class: "badge" }, "lecture qualitative"));
-      block.appendChild(h3);
-      if (f.objective) block.appendChild(el("p", { class: "fw-obj" }, f.objective));
-      block.appendChild(el("p", null, f.analysis));
-      const tpl = document.querySelector('#viz-templates [data-viz="' + f.id + '"]');
-      if (tpl) {
-        const fig = el("figure", { class: "fw-fig" });
-        while (tpl.firstChild) fig.appendChild(tpl.firstChild);
-        const cap = tpl.getAttribute("data-caption");
-        if (cap) fig.appendChild(el("figcaption", { class: "fig-cap" }, cap));
-        block.appendChild(fig);
-      }
-      list.appendChild(block);
-    });
-
-    /* ---- sources ---- */
-    const ol = document.getElementById("sources-list");
-    d.sources.forEach(function (s) {
-      const li = el("li");
-      li.appendChild(el("a", { href: s.url, rel: "noopener" }, s.title));
-      li.appendChild(el("span", { class: "pub" }, " — " + s.publisher + " (consulté le " + s.accessed + ")"));
-      ol.appendChild(li);
-    });
-  })();
+  }
+  var ticking = false;
+  window.addEventListener("scroll", function () {
+    if (!ticking) { window.requestAnimationFrame(function () { spy(); ticking = false; }); ticking = true; }
+  }, { passive: true });
+  spy();
+})();
 </script>
-  <script src="../../assets/sitefoot.js"></script>
 </body>
 </html>

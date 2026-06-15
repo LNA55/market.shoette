@@ -3,97 +3,172 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Position MY product — Applications mobiles d'assistance à la perte de poids — Run S3-1 (12 juin 2026)</title>
+  <title>Positionner mon produit — Applications mobiles d'assistance à la perte de poids — Run S3-1 (12 juin 2026)</title>
   <meta name="description" content="What is wrong with me positionné sur le graphique du marché des applications d'assistance à la perte de poids — note de positionnement, run S3-1, juin 2026.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <style>
+    /* Design system « My Market Data » — run figé, CSS inline. */
     :root {
-      --ink: #1e293b; --muted: #64748b; --faint: #94a3b8;
-      --line: #e2e8f0; --bg-soft: #f8fafc; --accent: #2563eb; --warn: #b45309;
+      --paper:#faf8f4; --surface:#ffffff; --surface-2:#f4f1ea; --inset:#f7f5f0;
+      --ink:#1a1c22; --ink-2:#494d59; --ink-3:#868a93; --line:#e7e2d8; --line-2:#efebe2;
+      --brand:#F4684F; --brand-ink:#cf4733; --brand-wash:#fdece7; --brand-line:#f7cabd;
+      --accent:#2f6bff; --accent-ink:#1f53e0; --accent-wash:#eaf1ff; --accent-line:#c9dbff;
+      --risk:#d8412f; --risk-ink:#b32a1c; --risk-wash:#fcebe8; --risk-line:#f3c8c1;
+      --watch:#c07d12; --watch-ink:#9c6309; --watch-wash:#fbf1df; --watch-line:#ecd6a8;
+      --good:#1f9d5b; --good-wash:#e6f5ed;
+      --sans:'Hanken Grotesk',system-ui,sans-serif; --mono:'IBM Plex Mono',ui-monospace,monospace; --serif:'Instrument Serif',Georgia,serif;
+      --r-lg:18px; --r-md:13px; --r-sm:9px; --maxw:1180px; --gutter:clamp(20px,5vw,56px);
+      --shadow:0 1px 2px rgba(26,28,34,.04),0 8px 28px -12px rgba(26,28,34,.10);
+      --shadow-sm:0 1px 2px rgba(26,28,34,.05),0 2px 8px -4px rgba(26,28,34,.06);
     }
-    * { box-sizing: border-box; }
-    body {
-      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-      color: var(--ink); margin: 0; line-height: 1.6; font-size: 15.5px;
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; scroll-padding-top:70px; }
+    body { margin:0; font-family:var(--sans); background:var(--paper); color:var(--ink); font-size:17px; line-height:1.6; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; }
+    ::selection { background:var(--accent-wash); color:var(--accent-ink); }
+    a { color:inherit; }
+    .num { font-variant-numeric:tabular-nums; }
+    .shell { max-width:var(--maxw); margin:0 auto; padding-inline:var(--gutter); }
+    [id] { scroll-margin-top:70px; }
+
+    /* hero */
+    .hero { padding:clamp(34px,6vw,68px) 0 28px; }
+    .hero__market { display:inline-flex; align-items:center; gap:9px; font-family:var(--mono); font-size:12.5px; letter-spacing:.03em; color:var(--ink-2); background:var(--surface); border:1px solid var(--line); border-radius:999px; padding:6px 14px 6px 11px; margin-bottom:24px; text-decoration:none; }
+    .hero__market .tag { font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-3); white-space:nowrap; padding-right:9px; border-right:1px solid var(--line); }
+    .hero__market .swatch { width:7px; height:7px; border-radius:2px; background:var(--brand); }
+    .hero h1 { font-size:clamp(38px,6vw,72px); line-height:1.0; letter-spacing:-.03em; font-weight:800; margin:0 0 20px; max-width:16ch; text-wrap:balance; }
+    .hero h1 .step-no { color:var(--brand); }
+    .hero__byline { margin-top:18px; font-size:15.5px; line-height:1.55; color:var(--ink-2); max-width:74ch; }
+    .hero__byline strong { color:var(--ink); font-weight:700; }
+    .hero__byline a { color:var(--accent-ink); text-decoration:none; font-weight:600; border-bottom:1px solid var(--accent-line); }
+    .hero__byline a:hover { border-bottom-color:var(--accent-ink); }
+    .hero__proj { display:inline-flex; align-items:baseline; gap:8px; margin-top:18px; font-size:14px; }
+    .hero__proj .lbl { font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-3); }
+    .hero__proj a { color:var(--accent-ink); font-weight:700; text-decoration:none; border-bottom:1px solid var(--accent-line); }
+
+    /* section scaffold */
+    .section { padding:clamp(40px,6vw,64px) 0 4px; }
+    .section__head { display:flex; gap:18px; align-items:baseline; margin-bottom:26px; }
+    .section__no { font-family:var(--mono); font-size:14px; font-weight:600; color:var(--brand-ink); border:1px solid var(--brand-line); background:var(--brand-wash); width:36px; height:36px; border-radius:10px; display:grid; place-items:center; flex:none; }
+    .section__title { font-size:clamp(24px,3vw,32px); font-weight:800; letter-spacing:-.025em; line-height:1.1; margin:0; }
+    .section__purpose { color:var(--ink-2); font-size:15px; margin-top:6px; max-width:64ch; }
+    .divider { height:1px; background:var(--line-2); border:0; margin:0; }
+    .prose p { font-size:15.5px; color:var(--ink-2); line-height:1.65; margin:0 0 14px; max-width:78ch; }
+    .prose p strong, .prose p b { color:var(--ink); }
+    .note { font-family:var(--mono); font-size:12px; color:var(--ink-3); line-height:1.5; margin:10px 0 0; max-width:78ch; }
+
+    /* "déclaré" pill — distinct du système de signaux (neutre) */
+    .tag-decl { display:inline-block; vertical-align:1px; margin-left:7px; font-family:var(--mono); font-size:10px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-3); background:var(--surface-2); border:1px solid var(--line); padding:2px 8px; border-radius:999px; }
+
+    /* tableau de positionnement (clé / valeur) */
+    .def { border-top:1px solid var(--line); }
+    .def__row { display:grid; grid-template-columns:230px 1fr; gap:28px; padding:20px 4px; border-bottom:1px solid var(--line-2); }
+    .def__key { font-family:var(--mono); font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-3); padding-top:4px; }
+    .def__val { font-size:15px; color:var(--ink-2); }
+    .def__val .big { font-size:19px; font-weight:700; color:var(--ink); display:inline-block; }
+    .def__val .rationale { margin-top:5px; }
+
+    /* lien vers le graphique */
+    .chart-link { display:flex; align-items:center; gap:16px; border:1px solid var(--line); border-radius:var(--r-md); background:var(--surface); padding:16px 20px; margin-top:22px; text-decoration:none; box-shadow:var(--shadow-sm); transition:border-color .15s,transform .15s; }
+    .chart-link:hover { border-color:var(--accent-line); transform:translateY(-1px); }
+    .chart-link__txt { flex:1; }
+    .chart-link__h { font-weight:700; color:var(--accent-ink); font-size:15px; }
+    .chart-link__s { display:block; margin-top:3px; font-size:12.5px; color:var(--ink-3); }
+    .chart-link__arrow { flex:none; color:var(--accent); font-size:20px; font-weight:700; }
+
+    /* clés de lecture */
+    .keys { list-style:none; margin:18px 0 0; padding:0; display:grid; gap:12px; }
+    .keys li { display:flex; gap:12px; align-items:baseline; font-size:15px; color:var(--ink-2); line-height:1.6; }
+    .keys li::before { content:""; width:6px; height:6px; border-radius:50%; background:var(--brand); flex:none; transform:translateY(-3px); }
+    .keys li b { color:var(--ink); }
+
+    /* encart recommandation */
+    .reco { margin-top:22px; border:1px solid var(--accent-line); border-left:3px solid var(--accent); background:var(--accent-wash); border-radius:0 var(--r-md) var(--r-md) 0; padding:16px 20px; font-size:14.5px; color:var(--ink); line-height:1.6; }
+    .reco b { color:var(--accent-ink); }
+
+    /* sources */
+    .sources { list-style:none; margin:0; padding:0; display:grid; gap:12px; counter-reset:src; }
+    .sources li { display:grid; grid-template-columns:auto 1fr; gap:14px; align-items:baseline; padding:14px 0; border-top:1px solid var(--line-2); font-size:14px; color:var(--ink-2); }
+    .sources li::before { counter-increment:src; content:counter(src,decimal-leading-zero); font-family:var(--mono); font-size:13px; color:var(--ink-3); }
+    .sources a { color:var(--accent-ink); text-decoration:none; font-weight:600; border-bottom:1px solid var(--accent-line); }
+
+    @media (max-width:720px) {
+      body { font-size:16px; }
+      .def__row { grid-template-columns:1fr; gap:8px; }
+      .section__head { gap:14px; }
     }
-    .wrap { max-width: calc(50vw + 550px); margin: 0 auto; padding: 28px 20px 60px; }
-    a { color: var(--accent); }
-    header.report h1 { font-size: 27px; line-height: 1.25; margin: 0 0 6px; }
-    .runmeta { color: var(--muted); font-size: 14px; margin-bottom: 8px; }
-    .seclabel { font-size: 12px; text-transform: uppercase; letter-spacing: .07em; color: var(--accent); font-weight: 700; margin-bottom: 2px; }
-    section { margin-top: 42px; }
-    section > h2 { font-size: 22px; margin: 0 0 14px; }
-    p { margin: 10px 0; }
-    .note { font-size: 13px; color: var(--muted); margin: 8px 0; }
-    .declared {
-      display: inline-block; vertical-align: 1px; margin-left: 6px;
-      background: #eef2ff; color: #3730a3; font-size: 10.5px; font-weight: 700;
-      padding: 2px 8px; border-radius: 999px; text-transform: uppercase; letter-spacing: .04em;
-    }
-    table.kpi { width: 100%; border-collapse: collapse; font-size: 14.5px; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
-    table.kpi th {
-      text-align: left; vertical-align: top; width: 230px;
-      background: var(--bg-soft); padding: 12px 16px; border-bottom: 1px solid var(--line);
-      font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: .03em;
-    }
-    table.kpi td { padding: 12px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
-    table.kpi tr:last-child th, table.kpi tr:last-child td { border-bottom: none; }
-    table.kpi td.val { width: 190px; font-weight: 700; white-space: nowrap; }
-    .small { font-size: 12.5px; color: var(--muted); }
-    .chart-link {
-      display: block; border: 1px solid var(--line); border-radius: 10px;
-      background: var(--bg-soft); padding: 14px 18px; margin-top: 16px;
-      text-decoration: none; font-weight: 600;
-    }
-    .chart-link:hover { border-color: var(--accent); }
-    .chart-link .small { font-weight: 400; display: block; margin-top: 2px; }
-    .keys { margin: 14px 0 0; padding-left: 20px; }
-    .keys li { margin-bottom: 9px; }
-    .reco { border-left: 3px solid var(--accent); background: var(--bg-soft); padding: 12px 16px; border-radius: 0 10px 10px 0; margin-top: 18px; font-size: 14.5px; }
-    ol.sources-list { padding-left: 20px; font-size: 13.5px; color: var(--muted); }
-    ol.sources-list li { margin-bottom: 6px; }
-    [id] { scroll-margin-top: 70px; }
+    @media print { .siteheader,.sitefoot { display:none !important; } }
+    @media (prefers-reduced-motion:reduce) { * { scroll-behavior:auto !important; transition:none !important; } }
   </style>
 </head>
 <body>
-
 <script src="../../assets/siteheader.js" data-crumb="parent" data-parent-label="Marché : applications d&#x27;assistance à la perte de poids" data-parent-href="../"></script>
-<div class="wrap">
 
-  <header class="report">
-    <h1>Applications mobiles d'assistance à la perte de poids</h1>
-    <div class="seclabel">Step 3 — Position MY product</div>
-    <div class="runmeta">Run S3-1 — 12 juin 2026 · Projet : What is wrong with me · Sources : <a href="../s1-2_2026-06-11/">Run S1-2 du 11 juin 2026</a> · <a href="../s2-1_2026-06-11/">Run S2-1 du 11 juin 2026</a></div>
-  </header>
+<a id="top"></a>
 
-  <section id="projet">
-    <h2>1 · Le projet</h2>
-    <p><b>What is wrong with me</b> — <a href="https://w.shoette.com/" target="_blank" rel="noopener">w.shoette.com</a> — est un journal de santé conversationnel à IA (« <i>The AI health journal you talk to</i> ») : on lui parle — voix, photos, documents médicaux — il se connecte aux signaux du quotidien (sommeil, stress, cycle, météo, calendrier) et surface des corrélations pondérées pour répondre à « pourquoi ça ne va pas ». Le projet est en <b>beta sur liste d'attente</b>, se déclare explicitement « <i>not a medical device</i> », et héberge ses données en Union européenne (RGPD, HDS).</p>
-    <p><b>L'usage positionné ici</b> <span class="declared">déclaré par Elena</span> : l'enquête sur le blocage pondéral — les personnes en situation d'obésité (IMC &gt; 30) coincées dans un fort surpoids malgré de nombreuses tentatives ; premier test visé : les utilisateurs de GLP-1 (Ozempic, Wegovy, Mounjaro) qui n'observent ni forte perte de poids ni perte d'appétit.</p>
-    <p class="note">Les valeurs du projet dans cette note sont <b>déclaratives</b> — issues du site du projet et du cadrage d'Elena — à la différence des valeurs des concurrents, sourcées publiquement par le run S1.</p>
+<section class="hero"><div class="shell">
+  <a class="hero__market" href="../" title="Marché étudié">
+    <span class="swatch"></span>
+    <span class="tag">Marché étudié</span>
+    <span>Applications mobiles d'assistance à la perte de poids</span>
+  </a>
+  <h1><span class="step-no">Étape 3.</span><br>Positionner mon produit</h1>
+  <p class="hero__byline">Run <strong>S3-1</strong>, publié le 12 juin 2026 — à partir des <a href="../s1-2_2026-06-11/">Run S1-2</a> et <a href="../s2-1_2026-06-11/">Run S2-1</a>. Les valeurs du projet sont <strong>déclaratives</strong> (site du projet + cadrage d'Elena), à la différence des concurrents sourcés par le run S1.</p>
+  <div class="hero__proj"><span class="lbl">Projet positionné</span> <a href="https://w.shoette.com/" target="_blank" rel="noopener">What is wrong with me ↗</a></div>
+</div></section>
+
+<div class="shell"><main>
+
+  <section class="section" id="projet">
+    <div class="section__head">
+      <span class="section__no">01</span>
+      <div><h2 class="section__title">Le projet</h2></div>
+    </div>
+    <div class="prose">
+      <p><b>What is wrong with me</b> — <a href="https://w.shoette.com/" target="_blank" rel="noopener">w.shoette.com</a> — est un journal de santé conversationnel à IA (« <i>The AI health journal you talk to</i> ») : on lui parle — voix, photos, documents médicaux — il se connecte aux signaux du quotidien (sommeil, stress, cycle, météo, calendrier) et surface des corrélations pondérées pour répondre à « pourquoi ça ne va pas ». Le projet est en <b>beta sur liste d'attente</b>, se déclare explicitement « <i>not a medical device</i> », et héberge ses données en Union européenne (RGPD, HDS).</p>
+      <p><b>L'usage positionné ici</b> <span class="tag-decl">déclaré par Elena</span> : l'enquête sur le blocage pondéral — les personnes en situation d'obésité (IMC &gt; 30) coincées dans un fort surpoids malgré de nombreuses tentatives ; premier test visé : les utilisateurs de GLP-1 (Ozempic, Wegovy, Mounjaro) qui n'observent ni forte perte de poids ni perte d'appétit.</p>
+      <p class="note">Les valeurs du projet dans cette note sont déclaratives — issues du site du projet et du cadrage d'Elena — à la différence des valeurs des concurrents, sourcées publiquement par le run S1.</p>
+    </div>
   </section>
 
-  <section id="positionnement">
-    <h2>2 · Le positionnement</h2>
-    <table class="kpi">
-      <tr><th>Part de marché</th><td class="val">0 %</td><td>Nouveau projet, beta sur liste d'attente — pas encore sur le marché. La part de marché d'un projet positionné par la Step 3 vaut toujours 0 %.</td></tr>
-      <tr><th>Croissance 12 mois</th><td class="val">—</td><td>Non applicable pour un projet qui n'a pas encore de revenus.</td></tr>
-      <tr><th>Intégration médicale &amp; GLP-1</th><td class="val">~3 /10 <span class="declared">déclaré</span></td><td>Lit les documents médicaux (photos d'analyses, comptes rendus) et croise avec la littérature — mais « not a medical device » : ni programme clinique, ni fonctions GLP-1 dédiées, ni prescription.</td></tr>
-      <tr><th>Prix mensuel effectif</th><td class="val">— <span class="declared">déclaré</span></td><td>Prix non annoncé à ce stade (recrutement par liste d'attente).</td></tr>
-      <tr><th>Personnalisation IA</th><td class="val">~9 /10 <span class="declared">déclaré</span></td><td>IA conversationnelle vocale (détection d'intonation), lecture multimodale (photos, documents multilingues), corrélations multi-signaux pondérées — promesse du site, non vérifiée en production.</td></tr>
-      <tr><th>Modèle d'accompagnement</th><td class="val">coach IA <span class="declared">déclaré</span></td><td>On parle à l'app, elle investigue et répond — pas de cliniciens dans la boucle.</td></tr>
-      <tr><th>Largeur fonctionnelle</th><td class="val">~mono-fonction <span class="declared">déclaré</span></td><td>Un seul usage sur ce marché : l'enquête sur les causes du blocage pondéral — l'app agrège de nombreux signaux mais n'offre ni tracking calorique, ni plans de repas, ni communauté.</td></tr>
-    </table>
-    <a class="chart-link" href="../s1-2_2026-06-11/#s2b">Voir le projet sur le graphique interactif du marché ↗
-      <span class="small">Le marqueur ✺ « What is wrong with me » a été ajouté au graphique 2b et au tableau du Run S1-2 le 12 juin 2026 — données des concurrents et date d'origine intactes.</span>
+  <hr class="divider">
+
+  <section class="section" id="positionnement">
+    <div class="section__head">
+      <span class="section__no">02</span>
+      <div><h2 class="section__title">Le positionnement</h2>
+        <p class="section__purpose">Le projet sur les dimensions du graphique du marché — valeur du projet (déclarative) et lecture.</p>
+      </div>
+    </div>
+    <div class="def">
+      <div class="def__row"><div class="def__key">Part de marché</div><div class="def__val"><span class="big num">0 %</span><div class="rationale">Nouveau projet, beta sur liste d'attente — pas encore sur le marché. La part de marché d'un projet positionné par la Step 3 vaut toujours 0 %.</div></div></div>
+      <div class="def__row"><div class="def__key">Croissance 12 mois</div><div class="def__val"><span class="big">—</span><div class="rationale">Non applicable pour un projet qui n'a pas encore de revenus.</div></div></div>
+      <div class="def__row"><div class="def__key">Intégration médicale &amp; GLP-1</div><div class="def__val"><span class="big num">~3 / 10</span><span class="tag-decl">déclaré</span><div class="rationale">Lit les documents médicaux (photos d'analyses, comptes rendus) et croise avec la littérature — mais « not a medical device » : ni programme clinique, ni fonctions GLP-1 dédiées, ni prescription.</div></div></div>
+      <div class="def__row"><div class="def__key">Prix mensuel effectif</div><div class="def__val"><span class="big">—</span><span class="tag-decl">déclaré</span><div class="rationale">Prix non annoncé à ce stade (recrutement par liste d'attente).</div></div></div>
+      <div class="def__row"><div class="def__key">Personnalisation IA</div><div class="def__val"><span class="big num">~9 / 10</span><span class="tag-decl">déclaré</span><div class="rationale">IA conversationnelle vocale (détection d'intonation), lecture multimodale (photos, documents multilingues), corrélations multi-signaux pondérées — promesse du site, non vérifiée en production.</div></div></div>
+      <div class="def__row"><div class="def__key">Modèle d'accompagnement</div><div class="def__val"><span class="big">coach IA</span><span class="tag-decl">déclaré</span><div class="rationale">On parle à l'app, elle investigue et répond — pas de cliniciens dans la boucle.</div></div></div>
+      <div class="def__row" style="border-bottom:0"><div class="def__key">Largeur fonctionnelle</div><div class="def__val"><span class="big">~mono-fonction</span><span class="tag-decl">déclaré</span><div class="rationale">Un seul usage sur ce marché : l'enquête sur les causes du blocage pondéral — l'app agrège de nombreux signaux mais n'offre ni tracking calorique, ni plans de repas, ni communauté.</div></div></div>
+    </div>
+    <a class="chart-link" href="../s1-2_2026-06-11/#s2b">
+      <span class="chart-link__txt">
+        <span class="chart-link__h">Voir le projet sur le graphique interactif du marché</span>
+        <span class="chart-link__s">Le marqueur ✺ « What is wrong with me » a été ajouté au graphique 2b et au tableau du Run S1-2 le 12 juin 2026 — données des concurrents et date d'origine intactes.</span>
+      </span>
+      <span class="chart-link__arrow">↗</span>
     </a>
   </section>
 
-  <section id="analyse">
-    <h2>3 · Analyse du graphique</h2>
-    <p>Sur la configuration par défaut (part de marché en hauteur), What is wrong with me se pose tout en bas du graphique, à 0 % — mécanique pour un projet en liste d'attente ; ce n'est pas là que se joue la lecture. Sur les dimensions structurantes, le projet occupe une position qu'aucun acteur du panel n'occupe. En <b>intégration médicale</b> (~3/10), il se tient seul dans le couloir vide du marché : le panel se scinde en deux blocs — les trackers et coachs grand public entre 0 et 2 (MyFitnessPal, Simple, Cal AI, Yazio, Lose It!, MacroFactor, Lifesum, Cronometer) et le duo médicalisé à 9 (WeightWatchers, Noom) ; entre 3 et 8, personne. Les seuls acteurs qui s'en approcheraient — les compagnons GLP-1 type Shotsy ou MeAgain, autour de 5 — sont précisément ceux pour lesquels le run S1 n'a pas trouvé de données chiffrées : les voisins les plus proches du projet sont invisibles sur le graphique. En <b>personnalisation IA</b> (~9/10, déclaratif), le projet rejoint le trio de tête aux côtés de Simple (9), Cal AI (8) et Noom (8) — avec une différence de nature : chez eux, l'IA exécute un programme (logger, coacher, ajuster des cibles) ; ici, elle instruit une enquête (corréler des centaines de signaux pour expliquer un blocage). En <b>modèle d'accompagnement</b>, il se range avec les coachs IA (Simple, MacroFactor, MyFitnessPal, Lifesum) ; en <b>largeur fonctionnelle</b>, il ne partage la case mono-fonction qu'avec Cal AI — deux produits mono-usage à IA forte, aux usages opposés : photographier ses calories <i>vs</i> comprendre pourquoi rien ne fonctionne. Le <b>prix</b> est la seule dimension sans valeur (non annoncé). Enfin, la cible déclarée — IMC &gt; 30, blocage persistant, et d'abord les utilisateurs GLP-1 sans réponse marquée — place le projet dans l'angle mort du marché tel que lu par les runs S1/S2 : les plateformes médicalisées (61 % du marché) vendent l'accès au traitement, les compagnons GLP-1 naissants (~1 % du marché) en organisent le suivi, mais personne n'adresse ceux pour qui le traitement ne tient pas sa promesse.</p>
+  <hr class="divider">
+
+  <section class="section" id="analyse">
+    <div class="section__head">
+      <span class="section__no">03</span>
+      <div><h2 class="section__title">Analyse du graphique</h2></div>
+    </div>
+    <div class="prose">
+      <p>Sur la configuration par défaut (part de marché en hauteur), What is wrong with me se pose tout en bas du graphique, à 0 % — mécanique pour un projet en liste d'attente ; ce n'est pas là que se joue la lecture. Sur les dimensions structurantes, le projet occupe une position qu'aucun acteur du panel n'occupe. En <b>intégration médicale</b> (~3/10), il se tient seul dans le couloir vide du marché : le panel se scinde en deux blocs — les trackers et coachs grand public entre 0 et 2 (MyFitnessPal, Simple, Cal AI, Yazio, Lose It!, MacroFactor, Lifesum, Cronometer) et le duo médicalisé à 9 (WeightWatchers, Noom) ; entre 3 et 8, personne. Les seuls acteurs qui s'en approcheraient — les compagnons GLP-1 type Shotsy ou MeAgain, autour de 5 — sont précisément ceux pour lesquels le run S1 n'a pas trouvé de données chiffrées : les voisins les plus proches du projet sont invisibles sur le graphique. En <b>personnalisation IA</b> (~9/10, déclaratif), le projet rejoint le trio de tête aux côtés de Simple (9), Cal AI (8) et Noom (8) — avec une différence de nature : chez eux, l'IA exécute un programme (logger, coacher, ajuster des cibles) ; ici, elle instruit une enquête (corréler des centaines de signaux pour expliquer un blocage). En <b>modèle d'accompagnement</b>, il se range avec les coachs IA (Simple, MacroFactor, MyFitnessPal, Lifesum) ; en <b>largeur fonctionnelle</b>, il ne partage la case mono-fonction qu'avec Cal AI — deux produits mono-usage à IA forte, aux usages opposés : photographier ses calories <i>vs</i> comprendre pourquoi rien ne fonctionne. Le <b>prix</b> est la seule dimension sans valeur (non annoncé). Enfin, la cible déclarée — IMC &gt; 30, blocage persistant, et d'abord les utilisateurs GLP-1 sans réponse marquée — place le projet dans l'angle mort du marché tel que lu par les runs S1/S2 : les plateformes médicalisées (61 % du marché) vendent l'accès au traitement, les compagnons GLP-1 naissants (~1 % du marché) en organisent le suivi, mais personne n'adresse ceux pour qui le traitement ne tient pas sa promesse.</p>
+    </div>
     <ul class="keys">
       <li><b>Le couloir 3-8 d'intégration médicale est vide</b> : entre les trackers grand public (0-2) et les plateformes de prescription (9), seul What is wrong with me s'y tient — en compagnie des compagnons GLP-1, hors graphique faute de données.</li>
       <li><b>L'IA du projet joue dans le trio de tête du marché</b> (~9/10, déclaratif, avec Simple, Cal AI et Noom) — mais pour une fonction qu'aucun concurrent ne propose : enquêter sur les causes plutôt qu'exécuter un programme.</li>
@@ -103,18 +178,24 @@
     <div class="reco"><b>Configuration de lecture recommandée</b> — sur le graphique interactif : <b>Position Y</b> = Personnalisation IA · <b>Position X + Couleur</b> = Intégration médicale &amp; GLP-1 · <b>Taille</b> = Part de marché · <b>Opacité</b> = Modèle d'accompagnement. Sur cette vue, le projet apparaît en haut du graphique, seul dans le couloir médian de l'axe horizontal — et son marqueur ✺ minuscule au milieu des géants dit exactement sa situation : la bonne case, sans la traction.</div>
   </section>
 
-  <section id="sources">
-    <h2>Sources</h2>
-    <ol class="sources-list">
-      <li><a href="https://w.shoette.com/" target="_blank" rel="noopener">Site du projet — What is wrong with me</a> (consulté le 2026-06-12) — déclaratif</li>
-      <li>Cadrage d'Elena : cible et angle de lancement (12 juin 2026) — déclaratif</li>
-      <li><a href="../s1-2_2026-06-11/">Run S1-2 du 11 juin 2026</a> — dimensions, échelles et données des concurrents</li>
-      <li><a href="../s2-1_2026-06-11/">Run S2-1 du 11 juin 2026</a> — taille et structure du marché (KPI, sous-secteurs)</li>
+  <hr class="divider">
+
+  <section class="section" id="sources">
+    <div class="section__head">
+      <span class="section__no">04</span>
+      <div><h2 class="section__title">Sources</h2></div>
+    </div>
+    <ol class="sources">
+      <li><span><a href="https://w.shoette.com/" target="_blank" rel="noopener">Site du projet — What is wrong with me</a> (consulté le 2026-06-12) — déclaratif</span></li>
+      <li><span>Cadrage d'Elena : cible et angle de lancement (12 juin 2026) — déclaratif</span></li>
+      <li><span><a href="../s1-2_2026-06-11/">Run S1-2 du 11 juin 2026</a> — dimensions, échelles et données des concurrents</span></li>
+      <li><span><a href="../s2-1_2026-06-11/">Run S2-1 du 11 juin 2026</a> — taille et structure du marché (KPI, sous-secteurs)</span></li>
     </ol>
   </section>
 
+</main></div>
 
-</div>
+<script src="../../assets/sitefoot.js"></script>
 
 <script>
 const RUN_S3_DATA = {
@@ -164,6 +245,5 @@ const RUN_S3_DATA = {
   "last_updated": "2026-06-12"
 };
 </script>
-  <script src="../../assets/sitefoot.js"></script>
 </body>
 </html>

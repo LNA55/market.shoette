@@ -2,20 +2,29 @@
 
 ## Page de run S4 — structure
 
-- **Autonome et figée** : styles inline dans le `<head>`, même charte de rapport que les runs S1/S2/S3 (encre `#1e293b`, accent `#2563eb`, boîtes douces) ; conteneur fluide `max-width: calc(50vw + 550px)`. Charge `../../assets/siteheader.js` en tête de `<body>` (en-tête commun) et `../../assets/sitefoot.js` juste avant `</body>` (footer commun) — composants communs au sous-domaine, cf. contrats Skill 1.
+> **Design system « My Market Data » (acté 2026-06-14).** Même gabarit visuel que la S2/S3 :
+> palette chaude (papier `#faf8f4`, marque coral `#F4684F`), système de signaux (bleu = fait,
+> rouge = menace/choc, ambre = opportunité, vert = positif), typos Hanken Grotesk / IBM Plex Mono /
+> Instrument Serif. **Run canonique : `apps-perte-de-poids/s4-1_2026-06-12/`** — copier verbatim son
+> `<style>` inline et restyler ; seules les données changent. Page en **HTML statique** ; `RUN_S4_DATA` +
+> `data.json` restent le miroir de données.
+
+- **Autonome et figée** : tout le CSS du design system est **inline dans le `<head>`** ; conteneur `.shell`
+  (`max-width:1180px`). Charge `../../assets/siteheader.js` en tête de `<body>` (topbar + barre de progression)
+  et `../../assets/sitefoot.js` juste avant `</body>`. **Ne jamais coder header/footer en dur.**
 - **Ordre du document** :
-  1. **En-tête de site** : injecté par le composant commun `assets/siteheader.js` (source unique) — placer `<script src="../../assets/siteheader.js" data-crumb="parent" data-parent-label="Marché : [label]" data-parent-href="../"></script>` en tête de `<body>`. **Ne jamais coder le header ni son CSS en dur** (cf. contrats Skill 1).
-  2. En-tête uniforme des runs : **h1 = label du marché**, puis **`seclabel` « Step 4 — Strategy recommendation »**, puis la **ligne runmeta** : « Run S4-[N] — [date] · Projet : [nom] · Sources : [lien run S3 + date] · [lien run S1 + date] · [lien run S2 + date] » + avertissement de fraîcheur si une source a plus de 3 mois.
-  3. **Cadre verdict GO / NO GO** *(décision Elena, 2026-06-13)* — grand encart carré juste sous le titre (après la runmeta, avant le bandeau d'âge). Emblème carré : `✓` + mot **GO** (vert) ou mot **NO GO** (rouge) ; à droite, kicker « Le verdict de l'analyse, en un mot », la question, la réponse percutante, puis le paragraphe de justification incluant la condition. Classes CSS `verdict-banner verdict-go` ou `verdict-banner verdict-nogo`. **Verdict binaire** : synthèse des sections 1-5, décidé en dernier mais affiché en premier — il doit pouvoir dire NON.
-  4. **Bandeau d'âge des données** (toujours présent) : « Sections 1-2 : synthèse pure des runs existants — données du [date(s)], aucun rafraîchissement web » *(décision Elena, 2026-06-12)*.
-  5. **Section 1 — Le marché au [date du run source]** : synthèse S1/S2 — définition, taille (~), sous-secteurs et parts, dynamique et chocs structurels, forces dominantes. Conventions conservées.
-  6. **Section 2 — Le positionnement du projet** : synthèse S3 — le projet en deux lignes, ses valeurs par dimension (déclaratives, marquées), sa position (couloir, voisins, angle mort), liens vers la note S3 et le graphique enrichi (`../s1-[n]_[date]/#s2b`).
-  7. **Section 3 — SWOT** *(section dédiée — décision Elena, 2026-06-12)* : grille 2×2 en SVG inline (~660px, charte rapport) + un paragraphe de lecture. Interne = Forces/Faiblesses ; externe = Opportunités/Menaces ; chaque entrée ancrée dans un fait S1/S2/S3 ou une déclaration d'Elena.
-  8. **Section 4 — Marketing mix (4P)** : un bloc par P (Produit, Prix, Promotion, Place). Chaque bloc : **donnée d'appui** (citée runs), **raisonnement**, puis **verdict sur le choix déclaré d'Elena** (franc, jamais complaisant) OU **recommandation** (chiffrée quand les runs le permettent — fourchette + modalité pour le prix).
-  9. **Section 5 — Recommandations essentielles & partenariats** : (a) liste priorisée de recommandations transverses (recommandation + justification) ; (b) **cibles de partenariat / sortie** : entreprises nommées — logique stratégique, type d'opération plausible (partenariat d'envergure / rachat / fusion / investisseur), signaux observables. Seule section nourrie de recherche web (sous-agents Sonnet), faits externes cités URL + date.
-  10. Sources : runs sources d'abord, compléments web de la section 5 ensuite, distingués.
-  11. **Footer commun** : injecté par `sitefoot.js` (présentation, méthode, marchés, légal). Le run n'a **plus de pied propre** — son numéro et sa date figurent dans la ligne *runmeta* en tête.
-- **Données** : inlinées (`const RUN_S4_DATA = {...}`) et écrites dans `data.json` — strictement identiques.
+  1. **siteheader.js** : `<script src="../../assets/siteheader.js" data-crumb="parent" data-parent-label="Marché : [label]" data-parent-href="../"></script>`.
+  2. **Hero** (`.hero`) : chip marché (`.hero__market`) ; **H1** « Étape 4. » (coral, `.step-no`) + « Recommandation stratégique » ; **byline** « Run S4-[N], publié le [date] — projet [nom], à partir des [run S3], [run S1] et [run S2] » (+ fraîcheur si une source > 3 mois).
+  3. **Cadre verdict GO / NO GO** *(décision Elena, 2026-06-13)* — `.verdict` (`.verdict--go` vert / `.verdict--nogo` rouge), dans le hero juste après la byline. Emblème `.verdict__emblem` (`✓`/`✕` + mot **GO**/**NO GO**, dégradé vert/rouge) ; à droite kicker mono « Le verdict de l'analyse, en un mot », la question (`.verdict__q`), la réponse percutante (`.verdict__a`), le paragraphe `.verdict__why` incluant la condition. **Verdict binaire** : synthèse des sections 1-5, décidé en dernier mais affiché en premier — il doit pouvoir dire NON.
+  4. **Bandeau d'âge des données** (`.agebanner`, toujours présent) : « Sections 1-2 : synthèse pure des runs existants — données du [date(s)], aucun rafraîchissement web » *(décision Elena, 2026-06-12)*.
+  5. **Section 1 — Le marché au [date]** (`.section` + `.prose`/`.pts`) : synthèse S1/S2 — définition, taille (~), sous-secteurs et parts, dynamique et chocs, forces dominantes.
+  6. **Section 2 — Le positionnement du projet** (`.pts`) : synthèse S3 — le projet, ses valeurs par dimension (déclaratives), sa position (couloir, voisins, angle mort), liens vers la note S3 et le graphique enrichi.
+  7. **Section 3 — SWOT** *(section dédiée — décision Elena, 2026-06-12)* : **grille 2×2 en CSS** (`.swot` → `.quad--s` Forces bleu/accent, `.quad--w` Faiblesses ambre/watch, `.quad--o` Opportunités vert/good, `.quad--t` Menaces rouge/risk) ; bandeaux « Interne — le projet » / « Externe — le marché » ; **chaque entrée porte une pastille `.basis`** ancrant la provenance (S1/S2/S3 ou déclaratif) ; puis un paragraphe de lecture.
+  8. **Section 4 — Marketing mix (4P)** (`.pblock` par P) : **donnée d'appui** (`.pblock__data`, citée runs) puis **verdict sur le choix déclaré d'Elena** (franc) OU **recommandation** (`.pblock__reco`, chiffrée quand les runs le permettent — fourchette + modalité pour le prix).
+  9. **Section 5 — Recommandations essentielles & partenariats** : (a) recos transverses (`.pts`) ; (b) **cibles de partenariat / sortie** — table `.targets` (cible · `.dealtype` pastille du type d'opération · logique & signaux, citations web en `.src`). Seule section nourrie de recherche web (sous-agents Sonnet), faits externes cités URL + date.
+  10. **Section 6 — Sources** (`.sources`, numérotées) : runs sources d'abord, compléments web de la section 5 ensuite, distingués.
+  11. **sitefoot.js** (footer commun ; pas de pied propre — n° + date dans la byline).
+- **Données** : inlinées (`const RUN_S4_DATA = {...}`) et écrites dans `data.json` — strictement identiques (schéma v1 inchangé).
 
 ## `data.json` S4 — schéma (v1)
 
@@ -69,7 +78,7 @@
 ```
 
 Notes :
-- `verdict.decision` ∈ {`GO`, `NO GO`} — **binaire, jamais « peut-être »** ; rendu en grand encart carré sous le titre (classes `verdict-go` / `verdict-nogo`). La synthèse des sections 1-5 décide ; un GO conditionnel met sa condition dans `condition`, sans adoucir le mot. Le verdict doit pouvoir dire NON.
+- `verdict.decision` ∈ {`GO`, `NO GO`} — **binaire, jamais « peut-être »** ; rendu en grand encart dans le hero (classes `.verdict--go` / `.verdict--nogo`, design system). La synthèse des sections 1-5 décide ; un GO conditionnel met sa condition dans `condition`, sans adoucir le mot. Le verdict doit pouvoir dire NON.
 - `marketing_mix.*` : par P, **exactement un** de `verdict` (si `declared` non null) ou `recommendation` est rempli — les deux peuvent coexister si Elena n'a déclaré qu'une partie du P.
 - `partnership_targets[].source_ids` : obligatoire dès qu'un fait externe est invoqué — seule section autorisée à citer du web.
 - Sections 1-2 (`market_summary`, `positioning_summary`) : aucune source web, uniquement les runs.

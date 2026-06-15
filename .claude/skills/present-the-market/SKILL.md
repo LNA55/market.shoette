@@ -21,9 +21,12 @@ Work from the MARKET project root. Remote scope: the `market/` directory only.
 2. **Freshness**: if the source run is older than **3 months**, flag it prominently at the top of the report (and tell Elena), suggesting a fresh Skill 1 run first — without blocking.
 3. Run number `N` = highest existing `s2-*` + 1 (first run: 1). Date = today. Language = the source run's language. Output: `site/[slug]/s2-[N]_[date]/`.
 
-## Step 2 — Business KPI table (fixed structure, V1)
+## Step 2 — KPI business : bande « d'un coup d'œil » + table de définition (V1)
 
-Always the same rows — that's what makes markets comparable:
+Deux blocs, alimentés par les mêmes données :
+
+- **Bande « d'un coup d'œil »** (`glance`, en tête de page) : **4 cartes** de chiffres-clés saillants — 3 chiffres structurants (ex. taille SAM, croissance, concentration) + **1 carte « choc »** (`shock:true`, rouge) pour le facteur disruptif du marché. On choisit les 4 nombres qui résument le marché, pas une recopie de la table.
+- **Section 1 « Définition du marché »** (table clé/valeur) — toujours les mêmes rangées, c'est ce qui rend les marchés comparables :
 
 1. **Définition du marché** — one tight sentence, derived from the S1 executive summary.
 2. **Principaux sous-secteurs** — list.
@@ -55,20 +58,20 @@ Three tiers: **activé** / **dégradé en qualitatif** (relevant but data too th
 
 > Cette table de décision est aussi publiée sur la page de documentation (`/focus-step-2/#regles-selection`) — **garder les deux synchronisées** quand les règles évoluent.
 
-Then write the report's section 2 — titled **« Remarques sur le marché et choix de la méthodologie d'analyse adaptée »** : a short intro line, then a **structured list, one line per remark** (never a dense paragraph) — each remark states a fact about *this* market and the methodological choice it drives (« fait → choix »). **Per Elena's decision (2026-06-11): the report shows retained frameworks only** — do not list the rejected ones.
+Then write the report's section 2 — titled **« Choix des frameworks »** : a short purpose line, then a **mapping, one row per remark** (`methodology.rows`, never a dense paragraph) — each row pairs an observation about *this* market (left) with the **framework pill** it drives (right) : « observation → framework ». **Per Elena's decision (2026-06-11): the report shows retained frameworks only** — do not list the rejected ones.
 
 ## Step 4 — Framework analyses
 
-One section per retained framework, containing in order:
+One **card** (`.fwc`) per retained framework, **identical anatomy**, in order:
 
-1. The title, linked to the framework's documentation fiche (`/focus-step-2/#[anchor]`), with the « lecture qualitative » badge when dégradé.
-2. **The framework's objective sentence** (`objective` in the data) — the « question » verbatim from the documentation page (e.g. « Où se capture la marge dans la filière ? »).
-3. A short paragraph or two answering those questions **for this market**, grounded in the KPI table and the S1 facts (keep the `~` flags).
-4. **A market-specific visualization when relevant** — the framework's canonical diagram **filled with this market's actual data** (figures, players, events), drawn as inline SVG in the report charte, large and readable (~660px wide — bigger than the generic doc-page schematics), with a one-line caption. Examples: TAM/SAM/SOM circles with the amounts, Porter boxes annotated with the market's forces, a real deal-flow timeline, PESTEL cells filled per letter.
+1. A **letter index** (A, B, C… derived from rank), the **name linked** to the framework's documentation fiche (`/focus-step-2/#[anchor]`), and an optional **badge** — `badge--qual` (ambre, « lecture qualitative ») when dégradé, `badge--shock` (rouge) to flag a decisive/shock force.
+2. **The framework's objective sentence** (`objective`) in **serif italic** — the « question » verbatim from the documentation page (e.g. « Où se capture la marge dans la filière ? »).
+3. A short paragraph or two answering it **for this market**, grounded in the KPI data and the S1 facts (keep the `~` flags).
+4. **A market-specific diagram** — the framework's canonical visual **built in pure CSS/HTML** (no SVG, no chart lib) and **filled with this market's actual data** (figures, players, events), in the inset panel (`.fwc__viz`), with a one-line mono **caption** (`caption`). Use the 7 design-system diagram components (cf. contracts): `.tss`, `.porter`, `.vchain`, `.tl`, `.pestel`, `.pmap`, `.nbox`.
 
 ## Step 5 — Build the page + data.json
 
-Contracts: [references/s2-contracts.md](references/s2-contracts.md) — page structure, data schema, zone format. The run data is inlined in the page (`const RUN_S2_DATA = {...}`) **and** written as `data.json`, identical. The page is autonomous (inline styles, report charte, fluid container) — it is a frozen run.
+Contracts: [references/s2-contracts.md](references/s2-contracts.md) — page structure, data schema (v2), zone format. **Design system « My Market Data »** (acté 2026-06-14) : copier verbatim le bloc `<style>` inline **et** le script de rendu du **run canonique `apps-perte-de-poids/s2-1_2026-06-11/`**, ne changer que les données (`RUN_S2_DATA`) et les 7 gabarits de diagrammes (remplis des chiffres du marché). En-tête/pied = `siteheader.js` / `sitefoot.js` évolués (topbar + barre de progression au scroll, footer du design). Le run data est inliné (`const RUN_S2_DATA = {...}`) **et** écrit en `data.json`, identique. Page autonome et figée (CSS inline, conteneur fluide).
 
 ## Step 6 — Update the parent pages
 

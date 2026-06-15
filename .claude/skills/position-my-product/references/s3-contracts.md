@@ -2,16 +2,24 @@
 
 ## Page de run S3 (la note) — structure
 
-- **Autonome et figée** : styles inline dans le `<head>`, même charte de rapport que les runs S1/S2 (encre `#1e293b`, accent `#2563eb`, boîtes douces) ; conteneur fluide `max-width: calc(50vw + 550px)`. Charge `../../assets/siteheader.js` en tête de `<body>` (en-tête commun) et `../../assets/sitefoot.js` juste avant `</body>` (footer commun) — composants communs au sous-domaine, cf. contrats Skill 1.
+> **Design system « My Market Data » (acté 2026-06-14).** Même gabarit visuel que la S2/S4 :
+> palette chaude (papier `#faf8f4`, marque coral `#F4684F`), système de signaux, typos
+> Hanken Grotesk / IBM Plex Mono / Instrument Serif. **Run canonique : `apps-perte-de-poids/s3-1_2026-06-12/`** —
+> copier verbatim son `<style>` inline et restyler ; seules les données changent. La note S3 est en
+> **HTML statique** (pas de rendu JS) ; `RUN_S3_DATA` + `data.json` restent le miroir de données.
+
+- **Autonome et figée** : tout le CSS du design system est **inline dans le `<head>`** ; conteneur `.shell`
+  (`max-width:1180px`). Charge `../../assets/siteheader.js` en tête de `<body>` (topbar + barre de progression)
+  et `../../assets/sitefoot.js` juste avant `</body>` (footer commun). **Ne jamais coder header/footer en dur.**
 - **Ordre du document** :
-  1. **En-tête de site** : injecté par le composant commun `assets/siteheader.js` (source unique) — placer `<script src="../../assets/siteheader.js" data-crumb="parent" data-parent-label="Marché : [label]" data-parent-href="../"></script>` en tête de `<body>`. **Ne jamais coder le header ni son CSS en dur** (cf. contrats Skill 1).
-  2. En-tête uniforme des runs : **h1 = label du marché**, puis **`seclabel` « Step 3 — Position MY product »**, puis la **ligne runmeta** : « Run S3-[N] — [date] · Projet : [nom] · Sources : [lien run S1 avec sa date] · [lien run S2 avec sa date] » + avertissement de fraîcheur si le run S1 source a plus de 3 mois.
-  3. **Section 1 — Le projet** : nom, 2-3 lignes de description, lien vers la source (site du projet) quand elle existe. Mentionner que les valeurs du projet sont déclaratives (site du projet / Elena), à la différence des valeurs sourcées des concurrents.
-  4. **Section 2 — Le positionnement** : tableau compact — une ligne par dimension du graphique 2b : nom de la dimension → valeur attribuée (conventions `~` estimé, « déclaré ») → justification en une ligne. La part de marché vaut toujours `0 %` (nouveau projet — règle d'Elena, 2026-06-12). Sous le tableau, **le lien vers le graphique enrichi** : `../s1-[n]_[date]/#s2b`, libellé explicite (« Voir le projet sur le graphique interactif du marché »).
-  5. **Section 3 — Analyse du graphique** : un paragraphe — où le projet atterrit, voisins immédiats, espaces vides, clés de lecture — et la **configuration de lecture recommandée** (quelles dimensions sur quels canaux visuels pour bien voir le projet, puisqu'il est à 0 % sur l'axe Y par défaut).
-  6. Sources : site du projet (marqué déclaratif), runs sources S1/S2, infos fournies par Elena le cas échéant.
-  7. **Footer commun** : injecté par `sitefoot.js`. Le run n'a **plus de pied propre** (numéro + date dans la ligne *runmeta* en tête).
-- **Données** : inlinées (`const RUN_S3_DATA = {...}`) et écrites dans `data.json` — strictement identiques.
+  1. **siteheader.js** : `<script src="../../assets/siteheader.js" data-crumb="parent" data-parent-label="Marché : [label]" data-parent-href="../"></script>`.
+  2. **Hero** (`.hero`) : chip marché (`.hero__market` — carré coral + « MARCHÉ ÉTUDIÉ » + label) ; **H1** « Étape 3. » (en coral, `.step-no`) + « Positionner mon produit » ; **byline** « Run S3-[N], publié le [date longue] — à partir des [run S1] et [run S2] » (+ avertissement de fraîcheur si le run S1 a plus de 3 mois) avec la mention que les valeurs du projet sont **déclaratives** ; ligne `.hero__proj` « Projet positionné » → lien vers le site du projet.
+  3. **Section 1 — Le projet** (`.section` + `.prose`) : nom, 2-3 lignes de description, lien vers la source ; rappel que les valeurs sont déclaratives (pastille `.tag-decl`).
+  4. **Section 2 — Le positionnement** (`.def`) : une ligne clé/valeur par dimension du graphique 2b — dimension (`.def__key`) → valeur (`.big`, conventions `~` / pastille `.tag-decl` « déclaré ») → justification (`.rationale`). Part de marché toujours `0 %` (nouveau projet — règle Elena, 2026-06-12). Sous la table, **la carte-lien** `.chart-link` vers le graphique enrichi (`../s1-[n]_[date]/#s2b`).
+  5. **Section 3 — Analyse du graphique** (`.prose`) : paragraphe (atterrissage, voisins, espaces vides) + **clés de lecture** (`.keys`, puces coral) + encart **« Configuration de lecture recommandée »** (`.reco`).
+  6. **Section 4 — Sources** (`.sources`, numérotées) : site du projet (déclaratif), runs S1/S2, cadrage Elena.
+  7. **sitefoot.js** (footer commun ; pas de pied propre — n° + date dans la byline).
+- **Données** : inlinées (`const RUN_S3_DATA = {...}`) et écrites dans `data.json` — strictement identiques (schéma v1 inchangé).
 
 ## `data.json` S3 — schéma (v1)
 
