@@ -25,7 +25,7 @@
   2. **`<a id="top">`** puis **Hero** (`.hero`) : chip marché (carré coral + label « MARCHÉ ÉTUDIÉ »
      + nom du marché), **H1** « Étape [K]. » (en coral, `.step-no`) + titre de l'étape, **byline**
      (« Run S[K]-[N], publié le [date longue] à partir du [lien run S1 source] — [fraîcheur] »
-     avec point vert « données du jour » si `age_days==0`, avertissement ambre si `freshness_warning`),
+     avec point vert « run source daté du jour même : données à jour » si `age_days==0`, avertissement ambre si `freshness_warning`),
      puis **la barre pipeline** (composant commun `assets/sitepipeline.js`, injecté sous le hero — cf. contrats Skill 1 ; remplace l'ancien `.track` data-driven).
   3. **Bande KPI « d'un coup d'œil »** (`.glance`) : **4 cartes** (`.kpi`) — 3 chiffres-clés
      structurants + 1 carte « choc » (`.kpi--shock`, fond rouge). Dérivées des KPI saillants du run.

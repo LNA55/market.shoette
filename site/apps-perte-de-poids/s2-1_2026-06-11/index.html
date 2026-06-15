@@ -697,7 +697,7 @@ const RUN_S2_DATA = {
   var srcHref = "../" + src.path;
   var freshHtml;
   if (src.freshness_warning) freshHtml = "<span class=\"warn\">run source de plus de 3 mois — à rafraîchir</span>";
-  else if (src.age_days === 0) freshHtml = "<span class=\"fresh\">données du jour</span>, aucune recherche complémentaire nécessaire";
+  else if (src.age_days === 0) freshHtml = "<span class=\"fresh\">run source daté du jour même : données à jour</span>, aucune recherche complémentaire nécessaire";
   else freshHtml = "données du run source (" + longDate(src.date) + ")";
   hero.appendChild(el("p", { class: "hero__byline", html:
     "Run <strong>" + code(step.number, run.number) + "</strong>, publié le " + longDate(run.date) +
