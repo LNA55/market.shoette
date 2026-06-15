@@ -61,7 +61,7 @@ market.shoette.com/chaussure/2_2026-09-11    → run 2 (cycle suivant), etc.
 ## Modèles (répartition actée le 2026-06-11)
 
 - **Sonnet (4.6+)** : sous-agents de recherche de la Skill 1 (collecte web) — `model: "sonnet"` dans l'outil Agent
-- **Meilleur modèle disponible dans la session** : orchestration, consolidation, rédaction, raisonnement stratégique (Skills 4/5)
+- **Meilleur modèle disponible dans la session** : orchestration, consolidation, rédaction, raisonnement stratégique (Skill 4)
 - **Moteur du graphique 2b** : jamais reconstruit pendant un run — ses évolutions se font en sessions dédiées, avec le meilleur modèle disponible à ce moment-là
 
 ---

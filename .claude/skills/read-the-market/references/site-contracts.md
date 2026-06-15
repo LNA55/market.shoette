@@ -11,7 +11,6 @@ site/
 ├── assets/
 │   ├── site.css                     charte des pages parent + documentation (non versionnée — pages non figées)
 │   ├── siteheader.js                injecte l'en-tête (logo + fil d'Ariane) en tête de body — chargé par TOUTES les pages (non versionné)
-│   ├── siteheader.js                injecte l'en-tête (logo + fil d'Ariane) — chargé par TOUTES les pages (non versionné)
 │   ├── sitefoot.js                  génère le footer complet (présentation, méthode, marchés, légal) — chargé par TOUTES les pages (non versionné)
 │   ├── positioning-chart-v1.js     moteur du graphique 2b (versionné)
 │   └── positioning-chart-v1.css
