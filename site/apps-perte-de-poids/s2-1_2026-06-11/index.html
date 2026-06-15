@@ -62,9 +62,6 @@
     .hero__byline strong { color:var(--ink); font-weight:700; }
     .hero__byline a { color:var(--accent-ink); text-decoration:none; font-weight:600; border-bottom:1px solid var(--accent-line); }
     .hero__byline a:hover { border-bottom-color:var(--accent-ink); }
-    .hero__byline .fresh { color:var(--good); font-weight:600; white-space:nowrap; }
-    .hero__byline .fresh::before { content:""; display:inline-block; width:7px; height:7px; border-radius:50%; background:var(--good); margin-right:7px; vertical-align:middle; }
-    .hero__byline .warn { color:var(--watch-ink); font-weight:600; }
 
 
     /* ---- At-a-glance KPI band ---- */
@@ -696,8 +693,7 @@ const RUN_S2_DATA = {
   var srcCode = src.path.split("_")[0].toUpperCase();
   var srcHref = "../" + src.path;
   var freshHtml;
-  if (src.freshness_warning) freshHtml = "<span class=\"warn\">run source de plus de 3 mois — à rafraîchir</span>";
-  else if (src.age_days === 0) freshHtml = "<span class=\"fresh\">run source daté du jour même : données à jour</span>, aucune recherche complémentaire nécessaire";
+  if (src.age_days === 0) freshHtml = "run source daté du jour même : données à jour, aucune recherche complémentaire nécessaire";
   else freshHtml = "données du run source (" + longDate(src.date) + ")";
   hero.appendChild(el("p", { class: "hero__byline", html:
     "Run <strong>" + code(step.number, run.number) + "</strong>, publié le " + longDate(run.date) +
