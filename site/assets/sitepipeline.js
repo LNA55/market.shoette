@@ -33,8 +33,11 @@
   var STYLE_ID = "sitepipeline-style";
   var CSS =
     ".pipenav{display:flex;flex-wrap:wrap;gap:7px 22px;align-items:baseline;" +
-      "margin:0 0 6px;padding:0 0 16px;border-bottom:1px solid var(--line-2,#efebe2);" +
+      "padding:13px 0 14px;border-bottom:1px solid var(--line-2,#efebe2);" +
       "font-family:'Hanken Grotesk',system-ui,-apple-system,sans-serif;font-size:13px;}" +
+    // au niveau body (hero en <section> pleine largeur) : reprendre la largeur de contenu
+    ".pipenav.is-bleed{max-width:var(--maxw,1180px);margin:0 auto;" +
+      "padding-left:var(--gutter,clamp(20px,5vw,56px));padding-right:var(--gutter,clamp(20px,5vw,56px));}" +
     ".pipenav__step{display:inline-flex;align-items:baseline;gap:7px;text-decoration:none;" +
       "color:var(--ink-3,#868a93);white-space:nowrap;}" +
     ".pipenav__step .n{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;" +
@@ -79,12 +82,20 @@
   function inject() {
     if (document.querySelector(".pipenav")) return;     // idempotent
     injectStyle();
+    var nav = build();
     var hero = document.querySelector(".hero");
     if (hero && hero.parentNode) {
-      hero.insertAdjacentElement("afterend", build());   // juste sous le hero
+      hero.insertAdjacentElement("afterend", nav);        // juste sous le hero
     } else {
       var c = document.querySelector(".shell, .wrap, main") || document.body;
-      c.insertBefore(build(), c.firstChild);
+      c.insertBefore(nav, c.firstChild);
+    }
+    // S'aligner sur le contenu : si la barre est au niveau body (hero plein largeur),
+    // elle prend la largeur de contenu (is-bleed) ; si elle est dans un conteneur
+    // (.wrap / .shell, cas S1), elle en hérite directement.
+    var p = nav.parentElement;
+    if (!p || !(p.classList.contains("wrap") || p.classList.contains("shell"))) {
+      nav.classList.add("is-bleed");
     }
   }
 
