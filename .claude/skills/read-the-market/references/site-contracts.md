@@ -24,7 +24,7 @@ site/
 
 ## Charte des pages parent
 
-Les pages parent (accueil + pages marché) partagent `assets/site.css` — style moderne et chaleureux validé par Elena (2026-06-11) : fond crème `#faf7f1`, encre indigo `#1b1f3b`, accent `#3b3bd8`, cartes blanches arrondies (18px), typographie **Plus Jakarta Sans** (Google Fonts, poids 400/500/700/800). Elles ne sont pas figées : `site.css` peut évoluer librement (contrairement au moteur 2b, versionné). Les pages de run, elles, gardent leurs styles inline (autonomes et figées).
+Les pages parent (accueil + pages marché) partagent `assets/site.css` — **design system « My Market Data »** (acté 2026-06-14) : papier chaud `#faf8f4`, marque **coral `#F4684F`** (chrome/navigation), bleu `#2f6bff` (liens/faits), système de signaux, cartes blanches arrondies (18px), typographies **Hanken Grotesk** / **IBM Plex Mono** / **Instrument Serif** (injectées par `siteheader.js`). Elles ne sont pas figées : `site.css` peut évoluer librement (contrairement au moteur 2b, versionné). Les pages de run, elles, gardent leurs styles inline (autonomes et figées) — même design system.
 
 ## Zones balisées — pages parent
 
@@ -134,11 +134,11 @@ Zone Skill 1 — **runs du plus ancien au plus récent : Run 1 en premier, les s
 
 ## Page de run — structure
 
-- **En-tête de site** : injecté par le composant commun `assets/siteheader.js` (source unique, décision Elena 2026-06-13) — placer `<script src="../../assets/siteheader.js" data-crumb="parent" data-parent-label="Marché : [label]" data-parent-href="../"></script>` **en tête de `<body>`**. **Ne plus coder le `<header>` ni son CSS en dur** (le CSS `.siteheader` inline a été retiré des runs). Le composant porte la police Plus Jakarta Sans pour la marque ; prévoir `[id] { scroll-margin-top: 70px; }` dans les styles inline du run pour le décalage des ancres sous l'en-tête. Détail du composant en fin de contrat.
-- **Autonome** : les styles du rapport sont inline dans le `<head>` (les runs sont figés ; pas de CSS partagé pour le texte du rapport).
+- **En-tête de site** : injecté par le composant commun `assets/siteheader.js` (source unique, décision Elena 2026-06-13) — placer `<script src="../../assets/siteheader.js" data-crumb="parent" data-parent-label="Marché : [label]" data-parent-href="../"></script>` **en tête de `<body>`**. **Ne plus coder le `<header>` ni son CSS en dur** (le CSS `.siteheader` inline a été retiré des runs). Le composant porte les polices du design system (Hanken Grotesk + IBM Plex Mono, injectées) et une **barre de progression au scroll** ; prévoir `[id] { scroll-margin-top: 70px; }` dans les styles inline du run pour le décalage des ancres sous l'en-tête. Détail du composant en fin de contrat.
+- **Autonome** : les styles du rapport sont inline dans le `<head>`, **design system « My Market Data »** (acté 2026-06-14 ; copier le chrome du run canonique `s1-2_2026-06-11` — hero, `.seclabel`/sections, `.dims-grid`, `.assumptions`, `.note`, `.nodata`, `table.lexicon`). Les runs sont figés ; pas de CSS partagé pour le texte du rapport.
 - **Conteneur fluide** : `max-width: calc(50vw + 550px)` sur le conteneur principal — marges latérales réduites de moitié par rapport à un conteneur fixe de 1100px, à toute largeur d'écran, sans breakpoint (règle de design validée par Elena le 2026-06-11, cohérente avec les pages parent).
 - **Dépendances externes** : `../../assets/positioning-chart-vN.js` et `.css` (versionnés, voir plus bas) ; `../../assets/siteheader.js` (en-tête commun) et `../../assets/sitefoot.js` (pied « La méthode » commun) — voir sections dédiées en fin de contrat.
-- **Ordre du document** : en-tête uniforme des runs (décision Elena, 2026-06-12) — **h1 = label du marché**, puis **`seclabel` « Step 1 — Read the Market »**, puis la **ligne runmeta inchangée** (« Run N — date · Périmètre … · Rapport généré par l'agent… »), puis les hypothèses → Section 1 Executive Summary → Section 2a → Section 2b → Annexe A1 Sources → Annexe A2 Lexique. Footer commun injecté par `sitefoot.js` (pas de pied propre au run).
+- **Ordre du document** : **hero** (design system, 2026-06-15) — chip marché (`.hero__market` : carré coral + « MARCHÉ ÉTUDIÉ » + label), **H1** « Étape 1. » (coral, `.step-no`) + « Lire le marché », **byline** (`.hero__byline` : « Run S1-N, publié le [date] · périmètre … · rapport généré par l'agent ») — puis les hypothèses (`.assumptions`) → Section 1 Executive Summary (`.seclabel` mono + h2) → Section 2a → **Section 2b (graphique interactif — moteur `positioning-chart-vN`, inchangé ; refonte design du graphique prévue séparément avec Elena)** → Annexe A1 Sources → Annexe A2 Lexique. Footer commun injecté par `sitefoot.js` (pas de pied propre au run).
 - **Données** : inlinées dans la page (`<script>const RUN_DATA = {...}</script>`) **et** écrites dans `data.json`. Les deux doivent rester identiques (l'inline évite toute requête ; le fichier sert à la Skill 3).
 - **Section 2a** : SVG statique généré dans la page — nuage de points, Y = part de marché (%), X = croissance sur la période de référence, nom près de chaque point, valeurs estimées préfixées « ~ », liste visible des acteurs sans données sous le graphique.
 - **Tableau de données 2b** : sous le graphique, un tableau de tous les acteurs (triés par part de marché décroissante) × (part, croissance, toutes les dimensions), généré en JS depuis `RUN_DATA` — source unique, aucune divergence possible. Estimations préfixées « ~ », valeurs manquantes « — ».
@@ -161,7 +161,7 @@ Zone Skill 1 — **runs du plus ancien au plus récent : Run 1 en premier, les s
 
 ## Date du run
 
-La date du run figure dans la **ligne *runmeta*** en tête de page et dans `data.json` (`last_updated`). Elle n'est **jamais réécrite** (décision 2026-06-12) — il n'y a plus de `<span data-role="last-updated">` ni de pied propre au run (remplacés par le footer commun `sitefoot.js`).
+La date du run figure dans la **byline du hero** en tête de page et dans `data.json` (`last_updated`). Elle n'est **jamais réécrite** (décision 2026-06-12) — il n'y a plus de `<span data-role="last-updated">` ni de pied propre au run (remplacés par le footer commun `sitefoot.js`).
 
 ## En-tête de site — toutes les pages (décision Elena, 2026-06-13)
 
