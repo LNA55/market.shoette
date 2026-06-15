@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Focus on Step 1 — Read the Market — Veille concurrentielle</title>
-  <meta name="description" content="À quoi sert la Step 1 — Read the Market, et comment lire son livrable : hypothèses, executive summary, parts de marché, positionnement interactif, annexes.">
+  <meta name="description" content="À quoi sert la Step 1 — Read the Market, comment la lancer et comment lire son livrable : hypothèses, executive summary, parts de marché, positionnement interactif, annexes.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -18,14 +18,17 @@
     <section class="hero">
       <span class="kicker">Documentation · Step 1</span>
       <h1>Focus on Step 1<br>Read the Market</h1>
-      <p class="lede">La première lecture d'un marché : à quoi sert cette étape, et comment lire le rapport qu'elle produit.</p>
+      <p class="lede">La première lecture d'un marché : à quoi elle sert, comment la lancer, et comment lire le rapport qu'elle produit.</p>
     </section>
 
     <h2 class="doc-section-h">À quoi sert cette étape</h2>
-    <p>Cette étape <b>débroussaille le marché</b> : elle en établit les grilles de lecture, identifie les acteurs qui comptent et pose les premiers ordres de grandeur — qui pèse combien, qui monte, qui décline. C'est le socle de toute la suite : les étapes d'analyse, de positionnement et de recommandation raisonneront à partir de ce qu'elle a établi.</p>
-    <p>Chaque exécution produit un <b>rapport daté et figé</b> (un « run »), listé sur la page du marché. Les runs s'accumulent au fil des cycles : on peut toujours revenir à une lecture passée et mesurer ce qui a changé.</p>
+    <p>Cette étape <b>débroussaille le marché</b> : elle en établit les grilles de lecture, identifie les acteurs qui comptent et pose les premiers ordres de grandeur — qui pèse combien, qui monte, qui décline. C'est le socle de tout le pipeline : la présentation business (Step 2), le positionnement (Step 3) et les recommandations (Step 4) raisonneront à partir de ce qu'elle a établi.</p>
 
-    <h2 class="doc-section-h" style="margin-top:52px">Le livrable, dans l'ordre de lecture</h2>
+    <h2 class="doc-section-h" style="margin-top:52px">Comment la lancer</h2>
+    <p>Dans Claude Code, entrer <b>« lance la skill 1 »</b> ou <b>« read the market »</b>, en donnant un point de départ : un <b>secteur</b>, un <b>besoin formulé en langage naturel</b>, une <b>zone géographique</b>, ou une combinaison des trois. Si la demande est incomplète, l'agent infère le marché le plus probable et <b>affiche les hypothèses retenues</b> en tête de rapport ; il ne revient poser une question que si la demande est trop ambiguë pour trancher. Chaque lancement produit un nouveau <b>run daté</b>, qui s'ajoute à l'historique du marché.</p>
+
+    <h2 class="doc-section-h" style="margin-top:52px">Le livrable</h2>
+    <p class="note">Le rapport se lit du haut vers le bas, dans cet ordre.</p>
 
     <article class="fw-card">
       <h3>Les hypothèses retenues</h3>
@@ -44,7 +47,7 @@
 
     <article class="fw-card">
       <h3>Le positionnement interactif</h3>
-      <p>Le cœur du livrable : chaque acteur est un cercle qui encode <b>jusqu'à cinq dimensions à la fois</b> — position verticale, position horizontale et couleur, taille, opacité, type de bordure. Le lecteur n'est pas passif : il peut changer les dimensions affectées à chaque canal, créer des calques pour comparer plusieurs vues, cliquer un acteur pour ouvrir sa fiche détaillée (faits marquants, valeurs, sources), et exporter le graphique en PNG ou SVG — l'export embarque la légende, la date et une clé de lecture. En dessous, le <b>tableau de toutes les valeurs</b> pour une lecture directe, suivi du bloc « Comment lire ces valeurs » : unités, devises, conversions appliquées, signification des échelles.</p>
+      <p>Le cœur du livrable : chaque acteur est un cercle qui encode <b>jusqu'à cinq dimensions à la fois</b>. Le lecteur n'est pas passif — il peut changer les dimensions affectées à chaque canal, créer des calques pour comparer plusieurs vues, cliquer un acteur pour ouvrir sa fiche détaillée (faits marquants, valeurs, sources), et exporter le graphique en PNG ou SVG (l'export embarque la légende, la date et une clé de lecture). En dessous, le <b>tableau de toutes les valeurs</b> pour une lecture directe, suivi du bloc « Comment lire ces valeurs » : unités, devises, conversions appliquées, signification des échelles. Le détail des cinq canaux est en <a href="#canaux">Informations complémentaires</a>.</p>
     </article>
 
     <article class="fw-card">
@@ -60,8 +63,30 @@
       <li>La date de <b>« dernière mise à jour »</b> figure en pied de rapport.</li>
     </ul>
 
-    <h2 class="doc-section-h" style="margin-top:52px">Voir un exemple réel</h2>
+    <h2 class="doc-section-h" id="canaux" style="margin-top:52px">Informations complémentaires essentielles</h2>
+    <p>Le graphique de positionnement encode jusqu'à <b>cinq dimensions simultanément</b>, chacune sur un canal visuel. Par défaut, l'agent affecte les canaux selon l'importance des dimensions pour <i>ce</i> marché — la plus structurante en premier.</p>
 
+    <div class="doc-table-wrap">
+      <table class="doc-table">
+        <thead>
+          <tr><th>Canal visuel</th><th>Ce qu'il encode</th><th>Par défaut</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="q">Position verticale (Y)</td><td>La dimension la plus structurante du marché.</td><td>La part de marché.</td></tr>
+          <tr><td class="q">Position horizontale (X) + couleur</td><td>La 2<sup>e</sup> dimension la plus structurante.</td><td>Une couleur par valeur.</td></tr>
+          <tr><td class="q">Taille du marqueur</td><td>La 3<sup>e</sup> dimension.</td><td>Plus la valeur est forte, plus le cercle est grand.</td></tr>
+          <tr><td class="q">Opacité</td><td>La 4<sup>e</sup> dimension.</td><td>Plus la valeur est forte, plus le marqueur est opaque.</td></tr>
+          <tr><td class="q">Type de bordure</td><td>La 5<sup>e</sup> dimension (pleine, pointillés serrés ou larges, double, triple).</td><td>Cinq styles pour cinq paliers.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ul class="kpis" style="margin:16px 0 0">
+      <li><b>Calques</b> : superposer plusieurs configurations de canaux pour comparer des lectures du marché, et relier un même acteur d'un calque à l'autre.</li>
+      <li><b>Fiche acteur</b> : un clic ouvre un panneau latéral — faits marquants, valeur sur chaque dimension, sources.</li>
+      <li><b>Export</b> : PNG ou SVG, avec légende, date et clé de lecture intégrées.</li>
+    </ul>
+
+    <h2 class="doc-section-h" style="margin-top:52px">Voir un exemple réel</h2>
     <ul class="cards" style="margin-top:14px">
       <li><a class="card" href="../apps-perte-de-poids/s1-2_2026-06-11/">
         <span class="card-body">
@@ -73,7 +98,6 @@
     </ul>
 
     <h2 class="doc-section-h" style="margin-top:52px">Pour aller plus loin</h2>
-
     <ul class="cards" style="margin-top:14px">
       <li><a class="card" href="process-skill-11juin2026/">
         <span class="card-body">
@@ -82,9 +106,15 @@
         </span>
         <span class="card-arrow">→</span>
       </a></li>
+      <li><a class="card" href="../how-it-works/">
+        <span class="card-body">
+          <span class="card-title">How it works</span>
+          <span class="card-meta">La méthode d'ensemble : le pipeline, les runs, les données</span>
+        </span>
+        <span class="card-arrow">→</span>
+      </a></li>
     </ul>
   </main>
-
 
 </div>
   <script src="../assets/sitefoot.js"></script>
