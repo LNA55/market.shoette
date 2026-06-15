@@ -165,11 +165,12 @@ La date du run figure dans la **byline du hero** en tête de page et dans `data.
 
 ## Barre pipeline — pages de run (décision Elena, 2026-06-15)
 
-`assets/sitepipeline.js` injecte, **sous le hero de chaque page de run**, la ligne des 4 étapes du pipeline (Lire le marché · Présenter le marché · Positionner mon produit · Recommandation stratégique), chaque libellé lié à la section d'étape de la page marché (`../#step-K`), l'étape courante mise en évidence. **Source unique** — remplace l'ancien « step tracker » data-driven propre à la S2.
+`assets/sitepipeline.js` injecte, **sous le hero de chaque page de run**, la ligne des 4 étapes du pipeline (Lire le marché · Présenter le marché · Positionner mon produit · Recommandation stratégique), l'étape courante mise en évidence. **Rendu commun (source unique) ; cibles des liens propres au run** — remplace l'ancien « step tracker » data-driven propre à la S2.
 
-- **Inclusion** : `<script src="../../assets/sitepipeline.js"></script>` dans le `<body>` de **toute page de run** (s'exécute au DOMContentLoaded, se monte après `.hero`).
-- **Autonome & auto-configuré** : déduit le marché et l'étape active de l'URL (`/[slug]/sK-…/`) ; **aucune donnée par run**. N'agit que sur une page de run. CSS en dur (tokens du design + fallbacks), idempotent.
-- **Prérequis page marché** : ses titres de section portent des ancres `id="step-1"` … `id="step-4"` (cibles des liens) — à conserver lors de toute réécriture de la page marché.
+- **Inclusion** : `<script src="../../assets/sitepipeline.js" data-active="K" [data-href1…4="…"]></script>` dans le `<body>` de **toute page de run** (s'exécute au DOMContentLoaded, se monte sous `.hero`, s'aligne sur la gouttière de contenu).
+- **Règle des liens « à la création »** (Elena, 2026-06-15) : à la génération d'un run d'étape K, la skill pose `data-active="K"` et, pour **chaque autre étape**, `data-hrefN` = le **run réellement utilisé** = le **dernier run existant de cette étape à la date de création**. Une étape **sans run à cette date** (typiquement les étapes aval) → **pas de `data-hrefN`** : le composant retombe sur la section d'étape de la page marché `../#step-N`. L'étape courante n'est pas un lien. Les liens d'un run sont donc un **instantané figé à sa création** (ils ne « rattrapent » pas les runs créés ensuite).
+- **Prérequis page marché** : ses titres de section portent des ancres `id="step-1"` … `id="step-4"` (cibles de repli) — à conserver lors de toute réécriture de la page marché.
+- **Autonome** : CSS en dur (tokens du design + fallbacks), idempotent. `data-active` prioritaire ; à défaut, l'étape est déduite de l'URL (`/[slug]/sK-…/`).
 - **Règle** : toute page de run **doit** charger ce script ; ne jamais coder la barre en dur.
 
 ## En-tête de site — toutes les pages (décision Elena, 2026-06-13)
