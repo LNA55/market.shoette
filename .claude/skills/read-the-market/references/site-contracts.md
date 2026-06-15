@@ -12,6 +12,7 @@ site/
 │   ├── site.css                     charte des pages parent + documentation (non versionnée — pages non figées)
 │   ├── siteheader.js                injecte l'en-tête (logo + fil d'Ariane) en tête de body — chargé par TOUTES les pages (non versionné)
 │   ├── sitefoot.js                  génère le footer complet (présentation, méthode, marchés, légal) — chargé par TOUTES les pages (non versionné)
+│   ├── sitepipeline.js              barre des 4 étapes du pipeline en tête des pages de RUN (étape déduite de l'URL) — non versionné
 │   ├── positioning-chart-v1.js     moteur du graphique 2b (versionné)
 │   └── positioning-chart-v1.css
 └── [slug]/
@@ -136,7 +137,7 @@ Zone Skill 1 — **runs du plus ancien au plus récent : Run 1 en premier, les s
 - **En-tête de site** : injecté par le composant commun `assets/siteheader.js` (source unique, décision Elena 2026-06-13) — placer `<script src="../../assets/siteheader.js" data-crumb="parent" data-parent-label="Marché : [label]" data-parent-href="../"></script>` **en tête de `<body>`**. **Ne plus coder le `<header>` ni son CSS en dur** (le CSS `.siteheader` inline a été retiré des runs). Le composant porte les polices du design system (Hanken Grotesk + IBM Plex Mono, injectées) et une **barre de progression au scroll** ; prévoir `[id] { scroll-margin-top: 70px; }` dans les styles inline du run pour le décalage des ancres sous l'en-tête. Détail du composant en fin de contrat.
 - **Autonome** : les styles du rapport sont inline dans le `<head>`, **design system « My Market Data »** (acté 2026-06-14 ; copier le chrome du run canonique `s1-2_2026-06-11` — hero, `.seclabel`/sections, `.dims-grid`, `.assumptions`, `.note`, `.nodata`, `table.lexicon`). Les runs sont figés ; pas de CSS partagé pour le texte du rapport.
 - **Conteneur fluide** : `max-width: calc(50vw + 550px)` sur le conteneur principal — marges latérales réduites de moitié par rapport à un conteneur fixe de 1100px, à toute largeur d'écran, sans breakpoint (règle de design validée par Elena le 2026-06-11, cohérente avec les pages parent).
-- **Dépendances externes** : `../../assets/positioning-chart-vN.js` et `.css` (versionnés, voir plus bas) ; `../../assets/siteheader.js` (en-tête commun) et `../../assets/sitefoot.js` (pied « La méthode » commun) — voir sections dédiées en fin de contrat.
+- **Dépendances externes** : `../../assets/positioning-chart-vN.js` et `.css` (versionnés, voir plus bas) ; `../../assets/siteheader.js` (en-tête commun), `../../assets/sitefoot.js` (pied « La méthode » commun) et `../../assets/sitepipeline.js` (barre des étapes du pipeline) — voir sections dédiées en fin de contrat.
 - **Ordre du document** : **hero** (design system, 2026-06-15) — chip marché (`.hero__market` : carré coral + « MARCHÉ ÉTUDIÉ » + label), **H1** « Étape 1. » (coral, `.step-no`) + « Lire le marché », **byline** (`.hero__byline` : « Run S1-N, publié le [date] · périmètre … · rapport généré par l'agent ») — puis les hypothèses (`.assumptions`) → Section 1 Executive Summary (`.seclabel` mono + h2) → Section 2a → **Section 2b (graphique interactif — moteur `positioning-chart-vN`, inchangé ; refonte design du graphique prévue séparément avec Elena)** → Annexe A1 Sources → Annexe A2 Lexique. Footer commun injecté par `sitefoot.js` (pas de pied propre au run).
 - **Données** : inlinées dans la page (`<script>const RUN_DATA = {...}</script>`) **et** écrites dans `data.json`. Les deux doivent rester identiques (l'inline évite toute requête ; le fichier sert à la Skill 3).
 - **Section 2a** : SVG statique généré dans la page — nuage de points, Y = part de marché (%), X = croissance sur la période de référence, nom près de chaque point, valeurs estimées préfixées « ~ », liste visible des acteurs sans données sous le graphique.
@@ -161,6 +162,15 @@ Zone Skill 1 — **runs du plus ancien au plus récent : Run 1 en premier, les s
 ## Date du run
 
 La date du run figure dans la **byline du hero** en tête de page et dans `data.json` (`last_updated`). Elle n'est **jamais réécrite** (décision 2026-06-12) — il n'y a plus de `<span data-role="last-updated">` ni de pied propre au run (remplacés par le footer commun `sitefoot.js`).
+
+## Barre pipeline — pages de run (décision Elena, 2026-06-15)
+
+`assets/sitepipeline.js` injecte, **sous le hero de chaque page de run**, la ligne des 4 étapes du pipeline (Lire le marché · Présenter le marché · Positionner mon produit · Recommandation stratégique), chaque libellé lié à la section d'étape de la page marché (`../#step-K`), l'étape courante mise en évidence. **Source unique** — remplace l'ancien « step tracker » data-driven propre à la S2.
+
+- **Inclusion** : `<script src="../../assets/sitepipeline.js"></script>` dans le `<body>` de **toute page de run** (s'exécute au DOMContentLoaded, se monte après `.hero`).
+- **Autonome & auto-configuré** : déduit le marché et l'étape active de l'URL (`/[slug]/sK-…/`) ; **aucune donnée par run**. N'agit que sur une page de run. CSS en dur (tokens du design + fallbacks), idempotent.
+- **Prérequis page marché** : ses titres de section portent des ancres `id="step-1"` … `id="step-4"` (cibles des liens) — à conserver lors de toute réécriture de la page marché.
+- **Règle** : toute page de run **doit** charger ce script ; ne jamais coder la barre en dur.
 
 ## En-tête de site — toutes les pages (décision Elena, 2026-06-13)
 

@@ -26,7 +26,7 @@
      + nom du marché), **H1** « Étape [K]. » (en coral, `.step-no`) + titre de l'étape, **byline**
      (« Run S[K]-[N], publié le [date longue] à partir du [lien run S1 source] — [fraîcheur] »
      avec point vert « données du jour » si `age_days==0`, avertissement ambre si `freshness_warning`),
-     puis **step tracker** (`.track`) : les 4 étapes du pipeline en liens (state `done`/`active`/`todo`).
+     puis **la barre pipeline** (composant commun `assets/sitepipeline.js`, injecté sous le hero — cf. contrats Skill 1 ; remplace l'ancien `.track` data-driven).
   3. **Bande KPI « d'un coup d'œil »** (`.glance`) : **4 cartes** (`.kpi`) — 3 chiffres-clés
      structurants + 1 carte « choc » (`.kpi--shock`, fond rouge). Dérivées des KPI saillants du run.
   4. **Nav d'ancrage** (`.secnav`) : rail horizontal collant sous le header (scrollable sur tous
@@ -144,7 +144,7 @@ Notes :
 - `step.number` = numéro d'étape (2 pour la Skill 2) ; la byline affiche `S[step.number]-[run.number]`.
 - `glance` = **4 cartes** de chiffres-clés saillants (3 normales + 1 `"shock": true`), dérivées des KPI/analyses
   du run — pas une simple recopie de la table : on choisit les 4 nombres qui résument le marché.
-- `pipeline` = les 4 étapes pour le tracker. `href` = dernier run de chaque étape (`""` pour l'étape courante,
+- `pipeline` *(legacy — désormais optionnel : la barre des étapes est le composant commun `sitepipeline.js`, auto-configuré ; ce champ n'est plus rendu)* = les 4 étapes pour le tracker. `href` = dernier run de chaque étape (`""` pour l'étape courante,
   `"#"` si aucun run) ; `state` ∈ `done | active | todo` (`todo` + `href:"#"` quand l'étape n'a pas encore de run).
 - `methodology.rows` = mapping **observation → framework** (un objet par remarque), frameworks retenus seulement.
 - `frameworks[].badge` = `null`, ou `{type:"shock"|"qual", label}` (qual ⇔ `status:"dégradé"`).

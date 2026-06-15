@@ -10,7 +10,7 @@
 
 - **Autonome et figée** : tout le CSS du design system est **inline dans le `<head>`** ; conteneur `.shell`
   (`max-width:1180px`). Charge `../../assets/siteheader.js` en tête de `<body>` (topbar + barre de progression)
-  et `../../assets/sitefoot.js` juste avant `</body>` (footer commun). **Ne jamais coder header/footer en dur.**
+  et `../../assets/sitefoot.js` juste avant `</body>` (footer commun) ; **`../../assets/sitepipeline.js`** (barre des 4 étapes, injectée sous le hero — cf. contrats Skill 1). **Ne jamais coder header/footer/barre en dur.**
 - **Ordre du document** :
   1. **siteheader.js** : `<script src="../../assets/siteheader.js" data-crumb="parent" data-parent-label="Marché : [label]" data-parent-href="../"></script>`.
   2. **Hero** (`.hero`) : chip marché (`.hero__market` — carré coral + « MARCHÉ ÉTUDIÉ » + label) ; **H1** « Étape 3. » (en coral, `.step-no`) + « Positionner mon produit » ; **byline** « Run S3-[N], publié le [date longue] — à partir des [run S1] et [run S2] » (+ avertissement de fraîcheur si le run S1 a plus de 3 mois) avec la mention que les valeurs du projet sont **déclaratives** ; ligne `.hero__proj` « Projet positionné » → lien vers le site du projet.

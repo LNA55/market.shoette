@@ -66,14 +66,6 @@
     .hero__byline .fresh::before { content:""; display:inline-block; width:7px; height:7px; border-radius:50%; background:var(--good); margin-right:7px; vertical-align:middle; }
     .hero__byline .warn { color:var(--watch-ink); font-weight:600; }
 
-    /* ---- Step tracker ---- */
-    .track { display:flex; align-items:baseline; flex-wrap:wrap; gap:8px 26px; margin:18px 0 2px; }
-    .track__step { text-decoration:none; color:inherit; }
-    .track__name { font-size:13px; color:var(--ink-3); white-space:nowrap; }
-    .track__step.is-active .track__name { color:var(--ink); font-weight:600; }
-    .track__step.is-done .track__name { color:var(--ink-3); }
-    .track__step.is-todo .track__name { color:var(--ink-3); opacity:.65; }
-    a.track__step:hover .track__name { color:var(--ink); text-decoration:underline; text-underline-offset:3px; }
 
     /* ---- At-a-glance KPI band ---- */
     .glance { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
@@ -403,7 +395,8 @@
   </div>
 </div>
 
-<script src="../../assets/sitefoot.js"></script>
+<script src="../../assets/sitepipeline.js"></script>
+  <script src="../../assets/sitefoot.js"></script>
 
 <!-- ===== Gabarits de diagrammes (remplis avec les données réelles du run, montés par le rendu JS) ===== -->
 <div id="viz-templates" hidden>
@@ -709,13 +702,6 @@ const RUN_S2_DATA = {
   hero.appendChild(el("p", { class: "hero__byline", html:
     "Run <strong>" + code(step.number, run.number) + "</strong>, publié le " + longDate(run.date) +
     " à partir du <a href=\"" + srcHref + "\">Run " + srcCode + "</a> — " + freshHtml + "." }));
-
-  var track = el("nav", { class: "track", "aria-label": "Étapes de l'analyse" });
-  D.pipeline.forEach(function (s) {
-    track.appendChild(el("a", { class: "track__step is-" + s.state, href: s.href || "#" },
-      el("span", { class: "track__name" }, s.name)));
-  });
-  hero.appendChild(track);
 
   /* ---------- AT A GLANCE ---------- */
   var glance = document.getElementById("glance-mount");
