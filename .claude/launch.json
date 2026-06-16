@@ -4,7 +4,7 @@
     {
       "name": "site",
       "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "http.server", "8743", "--directory", "site"],
+      "runtimeArgs": ["-c", "import os; os.chdir('/tmp/market-preview'); from http.server import HTTPServer, SimpleHTTPRequestHandler; HTTPServer(('127.0.0.1', 8743), SimpleHTTPRequestHandler).serve_forever()"],
       "port": 8743
     },
     {
