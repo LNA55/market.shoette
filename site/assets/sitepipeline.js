@@ -53,8 +53,11 @@
     var active = parseInt(attr("data-active"), 10) || (um ? parseInt(um[1], 10) : 0);
     if (!active) return;                                    // pas une page de run
 
-    var market = "../";
-    var NAMES = ["Lire le marché", "Présenter le marché", "Positionner mon produit", "Recommandation stratégique"];
+    var market = "../";   // liens relatifs → restent dans la langue courante (/en/ ou /)
+    var EN = /(^|\/)en(\/|$)/.test(location.pathname.replace(/\/[^/]*\.html$/, "/"));
+    var NAMES = EN
+      ? ["Read the market", "Present the market", "Position my product", "Strategy recommendation"]
+      : ["Lire le marché", "Présenter le marché", "Positionner mon produit", "Recommandation stratégique"];
 
     injectStyle();
     var nav = document.createElement("nav");

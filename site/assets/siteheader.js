@@ -24,6 +24,12 @@
   var src = (self && self.getAttribute("src")) || "";
   var base = src.replace(/assets\/siteheader\.js(?:[?#].*)?$/, "") || "./";
 
+  // Langue déduite de l'URL (FR par défaut, EN sous /en/). L = racine de langue,
+  // relative (le logo et la marque y mènent). Le fil d'Ariane reste en liens
+  // relatifs → naturellement dans la bonne langue (une page EN vit sous /en/).
+  var EN = /(^|\/)en(\/|$)/.test(location.pathname.replace(/\/[^/]*\.html$/, "/"));
+  var L = base + (EN ? "en/" : "");
+
   var crumb = (self && self.getAttribute("data-crumb")) || "";
   var parentLabel = (self && self.getAttribute("data-parent-label")) || "";
   var parentHref = (self && self.getAttribute("data-parent-href")) || "../";
@@ -74,7 +80,7 @@
   function brand() {
     var a = document.createElement("a");
     a.className = "brand";
-    a.href = base;
+    a.href = L;
     a.appendChild(document.createTextNode("My Market Data"));
     var dot = document.createElement("span");
     dot.className = "dot";
