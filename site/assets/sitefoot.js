@@ -25,7 +25,15 @@
 
   // Pages disposant déjà d'une version EN (chemins relatifs à la racine de langue).
   // Tant qu'un chemin n'y est pas, son lien pointe vers le FR même en page EN.
-  var EN_AVAILABLE = { "": 1, "apps-perte-de-poids/": 1, "how-it-works/": 1 };
+  var EN_AVAILABLE = {
+    "": 1, "apps-perte-de-poids/": 1, "how-it-works/": 1,
+    "how-it-works/focus-step-1/": 1, "how-it-works/focus-step-2/": 1,
+    "how-it-works/focus-step-3/": 1, "how-it-works/focus-step-4/": 1,
+    "how-it-works/focus-step-1/process-skill-11juin2026/": 1,
+    "apps-perte-de-poids/s1-1_2026-06-11/": 1, "apps-perte-de-poids/s1-2_2026-06-11/": 1,
+    "apps-perte-de-poids/s2-1_2026-06-11/": 1, "apps-perte-de-poids/s3-1_2026-06-12/": 1,
+    "apps-perte-de-poids/s3-2_2026-06-16/": 1, "apps-perte-de-poids/s4-1_2026-06-12/": 1
+  };
 
   function href(p) { return (EN && EN_AVAILABLE[p]) ? (L + p) : (base + p); }
 

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Focus on Step 1 — Read the Market — Competitive intelligence</title>
+  <meta name="description" content="What Step 1 — Read the Market is for, how to launch it, and how to read its deliverable: assumptions, executive summary, market shares, interactive positioning, appendices.">
+  <link rel="alternate" hreflang="fr" href="https://market.shoette.com/how-it-works/focus-step-1/">
+  <link rel="alternate" hreflang="en" href="https://market.shoette.com/en/how-it-works/focus-step-1/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../../assets/site.css">
+</head>
+<body>
+<script src="../../../assets/siteheader.js" data-crumb="parent" data-parent-label="How it works" data-parent-href="../"></script>
+<div class="shell">
+
+  <main>
+    <section class="hero">
+      <span class="kicker">Documentation · Step 1</span>
+      <h1>Focus on Step 1<br>Read the Market</h1>
+      <p class="lede">A market's first reading: what it's for, how to launch it, and how to read the report it produces.</p>
+    </section>
+
+    <h2 class="doc-section-h">What this step is for</h2>
+    <p>This step <b>clears the ground of the market</b>: it establishes its reading grids, identifies the players that matter and sets the first orders of magnitude — who weighs how much, who's rising, who's declining. It's the foundation of the whole pipeline: the business presentation (Step 2), the positioning (Step 3) and the recommendations (Step 4) all reason from what it has established.</p>
+
+    <h2 class="doc-section-h" style="margin-top:52px">How to launch it</h2>
+    <p>In Claude Code, enter <b>“launch skill 1”</b> or <b>“read the market”</b>, giving a starting point: a <b>sector</b>, a <b>need expressed in natural language</b>, a <b>geographic area</b>, or a combination of the three. If the request is incomplete, the agent infers the most likely market and <b>displays the assumptions it made</b> at the top of the report; it only comes back with a question when the request is too ambiguous to settle. Each launch produces a new <b>dated run</b>, added to the market's history.</p>
+
+    <h2 class="doc-section-h" style="margin-top:52px">The deliverable</h2>
+    <p class="note">The report reads top to bottom, in this order.</p>
+
+    <article class="fw-card">
+      <h3>The assumptions made</h3>
+      <p>The report opens on the frame: the exact perimeter of the market studied (what's in, what's out), the geographic area, and how the figures are measured. When the initial request was incomplete, the choices made to complete it are shown here, in black and white — you always know what the report is about before reading it.</p>
+    </article>
+
+    <article class="fw-card">
+      <h3>The executive summary — the reading grid</h3>
+      <p>Half a page that gives the keys to the market: the <b>dimensions that actually structure competition</b> — the ones a demanding buyer or investor would use to compare offers —, the sub-sectors, the codes and the forces at work. It is deliberately not a summary of the players: it's the grid the rest of the report is read with.</p>
+    </article>
+
+    <article class="fw-card">
+      <h3>Market share &amp; growth</h3>
+      <p>First the context: the market's maturity stage and the reference period chosen to measure growth (with the rationale for that choice). Then the chart: each player positioned by its weight (height) and its momentum (horizontal) — you see at a glance who dominates, who's accelerating, who's losing ground. Players who seem to matter but for which no quantified data was found are <b>listed below the chart</b>: their absence is visible, never silent.</p>
+    </article>
+
+    <article class="fw-card">
+      <h3>The interactive positioning</h3>
+      <p>The heart of the deliverable: each player is a circle that encodes <b>up to five dimensions at once</b>. The reader isn't passive — they can change the dimensions assigned to each channel, create layers to compare several views, click a player to open its detailed card (key facts, values, sources), and export the chart as PNG or SVG (the export embeds the legend, the date and a reading key). Below it, the <b>table of all the values</b> for direct reading, followed by the “How to read these values” block: units, currencies, conversions applied, meaning of the scales. The detail of the five channels is in <a href="#canaux">Additional information</a>.</p>
+    </article>
+
+    <article class="fw-card">
+      <h3>The appendices</h3>
+      <p>The report's traceability and accessibility. <b>A1 — Sources</b>: every reference used, with its link and access date — the report's claims can be verified. <b>A2 — Lexicon</b>: the sector's terms and jargon, defined in French and English, so a newcomer to this market can read the report without a dictionary.</p>
+    </article>
+
+    <h2 class="doc-section-h" style="margin-top:52px">Reading conventions</h2>
+    <ul class="kpis" style="margin:10px 0 0">
+      <li><b>~</b> before a value: estimate — the exact figure wasn't public, the order of magnitude is argued.</li>
+      <li><b>—</b>: information not found, and stated as such.</li>
+      <li>A report is <b>frozen at its date</b>: it snapshots the market at a given moment; changes are read by comparing runs.</li>
+      <li>The <b>“last updated”</b> date appears in the report footer.</li>
+    </ul>
+
+    <h2 class="doc-section-h" id="canaux" style="margin-top:52px">Essential additional information</h2>
+    <p>The positioning chart encodes up to <b>five dimensions simultaneously</b>, each on a visual channel. By default, the agent assigns the channels by how important each dimension is for <i>this</i> market — the most structuring one first.</p>
+
+    <div class="doc-table-wrap">
+      <table class="doc-table">
+        <thead>
+          <tr><th>Visual channel</th><th>What it encodes</th><th>By default</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="q">Vertical position (Y)</td><td>The market's most structuring dimension.</td><td>Market share.</td></tr>
+          <tr><td class="q">Horizontal position (X) + colour</td><td>The 2<sup>nd</sup> most structuring dimension.</td><td>One colour per value.</td></tr>
+          <tr><td class="q">Marker size</td><td>The 3<sup>rd</sup> dimension.</td><td>The higher the value, the larger the circle.</td></tr>
+          <tr><td class="q">Opacity</td><td>The 4<sup>th</sup> dimension.</td><td>The higher the value, the more opaque the marker.</td></tr>
+          <tr><td class="q">Border style</td><td>The 5<sup>th</sup> dimension (solid, tight or wide dashes, double, triple).</td><td>Five styles for five tiers.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ul class="kpis" style="margin:16px 0 0">
+      <li><b>Layers</b>: overlay several channel configurations to compare readings of the market, and link the same player from one layer to the next.</li>
+      <li><b>Player card</b>: one click opens a side panel — key facts, value on each dimension, sources.</li>
+      <li><b>Export</b>: PNG or SVG, with legend, date and reading key built in.</li>
+    </ul>
+
+    <h2 class="doc-section-h" style="margin-top:52px">See a real example</h2>
+    <ul class="cards" style="margin-top:14px">
+      <li><a class="card" href="../../apps-perte-de-poids/s1-2_2026-06-11/">
+        <span class="card-body">
+          <span class="card-title">Run S1-2 — Mobile weight-loss assistance apps</span>
+          <span class="card-meta">11 June 2026 · the full deliverable on a real market</span>
+        </span>
+        <span class="card-arrow">→</span>
+      </a></li>
+    </ul>
+
+    <h2 class="doc-section-h" style="margin-top:52px">Going further</h2>
+    <ul class="cards" style="margin-top:14px">
+      <li><a class="card" href="process-skill-11juin2026/">
+        <span class="card-body">
+          <span class="card-title">The Skills used in Step 1</span>
+          <span class="card-meta">How the report is built — version of 11 June 2026, with the downloadable definition</span>
+        </span>
+        <span class="card-arrow">→</span>
+      </a></li>
+      <li><a class="card" href="../">
+        <span class="card-body">
+          <span class="card-title">How it works</span>
+          <span class="card-meta">The overall method: the pipeline, the runs, the data</span>
+        </span>
+        <span class="card-arrow">→</span>
+      </a></li>
+    </ul>
+  </main>
+
+</div>
+  <script src="../../../assets/sitefoot.js"></script>
+</body>
+</html>

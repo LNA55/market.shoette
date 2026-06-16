@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Position my product — Mobile weight-loss assistance apps — Run S3-2 (16 June 2026)</title>
+  <meta name="description" content="What is wrong with me re-positioned on the weight-loss assistance app market chart (free app, research programme at €200/month) — positioning note, run S3-2, June 2026.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    /* Design system « My Market Data » — run figé, CSS inline. */
+    :root {
+      --paper:#faf8f4; --surface:#ffffff; --surface-2:#f4f1ea; --inset:#f7f5f0;
+      --ink:#1a1c22; --ink-2:#494d59; --ink-3:#868a93; --line:#e7e2d8; --line-2:#efebe2;
+      --brand:#F4684F; --brand-ink:#cf4733; --brand-wash:#fdece7; --brand-line:#f7cabd;
+      --accent:#2f6bff; --accent-ink:#1f53e0; --accent-wash:#eaf1ff; --accent-line:#c9dbff;
+      --risk:#d8412f; --risk-ink:#b32a1c; --risk-wash:#fcebe8; --risk-line:#f3c8c1;
+      --watch:#c07d12; --watch-ink:#9c6309; --watch-wash:#fbf1df; --watch-line:#ecd6a8;
+      --good:#1f9d5b; --good-wash:#e6f5ed;
+      --sans:'Hanken Grotesk',system-ui,sans-serif; --mono:'IBM Plex Mono',ui-monospace,monospace; --serif:'Instrument Serif',Georgia,serif;
+      --r-lg:18px; --r-md:13px; --r-sm:9px; --maxw:1180px; --gutter:clamp(20px,5vw,56px);
+      --shadow:0 1px 2px rgba(26,28,34,.04),0 8px 28px -12px rgba(26,28,34,.10);
+      --shadow-sm:0 1px 2px rgba(26,28,34,.05),0 2px 8px -4px rgba(26,28,34,.06);
+    }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; scroll-padding-top:70px; }
+    body { margin:0; font-family:var(--sans); background:var(--paper); color:var(--ink); font-size:17px; line-height:1.6; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; }
+    ::selection { background:var(--accent-wash); color:var(--accent-ink); }
+    a { color:inherit; }
+    .num { font-variant-numeric:tabular-nums; }
+    .shell { max-width:var(--maxw); margin:0 auto; padding-inline:var(--gutter); }
+    [id] { scroll-margin-top:70px; }
+
+    /* hero */
+    .hero { padding:clamp(34px,6vw,68px) 0 28px; }
+    .hero__market { display:inline-flex; align-items:center; gap:9px; font-family:var(--mono); font-size:12.5px; letter-spacing:.03em; color:var(--ink-2); background:var(--surface); border:1px solid var(--line); border-radius:999px; padding:6px 14px 6px 11px; margin-bottom:24px; text-decoration:none; }
+    .hero__market .tag { font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-3); white-space:nowrap; padding-right:9px; border-right:1px solid var(--line); }
+    .hero__market .swatch { width:7px; height:7px; border-radius:2px; background:var(--brand); }
+    .hero h1 { font-size:clamp(38px,6vw,72px); line-height:1.0; letter-spacing:-.03em; font-weight:800; margin:0 0 20px; max-width:16ch; text-wrap:balance; }
+    .hero h1 .step-no { color:var(--brand); }
+    .hero__byline { margin-top:18px; font-size:15.5px; line-height:1.55; color:var(--ink-2); max-width:74ch; }
+    .hero__byline strong { color:var(--ink); font-weight:700; }
+    .hero__byline a { color:var(--accent-ink); text-decoration:none; font-weight:600; border-bottom:1px solid var(--accent-line); }
+    .hero__byline a:hover { border-bottom-color:var(--accent-ink); }
+    .hero__proj { display:inline-flex; align-items:baseline; gap:8px; margin-top:18px; font-size:14px; }
+    .hero__proj .lbl { font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-3); }
+    .hero__proj a { color:var(--accent-ink); font-weight:700; text-decoration:none; border-bottom:1px solid var(--accent-line); }
+
+    /* section scaffold */
+    .section { padding:clamp(40px,6vw,64px) 0 4px; }
+    .section__head { display:flex; gap:18px; align-items:baseline; margin-bottom:26px; }
+    .section__no { font-family:var(--mono); font-size:14px; font-weight:600; color:var(--brand-ink); border:1px solid var(--brand-line); background:var(--brand-wash); width:36px; height:36px; border-radius:10px; display:grid; place-items:center; flex:none; }
+    .section__title { font-size:clamp(24px,3vw,32px); font-weight:800; letter-spacing:-.025em; line-height:1.1; margin:0; }
+    .section__purpose { color:var(--ink-2); font-size:15px; margin-top:6px; max-width:64ch; }
+    .divider { height:1px; background:var(--line-2); border:0; margin:0; }
+    .prose p { font-size:15.5px; color:var(--ink-2); line-height:1.65; margin:0 0 14px; max-width:78ch; }
+    .prose p strong, .prose p b { color:var(--ink); }
+    .note { font-family:var(--mono); font-size:12px; color:var(--ink-3); line-height:1.5; margin:10px 0 0; max-width:78ch; }
+
+    /* "déclaré" pill — distinct du système de signaux (neutre) */
+    .tag-decl { display:inline-block; vertical-align:1px; margin-left:7px; font-family:var(--mono); font-size:10px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-3); background:var(--surface-2); border:1px solid var(--line); padding:2px 8px; border-radius:999px; }
+
+    /* tableau de positionnement (clé / valeur) */
+    .def { border-top:1px solid var(--line); }
+    .def__row { display:grid; grid-template-columns:230px 1fr; gap:28px; padding:20px 4px; border-bottom:1px solid var(--line-2); }
+    .def__key { font-family:var(--mono); font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-3); padding-top:4px; }
+    .def__val { font-size:15px; color:var(--ink-2); }
+    .def__val .big { font-size:19px; font-weight:700; color:var(--ink); display:inline-block; }
+    .def__val .rationale { margin-top:5px; }
+
+    /* lien vers le graphique */
+    .chart-link { display:flex; align-items:center; gap:16px; border:1px solid var(--line); border-radius:var(--r-md); background:var(--surface); padding:16px 20px; margin-top:22px; text-decoration:none; box-shadow:var(--shadow-sm); transition:border-color .15s,transform .15s; }
+    .chart-link:hover { border-color:var(--accent-line); transform:translateY(-1px); }
+    .chart-link__txt { flex:1; }
+    .chart-link__h { font-weight:700; color:var(--accent-ink); font-size:15px; }
+    .chart-link__s { display:block; margin-top:3px; font-size:12.5px; color:var(--ink-3); }
+    .chart-link__arrow { flex:none; color:var(--accent); font-size:20px; font-weight:700; }
+
+    /* clés de lecture */
+    .keys { list-style:none; margin:18px 0 0; padding:0; display:grid; gap:12px; }
+    .keys li { display:flex; gap:12px; align-items:baseline; font-size:15px; color:var(--ink-2); line-height:1.6; }
+    .keys li::before { content:""; width:6px; height:6px; border-radius:50%; background:var(--brand); flex:none; transform:translateY(-3px); }
+    .keys li b { color:var(--ink); }
+
+    /* encart recommandation */
+    .reco { margin-top:22px; border:1px solid var(--accent-line); border-left:3px solid var(--accent); background:var(--accent-wash); border-radius:0 var(--r-md) var(--r-md) 0; padding:16px 20px; font-size:14.5px; color:var(--ink); line-height:1.6; }
+    .reco b { color:var(--accent-ink); }
+
+    /* sources */
+    .sources { list-style:none; margin:0; padding:0; display:grid; gap:12px; counter-reset:src; }
+    .sources li { display:grid; grid-template-columns:auto 1fr; gap:14px; align-items:baseline; padding:14px 0; border-top:1px solid var(--line-2); font-size:14px; color:var(--ink-2); }
+    .sources li::before { counter-increment:src; content:counter(src,decimal-leading-zero); font-family:var(--mono); font-size:13px; color:var(--ink-3); }
+    .sources a { color:var(--accent-ink); text-decoration:none; font-weight:600; border-bottom:1px solid var(--accent-line); }
+
+    @media (max-width:720px) {
+      body { font-size:16px; }
+      .def__row { grid-template-columns:1fr; gap:8px; }
+      .section__head { gap:14px; }
+    }
+    @media print { .siteheader,.sitefoot { display:none !important; } }
+    @media (prefers-reduced-motion:reduce) { * { scroll-behavior:auto !important; transition:none !important; } }
+  </style>
+</head>
+<body>
+<script src="../../../assets/siteheader.js" data-crumb="parent" data-parent-label="Market: mobile weight-loss assistance apps" data-parent-href="../"></script>
+
+<a id="top"></a>
+
+<section class="hero"><div class="shell">
+  <a class="hero__market" href="../" title="Market studied">
+    <span class="swatch"></span>
+    <span class="tag">Market studied</span>
+    <span>Mobile weight-loss assistance apps</span>
+  </a>
+  <h1><span class="step-no">Step 3.</span><br>Position my product</h1>
+  <p class="hero__byline">Run <strong>S3-2</strong>, published 16 June 2026 — re-positioning of <i>What is wrong with me</i> based on <a href="../s1-2_2026-06-11/">Run S1-2</a> and <a href="../s2-1_2026-06-11/">Run S2-1</a>, enriched with new product information (free app, research programme at €200/month). Project values are <strong>self-declared</strong> (project website + Elena's brief), unlike competitors sourced by run S1.</p>
+  <div class="hero__proj"><span class="lbl">Project positioned</span> <a href="https://w.shoette.com/" target="_blank" rel="noopener">What is wrong with me ↗</a></div>
+</div></section>
+
+<div class="shell"><main>
+
+  <section class="section" id="projet">
+    <div class="section__head">
+      <span class="section__no">01</span>
+      <div><h2 class="section__title">The project</h2></div>
+    </div>
+    <div class="prose">
+      <p><b>What is wrong with me</b> — <a href="https://w.shoette.com/" target="_blank" rel="noopener">w.shoette.com</a> — is a conversational AI health journal (<i>The AI health journal you talk to</i>): you talk to it — voice, photos, medical documents — it aggregates daily signals (sleep, stress, cycle, weather, calendar) and its engine searches for <b>correlations</b> to answer "why am I feeling off." The app is <b>free (€0/year)</b>, available on the Apple Store and Google Play, and <b>works by invitation only</b>. It declares itself "not a medical device" and hosts its data within the European Union (GDPR, HDS).</p>
+      <p><b>The business model</b> <span class="tag-decl">declared by Elena</span>: the app is the tool; the paid value is membership in a <b>research programme</b> — a "shared anonymised data pool around one issue" at <b>€200/month</b>, paid to a research company that organises calls and, above all, the data processing. Within a programme, the engine compares correlations <i>across</i> participants: as soon as a lead emerges, it proposes the same test to everyone (e.g., a lead "lactose after 5 pm → non-restorative sleep" triggers an instruction "take lactose the next day at 6 pm" — each participant remains free to accept or decline), and the validated finding is fed back into the app, which maintains a <b>continuously re-evaluated profile score</b>.</p>
+      <p><b>The use case positioned here</b> <span class="tag-decl">declared by Elena</span>: <b>Programme 1</b> — the study of weight-loss stalling in patients on <b>Mounjaro 15 mg</b> (maximum dose) <b>with no effect on hunger or cravings</b>, alongside addictive sugar behaviour. That is, very precisely, <b>full-dose GLP-1 non-responders</b>: the market's blind spot identified by runs S1/S2.</p>
+      <p class="note">Project values in this note are self-declared — drawn from the project website and Elena's brief — unlike competitor values, which were sourced publicly by run S1. This run S3-2 updates run S3-1 (12 June 2026) with the product information provided since then.</p>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section" id="positionnement">
+    <div class="section__head">
+      <span class="section__no">02</span>
+      <div><h2 class="section__title">The positioning</h2>
+        <p class="section__purpose">The project on the market chart dimensions — project value (self-declared) and reading.</p>
+      </div>
+    </div>
+    <div class="def">
+      <div class="def__row"><div class="def__key">Market share</div><div class="def__val"><span class="big num">0%</span><div class="rationale">New project, app in beta by invitation — no market revenues yet. The market share of a project positioned in Step 3 is always 0%.</div></div></div>
+      <div class="def__row"><div class="def__key">12-month growth</div><div class="def__val"><span class="big">—</span><div class="rationale">Not applicable for a project that has no revenues yet.</div></div></div>
+      <div class="def__row"><div class="def__key">Medical &amp; GLP-1 integration</div><div class="def__val"><span class="big num">~4 / 10</span><span class="tag-decl">declared</span><div class="rationale">Raised from ~3 to ~4 since S3-1: Programme 1 explicitly targets <b>Mounjaro 15 mg</b> non-responders and is backed by a research company (calls, data processing) — an acknowledged GLP-1 orientation and a quasi-research approach. But still "not a medical device": no prescription, no pharmacy, no teleconsultation, no dose-tracking like a companion app.</div></div></div>
+      <div class="def__row"><div class="def__key">Price</div><div class="def__val"><span class="big">App: €0/year</span><span class="tag-decl">declared</span><div class="rationale"><b>Programme 1 (the real monetisation): €200/month</b>, paid to the research company (calls + data processing) — the free app is the entry product. This is the <b>highest access price in the market</b>, but outside the $0–30 scale of the "monthly price" axis on the chart (category "programme," like the GLP-1 treatment costs already excluded from the axis: $119–449/month). On the chart, only the app price (0) is plotted.</div></div></div>
+      <div class="def__row"><div class="def__key">AI personalisation</div><div class="def__val"><span class="big num">~9 / 10</span><span class="tag-decl">declared</span><div class="rationale">Multimodal journal (voice, photos, documents) whose engine searches for correlations; in a programme, it <b>compares correlations across participants</b>, proposes collective tests (challenge-rechallenge) and maintains a continuously re-evaluated profile score. A website promise, not verified in production.</div></div></div>
+      <div class="def__row"><div class="def__key">Support model</div><div class="def__val"><span class="big">AI coach</span><span class="tag-decl">declared</span><div class="rationale">You talk to the app and it investigates — no clinicians. Programme 1 adds on top a <b>community research layer</b> (third-party company, calls, shared test protocols) that the self-service / AI coach / medicalised programme scale does not capture.</div></div></div>
+      <div class="def__row" style="border-bottom:0"><div class="def__key">Functional breadth</div><div class="def__val"><span class="big">~single-function</span><span class="tag-decl">declared</span><div class="rationale">A single use case: investigating weight-loss stalling. Programme 1 deepens this function (cohort, tests, data pool) without broadening it — no calorie tracking, no meal plans, no conventional support community.</div></div></div>
+    </div>
+    <a class="chart-link" href="../s1-2_2026-06-11/#s2b">
+      <span class="chart-link__txt">
+        <span class="chart-link__h">View the project on the interactive market chart</span>
+        <span class="chart-link__s">The ✺ "What is wrong with me" marker was re-enriched on chart 2b and the Run S1-2 table on 16 June 2026 (first added: 12 June) — competitor data and original date (11 June 2026) unchanged.</span>
+      </span>
+      <span class="chart-link__arrow">↗</span>
+    </a>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section" id="analyse">
+    <div class="section__head">
+      <span class="section__no">03</span>
+      <div><h2 class="section__title">Chart analysis</h2></div>
+    </div>
+    <div class="prose">
+      <p>On the default configuration (market share on the vertical axis), What is wrong with me sits at the very bottom of the chart, at 0% — a mechanical result for a beta app; that is not where the real reading lies. On the structural dimensions, the project occupies a position no other player in the panel holds. On <b>medical integration</b> (~4/10), it stands alone in the market's empty corridor: the panel splits into two blocks — general-public trackers and coaches between 0 and 2 (MyFitnessPal, Simple, Cal AI, Yazio, Lose It!, MacroFactor, Lifesum, Cronometer) and the medicalised duo at 9 (WeightWatchers, Noom); between 3 and 8, still nobody, apart from GLP-1 companions (Shotsy, MeAgain) that run S1 could not quantify. On <b>AI personalisation</b> (~9/10, declared), the project remains in the top three (Simple 9, Cal AI 8, Noom 8) — for an unprecedented function: conducting an investigation rather than executing a programme. The real shift since S3-1 is elsewhere, on <b>price and model</b>: the app moves from "price unannounced" to <b>free (€0)</b> — placing it to the left of Cal AI, the cheapest in the panel. But this is an optical illusion: the real monetisation is <b>Programme 1 at €200/month</b>, making it the <b>highest access price in the entire market</b> (ahead of WeightWatchers at ~$23/month, and excluding treatment costs). The model is <i>inverted</i> relative to the rest of the panel: where competitors charge an app subscription and seek volume (freemium), W gives away the app and charges a premium for <b>participation in research</b>, on a closed (invitation-only) and tightly focused cohort (Mounjaro 15 mg non-responders). No competitor monetises this way: this is less a weight-loss app than a <b>community research device</b> plugged into the market's blind spot — those for whom the reference treatment fails to deliver on its promise.</p>
+    </div>
+    <ul class="keys">
+      <li><b>The app moves to €0, the programme to €200/month</b> — inverted model: free entry product, paid research. On the price axis, W appears "the cheapest"; in reality it is the most expensive access in the market (off-axis).</li>
+      <li><b>The 3–8 medical integration corridor remains empty</b>: W rises to ~4 (Mounjaro 15 mg programme + research company), still alone, its conceptual neighbours (GLP-1 companions) off the chart for lack of data.</li>
+      <li><b>AI still in the top three</b> (~9/10, declared) — but the differentiator is no longer just the AI: it is the closed cohort and the data pool as an asset.</li>
+      <li><b>Ultra-narrow target</b>: full-dose Mounjaro non-responders — the strongest pain point in the blind spot, but a narrow population (see section 4 on data credibility).</li>
+    </ul>
+    <div class="reco"><b>Recommended reading configuration</b> — on the interactive chart: <b>Y position</b> = AI personalisation · <b>X position + Colour</b> = Medical &amp; GLP-1 integration · <b>Size</b> = Market share · <b>Opacity</b> = Support model. On this view, the project appears at the top of the chart, alone in the median corridor of the horizontal axis — its tiny ✺ marker amid the giants says exactly what its situation is: the right slot, without the traction. <b>Mind the price axis</b>: it only plots the app price (€0) — the real cost for a participant (€200/month) is off-scale and does not appear on any channel of the chart.</div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section" id="credibilite">
+    <div class="section__head">
+      <span class="section__no">04</span>
+      <div><h2 class="section__title">Medical credibility: how many participants for Programme 1?</h2>
+        <p class="section__purpose">A one-off analysis requested by Elena for this run — outside the standard Step 3 framework (not integrated into the skill or the contract).</p>
+      </div>
+    </div>
+    <div class="prose">
+      <p><b>There is no magic number.</b> The credibility of a health finding depends first not on the <i>number</i> of participants, but on the <b>ambition of the claim</b> one wants to draw from it, weighed against three obstacles: <b>inter-individual variability</b> (in metabolism it is enormous — the ZOE PREDICT 1 study shows that genetics explains <i>less than 30%</i> of the variation in glycaemic responses to the same meal), <b>multiplicity of tests</b> (W's engine scans hundreds of correlations: without statistical discipline, "significant" associations are found <b>by pure chance</b>) and <b>reproducibility</b> (an effect is credible only if it <b>repeats</b>). Three tiers can therefore be outlined.</p>
+    </div>
+    <div class="def">
+      <div class="def__row"><div class="def__key">Tier 1 — Generate a lead</div><div class="def__val"><span class="big">~12 to 30 participants</span><div class="rationale">Well-characterised, per hypothesis. Enough to surface an <b>exploratory signal</b> or individual proof (n-of-1); the "12 per group" floor is the empirical rule of thumb for a pilot study (Julious, 2005). <b>This is not medical proof</b> — just a lead to confirm.</div></div></div>
+      <div class="def__row"><div class="def__key">Tier 2 — Convince (publication)</div><div class="def__val"><span class="big">~50 to 200 completers</span><div class="rationale">Per hypothesis, in a <b>repeated within-subject design</b> (each participant is their own control), pre-registered and corrected for multiplicity; over a period of weeks to months. Demonstrates a <b>real effect in this specific cohort</b> — "publishable" level, not yet generalisable.</div></div></div>
+      <div class="def__row" style="border-bottom:0"><div class="def__key">Tier 3 — Change practice</div><div class="def__val"><span class="big">several hundred to ~1,000+</span><div class="rationale">Pre-registered randomised controlled trial (RCT), 6 to 18 months, ideally <b>replicated by an independent team</b>. This is the scale at which the medical world considers an effect <b>established and generalisable</b> (cf. the GLP-1 trials below).</div></div></div>
+    </div>
+    <div class="prose">
+      <p style="margin-top:22px">Good news for W: its protocol — proposing the same test to the entire cohort triggered by a lead (the "lactose at 6 pm"), then measuring the response — is exactly a <b>crossover "challenge-rechallenge" trial</b>, that is, an <b>aggregated n-of-1</b>. This design is <b>recognised by medicine</b> (AHRQ reference guide) and <b>far more powerful per participant</b> than a classical trial, because each person is their own control: it neutralises inter-individual variability, which is precisely the main obstacle here. W's credibility lever is therefore not the <i>number</i> but the <b>rigour</b>: pre-declared hypothesis, randomised test order, wash-out period, blinding where possible, repetition of cycles, and correction for multiple tests. For reference, here is what the medical world has required for comparable claims:</p>
+    </div>
+    <ul class="keys">
+      <li><b>SURMOUNT-1 — tirzepatide (Mounjaro), the most directly comparable trial</b>: <b>2,539 participants</b>, <b>72 weeks</b>, to establish Mounjaro's efficacy in obesity (Jastreboff <i>et al.</i>, <i>NEJM</i> 2022). <a href="https://www.nejm.org/doi/full/10.1056/NEJMoa2206038" target="_blank" rel="noopener">nejm.org ↗</a></li>
+      <li><b>STEP 1 — semaglutide (Wegovy)</b>: <b>1,961 participants</b>, <b>68 weeks</b> (Wilding <i>et al.</i>, <i>NEJM</i> 2021). Same bar: ~2,000 people over ~16 months to establish a treatment's efficacy. <a href="https://www.nejm.org/doi/full/10.1056/NEJMoa2032183" target="_blank" rel="noopener">nejm.org ↗</a></li>
+      <li><b>ZOE PREDICT 1 — the closest analogue to W (individual responses to food)</b>: <b>~1,000 participants</b> (including twins), to map variability in postprandial responses (Berry <i>et al.</i>, <i>Nature Medicine</i> 2020). The order of magnitude of a credible "personalised nutrition" dataset. <a href="https://www.nature.com/articles/s41591-020-0934-0" target="_blank" rel="noopener">nature.com ↗</a></li>
+      <li><b>DIETFITS — the warning on personalisation</b>: <b>609 participants</b>, <b>12 months</b>, testing whether genotype or insulin predicts the right diet… and concluding with <b>no significant interaction</b> (Gardner <i>et al.</i>, <i>JAMA</i> 2018). A compelling personalisation lead can <b>evaporate</b> at scale: hence the need to replicate. <a href="https://jamanetwork.com/journals/jama/fullarticle/2673150" target="_blank" rel="noopener">jamanetwork.com ↗</a></li>
+      <li><b>The n-of-1 framework</b>: <i>Design and Implementation of N-of-1 Trials: A User's Guide</i> (Kravitz &amp; Duan, AHRQ 2014) — the methodological reference that makes W's design defensible… if it follows the rules. <a href="https://effectivehealthcare.ahrq.gov/products/n-1-trials/research-2014-5" target="_blank" rel="noopener">ahrq.gov ↗</a></li>
+    </ul>
+    <div class="reco"><b>Recommendation for Programme 1</b> — aim, per hypothesis tested, for <b>50 to 100 well-phenotyped completers</b> (Mounjaro 15 mg non-responders), each completing several test cycles: in a within-subject design, this is the realistic threshold for producing a <b>persuasive and publishable signal</b> on this cohort — without yet claiming a generalisable proof, which would require an RCT of several hundred participants over 6–18 months. <b>The number-one pitfall is not size, it is multiplicity</b>: with 40 participants and hundreds of correlations scanned, spurious "discoveries" accumulate rapidly. Credibility rests on three words: <b>pre-register</b> the hypothesis, <b>correct</b> for multiple tests, <b>replicate</b> before publishing.</div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section" id="sources">
+    <div class="section__head">
+      <span class="section__no">05</span>
+      <div><h2 class="section__title">Sources</h2></div>
+    </div>
+    <ol class="sources">
+      <li><span><a href="https://w.shoette.com/" target="_blank" rel="noopener">Project website — What is wrong with me</a> (accessed 2026-06-16) — self-declared</span></li>
+      <li><span>Elena's brief: additional product information — free app (€0/year, by invitation, iOS + Android), Programme 1 (Mounjaro 15 mg non-responders), "anonymised data pool" programme at €200/month, collective testing mechanism (16 June 2026) — self-declared</span></li>
+      <li><span><a href="../s1-2_2026-06-11/">Run S1-2 of 11 June 2026</a> — dimensions, scales and competitor data</span></li>
+      <li><span><a href="../s2-1_2026-06-11/">Run S2-1 of 11 June 2026</a> — market size and structure (KPIs, sub-sectors)</span></li>
+      <li><span><a href="../s3-1_2026-06-12/">Run S3-1 of 12 June 2026</a> — first positioning of What is wrong with me (updated by this run)</span></li>
+      <li><span>Jastreboff <i>et al.</i>, <b>SURMOUNT-1</b> — tirzepatide (Mounjaro), 2,539 participants, 72 weeks — <i>New England Journal of Medicine</i>, 2022. <a href="https://www.nejm.org/doi/full/10.1056/NEJMoa2206038" target="_blank" rel="noopener">nejm.org/doi/full/10.1056/NEJMoa2206038</a></span></li>
+      <li><span>Wilding <i>et al.</i>, <b>STEP 1</b> — semaglutide, 1,961 participants, 68 weeks — <i>New England Journal of Medicine</i>, 2021. <a href="https://www.nejm.org/doi/full/10.1056/NEJMoa2032183" target="_blank" rel="noopener">nejm.org/doi/full/10.1056/NEJMoa2032183</a></span></li>
+      <li><span>Gardner <i>et al.</i>, <b>DIETFITS</b> — 609 participants, 12 months (no diet × genotype/insulin interaction) — <i>JAMA</i>, 2018. <a href="https://jamanetwork.com/journals/jama/fullarticle/2673150" target="_blank" rel="noopener">jamanetwork.com/journals/jama/fullarticle/2673150</a></span></li>
+      <li><span>Berry <i>et al.</i>, <b>ZOE PREDICT 1</b> — ~1,000 participants, individual postprandial responses — <i>Nature Medicine</i>, 2020. <a href="https://www.nature.com/articles/s41591-020-0934-0" target="_blank" rel="noopener">nature.com/articles/s41591-020-0934-0</a></span></li>
+      <li><span>Kravitz &amp; Duan (eds.), <b>Design and Implementation of N-of-1 Trials: A User's Guide</b> — AHRQ, 2014. <a href="https://effectivehealthcare.ahrq.gov/products/n-1-trials/research-2014-5" target="_blank" rel="noopener">effectivehealthcare.ahrq.gov</a></span></li>
+      <li><span>Julious, <b>Sample size of 12 per group rule of thumb for a pilot study</b> — <i>Pharmaceutical Statistics</i>, 2005. <a href="https://onlinelibrary.wiley.com/doi/10.1002/pst.185" target="_blank" rel="noopener">onlinelibrary.wiley.com/doi/10.1002/pst.185</a></span></li>
+    </ol>
+  </section>
+
+</main></div>
+
+<script src="../../../assets/sitepipeline.js" data-active="3" data-href1="../s1-2_2026-06-11/" data-href2="../s2-1_2026-06-11/"></script>
+  <script src="../../../assets/sitefoot.js"></script>
+
+<script>
+const RUN_S3_DATA = {
+  "schema_version": 1,
+  "skill": "position-my-product",
+  "market": { "slug": "apps-perte-de-poids", "label": "Mobile weight-loss assistance apps", "language": "en" },
+  "run": { "number": 2, "date": "2026-06-16" },
+  "source_runs": {
+    "s1": { "number": 2, "date": "2026-06-11", "path": "../s1-2_2026-06-11/", "age_days": 5, "freshness_warning": false },
+    "s2": { "number": 1, "date": "2026-06-11", "path": "../s2-1_2026-06-11/" }
+  },
+  "project": {
+    "id": "what_is_wrong_with_me",
+    "name": "What is wrong with me",
+    "source_url": "https://w.shoette.com/",
+    "summary": "A conversational AI health journal (\"The AI health journal you talk to\"): you talk to it — voice, photos, medical documents — it aggregates daily signals (sleep, stress, cycle, weather, calendar) and its engine searches for correlations to answer \"why am I feeling off.\" Free app (€0/year), on the Apple Store and Google Play, by invitation only; \"not a medical device\"; data hosted in the EU (GDPR, HDS).",
+    "extra_info_from_elena": "Declared business model: the app is the tool (free); the paid value is membership in a research programme — a \"shared anonymised data pool around one issue\" at €200/month paid to a research company (calls + data processing). Mechanism: the engine compares correlations across participants and, as soon as a lead emerges, proposes the same test to everyone (e.g., lead \"lactose after 5 pm → non-restorative sleep\" → instruction \"take lactose the next day at 6 pm\", which can be accepted or declined), then feeds the validated finding back into an evolving profile score. Programme 1 (the use case positioned here): weight-loss stalling in patients on Mounjaro 15 mg with no effect on hunger or cravings, and addictive sugar behaviour — i.e., full-dose GLP-1 non-responders."
+  },
+  "positioning": {
+    "market_share_pct": { "value": 0, "estimated": false, "note": "new project — app in beta by invitation, no market revenues yet" },
+    "growth_pct": null,
+    "dimensions": {
+      "integration_medicale": { "value": 4, "estimated": true, "declared": true, "rationale": "Raised from ~3 to ~4 since S3-1: Programme 1 explicitly targets Mounjaro 15 mg non-responders and is backed by a research company (calls, data processing) — an acknowledged GLP-1 orientation and a quasi-research approach. But still \"not a medical device\": no prescription, no pharmacy, no teleconsultation, no dose-tracking like a companion app." },
+      "prix_mensuel": { "value": 0, "estimated": false, "declared": true, "rationale": "App: €0/year (free, by invitation). The real monetisation is Programme 1 (\"shared anonymised data pool\") at €200/month paid to the research company — the highest access price in the market, but outside the $0-30 scale of the axis (category \"programme,\" like the GLP-1 treatment costs already excluded from the axis: $119-449/month). On the chart, only the app price (0) is plotted." },
+      "personnalisation_ia": { "value": 9, "estimated": true, "declared": true, "rationale": "Multimodal journal (voice, photos, documents) whose engine searches for correlations; in a programme, it compares correlations across participants, proposes collective tests (challenge-rechallenge) and maintains a continuously re-evaluated profile score. A website promise, not verified in production." },
+      "modele_accompagnement": { "value": "AI coach", "estimated": false, "declared": true, "rationale": "You talk to the app and it investigates — no clinicians. Programme 1 adds on top a community research layer (third-party company, calls, shared test protocols) that the self-service / AI coach / medicalised programme scale does not capture." },
+      "largeur_fonctionnelle": { "value": "single-function", "estimated": true, "declared": true, "rationale": "A single use case: investigating weight-loss stalling. Programme 1 deepens this function (cohort, tests, data pool) without broadening it — no calorie tracking, no meal plans, no conventional support community." }
+    }
+  },
+  "enriched_chart": { "href": "../s1-2_2026-06-11/#s2b", "enriched_on": "2026-06-16" },
+  "analysis": {
+    "paragraph": "On the default configuration (market share on the vertical axis), What is wrong with me sits at the very bottom of the chart, at 0% — a mechanical result for a beta app; that is not where the real reading lies. On the structural dimensions, the project occupies a position no other player in the panel holds. On medical integration (~4/10), it stands alone in the market's empty corridor: general-public trackers and coaches between 0 and 2 (MyFitnessPal, Simple, Cal AI, Yazio, Lose It!, MacroFactor, Lifesum, Cronometer) and the medicalised duo at 9 (WeightWatchers, Noom); between 3 and 8, still nobody, apart from GLP-1 companions (Shotsy, MeAgain) that run S1 could not quantify. On AI personalisation (~9/10, declared), the project remains in the top three (Simple 9, Cal AI 8, Noom 8) — for an unprecedented function: conducting an investigation rather than executing a programme. The real shift since S3-1 is elsewhere, on price and model: the app moves from \"price unannounced\" to free (€0) — placing it to the left of Cal AI, the cheapest in the panel. But this is an optical illusion: the real monetisation is Programme 1 at €200/month, making it the highest access price in the entire market (ahead of WeightWatchers at ~$23/month, and excluding treatment costs). The model is inverted relative to the rest of the panel: where competitors charge an app subscription and seek volume (freemium), W gives away the app and charges a premium for participation in research, on a closed (invitation-only) and tightly focused cohort (Mounjaro 15 mg non-responders). No competitor monetises this way: this is less a weight-loss app than a community research device plugged into the market's blind spot — those for whom the reference treatment fails to deliver on its promise.",
+    "reading_keys": [
+      "The app moves to €0, the programme to €200/month — inverted model: free entry product, paid research. On the price axis, W appears \"the cheapest\"; in reality it is the most expensive access in the market (off-axis).",
+      "The 3-8 medical integration corridor remains empty: W rises to ~4 (Mounjaro 15 mg programme + research company), still alone, its conceptual neighbours (GLP-1 companions) off the chart for lack of data.",
+      "AI still in the top three (~9/10, declared) — but the differentiator is no longer just the AI: it is the closed cohort and the data pool as an asset.",
+      "Ultra-narrow target: full-dose Mounjaro non-responders — the strongest pain point in the blind spot, but a narrow population (see section 4 on data credibility)."
+    ],
+    "recommended_view": "Y position = AI personalisation · X position + Colour = Medical & GLP-1 integration · Size = Market share · Opacity = Support model. On this view, the project appears at the top of the chart, alone in the median corridor of the horizontal axis — its tiny ✺ marker amid the giants. Mind the price axis: it only plots the app price (€0) — the real cost for a participant (€200/month) is off-scale and does not appear on any channel of the chart."
+  },
+  "special_analysis_one_off": {
+    "note": "A one-off analysis requested by Elena for this run — outside the standard Step 3 framework, not integrated into the skill or the contract.",
+    "question": "How many people would need to participate in Programme 1 for the data to be credible in the medical world?",
+    "key_point": "No magic number: credibility depends on the ambition of the claim, inter-individual variability, multiplicity of tests and reproducibility — not on sample size alone.",
+    "tiers": [
+      { "objective": "Generate a lead (exploratory / n-of-1)", "participants": "~12 to 30 per hypothesis", "duration": "days to weeks", "proves": "an individual signal to confirm — not medical proof", "ref": "Julious 2005 (floor of 12 per group)" },
+      { "objective": "Convince (publishable cohort)", "participants": "~50 to 200 completers per hypothesis", "duration": "weeks to months", "proves": "a real effect in this specific cohort (within-subject, pre-registered, corrected for multiplicity)" },
+      { "objective": "Change clinical practice", "participants": "several hundred to ~1,000+", "duration": "6 to 18 months + independent replication", "proves": "an established and generalisable effect (RCT level)" }
+    ],
+    "design_note": "W's protocol (collective test triggered by a lead, e.g., \"lactose at 6 pm\") is a crossover challenge-rechallenge trial = aggregated n-of-1: recognised by medicine (AHRQ) and more powerful per participant (each person is their own control). The credibility lever is rigour (pre-declared hypothesis, randomised order, wash-out, blinding where possible, repetition, correction for multiple tests), not sample size.",
+    "reference_trials": [
+      { "name": "SURMOUNT-1 (tirzepatide / Mounjaro)", "n": 2539, "duration": "72 weeks", "source": "Jastreboff et al., NEJM 2022", "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa2206038", "relevance": "the most directly comparable trial (same molecule)" },
+      { "name": "STEP 1 (semaglutide)", "n": 1961, "duration": "68 weeks", "source": "Wilding et al., NEJM 2021", "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa2032183", "relevance": "efficacy bar for an obesity treatment" },
+      { "name": "ZOE PREDICT 1", "n": 1002, "duration": "—", "source": "Berry et al., Nature Medicine 2020", "url": "https://www.nature.com/articles/s41591-020-0934-0", "relevance": "closest analogue: individual responses to food; genetics < 30% of variation" },
+      { "name": "DIETFITS", "n": 609, "duration": "12 months", "source": "Gardner et al., JAMA 2018", "url": "https://jamanetwork.com/journals/jama/fullarticle/2673150", "relevance": "warning: no diet × genotype/insulin interaction — personalisation can evaporate at scale" },
+      { "name": "N-of-1 Trials: A User's Guide", "n": null, "duration": "—", "source": "Kravitz & Duan, AHRQ 2014", "url": "https://effectivehealthcare.ahrq.gov/products/n-1-trials/research-2014-5", "relevance": "methodological framework for n-of-1 trials" },
+      { "name": "12-per-group rule of thumb (pilot)", "n": 12, "duration": "—", "source": "Julious, Pharmaceutical Statistics 2005", "url": "https://onlinelibrary.wiley.com/doi/10.1002/pst.185", "relevance": "floor for an exploratory pilot study" }
+    ],
+    "recommendation": "For Programme 1: aim for 50 to 100 well-phenotyped completers per hypothesis, in repeated cycles (within-subject) → a persuasive and publishable signal on the Mounjaro 15 mg non-responder cohort; a generalisable proof would require an RCT of several hundred participants over 6-18 months. Pitfall number one: multiplicity, not size — pre-register the hypothesis, correct for multiple tests, replicate before publishing."
+  },
+  "sources": [
+    { "id": 1, "title": "Project website — What is wrong with me", "url": "https://w.shoette.com/", "accessed": "2026-06-16", "declared": true },
+    { "id": 2, "title": "Elena's brief: additional product information (free app, Programme 1 Mounjaro 15 mg, programme at €200/month, collective testing mechanism)", "accessed": "2026-06-16", "declared": true },
+    { "id": 3, "title": "Run S1-2 of 11 June 2026", "publisher": "market.shoette.com", "url": "../s1-2_2026-06-11/", "accessed": "2026-06-16", "from_source_run": true },
+    { "id": 4, "title": "Run S2-1 of 11 June 2026", "publisher": "market.shoette.com", "url": "../s2-1_2026-06-11/", "accessed": "2026-06-16", "from_source_run": true },
+    { "id": 5, "title": "Run S3-1 of 12 June 2026 — first positioning (updated by this run)", "publisher": "market.shoette.com", "url": "../s3-1_2026-06-12/", "accessed": "2026-06-16", "from_source_run": true },
+    { "id": 6, "title": "Jastreboff et al., SURMOUNT-1 (tirzepatide / Mounjaro) — 2,539 participants, 72 weeks", "publisher": "New England Journal of Medicine, 2022", "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa2206038", "accessed": "2026-06-16" },
+    { "id": 7, "title": "Wilding et al., STEP 1 (semaglutide) — 1,961 participants, 68 weeks", "publisher": "New England Journal of Medicine, 2021", "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa2032183", "accessed": "2026-06-16" },
+    { "id": 8, "title": "Gardner et al., DIETFITS — 609 participants, 12 months (no diet × genotype/insulin interaction)", "publisher": "JAMA, 2018", "url": "https://jamanetwork.com/journals/jama/fullarticle/2673150", "accessed": "2026-06-16" },
+    { "id": 9, "title": "Berry et al., ZOE PREDICT 1 — ~1,000 participants, individual postprandial responses", "publisher": "Nature Medicine, 2020", "url": "https://www.nature.com/articles/s41591-020-0934-0", "accessed": "2026-06-16" },
+    { "id": 10, "title": "Kravitz & Duan (eds.), Design and Implementation of N-of-1 Trials: A User's Guide", "publisher": "AHRQ, 2014", "url": "https://effectivehealthcare.ahrq.gov/products/n-1-trials/research-2014-5", "accessed": "2026-06-16" },
+    { "id": 11, "title": "Julious, Sample size of 12 per group rule of thumb for a pilot study", "publisher": "Pharmaceutical Statistics, 2005", "url": "https://onlinelibrary.wiley.com/doi/10.1002/pst.185", "accessed": "2026-06-16" }
+  ],
+  "last_updated": "2026-06-16"
+};
+</script>
+</body>
+</html>

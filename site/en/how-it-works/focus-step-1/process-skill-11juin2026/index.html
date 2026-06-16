@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Skills used in Step 1 — Read the Market (version of 11 June 2026) — Competitive intelligence</title>
+  <meta name="description" content="What Step 1 — Read the Market does, step by step: from raw input to the published market report. Process documentation, version of 12 June 2026.">
+  <link rel="alternate" hreflang="fr" href="https://market.shoette.com/how-it-works/focus-step-1/process-skill-11juin2026/">
+  <link rel="alternate" hreflang="en" href="https://market.shoette.com/en/how-it-works/focus-step-1/process-skill-11juin2026/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../../../assets/site.css">
+</head>
+<body>
+<script src="../../../../assets/siteheader.js" data-crumb="parent" data-parent-label="Focus on Step 1" data-parent-href="../"></script>
+<div class="shell">
+
+  <main>
+    <section class="hero">
+      <span class="kicker">Documentation · Step 1 · Skills</span>
+      <h1>The Skills used in Step 1<br>Read the Market</h1>
+      <p class="lede">What Step 1 does, step by step — from raw input to the published market report. This page documents the version of the skill in force on <b>12 June 2026</b>; its exact definition is downloadable at the bottom of the page.</p>
+    </section>
+
+    <h2 class="doc-section-h">What a run produces</h2>
+    <p>One execution of the skill = <b>one run</b>: a frozen, dated report, published at <code>market.shoette.com/[market]/s1-[N]_[date]/</code>, together with its <code>data.json</code> — the structured-data canvas that feeds the interactive chart and will serve the following skills. With each run, the market's page and the home page are updated.</p>
+    <p>The report contains four blocks:</p>
+    <ul class="kpis" style="margin:10px 0 0">
+      <li><b>Executive Summary</b> — the market framing in half a page: the dimensions that structure it (the reading grid for everything else), and the assumptions made on the input.</li>
+      <li><b>2a — Market share &amp; growth</b> — the share × growth scatter plot, preceded by the maturity stage and the justified choice of reference period.</li>
+      <li><b>2b — Interactive positioning</b> — the 5-visual-channel chart (layers, player cards, annotated export), followed by the table of all the values and the “How to read these values” block (units, currencies, conversions).</li>
+      <li><b>Appendices</b> — A1: all the sources (URL + access date); A2: the sector's lexicon, defined in French and English.</li>
+    </ul>
+
+    <h2 class="doc-section-h" style="margin-top:52px">The process, step by step</h2>
+
+    <article class="fw-card">
+      <h3>Step 0 — Resolve the run's context</h3>
+      <p>The skill identifies the market (ASCII slug, reused if the market already exists), computes the run number (latest S1 run + 1), sets today's date — hence the folder <code>s1-[N]_[date]</code> — and adopts the input's language for the whole report (the site's parent pages stay in French). A preliminary check verifies the interactive chart engine exists: without it, the skill refuses to start.</p>
+    </article>
+
+    <article class="fw-card">
+      <h3>Step 1 — Interpret the input</h3>
+      <p>The input can be a sector, a need expressed in natural language, a geographic area — or any combination. If it's incomplete, the skill infers the most likely market and <b>displays its assumptions at the top of the report</b> rather than asking. It only asks a clarifying question if the input is too ambiguous to proceed.</p>
+    </article>
+
+    <article class="fw-card">
+      <h3>Step 2 — Research</h3>
+      <p>Research subagents fan out in parallel across the web (international business press and the sector's specialized press) — they run on an economical model (Sonnet), with consolidation kept on the best model of the session. They establish: the market's maturity stage, which determines the reference period (6 months, 1 year or 3 years, a justified choice); the dimensions that structure the market, ranked by importance; and for each significant player, the estimated market share, growth and a value per dimension. Three absolute rules: <b>every estimate is flagged</b>, <b>no significant player is silently omitted</b> (lacking quantified data, it is listed separately with what was searched for), and <b>raw data is not kept</b> — only the structured data and the source references survive.</p>
+    </article>
+
+    <article class="fw-card">
+      <h3>Step 3 — Build the data canvas</h3>
+      <p>Everything is consolidated into a <code>data.json</code> with a fixed schema: the ranking of the dimensions drives the interactive chart's default configuration (rank 2 → X position + color, rank 3 → size, etc.); each value carries its “estimated” flag; the player and dimension identifiers are stable slugs, designed to be matched from one run to the next by the following skills; and the export note (reading key + first market observation) is written there to be embedded in the chart's PNG/SVG exports.</p>
+    </article>
+
+    <article class="fw-card">
+      <h3>Step 4 — Generate the run page</h3>
+      <p>The page is self-contained and frozen: the data is inlined <i>and</i> written into the neighboring <code>data.json</code> — strictly identical. The 2a chart is a static SVG generated for this run; the 2b is mounted on the site's <b>shared, versioned engine</b> (built once, never rebuilt during a run); below the chart, the table of all the values then the reading notes — unit and currency used, any conversions with exchange rate, meaning of the scales. The page ends with the appendices and the “last updated” field, the only element a future skill is allowed to modify.</p>
+    </article>
+
+    <article class="fw-card">
+      <h3>Step 5 — Update the parent pages</h3>
+      <p>The market page (Step 1 section) and the home page are updated <b>only between their</b> <code>RUNS-SKILL1</code> <b>and</b> <code>MARKETS</code> <b>tags</b> — runs from oldest to newest, Run 1 first. Everything else on these pages belongs to Elena and is never overwritten. On a market's first run, the market page is created from the site template.</p>
+    </article>
+
+    <article class="fw-card">
+      <h3>Step 6 — Deploy, verify, commit</h3>
+      <p>Deployment in two stages: a simulation (<code>--dry-run</code>) to check the file list, then the real upload — to the hosting's <code>market/</code> directory exclusively, a script guardrail rejecting any other path. The skill then verifies the pages respond online, then commits the run to Git: each run is versioned, the history is replayable.</p>
+    </article>
+
+    <h2 class="doc-section-h" style="margin-top:52px">The guardrails</h2>
+    <ul class="kpis" style="margin:10px 0 0">
+      <li><b>Estimates always flagged</b> — the “~” prefix follows every estimated value, from data.json to the exports.</li>
+      <li><b>Never a silent omission</b> — a player with no quantified data stays visible, with a trace of what was searched for.</li>
+      <li><b>Frozen runs</b> — a published run is never modified (apart from the “last updated” field, reserved for a future skill).</li>
+      <li><b>Strict remote scope</b> — the skill writes only to the hosting's <code>market/</code> directory.</li>
+      <li><b>Split models</b> — research on Sonnet, orchestration and writing on the best model available.</li>
+      <li><b>Traceability</b> — dated sources in the appendix, structured data versioned by Git, raw data discarded.</li>
+    </ul>
+
+    <h2 class="doc-section-h" id="telechargement" style="margin-top:52px">The exact definition, downloadable</h2>
+    <p>The skill will evolve. This page and the file below document its definition <b>as in force on 12 June 2026</b> — an exact copy of the document driving the skill on that date.</p>
+
+    <ul class="cards" style="margin-top:14px">
+      <li><a class="card" href="skill-1-read-the-market_2026-06-12.md" download>
+        <span class="card-body">
+          <span class="card-title">SKILL.md — Read the Market</span>
+          <span class="card-meta">Snapshot of 12 June 2026 · Markdown · the definition driving the skill on that date</span>
+        </span>
+        <span class="card-arrow">↓</span>
+      </a></li>
+    </ul>
+  </main>
+
+
+</div>
+  <script src="../../../../assets/sitefoot.js"></script>
+</body>
+</html>
