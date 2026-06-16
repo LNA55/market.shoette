@@ -35,7 +35,7 @@ Deux blocs, alimentés par les mêmes données :
 5. **Acteur installé dominant** (the dominant incumbent — if biggest and oldest diverge, pick the dominant established player): name; creation date; annual revenue (average of the last two fiscal years when both are known, otherwise the latest known, saying so); **profit reported as a status — « en perte / rentable / à l'équilibre / information introuvable » — plus the figure when available**.
 6. **Géographie** — mondial / centré sur une région (laquelle) / local (citer les pays).
 
-Conventions: `~` estimated, `—` not found, ranges allowed, every figure sourced. For the complementary lookups, fan out **1-2 Sonnet subagents** (Agent tool, `model: "sonnet"`), each returning facts with source URL + date.
+Conventions: `~` estimated, `—` not found, ranges allowed, every figure sourced ; **unités en toutes lettres — « milliard(s) $ » / « million(s) $ », jamais « Md$ »/« M$ »** (cf. contrat, Conventions de rédaction). For the complementary lookups, fan out **1-2 Sonnet subagents** (Agent tool, `model: "sonnet"`), each returning facts with source URL + date.
 
 ## Step 3 — Select the frameworks (rules, not a checklist)
 
@@ -66,7 +66,7 @@ One **card** (`.fwc`) per retained framework, **identical anatomy**, in order:
 
 1. A **letter index** (A, B, C… derived from rank), the **name linked** to the framework's documentation fiche (`/how-it-works/focus-step-2/#[anchor]`), and an optional **badge** — `badge--qual` (ambre, « lecture qualitative ») when dégradé, `badge--shock` (rouge) to flag a decisive/shock force.
 2. **The framework's objective sentence** (`objective`) in **serif italic** — the « question » verbatim from the documentation page (e.g. « Où se capture la marge dans la filière ? »).
-3. A short paragraph or two answering it **for this market**, grounded in the KPI data and the S1 facts (keep the `~` flags).
+3. A short paragraph or two answering it **for this market**, grounded in the KPI data and the S1 facts (keep the `~` flags). Le champ `analysis` est **rendu en HTML** : expliciter les acronymes/termes étrangers à leur première occurrence — **anglais en `<i>` + glose FR courte** (obligatoire pour **TAM/SAM/SOM** : « Le TAM (*Total Addressable Market*, le marché total) — … ») ; échapper `&`→`&amp;` et tout `<`/`>` littéral (cf. contrat, Conventions de rédaction).
 4. **A market-specific diagram** — the framework's canonical visual **built in pure CSS/HTML** (no SVG, no chart lib) and **filled with this market's actual data** (figures, players, events), in the inset panel (`.fwc__viz`), with a one-line mono **caption** (`caption`). Use the 7 design-system diagram components (cf. contracts): `.tss`, `.porter`, `.vchain`, `.tl`, `.pestel`, `.pmap`, `.nbox`.
 
 ## Step 5 — Build the page + data.json

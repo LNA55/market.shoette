@@ -9,6 +9,18 @@
 > tout nouveau run S2 **copie verbatim** son bloc `<style>` inline (tokens + corps +
 > 7 diagrammes + responsive) et son script de rendu ; seules les **données** changent.
 
+## Conventions de rédaction (texte des runs)
+
+Règles d'écriture appliquées au run canonique, **obligatoires** pour tout nouveau run :
+
+- **Unités en toutes lettres** (Elena, 2026-06-16) : écrire « milliard(s) $ » / « million(s) $ », **jamais** « Md$ » ni « M$ » — pour éviter toute confusion. Accord : valeur **< 2 → singulier** (« 1,35 milliard $ », « 1,4 million $ »), **≥ 2 → pluriel** (« 2,2 milliards $ »). Idem le « M » de volume (« 15 millions de téléchargements »). Même règle dans les diagrammes.
+- **Paragraphes d'analyse rendus en HTML** : le rendu utilise `el("p", { html: f.analysis })`, donc le champ `analysis` **peut contenir des balises** (`<i>…</i>`) mais doit **échapper** `&` → `&amp;` (et tout `<`/`>` littéral). Les autres champs texte restent du texte brut.
+- **Glose des acronymes et termes étrangers** (Elena, 2026-06-16) : à la première occurrence, expliciter le terme — **anglais en _italique_ (`<i>`) + glose française courte** —, cohérent avec la convention globale (FR « », EN *italique*). **Obligatoire pour TAM / SAM / SOM** dans le framework `tam-sam-som`, une fois chacun, dans sa phrase :
+  - « Le TAM (`<i>Total Addressable Market</i>`, le marché total) — … »
+  - « Le SAM (`<i>Serviceable Addressable Market</i>`, le marché adressable) — … »
+  - « Le SOM (`<i>Serviceable Obtainable Market</i>`, le marché atteignable) … »
+- **Cartes « d'un coup d'œil » = chiffres de synthèse** : chaque carte porte **un** nombre court (ex. croissance = **moyenne** « 12 % », pas la fourchette « 11 à 13 % ») ; la fourchette, les sources et le détail vivent **plus bas** (corps, notes de périmètre, framework concerné).
+
 ## Page de run S2 — structure
 
 - **Autonome et figée** : tout le CSS du design system est **inline dans le `<head>`**
@@ -29,12 +41,16 @@
      puis **la barre pipeline** (composant commun `assets/sitepipeline.js`, injecté sous le hero — cf. contrats Skill 1 ; remplace l'ancien `.track` data-driven).
   3. **Bande KPI « d'un coup d'œil »** (`.glance`) : **4 cartes** (`.kpi`) — 3 chiffres-clés
      structurants + 1 carte « choc » (`.kpi--shock`, fond rouge). Dérivées des KPI saillants du run.
+     Chaque carte : **barre d'accent corail** en tête (rouge pour la carte choc), **valeur + unité sur une
+     seule ligne** (jamais coupée), note explicative **sans filet** séparateur. Nombre **de synthèse** (cf. Conventions de rédaction).
   4. **Nav d'ancrage** (`.secnav`) : rail horizontal collant sous le header (scrollable sur tous
      les écrans), une puce par section + une par framework, scroll-spy (`.navlink.is-active` coral).
-  5. **Section 1 — Définition du marché** (`.def`) : table clé/valeur (mêmes 6 lignes fixes V1, cf.
+  5. **Section 1 — Définition du marché** (`.def`) : liste clé/valeur **empilée** (mêmes 6 lignes fixes V1, cf.
      SKILL.md Step 2) — Définition · Sous-secteurs · Taille mondiale · Part par sous-secteur (puces
      `.lead-dot` + part `.share`) · Acteur dominant (profit « en perte » en `.t-risk`) · Géographie ;
-     note de bas de table (`~` / `—`).
+     note de bas de table (`~` / `—`). **Disposition (Elena 2026-06-16) : chaque ligne affiche l'intitulé
+     (mono, majuscules) puis la valeur à la ligne en dessous, en légère indentation** (`.def__row` en bloc,
+     `.def__val { padding-left:18px }`) — déjà dans le CSS canonique copié verbatim.
   6. **Section 2 — Choix des frameworks** (`.method`) : intro implicite (purpose de section) puis
      une **ligne par remarque** (`.method__row`) : observation du marché → **pastille framework**
      (`.method__fw`, wash bleu). Frameworks retenus uniquement.
@@ -93,24 +109,24 @@ Chaque diagramme est reconstruit en CSS/HTML (aucune lib), rempli des données d
     { "name": "Recommandation stratégique", "href": "#", "state": "todo" }
   ],
   "glance": [
-    { "label": "Marché (SAM)", "value": "2,2", "unit": "Md$", "note": "..." },
-    { "label": "Croissance", "value": "+11–13", "unit": "%/an", "note": "..." },
+    { "label": "Marché adressable", "value": "2,2", "unit": "milliards $", "note": "..." },
+    { "label": "Croissance", "value": "12", "unit": "% par an", "note": "..." },
     { "label": "Concentration", "value": "~60", "unit": "%", "note": "..." },
     { "label": "Choc ...", "value": "12,4", "unit": "%", "note": "...", "shock": true }
   ],
   "kpis": {
     "definition": "Définition du marché en une phrase.",
     "sub_sectors": [
-      { "name": "...", "size": { "value": "~1,35", "unit": "Md$", "year": 2025, "estimated": true }, "share_pct": { "value": 61, "estimated": true } }
+      { "name": "...", "size": { "value": "~1,35", "unit": "milliard $", "year": 2025, "estimated": true }, "share_pct": { "value": 61, "estimated": true } }
     ],
     "rest_of_market_share_pct": { "value": 9, "estimated": true },
     "sub_sector_method_note": "Comment la ventilation a été estimée (note sous la table des parts).",
-    "global_size": { "value": "~2,2", "unit": "Md$", "year": 2025, "estimated": true, "perimeter_note": "..." },
+    "global_size": { "value": "~2,2", "unit": "milliards $", "year": 2025, "estimated": true, "perimeter_note": "..." },
     "dominant_incumbent": {
       "name": "...", "founded": 1963,
-      "revenue": { "value": 748, "unit": "M$", "period_note": "moyenne FY2024-FY2025", "estimated": false },
+      "revenue": { "value": 748, "unit": "millions $", "period_note": "moyenne FY2024-FY2025", "estimated": false },
       "profit_status": "en perte | rentable | à l'équilibre | information introuvable",
-      "profit_figure": { "value": -62.1, "unit": "M$", "period_note": "...", "estimated": false }
+      "profit_figure": { "value": -62.1, "unit": "millions $", "period_note": "...", "estimated": false }
     },
     "geography": { "type": "mondial | régional | local", "detail": "précision (région, pays)" }
   },

@@ -66,15 +66,18 @@
 
     /* ---- At-a-glance KPI band ---- */
     .glance { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
-    .kpi { background:var(--surface); border:1px solid var(--line); border-radius:var(--r-md); padding:20px 20px 22px; display:flex; flex-direction:column; gap:8px; min-height:150px; }
-    .kpi__label { font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3); }
-    .kpi__value { font-size:clamp(28px,3.2vw,40px); font-weight:800; letter-spacing:-.03em; line-height:1; margin-top:auto; }
-    .kpi__value small { font-size:.5em; font-weight:600; color:inherit; letter-spacing:0; margin-left:.18em; }
-    .kpi__note { font-size:12.5px; color:var(--ink-3); line-height:1.4; }
+    .kpi { position:relative; background:var(--surface); border:1px solid var(--line); border-radius:var(--r-md); padding:20px 20px 18px; display:flex; flex-direction:column; min-height:158px; overflow:hidden; box-shadow:var(--shadow-sm); }
+    .kpi::before { content:""; position:absolute; inset:0 0 auto 0; height:3px; background:var(--brand); }
+    .kpi__label { font-family:var(--mono); font-size:11.5px; font-weight:500; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-2); }
+    .kpi__value { font-size:clamp(28px,3.1vw,40px); font-weight:800; letter-spacing:-.03em; line-height:1.02; margin-top:16px; display:flex; align-items:baseline; gap:.3em; white-space:nowrap; }
+    .kpi__unit { font-size:15px; font-weight:600; color:var(--ink-2); letter-spacing:0; white-space:nowrap; }
+    .kpi__note { margin-top:auto; padding-top:12px; font-size:12.5px; color:var(--ink-3); line-height:1.45; }
     .kpi--shock { background:var(--risk-wash); border-color:var(--risk-line); }
+    .kpi--shock::before { background:var(--risk); }
     .kpi--shock .kpi__label { color:var(--risk-ink); }
     .kpi--shock .kpi__value { color:var(--risk-ink); }
-    .kpi--shock .kpi__note { color:var(--risk-ink); opacity:.8; }
+    .kpi--shock .kpi__unit { color:var(--risk-ink); opacity:.85; }
+    .kpi--shock .kpi__note { color:var(--risk-ink); opacity:.82; }
 
     /* ---- Signal legend (page foot) ---- */
     .legend { display:flex; flex-wrap:wrap; gap:8px 22px; margin-top:22px; font-family:var(--mono); font-size:12px; color:var(--ink-2); }
@@ -105,9 +108,9 @@
 
     /* ---- Market definition ---- */
     .def { border-top:1px solid var(--line); }
-    .def__row { display:grid; grid-template-columns:248px 1fr; gap:28px; padding:22px 4px; border-bottom:1px solid var(--line-2); }
-    .def__key { font-family:var(--mono); font-size:12px; letter-spacing:.07em; text-transform:uppercase; color:var(--ink-3); padding-top:2px; }
-    .def__val { font-size:15.5px; color:var(--ink); }
+    .def__row { padding:20px 4px; border-bottom:1px solid var(--line-2); }
+    .def__key { font-family:var(--mono); font-size:12px; letter-spacing:.07em; text-transform:uppercase; color:var(--ink-3); margin-bottom:9px; }
+    .def__val { font-size:15.5px; color:var(--ink); padding-left:18px; }
     .def__val .big { font-size:19px; font-weight:700; }
     .def__val .muted { color:var(--ink-3); font-size:14px; }
     .def__val ul { margin:0; padding:0; list-style:none; display:grid; gap:9px; }
@@ -406,16 +409,16 @@
         <div class="tss__c tss__som"><span>SOM</span></div>
       </div>
       <div class="tss__rows">
-        <div class="tss__row"><div class="k">TAM</div><div class="v num">~4,5 à 6 Md$ (2025)</div><div class="d">toutes les apps de nutrition et de bien-être alimentaire</div></div>
-        <div class="tss__row"><div class="k">SAM</div><div class="v num">~2,2 Md$ (2025) · +11-13 %/an</div><div class="d">les apps d'assistance à la perte de poids (périmètre du pipeline)</div></div>
-        <div class="tss__row tss__row--som"><div class="k">SOM</div><div class="v num">~20 à 50 M$ à 3-5 ans</div><div class="d">entrant différencié — étalonné sur Cal AI (~30 M$ en 18 mois) et MacroFactor (~24 M$)</div></div>
+        <div class="tss__row"><div class="k">TAM</div><div class="v num">~4,5 à 6 milliards $ (2025)</div><div class="d">toutes les apps de nutrition et de bien-être alimentaire</div></div>
+        <div class="tss__row"><div class="k">SAM</div><div class="v num">~2,2 milliards $ (2025) · +11 à 13 % par an</div><div class="d">les apps d'assistance à la perte de poids (périmètre du pipeline)</div></div>
+        <div class="tss__row tss__row--som"><div class="k">SOM</div><div class="v num">~20 à 50 millions $ à 3-5 ans</div><div class="d">entrant différencié — étalonné sur Cal AI (~30 millions $ en 18 mois) et MacroFactor (~24 millions $)</div></div>
       </div>
     </div>
   </div>
 
   <div data-viz="porter">
     <div class="porter">
-      <div class="force force--top force--high"><span class="lab">Nouveaux entrants</span><div class="meta">Barrières très basses</div><p>Cal AI : 15 M de téléchargements en 18 mois</p></div>
+      <div class="force force--top force--high"><span class="lab">Nouveaux entrants</span><div class="meta">Barrières très basses</div><p>Cal AI : 15 millions de téléchargements en 18 mois</p></div>
       <div class="force force--left"><span class="lab">Fournisseurs</span><h5>FORT</h5><div class="meta">Stores : péage 15-30 %</div><p>+ pharma (Novo, Lilly) pour les acteurs médicalisés</p></div>
       <div class="force force--center"><span class="lab">Rivalité</span><h5>FORTE</h5><p>une dizaine d'acteurs · les 2 leaders ≈ 60 % des revenus</p></div>
       <div class="force force--right"><span class="lab">Clients</span><h5>FORT</h5><div class="meta">Churn structurellement élevé</div><p>Coût de changement quasi nul, comparaison facile</p></div>
@@ -430,8 +433,8 @@
       <div class="link link--3"><h5>Abonné</h5><div class="sub num">2,5 → 23 $/mois</div></div>
     </div>
     <div class="vchain__notes">
-      <div class="n">Rentabilité démontrée aux deux extrêmes : Simple, opérationnellement profitable (~160 M$ d'ARR)</div>
-      <div class="n">Cal AI : ~1,4 M$ de marge brute mensuelle avant son rachat</div>
+      <div class="n">Rentabilité démontrée aux deux extrêmes : Simple, opérationnellement profitable (~160 millions $ d'ARR)</div>
+      <div class="n">Cal AI : ~1,4 million $ de marge brute mensuelle avant son rachat</div>
     </div>
     <div class="movement">
       <div class="h">Le mouvement en cours : capter la marge du médicament</div>
@@ -443,8 +446,8 @@
     <div class="tl">
       <div class="tl__axis"></div>
       <div class="tl__ev tl__ev--up" style="left:13%"><div class="tl__stem"></div><div class="tl__node"></div><div class="tl__lbl"><h6>MyFitnessPal rachète Intent</h6><span>février 2025</span></div></div>
-      <div class="tl__ev tl__ev--down tl__ev--shock" style="left:31%"><div class="tl__stem"></div><div class="tl__node"></div><div class="tl__lbl"><h6>Faillite éclair WeightWatchers</h6><span>1,15 Md$ de dette effacée — mai-juin 2025</span></div></div>
-      <div class="tl__ev tl__ev--up" style="left:52%"><div class="tl__stem"></div><div class="tl__node"></div><div class="tl__lbl"><h6>Series B Simple — 35 M$</h6><span>octobre 2025 (HartBeat Ventures)</span></div></div>
+      <div class="tl__ev tl__ev--down tl__ev--shock" style="left:31%"><div class="tl__stem"></div><div class="tl__node"></div><div class="tl__lbl"><h6>Faillite éclair WeightWatchers</h6><span>1,15 milliard $ de dette effacée — mai-juin 2025</span></div></div>
+      <div class="tl__ev tl__ev--up" style="left:52%"><div class="tl__stem"></div><div class="tl__node"></div><div class="tl__lbl"><h6>Series B Simple — 35 millions $</h6><span>octobre 2025 (HartBeat Ventures)</span></div></div>
       <div class="tl__ev tl__ev--down" style="left:69%"><div class="tl__stem"></div><div class="tl__node"></div><div class="tl__lbl"><h6>MyFitnessPal rachète Cal AI</h6><span>closing décembre 2025</span></div></div>
       <div class="tl__ev tl__ev--up" style="left:88%"><div class="tl__stem"></div><div class="tl__node"></div><div class="tl__lbl"><h6>Noom rachète une pharmacie</h6><span>503A — avril 2026</span></div></div>
     </div>
@@ -530,28 +533,28 @@ const RUN_S2_DATA = {
     { "name": "Recommandation stratégique", "href": "../s4-1_2026-06-12/", "state": "done" }
   ],
   "glance": [
-    { "label": "Marché (SAM)", "value": "2,2", "unit": "Md$", "note": "2025 · périmètre apps perte de poids · TAM 4,5–6 Md$" },
-    { "label": "Croissance", "value": "+11–13", "unit": "%/an", "note": "Revenus in-app · volumes de téléchargement ~stables" },
-    { "label": "Concentration", "value": "~60", "unit": "%", "note": "des revenus captés par les 2 leaders · ~10 acteurs significatifs" },
-    { "label": "Choc GLP-1", "value": "12,4", "unit": "%", "note": "des adultes US en usage perte de poids · ×2 en 18 mois", "shock": true }
+    { "label": "Marché adressable", "value": "2,2", "unit": "milliards $", "note": "2025 · apps de perte de poids · dans un marché nutrition de 4,5–6 milliards $" },
+    { "label": "Croissance", "value": "12", "unit": "% par an", "note": "revenus d'abonnement · téléchargements quasi stables" },
+    { "label": "Concentration", "value": "~60", "unit": "%", "note": "des revenus captés par les 2 leaders · une dizaine d'acteurs" },
+    { "label": "Choc GLP-1", "value": "12,4", "unit": "%", "note": "des adultes américains en usage perte de poids · ×2 en 18 mois", "shock": true }
   ],
   "kpis": {
     "definition": "Applications grand public dont la proposition centrale est l'assistance à la perte de poids — tracking nutritionnel, coaching comportemental, compagnon de traitement — hors télésanté pure et laboratoires pharmaceutiques.",
     "sub_sectors": [
-      { "name": "Plateformes médicalisées (app + téléconsultation + GLP-1)", "size": { "value": "~1,35", "unit": "Md$", "year": 2025, "estimated": true }, "share_pct": { "value": 61, "estimated": true } },
-      { "name": "Tracking calorique et nutritionnel", "size": { "value": "~0,45", "unit": "Md$", "year": 2025, "estimated": true }, "share_pct": { "value": 20, "estimated": true } },
-      { "name": "Coaching comportemental & IA", "size": { "value": "~0,21", "unit": "Md$", "year": 2025, "estimated": true }, "share_pct": { "value": 9, "estimated": true } },
-      { "name": "Compagnons GLP-1 dédiés (suivi de traitement)", "size": { "value": "~0,02", "unit": "Md$", "year": 2025, "estimated": true }, "share_pct": { "value": 1, "estimated": true } }
+      { "name": "Plateformes médicalisées (app + téléconsultation + GLP-1)", "size": { "value": "~1,35", "unit": "milliard $", "year": 2025, "estimated": true }, "share_pct": { "value": 61, "estimated": true } },
+      { "name": "Tracking calorique et nutritionnel", "size": { "value": "~0,45", "unit": "milliard $", "year": 2025, "estimated": true }, "share_pct": { "value": 20, "estimated": true } },
+      { "name": "Coaching comportemental & IA", "size": { "value": "~0,21", "unit": "milliard $", "year": 2025, "estimated": true }, "share_pct": { "value": 9, "estimated": true } },
+      { "name": "Compagnons GLP-1 dédiés (suivi de traitement)", "size": { "value": "~0,02", "unit": "milliard $", "year": 2025, "estimated": true }, "share_pct": { "value": 1, "estimated": true } }
     ],
     "rest_of_market_share_pct": { "value": 9, "estimated": true },
     "sub_sector_method_note": "Ventilation estimée par l'agent à partir des revenus des acteurs du run S1 (aucune donnée analyste segmentaire publique fiable) — parts bouclées à 100 % avec la ligne « reste du marché » (longue traîne : Fastic, Foodvisor, FatSecret, MyNetDiary…).",
-    "global_size": { "value": "~2,2", "unit": "Md$", "year": 2025, "estimated": true, "perimeter_note": "Périmètre du pipeline (apps grand public d'assistance à la perte de poids). Les estimations analystes vont de 1,2 à 5,8 Md$ selon le périmètre retenu (nutrition seule, coaching, exercise+diet). Croissance : ~11-13 %/an." },
+    "global_size": { "value": "~2,2", "unit": "milliards $", "year": 2025, "estimated": true, "perimeter_note": "Périmètre du pipeline (apps grand public d'assistance à la perte de poids). Les estimations analystes vont de 1,2 à 5,8 milliards $ selon le périmètre retenu (nutrition seule, coaching, exercise+diet). Croissance : ~11 à 13 % par an." },
     "dominant_incumbent": {
       "name": "WeightWatchers (WW International)",
       "founded": 1963,
-      "revenue": { "value": 748, "unit": "M$", "period_note": "moyenne FY2024 (786 M$) et FY2025 (710,6 M$) — chiffres officiels", "estimated": false },
+      "revenue": { "value": 748, "unit": "millions $", "period_note": "moyenne FY2024 (786 millions $) et FY2025 (710,6 millions $) — chiffres officiels", "estimated": false },
       "profit_status": "en perte",
-      "profit_figure": { "value": -62.1, "unit": "M$", "period_note": "perte nette FY2025 (période post-restructuration) ; FY2024 : −345,7 M$, incluant des dépréciations non-cash", "estimated": false }
+      "profit_figure": { "value": -62.1, "unit": "millions $", "period_note": "perte nette FY2025 (période post-restructuration) ; FY2024 : −345,7 millions $, incluant des dépréciations non-cash", "estimated": false }
     },
     "geography": { "type": "mondial", "detail": "Dominante nord-américaine et européenne — acteurs globaux, dynamique GLP-1 tirée par les États-Unis ; leaders européens : Yazio (Allemagne), Lifesum (Suède), Simple (Londres) ; acteur médicalisé britannique notable hors données chiffrées : Second Nature (NHS)." }
   },
@@ -562,7 +565,7 @@ const RUN_S2_DATA = {
       { "observation": "Choc exogène majeur en cours — les médicaments GLP-1", "framework": "PESTEL" },
       { "observation": "Deal flow 2024-2026 exceptionnellement dense (faillite du leader, deux rachats MyFitnessPal, Series B Simple, pharmacie Noom)", "framework": "Vitalité (deal flow)" },
       { "observation": "Structure de pouvoir singulière — stores incontournables, pharma devenant fournisseur de la proposition de valeur", "framework": "Porter — 5 forces" },
-      { "observation": "Tailles de marché à périmètres analystes divergents (1,2-5,8 Md$)", "framework": "TAM / SAM / SOM" },
+      { "observation": "Tailles de marché à périmètres analystes divergents (1,2 à 5,8 milliards $)", "framework": "TAM / SAM / SOM" },
       { "observation": "Données segmentaires et de perception minces", "framework": "9-box & carte perceptuelle (qualitatif)" }
     ]
   },
@@ -575,7 +578,7 @@ const RUN_S2_DATA = {
       "doc_anchor": "tam-sam-som",
       "badge": null,
       "objective": "« Le gâteau vaut-il l'effort ? Marché en expansion ou en déclin ? »",
-      "analysis": "Le TAM — l'ensemble des apps de nutrition et de bien-être alimentaire — pèse ~4,5 à 6 Md$ (2025) selon les périmètres analystes les plus larges. Le SAM — les apps dont la proposition centrale est la perte de poids, périmètre de ce pipeline — est estimé à ~2,2 Md$ (2025), en croissance de ~11-13 %/an. Le SOM d'un entrant différencié s'étalonne sur les trajectoires récentes : Cal AI a atteint ~30 M$ de revenus en 18 mois sur la niche du photo-logging, MacroFactor ~24 M$ sur le macro-tracking scientifique — soit ~1 à 2 % du SAM à horizon 3-5 ans pour une proposition réellement différenciée. Stade de maturité : recomposition — la valeur croît (+13 % de revenus in-app en 2025) mais les volumes stagnent (+0,8 % de téléchargements) : on ne gagne plus en acquisition brute, on gagne en valeur captée par utilisateur.",
+      "analysis": "Le TAM (<i>Total Addressable Market</i>, le marché total) — l'ensemble des apps de nutrition et de bien-être alimentaire — pèse ~4,5 à 6 milliards $ (2025) selon les périmètres analystes les plus larges. Le SAM (<i>Serviceable Addressable Market</i>, le marché adressable) — les apps dont la proposition centrale est la perte de poids, périmètre de ce pipeline — est estimé à ~2,2 milliards $ (2025), en croissance de ~11 à 13 % par an. Le SOM (<i>Serviceable Obtainable Market</i>, le marché atteignable) d'un entrant différencié s'étalonne sur les trajectoires récentes : Cal AI a atteint ~30 millions $ de revenus en 18 mois sur la niche du photo-logging, MacroFactor ~24 millions $ sur le macro-tracking scientifique — soit ~1 à 2 % du SAM à horizon 3-5 ans pour une proposition réellement différenciée. Stade de maturité : recomposition — la valeur croît (+13 % de revenus in-app en 2025) mais les volumes stagnent (+0,8 % de téléchargements) : on ne gagne plus en acquisition brute, on gagne en valeur captée par utilisateur.",
       "caption": "Dimensionnement du marché — toutes valeurs estimées (~), périmètres analystes divergents."
     },
     {
@@ -586,7 +589,7 @@ const RUN_S2_DATA = {
       "doc_anchor": "porter",
       "badge": { "type": "shock", "label": "Substituts = force décisive" },
       "objective": "« Ce marché est-il structurellement rentable ? Qui a le pouvoir ? »",
-      "analysis": "Un marché structurellement sous pression. Rivalité : forte — une dizaine d'acteurs significatifs, les deux leaders concentrant ~60 % des revenus. Nouveaux entrants : barrières produit très basses (Cal AI, créée par deux lycéens, a atteint 15 M de téléchargements en moins de deux ans) mais coût d'acquisition élevé sur un marché saturé en volume. Substituts : la force décisive — les GLP-1 sont un substitut pharmacologique au « régime comportemental » lui-même (12 % des adultes américains en prennent), qui a mis le leader historique en faillite. Fournisseurs : Apple et Google prélèvent 15-30 % de péage sur chaque abonnement ; pour les acteurs médicalisés, la pharma (Novo Nordisk, Eli Lilly) devient un second fournisseur incontournable. Clients : pouvoir élevé — coûts de changement quasi nuls, churn structurellement fort, comparaison facile. Conclusion : la rentabilité durable exige une position défendable — intégration médicale (Noom, WeightWatchers) ou différenciation IA à acquisition organique (viralité de Cal AI).",
+      "analysis": "Un marché structurellement sous pression. Rivalité : forte — une dizaine d'acteurs significatifs, les deux leaders concentrant ~60 % des revenus. Nouveaux entrants : barrières produit très basses (Cal AI, créée par deux lycéens, a atteint 15 millions de téléchargements en moins de deux ans) mais coût d'acquisition élevé sur un marché saturé en volume. Substituts : la force décisive — les GLP-1 sont un substitut pharmacologique au « régime comportemental » lui-même (12 % des adultes américains en prennent), qui a mis le leader historique en faillite. Fournisseurs : Apple et Google prélèvent 15-30 % de péage sur chaque abonnement ; pour les acteurs médicalisés, la pharma (Novo Nordisk, Eli Lilly) devient un second fournisseur incontournable. Clients : pouvoir élevé — coûts de changement quasi nuls, churn structurellement fort, comparaison facile. Conclusion : la rentabilité durable exige une position défendable — intégration médicale (Noom, WeightWatchers) ou différenciation IA à acquisition organique (viralité de Cal AI).",
       "caption": "Les cinq forces, annotées avec les faits du run S1 — le substitut pharmacologique est la force décisive."
     },
     {
@@ -597,7 +600,7 @@ const RUN_S2_DATA = {
       "doc_anchor": "value-chain",
       "badge": null,
       "objective": "« Où se capture la marge dans la filière ? »",
-      "analysis": "La chaîne est courte — développement → stores → abonné — et la lecture pertinente est unitaire. Côté captation : les stores prélèvent 15-30 % de chaque abonnement, premier « maillon » de marge cédé par tout l'écosystème. Côté unit economics : les prix s'étagent de 2,5 $/mois (Cal AI) à ~23 $/mois (WeightWatchers), et la rentabilité est démontrée aux deux extrêmes — Simple est opérationnellement profitable (~160 M$ d'ARR), Cal AI dégageait ~1,4 M$ de marge brute mensuelle avant son rachat. Le mouvement structurel : les plateformes médicalisées déplacent la capture de marge vers le médicament — le rachat d'une pharmacie 503A par Noom (avril 2026) est une intégration verticale assumée pour capter la marge pharmaceutique en plus de l'abonnement.",
+      "analysis": "La chaîne est courte — développement → stores → abonné — et la lecture pertinente est unitaire. Côté captation : les stores prélèvent 15-30 % de chaque abonnement, premier « maillon » de marge cédé par tout l'écosystème. Côté unit economics : les prix s'étagent de 2,5 $/mois (Cal AI) à ~23 $/mois (WeightWatchers), et la rentabilité est démontrée aux deux extrêmes — Simple est opérationnellement profitable (~160 millions $ d'ARR), Cal AI dégageait ~1,4 million $ de marge brute mensuelle avant son rachat. Le mouvement structurel : les plateformes médicalisées déplacent la capture de marge vers le médicament — le rachat d'une pharmacie 503A par Noom (avril 2026) est une intégration verticale assumée pour capter la marge pharmaceutique en plus de l'abonnement.",
       "caption": "Une chaîne à trois maillons — et la marge qui migre vers le médicament."
     },
     {
@@ -608,7 +611,7 @@ const RUN_S2_DATA = {
       "doc_anchor": "vitalite",
       "badge": null,
       "objective": "« L'argent intelligent y croit-il ? À quelle vitesse ça se disrupte ? »",
-      "analysis": "L'argent intelligent est massivement actif — signal d'un marché en transformation rapide, pas d'un marché qui dort. En 24 mois : la faillite-éclair et restructuration du leader historique (1,15 Md$ de dette effacée, mai-juin 2025) ; deux acquisitions par MyFitnessPal (Intent en février 2025, Cal AI closée en décembre 2025) ; une Series B de 35 M$ pour Simple menée par HartBeat Ventures (octobre 2025) ; l'acquisition d'une pharmacie par Noom (avril 2026) ; et une vague de nouveaux entrants sur la niche du compagnon GLP-1 (Shotsy, MeAgain, Pep). La direction des flux est sans ambiguïté : l'IA à faible friction et l'intégration médicale. Quand le n°1 d'audience rachète l'innovateur IA du moment plutôt que de le répliquer, cela dit l'essentiel sur l'endroit où se crée la valeur.",
+      "analysis": "L'argent intelligent est massivement actif — signal d'un marché en transformation rapide, pas d'un marché qui dort. En 24 mois : la faillite-éclair et restructuration du leader historique (1,15 milliard $ de dette effacée, mai-juin 2025) ; deux acquisitions par MyFitnessPal (Intent en février 2025, Cal AI closée en décembre 2025) ; une Series B de 35 millions $ pour Simple menée par HartBeat Ventures (octobre 2025) ; l'acquisition d'une pharmacie par Noom (avril 2026) ; et une vague de nouveaux entrants sur la niche du compagnon GLP-1 (Shotsy, MeAgain, Pep). La direction des flux est sans ambiguïté : l'IA à faible friction et l'intégration médicale. Quand le n°1 d'audience rachète l'innovateur IA du moment plutôt que de le répliquer, cela dit l'essentiel sur l'endroit où se crée la valeur.",
       "caption": "24 mois de deal flow — l'argent converge vers l'IA à faible friction et l'intégration médicale."
     },
     {
@@ -641,7 +644,7 @@ const RUN_S2_DATA = {
       "doc_anchor": "ge-mckinsey",
       "badge": { "type": "qual", "label": "Lecture qualitative" },
       "objective": "« Quels segments méritent l'investissement ? »",
-      "analysis": "Arbitrage qualitatif des quatre sous-secteurs — les données segmentaires sont trop minces pour des scores composites chiffrés. Compagnons GLP-1 dédiés : attractivité élevée (croissance du sous-jacent, segment naissant) pour une force compétitive requise faible — la case « investir » d'un entrant agile. Coaching comportemental & IA : attractif et en croissance, mais bataille produit intense — sélectivité, la différenciation IA est la condition d'entrée. Plateformes médicalisées : le plus gros bassin de valeur, mais force requise élevée (régulation, capital, accès pharma) — sélectivité réservée aux acteurs capitalisés. Tracking calorique pur : attractivité déclinante (commoditisé par le photo-logging IA) — récolter ou se différencier, ne pas y entrer frontalement.",
+      "analysis": "Arbitrage qualitatif des quatre sous-secteurs — les données segmentaires sont trop minces pour des scores composites chiffrés. Compagnons GLP-1 dédiés : attractivité élevée (croissance du sous-jacent, segment naissant) pour une force compétitive requise faible — la case « investir » d'un entrant agile. Coaching comportemental &amp; IA : attractif et en croissance, mais bataille produit intense — sélectivité, la différenciation IA est la condition d'entrée. Plateformes médicalisées : le plus gros bassin de valeur, mais force requise élevée (régulation, capital, accès pharma) — sélectivité réservée aux acteurs capitalisés. Tracking calorique pur : attractivité déclinante (commoditisé par le photo-logging IA) — récolter ou se différencier, ne pas y entrer frontalement.",
       "caption": "Arbitrage qualitatif des quatre sous-secteurs — scores composites non chiffrés (données segmentaires minces)."
     }
   ],
@@ -701,13 +704,14 @@ const RUN_S2_DATA = {
 
   /* ---------- AT A GLANCE ---------- */
   var glance = document.getElementById("glance-mount");
+  function nbsp(s) { return String(s).replace(/ ([$%])/g, " $1"); }  // colle l'unité monétaire/% au nombre
   D.glance.forEach(function (g) {
     var val = el("span", { class: "kpi__value num" }, g.value);
-    if (g.unit) val.appendChild(el("small", null, g.unit));
+    if (g.unit) val.appendChild(el("span", { class: "kpi__unit" }, nbsp(g.unit)));
     glance.appendChild(el("div", { class: "kpi" + (g.shock ? " kpi--shock" : "") }, [
       el("span", { class: "kpi__label" }, g.label),
       val,
-      el("span", { class: "kpi__note" }, g.note)
+      el("span", { class: "kpi__note" }, nbsp(g.note))
     ]));
   });
 
@@ -802,7 +806,7 @@ const RUN_S2_DATA = {
     var head = el("div", { class: "fwc__head" }, bar);
     if (f.objective) head.appendChild(el("p", { class: "fwc__q serif-q" }, f.objective));
 
-    var art = el("article", { class: "fwc", id: "fw-" + f.id }, [head, el("div", { class: "fwc__body" }, el("p", null, f.analysis))]);
+    var art = el("article", { class: "fwc", id: "fw-" + f.id }, [head, el("div", { class: "fwc__body" }, el("p", { html: f.analysis }))]);
 
     var tpl = document.querySelector('#viz-templates [data-viz="' + f.id + '"]');
     if (tpl) {
