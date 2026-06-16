@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "skill": "strategy-recommendation",
+  "market": { "slug": "apps-perte-de-poids", "label": "Applications mobiles d'assistance à la perte de poids", "language": "fr" },
+  "run": { "number": 2, "date": "2026-06-16" },
+  "source_runs": {
+    "s3": { "number": 2, "date": "2026-06-16", "path": "../s3-2_2026-06-16/", "age_days": 0, "freshness_warning": false },
+    "s1": { "number": 2, "date": "2026-06-11", "path": "../s1-2_2026-06-11/", "age_days": 5, "freshness_warning": false },
+    "s2": { "number": 1, "date": "2026-06-11", "path": "../s2-1_2026-06-11/", "age_days": 5, "freshness_warning": false }
+  },
+  "project": { "id": "what_is_wrong_with_me", "name": "What is wrong with me", "source_url": "https://w.shoette.com/" },
+  "verdict": {
+    "decision": "GO",
+    "question": "Creuser « What is wrong with me », version programme de recherche ?",
+    "answer": "Oui — sur la thèse de la donnée, pas sur l'abonné à 200 €.",
+    "rationale": "L'actif réel est rare et déjà convoité : une donnée consentie et anonymisée sur les non-répondeurs Mounjaro 15 mg, que pharma, télésanté et plateformes RWE cherchent activement. Le modèle n-of-1 agrégé est défendable, l'app gratuite encaissée hors-store échappe au péage Apple/Google.",
+    "condition": "Les 200 €/mois facturés aux participants entrent en tension directe avec la taille de cohorte dont dépend la valeur (crédibilité = 50-100+ completers/hypothèse, S3-2). Le GO suppose de financer la recherche par le B2B (pharma/payeurs/RWE), pas par le participant, et de poser le cadre éthique des tests interventionnels."
+  },
+  "declared_inputs": {
+    "mix": {
+      "produit": "Instrument d'enquête (journal IA + moteur de corrélations), sans tracking ; Programme 1 = non-répondeurs Mounjaro 15 mg.",
+      "prix": "App 0 €/an + programme de recherche à 200 €/mois (versé à une société de recherche).",
+      "promotion": "Accès sur invitation uniquement.",
+      "place": "App gratuite sur Apple Store + Google Play ; programme facturé hors application."
+    },
+    "constraints": null
+  },
+  "market_summary": {
+    "as_of": "2026-06-11",
+    "data_age_note": "Synthèse pure des runs S1-2 et S2-1 du 11 juin 2026 (5 jours) et du positionnement S3-2 du 16 juin — aucun rafraîchissement web des données de marché.",
+    "points": [
+      "Marché ~2,2 Md$ (2025), ~11-13 %/an — en recomposition : valeur +13 %, volumes +0,8 %.",
+      "61 % de la valeur captée par les plateformes médicalisées ; compagnons GLP-1 : catégorie naissante (~1 %), sans leader.",
+      "Choc GLP-1 : 12,4 % des adultes US — substitut au régime comportemental, faillite-éclair du leader historique (mai 2025).",
+      "Top 2 (WW ~31 %, Noom ~29 %) = ~60 % des revenus ; churn élevé ; péage stores 15-30 %.",
+      "Deal flow dense : faillite WW, rachats Intent + Cal AI par MyFitnessPal, Series B Simple 35 M$, pharmacie Noom — direction : IA à faible friction + intégration médicale.",
+      "Trajectoire de référence d'un entrant différencié : ~1-2 % du marché en 3-5 ans (Cal AI ~30 M$ en 18 mois, MacroFactor ~24 M$)."
+    ]
+  },
+  "positioning_summary": {
+    "points": [
+      "Plus une app de perte de poids mais un dispositif de recherche : app gratuite (0 €) sur invitation ; offre payante = programme de recherche à 200 €/mois ; actif réel = la donnée consentie et anonymisée sur la non-réponse.",
+      "Intégration médicale ~4/10 (relevée depuis le S3-1 grâce au programme GLP-1 + société de recherche) — toujours seul dans le couloir vide 3-8.",
+      "Modèle inversé, unique sur ce marché : produit d'appel gratuit, recherche payante, cohorte fermée et resserrée (non-répondeurs Mounjaro 15 mg).",
+      "Contrainte structurante : la crédibilité médicale exige 50-100+ completers par hypothèse (S3-2) — le tarif participant joue contre la taille de cohorte."
+    ]
+  },
+  "swot": {
+    "strengths": [
+      { "point": "Actif rare : donnée consentie et anonymisée sur la non-réponse GLP-1, recherchée par pharma, payeurs et plateformes RWE", "basis": "S3-2 · cf. §5" },
+      { "point": "Modèle n-of-1 agrégé, reconnu en médecine (AHRQ) — crédible à petit n s'il est rigoureux", "basis": "S3-2" },
+      { "point": "App gratuite, encaissement hors-store → échappe au péage Apple/Google (15-30 %)", "basis": "S2 · déclaratif" },
+      { "point": "IA multimodale (trio de tête ~9/10) + privacy UE + voix du fondateur-patient", "basis": "S3 · déclaratif" }
+    ],
+    "weaknesses": [
+      { "point": "200 €/mois facturés aux participants : l'accès le plus cher du marché, à contre-courant de la recherche (on subventionne d'ordinaire les sujets)", "basis": "S3-2 · déclaratif" },
+      { "point": "Tension prix × cohorte : la crédibilité exige 50-100+ completers/hypothèse (S3-2), or le tarif étrangle le recrutement", "basis": "S3-2" },
+      { "point": "Tout déclaratif, beta : modèle de revenu et promesse produit non prouvés", "basis": "S3" },
+      { "point": "« Not a medical device » mais tests interventionnels (« lactose à 18 h ») → zone grise éthique/réglementaire", "basis": "S3-2 · raisonnement" }
+    ],
+    "opportunities": [
+      { "point": "Marché de la donnée de vie réelle (RWE) en demande : la non-réponse GLP-1 est déjà activement commercialisée", "basis": "§5 · web" },
+      { "point": "Vague GLP-1 (12,4 % des adultes US) → population massive de non-répondeurs, angle mort sans leader", "basis": "S2 · S3" },
+      { "point": "La pharma cherche à réduire le churn médicamenteux de la non-réponse (NNPP, LillyDirect)", "basis": "§5" },
+      { "point": "Deal flow dense — le marché rachète l'innovation plutôt que la répliquer (précédent Cal AI)", "basis": "S2" }
+    ],
+    "threats": [
+      { "point": "Modèle « payer pour participer » non prouvé à l'échelle : risque de ne jamais atteindre le n crédible", "basis": "S3-2 · raisonnement" },
+      { "point": "Recherche sur sujets humains = consentement éclairé + comité d'éthique/CPP dès que les tests sont interventionnels", "basis": "raisonnement" },
+      { "point": "WW Clinic / Noom Med peuvent ajouter un module « pourquoi ça ne marche pas »", "basis": "S1" },
+      { "point": "Les plateformes RWE (Truveta, HealthVerity) couvrent déjà des millions de patients GLP-1 — devancement possible sur la donnée", "basis": "§5 · web" }
+    ]
+  },
+  "marketing_mix": {
+    "produit": {
+      "declared": "Instrument d'enquête (journal IA + moteur de corrélations), sans tracking ; Programme 1 = non-répondeurs Mounjaro 15 mg.",
+      "verdict": "Le bon choix : un instrument d'enquête, pas une app de tracking, est la seule position défendable. Mais le vrai produit n'est plus l'app — c'est la donnée consentie et anonymisée sur la non-réponse.",
+      "recommendation": "Deux chantiers : (1) architecture de consentement et d'agrégation + maîtrise de l'IP/data face à la société de recherche tierce (ce qui se vend en B2B) ; (2) cadre éthique des tests (« lactose à 18 h » est une intervention) : pré-enregistrement, protocole, comité — ce qui rend la donnée crédible donc vendable. Conserver l'export « dossier d'enquête ».",
+      "supporting_data": ["S3 : mono-fonction × IA ~9 — la position défendable est l'investigation", "S2 GE/McKinsey : tracking calorique commoditisé ; S2 Porter : défendabilité = intégration médicale OU IA organique", "S3-2 : l'actif est la donnée de non-réponse, pas l'app"]
+    },
+    "prix": {
+      "declared": "App 0 €/an + programme de recherche à 200 €/mois (versé à une société de recherche).",
+      "verdict": "Le bon prix, adressé à la mauvaise partie. 200 €/mois (~215 $) est l'accès le plus cher du marché et demande à la population la plus rare de financer la recherche dont elle est le sujet — or la valeur dépend de la taille de cohorte (S3-2), que ce tarif rationne. 50-100 participants = ~10-20 k€/mois : un pilote boutique, pas une entreprise scalable.",
+      "recommendation": "Découpler le revenu de la cohorte : garder l'app gratuite ; financer la recherche par le B2B (pharma/payeurs/plateformes RWE, cf. §5) ; tarif participant au plus un cercle concierge restreint, pas le moteur de revenu.",
+      "supporting_data": ["Déclaré Elena : app 0 € + programme 200 €/mois", "S1 : abonnement app du marché 2,5-23 $/mois ; programmes GLP-1 médicamenteux 119-449 $/mois (hors axe)", "S3-2 : crédibilité = 50-100+ completers par hypothèse", "§5 : pharma/payeurs/RWE paient déjà pour la donnée de non-réponse"]
+    },
+    "promotion": {
+      "declared": "Accès sur invitation uniquement.",
+      "verdict": "Cohérent avec une cohorte de recherche (curation > volume) mais plafonne le recrutement, déjà le point faible.",
+      "recommendation": "Remplir l'entonnoir là où sont les non-répondeurs Mounjaro : réseaux de prescripteurs, communautés de patients GLP-1, partenaires télésanté (§5) — pas la pub grand public. Trois leviers gratuits : enquêtes anonymisées et consenties comme contenu ; voix du fondateur-patient (si Elena s'y sent à l'aise) ; privacy UE en étendard.",
+      "supporting_data": ["Déclaré Elena : sur invitation", "S2 : CAC élevé, volumes saturés (+0,8 %) → l'organique est la voie démontrée (Cal AI)", "S2 PESTEL : destigmatisation ; S3 : cible précise, à douleur forte"]
+    },
+    "place": {
+      "declared": "App gratuite sur Apple Store + Google Play ; programme facturé hors application.",
+      "verdict": "Structurellement malin : en encaissant les 200 €/mois hors application (via la société de recherche), W échappe au péage Apple/Google (15-30 %) que paie tout le panel.",
+      "recommendation": "Garder l'app gratuite sur les stores pour la portée et la confiance, la facturation hors-store pour la marge ; la vraie « place » est le canal B2B de la donnée (plateformes RWE, market-access pharma, §5), à préparer dès la beta.",
+      "supporting_data": ["S2 value chain : péage stores 15-30 %", "Déclaré Elena : app gratuite sur stores + programme hors app", "§5 : canaux B2B / RWE pour la donnée"]
+    }
+  },
+  "other_recommendations": [
+    { "theme": "prix/financement", "recommendation": "Régler la tension prix × cohorte : financer la recherche par le B2B (pharma/payeurs/RWE), pas par le participant ; le 200 €/mois au mieux en cercle concierge restreint.", "rationale": "C'est la seule façon d'atteindre le n crédible (50-100+ completers/hypothèse, S3-2) sans rationner la population la plus précieuse." },
+    { "theme": "éthique/méthode", "recommendation": "Poser le cadre de la recherche interventionnelle (consentement éclairé, comité d'éthique/CPP, pré-enregistrement, correction de la multiplicité).", "rationale": "Dès que W demande un test à la cohorte (« lactose à 18 h »), c'est de la recherche ; cette rigueur est ce qui rend la donnée crédible et vendable, pas un coût." },
+    { "theme": "preuve", "recommendation": "Viser le n crédible sur UNE hypothèse, puis publier.", "rationale": "La preuve est l'actif et le passeport d'entrée chez les partenaires ; une publication vaut plus que dix corrélations non répliquées." },
+    { "theme": "produit/données", "recommendation": "Faire de la donnée consentie/anonymisée le cœur défendable ; maîtriser l'IP/data face à la société de recherche tierce.", "rationale": "Actif que la copie d'interface ne réplique pas — précisément ce que les cibles de la section 5 achètent." },
+    { "theme": "défense", "recommendation": "Anticiper réplication (WW/Noom) et devancement RWE (Truveta/HealthVerity) : vitesse, spécialisation, adossement précoce.", "rationale": "Les plateformes RWE ont le volume mais pas le « pourquoi » consenti et phénotypé ; la fenêtre est courte." }
+  ],
+  "partnership_targets": [
+    { "name": "Eli Lilly", "category": "pharma GLP-1 (fabricant Mounjaro)", "deal_type": "partenariat / intégration", "logic": "Lilly fabrique le Mounjaro dont le Programme 1 étudie les non-répondeurs à 15 mg — leur non-réponse est SON problème (churn). LillyDirect intègre des tiers plutôt que d'acquérir.", "signals": "LillyDirect (2024-01-04) ; Omada intégré à Employer Connect (2026-05).", "source_ids": [9, 17] },
+    { "name": "Novo Nordisk", "category": "pharma GLP-1", "deal_type": "partenariat d'envergure", "logic": "La NNPP cherche des apps améliorant les outcomes GLP-1 ; 25 % de non-répondeurs = churn que W explique et peut réduire.", "signals": "NNPP (2025-06-18) ; accord Hims & Hers (2026-03-09).", "source_ids": [7, 8] },
+    { "name": "HealthVerity", "category": "plateforme de données de vie réelle (RWE)", "deal_type": "fournisseur / rachat de données", "logic": "Acheteur naturel de la thèse données : vend déjà à la pharma un dataset GLP-1 (19,1 M de patients) et reconnaît que les claims seuls n'expliquent pas la non-réponse — le pool consenti et phénotypé de W comble ce manque.", "signals": "Marketplace de données GLP-1 active (blog 2025-10-09).", "source_ids": [13] },
+    { "name": "Truveta", "category": "plateforme RWE (EHR)", "deal_type": "partenariat data / co-recherche", "logic": "Plateforme EHR (120 M+ patients) qui publie déjà sur la discontinuation GLP-1 ; la donnée comportementale/biologique consentie de W stratifie le « pourquoi » que l'EHR seul ne voit pas.", "signals": "Étude discontinuation GLP-1 (125 474 patients, JAMA Network Open, 2025-01-31).", "source_ids": [14] },
+    { "name": "Datavant + Aetion", "category": "agrégateur RWE", "deal_type": "partenariat data", "logic": "Agrégateur RWE end-to-end (fusion close juil. 2025) reliant claims/EHR/wearables par tokenisation privacy-preserving — canal de mise en réseau et de monétisation de la donnée de W.", "signals": "Datavant acquiert Aetion (2025-05-15).", "source_ids": [15] },
+    { "name": "Oura / Whoop", "category": "wearable", "deal_type": "acquisition / partenariat data", "logic": "Les rings captent les signaux, W les fait parler ; complémentarité maximale mais menace en germe s'ils avancent seuls — approcher tôt (API d'abord).", "signals": "Oura GLP-1 Insights Ring 5 (2026-05-29) ; Whoop labs avant IPO (2025-09).", "source_ids": [10] },
+    { "name": "Ro", "category": "télésanté obésité", "deal_type": "partenariat clinique", "logic": "Ro valorise sa donnée patients comme actif de recherche ; W détecte et documente les non-répondeurs → Ro ajuste le protocole ; l'export « dossier d'enquête » est le véhicule.", "signals": "Collaboration Amgen, 8 abstracts ObesityWeek 2025 (2025-10).", "source_ids": [11] },
+    { "name": "WeightWatchers / Noom", "category": "consolidateurs du panel", "deal_type": "rachat (brique produit)", "logic": "Consolidateurs en quête d'intégration médicale ; une brique « investigation de la non-réponse » s'insère dans leurs offres ; précédent : MyFitnessPal a racheté Cal AI plutôt que répliquer.", "signals": "Noom : pharmacie 503A (2026-04-01), SmartRx ; WW se reconstruit en acteur médical.", "source_ids": [12] }
+  ],
+  "sources": [
+    { "id": 1, "title": "Run S3-2 du 2026-06-16 — positionnement actualisé + analyse de crédibilité médicale (taille d'échantillon)", "publisher": "market.shoette.com", "url": "../s3-2_2026-06-16/", "accessed": "2026-06-16", "from_source_run": true },
+    { "id": 2, "title": "Run S1-2 du 2026-06-11", "publisher": "market.shoette.com", "url": "../s1-2_2026-06-11/", "accessed": "2026-06-16", "from_source_run": true },
+    { "id": 3, "title": "Run S2-1 du 2026-06-11", "publisher": "market.shoette.com", "url": "../s2-1_2026-06-11/", "accessed": "2026-06-16", "from_source_run": true },
+    { "id": 4, "title": "Cadrage d'Elena — modèle économique déclaré (app gratuite + programme 200 €/mois), cible Mounjaro 15 mg", "accessed": "2026-06-16", "declared": true },
+    { "id": 5, "title": "Scientific American — Why Ozempic and Wegovy don't cause weight loss for everyone", "url": "https://www.scientificamerican.com/article/why-ozempic-and-wegovy-dont-cause-weight-loss-for-everyone/", "accessed": "2026-06-16", "from_source_run": false },
+    { "id": 6, "title": "Expert Opinion on Pharmacotherapy (Taylor & Francis, 2025) — prédicteurs de réponse aux GLP-1RA", "url": "https://www.tandfonline.com/doi/full/10.1080/14656566.2025.2517802", "accessed": "2026-06-16", "from_source_run": false },
+    { "id": 7, "title": "Novo Nordisk Partner Platform — pharmaceutical-technology.com (2025-06-18)", "url": "https://www.pharmaceutical-technology.com/news/novo-nordisk-digital-health-partners-improve-glp1ra/", "accessed": "2026-06-16", "from_source_run": false },
+    { "id": 8, "title": "Réseau Novo : Hims & Hers (statnews.com, 2026-03-09)", "url": "https://www.statnews.com/2026/03/09/novo-nordisk-wegovy-hims-hers-deal/", "accessed": "2026-06-16", "from_source_run": false },
+    { "id": 9, "title": "Lancement LillyDirect — prnewswire.com (2024-01-04)", "url": "https://www.prnewswire.com/news-releases/lilly-launches-end-to-end-digital-healthcare-experience-through-lillydirect-302025738.html", "accessed": "2026-06-16", "from_source_run": false },
+    { "id": 10, "title": "Oura GLP-1 Insights Ring 5 (hitconsultant.net, 2026-05-29) ; Whoop Advanced Labs (whoop.com, 2025-09)", "url": "https://hitconsultant.net/2026/05/29/oura-ring-5-launches-clinical-health-radar/", "accessed": "2026-06-16", "from_source_run": false },
+    { "id": 11, "title": "Ro × Amgen, ObesityWeek 2025 — ro.co/press (2025-10)", "url": "https://ro.co/press/obesity-week-2025/", "accessed": "2026-06-16", "from_source_run": false },
+    { "id": 12, "title": "Noom pharmacie 503A et SmartRx — globenewswire.com (2026-04-01)", "url": "https://www.globenewswire.com/news-release/2026/04/01/3266689/0/en/Noom-Acquires-Licensed-503A-Pharmacy-Accelerating-the-Next-Era-of-Preventive-Care-and-Enabling-Nooms-Expansion-Beyond-Weight-Health.html", "accessed": "2026-06-16", "from_source_run": false },
+    { "id": 13, "title": "HealthVerity — marketplace de données de vie réelle GLP-1 (19,1 M de patients) — blog.healthverity.com (2025-10-09)", "url": "https://blog.healthverity.com/glp-1-real-world-data-for-obesity-a-new-standard-for-metabolic-care", "accessed": "2026-06-16", "from_source_run": false },
+    { "id": 14, "title": "Truveta — étude RWE sur la discontinuation des GLP-1 (125 474 patients, JAMA Network Open) — globenewswire.com (2025-01-31)", "url": "https://www.globenewswire.com/news-release/2025/01/31/3018906/0/en/New-Truveta-study-highlights-patterns-of-discontinuation-and-reinitiation-of-GLP-1-RA-medications.html", "accessed": "2026-06-16", "from_source_run": false },
+    { "id": 15, "title": "Datavant acquiert la plateforme RWE Aetion — datavant.com (2025-05-15)", "url": "https://www.datavant.com/press-release/datavant-to-acquire-leading-real-world-evidence-rwe-platform-aetion", "accessed": "2026-06-16", "from_source_run": false },
+    { "id": 16, "title": "Komodo Health — analyse GLP-1 à grande échelle — komodohealth.com (2026-02-09)", "url": "https://www.komodohealth.com/perspectives/fda-glp-1-approval-may-reduce-reliance-on-cpap/", "accessed": "2026-06-16", "from_source_run": false },
+    { "id": 17, "title": "Omada GLP-1 Flex Care (employeurs) — investors.omadahealth.com (2026-05)", "url": "https://investors.omadahealth.com/", "accessed": "2026-06-16", "from_source_run": false },
+    { "id": 18, "title": "IQVIA Vigilance Detect for GLP-1 Therapies (pharmacovigilance) — iqvia.com (2025-08)", "url": "https://www.iqvia.com/library/fact-sheets/iqvia-vigilance-detect-for-glp-1-therapies", "accessed": "2026-06-16", "from_source_run": false },
+    { "id": 19, "title": "Statut des apps d'investigation comparables (Guava Health, Bearable, Visible) — crunchbase.com", "url": "https://www.crunchbase.com/organization/guava-health", "accessed": "2026-06-16", "from_source_run": false }
+  ],
+  "last_updated": "2026-06-16"
+}
