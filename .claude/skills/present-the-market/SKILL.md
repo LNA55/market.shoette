@@ -56,7 +56,7 @@ Three tiers: **activé** / **dégradé en qualitatif** (relevant but data too th
 
 **SWOT : hors périmètre par décision (2026-06-11)** — il exige un point de vue (« mon produit ») et appartient aux Skills 3/4. Ne jamais l'inclure ; pas besoin de justifier son absence.
 
-> Cette table de décision est aussi publiée sur la page de documentation (`/focus-step-2/#regles-selection`) — **garder les deux synchronisées** quand les règles évoluent.
+> Cette table de décision est aussi publiée sur la page de documentation (`/how-it-works/focus-step-2/#regles-selection`) — **garder les deux synchronisées** quand les règles évoluent.
 
 Then write the report's section 2 — titled **« Choix des frameworks »** : a short purpose line, then a **mapping, one row per remark** (`methodology.rows`, never a dense paragraph) — each row pairs an observation about *this* market (left) with the **framework pill** it drives (right) : « observation → framework ». **Per Elena's decision (2026-06-11): the report shows retained frameworks only** — do not list the rejected ones.
 
@@ -64,7 +64,7 @@ Then write the report's section 2 — titled **« Choix des frameworks »** : a 
 
 One **card** (`.fwc`) per retained framework, **identical anatomy**, in order:
 
-1. A **letter index** (A, B, C… derived from rank), the **name linked** to the framework's documentation fiche (`/focus-step-2/#[anchor]`), and an optional **badge** — `badge--qual` (ambre, « lecture qualitative ») when dégradé, `badge--shock` (rouge) to flag a decisive/shock force.
+1. A **letter index** (A, B, C… derived from rank), the **name linked** to the framework's documentation fiche (`/how-it-works/focus-step-2/#[anchor]`), and an optional **badge** — `badge--qual` (ambre, « lecture qualitative ») when dégradé, `badge--shock` (rouge) to flag a decisive/shock force.
 2. **The framework's objective sentence** (`objective`) in **serif italic** — the « question » verbatim from the documentation page (e.g. « Où se capture la marge dans la filière ? »).
 3. A short paragraph or two answering it **for this market**, grounded in the KPI data and the S1 facts (keep the `~` flags).
 4. **A market-specific diagram** — the framework's canonical visual **built in pure CSS/HTML** (no SVG, no chart lib) and **filled with this market's actual data** (figures, players, events), in the inset panel (`.fwc__viz`), with a one-line mono **caption** (`caption`). Use the 7 design-system diagram components (cf. contracts): `.tss`, `.porter`, `.vchain`, `.tl`, `.pestel`, `.pmap`, `.nbox`.

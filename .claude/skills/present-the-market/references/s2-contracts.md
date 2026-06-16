@@ -39,7 +39,7 @@
      une **ligne par remarque** (`.method__row`) : observation du marché → **pastille framework**
      (`.method__fw`, wash bleu). Frameworks retenus uniquement.
   7. **Section 3 — Le marché, framework par framework** (`.fw`) : une **carte** (`.fwc`) par framework
-     retenu, **anatomie identique** — index lettré (A, B, C…), **nom lié** à `/focus-step-2/#[ancre]`,
+     retenu, **anatomie identique** — index lettré (A, B, C…), **nom lié** à `/how-it-works/focus-step-2/#[ancre]`,
      **badge** optionnel (`.badge--qual` ambre = « lecture qualitative » ; `.badge--shock` rouge),
      **question-objectif** en serif italic (`.fwc__q.serif-q`, champ `objective` verbatim de la doc),
      paragraphe d'analyse, **diagramme CSS** spécifique au marché (`.fwc__viz`), **légende** mono

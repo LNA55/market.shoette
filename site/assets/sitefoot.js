@@ -22,10 +22,10 @@
   // « La méthode » — pages de documentation, dans l'ordre du pipeline.
   var METHODE = [
     ["how-it-works/", "How it works"],
-    ["focus-step-1/", "Focus on Step 1"],
-    ["focus-step-2/", "Focus on Step 2"],
-    ["focus-step-3/", "Focus on Step 3"],
-    ["focus-step-4/", "Focus on Step 4"]
+    ["how-it-works/focus-step-1/", "Focus on Step 1"],
+    ["how-it-works/focus-step-2/", "Focus on Step 2"],
+    ["how-it-works/focus-step-3/", "Focus on Step 3"],
+    ["how-it-works/focus-step-4/", "Focus on Step 4"]
   ];
 
   // « Marchés étudiés » — un [slug/, label] par marché (étendre à chaque nouveau marché).

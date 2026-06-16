@@ -2,13 +2,18 @@
 # Renommage des runs Skill 1 avec préfixe s1- (schéma s[K]-[N]_[date], 2026-06-11)
 Redirect 301 /apps-perte-de-poids/1_2026-06-11 /apps-perte-de-poids/s1-1_2026-06-11
 Redirect 301 /apps-perte-de-poids/2_2026-06-11 /apps-perte-de-poids/s1-2_2026-06-11
-# Renommage des pages de documentation focus-skill → focus-step (2026-06-12)
-Redirect 301 /focus-skill-1 /focus-step-1
-Redirect 301 /focus-skill-2 /focus-step-2
-Redirect 301 /focus-skill-3 /focus-step-3
-Redirect 301 /focus-skill-4 /focus-step-4
-# Snapshot de la Step 1 déplacé dans la page enfant process (2026-06-12)
-Redirect 301 /focus-step-1/skill-1-read-the-market_2026-06-12.md /focus-step-1/process-skill-11juin2026/skill-1-read-the-market_2026-06-12.md
+# Pages doc : focus-skill → focus-step (2026-06-12), puis focus-step déplacé sous how-it-works/ (2026-06-15)
+Redirect 301 /focus-skill-1 /how-it-works/focus-step-1
+Redirect 301 /focus-skill-2 /how-it-works/focus-step-2
+Redirect 301 /focus-skill-3 /how-it-works/focus-step-3
+Redirect 301 /focus-skill-4 /how-it-works/focus-step-4
+# Snapshot Step 1 (lien direct historique) — cible spécifique AVANT la redirection de préfixe ci-dessous
+Redirect 301 /focus-step-1/skill-1-read-the-market_2026-06-12.md /how-it-works/focus-step-1/process-skill-11juin2026/skill-1-read-the-market_2026-06-12.md
+# focus-step-N déplacés sous how-it-works/ (2026-06-15) — le préfixe couvre aussi les sous-pages (process)
+Redirect 301 /focus-step-1 /how-it-works/focus-step-1
+Redirect 301 /focus-step-2 /how-it-works/focus-step-2
+Redirect 301 /focus-step-3 /how-it-works/focus-step-3
+Redirect 301 /focus-step-4 /how-it-works/focus-step-4
 
 # market.shoette.com — règles de cache
 # Les pages HTML et les data.json évoluent (nouveaux runs, mises à jour Skill 3) :

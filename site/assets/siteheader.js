@@ -83,30 +83,17 @@
     return a;
   }
 
-  // « ← Accueil » (lien simple) ou « ← parent · Accueil » (nav à deux niveaux)
+  // « Accueil » retiré du fil d'Ariane (le logo y mène, décision Elena 2026-06-15).
+  // Le crumb ne montre que le parent direct ; les pages de profondeur 1 n'en ont pas.
   function crumbEl() {
-    if (crumb === "accueil") {
+    if (crumb === "parent") {
       var a = document.createElement("a");
       a.className = "crumb";
-      a.href = base;
-      a.textContent = "← Accueil";
+      a.href = parentHref;
+      a.textContent = "← " + parentLabel;
       return a;
     }
-    if (crumb === "parent") {
-      var nav = document.createElement("nav");
-      nav.className = "crumb";
-      var up = document.createElement("a");
-      up.href = parentHref;
-      up.textContent = "← " + parentLabel;
-      nav.appendChild(up);
-      nav.appendChild(document.createTextNode(" · "));
-      var home = document.createElement("a");
-      home.href = base;
-      home.textContent = "Accueil";
-      nav.appendChild(home);
-      return nav;
-    }
-    return null; // accueil (logo seul)
+    return null; // accueil / profondeur 1 : logo seul
   }
 
   function build() {

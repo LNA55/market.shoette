@@ -795,7 +795,7 @@ const RUN_S2_DATA = {
   D.frameworks.forEach(function (f, i) {
     var bar = el("div", { class: "fwc__bar" }, [
       el("span", { class: "fwc__idx" }, String.fromCharCode(65 + i)),
-      el("h3", { class: "fwc__name" }, el("a", { href: "../../focus-step-2/#" + f.doc_anchor }, f.name))
+      el("h3", { class: "fwc__name" }, el("a", { href: "../../how-it-works/focus-step-2/#" + f.doc_anchor }, f.name))
     ]);
     if (f.badge) bar.appendChild(el("span", { class: "badge badge--" + f.badge.type }, f.badge.label));
 

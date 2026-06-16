@@ -6,8 +6,10 @@
 site/
 ├── index.html                       accueil — liste des marchés (zone MARKETS) ; en-tête injecté par siteheader.js, footer complet par sitefoot.js
 ├── .htaccess                        règles de cache (HTML revalidé, assets versionnés cachés)
-├── how-it-works/                    ┐
-├── focus-step-1/ … focus-step-4/  ┘ pages statiques de documentation — domaine d'Elena, l'agent n'y touche JAMAIS sauf demande explicite
+├── how-it-works/                    page « méthode » — doc, domaine d'Elena ; PARENT des pages d'étape (2026-06-15)
+│   ├── focus-step-1/ … focus-step-4/   une page d'étape chacune (focus-step-1 contient process-skill-…)
+│   └── focus-step-1/process-skill-…/   page enfant datée du process
+   (pages de documentation — l'agent n'y touche JAMAIS sauf demande explicite)
 ├── assets/
 │   ├── site.css                     charte des pages parent + documentation (non versionnée — pages non figées)
 │   ├── siteheader.js                injecte l'en-tête (logo + fil d'Ariane) en tête de body — chargé par TOUTES les pages (non versionné)
@@ -92,7 +94,7 @@ Zone Skill 1 — **runs du plus ancien au plus récent : Run 1 en premier, les s
   <link rel="stylesheet" href="../assets/site.css">
 </head>
 <body>
-<script src="../assets/siteheader.js" data-crumb="accueil"></script>
+<script src="../assets/siteheader.js"></script>
 <div class="shell">
 
   <main>
@@ -178,7 +180,7 @@ La date du run figure dans la **byline du hero** en tête de page et dans `data.
 `assets/siteheader.js` injecte l'en-tête (logo `My Market Data.` + fil d'Ariane) **en tête du `<body>` de toutes les pages** du sous-domaine. C'est la **source unique** : ne jamais coder le `<header class="siteheader">` ni son CSS en dur (ni dans `site.css`, ni inline dans un run).
 
 - **Inclusion** : `<script src="[base]assets/siteheader.js" [data-*]></script>` placé **en premier dans `<body>`** (synchrone → en-tête inséré avant la peinture, sans flash, sans réservation de hauteur). `[base]` suit la profondeur ; le script déduit lui-même son chemin de base de son propre `src`.
-- **Fil d'Ariane piloté par data-\*** sur la balise : rien → logo seul (accueil) ; `data-crumb="accueil"` → « ← Accueil » (pages de profondeur 1 : marché, doc) ; `data-crumb="parent" data-parent-label="…" data-parent-href="…"` → « ← [parent] · Accueil » (runs : `data-parent-label="Marché : [label]"`, `data-parent-href="../"`).
+- **Fil d'Ariane piloté par data-\*** sur la balise (décision Elena 2026-06-15 : « Accueil » **retiré** du fil — le logo y mène) : rien / profondeur 1 (accueil, marché, how-it-works) → **logo seul, pas de crumb** ; `data-crumb="parent" data-parent-label="…" data-parent-href="…"` → « ← [parent] » (runs : `data-parent-label="Marché : [label]"` ; pages d'étape : `data-parent-label="How it works"`, `data-parent-href="../"`).
 - **Autonome** : porte son propre CSS (valeurs canoniques + fallbacks `--line`), fonctionne même sans `site.css` (runs). Injection idempotente.
 - **Règle** : toute page générée (run ou parent) **doit** charger ce script ; aucun header en dur.
 
