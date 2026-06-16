@@ -925,13 +925,13 @@ const RUN_DATA = {
       "is_mine": true,
       "added_by_run": {
         "skill": "position-my-product",
-        "run": "s3-1_2026-06-12",
-        "date": "2026-06-12"
+        "run": "s3-2_2026-06-16",
+        "date": "2026-06-16"
       },
       "market_share_pct": {
         "value": 0,
         "estimated": false,
-        "note": "nouveau projet — beta sur liste d'attente, pas encore sur le marché"
+        "note": "nouveau projet — app en beta sur invitation, pas encore de revenus de marché"
       },
       "growth_pct": {
         "value": null,
@@ -940,44 +940,45 @@ const RUN_DATA = {
       },
       "dimensions": {
         "integration_medicale": {
-          "value": 3,
+          "value": 4,
           "estimated": true,
           "declared": true,
-          "note": "lit les documents médicaux (photos d'analyses, comptes rendus) et croise avec la littérature — mais « not a medical device » : ni programme clinique, ni fonctions GLP-1 dédiées, ni prescription"
+          "note": "Programme 1 dédié aux non-répondeurs Mounjaro 15 mg + société de recherche (calls, traitement des données) → orientation GLP-1 explicite et démarche quasi-recherche ; mais toujours « not a medical device » : ni prescription, ni pharmacie, ni téléconsultation, ni suivi de doses façon compagnon"
         },
         "prix_mensuel": {
-          "value": null,
+          "value": 0,
           "estimated": false,
           "declared": true,
-          "note": "prix non annoncé — beta sur liste d'attente"
+          "note": "app gratuite (0 €/an, sur invitation) ; la vraie monétisation est le Programme 1 (« shared anonymised data pool ») à 200 €/mois versés à la société de recherche — prix le plus élevé du marché mais hors de l'échelle 0-30 $ de l'axe (catégorie « programme ») ; sur le graphique, seul le prix de l'app (0) est porté"
         },
         "personnalisation_ia": {
           "value": 9,
           "estimated": true,
           "declared": true,
-          "note": "IA conversationnelle vocale (détection d'intonation), lecture multimodale (photos, documents multilingues), corrélations multi-signaux pondérées — déclaratif (site), non vérifié en production"
+          "note": "journal multimodal dont le moteur cherche des corrélations ; en programme, il compare les corrélations entre participants, propose des tests collectifs (challenge-rechallenge) et tient une note de profil sans cesse réévaluée — déclaratif (site), non vérifié en production"
         },
         "modele_accompagnement": {
           "value": "coach IA",
           "estimated": false,
           "declared": true,
-          "note": "on parle à l'app, elle investigue et répond — pas de cliniciens"
+          "note": "on parle à l'app, elle investigue — pas de cliniciens ; le Programme 1 ajoute une couche de recherche communautaire (société tierce, calls, protocoles de test partagés) hors de l'échelle libre-service / coach IA / programme médicalisé"
         },
         "largeur_fonctionnelle": {
           "value": "mono-fonction",
           "estimated": true,
           "declared": true,
-          "note": "un seul usage sur ce marché : l'enquête sur les causes du blocage pondéral — agrège de nombreux signaux (sommeil, stress, cycle, météo…) mais sans tracking calorique, plans de repas ni communauté"
+          "note": "un seul usage : enquêter sur le blocage pondéral ; le Programme 1 approfondit cette fonction (cohorte, tests, pool de données) sans l'élargir — ni tracking calorique, ni plans de repas, ni communauté"
         }
       },
       "card": {
-        "summary": "Journal de santé conversationnel à IA (« The AI health journal you talk to ») : on lui parle, il agrège des centaines de signaux (voix, photos, documents, sommeil, cycle, météo) et surface des corrélations pondérées. Positionné ici sur l'usage : comprendre pourquoi la perte de poids ne vient pas — personnes en situation d'obésité (IMC > 30), premier test visé : utilisateurs GLP-1 sans réponse marquée. Beta sur liste d'attente.",
+        "summary": "Journal de santé conversationnel à IA (« The AI health journal you talk to ») : on lui parle, il agrège des centaines de signaux (voix, photos, documents, sommeil, cycle, météo) et son moteur cherche les corrélations. App gratuite, sur invitation ; la valeur payante est l'adhésion à un programme de recherche (« shared anonymised data pool ») à 200 €/mois. Positionné ici sur le Programme 1 : comprendre le blocage pondéral des non-répondeurs Mounjaro 15 mg (pas d'effet sur la faim ni l'envie, comportement addictif au sucre).",
         "facts": [
-          "Statut : beta — recrutement par liste d'attente, prix non annoncé",
-          "Cible de lancement déclarée : IMC > 30, blocage pondéral malgré de nombreuses tentatives ; premier test : utilisateurs Ozempic/Wegovy/Mounjaro sans perte de poids ni d'appétit marquées",
-          "« Not a medical device » — données hébergées en UE (RGPD, HDS), chiffrement AES-256",
-          "Source : https://w.shoette.com/ (déclaratif — site du projet + cadrage d'Elena)",
-          "Positionné par le Run S3-1 du 2026-06-12"
+          "App gratuite (0 €/an), sur invitation, iOS (Apple Store) + Android (Google Play)",
+          "Monétisation : Programme 1 « shared anonymised data pool » à 200 €/mois versés à une société de recherche (calls + traitement des données) — l'app est l'outil",
+          "Programme 1 : non-répondeurs Mounjaro 15 mg ; corrélations comparées entre participants, tests collectifs opt-in (ex. lactose à 18 h → sommeil), note de profil évolutive",
+          "« Not a medical device » — données UE (RGPD, HDS), chiffrement AES-256, pool anonymisé",
+          "Source : https://w.shoette.com/ (déclaratif — site + cadrage d'Elena)",
+          "Repositionné par le Run S3-2 du 2026-06-16 (1er positionnement : S3-1, 2026-06-12)"
         ],
         "source_ids": []
       }
@@ -1472,10 +1473,10 @@ const RUN_DATA = {
   "enrichments": [
     {
       "skill": "position-my-product",
-      "run": "s3-1_2026-06-12",
-      "date": "2026-06-12",
+      "run": "s3-2_2026-06-16",
+      "date": "2026-06-16",
       "player_id": "what_is_wrong_with_me",
-      "mention": "Graphique enrichi des infos sur le nouveau projet What is wrong with me, le 2026-06-12"
+      "mention": "Graphique enrichi des infos sur le nouveau projet What is wrong with me, le 2026-06-16"
     }
   ]
 };
