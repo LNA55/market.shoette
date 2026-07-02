@@ -1,0 +1,496 @@
+{
+  "schema_version": 1,
+  "market": {
+    "slug": "micro-seed",
+    "label": "Capital d'amorçage à micro-tickets — business angels & micro-fonds",
+    "input": "le seed capital mondial — fonds d'investissement et business angels de type Kima Ventures qui financent entre 0 et 50 000 € (micro-tickets pre-seed/seed, haute cadence)",
+    "language": "fr",
+    "geo_scope": "Mondial (France détaillée ; États-Unis couverts ; Europe et reste du monde survolés)",
+    "assumptions": [
+      "Périmètre : structures et personnes finançant le tout premier chèque (pre-seed/seed) à faible montant et haute cadence. Cœur 0-50 k€ (business angels, réseaux), élargi jusqu'à ~150-400 k€ pour les structures institutionnelles « type Kima » — sans quoi Kima Ventures lui-même (~150 k€) serait hors périmètre. Hors champ : le capital-risque classique en tours de 1 M€+.",
+      "« Part de marché » : ce marché n'a pas de chiffre d'affaires partagé. La part est approximée par la part estimée du volume annuel de premiers chèques d'un panel de 14 structures comparables (proxy de cadence). Presque toutes les valeurs sont des estimations, signalées « ~ ».",
+      "Le graphique ne porte que des structures d'investissement uniques. Les réseaux/fédérations (France Angels), plateformes (AngelList) et business angels individuels (Xavier Niel, Fabrice Grinda…) sont d'une autre nature : traités dans la lecture par géographie, pas sur le nuage.",
+      "Géographie : périmètre mondial ; France détaillée (demande d'Elena), États-Unis couverts, autres pays européens survolés, initiatives marquantes d'autres régions signalées."
+    ]
+  },
+  "run": { "number": 1, "date": "2026-07-02" },
+  "reading": {
+    "maturity_summary": "Marché du premier chèque en sortie de cycle : pic 2021, creux 2022-2023 (remontée des taux), reprise inégale depuis 2024, désormais aspirée par l'IA (~42 % du seed mondial, >50 % du pre-seed US). Les mouvements structurants se concentrent sur 12-18 mois : YC passé à 4 promotions/an (2025), contraction de Techstars (fermetures de programmes, -17 % d'effectifs 2024), ralentissement de Kima et de family offices français (Motier) en 2025, montée d'Antler et des clubs de nouvelle génération (Blast). Sous l'effet de l'IA, le « micro-ticket » de ~50 k€ (2020-2022) glisse vers 150-300 k€ chez les acteurs à haute cadence.",
+    "reference_period": {
+      "choice": "1y",
+      "options": ["6m", "1y", "3y"],
+      "rationale": "La divergence actuelle (qui accélère, qui ralentit) se lit le mieux sur un an : YC et Antler en expansion, Techstars/Kima/Motier en repli net sur 2024→2025. Trois ans mélangeraient le creux 2022-2023 avec la reprise et brouilleraient le signal récent ; six mois ne capteraient pas les bascules annuelles (batches, bilans)."
+    },
+    "dimensions": [
+      {
+        "id": "ticket_moyen",
+        "label": "Ticket moyen (k€)",
+        "rank": 1,
+        "type": "numeric",
+        "unit": "k€ (premier chèque)",
+        "description": "Montant du premier chèque typique, converti en euros. La borne qui sépare le micro-ticket pur (business angels, réseaux : 10-50 k€) du premier chèque institutionnel (100-400 k€). Variable-clé du brief.",
+        "scale": { "min": 0, "max": 400 }
+      },
+      {
+        "id": "modele_accompagnement",
+        "label": "Modèle d'accompagnement",
+        "rank": 2,
+        "type": "ordinal",
+        "description": "La grande ligne de fracture du marché : chèque seul vs programme intensif.",
+        "scale": { "values": ["hands-off", "accompagnement léger", "accélérateur / résidence"] }
+      },
+      {
+        "id": "type_structure",
+        "label": "Type de structure",
+        "rank": 3,
+        "type": "ordinal",
+        "description": "Le véhicule d'investissement, qui commande la cadence soutenable.",
+        "scale": { "values": ["BA structuré / evergreen", "micro-fonds", "venture builder / accélérateur"] }
+      },
+      {
+        "id": "perimetre_geo",
+        "label": "Périmètre géographique",
+        "rank": 4,
+        "type": "ordinal",
+        "description": "Étendue du dealflow : un pays, une région, ou plusieurs continents.",
+        "scale": { "values": ["national", "régional", "global"] }
+      },
+      {
+        "id": "stade",
+        "label": "Stade d'intervention",
+        "rank": 5,
+        "type": "ordinal",
+        "description": "Le tout premier chèque (pre-seed) ou jusqu'au premier tour structuré (seed).",
+        "scale": { "values": ["pre-seed", "pre-seed → seed", "seed"] }
+      }
+    ],
+    "default_channels": {
+      "y": "market_share",
+      "x_color": "modele_accompagnement",
+      "size": "type_structure",
+      "opacity": "perimetre_geo",
+      "border": "stade"
+    },
+    "default_config_rationale": "Le graphique compare des structures d'investissement uniques. En hauteur (Y), la part estimée du volume de premiers chèques — proxy de cadence — recouvre par défaut le ticket moyen (rang 1) : basculez Y sur « Ticket moyen » pour lire l'autre variable-clé, la taille du chèque (~30 k€ à ~370 k€). L'axe horizontal et la couleur (rang 2) portent le modèle d'accompagnement — hands-off (un chèque, pas de board) vs accélérateur/résidence (programme intensif). La taille des marqueurs (rang 3) code le type de structure ; l'opacité (rang 4) le périmètre géographique ; la bordure (rang 5) le stade. D'un coup d'œil : en haut, les usines globales à premier chèque (YC, Antler) ; à gauche, ceux qui ralentissent (Techstars, Kima, Motier) ; en bas, la longue traîne des micro-fonds et clubs nationaux.",
+    "export_note": "Marché du premier chèque à micro-ticket (pre-seed/seed, ~0-400 k€), lu au 2 juillet 2026. Hauteur = part estimée du volume annuel de premiers chèques d'un panel de 14 structures (proxy de cadence) ; horizontal = évolution de cette cadence sur un an ; toutes valeurs ~estimées. Première observation : en volume brut, le marché est tenu par les usines globales — Y Combinator (~500 sociétés/an) et Antler (n°1 mondial en nombre de deals) — tandis que Kima Ventures, « business angel le plus actif du monde », se distingue par son modèle (chèque unique standardisé, hands-off, LP unique Xavier Niel) plus que par sa cadence absolue, en repli en 2025.",
+    "values_methodology": [
+      { "label": "Part estimée du volume de premiers chèques (%)", "note": "Faute de chiffre d'affaires partagé, la part = cadence estimée de l'acteur (premiers chèques/an) rapportée à la somme des cadences du panel de 14 structures retenues. Proxy indicatif, entièrement estimé (~) et dépendant du panel choisi — à ne pas lire comme une part de marché absolue." },
+      { "label": "Croissance de la cadence sur 1 an (%)", "note": "Évolution estimée du nombre de premiers chèques par an entre 2024 et 2025 (ou dernière période connue). Une valeur négative = ralentissement de la cadence. Estimé (~)." },
+      { "label": "Ticket moyen (k€)", "note": "Montant du premier chèque typique, converti en euros au taux ~1 $ = 0,92 € et ~1 £ = 1,17 € lorsque la source était en devise étrangère (ex. YC 125 k$ ≈ 115 k€ ; FJ Labs seed 390 k$ ≈ 360-370 k€ ; SFC £100-500k ≈ ~200 k€ médian). Hors montants optionnels/MFN (ex. le +375 k$ de YC). Estimé (~)." },
+      { "label": "Modèle d'accompagnement", "note": "Catégorie qualitative : hands-off (un chèque, décision rapide, pas de siège au board) / accompagnement léger (mentorat, communauté, club) / accélérateur ou résidence (programme intensif de 3-4 mois, cohortes)." },
+      { "label": "Type de structure", "note": "Catégorie qualitative : BA structuré / evergreen (capital patient, souvent un LP unique) / micro-fonds (fonds classique à petits tickets) / venture builder ou accélérateur (cohortes, parfois création d'équipes)." },
+      { "label": "Périmètre géographique", "note": "National (un pays), régional (une zone : Baltique, MENA…) ou global (plusieurs continents)." },
+      { "label": "Stade d'intervention", "note": "Pre-seed (tout premier chèque) ou pre-seed → seed (jusqu'au premier tour structuré). Catégorie qualitative." }
+    ]
+  },
+  "players": [
+    {
+      "id": "y-combinator",
+      "name": "Y Combinator",
+      "market_share_pct": { "value": 23, "estimated": true, "note": "~500 sociétés/an, la plus grosse cadence du panel" },
+      "growth_pct": { "value": 15, "estimated": true, "note": "passage à 4 promotions/an en 2025" },
+      "dimensions": {
+        "ticket_moyen": { "value": 115, "estimated": true, "note": "125 k$ pour 7 % (+ 375 k$ en SAFE MFN non plafonné, exclus ici)" },
+        "modele_accompagnement": { "value": "accélérateur / résidence", "estimated": false },
+        "type_structure": { "value": "venture builder / accélérateur", "estimated": false },
+        "perimetre_geo": { "value": "global", "estimated": false },
+        "stade": { "value": "pre-seed", "estimated": false }
+      },
+      "card": {
+        "summary": "L'usine de référence du premier chèque. Deal standardisé, 4 promotions/an depuis 2025, ~500 sociétés/an, réseau d'anciens sans équivalent. En expansion, aucun signe de ralentissement.",
+        "facts": [
+          "Deal : 500 k$ = 125 k$ pour 7 % + 375 k$ en SAFE MFN non plafonné",
+          "Cadence : ~500 sociétés/an (196 au batch Winter 2026, 197 au Spring 2026)",
+          "Taux d'acceptation ~1,5-2 % des candidatures",
+          "Modèle accélérateur intensif (~3 mois, Demo Day)"
+        ],
+        "source_ids": [17, 18]
+      }
+    },
+    {
+      "id": "antler",
+      "name": "Antler",
+      "market_share_pct": { "value": 21, "estimated": true, "note": "n°1 mondial en nombre de deals (PitchBook 2024, 443 deals)" },
+      "growth_pct": { "value": 20, "estimated": true, "note": "montée en puissance, expansion des villes" },
+      "dimensions": {
+        "ticket_moyen": { "value": 120, "estimated": true, "note": "100-150 k$ pour ~10 % ; produit ARC jusqu'à 600 k$ sur 9 mois" },
+        "modele_accompagnement": { "value": "accélérateur / résidence", "estimated": false, "note": "résidence de fondateurs (matching d'équipes)" },
+        "type_structure": { "value": "venture builder / accélérateur", "estimated": false },
+        "perimetre_geo": { "value": "global", "estimated": false, "note": "30+ villes sur 6 continents" },
+        "stade": { "value": "pre-seed", "estimated": false }
+      },
+      "card": {
+        "summary": "Le « Kima institutionnalisé » mondial : des résidences de fondateurs dans 30+ villes qui forment des équipes puis écrivent le premier chèque. Classé n°1 mondial en nombre de deals par PitchBook en 2024.",
+        "facts": [
+          "Ticket : 100-150 k$ pour ~10 % ; produit ARC jusqu'à 600 k$ sur 9 mois",
+          "443 deals en 2024 (#1 « Most Active VC Globally », PitchBook)",
+          "30+ villes, 1 500+ investissements cumulés, >1 Md$ AUM",
+          "Sélection ~3 % en résidence, <1 % reçoivent un investissement"
+        ],
+        "source_ids": [31]
+      }
+    },
+    {
+      "id": "500-global",
+      "name": "500 Global",
+      "market_share_pct": { "value": 12, "estimated": true, "note": "~400 sociétés/an tous programmes ; part du seul Flagship plus faible" },
+      "growth_pct": { "value": 0, "estimated": true },
+      "dimensions": {
+        "ticket_moyen": { "value": 140, "estimated": true, "note": "Flagship 150 k$ pour 6 %" },
+        "modele_accompagnement": { "value": "accélérateur / résidence", "estimated": false },
+        "type_structure": { "value": "venture builder / accélérateur", "estimated": false },
+        "perimetre_geo": { "value": "global", "estimated": false, "note": "accélérateurs régionaux MENA/Eurasie/SEA/LatAm" },
+        "stade": { "value": "pre-seed → seed", "estimated": true }
+      },
+      "card": {
+        "summary": "Réseau mondial d'accélérateurs (Silicon Valley + programmes régionaux) et de fonds. >1 Md$ sous gestion après un closing de 510 M$ en janvier 2026.",
+        "facts": [
+          "Flagship Accelerator : 150 k$ pour 6 %",
+          ">1 800 sociétés en portefeuille, ~400 la dernière année (tous programmes)",
+          "Closing de 510 M$ en janvier 2026",
+          "Cadence du seul Flagship micro non isolée publiquement"
+        ],
+        "source_ids": [37]
+      }
+    },
+    {
+      "id": "fj-labs",
+      "name": "FJ Labs",
+      "market_share_pct": { "value": 9, "estimated": true, "note": "~190 investissements en 2024" },
+      "growth_pct": { "value": 5, "estimated": true },
+      "dimensions": {
+        "ticket_moyen": { "value": 370, "estimated": true, "note": "220 k$ pre-seed à 390 k$ seed ; moyenne ~400 k$" },
+        "modele_accompagnement": { "value": "hands-off", "estimated": false, "note": "décision 1-2 semaines, 2 calls max, pas de board" },
+        "type_structure": { "value": "micro-fonds", "estimated": false },
+        "perimetre_geo": { "value": "global", "estimated": false, "note": "23 pays" },
+        "stade": { "value": "pre-seed → seed", "estimated": false }
+      },
+      "card": {
+        "summary": "Le « Kima américain » : Fabrice Grinda (franco-américain), micro-fonds à très haute cadence, hands-off assumé. #6 investisseur early-stage mondial (PitchBook 2024). Tickets plus gros que le cœur micro, mais modèle identique.",
+        "facts": [
+          "~190 investissements en 2024 (100 nouveaux + 89 suivis, 23 pays)",
+          "Tickets 220 k$ (pre-seed) à 390 k$ (seed), moyenne ~400 k$",
+          "100+ opportunités vues/semaine, décision en 1-2 semaines, pas de siège au board",
+          "#6 investisseur early-stage mondial (PitchBook 2024) ; 260 M$ levés (2023)"
+        ],
+        "source_ids": [20, 21]
+      }
+    },
+    {
+      "id": "techstars",
+      "name": "Techstars",
+      "market_share_pct": { "value": 8, "estimated": true, "note": "cadence en forte baisse (fermetures de programmes)" },
+      "growth_pct": { "value": -40, "estimated": true, "note": "de ~20 programmes à ~6 villes en deux ans" },
+      "dimensions": {
+        "ticket_moyen": { "value": 200, "estimated": true, "note": "220 k$ = 200 k$ SAFE MFN + 20 k$, pour ~5-6 %" },
+        "modele_accompagnement": { "value": "accélérateur / résidence", "estimated": false },
+        "type_structure": { "value": "venture builder / accélérateur", "estimated": false },
+        "perimetre_geo": { "value": "global", "estimated": false },
+        "stade": { "value": "pre-seed", "estimated": false }
+      },
+      "card": {
+        "summary": "Ancien réseau mondial d'accélérateurs en contraction nette : -17 % d'effectifs en 2024, fermeture de nombreux programmes (Seattle, Boulder, DC, Miami, Sydney). Reprise partielle de Boulder mi-2025 (retour de David Cohen).",
+        "facts": [
+          "Ticket : 220 k$ (200 k$ SAFE MFN + 20 k$) pour ~5-6 %",
+          "-17 % d'effectifs (46 personnes) en août 2024",
+          "De ~20 programmes / 15 villes (2024) à ~6 villes (2026)",
+          "Techstars Sydney fermé après 3 cohortes ; Boulder relancé mi-2025"
+        ],
+        "source_ids": [19]
+      }
+    },
+    {
+      "id": "launch-calacanis",
+      "name": "LAUNCH (Jason Calacanis)",
+      "market_share_pct": { "value": 6, "estimated": true, "note": "~200 startups/an tous formats + ~100 deals angel/an" },
+      "growth_pct": { "value": 10, "estimated": true, "note": "porté par la vague IA" },
+      "dimensions": {
+        "ticket_moyen": { "value": 115, "estimated": true, "note": "accélérateur 125 k$ pour 7 % ; angel 25-100 k$" },
+        "modele_accompagnement": { "value": "accélérateur / résidence", "estimated": true, "note": "accélérateur LAUNCH 14 semaines + activité angel directe" },
+        "type_structure": { "value": "venture builder / accélérateur", "estimated": true },
+        "perimetre_geo": { "value": "national", "estimated": true, "note": "États-Unis surtout" },
+        "stade": { "value": "pre-seed", "estimated": false }
+      },
+      "card": {
+        "summary": "Le « super angel » originel institutionnalisé : accélérateur LAUNCH + The Syndicate (10 000+ investisseurs) + ~100 chèques angel/an en direct. Thèse revendiquée : financer 100 startups par an.",
+        "facts": [
+          "Accélérateur LAUNCH : 125 k$ pour 7 %, programme de 14 semaines",
+          "~100 sociétés/an en tant qu'angel individuel, tickets 25-100 k$",
+          "The Syndicate : 10 000+ investisseurs accrédités",
+          ">140 M$ déployés sur 300+ deals (cumulé)"
+        ],
+        "source_ids": [23]
+      }
+    },
+    {
+      "id": "sfc-capital",
+      "name": "SFC Capital",
+      "market_share_pct": { "value": 5, "estimated": true, "note": "~105 deals en 2025, fonds SEIS le plus actif UK" },
+      "growth_pct": { "value": 10, "estimated": true, "note": "engagement British Business Bank +25 M£ en 2025" },
+      "dimensions": {
+        "ticket_moyen": { "value": 200, "estimated": true, "note": "£100-500k (médian ~£170k ≈ 200 k€)" },
+        "modele_accompagnement": { "value": "accompagnement léger", "estimated": true },
+        "type_structure": { "value": "micro-fonds", "estimated": false, "note": "fonds SEIS" },
+        "perimetre_geo": { "value": "national", "estimated": false, "note": "Royaume-Uni" },
+        "stade": { "value": "seed", "estimated": true, "note": "SEIS = amorçage précoce" }
+      },
+      "card": {
+        "summary": "Le fonds SEIS le plus actif du Royaume-Uni. Adossé au dispositif fiscal SEIS/EIS qui irrigue tout le micro-seed britannique. ~2 000 investisseurs, 500+ sociétés en portefeuille.",
+        "facts": [
+          "~105 deals en 2025 (« most active UK seed investor », British Business Bank)",
+          "Ticket £100-500k ; investissement minimum £10 000 pour un particulier dans le fonds",
+          "AUM £150 M+ ; 2 000+ investisseurs ; 500+ sociétés",
+          "Engagement British Business Investments étendu de 25 M£ (fév. 2025)"
+        ],
+        "source_ids": [25, 26]
+      }
+    },
+    {
+      "id": "kima-ventures",
+      "name": "Kima Ventures",
+      "market_share_pct": { "value": 4.7, "estimated": true, "note": "cadence de croisière ~100/an, mais ~45 en 2025" },
+      "growth_pct": { "value": -30, "estimated": true, "note": "net repli 2025 vs croisière" },
+      "dimensions": {
+        "ticket_moyen": { "value": 150, "estimated": true, "note": "chèque unique standardisé (~150 k€), one-shot" },
+        "modele_accompagnement": { "value": "hands-off", "estimated": false, "note": "décision en heures, pas de board, pas de réinvestissement" },
+        "type_structure": { "value": "BA structuré / evergreen", "estimated": false, "note": "LP unique Xavier Niel, véhicule evergreen" },
+        "perimetre_geo": { "value": "national", "estimated": true, "note": "France/Europe surtout, quelques deals globaux" },
+        "stade": { "value": "pre-seed → seed", "estimated": true }
+      },
+      "card": {
+        "summary": "La référence du brief et « business angel le plus actif du monde ». Actionnaire unique (Xavier Niel), evergreen, chèque unique ~150 k€, règle du one-shot, décision en heures. Modèle unique — mais dépassé en volume brut par les usines globales, et en repli en 2025.",
+        "facts": [
+          "Ticket ~150 k€, règle du « one-shot » (jamais de réinvestissement)",
+          "Cadence revendiquée ~100/an (2-3 startups/semaine) ; ~45 investissements recensés en 2025",
+          "1er investisseur privé de la French Tech 2025 (2e tous acteurs derrière Bpifrance, Journal du Net)",
+          "1 280+ startups depuis 2010, 21-22 licornes ; Managing Partner : Jean de La Rochebrochard",
+          "Actionnaire unique : Xavier Niel ; véhicule evergreen"
+        ],
+        "source_ids": [1, 2, 3, 4]
+      }
+    },
+    {
+      "id": "super-capital",
+      "name": "Super Capital",
+      "market_share_pct": { "value": 2.3, "estimated": true, "note": "~50 investissements/an au global" },
+      "growth_pct": { "value": 0, "estimated": true },
+      "dimensions": {
+        "ticket_moyen": { "value": 75, "estimated": true, "note": "50-100 k€ en direct (30-500 k€ toutes poches)" },
+        "modele_accompagnement": { "value": "accompagnement léger", "estimated": true, "note": "club/communauté de 2 000+ membres" },
+        "type_structure": { "value": "micro-fonds", "estimated": true, "note": "club de BA / micro-fonds" },
+        "perimetre_geo": { "value": "national", "estimated": true, "note": "France surtout, ~20 % international (Inde, Allemagne)" },
+        "stade": { "value": "pre-seed → seed", "estimated": true }
+      },
+      "card": {
+        "summary": "Club de business angels et micro-fonds français (2018), ~50 investissements/an, cœur du micro-ticket (50-100 k€). Communauté de 2 000+ membres entrepreneurs/investisseurs.",
+        "facts": [
+          "~50 investissements/an (dont ~30 startups tech pre-seed/seed en direct)",
+          "Tickets 50-100 k€ en direct (30-500 k€ toutes poches)",
+          "2 000+ membres, présence France/Inde/Allemagne",
+          "Fondé en 2018"
+        ],
+        "source_ids": [9]
+      }
+    },
+    {
+      "id": "hustle-fund",
+      "name": "Hustle Fund",
+      "market_share_pct": { "value": 1.9, "estimated": true, "note": "cadence exacte incertaine (20-60 selon sources)" },
+      "growth_pct": { "value": 0, "estimated": true },
+      "dimensions": {
+        "ticket_moyen": { "value": 120, "estimated": true, "note": "100-150 k$ premier chèque" },
+        "modele_accompagnement": { "value": "accompagnement léger", "estimated": true, "note": "communauté Angel Squad" },
+        "type_structure": { "value": "micro-fonds", "estimated": false },
+        "perimetre_geo": { "value": "national", "estimated": true, "note": "États-Unis surtout" },
+        "stade": { "value": "pre-seed", "estimated": false }
+      },
+      "card": {
+        "summary": "Micro-fonds pre-seed américain à forte notoriété, doublé d'une communauté d'investisseurs (Angel Squad) qui examine 1 000+ dossiers/mois. Fund III de 46 M$.",
+        "facts": [
+          "Premier chèque 100-150 k$ (fourchette large 25-150 k$ selon les sources)",
+          "Fonds : I = 11,5 M$, II = 33,6 M$, III = 46 M$",
+          "Angel Squad : 1 000+ dossiers examinés/mois",
+          "Cadence annuelle du fonds principal non consolidée (20-60 selon sources)"
+        ],
+        "source_ids": [23]
+      }
+    },
+    {
+      "id": "entrepreneur-first",
+      "name": "Entrepreneur First",
+      "market_share_pct": { "value": 1.9, "estimated": true, "note": "2 batches/an, cohortes ~50 personnes" },
+      "growth_pct": { "value": -15, "estimated": true, "note": "recentrage sur quelques hubs" },
+      "dimensions": {
+        "ticket_moyen": { "value": 115, "estimated": true, "note": "125 k$ en SAFE pour 8 % (+ 125 k$ optionnel)" },
+        "modele_accompagnement": { "value": "accélérateur / résidence", "estimated": false, "note": "forme des équipes à partir d'individus" },
+        "type_structure": { "value": "venture builder / accélérateur", "estimated": false },
+        "perimetre_geo": { "value": "global", "estimated": false, "note": "Londres, Bangalore, San Francisco" },
+        "stade": { "value": "pre-seed", "estimated": false }
+      },
+      "card": {
+        "summary": "Venture builder « talent-first » : recrute des individus, forme des équipes, puis investit. Offre relevée à 250 k$ en 2024. 600+ sociétés créées.",
+        "facts": [
+          "Jusqu'à 250 k$ : 125 k$ en SAFE pour 8 % + 125 k$ optionnel (relocation SF)",
+          "2 batches/an, ~50 personnes/cohorte (hub Bangalore)",
+          "Hubs : Londres, Bangalore, San Francisco",
+          "600+ sociétés créées, valeur cumulée >11 Md$"
+        ],
+        "source_ids": [32]
+      }
+    },
+    {
+      "id": "startup-wise-guys",
+      "name": "Startup Wise Guys",
+      "market_share_pct": { "value": 1.9, "estimated": true, "note": "un des accélérateurs les plus actifs d'Europe centrale" },
+      "growth_pct": { "value": 5, "estimated": true },
+      "dimensions": {
+        "ticket_moyen": { "value": 30, "estimated": false, "note": "jusqu'à 30 k€ par startup — le plus bas du panel" },
+        "modele_accompagnement": { "value": "accélérateur / résidence", "estimated": false, "note": "programme de 3 mois à Tallinn" },
+        "type_structure": { "value": "venture builder / accélérateur", "estimated": false },
+        "perimetre_geo": { "value": "régional", "estimated": false, "note": "Baltique / Europe centrale / Afrique" },
+        "stade": { "value": "pre-seed", "estimated": false }
+      },
+      "card": {
+        "summary": "Accélérateur baltique (Estonie) très actif à micro-ticket pur : jusqu'à 30 k€ par startup, programme de 3 mois. 400+ investissements depuis 2012 dans 60+ pays.",
+        "facts": [
+          "Ticket : jusqu'à 30 k€ par startup (le plus bas du panel)",
+          "Programme de 3 mois à Tallinn",
+          "400+ investissements depuis 2012, 60+ pays",
+          "Un des accélérateurs les plus actifs d'Europe et d'Afrique"
+        ],
+        "source_ids": [29]
+      }
+    },
+    {
+      "id": "100x-vc",
+      "name": "100X.VC",
+      "market_share_pct": { "value": 1.6, "estimated": true, "note": "cohortes bi-annuelles de 15-20 startups" },
+      "growth_pct": { "value": 15, "estimated": true, "note": "écosystème angel indien en forte croissance" },
+      "dimensions": {
+        "ticket_moyen": { "value": 140, "estimated": true, "note": "INR 1,25 crore (~150 k$) pour 15 % (iSAFE)" },
+        "modele_accompagnement": { "value": "accompagnement léger", "estimated": true, "note": "cohortes + mentorat" },
+        "type_structure": { "value": "micro-fonds", "estimated": true },
+        "perimetre_geo": { "value": "national", "estimated": false, "note": "Inde" },
+        "stade": { "value": "pre-seed", "estimated": false }
+      },
+      "card": {
+        "summary": "L'investisseur institutionnel pre-seed le plus actif d'Inde. Instrument iSAFE (SAFE indien), cohortes bi-annuelles. 180+ sociétés depuis 2019.",
+        "facts": [
+          "Ticket : INR 1,25 crore (~150 k$) pour 15 % d'equity future (iSAFE)",
+          "Cohortes bi-annuelles de 15-20 startups",
+          "180+ sociétés financées sur 12+ cohortes (depuis 2019)",
+          "Instrument iSAFE = SAFE adapté au droit indien"
+        ],
+        "source_ids": [33]
+      }
+    },
+    {
+      "id": "motier-ventures",
+      "name": "Motier Ventures",
+      "market_share_pct": { "value": 0.7, "estimated": true, "note": "~10 deals annoncés en 2025 (27 en 2024)" },
+      "growth_pct": { "value": -50, "estimated": true, "note": "fort repli 2024→2025" },
+      "dimensions": {
+        "ticket_moyen": { "value": 250, "estimated": true },
+        "modele_accompagnement": { "value": "hands-off", "estimated": true, "note": "family office + hub « La Maison »" },
+        "type_structure": { "value": "micro-fonds", "estimated": true, "note": "family office (Galeries Lafayette)" },
+        "perimetre_geo": { "value": "national", "estimated": true, "note": "France" },
+        "stade": { "value": "pre-seed → seed", "estimated": true }
+      },
+      "card": {
+        "summary": "Family office de la famille Houzé (Galeries Lafayette), early-stage, focus IA, avec le hub physique « La Maison » à Paris. Fort ralentissement en 2025.",
+        "facts": [
+          "~95 startups en portefeuille, focus IA transversal",
+          "10 deals annoncés en 2025 contre 27 en 2024 (repli marqué)",
+          "Hub « La Maison » (1 800 m², Opéra Garnier) ouvert en 2025",
+          "Nouveau managing partner en 2025 : Clément Lamolinerie"
+        ],
+        "source_ids": [8]
+      }
+    }
+  ],
+  "players_without_data": [
+    {
+      "name": "France Angels (fédération nationale)",
+      "why_significant": "La fédération des réseaux de business angels français : 98,6 M€ investis dans 445 startups par ~5 500 business angels actifs en 2024, ticket moyen par angel 10-20 k€ (pile le cœur du micro-ticket). Mais c'est un réseau d'angels, pas un investisseur unique — non positionnable sur le nuage.",
+      "what_was_searched": "Chiffres détaillés dans la lecture France ; activité 2025 en repli (67,2 M€ / 439 opérations rapportés).",
+      "source_ids": [6, 7]
+    },
+    {
+      "name": "AngelList (plateforme, US)",
+      "why_significant": "L'infrastructure des syndicates et rolling funds : 170 Md$+ d'actifs administrés, 25 000 à 50 000+ véhicules selon les sources, tickets de syndicat 25-500 k$. Un rail qui agrège des milliers d'investisseurs, pas un acteur unique.",
+      "what_was_searched": "Volume annuel consolidé de deals 2024-2025 non publié (dernier chiffre net : 3,6 Md$ dans ~7 000 startups en 2021).",
+      "source_ids": [23]
+    },
+    {
+      "name": "Super business angels individuels",
+      "why_significant": "Xavier Niel (~112 deals, 100-250 k€), Pierre-Édouard Stérin (54, >1 M€), Thibaud Elzière (50), Alexandre Berriche (100, 50-100 k€), Jason Calacanis (~100/an), Charlie Songhurst (~500 cumulés). Ce sont des personnes, pas des structures : traitées dans la lecture par géographie.",
+      "what_was_searched": "Cadences individuelles souvent contradictoires selon les bases (Signal, PitchBook, Tracxn).",
+      "source_ids": [5]
+    },
+    {
+      "name": "Blast Club (FR)",
+      "why_significant": "Club d'investissement grand public : 240 M€ en 3 ans dont 125 M€ en 2025, 14 000+ membres, via des micro-tickets de 1 000 € agrégés par particulier — modèle de crowd-equity non comparable à un fonds.",
+      "what_was_searched": "Le ticket « par deal » consolidé (5-10 M€) et le ticket « par membre » (1 k€) ne sont pas positionnables sur les mêmes axes que les autres acteurs.",
+      "source_ids": [12]
+    }
+  ],
+  "sources": [
+    { "id": 1, "title": "Kima Ventures — The most active Business Angel in the world (site officiel)", "publisher": "Kima Ventures", "url": "https://www.kimaventures.com/", "accessed": "2026-07-02" },
+    { "id": 2, "title": "Kima Ventures : Portrait, Thèse et Portfolio", "publisher": "Swanbase", "url": "https://swanbase.co/blog/kima-ventures-portrait/", "accessed": "2026-07-02" },
+    { "id": 3, "title": "Qui sont les investisseurs les plus actifs de la French Tech en 2025 ?", "publisher": "Journal du Net", "url": "https://www.journaldunet.com/start-up/1547057-kima-ventures-daphni-newfund-qui-sont-les-investisseurs-les-plus-actifs-de-la-french-tech-en-2025/", "accessed": "2026-07-02" },
+    { "id": 4, "title": "French VC Jean de La Rochebrochard removed from Newwave", "publisher": "Sifted", "url": "https://sifted.eu/articles/france-vc-jean-rochebrochard-newwave-news", "accessed": "2026-07-02" },
+    { "id": 5, "title": "Classement des Business Angels 2025", "publisher": "Angelsquare × Challenges", "url": "https://home.angelsquare.co/classement-des-business-angels-2025/", "accessed": "2026-07-02" },
+    { "id": 6, "title": "Bilan 2024 — Activité des Business Angels (PDF officiel)", "publisher": "France Angels", "url": "https://www.franceangels.org/wp-content/uploads/2025/04/Extene-Bilan-2024-Activite-des-Business-Angels.pdf", "accessed": "2026-07-02" },
+    { "id": 7, "title": "Key Figures", "publisher": "France Angels", "url": "https://www.franceangels.org/en/key-figures/", "accessed": "2026-07-02" },
+    { "id": 8, "title": "Clément Lamolinerie, nouveau visage de Motier Ventures", "publisher": "Maddyness", "url": "https://www.maddyness.com/2025/04/10/clement-lamolinerie-nouveau-visage-de-motier-ventures-deroule-sa-feuille-de-route/", "accessed": "2026-07-02" },
+    { "id": 9, "title": "Super Capital — fiche investisseur", "publisher": "Maddyness / Super Capital", "url": "https://www.maddyness.com/base-fonds-investissements/super-capital/", "accessed": "2026-07-02" },
+    { "id": 10, "title": "Hexa Start (site officiel)", "publisher": "Hexa", "url": "https://www.hexa.com/start", "accessed": "2026-07-02" },
+    { "id": 11, "title": "Pierre-Édouard Stérin va investir 180 M€ dans son startup studio d'ici 2030", "publisher": "Maddyness", "url": "https://www.maddyness.com/2025/07/03/pierre-edouard-sterin-va-investir-180-millions-deuros-dans-son-startup-studio-dici-2030/", "accessed": "2026-07-02" },
+    { "id": 12, "title": "Comment Blast.Club redéfinit le Venture Capital en Europe", "publisher": "Mag Startup", "url": "https://www.magstartup.com/comment-blast-club-redefinit-le-venture-capital-en-europe-26-investissements-en-24-mois/", "accessed": "2026-07-02" },
+    { "id": 13, "title": "Dispositif Madelin (IR-PME) : le taux passe officiellement à 25 %", "publisher": "Finance FAIR / LégiFiscal", "url": "https://www.finance-fair.org/fr/actualites/dispositif-madelin-ir-pme-le-taux-passe-officiellement-25", "accessed": "2026-07-02" },
+    { "id": 14, "title": "Loi de finances 2024 : dispositif JEI, JEIC, JEIR", "publisher": "Anaxago", "url": "https://www.anaxago.com/blog/fiscalite/loi-finances-2024-dispositif-JEI-entreprises-innovantes-JEIC-JEIR-actu", "accessed": "2026-07-02" },
+    { "id": 15, "title": "Bourse French Tech (catalogue offres)", "publisher": "Bpifrance", "url": "https://www.bpifrance.fr/catalogue-offres/bourse-french-tech", "accessed": "2026-07-02" },
+    { "id": 16, "title": "Baromètre EY du capital-risque en France — Bilan annuel 2025", "publisher": "EY", "url": "https://www.ey.com/content/dam/ey-unified-site/ey-com/fr-fr/insights/fast-growing-companies/documents/ey-barometre-vc-bilan-2025.pdf", "accessed": "2026-07-02" },
+    { "id": 17, "title": "The Y Combinator Standard Deal", "publisher": "Y Combinator", "url": "https://www.ycombinator.com/deal", "accessed": "2026-07-02" },
+    { "id": 18, "title": "Silicon Valley's Y Combinator to Double Number of Cohorts Per Year", "publisher": "Yahoo Finance", "url": "https://finance.yahoo.com/news/silicon-valley-y-combinator-double-203948443.html", "accessed": "2026-07-02" },
+    { "id": 19, "title": "Techstars is laying off 17%, ending its J.P. Morgan-backed programs", "publisher": "TechCrunch", "url": "https://techcrunch.com/2024/08/07/techstars-is-laying-off-17-percent-ending-jp-morgan-backed-programs/", "accessed": "2026-07-02" },
+    { "id": 20, "title": "FJ Labs' Investment Strategy", "publisher": "Fabrice Grinda (blog officiel)", "url": "https://fabricegrinda.com/fj-labs-investment-strategy/", "accessed": "2026-07-02" },
+    { "id": 21, "title": "'Most active investor' FJ Labs closes on $260M across two new vehicles", "publisher": "TechCrunch", "url": "https://techcrunch.com/2023/01/25/most-active-investor-fj-labs-closes-on-260m-across-two-new-vehicles/", "accessed": "2026-07-02" },
+    { "id": 22, "title": "The Angel Market in 2023 — An Inflection Point for Women Angels? (Center for Venture Research)", "publisher": "Jeffrey E. Sohl, UNH", "url": "https://scholars.unh.edu/cvr/", "accessed": "2026-07-02" },
+    { "id": 23, "title": "AngelList Explained: Syndicates and Rolling Funds 2026", "publisher": "Angel Investors Network", "url": "https://angelinvestorsnetwork.com/angel-investing/angellist-syndicates-rolling-funds-spv-explained-2026", "accessed": "2026-07-02" },
+    { "id": 24, "title": "State of Pre-Seed: 2025 in Review", "publisher": "Carta", "url": "https://carta.com/data/state-of-pre-seed-2025/", "accessed": "2026-07-02" },
+    { "id": 25, "title": "SFC Capital (site officiel) + « The UK's most active early-stage investors »", "publisher": "SFC Capital / Sifted", "url": "https://sifted.eu/articles/the-uks-most-active-early-stage-investors", "accessed": "2026-07-02" },
+    { "id": 26, "title": "Enterprise Investment Scheme and Seed Enterprise Investment Scheme (SEIS/EIS)", "publisher": "GOV.UK", "url": "https://www.gov.uk/guidance/venture-capital-schemes-tax-relief-for-investors", "accessed": "2026-07-02" },
+    { "id": 27, "title": "The UK Angel Investment Market 2025", "publisher": "UK Business Angels Association (UKBAA)", "url": "https://ukbaa.org.uk/blog/2026/06/29/new-the-uk-angel-investment-market-2025-what-the-data-tells-us/", "accessed": "2026-07-02" },
+    { "id": 28, "title": "Angel Invest — Facts", "publisher": "Angel Invest (Berlin)", "url": "https://angelinvest.ventures/facts", "accessed": "2026-07-02" },
+    { "id": 29, "title": "Startup Wise Guys (site officiel)", "publisher": "Startup Wise Guys", "url": "https://startupwiseguys.com/", "accessed": "2026-07-02" },
+    { "id": 30, "title": "EBAN Annual Statistics Compendium for 2024", "publisher": "EBAN", "url": "https://www.eban.org/news/eban-annual-statistics-compendium-for-2024-2/", "accessed": "2026-07-02" },
+    { "id": 31, "title": "Antler (site officiel) + PitchBook Annual Global League Table 2024", "publisher": "Antler / PitchBook", "url": "https://www.antler.co/", "accessed": "2026-07-02" },
+    { "id": 32, "title": "Updating our global pre-seed investment offer to up to $250k", "publisher": "Entrepreneur First", "url": "https://www.joinef.com/posts/updating-our-global-pre-seed-investment-offer/", "accessed": "2026-07-02" },
+    { "id": 33, "title": "100X.VC — iSAFE", "publisher": "100X.VC", "url": "https://www.100x.vc/isafe", "accessed": "2026-07-02" },
+    { "id": 34, "title": "Launch Africa Ventures (site officiel)", "publisher": "Launch Africa", "url": "https://www.launchafrica.vc/", "accessed": "2026-07-02" },
+    { "id": 35, "title": "Platanus Ventures 2026 : USD 200K y club de inversionistas", "publisher": "El Ecosistema Startup", "url": "https://ecosistemastartup.com/platanus-ventures-2026-usd-200k-y-club-de-inversionistas/", "accessed": "2026-07-02" },
+    { "id": 36, "title": "Iterative VC (site officiel)", "publisher": "Iterative", "url": "https://www.iterative.vc/", "accessed": "2026-07-02" },
+    { "id": 37, "title": "Seed Funding In 2025 Broke Records Around Big Rounds And AI ; Global Venture Funding In 2025", "publisher": "Crunchbase News", "url": "https://news.crunchbase.com/venture/record-breaking-seed-funding-us-ai-eoy-2025/", "accessed": "2026-07-02" }
+  ],
+  "lexicon": [
+    { "term": "Pre-seed / seed", "fr": "Les tout premiers tours de financement d'une startup : le pre-seed précède le seed (« amorçage »), qui est le premier tour structuré. Cœur de ce marché.", "en": "The earliest funding rounds of a startup: pre-seed precedes seed (the first structured round). The core of this market." },
+    { "term": "Business angel", "fr": "Personne physique qui investit son propre argent dans de jeunes entreprises, souvent 10-100 k€, parfois avec du mentorat.", "en": "An individual who invests their own money in early-stage startups, often €10-100k, sometimes with mentoring." },
+    { "term": "Super angel", "fr": "Business angel qui investit avec la cadence et la structuration d'un fonds professionnel, tout en restant sur des tickets de taille angel.", "en": "An angel who invests with the cadence and structure of a professional fund, while keeping angel-sized tickets." },
+    { "term": "Ticket", "fr": "Montant investi par un investisseur dans une opération donnée (le « premier chèque » en pre-seed).", "en": "The amount an investor puts into a given deal (the « first cheque » at pre-seed)." },
+    { "term": "Cadence / dealflow", "fr": "Cadence = nombre d'investissements réalisés par an ; dealflow = flux de dossiers reçus et examinés. Les deux nerfs de ce marché.", "en": "Cadence = number of investments made per year; dealflow = flow of deals reviewed. The two nerves of this market." },
+    { "term": "Loi de puissance (power law)", "fr": "Distribution des retours du capital-risque où une infime minorité d'investissements génère la quasi-totalité du rendement — justifie la logique de volume.", "en": "The venture-return distribution where a tiny minority of deals generates almost all the return — the rationale for volume investing." },
+    { "term": "Spray and pray", "fr": "Stratégie consistant à multiplier un grand nombre de petits tickets à faible conviction individuelle, en pariant sur la loi de puissance (Kima, FJ Labs).", "en": "Strategy of spreading many small, low-conviction cheques, betting on the power law (Kima, FJ Labs)." },
+    { "term": "One-shot", "fr": "Politique (Kima) d'investir une seule fois par startup, sans jamais réinvestir aux tours suivants.", "en": "Policy (Kima) of investing once per startup, never following on in later rounds." },
+    { "term": "Evergreen (fonds)", "fr": "Fonds sans date de fin ni obligation de rendre le capital à échéance — capital patient, souvent d'un seul apporteur (Kima : Xavier Niel).", "en": "A fund with no end date or obligation to return capital by a deadline — patient capital, often from a single backer (Kima: Xavier Niel)." },
+    { "term": "SAFE / BSA-AIR / iSAFE", "fr": "Instruments de financement rapide convertibles en actions à un tour futur, sans fixer de valorisation immédiate : SAFE (US, Y Combinator), BSA-AIR (France), iSAFE (Inde).", "en": "Fast-financing instruments converting to equity at a future round without setting a valuation now: SAFE (US, YC), BSA-AIR (France), iSAFE (India)." },
+    { "term": "MFN (Most Favoured Nation)", "fr": "Clause garantissant à l'investisseur les meilleures conditions accordées à tout investisseur ultérieur (ex. le +375 k$ de Y Combinator).", "en": "Clause granting the investor the best terms given to any later investor (e.g. YC's extra $375k)." },
+    { "term": "Syndicate / rolling fund / SPV", "fr": "Véhicules (AngelList) permettant d'agréger plusieurs petits chèques : le syndicate est monté deal par deal (SPV), le rolling fund lève des engagements trimestriels.", "en": "Vehicles (AngelList) to pool small cheques: a syndicate is set up deal-by-deal (SPV), a rolling fund raises quarterly commitments." },
+    { "term": "Venture builder / studio", "fr": "Structure qui construit des startups en interne (idéation, staffing) avant de les faire sortir (Hexa, Entrepreneur First), par opposition à l'accélérateur qui sélectionne des équipes déjà formées.", "en": "A structure that builds startups in-house before spinning them out (Hexa, Entrepreneur First), versus an accelerator that selects existing teams." },
+    { "term": "Equity-free", "fr": "Financement (souvent une subvention publique) qui n'exige aucune cession de capital — ex. la Bourse French Tech de Bpifrance.", "en": "Funding (often a public grant) requiring no equity in exchange — e.g. Bpifrance's French Tech Grant." },
+    { "term": "IR-PME / Madelin, JEI/JEIC/JEIR", "fr": "Dispositifs fiscaux français : réduction d'impôt sur le revenu pour investissement en PME (18 %, 25 % en 2024-2025) ; statuts Jeune Entreprise Innovante / de Croissance / de Rupture avec avantages majorés.", "en": "French tax schemes: income-tax relief for investing in SMEs (18%, 25% in 2024-2025); « Young Innovative Company » statuses (JEI/JEIC/JEIR) with enhanced benefits." },
+    { "term": "SEIS / EIS", "fr": "Dispositifs fiscaux britanniques incitant l'investissement en jeunes entreprises (réductions de 50 %/30 %) — l'équivalent UK de l'IR-PME, moteur du micro-seed britannique.", "en": "UK tax schemes incentivising early-stage investing (50%/30% relief) — the UK equivalent of France's IR-PME, engine of UK micro-seed." },
+    { "term": "LP / GP", "fr": "Limited Partner = investisseur qui apporte le capital d'un fonds ; General Partner = gestionnaire. Kima a un LP unique (Xavier Niel).", "en": "Limited Partner = investor providing a fund's capital; General Partner = manager. Kima has a single LP (Xavier Niel)." }
+  ],
+  "last_updated": "2026-07-02"
+}
