@@ -1,0 +1,465 @@
+{
+  "schema_version": 1,
+  "market": {
+    "slug": "greeting-cards-us",
+    "label": "Cartes de vœux & d'expression sociale — États-Unis",
+    "input": "le marché américain des greeting cards et social cards",
+    "language": "fr",
+    "geo_scope": "États-Unis",
+    "assumptions": [
+      "Interprétation du besoin : « greeting cards & social cards » = le marché américain de l'EXPRESSION SOCIALE — cartes de vœux physiques (vendues en magasin ou personnalisées en ligne), e-cards numériques, et invitations / faire-part (papier et numériques). C'est le périmètre que l'industrie elle-même appelle « social expression ». Hors champ : le papier cadeau et les articles de fête (adjacents), les apps de messagerie généralistes.",
+      "Mesure des parts : parts des revenus annuels « expression sociale US » estimés au sein d'un panel de 13 acteurs comparables (~6,3 Md$ cumulés, sur un marché GCA de 7-8 Md$ — le solde étant la longue traîne : ~3 500 éditeurs indépendants, les créateurs Etsy, le private label). Hallmark et American Greetings étant privés et Shutterfly/Vistaprint/Zazzle ne ventilant pas leur ligne « cartes », presque toutes les valeurs sont des estimations signalées « ~ », de fiabilité inégale notée acteur par acteur.",
+      "Croissance de référence : marché retenu ~0 %/an en valeur (« flat, even slightly growing » selon la GCA 2025 ; IBISWorld voit −4,9 %/an sur un périmètre plus large, Grand View +1,6 %) — le paradoxe du marché : volumes en déclin lent, valeur tenue par la premiumisation.",
+      "Les plateformes d'invitations GRATUITES de nouvelle génération (Partiful, Apple Invites, Givingli) n'ont pas de revenus « cartes » significatifs : elles sont hors nuage, traitées comme force d'érosion structurelle — de même qu'Etsy (canal, pas éditeur) et Card Factory (entrant UK, pas encore de CA US significatif)."
+    ]
+  },
+  "run": { "number": 1, "date": "2026-08-10" },
+  "reading": {
+    "maturity_summary": "Marché mûr au paradoxe assumé : les volumes déclinent lentement (~6,5 milliards de cartes/an, contre ~7 il y a vingt ans) mais la valeur tient (7-8 Md$) grâce à la premiumisation — prix courant passé à 4-6 $, Millennials à ~6 $/carte — et à des générations qui surprennent : Millennials et Gen Z dépensent désormais plus que leurs aînés, et 59-62 % préfèrent recevoir du papier. Les bascules récentes : Elliott Investment Management prend le contrôle d'American Greetings (février 2025) ; le réseau Hallmark Gold Crown fond (~2 000 magasins en 2020 → ~1 146 en 2025, faillite du franchisé Banner's en septembre 2025) ; le timbre USPS augmente de 49 % en six ans (82 ¢ depuis juillet 2026) ; Minted franchit 300 M$ et retourne vers le retail physique pendant que Shutterfly ploie sous 2,4 Md$ de dette ; et l'érosion nouvelle vient des invitations gratuites (Partiful, Apple Invites, lancée février 2025) plus que des e-cards classiques, restées marginales.",
+    "reference_period": {
+      "choice": "1y",
+      "options": ["6m", "1y", "3y"],
+      "rationale": "Les événements structurants tiennent dans les dix-huit derniers mois : prise de contrôle d'American Greetings par Elliott (févr. 2025), faillite Banner's Hallmark (sept. 2025), cap des 300 M$ chez Minted et tensions de dette Shutterfly (2026), hausse du timbre à 82 ¢ (juil. 2026), Apple Invites (févr. 2025). Trois ans mélangeraient l'ère post-Covid de rattrapage avec la recomposition actuelle ; six mois manqueraient la bascule actionnariale de début 2025."
+    },
+    "dimensions": [
+      {
+        "id": "canal",
+        "label": "Canal dominant",
+        "rank": 1,
+        "type": "ordinal",
+        "description": "Où se fait la vente : rayon physique (drugstores, mass market, boutiques), commande en ligne d'un produit imprimé, ou envoi 100 % numérique. La ligne de fracture du marché.",
+        "scale": { "values": ["retail physique", "en ligne imprimé", "numérique pur"] }
+      },
+      {
+        "id": "prix_unitaire",
+        "label": "Prix par carte ($)",
+        "rank": 2,
+        "type": "numeric",
+        "unit": "$ / carte ou envoi",
+        "description": "Prix typique payé par carte (ou par envoi pour le numérique) : de ~0,2 $ (envoi e-card premium) et 1 $ (dollar stores) à ~14 $ (Lovepop pop-up). L'écart de 1 à 70 porte toute la premiumisation.",
+        "scale": { "min": 0, "max": 15 }
+      },
+      {
+        "id": "personnalisation",
+        "label": "Degré de personnalisation",
+        "rank": 3,
+        "type": "numeric",
+        "unit": "/10",
+        "description": "0-2 : carte standard sur étagère ; 5-7 : photo/texte personnalisés sur gabarit ; 9-10 : création complète ou marketplace de créateurs. Le clivage produit qui sépare le rayon du sur-mesure.",
+        "scale": { "min": 0, "max": 10 }
+      },
+      {
+        "id": "occasion",
+        "label": "Occasion cœur",
+        "rank": 4,
+        "type": "ordinal",
+        "description": "Le centre de gravité de l'offre : cartes de vœux (anniversaires >50 % des ventes, fêtes calendaires), invitations & événements (mariages, fêtes), ou mixte.",
+        "scale": { "values": ["cartes de vœux", "mixte", "invitations & événements"] }
+      },
+      {
+        "id": "modele_economique",
+        "label": "Modèle économique",
+        "rank": 5,
+        "type": "ordinal",
+        "description": "Comment l'acteur encaisse : vente à l'unité en rayon, commande personnalisée en ligne (photo/faire-part), ou abonnement / freemium numérique (coins, publicité).",
+        "scale": { "values": ["vente à l'unité", "commande personnalisée", "abonnement / freemium"] }
+      }
+    ],
+    "default_channels": {
+      "y": "market_share",
+      "x_color": "prix_unitaire",
+      "size": "personnalisation",
+      "opacity": "occasion",
+      "border": "modele_economique"
+    },
+    "default_config_rationale": "Le canal dominant est classé premier : c'est lui qui sépare les trois mondes du marché — le rayon physique (Hallmark, American Greetings, Lovepop), la commande imprimée en ligne (Minted, Shutterfly, Vistaprint, Zazzle) et le numérique pur (Evite, Paperless Post, Punchbowl) — il est affecté à l'axe Y, recouvert par défaut par la part de marché (basculez Y sur « Canal dominant » pour la vue structurelle). Le prix par carte (rang 2, axe X + couleur) rend la premiumisation lisible : plus un marqueur est à droite et foncé, plus la carte est chère — de 0,2 $ l'envoi numérique à 14 $ le pop-up Lovepop. Le degré de personnalisation (rang 3, taille) montre le clivage produit : les gros marqueurs vendent du sur-mesure. L'occasion cœur (rang 4, opacité) et le modèle économique (rang 5, bordure) complètent la lecture.",
+    "export_note": "Marché américain des cartes de vœux & d'expression sociale (physique, imprimé en ligne, numérique), lu au 10 août 2026. Hauteur = part des revenus « expression sociale US » estimés d'un panel de 13 acteurs (~6,3 Md$ cumulés, marché GCA 7-8 Md$) ; position horizontale = croissance estimée de la part sur 12 mois (marché ~0 %/an) ; toutes valeurs ~estimées. Première observation : un duopole massif (Hallmark ~51 % du panel, American Greetings ~27 % — ensemble 75-80 % du marché) au-dessus d'une poussière d'acteurs — et la croissance est ailleurs : chez Minted (+300 M$, retour au retail physique), Moonpig (entrant UK) et les invitations numériques, pendant que Shutterfly décroît sous sa dette.",
+    "values_methodology": [
+      { "label": "Part de marché (%)", "note": "Part des revenus annuels « expression sociale États-Unis » estimés de l'acteur dans un panel de 13 acteurs cumulant ~6,3 Md$. Tous les chiffres sources sont en dollars US (Moonpig converti de la livre au taux ~1 £ = 1,27 $). Pour les groupes multi-activités (Hallmark : Crayola et Hallmark Media exclus ; Shutterfly, Vistaprint, Zazzle : seule la ligne cartes/papeterie est comptée), la part repose sur une ventilation estimée par l'agent — fiabilité faible, notée acteur par acteur. Le panel exclut la longue traîne (~3 500 éditeurs, Etsy, private label) : les parts se lisent au sein du panel, pas du marché total." },
+      { "label": "Croissance 12 mois (%)", "note": "Croissance estimée de la part sur un an : croissance des revenus de l'acteur rapportée à celle du marché, retenue à ~0 %/an en valeur (GCA 2025 : « flat, even slightly growing » ; IBISWorld −4,9 %/an sur un périmètre NAICS plus large ; Grand View +1,6 %). Une valeur positive = l'acteur gagne du terrain sur un marché stable." },
+      { "label": "Canal dominant", "note": "Catégorie qualitative : retail physique (rayon drugstore/mass/boutique) / en ligne imprimé (commande web, produit papier livré) / numérique pur (e-card, invitation en ligne — aucun objet physique)." },
+      { "label": "Prix par carte ($)", "note": "Dollars US par carte physique ou par envoi numérique, prix courant constaté : counter cards 2-5 $ (GCA), dollar stores 1 $, cartes photo ~1-2,8 $/carte (min. 20-100 exemplaires), Lovepop ~13-15 $, envois numériques ~0,1-0,7 $/destinataire (abonnements et coins ramenés à l'envoi). Estimations (~) pour les acteurs sans prix public unique." },
+      { "label": "Degré de personnalisation", "note": "Score attribué par l'agent : 0-2 = carte standard sur étagère ; 5-7 = photo/texte personnalisés sur gabarit (Shutterfly, Minted) ; 9-10 = création libre ou marketplace de créateurs (Zazzle, Vistaprint). Les e-cards personnalisables (photo, vidéo) se situent à 5-6." },
+      { "label": "Occasion cœur", "note": "Catégorie qualitative déduite du mix produit : cartes de vœux (anniversaires — plus de 50 % des cartes vendues —, fêtes calendaires, sympathie) / invitations & événements (mariages, fêtes, RSVP) / mixte (les deux à parts comparables : cartes photo de fin d'année + faire-part)." },
+      { "label": "Modèle économique", "note": "Catégorie qualitative : vente à l'unité (rayon, keystone pricing ~50 % de marge détaillant, scan-based trading chez les grands) / commande personnalisée (impression à la demande, panier moyen porté par les lots) / abonnement ou freemium (Blue Mountain 35,99 $/an, Jacquie Lawson 36 $/an, Punchbowl 5,99-11,99 $/mois, coins Paperless Post, gratuit publicitaire Evite)." }
+    ]
+  },
+  "players": [
+    {
+      "id": "hallmark",
+      "name": "Hallmark",
+      "market_share_pct": { "value": 50.6, "estimated": true, "note": "part du panel ; part marché cartes US 40-51 % selon les sources (IBISWorld 2017 : 51,2 %)" },
+      "growth_pct": { "value": -2, "estimated": true, "note": "érosion douce : réseau Gold Crown en repli, CA groupe stable ~3,5 Md$" },
+      "dimensions": {
+        "canal": { "value": "retail physique", "estimated": false, "note": "drugstores, mass market, ~1 146 magasins Gold Crown (2025)" },
+        "prix_unitaire": { "value": 4, "estimated": true, "note": "counter cards 2-5 $ ; sous-marques Heartline/Expressions à 1 $ chez Dollar Tree" },
+        "personnalisation": { "value": 2, "estimated": true, "note": "standard sur étagère ; Sign & Send (message manuscrit imprimé) en niche" },
+        "occasion": { "value": "cartes de vœux", "estimated": false },
+        "modele_economique": { "value": "vente à l'unité", "estimated": false }
+      },
+      "card": {
+        "summary": "Le n°1 incontesté depuis 1910 (famille Hall, Kansas City) : ~40-51 % du marché US des cartes selon les sources. Groupe privé (~3,5 Md$ est., avec Crayola et Hallmark Media) — la part retenue ici ne compte que l'expression sociale (~3,2 Md$, fiabilité faible).",
+        "facts": [
+          "CA groupe ~3,5 Md$ (est. Forbes 2021-2025 ; aucun chiffre officiel — société privée) dont Crayola et Hallmark Media, exclus de la part",
+          "Réseau Gold Crown : ~2 000 magasins (2020) → ~1 146 (2025) ; faillite du franchisé Banner's Hallmark (39 magasins, sept. 2025)",
+          "Virage digital : Hallmark+ (streaming + fidélité, sept. 2024), Gift Card Greetings (oct. 2024)",
+          "IA « préservationniste » : Sign & Send (vision par ordinateur sur message manuscrit) — refus déclaré de générer les textes de vœux par IA"
+        ],
+        "source_ids": [1, 2, 3]
+      }
+    },
+    {
+      "id": "american-greetings",
+      "name": "American Greetings",
+      "market_share_pct": { "value": 26.9, "estimated": true, "note": "part du panel ; part marché cartes US 23-40 % selon les sources" },
+      "growth_pct": { "value": 0, "estimated": true, "note": "stabilisé après des années de baisse ; relance digital gifting sous Elliott" },
+      "dimensions": {
+        "canal": { "value": "retail physique", "estimated": false, "note": "mass market, drugstores, grocery — plus de boutiques en propre depuis 2020" },
+        "prix_unitaire": { "value": 3.5, "estimated": true, "note": "counter cards + gammes value ; Papyrus en premium (~8-10 $)" },
+        "personnalisation": { "value": 3, "estimated": true, "note": "standard + Creatacard/SmashUps côté numérique" },
+        "occasion": { "value": "cartes de vœux", "estimated": false },
+        "modele_economique": { "value": "vente à l'unité", "estimated": false, "note": "+ abonnements e-cards (Blue Mountain, Jacquie Lawson) via AG Interactive" }
+      },
+      "card": {
+        "summary": "Le n°2 historique (Cleveland, 1906, famille Weiss) — passé sous le contrôle majoritaire d'Elliott Investment Management le 3 février 2025 (CD&R et les Weiss minoritaires). Portefeuille : American Greetings, Carlton, Gibson, Papyrus, Recycled Paper Greetings + le pôle numérique AG Interactive.",
+        "facts": [
+          "CA ~1,7 Md$ (FY2024, est. — société privée depuis 2013) ; EBITDA 2024 projeté ~288 M$ ; valorisation évoquée ~1,5 Md$ lors du processus de cession",
+          "Elliott majoritaire depuis févr. 2025 ; piste de cession explorée par CD&R (BofA, Centerview) en 2024",
+          "Marque Papyrus conservée (boutiques Schurman fermées en 2020) — vendue chez Target, Kroger, Whole Foods",
+          "AG Interactive : Blue Mountain (35,99 $/an), Jacquie Lawson (36 $/an), SmashUps ; partenariats digital gifting (Songfinch, Birdie, févr. 2025)"
+        ],
+        "source_ids": [4, 5]
+      }
+    },
+    {
+      "id": "shutterfly",
+      "name": "Shutterfly (cartes & papeterie)",
+      "market_share_pct": { "value": 6.3, "estimated": true, "note": "ligne cartes/papeterie estimée ~400 M$ sur un groupe ~1,3 Md$ — fiabilité faible" },
+      "growth_pct": { "value": -8, "estimated": true, "note": "CA groupe T1 2026 : −8 % — sous pression concurrentielle et IA" },
+      "dimensions": {
+        "canal": { "value": "en ligne imprimé", "estimated": false },
+        "prix_unitaire": { "value": 2, "estimated": true, "note": "cartes photo ~1,5-3 $/carte selon volume, promos permanentes (−40/−50 %)" },
+        "personnalisation": { "value": 8, "estimated": true, "note": "photo + texte sur gabarits ; adressage destinataire" },
+        "occasion": { "value": "mixte", "estimated": false, "note": "cartes de fin d'année photo + faire-part" },
+        "modele_economique": { "value": "commande personnalisée", "estimated": false }
+      },
+      "card": {
+        "summary": "Le géant historique de la carte photo, en difficulté : détenu par Apollo depuis 2019, ~2,4 Md$ de dette, CA en baisse (−8 % au T1 2026) — et le risque IA écrit noir sur blanc dans sa documentation obligataire (la génération d'images pourrait éroder la demande d'imprimés personnalisés).",
+        "facts": [
+          "CA T1 2026 (trimestre) : 313,5 M$, −8 % ; perte d'EBITDA 19,7 M$ — la ligne cartes/papeterie n'est pas ventilée (part ici : hypothèse ~400 M$/an, fiabilité faible)",
+          "Dette ~2,4 Md$ ; refinancement 2026 : tranche junior 250 M$ à 12,5 %, Apollo subordonne sa position",
+          "Risque IA générative explicitement listé dans la documentation obligataire",
+          "Propriété Apollo Global Management depuis le retrait de cote (2019)"
+        ],
+        "source_ids": [6]
+      }
+    },
+    {
+      "id": "minted",
+      "name": "Minted",
+      "market_share_pct": { "value": 4.7, "estimated": true },
+      "growth_pct": { "value": 12, "estimated": true, "note": "croissance à deux chiffres, rentabilité doublée (2025)" },
+      "dimensions": {
+        "canal": { "value": "en ligne imprimé", "estimated": false, "note": "+ percée retail : rayon ×3-4 chez Target, n°1 cartes chez Whole Foods" },
+        "prix_unitaire": { "value": 2.2, "estimated": true, "note": "cartes photo ~1,63-2,80 $/carte (min. 20) ; cartes retail premium plus chères" },
+        "personnalisation": { "value": 8, "estimated": true, "note": "gabarits de créateurs indépendants + photo/texte ; IA « stratégique » sans remplacer le design humain" },
+        "occasion": { "value": "mixte", "estimated": false, "note": "faire-part (mariage, naissance) + cartes de fin d'année" },
+        "modele_economique": { "value": "commande personnalisée", "estimated": false }
+      },
+      "card": {
+        "summary": "La marketplace de créateurs qui gagne : cap des 300 M$ de CA franchi en 2026 (308 M$ visés), rentabilité doublée, et un retour remarqué au rayon physique (Target, Whole Foods) — le contre-exemple de Shutterfly, en croissance autofinancée depuis 2018.",
+        "facts": [
+          "CA >300 M$ en 2026 (officiel) ; croissance à deux chiffres ; rentabilité doublée en 2025",
+          "~300-336 M$ levés au total, dernier tour 208 M$ (2018, T. Rowe Price/Permira) — rien depuis",
+          "Marque de cartes à la plus forte croissance chez Target (linéaire 4 → 12-16 pieds) ; n°1 chez Whole Foods",
+          "Modèle : concours de design → gabarits de créateurs indépendants rémunérés"
+        ],
+        "source_ids": [7]
+      }
+    },
+    {
+      "id": "vistaprint",
+      "name": "Vistaprint (cartes & invitations)",
+      "market_share_pct": { "value": 4, "estimated": true, "note": "ligne cartes/invitations US estimée ~250 M$ sur Vistaprint 1,82 Md$ monde — fiabilité faible" },
+      "growth_pct": { "value": 3, "estimated": true, "note": "Vistaprint +3 % (FY2025)" },
+      "dimensions": {
+        "canal": { "value": "en ligne imprimé", "estimated": false },
+        "prix_unitaire": { "value": 1, "estimated": true, "note": "<1 $/carte dès 100 exemplaires — le prix plancher de l'imprimé personnalisé" },
+        "personnalisation": { "value": 9, "estimated": true, "note": "création libre ou gabarits, en volume" },
+        "occasion": { "value": "mixte", "estimated": true, "note": "cartes de vœux business + invitations" },
+        "modele_economique": { "value": "commande personnalisée", "estimated": false }
+      },
+      "card": {
+        "summary": "Le bras « impression en volume » du marché (groupe Cimpress, coté, 3,4 Md$ FY2025 dont Vistaprint 1,82 Md$) : cartes et invitations personnalisées au prix plancher (<1 $/carte en volume), cœur business et particuliers économes. Apollo a investi 300 M$ dans Cimpress en 2025.",
+        "facts": [
+          "Cimpress FY2025 : 3,4 Md$ (+3 %) ; Vistaprint 1,82 Md$ (+3 %) — ligne cartes non ventilée (part ici : hypothèse ~250 M$ US, fiabilité faible)",
+          "AOV >90 $ ; dépense moyenne ~150 $/client/an ; marge brute ~55 %",
+          "Prix : <1 $/carte dès 100 exemplaires, adressage gratuit",
+          "Apollo Global Management a investi 300 M$ dans Cimpress (2025)"
+        ],
+        "source_ids": [8]
+      }
+    },
+    {
+      "id": "zazzle",
+      "name": "Zazzle (cartes)",
+      "market_share_pct": { "value": 3.2, "estimated": true, "note": "estimations groupe très contradictoires (180-413 M$) — fiabilité faible" },
+      "growth_pct": { "value": 0, "estimated": true },
+      "dimensions": {
+        "canal": { "value": "en ligne imprimé", "estimated": false },
+        "prix_unitaire": { "value": 3.5, "estimated": true },
+        "personnalisation": { "value": 10, "estimated": true, "note": "print-on-demand de créateurs + personnalisation totale par l'acheteur" },
+        "occasion": { "value": "mixte", "estimated": true },
+        "modele_economique": { "value": "commande personnalisée", "estimated": false }
+      },
+      "card": {
+        "summary": "La marketplace print-on-demand historique (2005, famille Beaver, licences Disney/Warner) : personnalisation totale, créateurs rémunérés en royalties. Poids réel difficile à cerner — les estimations de CA vont du simple au double (180-413 M$).",
+        "facts": [
+          "CA estimé entre ~180 et ~413 M$ selon les agrégateurs (aucun chiffre officiel depuis 2015 : >250 M$ annoncés alors) — part ici sur ~200 M$, fiabilité faible",
+          "~46 M$ levés (Kleiner Perkins, 2005) ; toujours privée et familiale",
+          "Print-on-demand : cartes parmi des dizaines de catégories produits",
+          "Licences de marques (Disney, Warner Bros.) — différenciant face à Minted/Shutterfly"
+        ],
+        "source_ids": [9]
+      }
+    },
+    {
+      "id": "lovepop",
+      "name": "Lovepop",
+      "market_share_pct": { "value": 2.4, "estimated": true },
+      "growth_pct": { "value": 5, "estimated": true },
+      "dimensions": {
+        "canal": { "value": "retail physique", "estimated": true, "note": "boutiques en propre + 600 partenaires wholesale (dont… les magasins Hallmark Gold Crown) + en ligne" },
+        "prix_unitaire": { "value": 14, "estimated": true, "note": "~13-15 $ la carte pop-up — le sommet du marché" },
+        "personnalisation": { "value": 2, "estimated": true, "note": "designs standards ; quelques options personnalisées" },
+        "occasion": { "value": "cartes de vœux", "estimated": false },
+        "modele_economique": { "value": "vente à l'unité", "estimated": false }
+      },
+      "card": {
+        "summary": "Le champion de la premiumisation : cartes 3D pop-up « kirigami » à ~14 $, nées de Shark Tank (Kevin O'Leary, 300 k$/15 %). ~150 M$ de CA annuel (2022), 304 M$ cumulés (2023) — la preuve que la valeur du marché monte quand le volume baisse.",
+        "facts": [
+          "CA >150 M$/an (sept. 2022, annoncé) ; 304 M$ cumulés (oct. 2023) ; 9e société Shark Tank la plus performante",
+          "~27,5 M$ levés (Accomplice, Highland) ; boutiques en propre (Boston, NY…) + 600 partenaires wholesale",
+          "Vendu jusque dans les magasins Hallmark Gold Crown — porosité notable entre concurrents",
+          "Procès en contrefaçon lancés en 2024 (Poplife, Paper Love) — défense du territoire pop-up"
+        ],
+        "source_ids": [10]
+      }
+    },
+    {
+      "id": "leanin-tree",
+      "name": "Leanin' Tree",
+      "market_share_pct": { "value": 0.6, "estimated": true, "note": "CA non publié — hypothèse ~40 M$ sur ~20 M cartes/an, fiabilité faible" },
+      "growth_pct": { "value": 0, "estimated": true },
+      "dimensions": {
+        "canal": { "value": "retail physique", "estimated": false, "note": "wholesale détaillants + vente directe" },
+        "prix_unitaire": { "value": 3.5, "estimated": true },
+        "personnalisation": { "value": 1, "estimated": true },
+        "occasion": { "value": "cartes de vœux", "estimated": false },
+        "modele_economique": { "value": "vente à l'unité", "estimated": false }
+      },
+      "card": {
+        "summary": "L'indépendant du Colorado (1949), passé en actionnariat salarié (ESOP) en 2021 : ~20 millions de cartes expédiées par an, 3 000+ designs, positionnement art de l'Ouest américain et papier recyclé. Le visage de la « longue traîne » structurée.",
+        "facts": [
+          ">20 millions de cartes/an expédiées (détaillants + particuliers) ; 3 000+ designs",
+          "ESOP (actionnariat salarié) depuis 2021 ; production déménagée à Mead, CO (2024)",
+          "CA non publié — part ici sur hypothèse ~40 M$ (fiabilité faible)",
+          "Représente dans le panel les ~3 500 éditeurs indépendants du marché"
+        ],
+        "source_ids": [11]
+      }
+    },
+    {
+      "id": "avanti-press",
+      "name": "Avanti Press",
+      "market_share_pct": { "value": 0.4, "estimated": true, "note": "CA ~24-25 M$ (agrégateurs) — fiabilité faible" },
+      "growth_pct": { "value": 0, "estimated": true },
+      "dimensions": {
+        "canal": { "value": "retail physique", "estimated": false, "note": "~20 000 points de vente en Amérique du Nord" },
+        "prix_unitaire": { "value": 4, "estimated": true },
+        "personnalisation": { "value": 0, "estimated": false },
+        "occasion": { "value": "cartes de vœux", "estimated": false },
+        "modele_economique": { "value": "vente à l'unité", "estimated": false }
+      },
+      "card": {
+        "summary": "L'éditeur humoristique de Détroit (1980) : cartes photo-humour imprimées aux États-Unis, ~20 000 points de vente, 45 ans en 2025. Deuxième visage de la longue traîne indépendante du panel.",
+        "facts": [
+          "~20 000 points de vente en Amérique du Nord, 50 États, ~25 pays",
+          "CA estimé ~24-25 M$ (agrégateurs, fiabilité faible)",
+          "Toutes les cartes imprimées aux US ; marques Avanti, America, A*Press, NIQUEA.D",
+          "45e anniversaire en 2025"
+        ],
+        "source_ids": [12]
+      }
+    },
+    {
+      "id": "evite",
+      "name": "Evite",
+      "market_share_pct": { "value": 0.3, "estimated": true, "note": "CA estimé 13-25 M$ selon les sources — fiabilité faible" },
+      "growth_pct": { "value": 5, "estimated": true, "note": "investissement de croissance Francisco Partners (oct. 2024)" },
+      "dimensions": {
+        "canal": { "value": "numérique pur", "estimated": false },
+        "prix_unitaire": { "value": 0.3, "estimated": true, "note": "gratuit publicitaire ; premium 17,99-99,99 $/événement ; Pro 249,99 $/an" },
+        "personnalisation": { "value": 6, "estimated": true },
+        "occasion": { "value": "invitations & événements", "estimated": false },
+        "modele_economique": { "value": "abonnement / freemium", "estimated": false }
+      },
+      "card": {
+        "summary": "Le pionnier des invitations en ligne (1998, ~3 milliards d'invitations envoyées) : gratuit financé par la publicité + premium. Racheté par ses dirigeants en 2020, adossé à Francisco Partners depuis octobre 2024 — mais attaqué frontalement par les gratuits nouvelle génération (Partiful, Apple Invites).",
+        "facts": [
+          "~3 milliards d'invitations envoyées depuis 1998 ; « 100 M+ utilisateurs annuels » (chiffre maison, non audité)",
+          "Investissement de croissance Francisco Partners (clos oct. 2024) ; CEO David Yeom",
+          "Modèle : gratuit ad-supported + premium à l'unité (17,99-99,99 $) + Evite Pro (249,99 $/an)",
+          "CA estimé 13-25 M$ selon les sources (fiabilité faible)"
+        ],
+        "source_ids": [13]
+      }
+    },
+    {
+      "id": "paperless-post",
+      "name": "Paperless Post",
+      "market_share_pct": { "value": 0.24, "estimated": true, "note": "ARR ~15 M$ (est. tierce) — fiabilité faible" },
+      "growth_pct": { "value": 5, "estimated": true },
+      "dimensions": {
+        "canal": { "value": "numérique pur", "estimated": false },
+        "prix_unitaire": { "value": 0.7, "estimated": true, "note": "coins : 0,14-0,23 $/coin, 2-8 coins par destinataire selon le design" },
+        "personnalisation": { "value": 6, "estimated": true, "note": "designs premium (Rifle Paper, kate spade…) ; IA « Magic Art » (2025)" },
+        "occasion": { "value": "invitations & événements", "estimated": false },
+        "modele_economique": { "value": "abonnement / freemium", "estimated": false, "note": "monnaie virtuelle « coins »" }
+      },
+      "card": {
+        "summary": "Le haut de gamme de l'invitation numérique (New York) : designs de marques (Rifle Paper Co., kate spade), monétisation à l'envoi via les « coins ». Première fonctionnalité d'IA générative (« Magic Art ») lancée en 2025, entraînée sur des archives du domaine public.",
+        "facts": [
+          "ARR ~15 M$ (est. tierce, fiabilité faible) ; ~37 M$ levés",
+          "Modèle coins : packs 12-140 $ ; 0 (gratuit) à 8 coins par destinataire selon le tier",
+          "« Magic Art » (2025) : IA générative maison, positionnement artisanal revendiqué",
+          "Le premium face à Evite (gratuit-pub) et Partiful (gratuit total)"
+        ],
+        "source_ids": [14]
+      }
+    },
+    {
+      "id": "punchbowl-sincere",
+      "name": "Punchbowl (Sincere)",
+      "market_share_pct": { "value": 0.24, "estimated": true, "note": "CA Sincere estimé 10-50 M$ selon les sources — fiabilité très faible" },
+      "growth_pct": { "value": 8, "estimated": true, "note": "expansion mariage (Lovebird, oct. 2024)" },
+      "dimensions": {
+        "canal": { "value": "numérique pur", "estimated": false },
+        "prix_unitaire": { "value": 0.4, "estimated": true, "note": "abonnements 5,99-11,99 $/mois (Business 79,99 $)" },
+        "personnalisation": { "value": 5, "estimated": true },
+        "occasion": { "value": "invitations & événements", "estimated": false, "note": "+ e-cards" },
+        "modele_economique": { "value": "abonnement / freemium", "estimated": false }
+      },
+      "card": {
+        "summary": "La « famille de marques » de Matt Douglas (Sincere Corp., Framingham MA) : Punchbowl (invitations/e-cards, 325 M+ envoyées), Timehop (racheté 2023), Memento, et Lovebird (mariage, lancé oct. 2024 avec 8 M$ de dette SG Credit). Le consolidateur discret du numérique familial.",
+        "facts": [
+          ">325 millions d'invitations/cartes envoyées (Punchbowl) ; Timehop racheté en juin 2023",
+          "Lovebird (plateforme mariage) lancé oct. 2024 — financé par 8 M$ de dette senior (SG Credit Partners)",
+          "Abonnements : 5,99-11,99 $/mois (Platinum sans pub), Business 79,99 $/mois",
+          "CA Sincere estimé 10-50 M$ selon les sources (fiabilité très faible)"
+        ],
+        "source_ids": [15]
+      }
+    },
+    {
+      "id": "moonpig-us",
+      "name": "Moonpig (US)",
+      "market_share_pct": { "value": 0.08, "estimated": true, "note": "part US du CA « autres marchés » Moonpig (11,8 M£ US+AU+IE) — fiabilité faible" },
+      "growth_pct": { "value": 35, "estimated": true, "note": "CA US+AU+IE +36,1 % (FY25) — petite base" },
+      "dimensions": {
+        "canal": { "value": "en ligne imprimé", "estimated": false, "note": "carte à l'unité imprimée à la demande (NJ, Las Vegas), envoi direct au destinataire" },
+        "prix_unitaire": { "value": 6, "estimated": true, "note": "carte simple personnalisée ~5-7 $ + envoi" },
+        "personnalisation": { "value": 8, "estimated": true },
+        "occasion": { "value": "cartes de vœux", "estimated": false },
+        "modele_economique": { "value": "commande personnalisée", "estimated": false }
+      },
+      "card": {
+        "summary": "L'entrant à surveiller : le leader britannique de la carte personnalisée en ligne (~70 % du marché UK, 350 M£ de CA groupe) a lancé les États-Unis en avril 2024 — impression locale (New Jersey, Las Vegas), envoi le jour même. Encore minuscule (phase « market discovery ») mais +36 % sur ses nouveaux marchés.",
+        "facts": [
+          "Lancement US : avril 2024 ; impression à la demande locale (NJ + Las Vegas), envoi direct au destinataire",
+          "Groupe Moonpig FY2025 : 350,1 M£ de CA, ~12 M de clients actifs ; US+Australie+Irlande : 11,8 M£ (+36,1 %)",
+          "Modèle : carte à l'unité personnalisée ~5-7 $ — l'anti-rayon (zéro linéaire, zéro invendu)",
+          "À suivre aussi : Card Factory (UK) entré via le rachat de Garven Holdings (Minnesota, déc. 2024, 20 M£)"
+        ],
+        "source_ids": [16]
+      }
+    }
+  ],
+  "players_without_data": [
+    {
+      "name": "Etsy & les créateurs indépendants",
+      "why_significant": "Les cartes de vœux sont une catégorie top-seller d'Etsy (8 M de vendeurs actifs, ~96 M d'acheteurs) : des milliers de micro-éditeurs y vendent des cartes artisanales à marges brutes de 50-80 %. C'est le canal qui alimente la premiumisation par le bas — sans aucun chiffre consolidé.",
+      "what_was_searched": "Volume ou CA de la catégorie cartes sur Etsy — introuvable (Etsy ne ventile pas ses catégories).",
+      "source_ids": [17]
+    },
+    {
+      "name": "La longue traîne des ~3 500 éditeurs indépendants",
+      "why_significant": "Selon la GCA, ~3 500 petits éditeurs se partagent les ~20 % du marché que le duopole ne tient pas : Designer Greetings (24 000 designs, a racheté Card$mart et QPS), NobleWorks (humour), Recycled Paper Greetings (marque AG), le fournisseur anonyme des cartes à 99 ¢ de Trader Joe's, les gammes à 1 $ des dollar stores. Leanin' Tree et Avanti (dans le nuage) en sont les représentants chiffrables.",
+      "what_was_searched": "CA par éditeur — non publiés (sociétés privées) ; fournisseur Trader Joe's — introuvable.",
+      "source_ids": [12]
+    },
+    {
+      "name": "Les invitations gratuites nouvelle génération (Partiful, Apple Invites, Givingli)",
+      "why_significant": "La vraie érosion du numérique payant : Partiful (~500 k MAU, +400 %/an, app Google de l'année 2024, gratuit total, a16z) capte la gen Z ; Apple Invites (févr. 2025) offre les invitations avec l'abonnement iCloud+ ; Givingli s'adosse à Snapchat. Aucun ne vend de « cartes » — tous déplacent l'usage.",
+      "what_was_searched": "Revenus — non pertinents (gratuits ou adossés à un abonnement plateforme) ; MAU Partiful ~500 k (CNBC, avr. 2025).",
+      "source_ids": [18]
+    },
+    {
+      "name": "Card Factory (UK) — l'entrant par le wholesale",
+      "why_significant": "Le n°1 britannique du volume (verticalement intégré, prix bas) est entré aux US en décembre 2024 en rachetant Garven Holdings (Minnesota, 20 M£) + un accord de gros couvrant 1 100+ magasins. Son PDG qualifie le marché US d'« opportunité à 60-70 Md£ » — l'attaque par les prix arrive.",
+      "what_was_searched": "CA US cartes — pas encore significatif (entrée récente via le gros).",
+      "source_ids": [19]
+    }
+  ],
+  "sources": [
+    { "id": 1, "title": "Hallmark — profil et CA estimé (~3,5 Md$ 2021-2025, société privée) ; effectifs >20 000", "publisher": "Forbes", "url": "https://www.forbes.com/companies/hallmark/", "accessed": "2026-08-10" },
+    { "id": 2, "title": "Réseau Gold Crown : ~2 000 magasins (2020) → 1 146 (2025) ; faillite du franchisé Banner's Hallmark (Chapter 11, sept. 2025)", "publisher": "ExpandedRamblings / Yahoo Finance / Host Merchant Services", "url": "https://finance.yahoo.com/news/iconic-greeting-card-chain-files-154755122.html", "accessed": "2026-08-10" },
+    { "id": 3, "title": "Hallmark : Gift Card Greetings (oct. 2024), Hallmark+ (sept. 2024), sous-marques Heartline/Expressions chez Dollar Tree ; approche IA « préservationniste » (Sign & Send)", "publisher": "PR Newswire / Hallmark corporate / AI Adopters Club", "url": "https://www.prnewswire.com/news-releases/hallmark-expands-digital-gifting-with-new-gift-card-greetings-302285053.html", "accessed": "2026-08-10" },
+    { "id": 4, "title": "Elliott Investment Management prend le contrôle majoritaire d'American Greetings (clos le 3 février 2025) ; CD&R et famille Weiss minoritaires", "publisher": "American Greetings corporate / PR Newswire", "url": "https://corporate.americangreetings.com/elliott-investment-management-closes-acquisition-of-majority-interest-in-american-greetings/", "accessed": "2026-08-10" },
+    { "id": 5, "title": "American Greetings : CA ~1,7 Md$ (FY2024, est.), EBITDA 2024 ~288 M$, valorisation ~1,5 Md$ explorée ; marques (Papyrus, Carlton, RPG) ; AG Interactive (Blue Mountain 35,99 $/an, Jacquie Lawson 36 $/an)", "publisher": "Finimize / Moody's via Yahoo / bluemountain.com", "url": "https://finimize.com/content/american-greetings-may-be-sold-for-15-billion-cdr-explores-options", "accessed": "2026-08-10" },
+    { "id": 6, "title": "Shutterfly : CA T1 2026 313,5 M$ (−8 %), dette ~2,4 Md$, refinancement 2026, risque IA dans la documentation obligataire (Apollo)", "publisher": "Bloomberg", "url": "https://www.bloomberg.com/news/articles/2026-06-18/apollo-s-shutterfly-debt-concessions-expose-ai-competition-risk", "accessed": "2026-08-10" },
+    { "id": 7, "title": "Minted : cap des 300 M$ de CA (308 M$ visés 2026), rentabilité doublée, expansion retail Target (×3-4) et Whole Foods (n°1 cartes)", "publisher": "Businesswire / Forbes", "url": "https://www.businesswire.com/news/home/20260428678026/en/", "accessed": "2026-08-10" },
+    { "id": 8, "title": "Cimpress FY2025 : 3,4 Md$ (+3 %), Vistaprint 1,82 Md$ ; cartes <1 $/carte dès 100 ex. ; investissement Apollo 300 M$ (2025)", "publisher": "Cimpress IR / ASI Central / Pulse2", "url": "https://ir.cimpress.com/news-releases/news-release-details/cimpress-reports-fourth-quarter-and-fiscal-year-2025-financial", "accessed": "2026-08-10" },
+    { "id": 9, "title": "Zazzle : estimations de CA contradictoires (180-413 M$ selon agrégateurs ; >250 M$ auto-déclarés en 2015) — print-on-demand, licences Disney/Warner", "publisher": "Grips Intelligence / RocketReach / CNBC (2015)", "url": "https://gripsintelligence.com/insights/retailers/zazzle.com", "accessed": "2026-08-10" },
+    { "id": 10, "title": "Lovepop : >150 M$ CA/an (2022), 304 M$ cumulés (2023), 9e société Shark Tank ; ~600 partenaires wholesale dont magasins Hallmark ; procès contrefaçon 2024", "publisher": "SharkTankBlog / Modern Retail", "url": "https://www.sharktankblog.com/business/lovepop/", "accessed": "2026-08-10" },
+    { "id": 11, "title": "Leanin' Tree : >20 M cartes/an, 3 000+ designs, ESOP depuis 2021 (Boulder/Mead, Colorado)", "publisher": "AboutBoulder / leanintree.com", "url": "https://aboutboulder.com/blog/boulders-leanin-tree-how-a-shoebox-startup-became-a-greeting-card-empire/", "accessed": "2026-08-10" },
+    { "id": 12, "title": "La longue traîne : Avanti Press (~20 000 pts de vente, ~24-25 M$ est.), Designer Greetings (24 000 designs, rachats Card$mart/QPS), NobleWorks, Trader Joe's (99 ¢), dollar stores", "publisher": "avantipress.com / Dun & Bradstreet / The Shelby Report / DollarStoreReviewer", "url": "https://www.avantipress.com/about-avanti-press/", "accessed": "2026-08-10" },
+    { "id": 13, "title": "Evite : ~3 Md d'invitations depuis 1998 ; investissement Francisco Partners (clos oct. 2024) ; Pro 249,99 $/an, premium 17,99-99,99 $ ; CA est. 13-25 M$", "publisher": "Francisco Partners (communiqué) / Tekpon / GetLatka-Tracxn", "url": "https://www.franciscopartners.com/media/evite-announces-strategic-growth-investment-from-francisco-partners", "accessed": "2026-08-10" },
+    { "id": 14, "title": "Paperless Post : modèle coins (packs 12-140 $, 0-8 coins/destinataire), ARR ~15 M$ (est.), IA « Magic Art » (2025)", "publisher": "paperlesspost.com / GetLatka", "url": "https://www.paperlesspost.com/pricing", "accessed": "2026-08-10" },
+    { "id": 15, "title": "Sincere Corp. (Punchbowl, Timehop, Memento, Lovebird) : >325 M d'invitations envoyées ; rachat Timehop (2023) ; Lovebird + 8 M$ SG Credit (oct. 2024) ; abonnements 5,99-79,99 $/mois", "publisher": "Businesswire / TechCrunch / punchbowl.com", "url": "https://www.businesswire.com/news/home/20241023880682/en/", "accessed": "2026-08-10" },
+    { "id": 16, "title": "Moonpig : lancement US avril 2024 (impression NJ/Las Vegas) ; groupe FY2025 350,1 M£, ~12 M clients ; US+AU+IE 11,8 M£ (+36,1 %)", "publisher": "Moonpig / DirectorsTalk / MarketScreener", "url": "https://www.moonpig.com/us/faq/", "accessed": "2026-08-10" },
+    { "id": 17, "title": "Etsy : 8 M de vendeurs actifs, ~96 M d'acheteurs ; cartes = catégorie top-seller (CA catégorie non ventilé)", "publisher": "Etsy seller handbook / synthèses sectorielles", "url": "https://www.etsy.com/seller-handbook", "accessed": "2026-08-10" },
+    { "id": 18, "title": "Partiful (~500 k MAU, +400 %/an, gratuit, a16z, app Google 2024) ; Apple Invites (févr. 2025, iCloud+) ; Givingli (Snapchat, Seven Seven Six)", "publisher": "CNBC / TechCrunch / MacRumors", "url": "https://www.cnbc.com/2025/04/19/meet-partiful-the-gen-z-party-planning-staple-thats-taking-on-apple.html", "accessed": "2026-08-10" },
+    { "id": 19, "title": "Card Factory (UK) entre aux US : rachat Garven Holdings (Minnesota, 20 M£, déc. 2024) + accord de gros 1 100+ magasins ; marché US vu comme « opportunité 60-70 Md£ »", "publisher": "Retail Week", "url": "https://www.retail-week.com/general-merchandise/card-factory-eyes-up-us-expansion-with-garven-holdings-acquisition/7047701.article", "accessed": "2026-08-10" },
+    { "id": 20, "title": "GCA (Greeting Card Association, US) : 6,5 Md de cartes/an, 7-8 Md$ de ventes, 9 foyers sur 10, femmes >80 %, anniversaires >50 % des cartes, Noël 1,3-1,6 Md (fact sheets 2019-2020)", "publisher": "Greeting Card Association", "url": "https://www.greetingcard.org/wp-content/uploads/2020/04/Greeting-Card-Facts-2020.pdf", "accessed": "2026-08-10" },
+    { "id": 21, "title": "GCA 2025 (Carlos Llansó) : marché « flat, even slightly growing » ; Hallmark + AG = 80 % à eux deux, ~3 500 éditeurs indépendants ; Millennials et Gen Z dépensent plus que leurs aînés", "publisher": "PostPress / WhatTheyThink", "url": "https://postpressmag.com/articles/2025/greeting-card-industry-stays-strong/", "accessed": "2026-08-10" },
+    { "id": 22, "title": "Estimations analystes US : Grand View 7,12 Md$ (2025, +1,6 %/an) ; IBISWorld 5,6 Md$ (2025, −4,9 %/an, périmètre NAICS élargi) ; online greeting cards 2,6 Md$ (2026) ; mondial ~19,8-21 Md$", "publisher": "Grand View Research / IBISWorld / 360iResearch", "url": "https://www.grandviewresearch.com/industry-analysis/us-greeting-cards-market-report", "accessed": "2026-08-10" },
+    { "id": 23, "title": "Parts de marché du duopole : IBISWorld 2017 (Hallmark 51,2 %, AG 23,4 %) vs GCA 2025 (80 % cumulés) vs LegalClarity (Hallmark 40-45 %, AG ~40 %) — pas de consensus", "publisher": "CNBC (IBISWorld) / PostPress (GCA) / LegalClarity", "url": "https://www.cnbc.com/2017/12/08/hallmark-greeting-cards-have-adjusted-to-the-digital-revolution.html", "accessed": "2026-08-10" },
+    { "id": 24, "title": "USPS : timbre Forever 55 ¢ (2020) → 82 ¢ (12 juil. 2026), +49 % en 6 ans ; perte USPS 9 Md$ (FY2025) ; ~50 % des cartes achetées passent par la poste", "publisher": "CBS News / Spokesman-Review / GCA", "url": "https://www.cbsnews.com/news/usps-forever-stamp-price-increase-july-2026/", "accessed": "2026-08-10" },
+    { "id": 25, "title": "Générations : Millennials >6 $/carte, plus gros dépensiers depuis 2015 ; 59 % Gen Z / 62 % Millennials préfèrent recevoir du papier (Shutterfly, 2023) ; Gen X cœur de clientèle des détaillants (47 %)", "publisher": "GCA / Two Sides NA (Shutterfly) / US Chamber", "url": "https://twosidesna.org/paper-greetings-are-americas-calling-card/", "accessed": "2026-08-10" },
+    { "id": 26, "title": "Économie du rayon : marge brute fabricant ~53-55 % (SEC American Greetings, historique) ; keystone pricing détaillant ; scan-based trading ; linéaire cartes −27 % (2013-2018, CoStar) ; CVS/Walmart réduisent l'espace (2019)", "publisher": "SEC EDGAR / A Bright Spot / Chicago Sun-Times", "url": "https://www.abrightspot.org/2025/03/22/the-very-sincere-economics-of-greeting-cards/", "accessed": "2026-08-10" },
+    { "id": 27, "title": "Occasions (GCA) : anniversaires >50 % du total ; Noël 1,3-1,6 Md ; Saint-Valentin 145 M ; fête des Mères 113-133 M ; NRF 2025 : cartes Valentin 1,4 Md$, fête des Mères 1,1 Md$", "publisher": "GCA / NRF", "url": "https://nrf.com/media-center/press-releases/nrf-survey-valentine-s-day-spending-reaches-record-27-5-billion", "accessed": "2026-08-10" },
+    { "id": 28, "title": "Papyrus : fermeture des 254 boutiques Schurman (Chapter 11, janv. 2020) ; la marque continue chez American Greetings (Target, Kroger, Whole Foods)", "publisher": "CFO.com / Fox Business / Wikipedia", "url": "https://www.cfo.com/news/papyrus-files-for-bankruptcy-closing-all-254-stores/656972/", "accessed": "2026-08-10" },
+    { "id": 29, "title": "E-cards : « très petite part des ventes » (GCA) ; estimations du segment e-cards mondiales dispersées d'un facteur >100 (0,26 à 47 Md$ selon les cabinets) — à manier avec prudence", "publisher": "GCA / WiseGuy / BusinessResearchInsights / GlobalGrowthInsights", "url": "https://www.greetingcard.org/wp-content/uploads/2020/04/Greeting-Card-Facts-2020.pdf", "accessed": "2026-08-10" },
+    { "id": 30, "title": "IA générative : Paperless Post « Magic Art » (2025) ; Hallmark Sign & Send (préservationniste) ; générateurs de vœux IA fragmentés — aucune donnée quantitative indépendante fiable sur la part de cartes générées par IA", "publisher": "Paperless Post / AI Adopters Club / synthèse", "url": "https://www.paperlesspost.com/blog/creativity-craft-and-ai-at-paperless-post/", "accessed": "2026-08-10" }
+  ],
+  "lexicon": [
+    { "term": "Social expression (industry)", "fr": "Le terme de l'industrie pour l'ensemble cartes de vœux + papeterie + emballage cadeau + produits d'expression personnelle — Hallmark et American Greetings se définissent ainsi.", "en": "The industry's own term for greeting cards + stationery + gift wrap + personal-expression products — how Hallmark and American Greetings define themselves." },
+    { "term": "Counter card / boxed cards", "fr": "Counter card : carte vendue à l'unité en présentoir (2-5 $ typiquement) ; boxed cards : lots en boîte (souvent cartes de Noël), coût unitaire inférieur.", "en": "Counter card: single card sold from a rack (typically $2-5); boxed cards: multi-card boxes (often Christmas), lower unit cost." },
+    { "term": "Everyday vs seasonal", "fr": "Everyday : occasions non calendaires (anniversaire — plus de 50 % des ventes —, sympathie, remerciement…) ; seasonal : fêtes fixes (Noël 1,3-1,6 Md de cartes, Saint-Valentin 145 M, fête des Mères ~120 M).", "en": "Everyday: non-calendar occasions (birthday — over 50% of sales —, sympathy, thanks…); seasonal: fixed holidays (Christmas 1.3-1.6bn cards, Valentine's 145m, Mother's Day ~120m)." },
+    { "term": "E-card / M-card", "fr": "Carte électronique envoyée par email (e-card) ou mobile (m-card) — « une très petite part des ventes » selon la GCA, souvent vendue par abonnement (Jacquie Lawson 36 $/an).", "en": "Electronic card sent by email (e-card) or mobile (m-card) — « a very small percentage of sales » per the GCA, often subscription-based (Jacquie Lawson $36/yr)." },
+    { "term": "Scan-based trading", "fr": "Quasi-consignation : l'éditeur reste propriétaire du stock en rayon jusqu'au passage en caisse — le modèle qui lie Hallmark/American Greetings à leurs grands distributeurs.", "en": "Near-consignment: the publisher owns rack inventory until checkout scan — the model binding Hallmark/American Greetings to big retailers." },
+    { "term": "Keystone pricing", "fr": "Marge détaillant standard : revendre au double du prix de gros (~50 % de marge) — la règle du rayon carte.", "en": "Standard retail margin: selling at twice wholesale (~50% margin) — the card aisle's rule." },
+    { "term": "Slotting fees", "fr": "Frais de référencement versés par l'éditeur au distributeur pour garantir un linéaire — une barrière à l'entrée du rayon physique.", "en": "Fees paid by publishers to retailers to secure shelf space — a barrier to entry in the physical aisle." },
+    { "term": "Gold Crown", "fr": "L'enseigne de magasins spécialisés sous licence Hallmark (et son programme de fidélité) : ~2 000 magasins en 2020, ~1 146 en 2025.", "en": "Hallmark's licensed specialty-store network (and loyalty program): ~2,000 stores in 2020, ~1,146 in 2025." },
+    { "term": "Premiumisation", "fr": "La montée en gamme qui sauve la valeur du marché : prix courant passé de 2-3 $ à 4-6 $, cartes artisanales 7-12 $, pop-up Lovepop ~14 $ — pendant que les volumes déclinent.", "en": "The upmarket shift saving the market's value: common prices up from $2-3 to $4-6, handmade $7-12, Lovepop pop-ups ~$14 — while volumes decline." },
+    { "term": "Print-on-demand (POD)", "fr": "Impression à la commande sans stock (Zazzle, Moonpig) — l'anti-rayon : zéro linéaire, zéro invendu, zéro scan-based trading.", "en": "Printing to order with no inventory (Zazzle, Moonpig) — the anti-aisle: no shelf, no unsolds, no scan-based trading." },
+    { "term": "Coins (Paperless Post)", "fr": "Monnaie virtuelle propriétaire : packs de 12 à 140 $, 0 à 8 coins par destinataire selon le design — la monétisation à l'envoi du numérique premium.", "en": "Proprietary virtual currency: packs $12-140, 0-8 coins per recipient depending on design — premium digital's per-send monetization." },
+    { "term": "RSVP tracking", "fr": "Suivi des réponses des invités, cœur des plateformes d'invitations (Evite, Punchbowl, Partiful, Apple Invites) — le service qui a déplacé l'invitation du papier vers l'app.", "en": "Guest-response tracking, the core of invitation platforms (Evite, Punchbowl, Partiful, Apple Invites) — the service that moved invitations from paper to apps." },
+    { "term": "Forever Stamp", "fr": "Le timbre USPS à validité permanente : 55 ¢ (2020) → 82 ¢ (juillet 2026), +49 % en six ans — la taxe silencieuse sur la carte postée (~50 % des cartes passent par la poste).", "en": "USPS's permanently-valid stamp: 55¢ (2020) → 82¢ (July 2026), +49% in six years — the silent tax on mailed cards (~50% of cards are mailed)." },
+    { "term": "Kin-keeping", "fr": "Notion sociologique : le rôle (souvent féminin — >80 % des acheteuses) de maintien des liens familiaux par les rituels comme la carte — le moteur démographique du marché.", "en": "Sociological notion: the (mostly female — >80% of buyers) role of maintaining family bonds through rituals like cards — the market's demographic engine." },
+    { "term": "GCA", "fr": "Greeting Card Association — l'association professionnelle américaine (greetingcard.org), source de référence du marché ; à ne pas confondre avec son homonyme britannique.", "en": "Greeting Card Association — the US trade body (greetingcard.org), the market's reference source; not to be confused with its UK namesake." },
+    { "term": "Agentic invites / invitations gratuites", "fr": "La nouvelle génération d'invitations 100 % gratuites (Partiful, Apple Invites) : pas de revenus « cartes », monétisation par l'écosystème (iCloud+, commerce annexe) — l'érosion structurelle du numérique payant.", "en": "The new generation of fully free invitations (Partiful, Apple Invites): no card revenue, monetized through the ecosystem (iCloud+, adjacent commerce) — the structural erosion of paid digital." }
+  ],
+  "last_updated": "2026-08-10"
+}
