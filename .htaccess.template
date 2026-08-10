@@ -1,0 +1,82 @@
+# GABARIT — copie de reference du .htaccess de market.shoette.com
+#
+# Le vrai .htaccess N'EST PAS versionne : il contient le jeton d'acces du mur
+# (un cookie portant ce jeton suffit a entrer sans le mot de passe).
+#
+# Pour reconstituer le fichier reel :
+#   1. cp .htaccess.template .htaccess
+#   2. remplacer REMPLACER_PAR_LE_JETON par COOKIE_TOKEN,
+#      lu dans /home/shoette/.gate/realms/market.env (sur le serveur, via FTP)
+#
+# Le .htaccess local doit rester identique a celui du serveur : un deploiement
+# depuis le local ecrase le serveur, et un fichier sans le bloc « Acces prive »
+# desactive silencieusement le mot de passe du site.
+# ---------------------------------------------------------------------------
+
+# --- Acces prive : mot de passe requis (ajout du 2026-08-01) ---
+# Tant que le cookie d'acces n'est pas present, toute requete est servie par le
+# portier /_gate.php, qui delegue a /home/shoette/.gate/gate.php (hors docroot).
+# Le motif negatif !^_gate\.php$ evite toute boucle de reecriture.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTP_COOKIE} !sgate_market=REMPLACER_PAR_LE_JETON
+  RewriteRule !^_gate\.php$ _gate.php [L]
+</IfModule>
+
+# market.shoette.com — redirections
+# Renommage des runs Skill 1 avec préfixe s1- (schéma s[K]-[N]_[date], 2026-06-11)
+# Pages doc : focus-skill → focus-step (2026-06-12), puis focus-step déplacé sous how-it-works/ (2026-06-15)
+# Snapshot Step 1 (lien direct historique) — cible spécifique AVANT la redirection de préfixe ci-dessous
+# focus-step-N déplacés sous how-it-works/ (2026-06-15) — le préfixe couvre aussi les sous-pages (process)
+
+# market.shoette.com — règles de cache
+# Les pages HTML et les data.json évoluent (nouveaux runs, mises à jour Skill 3) :
+# toujours revalider auprès du serveur.
+<IfModule mod_headers.c>
+  <FilesMatch "\.(html|json)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+  # Assets versionnés : un changement = un nouveau nom de fichier, donc cache long.
+  <FilesMatch "positioning-chart-v[0-9]+\.(js|css)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  # Charte des pages parent : cache court (évolue avec le site).
+  <FilesMatch "^site\.css$">
+    Header set Cache-Control "public, max-age=3600"
+  </FilesMatch>
+</IfModule>
+
+# --- Redirections historiques (converties de mod_alias vers mod_rewrite le 2026-08-01)
+# Necessaire : mod_rewrite s'execute AVANT mod_alias, donc le repli 404 -> accueil
+# ajoute plus bas prenait le pas sur les anciennes directives "Redirect 301".
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Renommage des runs Skill 1 avec prefixe s1- (2026-06-11)
+  RewriteRule ^apps-perte-de-poids/1_2026-06-11(/.*)?$ https://%{HTTP_HOST}/apps-perte-de-poids/s1-1_2026-06-11$1 [R=301,L]
+  RewriteRule ^apps-perte-de-poids/2_2026-06-11(/.*)?$ https://%{HTTP_HOST}/apps-perte-de-poids/s1-2_2026-06-11$1 [R=301,L]
+
+  # focus-skill-N -> how-it-works/focus-step-N (2026-06-12)
+  RewriteRule ^focus-skill-([1-4])(/.*)?$ https://%{HTTP_HOST}/how-it-works/focus-step-$1$2 [R=301,L]
+
+  # Snapshot Step 1 (lien direct historique) — AVANT la regle de prefixe ci-dessous
+  RewriteRule ^focus-step-1/skill-1-read-the-market_2026-06-12\.md$ https://%{HTTP_HOST}/how-it-works/focus-step-1/process-skill-11juin2026/skill-1-read-the-market_2026-06-12.md [R=301,L]
+
+  # focus-step-N deplaces sous how-it-works/ (2026-06-15) — couvre aussi les sous-pages
+  RewriteRule ^focus-step-([1-4])(/.*)?$ https://%{HTTP_HOST}/how-it-works/focus-step-$1$2 [R=301,L]
+</IfModule>
+
+# --- URL inexistante -> accueil du sous-domaine (ajout du 2026-08-01) ---
+# Toute requete HTML qui ne correspond ni a un fichier ni a un dossier reel
+# est redirigee vers la page d'accueil de ce sous-domaine.
+# Les requetes d'assets (images, CSS, JS) conservent un vrai 404 : leur
+# renvoyer du HTML casserait l'affichage des pages.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{HTTP_ACCEPT} text/html
+  RewriteRule ^ https://%{HTTP_HOST}/ [R=302,L]
+</IfModule>

@@ -1,2 +1,7 @@
 .DS_Store
 deploy.config
+
+# Le .htaccess contient le jeton d'acces du mur de mot de passe.
+# Jamais versionne — voir .htaccess.template pour le reconstituer.
+.htaccess
+!.htaccess.template
