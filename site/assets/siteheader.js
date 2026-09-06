@@ -77,6 +77,25 @@
     (document.head || document.documentElement).appendChild(s);
   }
 
+  // Mesure d'audience : Cloudflare Web Analytics (beacon léger, sans cookies),
+  // injecté depuis ce script commun pour couvrir TOUTES les pages du sous-domaine
+  // — runs figés inclus, sans les modifier, et runs futurs automatiquement
+  // (décision Elena, 2026-09-06). Neutralisé hors production (previews locales,
+  // file://) pour ne pas bruiter les statistiques.
+  var BEACON_ID = "cf-web-analytics";
+  function injectAnalytics() {
+    if (document.getElementById(BEACON_ID)) return;
+    if (location.protocol !== "https:" && location.protocol !== "http:") return;
+    var h = location.hostname;
+    if (h === "localhost" || h === "127.0.0.1" || h === "::1" || h === "[::1]") return;
+    var s = document.createElement("script");
+    s.id = BEACON_ID;
+    s.type = "module";
+    s.src = "https://static.cloudflareinsights.com/beacon.min.js";
+    s.setAttribute("data-cf-beacon", '{"token": "4f3648290b4149e6b992b8b952cf4319"}');
+    (document.head || document.documentElement).appendChild(s);
+  }
+
   function brand() {
     var a = document.createElement("a");
     a.className = "brand";
@@ -139,6 +158,7 @@
     if (document.querySelector(".siteheader")) return; // déjà présent
     injectFonts();
     injectStyle();
+    injectAnalytics();
     var parent = (self && self.parentNode) || document.body;
     parent.insertBefore(build(), parent.firstChild);
     setupProgress();

@@ -43,6 +43,7 @@ Construction d'un agent de veille concurrentielle **réutilisable sur plusieurs 
 - **Répertoire cible** : `market/` à la racine de l'hébergement (créé, confirmé vide le 2026-06-11) — le sous-domaine `market.shoette.com` doit pointer dessus
 - **Déploiement** : génération locale → `./deploy.sh` (lftp `mirror -R` de `site/` vers `market/` ; `--dry-run` disponible ; garde-fou intégré : refuse tout chemin distant ne contenant pas « market »)
 - **Interactivité** : graphique 2b côté navigateur — SVG + vanilla JS sur mesure recommandé (ou D3 via CDN) ; les besoins (calques, bordures double/triple, lignes de liaison, export annoté) sont trop spécifiques pour une lib de charts classique
+- **Mesure d'audience** (actée 2026-09-06) : Cloudflare Web Analytics — beacon injecté par `assets/siteheader.js` sur toutes les pages du sous-domaine (runs figés couverts sans modification, runs futurs automatiquement) ; désactivé sur localhost/file: pour ne pas compter les previews locales
 
 ## Architecture web (validée)
 
