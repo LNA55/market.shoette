@@ -82,6 +82,18 @@
   // — runs figés inclus, sans les modifier, et runs futurs automatiquement
   // (décision Elena, 2026-09-06). Neutralisé hors production (previews locales,
   // file://) pour ne pas bruiter les statistiques.
+  // Choix de langue explicite (« ?lang=fr » / « ?lang=en », posé par le sélecteur
+  // du pied de page sur les pages servies en anglais par défaut). Mémorisé en
+  // cookie fonctionnel pour que la redirection 302 du .htaccess respecte ce choix
+  // sur tout le site : « fr » désactive la redirection, « en » revient au défaut.
+  function rememberLang() {
+    var m = /[?&]lang=(fr|en)(?:&|$)/.exec(location.search);
+    if (!m) return;
+    document.cookie = m[1] === "fr"
+      ? "lang=fr; path=/; max-age=31536000; SameSite=Lax"
+      : "lang=; path=/; max-age=0; SameSite=Lax";
+  }
+
   var BEACON_ID = "cf-web-analytics";
   function injectAnalytics() {
     if (document.getElementById(BEACON_ID)) return;
@@ -158,6 +170,7 @@
     if (document.querySelector(".siteheader")) return; // déjà présent
     injectFonts();
     injectStyle();
+    rememberLang();
     injectAnalytics();
     var parent = (self && self.parentNode) || document.body;
     parent.insertBefore(build(), parent.firstChild);

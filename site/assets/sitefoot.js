@@ -32,8 +32,17 @@
     "how-it-works/focus-step-1/process-skill-11juin2026/": 1,
     "apps-perte-de-poids/s1-1_2026-06-11/": 1, "apps-perte-de-poids/s1-2_2026-06-11/": 1,
     "apps-perte-de-poids/s2-1_2026-06-11/": 1, "apps-perte-de-poids/s3-1_2026-06-12/": 1,
-    "apps-perte-de-poids/s3-2_2026-06-16/": 1, "apps-perte-de-poids/s4-1_2026-06-12/": 1
+    "apps-perte-de-poids/s3-2_2026-06-16/": 1, "apps-perte-de-poids/s4-1_2026-06-12/": 1,
+    "perso-ecommerce/": 1, "perso-ecommerce/s1-1_2026-07-29/": 1
   };
+
+  // Pages servies en ANGLAIS PAR DÉFAUT (décision Elena, 2026-09-06 — provisoire) :
+  // une redirection 302 côté serveur (.htaccess) envoie l'URL FR vers /en/.
+  // Le sélecteur de langue y porte donc un paramètre explicite : « ?lang=fr »
+  // échappe la redirection (et mémorise le choix en cookie, cf. siteheader.js),
+  // « ?lang=en » revient au défaut anglais. Pour rendre une page au français par
+  // défaut : retirer son chemin ci-dessous ET sa règle dans le .htaccess.
+  var DEFAULT_EN = { "": 1, "perso-ecommerce/": 1 };
 
   function href(p) { return (EN && EN_AVAILABLE[p]) ? (L + p) : (base + p); }
 
@@ -134,9 +143,10 @@
     var langRoot = siteRoot + (EN ? "en/" : "");
     var sub = pn.indexOf(langRoot) === 0 ? pn.slice(langRoot.length) : "";
     var enOk = EN || EN_AVAILABLE[sub] === 1;                  // version EN dispo pour cette page ?
+    var dflEn = DEFAULT_EN[sub] === 1;                         // page servie en anglais par défaut ?
     var items = [
-      { label: "FR", url: siteRoot + sub, active: !EN, soon: false },
-      { label: "EN", url: siteRoot + "en/" + sub, active: EN, soon: !EN && !enOk }
+      { label: "FR", url: siteRoot + sub + (dflEn ? "?lang=fr" : ""), active: !EN, soon: false },
+      { label: "EN", url: siteRoot + "en/" + sub + (dflEn ? "?lang=en" : ""), active: EN, soon: !EN && !enOk }
     ];
     items.forEach(function (it, i) {
       if (i) { var s = document.createElement("span"); s.className = "sep"; s.textContent = "·"; box.appendChild(s); }

@@ -31,3 +31,25 @@ Redirect 301 /focus-step-4 /how-it-works/focus-step-4
     Header set Cache-Control "public, max-age=3600"
   </FilesMatch>
 </IfModule>
+
+# market.shoette.com — vue par défaut en ANGLAIS (décision Elena, 2026-09-06 — provisoire)
+# L'accueil et la page « perso-ecommerce » sont servis en anglais par défaut.
+# 302 (temporaire) et jamais 301 : la règle doit pouvoir être retirée sans que les
+# navigateurs gardent la redirection en cache.
+# Le français reste atteignable : « ?lang=fr » (lien FR du sélecteur de langue)
+# échappe la redirection et fait poser un cookie lang=fr par siteheader.js, qui la
+# désactive ensuite sur tout le site ; « ?lang=en » efface ce cookie.
+# ⚠ Un motif contenant une espace DOIT être entre guillemets : sans cela Apache
+#   découpe la directive en trop d'arguments et renvoie 500 sur tout le site
+#   (constaté le 2026-09-06 ; vérifié en bac à sable avant remise en ligne).
+# Pour revenir au français par défaut : supprimer ce bloc ET l'entrée
+# correspondante dans DEFAULT_EN (assets/sitefoot.js).
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTP_COOKIE} "!(^|;[ ]*)lang=fr"
+  RewriteCond %{QUERY_STRING} !(^|&)lang=fr(&|$)
+  RewriteRule ^(index\.html)?$ https://market.shoette.com/en/ [R=302,L]
+  RewriteCond %{HTTP_COOKIE} "!(^|;[ ]*)lang=fr"
+  RewriteCond %{QUERY_STRING} !(^|&)lang=fr(&|$)
+  RewriteRule ^perso-ecommerce/(index\.html)?$ https://market.shoette.com/en/perso-ecommerce/ [R=302,L]
+</IfModule>
