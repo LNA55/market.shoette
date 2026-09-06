@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Recommandation stratégique — Outils SaaS de personnalisation e-commerce — Run S4-1 (6 septembre 2026)</title>
+  <meta name="description" content="Recommandations stratégiques pour Merch Control sur le marché des outils SaaS de personnalisation e-commerce — verdict, SWOT, marketing mix, partenariats et sorties. Run S4-1, septembre 2026.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    /* Design system « My Market Data » — run figé, CSS inline. */
+    :root {
+      --paper:#faf8f4; --surface:#ffffff; --surface-2:#f4f1ea; --inset:#f7f5f0;
+      --ink:#1a1c22; --ink-2:#494d59; --ink-3:#868a93; --line:#e7e2d8; --line-2:#efebe2;
+      --brand:#F4684F; --brand-ink:#cf4733; --brand-wash:#fdece7; --brand-line:#f7cabd;
+      --accent:#2f6bff; --accent-ink:#1f53e0; --accent-wash:#eaf1ff; --accent-line:#c9dbff;
+      --risk:#d8412f; --risk-ink:#b32a1c; --risk-wash:#fcebe8; --risk-line:#f3c8c1;
+      --watch:#c07d12; --watch-ink:#9c6309; --watch-wash:#fbf1df; --watch-line:#ecd6a8;
+      --good:#1f9d5b; --good-ink:#157a45; --good-wash:#e6f5ed; --good-line:#b6e2c8;
+      --sans:'Hanken Grotesk',system-ui,sans-serif; --mono:'IBM Plex Mono',ui-monospace,monospace; --serif:'Instrument Serif',Georgia,serif;
+      --r-lg:18px; --r-md:13px; --r-sm:9px; --maxw:calc(50vw + 440px); --gutter:clamp(20px,5vw,56px);
+      --shadow:0 1px 2px rgba(26,28,34,.04),0 8px 28px -12px rgba(26,28,34,.10);
+      --shadow-sm:0 1px 2px rgba(26,28,34,.05),0 2px 8px -4px rgba(26,28,34,.06);
+    }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; scroll-padding-top:70px; }
+    body { margin:0; font-family:var(--sans); background:var(--paper); color:var(--ink); font-size:17px; line-height:1.6; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; }
+    ::selection { background:var(--accent-wash); color:var(--accent-ink); }
+    a { color:inherit; }
+    .num { font-variant-numeric:tabular-nums; }
+    .shell { max-width:var(--maxw); margin:0 auto; padding-inline:var(--gutter); }
+    [id] { scroll-margin-top:70px; }
+
+    /* hero */
+    .hero { padding:clamp(34px,6vw,68px) 0 22px; }
+    .hero__market { display:inline-flex; align-items:center; gap:9px; font-family:var(--mono); font-size:12.5px; letter-spacing:.03em; color:var(--ink-2); background:var(--surface); border:1px solid var(--line); border-radius:999px; padding:6px 14px 6px 11px; margin-bottom:24px; text-decoration:none; }
+    .hero__market .tag { font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-3); white-space:nowrap; padding-right:9px; border-right:1px solid var(--line); }
+    .hero__market .swatch { width:7px; height:7px; border-radius:2px; background:var(--brand); }
+    .hero h1 { font-size:clamp(38px,6vw,72px); line-height:1.0; letter-spacing:-.03em; font-weight:800; margin:0 0 20px; text-wrap:balance; }
+    .hero h1 .step-no { color:var(--brand); }
+    .hero__byline { margin-top:18px; font-size:15.5px; line-height:1.55; color:var(--ink-2); }
+    .hero__byline strong { color:var(--ink); font-weight:700; }
+    .hero__byline a { color:var(--accent-ink); text-decoration:none; font-weight:600; border-bottom:1px solid var(--accent-line); }
+
+    /* verdict GO / NO GO */
+    .verdict { display:flex; gap:26px; align-items:center; margin:26px 0 4px; padding:26px 30px; border-radius:var(--r-lg); border:1.5px solid; }
+    .verdict--go { background:var(--good-wash); border-color:var(--good-line); }
+    .verdict--nogo { background:var(--risk-wash); border-color:var(--risk-line); }
+    .verdict__emblem { flex:none; width:150px; height:150px; border-radius:22px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; box-shadow:var(--shadow); }
+    .verdict--go .verdict__emblem { background:linear-gradient(160deg,#23b06a,#157a45); }
+    .verdict--nogo .verdict__emblem { background:linear-gradient(160deg,#e0503c,#b32a1c); }
+    .verdict__mark { font-size:40px; line-height:1; color:#fff; }
+    .verdict__word { font-family:var(--sans); font-weight:800; font-size:46px; line-height:1; letter-spacing:.02em; color:#fff; }
+    .verdict__kicker { font-family:var(--mono); font-size:10.5px; text-transform:uppercase; letter-spacing:.12em; font-weight:600; color:var(--ink-3); margin-bottom:6px; }
+    .verdict__q { font-size:14.5px; color:var(--ink-2); font-weight:600; }
+    .verdict__a { font-size:clamp(24px,3vw,30px); line-height:1.12; font-weight:800; letter-spacing:-.02em; margin:4px 0 10px; }
+    .verdict--go .verdict__a { color:var(--good-ink); }
+    .verdict--nogo .verdict__a { color:var(--risk-ink); }
+    .verdict__why { font-size:14px; color:var(--ink-2); margin:0; line-height:1.62; }
+    .verdict__why b { color:var(--ink); }
+    @media (max-width:640px) { .verdict { flex-direction:column; text-align:center; padding:22px; } }
+
+    /* bandeau d'âge / méthode */
+    .agebanner { margin-top:16px; border:1px solid var(--line); border-left:3px solid var(--accent); background:var(--surface); border-radius:0 var(--r-md) var(--r-md) 0; padding:12px 18px; font-size:13.5px; color:var(--ink-2); line-height:1.55; }
+    .agebanner b { color:var(--ink); }
+
+    /* section scaffold */
+    .section { padding:clamp(40px,6vw,62px) 0 4px; }
+    .section__head { display:flex; gap:18px; align-items:baseline; margin-bottom:24px; }
+    .section__no { font-family:var(--mono); font-size:14px; font-weight:600; color:var(--brand-ink); border:1px solid var(--brand-line); background:var(--brand-wash); width:36px; height:36px; border-radius:10px; display:grid; place-items:center; flex:none; }
+    .section__title { font-size:clamp(24px,3vw,32px); font-weight:800; letter-spacing:-.025em; line-height:1.1; margin:0; }
+    .section__purpose { color:var(--ink-2); font-size:15px; margin-top:6px; }
+    .divider { height:1px; background:var(--line-2); border:0; margin:0; }
+    .prose p { font-size:15.5px; color:var(--ink-2); line-height:1.65; margin:0 0 14px; }
+    .prose p strong, .prose p b { color:var(--ink); }
+    .note { font-family:var(--mono); font-size:12px; color:var(--ink-3); line-height:1.55; margin:12px 0 0; }
+    .note a { color:var(--accent-ink); text-decoration:none; border-bottom:1px solid var(--accent-line); }
+
+    /* listes à puces (coral) */
+    .pts { list-style:none; margin:14px 0 0; padding:0; display:grid; gap:11px; }
+    .pts li { display:flex; gap:12px; align-items:baseline; font-size:15px; color:var(--ink-2); line-height:1.6; }
+    .pts li::before { content:""; width:6px; height:6px; border-radius:50%; background:var(--brand); flex:none; transform:translateY(-3px); }
+    .pts li b { color:var(--ink); }
+    .pts a { color:var(--accent-ink); text-decoration:none; border-bottom:1px solid var(--accent-line); }
+
+    /* SWOT 2×2 */
+    .swot { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:6px; }
+    .swot__band { grid-column:1 / -1; font-family:var(--mono); font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-3); margin:8px 0 -4px; }
+    .quad { border:1px solid var(--line); border-radius:var(--r-md); padding:18px 20px; background:var(--surface); }
+    .quad h4 { margin:0 0 12px; font-size:15px; font-weight:800; letter-spacing:-.01em; }
+    .quad ul { list-style:none; margin:0; padding:0; display:grid; gap:9px; }
+    .quad li { font-size:13.5px; color:var(--ink-2); line-height:1.5; padding-left:14px; position:relative; }
+    .quad li::before { content:""; position:absolute; left:0; top:.55em; width:5px; height:5px; border-radius:50%; }
+    .quad .basis { font-family:var(--mono); font-size:10px; color:var(--ink-3); white-space:nowrap; }
+    .quad--s { background:var(--accent-wash); border-color:var(--accent-line); }
+    .quad--s h4 { color:var(--accent-ink); } .quad--s li::before { background:var(--accent); }
+    .quad--w { background:var(--watch-wash); border-color:var(--watch-line); }
+    .quad--w h4 { color:var(--watch-ink); } .quad--w li::before { background:var(--watch); }
+    .quad--o { background:var(--good-wash); border-color:var(--good-line); }
+    .quad--o h4 { color:var(--good-ink); } .quad--o li::before { background:var(--good); }
+    .quad--t { background:var(--risk-wash); border-color:var(--risk-line); }
+    .quad--t h4 { color:var(--risk-ink); } .quad--t li::before { background:var(--risk); }
+    @media (max-width:720px) { .swot { grid-template-columns:1fr; } }
+
+    /* marketing mix — 4 P */
+    .pblock { border:1px solid var(--line); border-radius:var(--r-md); background:var(--surface); box-shadow:var(--shadow-sm); padding:20px 24px; margin-bottom:16px; }
+    .pblock h3 { margin:0 0 12px; font-size:18px; font-weight:800; letter-spacing:-.01em; }
+    .pblock__data { font-size:13px; color:var(--ink-3); border-left:2px solid var(--line); padding:4px 14px; margin:0 0 12px; line-height:1.55; }
+    .pblock__reco { font-size:14.5px; color:var(--ink-2); line-height:1.65; margin:0; }
+    .pblock__reco b:first-child { color:var(--ink); }
+
+    /* table cibles M&A */
+    .targets { width:100%; border-collapse:collapse; font-size:14px; }
+    .targets th { text-align:left; font-family:var(--mono); font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-3); padding:12px 14px; border-bottom:1px solid var(--line); }
+    .targets td { padding:14px; border-bottom:1px solid var(--line-2); vertical-align:top; color:var(--ink-2); line-height:1.55; }
+    .targets tr:last-child td { border-bottom:none; }
+    .targets td:first-child { font-weight:700; color:var(--ink); white-space:nowrap; }
+    .targets-wrap { overflow-x:auto; border:1px solid var(--line); border-radius:var(--r-md); background:var(--surface); margin-top:8px; }
+    .targets { min-width:720px; }
+    .dealtype { display:inline-block; font-family:var(--mono); font-size:10.5px; font-weight:600; letter-spacing:.04em; color:var(--accent-ink); background:var(--accent-wash); border:1px solid var(--accent-line); padding:3px 9px; border-radius:999px; white-space:nowrap; }
+    .src { font-family:var(--mono); font-size:11px; color:var(--ink-3); }
+
+    /* sources */
+    .sources { list-style:none; margin:0; padding:0; display:grid; gap:11px; counter-reset:src; }
+    .sources li { display:grid; grid-template-columns:auto 1fr; gap:14px; align-items:baseline; padding:13px 0; border-top:1px solid var(--line-2); font-size:13.5px; color:var(--ink-2); line-height:1.5; }
+    .sources li::before { counter-increment:src; content:counter(src,decimal-leading-zero); font-family:var(--mono); font-size:13px; color:var(--ink-3); }
+    .sources a { color:var(--accent-ink); text-decoration:none; font-weight:600; border-bottom:1px solid var(--accent-line); word-break:break-word; }
+
+    h3.subh { font-size:17px; font-weight:800; letter-spacing:-.01em; margin:26px 0 10px; }
+
+    @media (max-width:720px) {
+      body { font-size:16px; }
+      .section__head { gap:14px; }
+      .pblock { padding:18px 18px; }
+    }
+    @media print { .siteheader,.sitefoot { display:none !important; } .pblock,.quad,.verdict { box-shadow:none !important; break-inside:avoid; } }
+    @media (prefers-reduced-motion:reduce) { * { scroll-behavior:auto !important; transition:none !important; } }
+  </style>
+</head>
+<body>
+<script src="../../assets/siteheader.js" data-crumb="parent" data-parent-label="Marché : personnalisation e-commerce" data-parent-href="../"></script>
+
+<a id="top"></a>
+
+<section class="hero"><div class="shell">
+  <a class="hero__market" href="../" title="Marché étudié">
+    <span class="swatch"></span>
+    <span class="tag">Marché étudié</span>
+    <span>Outils SaaS de personnalisation e-commerce</span>
+  </a>
+  <h1><span class="step-no">Étape 4.</span><br>Recommandation stratégique</h1>
+  <p class="hero__byline">Run <strong>S4-1</strong>, publié le 6 septembre 2026 — projet <strong>Merch Control</strong>, à partir des <a href="../s3-1_2026-09-06/">Run S3-1</a>, <a href="../s1-1_2026-07-29/">Run S1-1</a> et <a href="../s2-1_2026-09-06/">Run S2-1</a>.</p>
+
+  <div class="verdict verdict--nogo" role="status" aria-label="Verdict de l'analyse : NO GO">
+    <div class="verdict__emblem">
+      <span class="verdict__mark">✕</span>
+      <span class="verdict__word" style="font-size:34px">NO&nbsp;GO</span>
+    </div>
+    <div class="verdict__text">
+      <div class="verdict__kicker">Le verdict de l'analyse, en un mot</div>
+      <div class="verdict__q">Creuser « Merch Control » sur le marché des outils de personnalisation e-commerce ?</div>
+      <div class="verdict__a">Non — pas en frontal : ce pupitre, les moteurs le construisent déjà.</div>
+      <p class="verdict__why">Les moteurs livrent leur propre couche de contrôle merchandiser en itération continue (Algolia depuis 2023, Constructor en mars 2026, règles par audience chez Bloomreach) ; le marché n'a jamais racheté de pupitre indépendant — il rachète des moteurs, de l'IA et de la donnée ; et le projet arrive sans moteur, sans backend et sans canal, sur un marché dont toute la croissance est IA-native et dont le concurrent n°1 est gratuit. <b>Ce qui rouvrirait un GO :</b> déplacer le pupitre vers la <b>gouvernance de l'exposition agentique</b> — l'angle mort confirmé des standards ACP/UCP —, le prouver avec 2-3 équipes merchandising en design partners, et viser l'adossement (Commerce.com, consolidateurs PE) plutôt que la vente directe.</p>
+    </div>
+  </div>
+
+  <div class="agebanner">Sections 1-2 : <b>synthèse pure des runs existants</b> — données de marché du 29 juillet 2026 (39 jours) et du 6 septembre 2026 (jour J), positionnement du 6 septembre 2026 (jour J), aucun rafraîchissement web. Seule la section 5 (partenariats &amp; sorties) s'appuie sur une recherche web du 6 septembre 2026, sources citées. Aucun choix de marketing mix déclaré par Elena pour ce run → les 4 P reçoivent des recommandations.</div>
+</div></section>
+
+<div class="shell"><main>
+
+  <section class="section" id="marche">
+    <div class="section__head">
+      <span class="section__no">01</span>
+      <div><h2 class="section__title">Le marché, au 6 septembre 2026</h2></div>
+    </div>
+    <div class="prose">
+      <p>Le marché des outils SaaS que les marchands achètent en licence pour personnaliser l'expérience produit pèse <b>~1,7 milliard $</b> sur son périmètre spécialiste observable (2026), en croissance de <b>~+20 % par an</b> (Gartner : 1,2 milliard $ en 2024 pour les seuls moteurs de personnalisation, +26,1 %). Un marché jeune mais réel — et <b>en consolidation à marche forcée</b> : il se recompose plus vite qu'il ne grandit.</p>
+    </div>
+    <ul class="pts">
+      <li><b>Structure</b> : trois familles fonctionnelles — les plateformes d'expérience captent <b>~70 %</b> de la valeur du panel, les suites de découverte produit ~12 %, les briques spécialisées ~12 %, la longue traîne ~6 % ; le top 3 (Optimizely, Bloomreach, Insider) concentre ~55 %.</li>
+      <li><b>La force décisive (Porter)</b> : le substitut « gratuit » — la brique native des plateformes (Einstein bundlé dans Commerce Cloud, app Shopify gratuite) et le « build » des clouds à l'usage (Amazon Personalize, Vertex AI à 0,27 $ les 1 000 requêtes) bornent les prix et l'espace de tous les spécialistes.</li>
+      <li><b>Le choc agentique</b> : ACP (OpenAI/Stripe, sept. 2025) et UCP (Google avec Shopify, Etsy, Target, Walmart, janv. 2026) sortent la découverte produit du site marchand — 67 milliards $ de ventes influencées par l'IA sur la seule Cyber Week 2025.</li>
+      <li><b>Consolidation</b> : trois fusions en dix-huit mois (Athos janv. 2025, Monetate×SiteSpect juin 2025, AB Tasty×VWO janv. 2026) — le private equity assemble le milieu de marché pendant que le capital-risque finance les IA-natifs (Constructor : ARR ×8 en 2024, valorisation 550 millions $).</li>
+      <li><b>Unit economics</b> : ticket de 0,6 à ~430 k$/an pour le « même » besoin (facteur 700) ; remises annuelles constatées 15-30 % ; NRR médiane ~101 % — la croissance vient des nouvelles ventes ; péages de canal (app store Shopify 0 puis 15 %, plateformes ~1-3 % du GMV). La valeur créée est réelle : +5 à 15 % de chiffre d'affaires marchand documentés (McKinsey).</li>
+      <li><b>Trajectoires d'entrants</b> : ~1-2 % du marché atteignables en 3-5 ans pour un entrant réellement différencié (Constructor : 8 → 65 millions $ d'ARR en un an sur l'IA-native ; Doofinder : ~21,5 millions $ en self-service SMB).</li>
+    </ul>
+    <p class="note">Toutes valeurs ~ estimées — synthèse des runs <a href="../s1-1_2026-07-29/">S1-1</a> (29 juillet 2026) et <a href="../s2-1_2026-09-06/">S2-1</a> (6 septembre 2026).</p>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section" id="positionnement">
+    <div class="section__head">
+      <span class="section__no">02</span>
+      <div><h2 class="section__title">Le positionnement du projet</h2></div>
+    </div>
+    <div class="prose">
+      <p><b>Merch Control</b> (<a href="https://pp.shoette.com/merchandising/" target="_blank" rel="noopener">pp.shoette.com/merchandising</a>) est un <b>plan de contrôle du merchandising</b> : un back-office où l'équipe marchande compose, par emplacement (13 blocks) et par audience (7 profils), la pondération exacte des sources de produits affichées — avec versions immuables par emplacement, scission automatique selon les données accessibles, portes de destination et rapports d'impact. Il ne fournit aucun moteur : il pondère les API que le marchand possède déjà. Prototype front-only (V4), non commercialisé — toutes les valeurs sont déclaratives.</p>
+    </div>
+    <ul class="pts">
+      <li><b>Même case que les briques spécialisées, nature inverse</b> : Algolia et Constructor vendent le moteur qui décide, Merch Control vend le pupitre qui gouverne — ses sources pourraient être leurs moteurs : complément plus que concurrent.</li>
+      <li><b>Seul acteur sous 6/10 d'IA</b> : le panel vit entre 6 et 9 ; ~2/10 assumé — pondérations lisibles, versions auditables — la case « brique × enterprise × IA faible » que personne n'occupe par choix.</li>
+      <li><b>Cible enterprise</b> (grands catalogues, API internes) — mais les deux dimensions commerciales sont vides (ni prix ni modèle) : la position dit une architecture produit, pas un go-to-market.</li>
+      <li><b>Thèse à contre-courant</b> du 9-box du run S2 (« investir » = briques IA-natives) : parier que la couche de <i>contrôle</i> du mix reste à prendre — d'autant plus à l'ère des agents.</li>
+    </ul>
+    <p class="note">Synthèse du run <a href="../s3-1_2026-09-06/">S3-1</a> du 6 septembre 2026 — le projet est visible sur le <a href="../s1-1_2026-07-29/#s2b">graphique interactif du marché</a> (marqueur ✺).</p>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section" id="swot">
+    <div class="section__head">
+      <span class="section__no">03</span>
+      <div><h2 class="section__title">SWOT</h2>
+        <p class="section__purpose">Interne (forces, faiblesses) × externe (opportunités, menaces) — chaque entrée ancrée dans le run ou la recherche qui la fonde.</p>
+      </div>
+    </div>
+    <div class="swot">
+      <div class="swot__band">Interne — le projet</div>
+      <div class="quad quad--s">
+        <h4>S · Forces</h4>
+        <ul>
+          <li>Seule « couche de gouvernance » du paysage : pupitre neutre multi-sources, là où tous les autres vendent un moteur <span class="basis">S3</span></li>
+          <li>Transparence auditable en produit (pondérations lisibles, releases immuables, scission par droits d'accès) — l'auditabilité formelle manque aussi chez les moteurs <span class="basis">S3 + web (S5)</span></li>
+          <li>Complémentaire par construction : orchestre les API existantes — peut brancher les moteurs du panel au lieu de les affronter <span class="basis">S3</span></li>
+          <li>Démo publique navigable (13 emplacements × 7 audiences) — rare sur un marché de démos sur rendez-vous <span class="basis">déclaratif</span></li>
+        </ul>
+      </div>
+      <div class="quad quad--w">
+        <h4>W · Faiblesses</h4>
+        <ul>
+          <li>Prototype front-only à données simulées : aucun backend, aucun client, aucune métrique réelle — 100 % déclaratif <span class="basis">S3</span></li>
+          <li>Ni prix ni modèle tarifaire : tout le go-to-market reste à inventer <span class="basis">S3</span></li>
+          <li>~2/10 d'IA sur un marché dont toute la croissance est IA-native (le 9-box dit « investir » sur les briques IA) <span class="basis">S2 + S3</span></li>
+          <li>Aucune structure de vente face à des cycles enterprise longs et un procurement outillé (remises 15-30 %) <span class="basis">S2 — Porter</span></li>
+        </ul>
+      </div>
+      <div class="swot__band">Externe — le marché</div>
+      <div class="quad quad--o">
+        <h4>O · Opportunités</h4>
+        <ul>
+          <li>L'angle mort agentique est confirmé par les standards : ni ACP ni UCP ne donnent au marchand de gouvernance fine de l'exposition ; Shopify n'offre que des interrupteurs binaires par agent <span class="basis">web (S5)</span></li>
+          <li>Le précédent Feedonomics : une couche d'orchestration de l'exposition produit rachetée ~145 millions $, devenue la thèse corporate de Commerce.com (août 2025) <span class="basis">web (S5)</span></li>
+          <li>Consolidation active : PSG (3 bolt-ons en 18 mois), Centre Lane, Everstone — des assembleurs en quête de briques <span class="basis">S2 + web (S5)</span></li>
+          <li>Écosystème composable ouvert : marketplace commercetools « Search &amp; Personalization », alliances PIM — des canaux naturels pour une brique neutre <span class="basis">web (S5)</span></li>
+        </ul>
+      </div>
+      <div class="quad quad--t">
+        <h4>T · Menaces</h4>
+        <ul>
+          <li>Les moteurs construisent la couche de contrôle en interne et itèrent vite : Merchandising Studio (Algolia, 2023→2024), Merchant Intelligence Agent (Constructor, mars 2026), règles par audience (Bloomreach, 2023) <span class="basis">web (S5)</span></li>
+          <li>Le substitut gratuit : la brique native des plateformes — Shopify bride volontairement son app, mais peut la déplafonner à tout moment <span class="basis">S2 + web (S5)</span></li>
+          <li>Le marché ne rachète pas de pupitres : ses acquisitions ciblent moteurs, IA et donnée (Vantage Discovery, Radiance, Bluecore) <span class="basis">web (S5)</span></li>
+          <li>Sans moteur propre, une valeur perçue « une interface sur des API » — vulnérable à la copie et au procurement <span class="basis">raisonnement sur S3</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="prose" style="margin-top:22px">
+      <p><b>Lecture.</b> La force du projet — être le seul pupitre neutre et auditable d'un marché de boîtes noires — rencontre deux opportunités réelles : un angle mort agentique que les standards eux-mêmes confirment, et une vague de consolidation qui cherche des briques. Mais la faiblesse centrale (rien de réel : ni backend, ni client, ni chiffre) se heurte de plein fouet à la menace centrale : les moteurs construisent précisément cette couche, vite, avec leurs milliers de clients installés. Le croisement s'écrit tout seul : <b>en frontal sur l'on-site, la fenêtre est déjà en train de se fermer ; la valeur de l'actif est dans le couloir agentique et dans l'adossement</b> — prouver, puis brancher, plutôt que vendre seul contre tous.</p>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section" id="mix">
+    <div class="section__head">
+      <span class="section__no">04</span>
+      <div><h2 class="section__title">Marketing mix — recommandations</h2>
+        <p class="section__purpose">Aucun choix de mix déclaré par Elena → les 4 P reçoivent des recommandations chiffrées quand les runs le permettent.</p>
+      </div>
+    </div>
+
+    <div class="pblock">
+      <h3>Produit</h3>
+      <div class="pblock__data">Données d'appui : pupitre multi-sources, ~2/10 d'IA assumé, aucune dimension commerciale (S3) ; le substitut n°1 est la brique native gratuite (S2 — Porter) ; les moteurs livrent déjà leurs studios de contrôle, sans auditabilité formelle ni gouvernance de l'exposition agentique (recherche S5 : Algolia 2023-2024, Constructor mars 2026, Bloomreach 2023 ; ACP/UCP sans contrôle marchand fin).</div>
+      <p class="pblock__reco"><b>Recommandation : ne pas affronter les studios des moteurs — déplacer le pupitre là où personne ne gouverne encore.</b> Trois chantiers, dans l'ordre : (1) <b>un backend minimal et 1-2 connecteurs réels</b> vers des moteurs du panel (Algolia, Amazon Personalize) — le front-only ne peut prouver ni l'uplift d'ajout au panier que la home affiche, ni le statut de complément qui est toute la thèse ; (2) <b>étendre la gouvernance à l'exposition agentique</b> — quels produits, pour quels agents (ChatGPT, Gemini), pour quelles audiences : les standards ACP/UCP n'offrent rien de tel et Shopify n'a que des interrupteurs tout-ou-rien — c'est la seule surface où « le pupitre » devient une catégorie et non une feature ; (3) <b>garder l'auditabilité comme signature</b> (releases immuables, historique par emplacement) — c'est le manque documenté des studios des moteurs, et l'argument qui parle au procurement.</p>
+    </div>
+
+    <div class="pblock">
+      <h3>Prix</h3>
+      <div class="pblock__data">Données d'appui (S1, prix d'entrée annuels, ~ estimés) : entrée mid-market 8-15 k$/an (Algolia 8, Athos 8,4, Nosto 10, AB Tasty×VWO 15) ; entrée enterprise 25-50 k$/an ; médiane du panel ~30 k$/an, extrême Constructor ~150 k$/an ; 12 acteurs sur 15 en abonnement ; remises annuelles constatées 15-30 % ; NRR médiane ~101 % (S2).</div>
+      <p class="pblock__reco"><b>Recommandation : pas de grille publique tant que rien n'est prouvé — des design partners payants, puis ~15-25 k$/an.</b> Étape 1 : 2-3 <b>design partners à ~500-1 000 $/mois</b> (~6-12 k$/an) — un prix symbolique mais payant : l'engagement qui qualifie le besoin et finance la preuve. Étape 2, si la preuve est faite : viser le <b>haut du mid-market, ~15-25 k$/an en abonnement</b> — sous les plateformes (25-50 k$), au-dessus des briques self-service — avec une facturation <b>simple et lisible par site/emplacements, jamais indexée au trafic</b> : la transparence tarifaire comme prolongement du positionnement. Écarter le % du revenu généré (un seul acteur du panel, et contraire à la neutralité d'un outil de gouvernance qui ne « génère » rien lui-même).</p>
+    </div>
+
+    <div class="pblock">
+      <h3>Promotion</h3>
+      <div class="pblock__data">Données d'appui : procurement outillé, comparaison facile (G2, Vendr — S2 Porter) ; marché où les produits se vendent en démos sur rendez-vous ; l'angle éditorial « gouvernance de l'exposition à l'ère des agents » est inoccupé (recherche S5 : aucun acteur établi sur ce discours).</div>
+      <p class="pblock__reco"><b>Recommandation : zéro acquisition payante — la démo publique et un terrain éditorial vide.</b> (1) <b>La démo navigable est l'arme n°1</b> : sur un marché de démos gardées derrière des formulaires, un pupitre qui se visite librement (13 emplacements × 7 audiences, releases réelles) est en soi un argument — la maintenir publique, datée, versionnée. (2) <b>Prendre le terrain éditorial agentique</b> : « qui gouverne ce que les agents montrent de votre catalogue ? » — personne n'occupe cette question ; quelques analyses de référence (ACP/UCP côté marchand) suffisent à exister dans les conversations procurement et MACH. (3) Pas de paid : un CAC enterprise ne s'amortit pas sans produit vendable — la crédibilité viendra des preuves de design partners publiées.</p>
+    </div>
+
+    <div class="pblock">
+      <h3>Place (distribution)</h3>
+      <div class="pblock__data">Données d'appui : le produit suppose des API produits internes et une équipe merchandising outillée (S3) ; app store Shopify = canal SMB self-service, commission 15 % au-delà d'1 million $ cumulé (S2) ; marketplace commercetools « Search &amp; Personalization » ouverte aux briques tierces ; les moteurs distribuent en co-sell (recherche S5).</div>
+      <p class="pblock__reco"><b>Recommandation : vente directe à 2-3 design partners d'abord — pas d'app store au lancement.</b> La cible (mid-market/enterprise à API internes) ne s'achète pas en self-service : commencer par la <b>vente directe artisanale</b> auprès d'équipes merchandising identifiées. L'app store Shopify est le mauvais canal au départ (cible SMB, intégration inadaptée au produit) — y revenir seulement si un connecteur Shopify Plus voit le jour. À terme, les canaux naturels d'une brique neutre sont les <b>marketplaces composables</b> (commercetools/MACH, catégorie « Search &amp; Personalization ») et les <b>partenariats connecteurs</b> avec 1-2 moteurs — distribuer là où la neutralité du pupitre est un argument, pas un défaut.</p>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section" id="recos">
+    <div class="section__head">
+      <span class="section__no">05</span>
+      <div><h2 class="section__title">Recommandations essentielles &amp; partenariats</h2></div>
+    </div>
+
+    <h3 class="subh">Les recommandations qui comptent au-delà du mix</h3>
+    <ul class="pts">
+      <li><b>1 · Trancher la nature de l'actif — avant tout investissement.</b> Produit indépendant, brique à adosser, ou démonstrateur de savoir-faire : la lecture du marché (build interne des moteurs, consolidation PE) favorise nettement l'adossement. Chaque mois compte — Constructor a livré son agent d'explicabilité en mars 2026 ; décider avant de dépenser un euro de go-to-market.</li>
+      <li><b>2 · La preuve avant tout.</b> Un backend minimal branché sur les API réelles de 2-3 design partners, et une seule métrique de pilotage : <b>l'uplift d'ajout au panier mesuré par release</b> — c'est la promesse déjà affichée sur la home du prototype ; tant qu'elle n'est pas mesurée chez un vrai marchand, 100 % du dossier reste déclaratif.</li>
+      <li><b>3 · Prendre le couloir agentique en premier.</b> La gouvernance de l'exposition aux agents (par agent × audience × catalogue) est l'angle mort documenté des standards ACP/UCP — sur l'on-site la fenêtre se ferme (moteurs), sur l'agentique personne n'est établi. C'est là que le pupitre devient une catégorie.</li>
+      <li><b>4 · Approcher les acquéreurs en complément, jamais en concurrent.</b> Connecteurs d'abord (Algolia, commercetools), conversations ensuite (Commerce.com, PSG, Centre Lane) : ce marché rachète ce qui le complète (Qubit, SiteSpect, Feedonomics) et réplique ce qui l'affronte.</li>
+    </ul>
+
+    <h3 class="subh">Cibles de partenariat &amp; de sortie — lecture M&amp;A</h3>
+    <p class="note">Section nourrie d'une recherche web du 6 septembre 2026 (seule section du rapport l'autorisant) — chaque fait externe est sourcé. Fait fondateur : <b>l'orchestration de l'exposition produit est un actif qui s'achète</b> — Feedonomics, racheté ~145 millions $ par BigCommerce (2021), est devenu en 2025 le pilier d'un re-branding corporate entier (Commerce.com) autour du commerce agentique <span class="src">[Wilson Sonsini, 2021 ; commerce.com, 2025-08-01]</span>. Et <b>aucun standard agentique ne donne aujourd'hui au marchand la gouvernance fine de son exposition</b> <span class="src">[specs ACP/UCP, Shopify Help, consultés le 2026-09-06]</span> : c'est le terrain de chasse du projet — et l'argument central des lignes ci-dessous.</p>
+    <div class="targets-wrap">
+      <table class="targets">
+        <tr><th>Cible</th><th>Opération plausible</th><th>Logique stratégique &amp; signaux observables</th></tr>
+        <tr>
+          <td>Commerce.com<br>(BigCommerce ×&nbsp;Feedonomics)</td>
+          <td><span class="dealtype">rachat (précédent structurant)</span></td>
+          <td>Le seul groupe qui a fait de la couche d'orchestration de l'exposition produit sa thèse corporate : rachat Feedonomics ~145 millions $ (~80 cash + compléments) <span class="src">[wsgr.com, 2021]</span>, re-branding entier en « Commerce.com » autour de Feedonomics et de l'IA agentique (août 2025), apps Feedonomics lancées sur le Shopify App Store (nov. 2025), partenariat Stripe Agentic Commerce Suite <span class="src">[commerce.com ; GlobeNewswire, 2025-11-05]</span>. Un pupitre de gouvernance par audience/emplacement prolonge exactement leur récit « l'IA décide de ce que les gens voient ».</td>
+        </tr>
+        <tr>
+          <td>Écosystème agentique<br>(Stripe · Google UCP)</td>
+          <td><span class="dealtype">design partner / standard</span></td>
+          <td><b>L'angle mort confirmé</b> : ni l'ACP (OpenAI/Stripe, sept. 2025) ni l'UCP (Google + Shopify, Etsy, Target, Walmart, janv. 2026) ne spécifient de contrôle marchand de l'exposition — le bloc « cart and feed » de l'ACP expose le catalogue sans règles de pondération <span class="src">[github ACP ; developers.google.com/merchant/ucp]</span>. La Stripe Agentic Commerce Suite agrège déjà des tiers (BigCommerce, commercetools, Akeneo) : la place « outil de gouvernance côté marchand » y est vide — être le premier à la revendiquer.</td>
+        </tr>
+        <tr>
+          <td>commercetools / MACH</td>
+          <td><span class="dealtype">partenariat d'intégration</span></td>
+          <td>Ne rachète pas (dernier deal : Frontastic, 2021) — fait venir les briques par écosystème : marketplace avec catégorie « Search &amp; Personalization » dédiée, Agent Gateway qui « applique des règles métier » sans granularité publiée <span class="src">[commercetools, 2025-05-21 ; 2025-11-13]</span>. Frasers Group, premier déploiement agentique européen (oct. 2025). Le canal naturel d'une brique neutre — coût d'entrée faible, crédibilité enterprise immédiate.</td>
+        </tr>
+        <tr>
+          <td>PSG Equity / Athos Commerce</td>
+          <td><span class="dealtype">rachat bolt-on</span></td>
+          <td>Le consolidateur le plus actif du secteur : Increasingly (2023), Intelligent Reach (avr. 2024), fusion Klevu+Searchspring → Athos (janv. 2025) — trois bolt-ons en dix-huit mois pour assembler search + merchandising + flux <span class="src">[businesswire.com, 2025-01-13]</span> ; doctrine assumée (« contrôler davantage de dollars marque et retailer ») <span class="src">[ION Analytics, 2025-07-21]</span>. Une couche de gouvernance unifiant leurs trois briques encore vendues séparément est un bolt-on cohérent.</td>
+        </tr>
+        <tr>
+          <td>Centre Lane / Monetate</td>
+          <td><span class="dealtype">rachat bolt-on</span></td>
+          <td>Même pattern : spin-off de Kibo (2022) puis rachat de SiteSpect financé par unitranche de 75 millions $ (juin 2025) <span class="src">[PR Newswire, 2025-06]</span>. Monetate vend « personnalisation + testing » à l'enterprise réglementée — l'auditabilité du pupitre parle exactement à cette clientèle.</td>
+        </tr>
+        <tr>
+          <td>Algolia</td>
+          <td><span class="dealtype">partenariat connecteur</span></td>
+          <td>À aborder en complément, pas en cible de rachat : son Merchandising Studio (2023, refondu 2024) prouve qu'elle construit sa propre couche <span class="src">[algolia.com, 2024-01-15]</span> — mais mono-moteur par nature, sans gouvernance multi-sources ni auditabilité formelle. Un connecteur « Merch Control pilote Algolia parmi d'autres sources » démontre la thèse du pupitre neutre chez l'acteur le plus API-first du panel. Risque en germe : le build interne, chez elle comme chez Constructor (MIA, mars 2026) et Bloomreach (règles par audience, 2023).</td>
+        </tr>
+        <tr>
+          <td>Shopify</td>
+          <td><span class="dealtype">partenariat (horizon Plus)</span></td>
+          <td>Bride volontairement son app native (25 filtres max, pas de personnalisation par visiteur, collections &gt;5 000 produits sans filtres) et rachète sélectivement la découverte (Vantage Discovery, mars 2025) <span class="src">[help.shopify.com ; BetaKit, 2025-03-17]</span> ; côté agents, n'offre que des interrupteurs par agent (opt-out ChatGPT/Copilot, « Unlisted », robots.txt consultatif) <span class="src">[help.shopify.com, agentic storefronts]</span>. Un pupitre fin par agent × audience comble un trou documenté — mais viser Shopify Plus via partenaires, pas l'app store SMB.</td>
+        </tr>
+      </table>
+    </div>
+    <p class="note">Adjacence PIM &amp; flux : personne n'y a racheté de brique de gouvernance on-site — les PIM s'étendent par alliances (P2C Alliance Productsup × trbo × Pimcore, sept. 2024 ; Akeneo × Stripe agentique, janv. 2026) et Salsify vient de passer sous le fonds Cinven (juil. 2026), futur véhicule de build-up possible <span class="src">[productsup.com ; PR Newswire ; salsify.com, 2026-07-22]</span> — une adjacence à surveiller plutôt qu'une porte immédiate.</p>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section" id="sources">
+    <div class="section__head">
+      <span class="section__no">06</span>
+      <div><h2 class="section__title">Sources</h2></div>
+    </div>
+    <ol class="sources">
+      <li><span><a href="../s3-1_2026-09-06/">Run S3-1 du 6 septembre 2026</a> — positionnement du projet (valeurs déclaratives)</span></li>
+      <li><span><a href="../s1-1_2026-07-29/">Run S1-1 du 29 juillet 2026</a> — acteurs, dimensions, prix d'entrée, parts et croissances</span></li>
+      <li><span><a href="../s2-1_2026-09-06/">Run S2-1 du 6 septembre 2026</a> — KPI, structure du marché, frameworks (Porter, unit economics, vitalité, PESTEL, 9-box)</span></li>
+      <li><span>Cadrage d'Elena (6 septembre 2026) : aucun choix de mix déclaré, aucune contrainte — déclaratif</span></li>
+      <li><span>BigCommerce × Feedonomics, ~145 millions $ — wsgr.com (2021-07-27) · bigcommerce.com (communiqué), consultés le 2026-09-06</span></li>
+      <li><span>Commerce.com : re-branding autour de Feedonomics et de l'agentique (2025-08-01) · apps Feedonomics sur Shopify App Store (GlobeNewswire, 2025-11-05) · partenariat Stripe Agentic Commerce Suite (investors.bigcommerce.com), consultés le 2026-09-06</span></li>
+      <li><span>Shopify : limites de l'app Search &amp; Discovery (help.shopify.com) · rachat Vantage Discovery (BetaKit, 2025-03-17) · contrôles agentiques par agent — opt-out, Unlisted, robots.txt consultatif (help.shopify.com, agentic storefronts), consultés le 2026-09-06</span></li>
+      <li><span>ACP — Agentic Commerce Protocol : stripe.com/newsroom (2025-09-29) · dépôt GitHub (mainteneurs OpenAI/Stripe) · docs.stripe.com, consultés le 2026-09-06</span></li>
+      <li><span>UCP — Universal Commerce Protocol : developers.googleblog.com · shopify.engineering (2026-01-11) · developers.google.com/merchant/ucp (aucun contrôle d'exposition marchand spécifié), consultés le 2026-09-06</span></li>
+      <li><span>commercetools : Commerce MCP &amp; AI Hub (PR Newswire, 2025-05-21) · Agentic Jumpstart / Agent Gateway (2025-11-13) · marketplace « Search &amp; Personalization » · Frasers Group (retailtechinnovationhub.com, 2025-10-16), consultés le 2026-09-06</span></li>
+      <li><span>Algolia Merchandising Studio (algolia.com, 2023-03-21 ; nouvelle génération 2024-01-15), consultés le 2026-09-06</span></li>
+      <li><span>Constructor — Merchant Intelligence Agent (PR Newswire, 2026-03-24) · suite « Merchandising Controls and Insights » (constructor.com), consultés le 2026-09-06</span></li>
+      <li><span>Bloomreach — merchandising piloté par le comportement, règles par segment d'audience (bloomreach.com, 2023-09-05) · documentation Discovery (boost/bury, lock), consultés le 2026-09-06</span></li>
+      <li><span>Consolidation PE : PSG/Searchspring (BusinessWire, 2022-09-27) · Increasingly (2023-09-13) · Intelligent Reach (2024-04-02) · Athos (2025-01-13) · doctrine PSG (ION Analytics, 2025-07-21) · Monetate×SiteSpect, unitranche o15 75 millions $ (PR Newswire, 2025-06) · Everstone AB Tasty×VWO (TechCrunch, 2026-01-20), consultés le 2026-09-06</span></li>
+      <li><span>Autres signaux M&amp;A du secteur : Insider × Bluecore (PR Newswire, 2026-05-13) · Crownpeak × Attraqt, ~63,2 millions £ (Retail Dive, 2022-12-06) · Coveo × Qubit (2021-10) · Nosto × Findologic (2022-12), consultés le 2026-09-06</span></li>
+      <li><span>PIM &amp; flux : Salsify racheté par Cinven (salsify.com, 2026-07-22) · P2C Alliance Productsup × trbo × Pimcore (productsup.com, 2024-09-18) · Akeneo × Stripe Agentic Commerce Suite (PR Newswire, 2026-01-12) · Channable × Producthero (2025-05-13), consultés le 2026-09-06</span></li>
+    </ol>
+  </section>
+
+</main></div>
+
+<script src="../../assets/sitepipeline.js" data-active="4" data-href1="../s1-1_2026-07-29/" data-href2="../s2-1_2026-09-06/" data-href3="../s3-1_2026-09-06/"></script>
+  <script src="../../assets/sitefoot.js"></script>
+
+<script>
+const RUN_S4_DATA = {
+  "schema_version": 1,
+  "skill": "strategy-recommendation",
+  "market": { "slug": "perso-ecommerce", "label": "Outils SaaS de personnalisation e-commerce", "language": "fr" },
+  "run": { "number": 1, "date": "2026-09-06" },
+  "source_runs": {
+    "s3": { "number": 1, "date": "2026-09-06", "path": "../s3-1_2026-09-06/", "age_days": 0, "freshness_warning": false },
+    "s1": { "number": 1, "date": "2026-07-29", "path": "../s1-1_2026-07-29/", "age_days": 39, "freshness_warning": false },
+    "s2": { "number": 1, "date": "2026-09-06", "path": "../s2-1_2026-09-06/", "age_days": 0, "freshness_warning": false }
+  },
+  "project": { "id": "merch-control", "name": "Merch Control", "source_url": "https://pp.shoette.com/merchandising/" },
+  "verdict": {
+    "decision": "NO GO",
+    "question": "Creuser « Merch Control » sur le marché des outils de personnalisation e-commerce ?",
+    "answer": "Non — pas en frontal : ce pupitre, les moteurs le construisent déjà.",
+    "rationale": "Les moteurs livrent leur propre couche de contrôle merchandiser en itération continue (Algolia Merchandising Studio depuis 2023, Constructor MIA en mars 2026, règles par audience chez Bloomreach) ; le marché n'a jamais racheté de pupitre indépendant — il rachète des moteurs, de l'IA et de la donnée (Vantage, Radiance, Bluecore) ; et le projet arrive sans moteur, sans backend et sans canal, sur un marché dont toute la croissance est IA-native et dont le concurrent n°1 est gratuit.",
+    "condition": "Ce qui rouvrirait un GO : déplacer le pupitre vers la gouvernance de l'exposition agentique — l'angle mort confirmé des standards ACP/UCP (aucun contrôle marchand fin ; Shopify n'offre que des interrupteurs binaires) —, le prouver avec 2-3 équipes merchandising en design partners, et viser l'adossement (Commerce.com/Feedonomics, consolidateurs PE) plutôt que la vente directe."
+  },
+  "declared_inputs": {
+    "mix": { "produit": null, "prix": null, "promotion": null, "place": null },
+    "constraints": null
+  },
+  "market_summary": {
+    "as_of": "2026-09-06",
+    "data_age_note": "Synthèse pure des runs S1-1 du 29 juillet 2026 (39 jours) et S2-1 du 6 septembre 2026 (jour J) — aucun rafraîchissement web.",
+    "points": [
+      "Marché ~1,7 milliard $ (périmètre spécialiste, 2026), ~+20 %/an — Gartner : 1,2 milliard $ (2024, moteurs seuls, +26,1 %).",
+      "Trois familles : plateformes d'expérience ~70 % du panel, suites discovery ~12 %, briques spécialisées ~12 %, longue traîne ~6 % ; top 3 ≈ 55 %.",
+      "Force décisive (Porter) : le substitut gratuit — brique native des plateformes + « build » cloud à l'usage.",
+      "Choc agentique : ACP (sept. 2025) et UCP (janv. 2026) sortent la découverte produit du site — 67 milliards $ de ventes influencées par l'IA (Cyber Week 2025).",
+      "Consolidation : 3 fusions en 18 mois ; le PE assemble le milieu, le capital-risque finance les IA-natifs (Constructor ARR ×8).",
+      "Unit economics : ticket 0,6 → 430 k$/an ; remises 15-30 % ; NRR ~101 % ; péages de canal 0-15 % ; valeur marchande créée +5-15 % de CA (McKinsey)."
+    ]
+  },
+  "positioning_summary": {
+    "points": [
+      "Même case que les briques spécialisées, nature inverse : le pupitre qui gouverne les sources vs les moteurs qui décident — complément plus que concurrent.",
+      "Seul acteur sous 6/10 d'IA (panel : 6-9) — ~2/10 assumé : la case « brique × enterprise × IA faible » que personne n'occupe par choix.",
+      "Cible enterprise (API internes) mais dimensions commerciales vides : une architecture produit, pas un go-to-market.",
+      "Thèse à contre-courant du 9-box S2 : parier sur la couche de contrôle du mix, à l'heure des agents."
+    ]
+  },
+  "swot": {
+    "strengths": [
+      { "point": "Seule « couche de gouvernance » du paysage : pupitre neutre multi-sources, là où tous les autres vendent un moteur", "basis": "S3" },
+      { "point": "Transparence auditable en produit (pondérations lisibles, releases immuables, scission par droits d'accès) — l'auditabilité formelle manque aussi chez les moteurs", "basis": "S3 + web (S5)" },
+      { "point": "Complémentaire par construction : orchestre les API existantes — peut brancher les moteurs du panel au lieu de les affronter", "basis": "S3" },
+      { "point": "Démo publique navigable (13 emplacements × 7 audiences) — rare sur un marché de démos sur rendez-vous", "basis": "déclaratif" }
+    ],
+    "weaknesses": [
+      { "point": "Prototype front-only à données simulées : aucun backend, aucun client, aucune métrique réelle — 100 % déclaratif", "basis": "S3" },
+      { "point": "Ni prix ni modèle tarifaire : tout le go-to-market reste à inventer", "basis": "S3" },
+      { "point": "~2/10 d'IA sur un marché dont toute la croissance est IA-native (9-box : « investir » = briques IA)", "basis": "S2 + S3" },
+      { "point": "Aucune structure de vente face à des cycles enterprise longs et un procurement outillé (remises 15-30 %)", "basis": "S2 — Porter" }
+    ],
+    "opportunities": [
+      { "point": "Angle mort agentique confirmé par les standards : ni ACP ni UCP ne donnent au marchand de gouvernance fine de l'exposition ; Shopify n'offre que des interrupteurs binaires par agent", "basis": "web (S5)" },
+      { "point": "Précédent Feedonomics : l'orchestration de l'exposition produit rachetée ~145 millions $, devenue la thèse corporate de Commerce.com (août 2025)", "basis": "web (S5)" },
+      { "point": "Consolidation active : PSG (3 bolt-ons en 18 mois), Centre Lane, Everstone — des assembleurs en quête de briques", "basis": "S2 + web (S5)" },
+      { "point": "Écosystème composable ouvert : marketplace commercetools « Search & Personalization », alliances PIM — des canaux pour une brique neutre", "basis": "web (S5)" }
+    ],
+    "threats": [
+      { "point": "Les moteurs construisent la couche de contrôle en interne et itèrent vite : Merchandising Studio (Algolia 2023→2024), Merchant Intelligence Agent (Constructor, mars 2026), règles par audience (Bloomreach, 2023)", "basis": "web (S5)" },
+      { "point": "Le substitut gratuit : la brique native des plateformes — Shopify bride volontairement son app mais peut la déplafonner à tout moment", "basis": "S2 + web (S5)" },
+      { "point": "Le marché ne rachète pas de pupitres : ses acquisitions ciblent moteurs, IA et donnée (Vantage Discovery, Radiance, Bluecore)", "basis": "web (S5)" },
+      { "point": "Sans moteur propre, une valeur perçue « une interface sur des API » — vulnérable à la copie et au procurement", "basis": "raisonnement sur S3" }
+    ]
+  },
+  "marketing_mix": {
+    "produit": {
+      "declared": null, "verdict": null,
+      "recommendation": "Ne pas affronter les studios des moteurs : (1) backend minimal + 1-2 connecteurs réels (Algolia, Amazon Personalize) pour prouver l'uplift et le statut de complément ; (2) étendre la gouvernance à l'exposition agentique (par agent × audience × catalogue) — la seule surface où le pupitre devient une catégorie ; (3) garder l'auditabilité (releases immuables) comme signature.",
+      "supporting_data": ["S3 : pupitre multi-sources, ~2/10 IA assumé, dimensions commerciales vides", "S2 Porter : substitut n°1 = brique native gratuite", "Web S5 : studios de contrôle livrés par Algolia (2023-2024), Constructor (MIA, 2026-03), Bloomreach (2023) — sans auditabilité formelle ; ACP/UCP sans contrôle marchand fin"]
+    },
+    "prix": {
+      "declared": null, "verdict": null,
+      "recommendation": "Pas de grille publique tant que rien n'est prouvé. Étape 1 : 2-3 design partners payants ~500-1 000 $/mois (~6-12 k$/an). Étape 2 : ~15-25 k$/an en abonnement par site/emplacements, jamais indexé au trafic — la transparence tarifaire comme prolongement du positionnement ; écarter le % du revenu généré.",
+      "supporting_data": ["S1 : entrée mid-market 8-15 k$/an ; enterprise 25-50 k$/an ; médiane du panel ~30 k$/an ; Constructor ~150 k$/an", "S1 : 12 acteurs sur 15 en abonnement ; 1 seul au % du revenu (Nosto)", "S2 : remises annuelles 15-30 % ; NRR médiane ~101 %"]
+    },
+    "promotion": {
+      "declared": null, "verdict": null,
+      "recommendation": "Zéro acquisition payante : (1) la démo publique navigable comme arme n°1 (datée, versionnée) ; (2) prendre le terrain éditorial vide « qui gouverne ce que les agents montrent de votre catalogue ? » ; (3) crédibilité par preuves de design partners publiées.",
+      "supporting_data": ["S2 Porter : procurement outillé, comparaison facile (G2, Vendr)", "Web S5 : aucun acteur établi sur le discours de la gouvernance d'exposition agentique", "Marché de démos sur rendez-vous — une démo libre est en soi différenciante"]
+    },
+    "place": {
+      "declared": null, "verdict": null,
+      "recommendation": "Vente directe à 2-3 design partners (mid-market/enterprise à équipe merchandising outillée) ; pas d'app store Shopify au lancement (cible SMB, intégration inadaptée) ; à terme : marketplaces composables (commercetools/MACH) et partenariats connecteurs avec 1-2 moteurs.",
+      "supporting_data": ["S3 : le produit suppose des API produits internes", "S2 : app store Shopify = canal SMB, commission 15 % au-delà d'1 million $ cumulé", "Web S5 : marketplace commercetools « Search & Personalization » ouverte aux briques tierces"]
+    }
+  },
+  "other_recommendations": [
+    { "theme": "nature de l'actif", "recommendation": "Trancher avant tout investissement : produit indépendant, brique à adosser, ou démonstrateur — la lecture du marché favorise nettement l'adossement.", "rationale": "Build interne des moteurs (MIA livré en mars 2026) + consolidation PE : chaque mois de fenêtre compte." },
+    { "theme": "preuve", "recommendation": "Backend minimal + 2-3 design partners réels ; métrique unique : l'uplift d'ajout au panier mesuré par release.", "rationale": "La promesse est déjà affichée sur la home du prototype ; tant qu'elle n'est pas mesurée chez un vrai marchand, 100 % du dossier est déclaratif (S3)." },
+    { "theme": "couloir agentique", "recommendation": "Prendre en premier la gouvernance de l'exposition aux agents (par agent × audience × catalogue).", "rationale": "Angle mort documenté des standards ACP/UCP ; sur l'on-site la fenêtre se ferme, sur l'agentique personne n'est établi (web S5)." },
+    { "theme": "approche acquéreurs", "recommendation": "Se présenter en complément, jamais en concurrent : connecteurs d'abord (Algolia, commercetools), conversations ensuite (Commerce.com, PSG, Centre Lane).", "rationale": "Le marché rachète ce qui le complète (Qubit, SiteSpect, Feedonomics) et réplique ce qui l'affronte (web S5)." }
+  ],
+  "partnership_targets": [
+    { "name": "Commerce.com (BigCommerce × Feedonomics)", "category": "plateforme commerce", "deal_type": "rachat (précédent structurant)", "logic": "Seul groupe ayant fait de l'orchestration de l'exposition produit sa thèse corporate ; un pupitre de gouvernance par audience/emplacement prolonge son récit agentique.", "signals": "Rachat Feedonomics ~145 millions $ (2021) ; re-branding Commerce.com (2025-08) ; apps Feedonomics sur Shopify (2025-11) ; partenariat Stripe Agentic Commerce Suite.", "source_ids": [5, 6] },
+    { "name": "Écosystème agentique (Stripe · Google UCP)", "category": "standards & infrastructure", "deal_type": "design partner / standard", "logic": "Ni ACP ni UCP ne spécifient de contrôle marchand de l'exposition ; la Stripe Agentic Commerce Suite agrège des tiers — la place « gouvernance côté marchand » est vide.", "signals": "Specs ACP (2025-09-29) et UCP (2026-01-11) sans règles d'exposition ; suite Stripe rejointe par BigCommerce, commercetools, Akeneo.", "source_ids": [8, 9] },
+    { "name": "commercetools / MACH", "category": "commerce composable", "deal_type": "partenariat d'intégration", "logic": "Ne rachète pas — fait venir les briques par écosystème ; canal naturel d'une brique neutre, crédibilité enterprise immédiate.", "signals": "Marketplace « Search & Personalization » ; AI Hub (2025-05) ; Agent Gateway / Agentic Jumpstart (2025-11) ; Frasers Group (2025-10).", "source_ids": [10] },
+    { "name": "PSG Equity / Athos Commerce", "category": "consolidateur PE", "deal_type": "rachat bolt-on", "logic": "Trois bolt-ons en dix-huit mois pour assembler search + merchandising + flux, encore vendus séparément — une couche de gouvernance unifiante est un bolt-on cohérent.", "signals": "Increasingly (2023) ; Intelligent Reach (2024-04) ; Athos (2025-01) ; doctrine publique (ION, 2025-07).", "source_ids": [14] },
+    { "name": "Centre Lane / Monetate", "category": "consolidateur PE", "deal_type": "rachat bolt-on", "logic": "Pattern spin-off puis bolt-on ; clientèle enterprise réglementée à qui l'auditabilité du pupitre parle directement.", "signals": "Spin-off Kibo (2022) ; SiteSpect via unitranche 75 millions $ (2025-06).", "source_ids": [14] },
+    { "name": "Algolia", "category": "moteur du panel", "deal_type": "partenariat connecteur", "logic": "À aborder en complément : mono-moteur, sans gouvernance multi-sources ni auditabilité formelle — un connecteur démontre la thèse du pupitre neutre. Risque en germe : le build interne.", "signals": "Merchandising Studio (2023-03, refondu 2024-01) ; acquisitions passées = tech IA (MorphL, Search.io), jamais de desk.", "source_ids": [11, 12, 13] },
+    { "name": "Shopify", "category": "plateforme commerce", "deal_type": "partenariat (horizon Plus)", "logic": "App native volontairement bridée, rachats sélectifs de découverte, contrôles agentiques binaires — un pupitre fin par agent × audience comble un trou documenté ; viser Plus via partenaires, pas l'app store SMB.", "signals": "Limites Search & Discovery (help.shopify.com) ; Vantage Discovery (2025-03) ; contrôles agentic storefronts (opt-out par agent, Unlisted).", "source_ids": [7] }
+  ],
+  "sources": [
+    { "id": 1, "title": "Run S3-1 du 2026-09-06", "publisher": "market.shoette.com", "url": "../s3-1_2026-09-06/", "accessed": "2026-09-06", "from_source_run": true },
+    { "id": 2, "title": "Run S1-1 du 2026-07-29", "publisher": "market.shoette.com", "url": "../s1-1_2026-07-29/", "accessed": "2026-09-06", "from_source_run": true },
+    { "id": 3, "title": "Run S2-1 du 2026-09-06", "publisher": "market.shoette.com", "url": "../s2-1_2026-09-06/", "accessed": "2026-09-06", "from_source_run": true },
+    { "id": 4, "title": "Cadrage d'Elena — aucun mix déclaré, aucune contrainte", "accessed": "2026-09-06", "declared": true },
+    { "id": 5, "title": "BigCommerce × Feedonomics, ~145 millions $ — Wilson Sonsini (2021-07-27) ; communiqué BigCommerce", "url": "https://www.wsgr.com/en/insights/wilson-sonsini-advises-bigcommerce-on-dollar145-million-acquisition-of-feedonomics.html", "accessed": "2026-09-06", "from_source_run": false },
+    { "id": 6, "title": "Commerce.com : re-branding (2025-08-01) ; apps Feedonomics sur Shopify (GlobeNewswire, 2025-11-05) ; partenariat Stripe", "url": "https://www.commerce.com/press/commerce-launch-press-release-2025/", "accessed": "2026-09-06", "from_source_run": false },
+    { "id": 7, "title": "Shopify : limites Search & Discovery ; rachat Vantage Discovery (BetaKit, 2025-03-17) ; contrôles agentic storefronts", "url": "https://help.shopify.com/en/manual/online-sales-channels/agentic-storefronts/products", "accessed": "2026-09-06", "from_source_run": false },
+    { "id": 8, "title": "ACP — Stripe Newsroom (2025-09-29) ; dépôt GitHub (OpenAI/Stripe) ; docs.stripe.com", "url": "https://stripe.com/newsroom/news/stripe-openai-instant-checkout", "accessed": "2026-09-06", "from_source_run": false },
+    { "id": 9, "title": "UCP — Google Developers Blog / Shopify Engineering (2026-01-11) ; guide marchand UCP (sans contrôle d'exposition)", "url": "https://developers.google.com/merchant/ucp", "accessed": "2026-09-06", "from_source_run": false },
+    { "id": 10, "title": "commercetools : Commerce MCP & AI Hub (2025-05-21) ; Agentic Jumpstart / Agent Gateway (2025-11-13) ; marketplace Search & Personalization ; Frasers Group (2025-10-16)", "url": "https://www.prnewswire.com/news-releases/commercetools-launches-agentic-jumpstart-to-help-enterprises-grow-revenue-in-the-age-of-ai-shopping-302614020.html", "accessed": "2026-09-06", "from_source_run": false },
+    { "id": 11, "title": "Algolia Merchandising Studio (2023-03-21 ; nouvelle génération 2024-01-15)", "url": "https://www.algolia.com/about/news/algolia-unveils-next-generation-ai-enhanced-data-driven-merchandising-studio", "accessed": "2026-09-06", "from_source_run": false },
+    { "id": 12, "title": "Constructor — Merchant Intelligence Agent (PR Newswire, 2026-03-24) ; Merchandising Controls and Insights", "url": "https://www.prnewswire.com/news-releases/constructor-unveils-merchant-intelligence-agent-mia-bringing-instant-insight-and-faster-action-to-ecommerce-merchandising-302723004.html", "accessed": "2026-09-06", "from_source_run": false },
+    { "id": 13, "title": "Bloomreach — merchandising piloté par le comportement, règles par audience (2023-09-05) ; doc Discovery", "url": "https://www.bloomreach.com/en/news/2023/bloomreach-announces-first-of-its-kind-ai-driven-merchandising-functionality-enhancing-real-time-search-personalization-with-greater-merchandiser-control", "accessed": "2026-09-06", "from_source_run": false },
+    { "id": 14, "title": "Consolidation PE : chaîne PSG → Athos (2022-2025, doctrine ION 2025-07-21) ; Monetate × SiteSpect (o15, 2025-06) ; Everstone AB Tasty × VWO (TechCrunch, 2026-01-20)", "url": "https://www.businesswire.com/news/home/20250113743474/en/Klevu-Joins-Forces-with-Searchspring-to-form-Athos-Commerce-Creating-a-Leading-Comprehensive-Global-AI-Backed-Ecommerce-Optimization-Platform", "accessed": "2026-09-06", "from_source_run": false },
+    { "id": 15, "title": "Autres signaux : Insider × Bluecore (2026-05-13) ; Crownpeak × Attraqt ~63,2 millions £ (2022-12-06) ; Coveo × Qubit (2021-10) ; Nosto × Findologic (2022-12)", "url": "https://www.prnewswire.com/news-releases/insider-one-the-leading-agentic-ai-platform-powering-autonomous-end-to-end-customer-engagement-acquires-bluecore-302769645.html", "accessed": "2026-09-06", "from_source_run": false },
+    { "id": 16, "title": "PIM & flux : Salsify × Cinven (2026-07-22) ; P2C Alliance Productsup × trbo × Pimcore (2024-09-18) ; Akeneo × Stripe (2026-01-12) ; Channable × Producthero (2025-05-13)", "url": "https://www.salsify.com/press-release-cinven-international-private-equity-firm-to-acquire-salsify-inc", "accessed": "2026-09-06", "from_source_run": false }
+  ],
+  "last_updated": "2026-09-06"
+};
+</script>
+</body>
+</html>
