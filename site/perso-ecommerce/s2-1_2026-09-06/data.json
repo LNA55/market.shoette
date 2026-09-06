@@ -1,0 +1,302 @@
+{
+  "schema_version": 2,
+  "skill": "present-the-market",
+  "market": {
+    "slug": "perso-ecommerce",
+    "label": "Outils SaaS de personnalisation e-commerce",
+    "language": "fr"
+  },
+  "step": {
+    "number": 2,
+    "title": "Présenter le marché"
+  },
+  "run": {
+    "number": 1,
+    "date": "2026-09-06"
+  },
+  "source_run": {
+    "skill": "read-the-market",
+    "number": 1,
+    "date": "2026-07-29",
+    "path": "s1-1_2026-07-29/",
+    "age_days": 39,
+    "freshness_warning": false
+  },
+  "glance": [
+    {
+      "label": "Moteurs de personnalisation",
+      "value": "1,2",
+      "unit": "milliard $",
+      "note": "2024, périmètre Gartner — le cœur chiffré d'un marché aux fourchettes analystes bien plus larges"
+    },
+    {
+      "label": "Croissance",
+      "value": "+20",
+      "unit": "% par an",
+      "note": "référence du run S1 · Gartner : +26,1 % en 2024 · fourchettes analystes 12-36 %"
+    },
+    {
+      "label": "Concentration",
+      "value": "~55",
+      "unit": "%",
+      "note": "du panel spécialiste (1,58 milliard $) capté par le top 3 · 15 acteurs suivis"
+    },
+    {
+      "label": "Choc agentique",
+      "value": "67",
+      "unit": "milliards $",
+      "note": "de ventes influencées par l'IA sur la seule Cyber Week 2025 — ACP et UCP sortent la découverte produit du site marchand",
+      "shock": true
+    }
+  ],
+  "kpis": {
+    "definition": "Logiciels SaaS que les marchands en ligne et les marketplaces achètent en licence pour personnaliser l'expérience produit du consommateur final — moteurs de recommandation, recherche personnalisée, merchandising individualisé et expérimentation orientée commerce — hors configurateurs de produit physique et personnalisation publicitaire off-site.",
+    "sub_sectors": [
+      {
+        "name": "Plateformes d'expérience (personnalisation + CDP + orchestration : Optimizely, Insider, Bloomreach…)",
+        "size": {
+          "value": "~1,17",
+          "unit": "milliard $",
+          "year": 2026,
+          "estimated": true
+        },
+        "share_pct": {
+          "value": 70,
+          "estimated": true
+        }
+      },
+      {
+        "name": "Suites de découverte produit mid-market (search + recos + merchandising : Coveo, Athos, Nosto)",
+        "size": {
+          "value": "~0,21",
+          "unit": "milliard $",
+          "year": 2026,
+          "estimated": true
+        },
+        "share_pct": {
+          "value": 12,
+          "estimated": true
+        }
+      },
+      {
+        "name": "Briques spécialisées search / recos (Algolia, Constructor, Doofinder, Rebuy)",
+        "size": {
+          "value": "~0,20",
+          "unit": "milliard $",
+          "year": 2026,
+          "estimated": true
+        },
+        "share_pct": {
+          "value": 12,
+          "estimated": true
+        }
+      }
+    ],
+    "rest_of_market_share_pct": {
+      "value": 6,
+      "estimated": true
+    },
+    "sub_sector_method_note": "Ventilation par famille fonctionnelle — la dimension structurante n° 1 du run S1 (« largeur fonctionnelle ») —, calculée depuis les parts du panel de 15 éditeurs spécialistes (~1,58 milliard $) ; la ligne « reste du marché » est la longue traîne spécialisée estimée (Clerk.io, Syte, Fast Simon, LimeSpot… — dizaines d'éditeurs sous 10 millions $). Les suites intégrées des géants (Salesforce, Adobe, SAP), sans chiffre isolé, sont hors ventilation — traitées comme forces structurantes (Porter, PESTEL).",
+    "global_size": {
+      "value": "~1,7",
+      "unit": "milliard $",
+      "year": 2026,
+      "estimated": true,
+      "perimeter_note": "Périmètre spécialiste observable du pipeline : panel de 15 éditeurs (~1,58 milliard $) + longue traîne estimée. Cohérent avec Gartner : 1,2 milliard $ (2024, « personalization engines » seuls, +26,1 %) avant le search/discovery attenant. Les estimations analystes vont de 0,26 à ~12 milliards $ selon le périmètre retenu (e-commerce strict → « personalization software » au sens large) — la définition de la catégorie n'est pas stabilisée."
+    },
+    "dominant_incumbent": {
+      "name": "Optimizely (ex-Episerver)",
+      "founded": 1994,
+      "revenue": {
+        "value": 400,
+        "unit": "millions $",
+        "period_note": "ARR annoncé « supérieur à 400 millions $ » (communiqué de mai 2024 — dernier total public ; +21 % en glissement annuel)",
+        "estimated": false
+      },
+      "profit_status": "information introuvable",
+      "profit_figure": null
+    },
+    "geography": {
+      "type": "mondial",
+      "detail": "Éditeurs répartis entre États-Unis (Optimizely, Constructor, Monetate, Rebuy), Europe (Algolia et AB Tasty à Paris, Kameleoon, Doofinder, Nosto, Athos), Canada (Coveo), Turquie (Insider) et Inde (VWO/Wingify, Algonomy) — clientèle mondiale, centre de gravité commercial États-Unis + Europe ; le canal SMB (app stores Shopify/BigCommerce) est global par construction."
+    }
+  },
+  "methodology": {
+    "intro": "Les remarques suivantes, établies par le run S1, ont guidé le choix de la méthodologie d'analyse :",
+    "rows": [
+      {
+        "observation": "Marché B2B SaaS à chaîne courte, vendu en licence ou à l'usage — la lecture pertinente est unitaire (ACV, NRR, péages de canal)",
+        "framework": "Chaîne de valeur · unit economics"
+      },
+      {
+        "observation": "Trois fusions en dix-huit mois, une Series E de 500 millions $, des valorisations qui triplent — un deal flow exceptionnellement dense",
+        "framework": "Vitalité (deal flow)"
+      },
+      {
+        "observation": "Structure de pouvoir singulière : géants qui bundlent la brique « gratuite », options « build » des clouds, app stores à la fois canal et péage",
+        "framework": "Porter — 5 forces"
+      },
+      {
+        "observation": "Tailles analystes divergeant d'un facteur 10 selon les périmètres (de 1,2 à ~12 milliards $)",
+        "framework": "TAM / SAM / SOM"
+      },
+      {
+        "observation": "Chocs externes actifs : IA générative et agentique (ACP, UCP), revirement cookies de Google, RGPD",
+        "framework": "PESTEL"
+      },
+      {
+        "observation": "Trois familles fonctionnelles identifiables (briques, suites, plateformes) aux dynamiques opposées, mais données segmentaires estimées",
+        "framework": "9-box (qualitatif)"
+      }
+    ]
+  },
+  "frameworks": [
+    {
+      "id": "tam-sam-som",
+      "name": "TAM / SAM / SOM",
+      "nav": "TAM/SAM/SOM",
+      "status": "activé",
+      "doc_anchor": "tam-sam-som",
+      "badge": null,
+      "objective": "« Le gâteau vaut-il l'effort ? Marché en expansion ou en déclin ? »",
+      "analysis": "Le TAM (<i>Total Addressable Market</i>, le marché total) — la personnalisation e-commerce au sens large des analystes, moteurs de recommandation, search et expérimentation confondus — s'étale d'un facteur 10 selon les périmètres : de 1,2 milliard $ (Gartner 2024, « personalization engines » seuls, +26,1 % — le périmètre le plus étroit et le plus solide, celui de ce rapport) à ~12 milliards $ (« personalization software » au sens le plus large). En additionnant les trois catégories analystes adjacentes — moteurs de personnalisation (~1,2 à 3,7 milliards $), découverte produit (~2 milliards $), expérimentation/CRO (~1,3 à 1,5 milliard $) —, le TAM s'établit autour de ~4,5 à 7 milliards $ (2024-2025). Le SAM (<i>Serviceable Addressable Market</i>, le marché adressable) — les outils spécialistes effectivement achetés en licence par les marchands, périmètre de ce pipeline — est estimé à ~1,7 milliard $ (2026), en croissance de ~+20 % par an. Le SOM (<i>Serviceable Obtainable Market</i>, le marché atteignable) d'un entrant différencié s'étalonne sur les trajectoires récentes : Constructor est passé de ~8 à ~65 millions $ d'ARR en un an sur l'IA-native enterprise, Doofinder a bâti ~21,5 millions $ en self-service SMB — soit ~1 à 2 % du SAM à horizon 3-5 ans (~15 à 35 millions $) pour une proposition réellement différenciée. Stade de maturité : jeune mais réel, en consolidation active — la croissance reste à +20-26 % pendant que les acteurs se recomposent.",
+      "caption": "Dimensionnement du marché — toutes valeurs estimées (~), périmètres analystes divergents d'un facteur 10."
+    },
+    {
+      "id": "porter",
+      "name": "Porter — 5 forces",
+      "nav": "Porter",
+      "status": "activé",
+      "doc_anchor": "porter",
+      "badge": {
+        "type": "shock",
+        "label": "Substituts = force décisive"
+      },
+      "objective": "« Ce marché est-il structurellement rentable ? Qui a le pouvoir ? »",
+      "analysis": "Un marché attractif mais encerclé. Rivalité : forte — quinze spécialistes se disputent ~1,58 milliard $, le top 3 en capte ~55 %, et trois fusions en dix-huit mois disent une consolidation à marche forcée. Nouveaux entrants : l'IA et les app stores ouvrent la porte (Constructor : ARR ×8 en 2024 ; apps Shopify dès 9-18 $/mois) mais la distribution enterprise reste longue et chère. Substituts : la force décisive — le premier concurrent de chaque spécialiste est la brique native « gratuite » de la plateforme du marchand (Einstein bundlé dans Commerce Cloud, app Shopify Search &amp; Discovery), flanquée du « build » à l'usage des clouds (Amazon Personalize, Google Vertex AI Search à 0,27 $ les 1 000 requêtes) — et demain des agents d'achat hors site (ACP, UCP) qui court-circuitent le site marchand lui-même. Fournisseurs : pouvoir moyen — LLM et clouds substituables ; le vrai péage est le canal (app store Shopify jusqu'à 15 %, revenue share plateformes ~1-3 % du GMV). Clients : pouvoir fort — procurement outillé (remises annuelles constatées de 15-30 %), NRR médiane ~101 %, churn SMB structurellement élevé. Conclusion : la rentabilité durable exige soit une profondeur IA que la brique native ne rattrape pas, soit un alignement à la performance qui déplace le risque chez l'éditeur (Nosto).",
+      "caption": "Les cinq forces, annotées avec les faits du run S1 — le substitut « gratuit » (brique native, build) est la force décisive."
+    },
+    {
+      "id": "value-chain",
+      "name": "Value chain — lue en unit economics",
+      "nav": "Chaîne de valeur",
+      "status": "activé",
+      "doc_anchor": "value-chain",
+      "badge": null,
+      "objective": "« Où se capture la marge dans la filière ? »",
+      "analysis": "La chaîne est courte — éditeur → canal → marchand — et la lecture pertinente est unitaire. Côté acquisition : deux régimes opposés coexistent, le self-service d'app store (essai en un clic, churn mensuel) et la vente enterprise (démos, <i>RFP</i> — appels d'offres —, cycles de plusieurs trimestres). Côté péages : l'app store Shopify prélève 15 % au-delà du premier million de dollars de revenus cumulés (barème 2025), et les plateformes commerce font payer leur écosystème ~1-3 % du GMV — le canal est à la fois distributeur et percepteur. Côté monétisation : le ticket s'étage de 0,6 k$ à ~430 k$ par an pour le « même » besoin (facteur 700), les remises annuelles constatées atteignent 15-30 %, et la NRR médiane du SaaS (~101 % en 2024) dit que la croissance nette vient des nouvelles ventes plus que de l'expansion des comptes. Le modèle de Nosto — 2,5 à 4 % des ventes attribuées, le seul 100 % à la performance du panel — déplace la capture de valeur du logiciel vers le résultat. Le mouvement structurel : la valeur créée est réelle (+5 à 15 % de chiffre d'affaires marchand documentés par McKinsey), mais le maillon découverte lui-même menace de sortir du site avec les agents d'achat.",
+      "caption": "Une chaîne à trois maillons — le canal prélève, et le maillon découverte menace de sortir du site."
+    },
+    {
+      "id": "vitalite",
+      "name": "Vitalité (deal flow)",
+      "nav": "Deal flow",
+      "status": "activé",
+      "doc_anchor": "vitalite",
+      "badge": null,
+      "objective": "« L'argent intelligent y croit-il ? À quelle vitesse ça se disrupte ? »",
+      "analysis": "L'argent intelligent est massivement actif — et il achète la taille autant que la technologie. En vingt-quatre mois : la Series B de Constructor menée par Sapphire Ventures (valorisation triplée à 550 millions $, juin 2024) ; la Series E de 500 millions $ d'Insider menée par General Atlantic (novembre 2024) ; la fusion Klevu + Searchspring orchestrée par PSG Equity (→ Athos Commerce, janvier 2025) ; le rachat de VWO par Everstone (~200 millions $, janvier 2025) puis la fusion AB Tasty × VWO (janvier 2026, entité au-delà de 100 millions $ d'ARR) ; le rachat de SiteSpect par Monetate (unitranche de 75 millions $, juin 2025). La direction des flux est double et sans ambiguïté : le private equity consolide le milieu de marché (Everstone, Centre Lane, PSG) pendant que le capital-risque finance les IA-natifs de la découverte produit. Et le choc vient d'ailleurs : en septembre 2025, OpenAI et Stripe lancent l'ACP — acheter dans ChatGPT — suivi en janvier 2026 de l'UCP de Google avec Shopify, Etsy, Target et Walmart : les plus gros chèques de l'écosystème construisent désormais la découverte produit hors du site marchand.",
+      "caption": "24 mois de deal flow — le PE consolide le milieu, le capital-risque finance l'IA-native, les géants construisent hors site."
+    },
+    {
+      "id": "pestel",
+      "name": "PESTEL",
+      "nav": "PESTEL",
+      "status": "activé",
+      "doc_anchor": "pestel",
+      "badge": null,
+      "objective": "« Quelles forces externes peuvent tuer ou doper le marché ? »",
+      "analysis": "Le choc dominant est technologique : l'IA générative et agentique redistribue les cartes — les gagnants du cycle sont IA-natifs (Constructor, ARR ×8 en 2024), les leaders réarment leurs plateformes (Algolia Agent Studio, Bloomreach Loomi, Optimizely Opal), et les protocoles ACP (OpenAI/Stripe) et UCP (Google) sortent la découverte produit du site marchand — 67 milliards $ de ventes influencées par l'IA sur la seule Cyber Week 2025. Légal : le RGPD et ePrivacy encadrent la donnée, mais le revirement de Google (avril 2025 : les cookies tiers restent dans Chrome) a détendu la pression — et la personnalisation on-site, nourrie de données first-party, était de toute façon la moins exposée. Politique : les gatekeepers de la découverte (Google, app stores) restent sous contrainte réglementaire et politique (supervision du revirement cookies, DMA européen). Socioculturel : la personnalisation est devenue une attente de base — 89 % des décideurs y investissent, +38 % de dépense quand l'expérience est personnalisée — mais la moitié des décideurs se disent gênés par les règles privacy. Économique : budgets scrutés par le procurement (remises 15-30 %) pendant que le private equity finance la consolidation. Environnemental : non significatif sur ce marché.",
+      "caption": "Six forces externes — la technologique (IA générative et agentique) est le choc qui recompose la catégorie."
+    },
+    {
+      "id": "ge-mckinsey",
+      "name": "GE / McKinsey 9-box",
+      "nav": "9-box",
+      "status": "dégradé",
+      "doc_anchor": "ge-mckinsey",
+      "badge": {
+        "type": "qual",
+        "label": "Lecture qualitative"
+      },
+      "objective": "« Quels segments méritent l'investissement ? »",
+      "analysis": "Arbitrage qualitatif des trois familles fonctionnelles — les parts par famille sont estimées depuis le panel S1, trop minces pour des scores composites chiffrés. Briques spécialisées de découverte IA-native : attractivité élevée — c'est là que se concentre toute la croissance du panel (Constructor +50, Rebuy +15, Doofinder +5) — pour une force requise moyenne (profondeur IA réelle, catalogue, distribution) : la case « investir » du marché. Suites de découverte mid-market : segment le plus disputé, croissances négatives des trois acteurs installés (Coveo −8, Athos −5, Nosto −20) pendant que la fusion search/personnalisation s'y joue — sélectivité : y entrer exige une différenciation nette, pas un « me too ». Plateformes d'expérience enterprise : ~70 % de la valeur du panel mais croissance molle (Optimizely 0, AB Tasty×VWO −5, Algonomy −23), cycles de vente longs et concurrence frontale des suites intégrées des géants — récolter ou éviter pour un entrant : ce territoire appartient aux consolidateurs capitalisés.",
+      "caption": "Arbitrage qualitatif des trois familles fonctionnelles — scores composites non chiffrés (parts estimées depuis le panel S1)."
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "title": "Run S1-1 — Read the Market du 29 juillet 2026 (source primaire : tous les faits marché, acteurs et chiffres de ce rapport)",
+      "publisher": "market.shoette.com",
+      "url": "../s1-1_2026-07-29/",
+      "accessed": "2026-09-06",
+      "from_source_run": true
+    },
+    {
+      "id": 2,
+      "title": "Annexe A1 du run source — 35 sources externes détaillées (communiqués financiers, presse économique, données analystes, benchmarks SaaS)",
+      "publisher": "market.shoette.com",
+      "url": "../s1-1_2026-07-29/#a1",
+      "accessed": "2026-09-06",
+      "from_source_run": true
+    },
+    {
+      "id": 3,
+      "title": "Optimizely — repères d'entreprise : Episerver fondée en 1994 à Stockholm, rachat d'Optimizely Inc. finalisé le 21 octobre 2020, renommage en Optimizely le 27 janvier 2021 ; ARR « >400 millions $ » (mai 2024, dernier total public) ; rentabilité non confirmée depuis une déclaration du CEO d'avril 2022",
+      "publisher": "Optimizely (communiqués) / Wikipédia / TechCrunch",
+      "url": "https://www.optimizely.com/company/press/episerver-reintroduces-itself-as-optimizely",
+      "accessed": "2026-09-06",
+      "from_source_run": false
+    },
+    {
+      "id": 4,
+      "title": "Revenue share for Shopify App Store developers — barème 2025 : 0 % jusqu'à 1 million $ de revenus cumulés, 15 % au-delà",
+      "publisher": "Shopify (documentation officielle)",
+      "url": "https://shopify.dev/docs/apps/launch/distribution/revenue-share",
+      "accessed": "2026-09-06",
+      "from_source_run": false
+    },
+    {
+      "id": 5,
+      "title": "Personalization Engine Software Market — 3,66 milliards $ (2025), TCAC 22 % (2026-2031)",
+      "publisher": "Mordor Intelligence",
+      "url": "https://www.mordorintelligence.com/industry-reports/personalization-engine-software-market",
+      "accessed": "2026-09-06",
+      "from_source_run": false
+    },
+    {
+      "id": 6,
+      "title": "Product Discovery Platform Market — 1,98 milliard $ (2024), TCAC 18,7 % (périmètre : Algolia, Coveo, Bloomreach, Constructor…)",
+      "publisher": "Growth Market Reports",
+      "url": "https://growthmarketreports.com/report/product-discovery-platform-market",
+      "accessed": "2026-09-06",
+      "from_source_run": false
+    },
+    {
+      "id": 7,
+      "title": "A/B Testing Software Market — 1,30 milliard $ (2025), TCAC 11,2 % (2026-2032)",
+      "publisher": "360iResearch / Research and Markets",
+      "url": "https://www.researchandmarkets.com/report/a-b-testing-software",
+      "accessed": "2026-09-06",
+      "from_source_run": false
+    },
+    {
+      "id": 8,
+      "title": "Conversion Rate Optimization (CRO) Software Market — ~1,52 milliard $ (2024), TCAC 12,2 %",
+      "publisher": "Cognitive Market Research",
+      "url": "https://www.cognitivemarketresearch.com/conversion-rate-optimization-cro-software-market-report",
+      "accessed": "2026-09-06",
+      "from_source_run": false
+    },
+    {
+      "id": 9,
+      "title": "Personalization Software Market — 11,98 milliards $ (2025), le périmètre analyste le plus large",
+      "publisher": "360iResearch",
+      "url": "https://www.360iresearch.com/library/intelligence/personalization-software",
+      "accessed": "2026-09-06",
+      "from_source_run": false
+    }
+  ],
+  "last_updated": "2026-09-06"
+}
