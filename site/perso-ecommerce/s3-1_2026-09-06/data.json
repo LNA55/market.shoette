@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "skill": "position-my-product",
+  "market": {
+    "slug": "perso-ecommerce",
+    "label": "Outils SaaS de personnalisation e-commerce",
+    "language": "fr"
+  },
+  "run": {
+    "number": 1,
+    "date": "2026-09-06"
+  },
+  "source_runs": {
+    "s1": {
+      "number": 1,
+      "date": "2026-07-29",
+      "path": "../s1-1_2026-07-29/",
+      "age_days": 39,
+      "freshness_warning": false
+    },
+    "s2": {
+      "number": 1,
+      "date": "2026-09-06",
+      "path": "../s2-1_2026-09-06/"
+    }
+  },
+  "project": {
+    "id": "merch-control",
+    "name": "Merch Control",
+    "source_url": "https://pp.shoette.com/merchandising/",
+    "summary": "Plan de contrôle du merchandising e-commerce : un back-office où l'équipe marchande compose, par emplacement (13 blocks — home, catégorie, recherche, fiche produit, panier…) et par audience (7 profils, des prospects aux VIP), la pondération exacte des sources de produits affichées (nouveautés, meilleures ventes, promotions, affinités, historique d'achat…). Versions immuables par emplacement, scission automatique selon les données accessibles par audience, portes de destination, rapports d'impact. L'outil ne fournit aucun moteur : il pondère les API produits que le marchand possède déjà (~28 appels, 6 familles de sources). Prototype front-only (React, données simulées), version 4 — non commercialisé.",
+    "extra_info_from_elena": "Cadrage d'Elena (fichier de contexte pp.shoette.com, état consolidé du 2026-09-04) : prototype de SaaS B2B front-only, données simulées ; V4 = seule version active (V1-V3 gelées) ; promesse affichée : maximiser le taux d'ajout au panier des sites e-commerce à grand catalogue."
+  },
+  "positioning": {
+    "market_share_pct": {
+      "value": 0,
+      "estimated": false,
+      "note": "prototype non commercialisé — pas encore sur le marché"
+    },
+    "growth_pct": null,
+    "dimensions": {
+      "largeur_fonctionnelle": {
+        "value": "brique spécialisée",
+        "estimated": true,
+        "declared": true,
+        "rationale": "Une seule fonction : composer et gouverner le mix de merchandising (pondérations par source × audience × emplacement, portes de destination) — ni moteur de search ni recommandations propriétaires : l'outil pilote les sources que le marchand a déjà."
+      },
+      "cible_clientele": {
+        "value": "enterprise",
+        "estimated": true,
+        "declared": true,
+        "rationale": "Revendiqué : « sites e-commerce à grand catalogue » ; le produit suppose des API produits internes (catalogue, stocks, comportement, historique) et une équipe merchandising outillée — profil enterprise, entrée mid-market plausible."
+      },
+      "prix_entree": {
+        "value": null,
+        "estimated": false,
+        "declared": true,
+        "rationale": "Non commercialisé — prototype sans pricing : aucune valeur déclarable."
+      },
+      "profondeur_ia": {
+        "value": 2,
+        "estimated": true,
+        "declared": true,
+        "rationale": "Choix assumé : pondérations déterministes fixées par l'humain, versions immuables et auditables, zéro ranking appris — seuls des résumés analytiques assistés sont esquissés (maquette). L'outil vend le contrôle, pas l'IA."
+      },
+      "modele_tarifaire": {
+        "value": null,
+        "estimated": false,
+        "declared": true,
+        "rationale": "Non commercialisé — aucun modèle arrêté (démarche SaaS B2B, sans pricing à ce stade)."
+      }
+    }
+  },
+  "enriched_chart": {
+    "href": "../s1-1_2026-07-29/#s2b",
+    "enriched_on": "2026-09-06"
+  },
+  "analysis": {
+    "paragraph": "Sur la configuration par défaut (part de marché en hauteur), Merch Control se pose tout en bas du graphique, à 0 % — mécanique pour un prototype ; ce n'est pas là que se joue la lecture. En largeur fonctionnelle, le projet rejoint la case des briques spécialisées — celle d'Algolia, Constructor, Doofinder et Rebuy — mais avec une nature exactement inverse : ces quatre-là sont des moteurs qui décident à la place du marchand (search, recommandations), Merch Control est le pupitre qui compose et gouverne les sources — les leurs, éventuellement : ses « appels » pourraient être un endpoint Algolia ou Amazon Personalize. Même case, camp opposé — et complémentaire plus que concurrent. En profondeur IA (~2/10, déclaratif), le projet se place sous l'intégralité du panel : les quinze acteurs vivent entre 6 et 9, et le run S2 décrit un marché qui court vers l'agentique (Agent Studio, Loomi, Opal). Deux lectures possibles — le hors-jeu technologique, ou le contrepoint délibéré : des pondérations lisibles, des versions immuables et un audit par release, exactement la transparence que les moteurs à IA font disparaître et que le procurement enterprise réclame. La case qu'occupe le projet — brique spécialisée × IA faible × enterprise — est vide sur le graphique : le plancher d'IA du panel (6) appartient soit au SMB self-service (Doofinder, Rebuy), soit à un acteur en déclin (Algonomy) ; personne n'y est par choix. En cible, il rejoint le bloc enterprise (10 acteurs sur 15) où le ticket des briques va jusqu'à ~150 k$/an (Constructor) — mais les deux dimensions commerciales du projet sont vides (ni prix, ni modèle : prototype) : sa position dit une architecture produit, pas un go-to-market. Reste l'angle stratégique, à contre-courant du 9-box du run S2 (qui dit « investir » sur les briques IA-natives) : la thèse de Merch Control est que la couche de contrôle du mix — qui gouverne quels moteurs parlent, à quelles audiences, avec quelle traçabilité — reste à prendre ; et l'ère des agents d'achat (ACP, UCP) qui fait sortir la découverte produit du site marchand rend un pupitre de gouvernance plus actuel, pas moins.",
+    "reading_keys": [
+      "Même case que les briques spécialisées, nature inverse : Algolia et Constructor vendent le moteur qui décide, Merch Control vend le pupitre qui gouverne — ses sources pourraient être leurs moteurs : complément plus que concurrent.",
+      "Seul acteur sous 6/10 d'IA : le panel vit entre 6 et 9 ; ~2/10 assumé, c'est la transparence en produit — pondérations lisibles, versions immuables, audit par release — là où le marché vend des boîtes noires.",
+      "La case « brique × enterprise × IA faible » est vide : le plancher IA du panel appartient au SMB ou au déclin ; personne ne l'occupe par choix — Merch Control s'y installe comme position, pas comme retard.",
+      "Prototype : 0 % de part, ni prix ni modèle — la position dit l'architecture, pas la traction ; toutes les valeurs sont déclaratives, à revérifier si l'outil se commercialise."
+    ],
+    "recommended_view": "Position Y = Profondeur IA · Position X + Couleur = Largeur fonctionnelle · Taille = Part de marché · Opacité = Cible de clientèle. Sur cette vue, les quinze acteurs du panel flottent entre 6 et 9 ; le marqueur ✺ « Merch Control » est seul en bas du graphique — la case du contrôle délibéré, qu'aucun acteur n'occupe."
+  },
+  "sources": [
+    {
+      "id": 1,
+      "title": "Merch Control — l'application en ligne (V4)",
+      "url": "https://pp.shoette.com/merchandising/",
+      "accessed": "2026-09-06",
+      "declared": true
+    },
+    {
+      "id": 2,
+      "title": "Cadrage d'Elena : fichier de contexte du projet pp.shoette.com (état consolidé du 2026-09-04)",
+      "accessed": "2026-09-06",
+      "declared": true
+    },
+    {
+      "id": 3,
+      "title": "Run S1-1 du 29 juillet 2026",
+      "publisher": "market.shoette.com",
+      "url": "../s1-1_2026-07-29/",
+      "accessed": "2026-09-06",
+      "from_source_run": true
+    },
+    {
+      "id": 4,
+      "title": "Run S2-1 du 6 septembre 2026",
+      "publisher": "market.shoette.com",
+      "url": "../s2-1_2026-09-06/",
+      "accessed": "2026-09-06",
+      "from_source_run": true
+    }
+  ],
+  "last_updated": "2026-09-06"
+}

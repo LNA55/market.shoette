@@ -313,12 +313,19 @@ const RUN_DATA = {
       "Multi-produits : pour Optimizely, Insider ou Bloomreach, l'ARR total inclut des modules au-delà de la personnalisation e-commerce stricte (CMS, marketing automation, CDP). Les parts se lisent comme « poids économique de l'éditeur dans l'écosystème de la personnalisation », pas comme un chiffre d'affaires strictement limité à la personnalisation."
     ]
   },
-  "run": { "number": 1, "date": "2026-07-29" },
+  "run": {
+    "number": 1,
+    "date": "2026-07-29"
+  },
   "reading": {
     "maturity_summary": "Marché en début de consolidation, tiré par deux lames de fond. La catégorie est jeune mais réelle : Gartner chiffre les « personalization engines » à 1,2 Md$ en 2024 (+26,1 %) et lui consacre deux Magic Quadrants distincts (Personalization Engines ; Search & Product Discovery) — signe que search et personnalisation fusionnent en une même bataille de la « découverte produit ». Les 18 derniers mois concentrent les bascules : fusions Klevu+Searchspring → Athos Commerce (janv. 2025), Monetate+SiteSpect (juin 2025), AB Tasty+VWO orchestrée par Everstone (janv. 2026, entité >100 M$ d'ARR) ; percée de l'IA agentique (Algolia Agent Studio, Bloomreach Loomi, protocoles ACP d'OpenAI/Stripe et UCP de Google qui sortent la découverte produit du site marchand) ; et revirement privacy de Google (avr. 2025 : les cookies tiers restent dans Chrome) qui allège la pression réglementaire sur la personnalisation on-site, nativement first-party.",
     "reference_period": {
       "choice": "1y",
-      "options": ["6m", "1y", "3y"],
+      "options": [
+        "6m",
+        "1y",
+        "3y"
+      ],
       "rationale": "Les événements décisifs — les trois fusions (Athos janv. 2025, Monetate×SiteSpect juin 2025, AB Tasty×VWO janv. 2026), le boom agentique (ACP sept. 2025, UCP janv. 2026) et les derniers chiffres publiés (Bloomreach >260 M$, Coveo FY2026, Constructor +82 % de clients) — tiennent dans les douze à dix-huit derniers mois. Trois ans mélangeraient l'ère pré-IA générative avec l'actuelle ; six mois manqueraient les fusions de début 2025."
     },
     "dimensions": [
@@ -328,7 +335,13 @@ const RUN_DATA = {
         "rank": 1,
         "type": "ordinal",
         "description": "La ligne de fracture du marché : brique spécialisée (search OU recommandations), suite de découverte produit (search + recos + merchandising), ou plateforme d'expérience complète (personnalisation + CDP + orchestration multicanal).",
-        "scale": { "values": ["brique spécialisée", "suite discovery", "plateforme d'expérience"] }
+        "scale": {
+          "values": [
+            "brique spécialisée",
+            "suite discovery",
+            "plateforme d'expérience"
+          ]
+        }
       },
       {
         "id": "cible_clientele",
@@ -336,7 +349,13 @@ const RUN_DATA = {
         "rank": 2,
         "type": "ordinal",
         "description": "Le segment d'acheteurs visé en priorité — il commande le prix, le produit et le canal de vente. SMB (Shopify, self-service), mid-market, ou enterprise (grands marchands, marketplaces).",
-        "scale": { "values": ["SMB", "mid-market", "enterprise"] }
+        "scale": {
+          "values": [
+            "SMB",
+            "mid-market",
+            "enterprise"
+          ]
+        }
       },
       {
         "id": "prix_entree",
@@ -345,7 +364,10 @@ const RUN_DATA = {
         "type": "numeric",
         "unit": "k$/an",
         "description": "Coût annuel du ticket d'entrée réel (plus petit contrat typique) : de ~0,6 k$/an (Doofinder) à ~150 k$/an (Constructor). L'écart de 1 à 250 segmente radicalement les clientèles.",
-        "scale": { "min": 0, "max": 160 }
+        "scale": {
+          "min": 0,
+          "max": 160
+        }
       },
       {
         "id": "profondeur_ia",
@@ -354,7 +376,10 @@ const RUN_DATA = {
         "type": "numeric",
         "unit": "/10",
         "description": "Degré d'IA embarquée : 0-4 règles et ML basique, 5-7 ML avancé (ranking appris, segmentation prédictive), 8-10 IA générative et agentique en production (assistants d'achat conversationnels, agents).",
-        "scale": { "min": 0, "max": 10 }
+        "scale": {
+          "min": 0,
+          "max": 10
+        }
       },
       {
         "id": "modele_tarifaire",
@@ -362,7 +387,13 @@ const RUN_DATA = {
         "rank": 5,
         "type": "ordinal",
         "description": "Comment l'éditeur facture : abonnement (paliers fixes, souvent indexés trafic/SKU), à l'usage (requêtes, enregistrements), ou au % du revenu généré (performance).",
-        "scale": { "values": ["abonnement", "à l'usage", "% du revenu généré"] }
+        "scale": {
+          "values": [
+            "abonnement",
+            "à l'usage",
+            "% du revenu généré"
+          ]
+        }
       }
     ],
     "default_channels": {
@@ -375,27 +406,73 @@ const RUN_DATA = {
     "default_config_rationale": "La largeur fonctionnelle est classée première : c'est elle qui sépare les briques spécialisées (Algolia, Constructor, Doofinder), les suites de découverte produit (Nosto, Athos, Coveo) et les plateformes d'expérience (Insider, Bloomreach, Optimizely) — elle est affectée à l'axe Y, recouvert par défaut par la part de marché (basculez Y sur « Largeur fonctionnelle » pour la vue structurelle). La cible de clientèle (rang 2, axe X + couleur) montre la vraie segmentation commerciale : plus un marqueur est à droite et foncé, plus l'acheteur visé est gros. Le prix d'entrée (rang 3, taille) rend l'écart de 1 à 250 visible d'un coup d'œil : les gros marqueurs sont les tickets enterprise. La profondeur IA (rang 4, opacité) et le modèle tarifaire (rang 5, bordure) complètent la lecture.",
     "export_note": "Marché mondial des outils SaaS de personnalisation e-commerce (recommandations, recherche personnalisée, merchandising individualisé), lu au 29 juillet 2026. Hauteur = part des revenus estimés d'un panel de 15 éditeurs spécialistes (~1,6 Md$ cumulés) ; position horizontale = croissance estimée de la part sur 12 mois ; toutes valeurs ~estimées. Première observation : le marché se consolide à grande vitesse (trois fusions en dix-huit mois — Athos Commerce, Monetate×SiteSpect, AB Tasty×VWO) pendant que la croissance se concentre sur les acteurs IA-natifs de la découverte produit (Constructor, ARR ×8 en 2024) — et que les géants intégrés (Salesforce, Adobe, SAP), hors graphique faute de chiffres isolés, bornent le terrain par le haut.",
     "values_methodology": [
-      { "label": "Part de marché (%)", "note": "Part des revenus annuels estimés de l'éditeur (ARR ou CA, dernier connu) dans un panel de 15 éditeurs spécialistes cumulant ~1,58 Md$. Tous les revenus sources sont en dollars US, sauf Algonomy (dépôts réglementaires indiens en INR, convertis à ~83 INR/USD) et AB Tasty×VWO (chiffre combiné annoncé en $). Proxy indicatif : le panel exclut les suites intégrées des géants (pas de chiffre isolé) — les parts se lisent au sein de l'écosystème spécialiste, pas du marché total." },
-      { "label": "Croissance 12 mois (%)", "note": "Croissance estimée de la part de marché sur un an : croissance des revenus de l'acteur rapportée à celle du marché (~+20 %/an — Gartner : +26,1 % en 2024 pour les personalization engines ; fourchettes analystes 12-36 %). Une valeur négative signifie que l'acteur croît moins vite que le marché." },
-      { "label": "Largeur fonctionnelle", "note": "Catégorie qualitative : brique spécialisée (search OU recos, intégrable partout) / suite discovery (search + recos + merchandising produit) / plateforme d'expérience (personnalisation + CDP + orchestration multicanal, au-delà du site)." },
-      { "label": "Cible de clientèle", "note": "Segment d'acheteurs prioritaire, déduit du pricing public et de la base clients : SMB (self-service, apps Shopify, <1 k$/mois) / mid-market / enterprise (contrats 40 k$+/an, grands marchands et marketplaces)." },
-      { "label": "Prix d'entrée (k$/an)", "note": "Milliers de dollars US par an, plus petit contrat typique constaté : pages pricing publiques quand elles existent (Doofinder 49 $/mois, Rebuy 99 $/mois, Athos 699 $/mois), données de procurement (Vendr, mida.so) sinon (Constructor ~150 k$/an, AB Tasty ~20-50 k$/an). Conversions €→$ au taux ~1 € = 1,09 $. Hors coûts d'implémentation et modules additionnels." },
-      { "label": "Profondeur IA", "note": "Score attribué par l'agent d'après les capacités documentées : 0-4 = règles et ML basique ; 5-7 = ML avancé (ranking appris, prédictif) ; 8-10 = IA générative/agentique en production (Algolia Agent Studio, Bloomreach Loomi, Optimizely Opal)." },
-      { "label": "Modèle tarifaire", "note": "Catégorie qualitative : abonnement (paliers fixes, souvent indexés sur trafic/SKU/commandes) / à l'usage (facturation aux requêtes et enregistrements — Algolia, et le « build » AWS/Google) / % du revenu généré (modèle à la performance de Nosto : 2,5-4 % des ventes attribuées)." }
+      {
+        "label": "Part de marché (%)",
+        "note": "Part des revenus annuels estimés de l'éditeur (ARR ou CA, dernier connu) dans un panel de 15 éditeurs spécialistes cumulant ~1,58 Md$. Tous les revenus sources sont en dollars US, sauf Algonomy (dépôts réglementaires indiens en INR, convertis à ~83 INR/USD) et AB Tasty×VWO (chiffre combiné annoncé en $). Proxy indicatif : le panel exclut les suites intégrées des géants (pas de chiffre isolé) — les parts se lisent au sein de l'écosystème spécialiste, pas du marché total."
+      },
+      {
+        "label": "Croissance 12 mois (%)",
+        "note": "Croissance estimée de la part de marché sur un an : croissance des revenus de l'acteur rapportée à celle du marché (~+20 %/an — Gartner : +26,1 % en 2024 pour les personalization engines ; fourchettes analystes 12-36 %). Une valeur négative signifie que l'acteur croît moins vite que le marché."
+      },
+      {
+        "label": "Largeur fonctionnelle",
+        "note": "Catégorie qualitative : brique spécialisée (search OU recos, intégrable partout) / suite discovery (search + recos + merchandising produit) / plateforme d'expérience (personnalisation + CDP + orchestration multicanal, au-delà du site)."
+      },
+      {
+        "label": "Cible de clientèle",
+        "note": "Segment d'acheteurs prioritaire, déduit du pricing public et de la base clients : SMB (self-service, apps Shopify, <1 k$/mois) / mid-market / enterprise (contrats 40 k$+/an, grands marchands et marketplaces)."
+      },
+      {
+        "label": "Prix d'entrée (k$/an)",
+        "note": "Milliers de dollars US par an, plus petit contrat typique constaté : pages pricing publiques quand elles existent (Doofinder 49 $/mois, Rebuy 99 $/mois, Athos 699 $/mois), données de procurement (Vendr, mida.so) sinon (Constructor ~150 k$/an, AB Tasty ~20-50 k$/an). Conversions €→$ au taux ~1 € = 1,09 $. Hors coûts d'implémentation et modules additionnels."
+      },
+      {
+        "label": "Profondeur IA",
+        "note": "Score attribué par l'agent d'après les capacités documentées : 0-4 = règles et ML basique ; 5-7 = ML avancé (ranking appris, prédictif) ; 8-10 = IA générative/agentique en production (Algolia Agent Studio, Bloomreach Loomi, Optimizely Opal)."
+      },
+      {
+        "label": "Modèle tarifaire",
+        "note": "Catégorie qualitative : abonnement (paliers fixes, souvent indexés sur trafic/SKU/commandes) / à l'usage (facturation aux requêtes et enregistrements — Algolia, et le « build » AWS/Google) / % du revenu généré (modèle à la performance de Nosto : 2,5-4 % des ventes attribuées)."
+      }
     ]
   },
   "players": [
     {
       "id": "optimizely",
       "name": "Optimizely",
-      "market_share_pct": { "value": 25.3, "estimated": true },
-      "growth_pct": { "value": 0, "estimated": true },
+      "market_share_pct": {
+        "value": 25.3,
+        "estimated": true
+      },
+      "growth_pct": {
+        "value": 0,
+        "estimated": true
+      },
       "dimensions": {
-        "largeur_fonctionnelle": { "value": "plateforme d'expérience", "estimated": false, "note": "CMS + Commerce + expérimentation + personnalisation + agents (Opal)" },
-        "cible_clientele": { "value": "enterprise", "estimated": false, "note": "a quitté le segment PME" },
-        "prix_entree": { "value": 36, "estimated": true, "note": "~36 k$/an constatés en entrée, >200 k$/an sur les grands comptes (données tierces)" },
-        "profondeur_ia": { "value": 8, "estimated": true, "note": "agents Opal, +42 % QoQ sur l'ARR « Agent Orchestration »" },
-        "modele_tarifaire": { "value": "abonnement", "estimated": false }
+        "largeur_fonctionnelle": {
+          "value": "plateforme d'expérience",
+          "estimated": false,
+          "note": "CMS + Commerce + expérimentation + personnalisation + agents (Opal)"
+        },
+        "cible_clientele": {
+          "value": "enterprise",
+          "estimated": false,
+          "note": "a quitté le segment PME"
+        },
+        "prix_entree": {
+          "value": 36,
+          "estimated": true,
+          "note": "~36 k$/an constatés en entrée, >200 k$/an sur les grands comptes (données tierces)"
+        },
+        "profondeur_ia": {
+          "value": 8,
+          "estimated": true,
+          "note": "agents Opal, +42 % QoQ sur l'ARR « Agent Orchestration »"
+        },
+        "modele_tarifaire": {
+          "value": "abonnement",
+          "estimated": false
+        }
       },
       "card": {
         "summary": "Le plus gros éditeur indépendant du panel : suite complète d'expérience digitale (CMS, commerce, expérimentation A/B, personnalisation), propriété d'Insight Partners. Leader Gartner Personalization Engines 2026 (2e fois) et Forrester Wave DXP Q4 2025.",
@@ -405,20 +482,50 @@ const RUN_DATA = {
           "Rachat de NetSpring (analytics produit) en septembre 2024",
           "Enterprise uniquement ; ~36 k$/an en entrée, >200 k$/an grands comptes"
         ],
-        "source_ids": [10, 3]
+        "source_ids": [
+          10,
+          3
+        ]
       }
     },
     {
       "id": "bloomreach",
       "name": "Bloomreach",
-      "market_share_pct": { "value": 16.5, "estimated": true },
-      "growth_pct": { "value": 0, "estimated": true, "note": "+18 % de revenus (219,5→260 M$) vs marché ~+20 %" },
+      "market_share_pct": {
+        "value": 16.5,
+        "estimated": true
+      },
+      "growth_pct": {
+        "value": 0,
+        "estimated": true,
+        "note": "+18 % de revenus (219,5→260 M$) vs marché ~+20 %"
+      },
       "dimensions": {
-        "largeur_fonctionnelle": { "value": "plateforme d'expérience", "estimated": false, "note": "Discovery (search+recos) + Engagement (CDP/marketing, ex-Exponea) + Content (CMS)" },
-        "cible_clientele": { "value": "enterprise", "estimated": true, "note": "mix mid-market/enterprise ; communication orientée grands catalogues" },
-        "prix_entree": { "value": 48, "estimated": true, "note": "estimations tierces 4-36 k$/mois ; ACV moyen ~180 k$/an (Vendr)" },
-        "profondeur_ia": { "value": 9, "estimated": true, "note": "plateforme agentique Loomi (marketing + discovery), assistant d'achat conversationnel" },
-        "modele_tarifaire": { "value": "abonnement", "estimated": true, "note": "module + usage, sur devis" }
+        "largeur_fonctionnelle": {
+          "value": "plateforme d'expérience",
+          "estimated": false,
+          "note": "Discovery (search+recos) + Engagement (CDP/marketing, ex-Exponea) + Content (CMS)"
+        },
+        "cible_clientele": {
+          "value": "enterprise",
+          "estimated": true,
+          "note": "mix mid-market/enterprise ; communication orientée grands catalogues"
+        },
+        "prix_entree": {
+          "value": 48,
+          "estimated": true,
+          "note": "estimations tierces 4-36 k$/mois ; ACV moyen ~180 k$/an (Vendr)"
+        },
+        "profondeur_ia": {
+          "value": 9,
+          "estimated": true,
+          "note": "plateforme agentique Loomi (marketing + discovery), assistant d'achat conversationnel"
+        },
+        "modele_tarifaire": {
+          "value": "abonnement",
+          "estimated": true,
+          "note": "module + usage, sur devis"
+        }
       },
       "card": {
         "summary": "Le champion de la « découverte produit » : search, recommandations et merchandising (Discovery) + CDP/marketing (Engagement) + CMS (Content), unifiés par l'IA agentique Loomi. Leader Gartner Search & Product Discovery 2026 (3e année).",
@@ -428,20 +535,50 @@ const RUN_DATA = {
           "Rachat de Radiance Commerce (IA conversationnelle, janv. 2024)",
           "Partenariat renforcé avec Shopify côté enterprise"
         ],
-        "source_ids": [4, 22]
+        "source_ids": [
+          4,
+          22
+        ]
       }
     },
     {
       "id": "insider-one",
       "name": "Insider One",
-      "market_share_pct": { "value": 12.7, "estimated": true, "note": "part très incertaine — ARR non publié depuis 2022" },
-      "growth_pct": { "value": 10, "estimated": true, "note": "clients 1 500 → 2 000+ entre nov. 2024 et déc. 2025" },
+      "market_share_pct": {
+        "value": 12.7,
+        "estimated": true,
+        "note": "part très incertaine — ARR non publié depuis 2022"
+      },
+      "growth_pct": {
+        "value": 10,
+        "estimated": true,
+        "note": "clients 1 500 → 2 000+ entre nov. 2024 et déc. 2025"
+      },
       "dimensions": {
-        "largeur_fonctionnelle": { "value": "plateforme d'expérience", "estimated": false, "note": "CDP + personnalisation + orchestration multicanal (web, app, WhatsApp, email…)" },
-        "cible_clientele": { "value": "enterprise", "estimated": false, "note": "Nike, Samsung, L'Oréal, Disney, Toyota…" },
-        "prix_entree": { "value": 30, "estimated": true, "note": "sur devis — ordre de grandeur enterprise estimé" },
-        "profondeur_ia": { "value": 8, "estimated": true, "note": "suite IA Sirius, agents ; meilleure note « vision produit » Forrester Q4 2024" },
-        "modele_tarifaire": { "value": "abonnement", "estimated": true }
+        "largeur_fonctionnelle": {
+          "value": "plateforme d'expérience",
+          "estimated": false,
+          "note": "CDP + personnalisation + orchestration multicanal (web, app, WhatsApp, email…)"
+        },
+        "cible_clientele": {
+          "value": "enterprise",
+          "estimated": false,
+          "note": "Nike, Samsung, L'Oréal, Disney, Toyota…"
+        },
+        "prix_entree": {
+          "value": 30,
+          "estimated": true,
+          "note": "sur devis — ordre de grandeur enterprise estimé"
+        },
+        "profondeur_ia": {
+          "value": 8,
+          "estimated": true,
+          "note": "suite IA Sirius, agents ; meilleure note « vision produit » Forrester Q4 2024"
+        },
+        "modele_tarifaire": {
+          "value": "abonnement",
+          "estimated": true
+        }
       },
       "card": {
         "summary": "La licorne (turque) de la personnalisation multicanal, rebaptisée « Insider One » en décembre 2025. Series E de 500 M$ menée par General Atlantic (nov. 2024). Leader Gartner Personalization Engines 2026 (5e année).",
@@ -451,20 +588,48 @@ const RUN_DATA = {
           "2 000+ clients enterprise (déc. 2025)",
           "Leader Forrester Wave Experience Optimization Q4 2024"
         ],
-        "source_ids": [5, 6]
+        "source_ids": [
+          5,
+          6
+        ]
       }
     },
     {
       "id": "coveo",
       "name": "Coveo",
-      "market_share_pct": { "value": 9.4, "estimated": true },
-      "growth_pct": { "value": -8, "estimated": true, "note": "+11 % de revenus FY2026 vs marché ~+20 %" },
+      "market_share_pct": {
+        "value": 9.4,
+        "estimated": true
+      },
+      "growth_pct": {
+        "value": -8,
+        "estimated": true,
+        "note": "+11 % de revenus FY2026 vs marché ~+20 %"
+      },
       "dimensions": {
-        "largeur_fonctionnelle": { "value": "suite discovery", "estimated": false, "note": "search + recos + personnalisation (Qubit) — aussi vendu hors commerce (service client, workplace)" },
-        "cible_clientele": { "value": "enterprise", "estimated": false },
-        "prix_entree": { "value": 50, "estimated": true, "note": "sur devis — ordre de grandeur enterprise estimé" },
-        "profondeur_ia": { "value": 8, "estimated": true, "note": "relevance générative, agents ; racine IA/ML historique" },
-        "modele_tarifaire": { "value": "abonnement", "estimated": true }
+        "largeur_fonctionnelle": {
+          "value": "suite discovery",
+          "estimated": false,
+          "note": "search + recos + personnalisation (Qubit) — aussi vendu hors commerce (service client, workplace)"
+        },
+        "cible_clientele": {
+          "value": "enterprise",
+          "estimated": false
+        },
+        "prix_entree": {
+          "value": 50,
+          "estimated": true,
+          "note": "sur devis — ordre de grandeur enterprise estimé"
+        },
+        "profondeur_ia": {
+          "value": 8,
+          "estimated": true,
+          "note": "relevance générative, agents ; racine IA/ML historique"
+        },
+        "modele_tarifaire": {
+          "value": "abonnement",
+          "estimated": true
+        }
       },
       "card": {
         "summary": "Le seul pure-player coté du panel (TSX : CVO). Search et personnalisation IA multi-usages ; le commerce est son cas d'usage à plus forte croissance (~60 % des nouvelles réservations FY2026). Leader Gartner Search & Product Discovery 2026.",
@@ -474,20 +639,50 @@ const RUN_DATA = {
           "Shopify Premier Technology Partner depuis FY2025",
           "Attention : une partie du CA vient d'usages hors e-commerce (service client, digital workplace)"
         ],
-        "source_ids": [7]
+        "source_ids": [
+          7
+        ]
       }
     },
     {
       "id": "dynamic-yield",
       "name": "Dynamic Yield (Mastercard)",
-      "market_share_pct": { "value": 7, "estimated": true, "note": "part très incertaine — aucun chiffre isolé publié par Mastercard" },
-      "growth_pct": { "value": -5, "estimated": true, "note": "croissance orientée services financiers via Mastercard ; e-commerce estimé au rythme du marché ou en deçà" },
+      "market_share_pct": {
+        "value": 7,
+        "estimated": true,
+        "note": "part très incertaine — aucun chiffre isolé publié par Mastercard"
+      },
+      "growth_pct": {
+        "value": -5,
+        "estimated": true,
+        "note": "croissance orientée services financiers via Mastercard ; e-commerce estimé au rythme du marché ou en deçà"
+      },
       "dimensions": {
-        "largeur_fonctionnelle": { "value": "plateforme d'expérience", "estimated": false, "note": "« Experience OS » : recos, A/B, personnalisation web/email/app" },
-        "cible_clientele": { "value": "enterprise", "estimated": false, "note": "IKEA, Sephora ; désormais aussi banques via Mastercard" },
-        "prix_entree": { "value": 50, "estimated": true, "note": "licence indexée sur visiteurs uniques — sur devis, ordre de grandeur estimé" },
-        "profondeur_ia": { "value": 9, "estimated": true, "note": "décisionnement temps réel, IA générative (Shopping Muse)" },
-        "modele_tarifaire": { "value": "abonnement", "estimated": true, "note": "licence indexée sur l'audience" }
+        "largeur_fonctionnelle": {
+          "value": "plateforme d'expérience",
+          "estimated": false,
+          "note": "« Experience OS » : recos, A/B, personnalisation web/email/app"
+        },
+        "cible_clientele": {
+          "value": "enterprise",
+          "estimated": false,
+          "note": "IKEA, Sephora ; désormais aussi banques via Mastercard"
+        },
+        "prix_entree": {
+          "value": 50,
+          "estimated": true,
+          "note": "licence indexée sur visiteurs uniques — sur devis, ordre de grandeur estimé"
+        },
+        "profondeur_ia": {
+          "value": 9,
+          "estimated": true,
+          "note": "décisionnement temps réel, IA générative (Shopping Muse)"
+        },
+        "modele_tarifaire": {
+          "value": "abonnement",
+          "estimated": true,
+          "note": "licence indexée sur l'audience"
+        }
       },
       "card": {
         "summary": "Le nom historique de la catégorie : racheté 300 M$ par McDonald's (2019) puis 325 M$ par Mastercard (2022). Leader Gartner Personalization Engines 2026 pour la 8e fois consécutive — à égalité de longévité avec Adobe.",
@@ -497,20 +692,49 @@ const RUN_DATA = {
           "Leader Gartner Personalization Engines 8 fois consécutives",
           "Expansion vers la personnalisation bancaire (via Mastercard) en parallèle du retail"
         ],
-        "source_ids": [8]
+        "source_ids": [
+          8
+        ]
       }
     },
     {
       "id": "algolia",
       "name": "Algolia",
-      "market_share_pct": { "value": 6.3, "estimated": true },
-      "growth_pct": { "value": 0, "estimated": true, "note": "croissance estimée proche du marché" },
+      "market_share_pct": {
+        "value": 6.3,
+        "estimated": true
+      },
+      "growth_pct": {
+        "value": 0,
+        "estimated": true,
+        "note": "croissance estimée proche du marché"
+      },
       "dimensions": {
-        "largeur_fonctionnelle": { "value": "brique spécialisée", "estimated": false, "note": "search-as-a-service + recos + personnalisation, API-first — au-delà du seul e-commerce" },
-        "cible_clientele": { "value": "mid-market", "estimated": true, "note": "du self-service développeur à l'enterprise — centre de gravité mid-market" },
-        "prix_entree": { "value": 8, "estimated": true, "note": "palier gratuit puis usage ; engagement annuel minimum ~6-12 k$/an (Vendr)" },
-        "profondeur_ia": { "value": 9, "estimated": true, "note": "Agent Studio (sept. 2025) : agents « retrieval-first » sur les données de recherche" },
-        "modele_tarifaire": { "value": "à l'usage", "estimated": false, "note": "facturation aux requêtes + enregistrements indexés" }
+        "largeur_fonctionnelle": {
+          "value": "brique spécialisée",
+          "estimated": false,
+          "note": "search-as-a-service + recos + personnalisation, API-first — au-delà du seul e-commerce"
+        },
+        "cible_clientele": {
+          "value": "mid-market",
+          "estimated": true,
+          "note": "du self-service développeur à l'enterprise — centre de gravité mid-market"
+        },
+        "prix_entree": {
+          "value": 8,
+          "estimated": true,
+          "note": "palier gratuit puis usage ; engagement annuel minimum ~6-12 k$/an (Vendr)"
+        },
+        "profondeur_ia": {
+          "value": 9,
+          "estimated": true,
+          "note": "Agent Studio (sept. 2025) : agents « retrieval-first » sur les données de recherche"
+        },
+        "modele_tarifaire": {
+          "value": "à l'usage",
+          "estimated": false,
+          "note": "facturation aux requêtes + enregistrements indexés"
+        }
       },
       "card": {
         "summary": "L'infrastructure de recherche API-first : 18 000+ clients, 1 750 milliards de requêtes/an. Leader Gartner Search & Product Discovery 2026 (3e année). Le « rail » du search e-commerce, du développeur solo à l'enterprise.",
@@ -520,20 +744,49 @@ const RUN_DATA = {
           "Agent Studio lancé en septembre 2025 (agents IA sur la recherche)",
           "18 000+ clients ; pricing à l'usage, palier gratuit"
         ],
-        "source_ids": [9]
+        "source_ids": [
+          9
+        ]
       }
     },
     {
       "id": "abtasty-vwo",
       "name": "AB Tasty × VWO",
-      "market_share_pct": { "value": 6.3, "estimated": true },
-      "growth_pct": { "value": -5, "estimated": true, "note": "croissance organique des deux entités sous le rythme du marché ; le saut de taille vient de la fusion" },
+      "market_share_pct": {
+        "value": 6.3,
+        "estimated": true
+      },
+      "growth_pct": {
+        "value": -5,
+        "estimated": true,
+        "note": "croissance organique des deux entités sous le rythme du marché ; le saut de taille vient de la fusion"
+      },
       "dimensions": {
-        "largeur_fonctionnelle": { "value": "plateforme d'expérience", "estimated": true, "note": "expérimentation + personnalisation + recos (EPOQ) + feature flags" },
-        "cible_clientele": { "value": "enterprise", "estimated": true, "note": "AB Tasty enterprise (L'Oréal, LVMH…) ; VWO historiquement SMB→enterprise, SMB déprioritisé" },
-        "prix_entree": { "value": 15, "estimated": true, "note": "VWO entrée ~15 k$/an ; AB Tasty 20-50 k$/an (données procurement)" },
-        "profondeur_ia": { "value": 7, "estimated": true, "note": "EmotionsAI, recos EPOQ, IA d'expérimentation" },
-        "modele_tarifaire": { "value": "abonnement", "estimated": false, "note": "indexé sur le trafic (MAU/sessions)" }
+        "largeur_fonctionnelle": {
+          "value": "plateforme d'expérience",
+          "estimated": true,
+          "note": "expérimentation + personnalisation + recos (EPOQ) + feature flags"
+        },
+        "cible_clientele": {
+          "value": "enterprise",
+          "estimated": true,
+          "note": "AB Tasty enterprise (L'Oréal, LVMH…) ; VWO historiquement SMB→enterprise, SMB déprioritisé"
+        },
+        "prix_entree": {
+          "value": 15,
+          "estimated": true,
+          "note": "VWO entrée ~15 k$/an ; AB Tasty 20-50 k$/an (données procurement)"
+        },
+        "profondeur_ia": {
+          "value": 7,
+          "estimated": true,
+          "note": "EmotionsAI, recos EPOQ, IA d'expérimentation"
+        },
+        "modele_tarifaire": {
+          "value": "abonnement",
+          "estimated": false,
+          "note": "indexé sur le trafic (MAU/sessions)"
+        }
       },
       "card": {
         "summary": "Le champion franco-indien né en janvier 2026 : Everstone Capital fusionne AB Tasty (Paris, expérimentation/personnalisation enterprise) et VWO/Wingify (Delhi, CRO, bootstrappé 15 ans). Entité combinée >100 M$ d'ARR, 4 000+ clients.",
@@ -543,20 +796,50 @@ const RUN_DATA = {
           "VWO : 3 000+ marques, racheté ~200 M$ par Everstone (janv. 2025)",
           "Direction fusionnée : CEO Sparsh Gupta (Wingify), CCSO Rémi Aubert (AB Tasty)"
         ],
-        "source_ids": [11, 12]
+        "source_ids": [
+          11,
+          12
+        ]
       }
     },
     {
       "id": "constructor",
       "name": "Constructor",
-      "market_share_pct": { "value": 4.1, "estimated": true },
-      "growth_pct": { "value": 50, "estimated": true, "note": "ARR ×8 en 2024 (8→65 M$), +82 % de clients FY26 — très au-dessus du marché" },
+      "market_share_pct": {
+        "value": 4.1,
+        "estimated": true
+      },
+      "growth_pct": {
+        "value": 50,
+        "estimated": true,
+        "note": "ARR ×8 en 2024 (8→65 M$), +82 % de clients FY26 — très au-dessus du marché"
+      },
       "dimensions": {
-        "largeur_fonctionnelle": { "value": "brique spécialisée", "estimated": false, "note": "search/browse/recos e-commerce pur, API-first, optimisé conversion" },
-        "cible_clientele": { "value": "enterprise", "estimated": false, "note": "Sephora, Backcountry, Belk — catalogues >100 000 SKU" },
-        "prix_entree": { "value": 150, "estimated": true, "note": "contrat moyen ~150 k$/an (données procurement Vendr)" },
-        "profondeur_ia": { "value": 9, "estimated": true, "note": "ranking IA « attention native », agents ; #1 sur 3 cas d'usage Gartner Critical Capabilities" },
-        "modele_tarifaire": { "value": "à l'usage", "estimated": true, "note": "contrats annuels volumétriques" }
+        "largeur_fonctionnelle": {
+          "value": "brique spécialisée",
+          "estimated": false,
+          "note": "search/browse/recos e-commerce pur, API-first, optimisé conversion"
+        },
+        "cible_clientele": {
+          "value": "enterprise",
+          "estimated": false,
+          "note": "Sephora, Backcountry, Belk — catalogues >100 000 SKU"
+        },
+        "prix_entree": {
+          "value": 150,
+          "estimated": true,
+          "note": "contrat moyen ~150 k$/an (données procurement Vendr)"
+        },
+        "profondeur_ia": {
+          "value": 9,
+          "estimated": true,
+          "note": "ranking IA « attention native », agents ; #1 sur 3 cas d'usage Gartner Critical Capabilities"
+        },
+        "modele_tarifaire": {
+          "value": "à l'usage",
+          "estimated": true,
+          "note": "contrats annuels volumétriques"
+        }
       },
       "card": {
         "summary": "La star de croissance du panel : search & discovery e-commerce enterprise, IA-native, facturée à la valeur. ARR multiplié par 8 en 2024, valorisation triplée à 550 M$ (Series B Sapphire Ventures, juin 2024).",
@@ -566,20 +849,49 @@ const RUN_DATA = {
           "322 milliards d'interactions shopping traitées (FY26, officiel)",
           "Contrat moyen ~150 k$/an — le ticket d'entrée le plus élevé du panel"
         ],
-        "source_ids": [13, 14]
+        "source_ids": [
+          13,
+          14
+        ]
       }
     },
     {
       "id": "algonomy",
       "name": "Algonomy",
-      "market_share_pct": { "value": 2.6, "estimated": true },
-      "growth_pct": { "value": -23, "estimated": true, "note": "revenus en déclin de 8 % (FY24 officiel) sur un marché à +20 %" },
+      "market_share_pct": {
+        "value": 2.6,
+        "estimated": true
+      },
+      "growth_pct": {
+        "value": -23,
+        "estimated": true,
+        "note": "revenus en déclin de 8 % (FY24 officiel) sur un marché à +20 %"
+      },
       "dimensions": {
-        "largeur_fonctionnelle": { "value": "plateforme d'expérience", "estimated": true, "note": "CDP temps réel + personnalisation omnicanale + analytics retail" },
-        "cible_clientele": { "value": "enterprise", "estimated": false, "note": "REI, Burberry, CDW, Coop.SE" },
-        "prix_entree": { "value": 40, "estimated": true, "note": "sur devis — ordre de grandeur enterprise estimé" },
-        "profondeur_ia": { "value": 6, "estimated": true, "note": "héritage RichRelevance solide mais virage génératif moins visible" },
-        "modele_tarifaire": { "value": "abonnement", "estimated": true }
+        "largeur_fonctionnelle": {
+          "value": "plateforme d'expérience",
+          "estimated": true,
+          "note": "CDP temps réel + personnalisation omnicanale + analytics retail"
+        },
+        "cible_clientele": {
+          "value": "enterprise",
+          "estimated": false,
+          "note": "REI, Burberry, CDW, Coop.SE"
+        },
+        "prix_entree": {
+          "value": 40,
+          "estimated": true,
+          "note": "sur devis — ordre de grandeur enterprise estimé"
+        },
+        "profondeur_ia": {
+          "value": 6,
+          "estimated": true,
+          "note": "héritage RichRelevance solide mais virage génératif moins visible"
+        },
+        "modele_tarifaire": {
+          "value": "abonnement",
+          "estimated": true
+        }
       },
       "card": {
         "summary": "L'héritier de RichRelevance (pionnier des recommandations, fusionné avec Manthan en 2021) : personnalisation et analytics pour la grande distribution. En perte de vitesse — l'exemple du pionnier dépassé par le cycle IA.",
@@ -589,20 +901,49 @@ const RUN_DATA = {
           "200 grandes marques clientes revendiquées",
           "Architecture 2026 : connecteurs « zero-copy » vers Snowflake/BigQuery"
         ],
-        "source_ids": [15]
+        "source_ids": [
+          15
+        ]
       }
     },
     {
       "id": "monetate",
       "name": "Monetate",
-      "market_share_pct": { "value": 2.5, "estimated": true, "note": "part très incertaine — revenus non publiés" },
-      "growth_pct": { "value": -15, "estimated": true, "note": "pas de croissance documentée ; consolidation défensive" },
+      "market_share_pct": {
+        "value": 2.5,
+        "estimated": true,
+        "note": "part très incertaine — revenus non publiés"
+      },
+      "growth_pct": {
+        "value": -15,
+        "estimated": true,
+        "note": "pas de croissance documentée ; consolidation défensive"
+      },
       "dimensions": {
-        "largeur_fonctionnelle": { "value": "plateforme d'expérience", "estimated": true, "note": "personnalisation (+ Certona) + expérimentation server-side (SiteSpect)" },
-        "cible_clientele": { "value": "enterprise", "estimated": false, "note": "marchands >100 M$ de revenu annuel" },
-        "prix_entree": { "value": 50, "estimated": true, "note": "non publié — ordre de grandeur enterprise estimé" },
-        "profondeur_ia": { "value": 7, "estimated": true, "note": "repositionnement « AI-native » post-SiteSpect" },
-        "modele_tarifaire": { "value": "abonnement", "estimated": true }
+        "largeur_fonctionnelle": {
+          "value": "plateforme d'expérience",
+          "estimated": true,
+          "note": "personnalisation (+ Certona) + expérimentation server-side (SiteSpect)"
+        },
+        "cible_clientele": {
+          "value": "enterprise",
+          "estimated": false,
+          "note": "marchands >100 M$ de revenu annuel"
+        },
+        "prix_entree": {
+          "value": 50,
+          "estimated": true,
+          "note": "non publié — ordre de grandeur enterprise estimé"
+        },
+        "profondeur_ia": {
+          "value": 7,
+          "estimated": true,
+          "note": "repositionnement « AI-native » post-SiteSpect"
+        },
+        "modele_tarifaire": {
+          "value": "abonnement",
+          "estimated": true
+        }
       },
       "card": {
         "summary": "Le vétéran recomposé : Monetate + Certona (fusionnés par Kibo), cédés à Centre Lane Partners (2022), puis rachat de SiteSpect (juin 2025, facility de 75 M$) pour marier personnalisation et testing « zero-flicker ». Niche Player au Gartner MQ 2026.",
@@ -612,20 +953,49 @@ const RUN_DATA = {
           "Détenu par Centre Lane Partners depuis octobre 2022 (spin-off de Kibo)",
           "Positionné exclusivement enterprise (>100 M$ de GMV)"
         ],
-        "source_ids": [16]
+        "source_ids": [
+          16
+        ]
       }
     },
     {
       "id": "athos-commerce",
       "name": "Athos Commerce",
-      "market_share_pct": { "value": 2.2, "estimated": true },
-      "growth_pct": { "value": -5, "estimated": true, "note": "année d'intégration post-fusion (rollout décalé à Q1 2026)" },
+      "market_share_pct": {
+        "value": 2.2,
+        "estimated": true
+      },
+      "growth_pct": {
+        "value": -5,
+        "estimated": true,
+        "note": "année d'intégration post-fusion (rollout décalé à Q1 2026)"
+      },
       "dimensions": {
-        "largeur_fonctionnelle": { "value": "suite discovery", "estimated": false, "note": "search + merchandising + personnalisation + syndication de flux" },
-        "cible_clientele": { "value": "mid-market", "estimated": false, "note": "SKIMS, West Elm, Fabletics, Specialized" },
-        "prix_entree": { "value": 8.4, "estimated": false, "note": "palier Essential à 699 $/mois (public)" },
-        "profondeur_ia": { "value": 7, "estimated": true, "note": "search IA (héritage Klevu) en cours d'unification" },
-        "modele_tarifaire": { "value": "abonnement", "estimated": false, "note": "paliers usage-based" }
+        "largeur_fonctionnelle": {
+          "value": "suite discovery",
+          "estimated": false,
+          "note": "search + merchandising + personnalisation + syndication de flux"
+        },
+        "cible_clientele": {
+          "value": "mid-market",
+          "estimated": false,
+          "note": "SKIMS, West Elm, Fabletics, Specialized"
+        },
+        "prix_entree": {
+          "value": 8.4,
+          "estimated": false,
+          "note": "palier Essential à 699 $/mois (public)"
+        },
+        "profondeur_ia": {
+          "value": 7,
+          "estimated": true,
+          "note": "search IA (héritage Klevu) en cours d'unification"
+        },
+        "modele_tarifaire": {
+          "value": "abonnement",
+          "estimated": false,
+          "note": "paliers usage-based"
+        }
       },
       "card": {
         "summary": "Le consolidateur du search mid-market : fusion de Klevu (search IA, Finlande) et Searchspring (merchandising, portefeuille PSG Equity), finalisée le 9 janvier 2025. La suite de découverte produit du cœur de marché Shopify Plus/BigCommerce.",
@@ -635,20 +1005,49 @@ const RUN_DATA = {
           "Clients : Chubbies, SKIMS, West Elm, Peet's Coffee, Specialized",
           "Rollout complet décalé à Q1 2026 pour protéger le peak season — année de transition"
         ],
-        "source_ids": [17]
+        "source_ids": [
+          17
+        ]
       }
     },
     {
       "id": "nosto",
       "name": "Nosto",
-      "market_share_pct": { "value": 1.6, "estimated": true },
-      "growth_pct": { "value": -20, "estimated": true, "note": "estimations tierces en repli (27,4→19,6 M$) — incertitude forte, une autre source donne 31 M$" },
+      "market_share_pct": {
+        "value": 1.6,
+        "estimated": true
+      },
+      "growth_pct": {
+        "value": -20,
+        "estimated": true,
+        "note": "estimations tierces en repli (27,4→19,6 M$) — incertitude forte, une autre source donne 31 M$"
+      },
       "dimensions": {
-        "largeur_fonctionnelle": { "value": "suite discovery", "estimated": false, "note": "recos + search (SearchNode/Findologic) + merchandising + A/B (2025)" },
-        "cible_clientele": { "value": "mid-market", "estimated": false, "note": "Shopify Plus, mid-market, entrée enterprise" },
-        "prix_entree": { "value": 10, "estimated": true, "note": "modèle % du revenu — coût annuel dépend du GMV du marchand" },
-        "profondeur_ia": { "value": 7, "estimated": true, "note": "personnalisation prédictive ; +323 % sur la search personnalisée (2024-2025)" },
-        "modele_tarifaire": { "value": "% du revenu généré", "estimated": false, "note": "2,5-4 % des ventes attribuées — unique dans le panel" }
+        "largeur_fonctionnelle": {
+          "value": "suite discovery",
+          "estimated": false,
+          "note": "recos + search (SearchNode/Findologic) + merchandising + A/B (2025)"
+        },
+        "cible_clientele": {
+          "value": "mid-market",
+          "estimated": false,
+          "note": "Shopify Plus, mid-market, entrée enterprise"
+        },
+        "prix_entree": {
+          "value": 10,
+          "estimated": true,
+          "note": "modèle % du revenu — coût annuel dépend du GMV du marchand"
+        },
+        "profondeur_ia": {
+          "value": 7,
+          "estimated": true,
+          "note": "personnalisation prédictive ; +323 % sur la search personnalisée (2024-2025)"
+        },
+        "modele_tarifaire": {
+          "value": "% du revenu généré",
+          "estimated": false,
+          "note": "2,5-4 % des ventes attribuées — unique dans le panel"
+        }
       },
       "card": {
         "summary": "Le pionnier finlandais de la « Commerce Experience Platform » mid-market : recommandations, search et merchandising facturés au % des ventes générées — le seul modèle 100 % à la performance du panel. 2 500 clients.",
@@ -658,20 +1057,47 @@ const RUN_DATA = {
           "Rachats : Stackla (2021), SearchNode (2022), Findologic (2022)",
           "Lancement du Full Site A/B Testing en janvier 2025 ; cité au Gartner MQ Search & Product Discovery"
         ],
-        "source_ids": [18]
+        "source_ids": [
+          18
+        ]
       }
     },
     {
       "id": "kameleoon",
       "name": "Kameleoon",
-      "market_share_pct": { "value": 1.4, "estimated": true },
-      "growth_pct": { "value": -8, "estimated": true },
+      "market_share_pct": {
+        "value": 1.4,
+        "estimated": true
+      },
+      "growth_pct": {
+        "value": -8,
+        "estimated": true
+      },
       "dimensions": {
-        "largeur_fonctionnelle": { "value": "plateforme d'expérience", "estimated": true, "note": "expérimentation full-stack + personnalisation IA — pas de search/recos produit dédiés" },
-        "cible_clientele": { "value": "enterprise", "estimated": false, "note": "Toyota, Lidl, Rakuten, BNP Paribas, Renault" },
-        "prix_entree": { "value": 25, "estimated": true, "note": "non public — ordre de grandeur enterprise estimé" },
-        "profondeur_ia": { "value": 7, "estimated": true, "note": "Prompt-Based Experimentation (PBX, 2025)" },
-        "modele_tarifaire": { "value": "abonnement", "estimated": true }
+        "largeur_fonctionnelle": {
+          "value": "plateforme d'expérience",
+          "estimated": true,
+          "note": "expérimentation full-stack + personnalisation IA — pas de search/recos produit dédiés"
+        },
+        "cible_clientele": {
+          "value": "enterprise",
+          "estimated": false,
+          "note": "Toyota, Lidl, Rakuten, BNP Paribas, Renault"
+        },
+        "prix_entree": {
+          "value": 25,
+          "estimated": true,
+          "note": "non public — ordre de grandeur enterprise estimé"
+        },
+        "profondeur_ia": {
+          "value": 7,
+          "estimated": true,
+          "note": "Prompt-Based Experimentation (PBX, 2025)"
+        },
+        "modele_tarifaire": {
+          "value": "abonnement",
+          "estimated": true
+        }
       },
       "card": {
         "summary": "Le franco-allemand discret de l'expérimentation/personnalisation enterprise : 450+ clients, quasi pas de capital levé (7,8 M$ en tout, rien depuis 2019) — croissance autofinancée, à contre-courant du panel.",
@@ -681,20 +1107,49 @@ const RUN_DATA = {
           "Innovation 2025 : Prompt-Based Experimentation (tests créés par IA conversationnelle)",
           "Clients enterprise : Toyota, Lidl, Rakuten, BNP Paribas"
         ],
-        "source_ids": [19]
+        "source_ids": [
+          19
+        ]
       }
     },
     {
       "id": "doofinder",
       "name": "Doofinder",
-      "market_share_pct": { "value": 1.4, "estimated": true },
-      "growth_pct": { "value": 5, "estimated": true, "note": "croissance SMB estimée légèrement au-dessus du marché" },
+      "market_share_pct": {
+        "value": 1.4,
+        "estimated": true
+      },
+      "growth_pct": {
+        "value": 5,
+        "estimated": true,
+        "note": "croissance SMB estimée légèrement au-dessus du marché"
+      },
       "dimensions": {
-        "largeur_fonctionnelle": { "value": "brique spécialisée", "estimated": false, "note": "search IA d'abord, + recos, quiz, merchandising par catégorie" },
-        "cible_clientele": { "value": "SMB", "estimated": false, "note": "entrée 49 $/mois, 10 000+ sites, self-service" },
-        "prix_entree": { "value": 0.6, "estimated": false, "note": "Basic 49 $/mois (public) — le plus bas du panel" },
-        "profondeur_ia": { "value": 6, "estimated": true, "note": "AI search, visual search (palier Advanced)" },
-        "modele_tarifaire": { "value": "abonnement", "estimated": false, "note": "paliers indexés sur les requêtes" }
+        "largeur_fonctionnelle": {
+          "value": "brique spécialisée",
+          "estimated": false,
+          "note": "search IA d'abord, + recos, quiz, merchandising par catégorie"
+        },
+        "cible_clientele": {
+          "value": "SMB",
+          "estimated": false,
+          "note": "entrée 49 $/mois, 10 000+ sites, self-service"
+        },
+        "prix_entree": {
+          "value": 0.6,
+          "estimated": false,
+          "note": "Basic 49 $/mois (public) — le plus bas du panel"
+        },
+        "profondeur_ia": {
+          "value": 6,
+          "estimated": true,
+          "note": "AI search, visual search (palier Advanced)"
+        },
+        "modele_tarifaire": {
+          "value": "abonnement",
+          "estimated": false,
+          "note": "paliers indexés sur les requêtes"
+        }
       },
       "card": {
         "summary": "L'espagnol du search SMB : 10 000+ sites équipés à partir de 49 $/mois, en self-service. La démonstration que le bas de marché de la personnalisation est un vrai business — ~21,5 M$ de revenus estimés.",
@@ -704,20 +1159,49 @@ const RUN_DATA = {
           "Pricing public : 49 → 349 $/mois selon volume de requêtes",
           "Positionné pur SMB/mid-market — le contrepoint de Constructor"
         ],
-        "source_ids": [20]
+        "source_ids": [
+          20
+        ]
       }
     },
     {
       "id": "rebuy",
       "name": "Rebuy",
-      "market_share_pct": { "value": 0.8, "estimated": true },
-      "growth_pct": { "value": 15, "estimated": true, "note": "croissance Shopify soutenue estimée" },
+      "market_share_pct": {
+        "value": 0.8,
+        "estimated": true
+      },
+      "growth_pct": {
+        "value": 15,
+        "estimated": true,
+        "note": "croissance Shopify soutenue estimée"
+      },
       "dimensions": {
-        "largeur_fonctionnelle": { "value": "brique spécialisée", "estimated": false, "note": "recos/upsell/cross-sell sur tout le parcours Shopify (panier, checkout, post-achat)" },
-        "cible_clientele": { "value": "SMB", "estimated": false, "note": "Shopify/Shopify Plus — du petit marchand au mid-market" },
-        "prix_entree": { "value": 1.2, "estimated": false, "note": "Starter 99 $/mois (public) + variable indexée sur les commandes" },
-        "profondeur_ia": { "value": 6, "estimated": true, "note": "recos ML, règles merchandising" },
-        "modele_tarifaire": { "value": "abonnement", "estimated": false, "note": "paliers + variable aux commandes (OPM)" }
+        "largeur_fonctionnelle": {
+          "value": "brique spécialisée",
+          "estimated": false,
+          "note": "recos/upsell/cross-sell sur tout le parcours Shopify (panier, checkout, post-achat)"
+        },
+        "cible_clientele": {
+          "value": "SMB",
+          "estimated": false,
+          "note": "Shopify/Shopify Plus — du petit marchand au mid-market"
+        },
+        "prix_entree": {
+          "value": 1.2,
+          "estimated": false,
+          "note": "Starter 99 $/mois (public) + variable indexée sur les commandes"
+        },
+        "profondeur_ia": {
+          "value": 6,
+          "estimated": true,
+          "note": "recos ML, règles merchandising"
+        },
+        "modele_tarifaire": {
+          "value": "abonnement",
+          "estimated": false,
+          "note": "paliers + variable aux commandes (OPM)"
+        }
       },
       "card": {
         "summary": "Le champion de la personnalisation Shopify-native : 15 000+ boutiques (dont ~10 % des marchands Shopify Plus), recommandations et upsell sur tout le parcours d'achat. Le visage du segment « app store ».",
@@ -727,7 +1211,71 @@ const RUN_DATA = {
           "Pricing : 99 → 749 $/mois + variable indexée sur les commandes",
           "Représente le segment des apps Shopify (avec LimeSpot, Wiser…) dans le panel"
         ],
-        "source_ids": [21]
+        "source_ids": [
+          21
+        ]
+      }
+    },
+    {
+      "id": "merch-control",
+      "name": "Merch Control",
+      "is_mine": true,
+      "added_by_run": {
+        "skill": "position-my-product",
+        "run": "s3-1_2026-09-06",
+        "date": "2026-09-06"
+      },
+      "market_share_pct": {
+        "value": 0,
+        "estimated": false,
+        "note": "nouveau projet — prototype non commercialisé, ajouté par la Skill 3"
+      },
+      "growth_pct": {
+        "value": null,
+        "estimated": false,
+        "note": "non applicable (nouveau projet)"
+      },
+      "dimensions": {
+        "largeur_fonctionnelle": {
+          "value": "brique spécialisée",
+          "estimated": true,
+          "declared": true,
+          "note": "pupitre de contrôle du mix de merchandising — pas un moteur de search/recos : il pondère les sources que le marchand possède déjà"
+        },
+        "cible_clientele": {
+          "value": "enterprise",
+          "estimated": true,
+          "declared": true,
+          "note": "revendiqué : sites à grand catalogue ; suppose des API produits internes et une équipe merchandising outillée"
+        },
+        "prix_entree": {
+          "value": null,
+          "estimated": false,
+          "declared": true,
+          "note": "non commercialisé — prototype sans pricing"
+        },
+        "profondeur_ia": {
+          "value": 2,
+          "estimated": true,
+          "declared": true,
+          "note": "pondérations déterministes fixées par l'humain, versions immuables et auditables — le contrôle plutôt que l'IA (résumés analytiques en maquette)"
+        },
+        "modele_tarifaire": {
+          "value": null,
+          "estimated": false,
+          "declared": true,
+          "note": "non commercialisé — aucun modèle arrêté"
+        }
+      },
+      "card": {
+        "summary": "Plan de contrôle du merchandising e-commerce : l'équipe marchande compose, par emplacement (13 blocks) et par audience (7 profils), la pondération exacte des sources de produits affichées — versions immuables par block, scission automatique selon les données accessibles par audience, portes de destination, rapports d'impact. Prototype front-only non commercialisé (projet d'Elena).",
+        "facts": [
+          "13 emplacements × 7 audiences ; ~28 appels de sources répartis en 6 familles (catalogue, comportement du site, préférences, historique d'achat, navigation en cours, contenus)",
+          "Releases immuables par block (V majeure/mineure), publication par mix ou en masse (« data set » daté), rapports d'impact par audience",
+          "Source : https://pp.shoette.com/merchandising/ (déclaratif)",
+          "Positionné par le Run S3-1 du 2026-09-06"
+        ],
+        "source_ids": []
       }
     }
   ],
@@ -736,84 +1284,380 @@ const RUN_DATA = {
       "name": "Salesforce (Einstein / Commerce Cloud) & Adobe (Target / Sensei)",
       "why_significant": "Les deux géants qui bornent le marché par le haut : la personnalisation est infusée nativement dans leurs plateformes commerce (Einstein Recommendations bundlé dans Commerce Cloud ; Adobe Target au sein de l'Experience Cloud, Leader Gartner Personalization Engines pour la 8e fois). Une grande partie des enterprise n'achète jamais d'outil tiers parce que la brique est déjà dans la plateforme.",
       "what_was_searched": "CA isolé de la brique personnalisation — non publié : Salesforce agrège « Marketing and Commerce Cloud » (5,28 Md$ FY2025) ; Adobe agrège « Digital Experience » (5,86 Md$ FY2025). Aucune ventilation produit.",
-      "source_ids": [2, 3]
+      "source_ids": [
+        2,
+        3
+      ]
     },
     {
       "name": "SAP Emarsys — devenu « SAP Engagement Cloud »",
       "why_significant": "Leader Gartner Personalization Engines 2026 pour la 7e fois consécutive ; rebaptisé SAP Engagement Cloud fin 2025. Le canal SAP en fait un choix par défaut d'une partie des grands retailers européens.",
       "what_was_searched": "CA isolé au sein de SAP — non publié (aucune ligne séparée dans le reporting SAP) ; 1 500+ clients au moment du rachat (2020), chiffre non actualisé depuis.",
-      "source_ids": [23]
+      "source_ids": [
+        23
+      ]
     },
     {
       "name": "CleverTap",
       "why_significant": "Leader du Gartner MQ Personalization Engines 2026 (première apparition en Leaders) — mais centré engagement mobile/app (push, in-app) plus que personnalisation on-site e-commerce : à la frontière du périmètre.",
       "what_was_searched": "ARR/revenus — non publiés ; aucune estimation tierce jugée fiable trouvée.",
-      "source_ids": [23]
+      "source_ids": [
+        23
+      ]
     },
     {
       "name": "La longue traîne spécialisée (Clerk.io, Syte, Fast Simon, Luigi's Box, Segmentify, Raptor, LimeSpot, Wiser…)",
       "why_significant": "Des dizaines d'éditeurs à revenus < 10 M$ servent le SMB et des niches (visual AI pour la mode chez Syte, CDP nordique chez Raptor, apps Shopify chez LimeSpot/Wiser à partir de 9-18 $/mois). Ensemble, ils forment le tissu du bas de marché — individuellement, aucun ne pèse sur les parts.",
       "what_was_searched": "Revenus fiables par acteur — estimations tierces éparses et contradictoires (Fast Simon ~4,8 M$, Raptor ~6,5 M$ en 2023) ; Syte, Clerk.io, Luigi's Box : introuvables.",
-      "source_ids": [24]
+      "source_ids": [
+        24
+      ]
     }
   ],
   "sources": [
-    { "id": 1, "title": "Gartner Magic Quadrant for Personalization Engines 2026 (édition du 2 février 2026 ; marché à 1,2 Md$ en 2024, +26,1 %) — relayé par les communiqués des Leaders", "publisher": "Gartner (via Emarsys, Adobe, Optimizely, Insider, Dynamic Yield)", "url": "https://emarsys.com/learn/blog/sap-recognized-as-leader-in-2026-gartner-magic-quadrant-for-personalization-engines/", "accessed": "2026-07-29" },
-    { "id": 2, "title": "Salesforce — Form 10-K FY2025 (segment Marketing & Commerce Cloud : 5,28 Md$) ; Einstein bundlé dans Commerce Cloud", "publisher": "SEC EDGAR / Salesforce", "url": "https://www.sec.gov/Archives/edgar/data/1108524/000110852425000006/crm-20250131.htm", "accessed": "2026-07-29" },
-    { "id": 3, "title": "Adobe — Form 10-K FY2025 (Digital Experience : 5,86 Md$) ; Adobe Target Leader Gartner MQ 2026 (8e fois)", "publisher": "SEC EDGAR / Adobe", "url": "https://www.sec.gov/Archives/edgar/data/796343/000079634326000003/adbe-20251128.htm", "accessed": "2026-07-29" },
-    { "id": 4, "title": "Bloomreach Surpasses $260 Million in Annual Recurring Revenue", "publisher": "Bloomreach (officiel)", "url": "https://www.bloomreach.com/en/news/2026/bloomreach-surpasses-260-million-arr/", "accessed": "2026-07-29" },
-    { "id": 5, "title": "Insider Announces $500M Series E Led by General Atlantic (nov. 2024) ; devient « Insider One » (déc. 2025)", "publisher": "GlobeNewswire / Insider One", "url": "https://www.insiderone.com/news/insider-becomes-insider-one/", "accessed": "2026-07-29" },
-    { "id": 6, "title": "Insider One — Leader 2026 Gartner MQ Personalization Engines (5e année) ; Leader Forrester Wave Experience Optimization Q4 2024", "publisher": "Insider One", "url": "https://www.insiderone.com/gartner-magic-quadrant-2026-personalization-engines/", "accessed": "2026-07-29" },
-    { "id": 7, "title": "Coveo Reports Fourth Quarter and Fiscal 2026 Financial Results (148,3 M$, +11 % ; commerce ~60 % des nouvelles réservations)", "publisher": "Coveo (relations investisseurs)", "url": "https://ir.coveo.com/en/news-events/press-releases/detail/483", "accessed": "2026-07-29" },
-    { "id": 8, "title": "Mastercard rachète Dynamic Yield à McDonald's pour 325 M$ (10-Q SEC, avril 2022) ; Leader Gartner MQ 2026 (8e fois)", "publisher": "SEC EDGAR / Payments Dive / Dynamic Yield", "url": "https://www.dynamicyield.com/blog/mastercard-dynamic-yield-recognized-as-a-leader-in-the-2026-gartner-magic-quadrant-for-personalization-engines/", "accessed": "2026-07-29" },
-    { "id": 9, "title": "Algolia : ARR ~100 M$ (2024, est. GetLatka) ; 18 000+ clients ; Agent Studio (sept. 2025) ; Leader Gartner Search & Product Discovery 2026", "publisher": "GetLatka / BusinessWire / Algolia", "url": "https://www.businesswire.com/news/home/20260624362619/en/", "accessed": "2026-07-29" },
-    { "id": 10, "title": "Optimizely reaches $400M ARR (mai 2024) ; +42 % QoQ sur l'ARR Agent Orchestration ; Leader Gartner MQ Personalization Engines 2026", "publisher": "Optimizely (officiel)", "url": "https://www.optimizely.com/company/press/400M-ARR/", "accessed": "2026-07-29" },
-    { "id": 11, "title": "Everstone combines Wingify + AB Tasty for $100M ARR digital experience optimization platform (janv. 2026)", "publisher": "TechCrunch", "url": "https://techcrunch.com/2026/01/20/everstone-combines-wingify-ab-tasty-for-100m-digital-experience-optimization-platform/", "accessed": "2026-07-29" },
-    { "id": 12, "title": "AB Tasty acquiert EPOQ (recommandations IA, oct. 2022) ; données de contrats AB Tasty 20-150 k$/an", "publisher": "PR Newswire / mida.so", "url": "https://www.prnewswire.com/news-releases/ab-tasty-acquires-ai-driven-personalization-provider-epoq-to-usher-in-new-era-of-experience-optimization-301641638.html", "accessed": "2026-07-29" },
-    { "id": 13, "title": "Constructor Raises $25M Series B Led by Sapphire Ventures, Tripling Valuation to $550M (juin 2024) ; +82 % de clients FY26", "publisher": "PR Newswire (officiel)", "url": "https://www.prnewswire.com/news-releases/constructor-raises-25m-series-b-led-by-sapphire-ventures-tripling-valuation-to-550m-302174068.html", "accessed": "2026-07-29" },
-    { "id": 14, "title": "Constructor : ARR ~65 M$ (2024, est.) ; contrat moyen ~150 k$/an (données procurement)", "publisher": "GetLatka / Vendr", "url": "https://www.vendr.com/marketplace/constructor-io", "accessed": "2026-07-29" },
-    { "id": 15, "title": "Algonomy Software Private Limited — dépôts réglementaires indiens (CA ~346 crores INR ≈ 41-42 M$, FY24, −8 %)", "publisher": "Tracxn", "url": "https://tracxn.com/d/legal-entities/india/algonomy-software-private-limited/", "accessed": "2026-07-29" },
-    { "id": 16, "title": "Monetate Acquires SiteSpect (30 juin 2025, unitranche 75 M$ o15 Capital) ; détenu par Centre Lane Partners depuis 2022", "publisher": "Businesswire / o15 Capital / PrivSource", "url": "https://www.businesswire.com/news/home/20250630514541/en/Monetate-Acquires-SiteSpect-to-Deliver-AI-Native-Personalization-and-Testing-at-Enterprise-Scale", "accessed": "2026-07-29" },
-    { "id": 17, "title": "Klevu Joins Forces with Searchspring to form Athos Commerce (finalisé 9 janv. 2025) ; rollout complet Q1 2026", "publisher": "Businesswire (officiel)", "url": "https://www.businesswire.com/news/home/20250113743474/en/", "accessed": "2026-07-29" },
-    { "id": 18, "title": "Nosto : revenus estimés 19,6-31 M$ selon les sources (tierces, divergentes) ; pricing 2,5-4 % des ventes générées ; rachats SearchNode/Findologic", "publisher": "GetLatka / Capterra / Nosto", "url": "https://www.nosto.com/pricing/", "accessed": "2026-07-29" },
-    { "id": 19, "title": "Kameleoon : revenus ~22 M$ (est. déc. 2024) ; 7,8 M$ levés (dernier tour 2019) ; Prompt-Based Experimentation (2025)", "publisher": "GetLatka / Crunchbase", "url": "https://getlatka.com/companies/kameleoon", "accessed": "2026-07-29" },
-    { "id": 20, "title": "Doofinder : pricing public 49-349 $/mois ; revenus ~21,5 M$ (2025, est.) ; 10 000+ sites", "publisher": "Doofinder (officiel) / GetLatka", "url": "https://www.doofinder.com/en/price", "accessed": "2026-07-29" },
-    { "id": 21, "title": "Rebuy : 15 078 boutiques Shopify actives (4,7/5) ; pricing 99-749 $/mois ; revenus ~12 M$ (est.)", "publisher": "Shopify App Store / GetLatka / Rebuy", "url": "https://apps.shopify.com/rebuy", "accessed": "2026-07-29" },
-    { "id": 22, "title": "Bloomreach : ACV moyen ~180 k$/an, jusqu'à ~430 k$/an (données de contrats réels)", "publisher": "Vendr", "url": "https://www.vendr.com/buyer-guides/bloomreach", "accessed": "2026-07-29" },
-    { "id": 23, "title": "SAP Engagement Cloud (ex-Emarsys) Leader Gartner MQ 2026 (7e fois) ; CleverTap Leader (1re fois) ; Monetate Niche Player ; MoEngage Visionary", "publisher": "Emarsys/SAP / CleverTap", "url": "https://pages.community.sap.com/topics/emarsys", "accessed": "2026-07-29" },
-    { "id": 24, "title": "Longue traîne : Fast Simon ~4,8 M$ (est.), Raptor ~6,5 M$ (2023, est.), Clerk.io 2 500+ boutiques (119 $/mois), LimeSpot dès 18 $/mois, Wiser 9-199 $/mois, Syte (majorité Pereg Ventures, déc. 2024)", "publisher": "GetLatka / GetApp / PR Newswire / éditeurs", "url": "https://www.prnewswire.com/news-releases/pereg-ventures-takes-majority-stake-in-syte-to-empower-apparel-ecommerce-with-ai-powered-product-recommendations-302322957.html", "accessed": "2026-07-29" },
-    { "id": 25, "title": "Tailles de marché analystes — recommendation engines : 3,2-9,2 Md$ (2025) selon périmètre, TCAC 12,6-36,3 % ; personalization software : TCAC ~17-21 % ; e-commerce personalization strict : 0,26-2,6 Md$ (2023-2024)", "publisher": "Grand View Research / Mordor Intelligence / Research and Markets / Market.us / GlobalGrowthInsights", "url": "https://www.mordorintelligence.com/industry-reports/recommendation-engine-market", "accessed": "2026-07-29" },
-    { "id": 26, "title": "McKinsey — The future of personalization (gain de CA de 5-15 %, efficacité marketing +10-30 %) ; « 35 % des achats Amazon » (2013, à dater)", "publisher": "McKinsey", "url": "https://www.mckinsey.com/capabilities/growth-marketing-and-sales/our-insights/the-future-of-personalization-and-how-to-get-ready-for-it", "accessed": "2026-07-29" },
-    { "id": 27, "title": "Twilio Segment — The State of Personalization Report 2024 (89 % des décideurs ; +38 % de dépenses si personnalisé ; 50 % gênés par les règles privacy)", "publisher": "Twilio Segment", "url": "https://www.twilio.com/en-us/report/state-of-personalization-report", "accessed": "2026-07-29" },
-    { "id": 28, "title": "Stripe × OpenAI — Instant Checkout dans ChatGPT et Agentic Commerce Protocol (29 sept. 2025)", "publisher": "Stripe / OpenAI", "url": "https://stripe.com/newsroom/news/stripe-openai-instant-checkout", "accessed": "2026-07-29" },
-    { "id": 29, "title": "Google — Universal Commerce Protocol (UCP), co-développé avec Shopify, Etsy, Target, Walmart (11 janv. 2026, NRF)", "publisher": "Google Developers Blog / Shopify Engineering", "url": "https://developers.googleblog.com/under-the-hood-universal-commerce-protocol-ucp/", "accessed": "2026-07-29" },
-    { "id": 30, "title": "Salesforce — Cyber Week 2025 : 336,6 Md$ de dépenses mondiales, 67 Md$ de ventes influencées par l'IA/agents (5 déc. 2025)", "publisher": "Salesforce (officiel)", "url": "https://www.salesforce.com/news/press-releases/2025/12/05/cyber-week-ai-agents-sales/", "accessed": "2026-07-29" },
-    { "id": 31, "title": "Google renonce à supprimer les cookies tiers dans Chrome (Privacy Sandbox, 22 avril 2025)", "publisher": "Google Privacy Sandbox", "url": "https://privacysandbox.google.com/blog/update-on-plans-for-privacy-sandbox-technologies", "accessed": "2026-07-29" },
-    { "id": 32, "title": "Amazon Personalize — tarification à l'usage (palier gratuit 2 mois) ; Google Vertex AI Search for Commerce — 0,27 $/1000 requêtes : les options « build »", "publisher": "AWS / Google Cloud", "url": "https://aws.amazon.com/personalize/pricing/", "accessed": "2026-07-29" },
-    { "id": 33, "title": "Shopify Search & Discovery (app native gratuite : recos, filtres — plafond 5 000 produits, pas d'IA avancée) ; Einstein infusé dans Commerce Cloud", "publisher": "Shopify Help Center / Salesforce", "url": "https://help.shopify.com/en/manual/online-store/storefront-search/search-and-discovery-recommendations", "accessed": "2026-07-29" },
-    { "id": 34, "title": "Baymard Institute — benchmark search e-commerce 2026 (56 % des sites leaders ont un search UX médiocre ou pire)", "publisher": "Baymard Institute", "url": "https://baymard.com/research/ecommerce-search", "accessed": "2026-07-29" },
-    { "id": 35, "title": "Benchmarks SaaS : NRR médiane ~101 % (2024, Benchmarkit) ; ACV personnalisation/search 40-250 k$+/an (Vendr) ; remises annuelles 15-30 %", "publisher": "Benchmarkit / Vendr", "url": "https://www.benchmarkit.ai/2024benchmarks", "accessed": "2026-07-29" }
+    {
+      "id": 1,
+      "title": "Gartner Magic Quadrant for Personalization Engines 2026 (édition du 2 février 2026 ; marché à 1,2 Md$ en 2024, +26,1 %) — relayé par les communiqués des Leaders",
+      "publisher": "Gartner (via Emarsys, Adobe, Optimizely, Insider, Dynamic Yield)",
+      "url": "https://emarsys.com/learn/blog/sap-recognized-as-leader-in-2026-gartner-magic-quadrant-for-personalization-engines/",
+      "accessed": "2026-07-29"
+    },
+    {
+      "id": 2,
+      "title": "Salesforce — Form 10-K FY2025 (segment Marketing & Commerce Cloud : 5,28 Md$) ; Einstein bundlé dans Commerce Cloud",
+      "publisher": "SEC EDGAR / Salesforce",
+      "url": "https://www.sec.gov/Archives/edgar/data/1108524/000110852425000006/crm-20250131.htm",
+      "accessed": "2026-07-29"
+    },
+    {
+      "id": 3,
+      "title": "Adobe — Form 10-K FY2025 (Digital Experience : 5,86 Md$) ; Adobe Target Leader Gartner MQ 2026 (8e fois)",
+      "publisher": "SEC EDGAR / Adobe",
+      "url": "https://www.sec.gov/Archives/edgar/data/796343/000079634326000003/adbe-20251128.htm",
+      "accessed": "2026-07-29"
+    },
+    {
+      "id": 4,
+      "title": "Bloomreach Surpasses $260 Million in Annual Recurring Revenue",
+      "publisher": "Bloomreach (officiel)",
+      "url": "https://www.bloomreach.com/en/news/2026/bloomreach-surpasses-260-million-arr/",
+      "accessed": "2026-07-29"
+    },
+    {
+      "id": 5,
+      "title": "Insider Announces $500M Series E Led by General Atlantic (nov. 2024) ; devient « Insider One » (déc. 2025)",
+      "publisher": "GlobeNewswire / Insider One",
+      "url": "https://www.insiderone.com/news/insider-becomes-insider-one/",
+      "accessed": "2026-07-29"
+    },
+    {
+      "id": 6,
+      "title": "Insider One — Leader 2026 Gartner MQ Personalization Engines (5e année) ; Leader Forrester Wave Experience Optimization Q4 2024",
+      "publisher": "Insider One",
+      "url": "https://www.insiderone.com/gartner-magic-quadrant-2026-personalization-engines/",
+      "accessed": "2026-07-29"
+    },
+    {
+      "id": 7,
+      "title": "Coveo Reports Fourth Quarter and Fiscal 2026 Financial Results (148,3 M$, +11 % ; commerce ~60 % des nouvelles réservations)",
+      "publisher": "Coveo (relations investisseurs)",
+      "url": "https://ir.coveo.com/en/news-events/press-releases/detail/483",
+      "accessed": "2026-07-29"
+    },
+    {
+      "id": 8,
+      "title": "Mastercard rachète Dynamic Yield à McDonald's pour 325 M$ (10-Q SEC, avril 2022) ; Leader Gartner MQ 2026 (8e fois)",
+      "publisher": "SEC EDGAR / Payments Dive / Dynamic Yield",
+      "url": "https://www.dynamicyield.com/blog/mastercard-dynamic-yield-recognized-as-a-leader-in-the-2026-gartner-magic-quadrant-for-personalization-engines/",
+      "accessed": "2026-07-29"
+    },
+    {
+      "id": 9,
+      "title": "Algolia : ARR ~100 M$ (2024, est. GetLatka) ; 18 000+ clients ; Agent Studio (sept. 2025) ; Leader Gartner Search & Product Discovery 2026",
+      "publisher": "GetLatka / BusinessWire / Algolia",
+      "url": "https://www.businesswire.com/news/home/20260624362619/en/",
+      "accessed": "2026-07-29"
+    },
+    {
+      "id": 10,
+      "title": "Optimizely reaches $400M ARR (mai 2024) ; +42 % QoQ sur l'ARR Agent Orchestration ; Leader Gartner MQ Personalization Engines 2026",
+      "publisher": "Optimizely (officiel)",
+      "url": "https://www.optimizely.com/company/press/400M-ARR/",
+      "accessed": "2026-07-29"
+    },
+    {
+      "id": 11,
+      "title": "Everstone combines Wingify + AB Tasty for $100M ARR digital experience optimization platform (janv. 2026)",
+      "publisher": "TechCrunch",
+      "url": "https://techcrunch.com/2026/01/20/everstone-combines-wingify-ab-tasty-for-100m-digital-experience-optimization-platform/",
+      "accessed": "2026-07-29"
+    },
+    {
+      "id": 12,
+      "title": "AB Tasty acquiert EPOQ (recommandations IA, oct. 2022) ; données de contrats AB Tasty 20-150 k$/an",
+      "publisher": "PR Newswire / mida.so",
+      "url": "https://www.prnewswire.com/news-releases/ab-tasty-acquires-ai-driven-personalization-provider-epoq-to-usher-in-new-era-of-experience-optimization-301641638.html",
+      "accessed": "2026-07-29"
+    },
+    {
+      "id": 13,
+      "title": "Constructor Raises $25M Series B Led by Sapphire Ventures, Tripling Valuation to $550M (juin 2024) ; +82 % de clients FY26",
+      "publisher": "PR Newswire (officiel)",
+      "url": "https://www.prnewswire.com/news-releases/constructor-raises-25m-series-b-led-by-sapphire-ventures-tripling-valuation-to-550m-302174068.html",
+      "accessed": "2026-07-29"
+    },
+    {
+      "id": 14,
+      "title": "Constructor : ARR ~65 M$ (2024, est.) ; contrat moyen ~150 k$/an (données procurement)",
+      "publisher": "GetLatka / Vendr",
+      "url": "https://www.vendr.com/marketplace/constructor-io",
+      "accessed": "2026-07-29"
+    },
+    {
+      "id": 15,
+      "title": "Algonomy Software Private Limited — dépôts réglementaires indiens (CA ~346 crores INR ≈ 41-42 M$, FY24, −8 %)",
+      "publisher": "Tracxn",
+      "url": "https://tracxn.com/d/legal-entities/india/algonomy-software-private-limited/",
+      "accessed": "2026-07-29"
+    },
+    {
+      "id": 16,
+      "title": "Monetate Acquires SiteSpect (30 juin 2025, unitranche 75 M$ o15 Capital) ; détenu par Centre Lane Partners depuis 2022",
+      "publisher": "Businesswire / o15 Capital / PrivSource",
+      "url": "https://www.businesswire.com/news/home/20250630514541/en/Monetate-Acquires-SiteSpect-to-Deliver-AI-Native-Personalization-and-Testing-at-Enterprise-Scale",
+      "accessed": "2026-07-29"
+    },
+    {
+      "id": 17,
+      "title": "Klevu Joins Forces with Searchspring to form Athos Commerce (finalisé 9 janv. 2025) ; rollout complet Q1 2026",
+      "publisher": "Businesswire (officiel)",
+      "url": "https://www.businesswire.com/news/home/20250113743474/en/",
+      "accessed": "2026-07-29"
+    },
+    {
+      "id": 18,
+      "title": "Nosto : revenus estimés 19,6-31 M$ selon les sources (tierces, divergentes) ; pricing 2,5-4 % des ventes générées ; rachats SearchNode/Findologic",
+      "publisher": "GetLatka / Capterra / Nosto",
+      "url": "https://www.nosto.com/pricing/",
+      "accessed": "2026-07-29"
+    },
+    {
+      "id": 19,
+      "title": "Kameleoon : revenus ~22 M$ (est. déc. 2024) ; 7,8 M$ levés (dernier tour 2019) ; Prompt-Based Experimentation (2025)",
+      "publisher": "GetLatka / Crunchbase",
+      "url": "https://getlatka.com/companies/kameleoon",
+      "accessed": "2026-07-29"
+    },
+    {
+      "id": 20,
+      "title": "Doofinder : pricing public 49-349 $/mois ; revenus ~21,5 M$ (2025, est.) ; 10 000+ sites",
+      "publisher": "Doofinder (officiel) / GetLatka",
+      "url": "https://www.doofinder.com/en/price",
+      "accessed": "2026-07-29"
+    },
+    {
+      "id": 21,
+      "title": "Rebuy : 15 078 boutiques Shopify actives (4,7/5) ; pricing 99-749 $/mois ; revenus ~12 M$ (est.)",
+      "publisher": "Shopify App Store / GetLatka / Rebuy",
+      "url": "https://apps.shopify.com/rebuy",
+      "accessed": "2026-07-29"
+    },
+    {
+      "id": 22,
+      "title": "Bloomreach : ACV moyen ~180 k$/an, jusqu'à ~430 k$/an (données de contrats réels)",
+      "publisher": "Vendr",
+      "url": "https://www.vendr.com/buyer-guides/bloomreach",
+      "accessed": "2026-07-29"
+    },
+    {
+      "id": 23,
+      "title": "SAP Engagement Cloud (ex-Emarsys) Leader Gartner MQ 2026 (7e fois) ; CleverTap Leader (1re fois) ; Monetate Niche Player ; MoEngage Visionary",
+      "publisher": "Emarsys/SAP / CleverTap",
+      "url": "https://pages.community.sap.com/topics/emarsys",
+      "accessed": "2026-07-29"
+    },
+    {
+      "id": 24,
+      "title": "Longue traîne : Fast Simon ~4,8 M$ (est.), Raptor ~6,5 M$ (2023, est.), Clerk.io 2 500+ boutiques (119 $/mois), LimeSpot dès 18 $/mois, Wiser 9-199 $/mois, Syte (majorité Pereg Ventures, déc. 2024)",
+      "publisher": "GetLatka / GetApp / PR Newswire / éditeurs",
+      "url": "https://www.prnewswire.com/news-releases/pereg-ventures-takes-majority-stake-in-syte-to-empower-apparel-ecommerce-with-ai-powered-product-recommendations-302322957.html",
+      "accessed": "2026-07-29"
+    },
+    {
+      "id": 25,
+      "title": "Tailles de marché analystes — recommendation engines : 3,2-9,2 Md$ (2025) selon périmètre, TCAC 12,6-36,3 % ; personalization software : TCAC ~17-21 % ; e-commerce personalization strict : 0,26-2,6 Md$ (2023-2024)",
+      "publisher": "Grand View Research / Mordor Intelligence / Research and Markets / Market.us / GlobalGrowthInsights",
+      "url": "https://www.mordorintelligence.com/industry-reports/recommendation-engine-market",
+      "accessed": "2026-07-29"
+    },
+    {
+      "id": 26,
+      "title": "McKinsey — The future of personalization (gain de CA de 5-15 %, efficacité marketing +10-30 %) ; « 35 % des achats Amazon » (2013, à dater)",
+      "publisher": "McKinsey",
+      "url": "https://www.mckinsey.com/capabilities/growth-marketing-and-sales/our-insights/the-future-of-personalization-and-how-to-get-ready-for-it",
+      "accessed": "2026-07-29"
+    },
+    {
+      "id": 27,
+      "title": "Twilio Segment — The State of Personalization Report 2024 (89 % des décideurs ; +38 % de dépenses si personnalisé ; 50 % gênés par les règles privacy)",
+      "publisher": "Twilio Segment",
+      "url": "https://www.twilio.com/en-us/report/state-of-personalization-report",
+      "accessed": "2026-07-29"
+    },
+    {
+      "id": 28,
+      "title": "Stripe × OpenAI — Instant Checkout dans ChatGPT et Agentic Commerce Protocol (29 sept. 2025)",
+      "publisher": "Stripe / OpenAI",
+      "url": "https://stripe.com/newsroom/news/stripe-openai-instant-checkout",
+      "accessed": "2026-07-29"
+    },
+    {
+      "id": 29,
+      "title": "Google — Universal Commerce Protocol (UCP), co-développé avec Shopify, Etsy, Target, Walmart (11 janv. 2026, NRF)",
+      "publisher": "Google Developers Blog / Shopify Engineering",
+      "url": "https://developers.googleblog.com/under-the-hood-universal-commerce-protocol-ucp/",
+      "accessed": "2026-07-29"
+    },
+    {
+      "id": 30,
+      "title": "Salesforce — Cyber Week 2025 : 336,6 Md$ de dépenses mondiales, 67 Md$ de ventes influencées par l'IA/agents (5 déc. 2025)",
+      "publisher": "Salesforce (officiel)",
+      "url": "https://www.salesforce.com/news/press-releases/2025/12/05/cyber-week-ai-agents-sales/",
+      "accessed": "2026-07-29"
+    },
+    {
+      "id": 31,
+      "title": "Google renonce à supprimer les cookies tiers dans Chrome (Privacy Sandbox, 22 avril 2025)",
+      "publisher": "Google Privacy Sandbox",
+      "url": "https://privacysandbox.google.com/blog/update-on-plans-for-privacy-sandbox-technologies",
+      "accessed": "2026-07-29"
+    },
+    {
+      "id": 32,
+      "title": "Amazon Personalize — tarification à l'usage (palier gratuit 2 mois) ; Google Vertex AI Search for Commerce — 0,27 $/1000 requêtes : les options « build »",
+      "publisher": "AWS / Google Cloud",
+      "url": "https://aws.amazon.com/personalize/pricing/",
+      "accessed": "2026-07-29"
+    },
+    {
+      "id": 33,
+      "title": "Shopify Search & Discovery (app native gratuite : recos, filtres — plafond 5 000 produits, pas d'IA avancée) ; Einstein infusé dans Commerce Cloud",
+      "publisher": "Shopify Help Center / Salesforce",
+      "url": "https://help.shopify.com/en/manual/online-store/storefront-search/search-and-discovery-recommendations",
+      "accessed": "2026-07-29"
+    },
+    {
+      "id": 34,
+      "title": "Baymard Institute — benchmark search e-commerce 2026 (56 % des sites leaders ont un search UX médiocre ou pire)",
+      "publisher": "Baymard Institute",
+      "url": "https://baymard.com/research/ecommerce-search",
+      "accessed": "2026-07-29"
+    },
+    {
+      "id": 35,
+      "title": "Benchmarks SaaS : NRR médiane ~101 % (2024, Benchmarkit) ; ACV personnalisation/search 40-250 k$+/an (Vendr) ; remises annuelles 15-30 %",
+      "publisher": "Benchmarkit / Vendr",
+      "url": "https://www.benchmarkit.ai/2024benchmarks",
+      "accessed": "2026-07-29"
+    }
   ],
   "lexicon": [
-    { "term": "Personalization engine", "fr": "Moteur logiciel qui adapte en temps réel les produits, contenus ou offres montrés à chaque visiteur selon son comportement et ses données — la catégorie au cœur de ce rapport (Gartner : 1,2 Md$ en 2024).", "en": "Software engine that adapts in real time which products, content or offers each visitor sees, based on behavior and data — the category at the core of this report." },
-    { "term": "Product discovery", "fr": "L'ensemble des mécanismes qui aident un visiteur à trouver le bon produit : recherche, filtres, recommandations, merchandising. Gartner en a fait un Magic Quadrant distinct en 2024.", "en": "The mechanisms helping a shopper find the right product: search, filtering, recommendations, merchandising. Gartner made it a separate Magic Quadrant in 2024." },
-    { "term": "Moteur de recommandation", "fr": "Système qui suggère des produits à partir du comportement du visiteur, de son profil ou de la similarité entre produits (« vous aimerez aussi »).", "en": "System suggesting products based on visitor behavior, profile, or product similarity (« you may also like »)." },
-    { "term": "Merchandising (on-site)", "fr": "Mise en avant, tri et exclusion de produits dans les pages de recherche et de catégorie — manuelle, par règles, ou pilotée par IA.", "en": "Promoting, ranking and excluding products within search and category pages — manually, by rules, or AI-driven." },
-    { "term": "Search-as-a-service", "fr": "Recherche produit fournie comme service cloud par API (Algolia, Constructor, Doofinder), plutôt que développée en interne.", "en": "Product search delivered as a cloud API service (Algolia, Constructor, Doofinder) rather than built in-house." },
-    { "term": "A/B testing (expérimentation)", "fr": "Comparer deux versions d'une page ou d'un parcours sur des visiteurs différents pour mesurer laquelle convertit le mieux — le cœur de métier d'AB Tasty, VWO, Kameleoon, SiteSpect.", "en": "Showing two versions of a page to different visitors to measure which converts better — the core of AB Tasty, VWO, Kameleoon, SiteSpect." },
-    { "term": "CDP (Customer Data Platform)", "fr": "Plateforme qui unifie les données client de toutes les sources (site, app, CRM, caisse) en un profil unique exploitable par la personnalisation.", "en": "Platform unifying customer data from all sources into a single profile usable for personalization." },
-    { "term": "Headless / composable / MACH", "fr": "Architectures découplant le front-end du moteur e-commerce (headless), assemblées en briques best-of-breed (composable) selon le standard MACH — le terrain le plus favorable aux éditeurs indépendants.", "en": "Architectures decoupling the storefront from the commerce engine (headless), assembled from best-of-breed blocks (composable) per the MACH standard — the friendliest ground for independent vendors." },
-    { "term": "First-party / zero-party data", "fr": "Données observées sur son propre site (first-party) ou déclarées volontairement par le client (zero-party) — le carburant de la personnalisation on-site, peu dépendant des cookies tiers.", "en": "Data observed on one's own site (first-party) or intentionally shared by the customer (zero-party) — the fuel of on-site personalization, barely dependent on third-party cookies." },
-    { "term": "Commerce agentique (agentic commerce)", "fr": "Achats initiés ou conduits par un agent IA au nom du consommateur, potentiellement hors du site marchand (ex. dans ChatGPT) — la frontière qui bouge en 2025-2026.", "en": "Purchases initiated or carried out by an AI agent on the shopper's behalf, potentially outside the merchant site (e.g. inside ChatGPT) — the moving frontier of 2025-2026." },
-    { "term": "ACP / UCP", "fr": "Les deux protocoles concurrents du commerce agentique : Agentic Commerce Protocol (Stripe + OpenAI, sept. 2025 — achat direct dans ChatGPT) et Universal Commerce Protocol (Google + Shopify/Walmart/Target, janv. 2026).", "en": "The two competing agentic-commerce protocols: ACP (Stripe + OpenAI, Sept. 2025 — buying inside ChatGPT) and UCP (Google + Shopify/Walmart/Target, Jan. 2026)." },
-    { "term": "Build vs buy", "fr": "Arbitrage entre développer sa personnalisation en interne (Amazon Personalize, Google Vertex AI Search — facturés à l'usage) et acheter un SaaS spécialisé — l'alternative qui plafonne les prix du marché.", "en": "The tradeoff between building personalization in-house (Amazon Personalize, Google Vertex AI Search — usage-billed) and buying specialized SaaS — the alternative that caps market prices." },
-    { "term": "GMV (Gross Merchandise Value)", "fr": "Volume d'affaires transitant par un site marchand — l'assiette du modèle « % du revenu généré » de Nosto et des revenue-shares de plateformes.", "en": "Merchandise volume flowing through a store — the base for Nosto's revenue-share model and platform revenue shares." },
-    { "term": "ACV (Annual Contract Value)", "fr": "Valeur annuelle d'un contrat client. Sur ce marché : de ~600 $/an (Doofinder Basic) à ~430 k$/an (Bloomreach haut de gamme) — un écart de 1 à 700.", "en": "Annual value of a customer contract. In this market: from ~$600/yr (Doofinder Basic) to ~$430k/yr (high-end Bloomreach) — a 1-to-700 spread." },
-    { "term": "ARR / NRR / churn", "fr": "Revenu récurrent annuel / rétention nette du revenu (médiane SaaS ~101 % en 2024) / taux d'attrition — les trois métriques de santé d'un éditeur SaaS.", "en": "Annual recurring revenue / net revenue retention (SaaS median ~101% in 2024) / attrition rate — the three health metrics of a SaaS vendor." },
-    { "term": "SKU (Stock Keeping Unit)", "fr": "Référence produit unique. La taille du catalogue (en SKU) est un facteur clé de tarification et le critère d'entrée des outils enterprise (Constructor : >100 000 SKU).", "en": "Unique product reference. Catalog size (in SKUs) is a key pricing factor and the entry criterion of enterprise tools (Constructor: >100,000 SKUs)." },
-    { "term": "Magic Quadrant / Forrester Wave", "fr": "Les classements d'analystes qui structurent les achats enterprise : Gartner distingue depuis 2024 DEUX quadrants — Personalization Engines et Search & Product Discovery — signe de la fusion des deux mondes.", "en": "The analyst rankings that shape enterprise buying: since 2024 Gartner runs TWO quadrants — Personalization Engines and Search & Product Discovery — a sign the two worlds are merging." }
+    {
+      "term": "Personalization engine",
+      "fr": "Moteur logiciel qui adapte en temps réel les produits, contenus ou offres montrés à chaque visiteur selon son comportement et ses données — la catégorie au cœur de ce rapport (Gartner : 1,2 Md$ en 2024).",
+      "en": "Software engine that adapts in real time which products, content or offers each visitor sees, based on behavior and data — the category at the core of this report."
+    },
+    {
+      "term": "Product discovery",
+      "fr": "L'ensemble des mécanismes qui aident un visiteur à trouver le bon produit : recherche, filtres, recommandations, merchandising. Gartner en a fait un Magic Quadrant distinct en 2024.",
+      "en": "The mechanisms helping a shopper find the right product: search, filtering, recommendations, merchandising. Gartner made it a separate Magic Quadrant in 2024."
+    },
+    {
+      "term": "Moteur de recommandation",
+      "fr": "Système qui suggère des produits à partir du comportement du visiteur, de son profil ou de la similarité entre produits (« vous aimerez aussi »).",
+      "en": "System suggesting products based on visitor behavior, profile, or product similarity (« you may also like »)."
+    },
+    {
+      "term": "Merchandising (on-site)",
+      "fr": "Mise en avant, tri et exclusion de produits dans les pages de recherche et de catégorie — manuelle, par règles, ou pilotée par IA.",
+      "en": "Promoting, ranking and excluding products within search and category pages — manually, by rules, or AI-driven."
+    },
+    {
+      "term": "Search-as-a-service",
+      "fr": "Recherche produit fournie comme service cloud par API (Algolia, Constructor, Doofinder), plutôt que développée en interne.",
+      "en": "Product search delivered as a cloud API service (Algolia, Constructor, Doofinder) rather than built in-house."
+    },
+    {
+      "term": "A/B testing (expérimentation)",
+      "fr": "Comparer deux versions d'une page ou d'un parcours sur des visiteurs différents pour mesurer laquelle convertit le mieux — le cœur de métier d'AB Tasty, VWO, Kameleoon, SiteSpect.",
+      "en": "Showing two versions of a page to different visitors to measure which converts better — the core of AB Tasty, VWO, Kameleoon, SiteSpect."
+    },
+    {
+      "term": "CDP (Customer Data Platform)",
+      "fr": "Plateforme qui unifie les données client de toutes les sources (site, app, CRM, caisse) en un profil unique exploitable par la personnalisation.",
+      "en": "Platform unifying customer data from all sources into a single profile usable for personalization."
+    },
+    {
+      "term": "Headless / composable / MACH",
+      "fr": "Architectures découplant le front-end du moteur e-commerce (headless), assemblées en briques best-of-breed (composable) selon le standard MACH — le terrain le plus favorable aux éditeurs indépendants.",
+      "en": "Architectures decoupling the storefront from the commerce engine (headless), assembled from best-of-breed blocks (composable) per the MACH standard — the friendliest ground for independent vendors."
+    },
+    {
+      "term": "First-party / zero-party data",
+      "fr": "Données observées sur son propre site (first-party) ou déclarées volontairement par le client (zero-party) — le carburant de la personnalisation on-site, peu dépendant des cookies tiers.",
+      "en": "Data observed on one's own site (first-party) or intentionally shared by the customer (zero-party) — the fuel of on-site personalization, barely dependent on third-party cookies."
+    },
+    {
+      "term": "Commerce agentique (agentic commerce)",
+      "fr": "Achats initiés ou conduits par un agent IA au nom du consommateur, potentiellement hors du site marchand (ex. dans ChatGPT) — la frontière qui bouge en 2025-2026.",
+      "en": "Purchases initiated or carried out by an AI agent on the shopper's behalf, potentially outside the merchant site (e.g. inside ChatGPT) — the moving frontier of 2025-2026."
+    },
+    {
+      "term": "ACP / UCP",
+      "fr": "Les deux protocoles concurrents du commerce agentique : Agentic Commerce Protocol (Stripe + OpenAI, sept. 2025 — achat direct dans ChatGPT) et Universal Commerce Protocol (Google + Shopify/Walmart/Target, janv. 2026).",
+      "en": "The two competing agentic-commerce protocols: ACP (Stripe + OpenAI, Sept. 2025 — buying inside ChatGPT) and UCP (Google + Shopify/Walmart/Target, Jan. 2026)."
+    },
+    {
+      "term": "Build vs buy",
+      "fr": "Arbitrage entre développer sa personnalisation en interne (Amazon Personalize, Google Vertex AI Search — facturés à l'usage) et acheter un SaaS spécialisé — l'alternative qui plafonne les prix du marché.",
+      "en": "The tradeoff between building personalization in-house (Amazon Personalize, Google Vertex AI Search — usage-billed) and buying specialized SaaS — the alternative that caps market prices."
+    },
+    {
+      "term": "GMV (Gross Merchandise Value)",
+      "fr": "Volume d'affaires transitant par un site marchand — l'assiette du modèle « % du revenu généré » de Nosto et des revenue-shares de plateformes.",
+      "en": "Merchandise volume flowing through a store — the base for Nosto's revenue-share model and platform revenue shares."
+    },
+    {
+      "term": "ACV (Annual Contract Value)",
+      "fr": "Valeur annuelle d'un contrat client. Sur ce marché : de ~600 $/an (Doofinder Basic) à ~430 k$/an (Bloomreach haut de gamme) — un écart de 1 à 700.",
+      "en": "Annual value of a customer contract. In this market: from ~$600/yr (Doofinder Basic) to ~$430k/yr (high-end Bloomreach) — a 1-to-700 spread."
+    },
+    {
+      "term": "ARR / NRR / churn",
+      "fr": "Revenu récurrent annuel / rétention nette du revenu (médiane SaaS ~101 % en 2024) / taux d'attrition — les trois métriques de santé d'un éditeur SaaS.",
+      "en": "Annual recurring revenue / net revenue retention (SaaS median ~101% in 2024) / attrition rate — the three health metrics of a SaaS vendor."
+    },
+    {
+      "term": "SKU (Stock Keeping Unit)",
+      "fr": "Référence produit unique. La taille du catalogue (en SKU) est un facteur clé de tarification et le critère d'entrée des outils enterprise (Constructor : >100 000 SKU).",
+      "en": "Unique product reference. Catalog size (in SKUs) is a key pricing factor and the entry criterion of enterprise tools (Constructor: >100,000 SKUs)."
+    },
+    {
+      "term": "Magic Quadrant / Forrester Wave",
+      "fr": "Les classements d'analystes qui structurent les achats enterprise : Gartner distingue depuis 2024 DEUX quadrants — Personalization Engines et Search & Product Discovery — signe de la fusion des deux mondes.",
+      "en": "The analyst rankings that shape enterprise buying: since 2024 Gartner runs TWO quadrants — Personalization Engines and Search & Product Discovery — a sign the two worlds are merging."
+    }
   ],
-  "last_updated": "2026-07-29"
+  "last_updated": "2026-07-29",
+  "enrichments": [
+    {
+      "skill": "position-my-product",
+      "run": "s3-1_2026-09-06",
+      "date": "2026-09-06",
+      "player_id": "merch-control",
+      "mention": "Graphique enrichi des infos sur le nouveau projet Merch Control, le 2026-09-06"
+    }
+  ]
 };
 </script>
 <script src="../../assets/positioning-chart-v1.js"></script>

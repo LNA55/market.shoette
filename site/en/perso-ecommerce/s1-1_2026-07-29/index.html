@@ -1217,6 +1217,68 @@ const RUN_DATA = {
           21
         ]
       }
+    },
+    {
+      "id": "merch-control",
+      "name": "Merch Control",
+      "is_mine": true,
+      "added_by_run": {
+        "skill": "position-my-product",
+        "run": "s3-1_2026-09-06",
+        "date": "2026-09-06"
+      },
+      "market_share_pct": {
+        "value": 0,
+        "estimated": false,
+        "note": "new project — non-commercialized prototype, added by Skill 3"
+      },
+      "growth_pct": {
+        "value": null,
+        "estimated": false,
+        "note": "not applicable (new project)"
+      },
+      "dimensions": {
+        "largeur_fonctionnelle": {
+          "value": "point solution",
+          "estimated": true,
+          "declared": true,
+          "note": "a control desk for the merchandising mix — not a search/recommendations engine: it weights the sources the merchant already owns"
+        },
+        "cible_clientele": {
+          "value": "enterprise",
+          "estimated": true,
+          "declared": true,
+          "note": "claimed: large-catalog sites; presupposes in-house product APIs and an equipped merchandising team"
+        },
+        "prix_entree": {
+          "value": null,
+          "estimated": false,
+          "declared": true,
+          "note": "not commercialized — prototype without pricing"
+        },
+        "profondeur_ia": {
+          "value": 2,
+          "estimated": true,
+          "declared": true,
+          "note": "deterministic, human-set weights, immutable and auditable releases — control rather than AI (analytic summaries mocked)"
+        },
+        "modele_tarifaire": {
+          "value": null,
+          "estimated": false,
+          "declared": true,
+          "note": "not commercialized — no model set"
+        }
+      },
+      "card": {
+        "summary": "A control plane for e-commerce merchandising: the merchant team composes, per placement (13 blocks) and per audience (7 profiles), the exact weighting of the product sources displayed — immutable releases per block, automatic split by data accessibility per audience, destination doors, impact reports. Front-only prototype, not commercialized (Elena's project).",
+        "facts": [
+          "13 placements × 7 audiences; ~28 source calls across 6 families (catalog, site-wide behavior, preferences, purchase history, current browsing, content)",
+          "Immutable releases per block (major/minor versions), publish per mix or in bulk (dated “data set”), impact reports per audience",
+          "Source: https://pp.shoette.com/merchandising/ (declarative)",
+          "Positioned by Run S3-1 of 2026-09-06"
+        ],
+        "source_ids": []
+      }
     }
   ],
   "players_without_data": [
@@ -1588,7 +1650,16 @@ const RUN_DATA = {
       "en": "The analyst rankings that shape enterprise buying: since 2024 Gartner runs TWO quadrants — Personalization Engines and Search & Product Discovery — a sign the two worlds are merging."
     }
   ],
-  "last_updated": "2026-07-29"
+  "last_updated": "2026-07-29",
+  "enrichments": [
+    {
+      "skill": "position-my-product",
+      "run": "s3-1_2026-09-06",
+      "date": "2026-09-06",
+      "player_id": "merch-control",
+      "mention": "Chart enriched with the new project Merch Control, on 2026-09-06"
+    }
+  ]
 };
 </script>
 <script src="../../../assets/positioning-chart-v1.js"></script>
