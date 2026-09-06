@@ -9,6 +9,9 @@
 > tout nouveau run S2 **copie verbatim** son bloc `<style>` inline (tokens + corps +
 > 7 diagrammes + responsive) et son script de rendu ; seules les **données** changent.
 
+> **Largeur de colonne (décision Elena, 2026-09-06 — « tout large et fluide »)** : le conteneur des pages de run suit la colonne fluide des pages parent — **`--maxw / .shell : calc(50vw + 440px)`** (et non 1180 px) — et **aucun plafond de largeur** ne subsiste sur les blocs : pas de `max-width` en `ch` sur h1 / byline / purpose / paragraphes / notes, ni de plafond px sur les diagrammes de pleine colonne (Porter, 9-box). Une seule largeur pour tout le contenu, qui grandit avec l'écran. Les runs canoniques d'apps-perte-de-poids, figés, gardent l'ancienne largeur : **appliquer cette règle après la copie du gabarit.** Runs conformes de référence : `perso-ecommerce/s2-1_2026-09-06/` (S2) et `perso-ecommerce/s3-1_2026-09-06/` (S3).
+
+
 ## Conventions de rédaction (texte des runs)
 
 Règles d'écriture appliquées au run canonique, **obligatoires** pour tout nouveau run :
@@ -26,7 +29,7 @@ Règles d'écriture appliquées au run canonique, **obligatoires** pour tout nou
 - **Autonome et figée** : tout le CSS du design system est **inline dans le `<head>`**
   (run = artefact figé, indépendant de tout asset partagé pour son corps). Charge les
   Google Fonts du design (Hanken Grotesk + IBM Plex Mono + Instrument Serif). Conteneur
-  fluide `.shell` (`max-width:1180px`, gouttière `clamp(20px,5vw,56px)`).
+  fluide `.shell` (`max-width:calc(50vw + 440px)`, gouttière `clamp(20px,5vw,56px)` — cf. norme de largeur ci-dessous).
 - **En-tête et pied = composants communs évolués** (design system, source unique) :
   `../../assets/siteheader.js` en tête de `<body>` (topbar marque + fil d'Ariane +
   **barre de progression au scroll**, polices du design injectées) et
