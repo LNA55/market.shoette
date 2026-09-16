@@ -53,3 +53,12 @@ Redirect 301 /focus-step-4 /how-it-works/focus-step-4
   RewriteCond %{QUERY_STRING} !(^|&)lang=fr(&|$)
   RewriteRule ^perso-ecommerce/(index\.html)?$ https://market.shoette.com/en/perso-ecommerce/ [R=302,L]
 </IfModule>
+
+# market.shoette.com — noindex global (décision Elena, 2026-09-16 — provisoire)
+# Pas de mur d'accès sur ce sous-domaine en attendant la solution GLOBALE de
+# sécurité multi-projets annoncée : les pages restent accessibles à qui a l'URL,
+# mais aucun moteur de recherche ne doit les indexer. À retirer (ou remplacer)
+# quand la solution globale sera en place.
+<IfModule mod_headers.c>
+  Header always set X-Robots-Tag "noindex, nofollow"
+</IfModule>
