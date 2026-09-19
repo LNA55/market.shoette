@@ -189,6 +189,24 @@ Write in the same language as the input.
 
 # Décisions actées
 
+- **2026-09-18 — Sécurité : market est passé au gate central.** La « solution globale » annoncée le 16/09 est en place
+  (hub d'identité sur `projet.shoette.com`, un compte par personne, droits par dossier ou par page). **market est le 9e
+  sous-domaine migré.** Tout le sous-domaine est **privé** : le `.htaccess` envoie chaque requête au gardien `_hub.php`,
+  qui vérifie la session et les droits avant de servir le fichier — pages, `data.json` et `assets/` compris. Plus aucun
+  mot de passe propre à market ; les accès se règlent dans `https://projet.shoette.com/accounts/`.
+  **Correction d'un constat erroné du 16/09** (« il n'y avait RIEN à supprimer, aucun mur n'a jamais été actif ici ») :
+  un mur **avait bien** été installé le 2026-08-01 — `_gate.php` à la racine distante, realm `market.env`, et un
+  `.htaccess` porteur du jeton **à la racine du dépôt**, hors de `site/`. Il est mort en silence au premier `./deploy.sh`
+  venu : `mirror -R site/ market/` a écrasé le `.htaccess` du serveur par celui de `site/`, qui ne contenait pas le bloc
+  d'accès. D'où la trace « mur market inactif, cause non élucidée » du 06/09. **Leçon** : un fichier de protection qui ne
+  vit pas dans le répertoire déployé est supprimé par le premier déploiement. Les fichiers du gate (`site/.htaccess` et
+  `site/_hub.php`) vivent donc **dans `site/`**, et `./deploy.sh` les emporte avec le reste.
+  Conséquences pratiques : le `.htaccess` est **de nouveau versionné** (il ne porte plus de jeton ; `.htaccess.template`
+  et le `.htaccess` de la racine du dépôt sont supprimés) ; les `Redirect 301` de mod_alias sont réécrites en
+  mod_rewrite **avant** la règle du gardien (mod_rewrite passe avant mod_alias, sinon les vieilles pages seraient servies
+  au lieu d'être redirigées) ; les règles de cache par extension disparaissent (c'est `_hub.php` qui est servi — le
+  gardien envoie `Cache-Control: private, no-cache` + ETag) ; l'anglais par défaut et les 301 historiques sont conservés
+  et vérifiés. Le dépôt GitHub reste **public** : il ne contient aucun secret.
 - **2026-09-16 — Sécurité : accès libre + noindex global, en attendant la solution multi-projets.** Elena annonce une **solution globale de sécurité pour tous ses projets** ; en attendant, consigne : supprimer toute protection propre au sous-domaine (mur, pages à mot de passe) et rester en noindex. **Constat sur market : il n'y avait RIEN à supprimer** — aucun mur ni page protégée n'a jamais été actif ici (le `.htaccess` ne porte que les redirections 301, le cache et le bloc anglais-par-défaut, tous conservés). En revanche le site n'avait **aucun noindex** : ajout d'un **`X-Robots-Tag: noindex, nofollow` global** dans le `.htaccess` (testé en bac à sable avant application, conformément à la règle du 06/09). L'intention antérieure « protection par mot de passe, probablement par marché » (notée le 12/06) est **remplacée** par la future solution globale. Dépôt GitHub : reste **public** (arbitrage Elena du jour — sa mention « privé » était un lapsus).
 
 

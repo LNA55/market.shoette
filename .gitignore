@@ -1,7 +1,5 @@
 .DS_Store
 deploy.config
 
-# Le .htaccess contient le jeton d'acces du mur de mot de passe.
-# Jamais versionne — voir .htaccess.template pour le reconstituer.
-.htaccess
-!.htaccess.template
+# Le .htaccess est versionné depuis le 2026-09-18 : il ne porte plus de jeton d'accès
+# (le mur à mot de passe a été remplacé par le gate central), donc plus rien à cacher.

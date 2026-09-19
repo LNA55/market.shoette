@@ -1,64 +1,62 @@
-# market.shoette.com — redirections
-# Renommage des runs Skill 1 avec préfixe s1- (schéma s[K]-[N]_[date], 2026-06-11)
-Redirect 301 /apps-perte-de-poids/1_2026-06-11 /apps-perte-de-poids/s1-1_2026-06-11
-Redirect 301 /apps-perte-de-poids/2_2026-06-11 /apps-perte-de-poids/s1-2_2026-06-11
-# Pages doc : focus-skill → focus-step (2026-06-12), puis focus-step déplacé sous how-it-works/ (2026-06-15)
-Redirect 301 /focus-skill-1 /how-it-works/focus-step-1
-Redirect 301 /focus-skill-2 /how-it-works/focus-step-2
-Redirect 301 /focus-skill-3 /how-it-works/focus-step-3
-Redirect 301 /focus-skill-4 /how-it-works/focus-step-4
-# Snapshot Step 1 (lien direct historique) — cible spécifique AVANT la redirection de préfixe ci-dessous
-Redirect 301 /focus-step-1/skill-1-read-the-market_2026-06-12.md /how-it-works/focus-step-1/process-skill-11juin2026/skill-1-read-the-market_2026-06-12.md
-# focus-step-N déplacés sous how-it-works/ (2026-06-15) — le préfixe couvre aussi les sous-pages (process)
-Redirect 301 /focus-step-1 /how-it-works/focus-step-1
-Redirect 301 /focus-step-2 /how-it-works/focus-step-2
-Redirect 301 /focus-step-3 /how-it-works/focus-step-3
-Redirect 301 /focus-step-4 /how-it-works/focus-step-4
+# market.shoette.com — gate central (phase 3, 2026-09-18).
+# Tout passe par le gardien (_hub.php), qui vérifie la session et les droits avant de servir le fichier (décision 62).
+# Aucune page publique. Accès réglés dans https://projet.shoette.com/accounts/.
+#
+# ORDRE DES RÈGLES — il compte, et l'inverser casse le site :
+#   1. HTTPS (le cookie de session est « Secure ») ;
+#   2. les redirections 301 historiques ;
+#   3. la vue par défaut en anglais ;
+#   4. le gardien, en dernier : il attrape tout le reste.
+# ⚠ Les anciennes directives « Redirect 301 » (mod_alias) ne peuvent PAS rester : mod_rewrite s'exécute AVANT mod_alias,
+#   donc la règle du gardien prendrait le pas sur elles et servirait les vieilles pages au lieu de rediriger. Elles sont
+#   donc écrites ici en mod_rewrite (même conversion que le 2026-08-01, voir [[ovh-apache-lftp-pieges]]).
+#   Au passage les cibles deviennent propres : mod_alias produisait « https://market.shoette.com:443/… ».
 
-# market.shoette.com — règles de cache
-# Les pages HTML et les data.json évoluent (nouveaux runs, mises à jour Skill 3) :
-# toujours revalider auprès du serveur.
-<IfModule mod_headers.c>
-  <FilesMatch "\.(html|json)$">
-    Header set Cache-Control "no-cache, must-revalidate"
-  </FilesMatch>
-  # Assets versionnés : un changement = un nouveau nom de fichier, donc cache long.
-  <FilesMatch "positioning-chart-v[0-9]+\.(js|css)$">
-    Header set Cache-Control "public, max-age=31536000, immutable"
-  </FilesMatch>
-  # Charte des pages parent : cache court (évolue avec le site).
-  <FilesMatch "^site\.css$">
-    Header set Cache-Control "public, max-age=3600"
-  </FilesMatch>
-</IfModule>
+DirectoryIndex index.html
+Options -Indexes
 
-# market.shoette.com — vue par défaut en ANGLAIS (décision Elena, 2026-09-06 — provisoire)
-# L'accueil et la page « perso-ecommerce » sont servis en anglais par défaut.
-# 302 (temporaire) et jamais 301 : la règle doit pouvoir être retirée sans que les
-# navigateurs gardent la redirection en cache.
-# Le français reste atteignable : « ?lang=fr » (lien FR du sélecteur de langue)
-# échappe la redirection et fait poser un cookie lang=fr par siteheader.js, qui la
-# désactive ensuite sur tout le site ; « ?lang=en » efface ce cookie.
-# ⚠ Un motif contenant une espace DOIT être entre guillemets : sans cela Apache
-#   découpe la directive en trop d'arguments et renvoie 500 sur tout le site
-#   (constaté le 2026-09-06 ; vérifié en bac à sable avant remise en ligne).
-# Pour revenir au français par défaut : supprimer ce bloc ET l'entrée
-# correspondante dans DEFAULT_EN (assets/sitefoot.js).
 <IfModule mod_rewrite.c>
   RewriteEngine On
+  RewriteBase /
+
+  # 1. HTTPS obligatoire : le cookie de session est « Secure ».
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+  # 2. Redirections historiques.
+  # Renommage des runs Skill 1 avec préfixe s1- (schéma s[K]-[N]_[date], 2026-06-11)
+  RewriteRule ^apps-perte-de-poids/1_2026-06-11(/.*)?$ https://%{HTTP_HOST}/apps-perte-de-poids/s1-1_2026-06-11$1 [R=301,L]
+  RewriteRule ^apps-perte-de-poids/2_2026-06-11(/.*)?$ https://%{HTTP_HOST}/apps-perte-de-poids/s1-2_2026-06-11$1 [R=301,L]
+  # focus-skill-N → how-it-works/focus-step-N (2026-06-12)
+  RewriteRule ^focus-skill-([1-4])(/.*)?$ https://%{HTTP_HOST}/how-it-works/focus-step-$1$2 [R=301,L]
+  # Snapshot Step 1 (lien direct historique) — cible spécifique AVANT la règle de préfixe ci-dessous
+  RewriteRule ^focus-step-1/skill-1-read-the-market_2026-06-12\.md$ https://%{HTTP_HOST}/how-it-works/focus-step-1/process-skill-11juin2026/skill-1-read-the-market_2026-06-12.md [R=301,L]
+  # focus-step-N déplacés sous how-it-works/ (2026-06-15) — le préfixe couvre aussi les sous-pages (process)
+  RewriteRule ^focus-step-([1-4])(/.*)?$ https://%{HTTP_HOST}/how-it-works/focus-step-$1$2 [R=301,L]
+
+  # 3. Vue par défaut en ANGLAIS (décision Elena, 2026-09-06 — provisoire).
+  # 302 (temporaire) et jamais 301 : la règle doit pouvoir être retirée sans que les navigateurs la gardent en cache.
+  # Le français reste atteignable : « ?lang=fr » échappe la redirection et fait poser un cookie lang=fr par
+  # siteheader.js, qui la désactive ensuite sur tout le site ; « ?lang=en » efface ce cookie.
+  # ⚠ Un motif contenant une espace DOIT être entre guillemets, sinon Apache renvoie 500 sur tout le site (2026-09-06).
+  # Pour revenir au français par défaut : supprimer ce bloc ET l'entrée correspondante dans DEFAULT_EN (assets/sitefoot.js).
   RewriteCond %{HTTP_COOKIE} "!(^|;[ ]*)lang=fr"
   RewriteCond %{QUERY_STRING} !(^|&)lang=fr(&|$)
-  RewriteRule ^(index\.html)?$ https://market.shoette.com/en/ [R=302,L]
+  RewriteRule ^(index\.html)?$ https://%{HTTP_HOST}/en/ [R=302,L]
   RewriteCond %{HTTP_COOKIE} "!(^|;[ ]*)lang=fr"
   RewriteCond %{QUERY_STRING} !(^|&)lang=fr(&|$)
-  RewriteRule ^perso-ecommerce/(index\.html)?$ https://market.shoette.com/en/perso-ecommerce/ [R=302,L]
+  RewriteRule ^perso-ecommerce/(index\.html)?$ https://%{HTTP_HOST}/en/perso-ecommerce/ [R=302,L]
+
+  # 4. Gardien, en dernier.
+  RewriteRule ^_hub\.php$ - [L]
+  RewriteRule ^ _hub.php [L]
 </IfModule>
 
-# market.shoette.com — noindex global (décision Elena, 2026-09-16 — provisoire)
-# Pas de mur d'accès sur ce sous-domaine en attendant la solution GLOBALE de
-# sécurité multi-projets annoncée : les pages restent accessibles à qui a l'URL,
-# mais aucun moteur de recherche ne doit les indexer. À retirer (ou remplacer)
-# quand la solution globale sera en place.
+# Plus de règles de cache par extension : c'est _hub.php qui est servi, donc un « FilesMatch \.html$ » ne correspondrait
+# plus à rien. Le gardien envoie « Cache-Control: private, no-cache » + ETag : le navigateur revalide à chaque visite,
+# pour qu'un accès retiré ou une déconnexion prennent effet tout de suite.
+
 <IfModule mod_headers.c>
-  Header always set X-Robots-Tag "noindex, nofollow"
+  Header set X-Robots-Tag "noindex, nofollow, noarchive"
 </IfModule>

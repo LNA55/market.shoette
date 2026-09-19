@@ -5,7 +5,8 @@
 ```
 site/
 ├── index.html                       accueil — liste des marchés (zone MARKETS) ; en-tête injecté par siteheader.js, footer complet par sitefoot.js
-├── .htaccess                        règles de cache (HTML revalidé, assets versionnés cachés)
+├── .htaccess                        gate central : HTTPS, 301 historiques, anglais par défaut, puis TOUT vers _hub.php
+├── _hub.php                         gardien du gate — NE JAMAIS supprimer : sans lui le site n'est plus protégé
 ├── how-it-works/                    page « méthode » — doc, domaine d'Elena ; PARENT des pages d'étape (2026-06-15)
 │   ├── focus-step-1/ … focus-step-4/   une page d'étape chacune (focus-step-1 contient process-skill-…)
 │   └── focus-step-1/process-skill-…/   page enfant datée du process

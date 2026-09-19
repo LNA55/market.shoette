@@ -77,5 +77,5 @@ Contracts: [references/s4-contracts.md](references/s4-contracts.md) — page str
 - **Frankness over complacency**: Elena's declared choices get a real verdict, contradicted by data when the data contradicts them. The same applies to the overall **GO / NO GO** — it is binary, decided from the full synthesis, and must be able to say NO.
 - Conventions everywhere: `~` estimated, `—` not found, declarative values flagged; a recommendation displays its uncertainty.
 - Skill 4 touches no other run — frozen runs, no exception.
-- Publication: standard, like every run (Elena, 2026-06-12 — site-wide or per-market password planned later, out of this skill's scope).
+- Publication: standard, like every run. Since 2026-09-18 the whole of market.shoette.com is private behind the central gate (projet.shoette.com): no per-site password; access is granted in /accounts, out of this skill's scope.
 - **Models**: strategic reasoning and writing on the best model available in the session; M&A lookups on Sonnet subagents.
