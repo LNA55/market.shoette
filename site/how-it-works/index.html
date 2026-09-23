@@ -9,6 +9,19 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/site.css">
+<style>
+/* Tableau du vocabulaire — section « Vocabulary » de la documentation produit (23/09/2026). */
+.vocab{width:100%;border-collapse:collapse;margin:18px 0 6px;font-size:.95rem}
+.vocab th{text-align:left;font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;opacity:.55;font-weight:700;
+  padding:0 18px 10px 0;border-bottom:1px solid rgba(128,128,128,.3)}
+.vocab td{padding:12px 18px 12px 0;border-bottom:1px solid rgba(128,128,128,.18);vertical-align:top;line-height:1.5}
+.vocab td:first-child{white-space:nowrap;font-weight:600}
+.vocab td:nth-child(2){white-space:nowrap;opacity:.65}
+.vocab td:last-child{opacity:.88}
+@media(max-width:640px){.vocab,.vocab tbody,.vocab tr,.vocab td{display:block;width:100%}
+  .vocab thead{display:none}.vocab tr{padding:12px 0;border-bottom:1px solid rgba(128,128,128,.18)}
+  .vocab td{border:0;padding:2px 0}.vocab td:nth-child(2){font-style:italic}}
+</style>
 </head>
 <body>
 <script src="../assets/siteheader.js" data-crumb="accueil"></script>
@@ -18,6 +31,7 @@
     <section class="hero">
       <span class="kicker">Documentation</span>
       <h1>Comment ça marche</h1>
+      <p style="margin:6px 0 0"><a href="#vocabulary">Vocabulary</a></p>
       <p class="lede">Un agent lit des marchés, étape par étape, et publie ici ses lectures — datées, sourcées, comparables dans le temps.</p>
     </section>
 
@@ -41,6 +55,25 @@
       <li><b>Les données brutes ne sont pas conservées</b> — articles et pages consultés sont jetés après le run ; la traçabilité passe par les sources, toutes référencées et datées en annexe.</li>
       <li><b>Les estimations sont signalées</b> — le préfixe « ~ » accompagne toute valeur estimée, et un acteur sans données chiffrées est listé visiblement, jamais omis en silence.</li>
     </ul>
+
+    <h2 class="doc-section-h" id="vocabulary" style="margin-top:48px">Vocabulary</h2>
+    <p>Les mots qui nomment les parties du projet. Le même mot est employé à l’oral, dans cette documentation et dans
+      le code — noms de dossiers, de fichiers et de balises compris.</p>
+    <table class="vocab">
+      <thead><tr><th>Terme (FR)</th><th>Term (EN)</th><th>Définition</th></tr></thead>
+      <tbody>
+      <tr><td>Agent</td><td>Agent</td><td>Claude Code en local, qui orchestre les skills avec le contexte d’un marché. Toute l’intelligence tourne hors ligne ; le site, lui, est entièrement statique.</td></tr>
+      <tr><td>Acteur</td><td>Player</td><td>Une entreprise présente sur un marché, relevée et comparée par l’agent. Un acteur sans données chiffrées est listé visiblement, jamais omis.</td></tr>
+      <tr><td>Canevas de données</td><td>Data canvas</td><td>Les données structurées d’un run — acteurs, dimensions, valeurs — qui alimentent les graphiques et les étapes suivantes. Dans le code : <code>data.json</code>, un par run.</td></tr>
+      <tr><td>Dimension</td><td>Dimension</td><td>Un axe de comparaison des acteurs d’un marché (prix, audience, positionnement…).</td></tr>
+      <tr><td>Estimation</td><td>Estimate</td><td>Une valeur non sourcée, toujours précédée de « ~ ». Jamais présentée comme un chiffre établi.</td></tr>
+      <tr><td>Marché</td><td>Market</td><td>Le sujet d’une veille (chaussure, apps de perte de poids…). Chaque marché a sa page et son dossier, et accumule ses runs.</td></tr>
+      <tr><td>Run</td><td>Run</td><td>Une exécution datée d’une étape : un rapport figé, publié sur la page de son marché et <strong>jamais modifié ensuite</strong>. L’évolution d’un marché se lit en comparant ses runs.</td></tr>
+      <tr><td>Skill</td><td>Skill</td><td>Le nom interne d’une étape du pipeline : les dossiers de runs commencent par <code>s1-</code> à <code>s4-</code> et la page d’un marché est balisée <code>RUNS-SKILL1</code>… Même chose qu’une étape, vue du code.</td></tr>
+      <tr><td>Source</td><td>Source</td><td>La référence datée d’où vient une information. Les pages brutes sont jetées après le run : la traçabilité passe entièrement par les sources, en annexe.</td></tr>
+      <tr><td>Étape</td><td>Step</td><td>L’un des quatre temps du pipeline : Read the Market, Present the Market, Position MY product in the Market, Strategy recommendation. Une étape fait une chose, produit un livrable daté et nourrit la suivante.</td></tr>
+      </tbody>
+    </table>
   </main>
 
 

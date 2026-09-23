@@ -20,6 +20,7 @@
     <section class="hero">
       <span class="kicker">Documentation</span>
       <h1>How it works</h1>
+      <p style="margin:6px 0 0"><a href="#vocabulary">Vocabulary</a></p>
       <p class="lede">An agent reads markets, step by step, and publishes its readings here — dated, sourced, comparable over time.</p>
     </section>
 
@@ -43,6 +44,24 @@
       <li><b>Raw data is not kept</b> — articles and pages consulted are discarded after the run; traceability goes through the sources, all referenced and dated in an appendix.</li>
       <li><b>Estimates are flagged</b> — the “~” prefix accompanies any estimated value, and a player with no quantified data is listed visibly, never silently omitted.</li>
     </ul>
+    <h2 class="doc-section-h" id="vocabulary" style="margin-top:48px">Vocabulary</h2>
+    <p>The words that name the parts of the project. The same word is used out loud, in this documentation and in the
+      code — folder, file and tag names included.</p>
+    <table class="vocab">
+      <thead><tr><th>Term (EN)</th><th>Terme (FR)</th><th>Definition</th></tr></thead>
+      <tbody>
+      <tr><td>Agent</td><td>Agent</td><td>Claude Code running locally, orchestrating the skills with a market's context. All the reasoning happens offline; the site itself is fully static.</td></tr>
+      <tr><td>Player</td><td>Acteur</td><td>A company present on a market, gathered and compared by the agent. A player with no quantified data is listed visibly, never omitted.</td></tr>
+      <tr><td>Data canvas</td><td>Canevas de données</td><td>The structured data of a run — players, dimensions, values — feeding the charts and the following steps. In the code: <code>data.json</code>, one per run.</td></tr>
+      <tr><td>Dimension</td><td>Dimension</td><td>An axis along which the players of a market are compared (price, audience, positioning…).</td></tr>
+      <tr><td>Estimate</td><td>Estimation</td><td>A value with no source, always prefixed with “~”. Never presented as an established figure.</td></tr>
+      <tr><td>Market</td><td>Marché</td><td>The subject of a watch (footwear, weight-loss apps…). Each market has its page and its folder, and accumulates its runs.</td></tr>
+      <tr><td>Run</td><td>Run</td><td>A dated execution of a step: a frozen report, published on its market's page and <strong>never modified afterwards</strong>. A market's evolution is read by comparing its runs.</td></tr>
+      <tr><td>Skill</td><td>Skill</td><td>The internal name of a pipeline step: run folders start with <code>s1-</code> to <code>s4-</code> and a market page is tagged <code>RUNS-SKILL1</code>… The same thing as a step, seen from the code.</td></tr>
+      <tr><td>Source</td><td>Source</td><td>The dated reference an information comes from. Raw pages are discarded after the run: traceability goes entirely through the sources, in an appendix.</td></tr>
+      <tr><td>Step</td><td>Étape</td><td>One of the four moments of the pipeline: Read the Market, Present the Market, Position MY product in the Market, Strategy recommendation. A step does one thing, produces a dated deliverable and feeds the next one.</td></tr>
+      </tbody>
+    </table>
   </main>
 
 
