@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Préférences — My Market Data</title>
+  <meta name="description" content="Les paramètres retenus pour My Market Data : langues, accès, indexation, mesure d'audience, conventions d'écriture et de données. Page d'information, en lecture seule.">
+  <link rel="alternate" hreflang="fr" href="https://market.shoette.com/preferences.html">
+  <link rel="alternate" hreflang="en" href="https://market.shoette.com/en/preferences.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css">
+<style>
+/* Table clé/valeur des préférences — lecture seule. */
+.pref{width:100%;border-collapse:collapse;margin:14px 0 6px;font-size:.95rem}
+.pref th{text-align:left;font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;opacity:.55;font-weight:700;
+  padding:0 18px 10px 0;border-bottom:1px solid rgba(128,128,128,.3)}
+.pref td{padding:12px 18px 12px 0;border-bottom:1px solid rgba(128,128,128,.18);vertical-align:top;line-height:1.55}
+.pref td:first-child{width:30%;font-weight:600}
+.pref td:last-child{opacity:.88}
+@media(max-width:640px){.pref,.pref tbody,.pref tr,.pref td{display:block;width:100%}
+  .pref thead{display:none}.pref tr{padding:12px 0;border-bottom:1px solid rgba(128,128,128,.18)}
+  .pref td{border:0;padding:2px 0}.pref td:first-child{width:auto}}
+</style>
+</head>
+<body>
+<script src="assets/siteheader.js" data-crumb="accueil"></script>
+<div class="shell">
+
+  <main>
+    <section class="hero">
+      <span class="kicker">Préférences</span>
+      <h1>Préférences</h1>
+      <p class="lede">Les paramètres effectivement retenus pour ce site. Page d'information, en <b>lecture seule</b> : rien ne se règle ici.</p>
+    </section>
+
+    <h2 class="doc-section-h" style="margin-top:44px">Langues</h2>
+    <table class="pref">
+      <thead><tr><th>Paramètre</th><th>Valeur</th></tr></thead>
+      <tbody>
+        <tr><td>Langue de référence</td><td>Français — les runs sont rédigés dans la langue de la demande, le français par défaut.</td></tr>
+        <tr><td>Langues disponibles</td><td>Français et anglais. La langue se déduit de l'URL : le français à la racine, l'anglais sous <code>/en/</code>. Le sélecteur est dans le pied de page.</td></tr>
+        <tr><td>Vue par défaut</td><td><b>Anglais</b> sur l'accueil et sur le marché « personnalisation e-commerce » ; français partout ailleurs. Réglage provisoire (6 septembre 2026) : le français reste atteignable par le lien FR du pied de page, et ce choix est ensuite mémorisé.</td></tr>
+        <tr><td>Pages traduites</td><td>L'accueil, la documentation et ses quatre focus, les pages corporate, le marché « apps de perte de poids » (6 runs sur 7) et le marché « personnalisation e-commerce » (page + run S1). Une page non traduite renvoie vers sa version française plutôt que vers une page vide.</td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="doc-section-h" style="margin-top:44px">Accès et visibilité</h2>
+    <table class="pref">
+      <thead><tr><th>Paramètre</th><th>Valeur</th></tr></thead>
+      <tbody>
+        <tr><td>Accès</td><td>Site <b>entièrement privé</b> depuis le 18 septembre 2026 : chaque page, chaque jeu de données et chaque fichier de style passe par le contrôle d'accès commun à tous les projets. Aucune page publique. Les droits se règlent ailleurs, dans l'espace des comptes.</td></tr>
+        <tr><td>Indexation</td><td><code>noindex, nofollow, noarchive</code> sur toutes les réponses, redirections comprises. Le site n'apparaît dans aucun moteur de recherche.</td></tr>
+        <tr><td>Mesure d'audience</td><td>Cloudflare Web Analytics, <b>sans cookie</b> et sans identifiant personnel. La mesure est désactivée en local, pour que les previews de travail ne faussent pas les statistiques.</td></tr>
+        <tr><td>Cookies déposés</td><td>Un seul, fonctionnel : la préférence de langue, quand le lecteur clique « FR » ou « EN ». Aucun cookie publicitaire ni de suivi.</td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="doc-section-h" style="margin-top:44px">Contenu suivi</h2>
+    <table class="pref">
+      <thead><tr><th>Paramètre</th><th>Valeur</th></tr></thead>
+      <tbody>
+        <tr><td>Marchés suivis</td><td>Quatre : applications d'assistance à la perte de poids · cartes de vœux &amp; d'expression sociale (États-Unis) · capital d'amorçage à micro-tickets · outils SaaS de personnalisation e-commerce.</td></tr>
+        <tr><td>Runs publiés</td><td>Treize, répartis ainsi : 7 · 1 · 1 · 4. Deux marchés ont parcouru les quatre étapes du pipeline ; deux n'ont que l'étape 1.</td></tr>
+        <tr><td>Rythme</td><td>Aucun calendrier automatique : chaque run est déclenché à la demande. Un run n'est jamais modifié après publication.</td></tr>
+        <tr><td>Période de référence</td><td>Choisie run par run (6 mois, 1 an ou 3 ans) selon la vitesse du marché, et justifiée dans le rapport.</td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="doc-section-h" style="margin-top:44px">Conventions d'écriture</h2>
+    <table class="pref">
+      <thead><tr><th>Paramètre</th><th>Valeur</th></tr></thead>
+      <tbody>
+        <tr><td>Valeurs estimées</td><td>Préfixe « ~ » sur toute estimation ; « — » quand la donnée est introuvable. Une estimation n'est jamais présentée comme un chiffre établi.</td></tr>
+        <tr><td>Unités</td><td>En toutes lettres — « milliard(s) $ », « million(s) $ » — jamais d'abréviation, pour écarter toute confusion de lecture.</td></tr>
+        <tr><td>Gloses</td><td>Un terme défini est entre guillemets « … » en français, en <i>italique</i> en anglais. Les acronymes sont explicités à leur première occurrence.</td></tr>
+        <tr><td>Largeur de lecture</td><td>Colonne fluide qui suit la largeur de l'écran, identique sur toutes les pages de run (choix du 6 septembre 2026).</td></tr>
+        <tr><td>Typographies</td><td>Hanken Grotesk (texte), IBM Plex Mono (étiquettes et chiffres), Instrument Serif (questions des frameworks).</td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="doc-section-h" style="margin-top:44px">Données</h2>
+    <table class="pref">
+      <thead><tr><th>Paramètre</th><th>Valeur</th></tr></thead>
+      <tbody>
+        <tr><td>Données structurées</td><td>Conservées : chaque run embarque son canevas de données, versionné à côté de son rapport. Pas de base de données.</td></tr>
+        <tr><td>Données brutes</td><td>Non conservées : les pages et articles consultés sont jetés après le run. La traçabilité passe par les sources, référencées et datées en annexe.</td></tr>
+        <tr><td>Données personnelles</td><td>Aucune n'est collectée par le site.</td></tr>
+        <tr><td>Hébergement</td><td>OVH (France). Site entièrement statique : aucun traitement côté serveur en dehors du contrôle d'accès.</td></tr>
+      </tbody>
+    </table>
+
+    <p class="note" style="margin-top:34px;font-size:13px;opacity:.65">Mis à jour le 24 septembre 2026.</p>
+  </main>
+</div>
+  <script src="assets/sitefoot.js"></script>
+</body>
+</html>

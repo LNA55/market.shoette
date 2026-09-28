@@ -53,7 +53,12 @@ body {
 
 /* Largeur fluide : marges latérales = la moitié de celles d'un conteneur fixe de 880px,
    à toute largeur d'écran — aucun saut de breakpoint (validé Elena, 2026-06-11). */
-.shell { max-width: calc(50vw + 440px); margin: 0 auto; padding: 32px 24px 80px; }
+.shell { max-width: calc(50vw + 440px); margin: 0 auto; padding: 32px 24px 80px;
+  /* Le halo décoratif de .hero::before déborde de 80px à droite : on le rogne ici,
+     sinon il provoque un défilement horizontal sur toutes les pages (corrigé le 24/09/2026).
+     « clip » plutôt que « hidden » : ne crée pas de conteneur de défilement, donc
+     n'affecte pas l'en-tête sticky. Les runs figés n'utilisent pas cette feuille. */
+  overflow-x: clip; }
 
 /* ---------- en-tête de site ---------- */
 /* Le header (logo + fil d'Ariane + barre de progression) est injecté par

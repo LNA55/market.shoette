@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Comment ça marche — Veille concurrentielle</title>
-  <meta name="description" content="Comment fonctionne My Market Data : un agent lit des marchés en quatre étapes et publie des rapports datés — les runs — qui s'accumulent au fil des cycles.">
+  <title>Documentation produit — Veille concurrentielle</title>
+  <meta name="description" content="Documentation produit de My Market Data : à quoi sert l'outil, comment il est construit, ce que contient chaque écran, et le vocabulaire du projet.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -21,6 +21,14 @@
 @media(max-width:640px){.vocab,.vocab tbody,.vocab tr,.vocab td{display:block;width:100%}
   .vocab thead{display:none}.vocab tr{padding:12px 0;border-bottom:1px solid rgba(128,128,128,.18)}
   .vocab td{border:0;padding:2px 0}.vocab td:nth-child(2){font-style:italic}}
+/* Sous-titres et sommaire des quatre parties (product wrap-up du 24/09/2026). */
+.doc-sub{font-size:17px;font-weight:700;letter-spacing:-.01em;margin:30px 0 10px}
+.doc-toc{display:flex;flex-wrap:wrap;gap:8px 18px;margin:14px 0 0;padding:0;list-style:none;
+  font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12.5px}
+.doc-toc a{opacity:.7;text-decoration:none;border-bottom:1px solid rgba(128,128,128,.35)}
+.doc-toc a:hover{opacity:1}
+.doc-part{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.13em;
+  text-transform:uppercase;opacity:.5;font-weight:600;display:block;margin:0 0 6px}
 </style>
 </head>
 <body>
@@ -29,16 +37,58 @@
 
   <main>
     <section class="hero">
-      <span class="kicker">Documentation</span>
+      <span class="kicker">Documentation produit</span>
       <h1>Comment ça marche</h1>
-      <p style="margin:6px 0 0"><a href="#vocabulary">Vocabulary</a></p>
       <p class="lede">Un agent lit des marchés, étape par étape, et publie ici ses lectures — datées, sourcées, comparables dans le temps.</p>
+      <ul class="doc-toc">
+        <li><a href="#business">Résumé business</a></li>
+        <li><a href="#admin">Documentation admin</a></li>
+        <li><a href="#produit">Documentation produit</a></li>
+        <li><a href="#vocabulary">Vocabulary</a></li>
+      </ul>
     </section>
 
-    <h2 class="doc-section-h">L'idée</h2>
+    <!-- ─────────────────────────────── 1. Résumé business ─────────────────────────────── -->
+    <h2 class="doc-section-h" id="business" style="margin-top:52px"><span class="doc-part">Partie 1</span>Résumé business</h2>
+    <p><b>My Market Data répond à une question simple : « à quoi ressemble vraiment ce marché, et quelle place mon produit peut-il y prendre ? »</b> — sans payer une étude de cabinet, et sans y passer des semaines. Un agent lit le marché, identifie ses acteurs, estime leurs parts, applique les grilles d'analyse pertinentes, puis y situe un projet et conclut par une recommandation franche, capable de dire non.</p>
+    <p>L'outil sert d'abord son autrice, qui teste ses propres projets avant de s'y engager — mais il est conçu pour n'importe quel marché : tout ce qui est propre à un sujet vit dans les données, jamais dans le code. Sa valeur tient à trois partis pris : <b>des rapports datés et figés</b>, qui rendent l'évolution d'un marché lisible d'un cycle à l'autre ; <b>des sources systématiquement citées</b> et des estimations signalées comme telles ; et <b>un verdict qui tranche</b>, là où une étude de marché ordinaire se contente de décrire.</p>
+
+    <!-- ─────────────────────────────── 2. Documentation admin ─────────────────────────── -->
+    <h2 class="doc-section-h" id="admin" style="margin-top:52px"><span class="doc-part">Partie 2</span>Documentation admin</h2>
+    <p>Comment l'outil est construit — de quoi reprendre la main après des mois sans y toucher.</p>
+
+    <h3 class="doc-sub">Architecture</h3>
+    <ul class="kpis" style="margin:10px 0 0">
+      <li><b>Site entièrement statique.</b> Tout est fabriqué en local par l'agent, puis mis en ligne par simple miroir de fichiers. Aucun traitement côté serveur, à la seule exception du contrôle d'accès.</li>
+      <li><b>Une page par run, autonome.</b> Chaque rapport embarque ses propres styles : il reste lisible exactement tel qu'il a été publié, même quand le design du site évolue ensuite.</li>
+      <li><b>Un chrome commun, injecté.</b> L'en-tête, le fil d'Ariane, la barre des quatre étapes et le pied de page viennent de trois scripts partagés — la configuration du site (marque, marchés, pages, libellés) tient en un seul bloc, en tête du script du pied de page. Modifier la navigation, c'est modifier ce bloc, jamais les quarante pages.</li>
+      <li><b>Les pages de navigation partagent une feuille de style unique</b> (accueil, pages de marché, cette documentation). Les rapports, eux, sont volontairement indépendants.</li>
+      <li><b>Le graphique de positionnement est un moteur versionné à part</b>, réutilisé tel quel par tous les runs : il n'évolue jamais pendant la production d'un rapport.</li>
+    </ul>
+
+    <h3 class="doc-sub">Choix techniques, et pourquoi</h3>
+    <ul class="kpis" style="margin:10px 0 0">
+      <li><b>Les données d'un run existent en double</b> — dans la page et dans un fichier à côté, strictement identiques. La page se suffit à elle-même ; le fichier reste exploitable par un tableur ou par l'étape suivante.</li>
+      <li><b>Les rapports sont figés, mais pas leur style.</b> On peut restyler un ancien rapport ; on ne touche jamais à ses chiffres. Une seule exception, encadrée : l'étape 3 ajoute un projet au graphique d'un rapport existant, sans rien modifier d'autre.</li>
+      <li><b>La langue se lit dans l'adresse</b> (racine en français, <code>/en/</code> en anglais) plutôt que dans un stockage local : une page partagée s'ouvre dans la bonne langue, et une page non traduite retombe proprement sur sa version française.</li>
+      <li><b>Les pages de marché ont des zones balisées</b> que l'agent est seul à réécrire ; le reste de la page appartient à son autrice et n'est jamais écrasé.</li>
+    </ul>
+
+    <h3 class="doc-sub">Pièges connus</h3>
+    <ul class="kpis" style="margin:10px 0 0">
+      <li><b>L'ordre des règles de redirection compte.</b> Le contrôle d'accès attrape tout : il doit rester la dernière règle, sinon les anciennes adresses ne sont plus redirigées.</li>
+      <li><b>Une règle de redirection qui contient une espace doit être entre guillemets</b> — sans quoi le serveur rejette le fichier entier et tout le site tombe. Toute nouvelle règle se teste d'abord dans un dossier jetable.</li>
+      <li><b>La mise en ligne n'efface rien à distance.</b> Un fichier supprimé en local survit en ligne tant qu'on ne le retire pas explicitement.</li>
+      <li><b>Vérifier le site en ligne demande d'être connecté</b> : une requête anonyme ne voit plus que la page de connexion.</li>
+    </ul>
+
+    <!-- ─────────────────────────────── 3. Documentation produit ───────────────────────── -->
+    <h2 class="doc-section-h" id="produit" style="margin-top:52px"><span class="doc-part">Partie 3</span>Documentation produit</h2>
+
+    <h3 class="doc-sub">L'idée</h3>
     <p>My Market Data est animé par un <b>agent de veille concurrentielle</b>, conçu pour être réutilisable sur n'importe quel marché. Son process est découpé en <b>étapes</b> : chacune fait une chose précise, produit un livrable daté, et nourrit la suivante. L'agent travaille hors ligne — recherche, analyse, fabrication des rapports — puis publie le résultat sur ce site, entièrement statique.</p>
 
-    <h2 class="doc-section-h" style="margin-top:48px">Le pipeline, en quatre étapes</h2>
+    <h3 class="doc-sub">Le pipeline, en quatre étapes</h3>
     <ul class="kpis" style="margin:10px 0 0">
       <li><b><a href="focus-step-1/">Étape 1 — Read the Market</a></b> : débroussailler le marché — ses grilles de lecture, ses principaux acteurs, les premiers ordres de grandeur.</li>
       <li><b><a href="focus-step-2/">Étape 2 — Present the Market</a></b> : présenter le marché par ses grands KPI business et les frameworks d'analyse pertinents pour <i>ce</i> marché-là.</li>
@@ -46,34 +96,54 @@
       <li><b><a href="focus-step-4/">Étape 4 — Strategy recommendation</a></b> : conclure — des recommandations stratégiques alignées sur mes objectifs.</li>
     </ul>
 
-    <h2 class="doc-section-h" style="margin-top:48px">Les runs</h2>
+    <h3 class="doc-sub">Les runs</h3>
     <p>Chaque exécution d'une étape produit un <b>run</b> : un rapport figé et daté, publié sur la page de son marché. Les runs ne sont jamais modifiés après publication — ils photographient le marché à un instant donné. Au fil des cycles, ils s'accumulent : <b>l'évolution d'un marché se lit en comparant ses runs</b>.</p>
 
-    <h2 class="doc-section-h" style="margin-top:48px">Les données</h2>
+    <h3 class="doc-sub">Les données</h3>
     <ul class="kpis" style="margin:10px 0 0">
       <li><b>Les données structurées sont conservées</b> — chaque run embarque son canevas de données (acteurs, dimensions, valeurs), versionné, qui alimente les graphiques et les étapes suivantes.</li>
       <li><b>Les données brutes ne sont pas conservées</b> — articles et pages consultés sont jetés après le run ; la traçabilité passe par les sources, toutes référencées et datées en annexe.</li>
       <li><b>Les estimations sont signalées</b> — le préfixe « ~ » accompagne toute valeur estimée, et un acteur sans données chiffrées est listé visiblement, jamais omis en silence.</li>
     </ul>
 
-    <h2 class="doc-section-h" id="vocabulary" style="margin-top:48px">Vocabulary</h2>
+    <h3 class="doc-sub">Les écrans du site</h3>
+    <ul class="kpis" style="margin:10px 0 0">
+      <li><b>L'accueil</b> — la liste des marchés suivis, chacun avec son nombre de runs et la date du dernier.</li>
+      <li><b>La page d'un marché</b> — les runs de ce marché, rangés par étape (1 à 4), du plus ancien au plus récent. Une étape sans run le dit explicitement.</li>
+      <li><b>Un rapport d'étape 1</b> — hypothèses retenues, résumé exécutif et grille de lecture en cinq dimensions, un nuage part de marché × croissance, le <b>graphique de positionnement interactif</b> (on choisit ce que représentent la hauteur, la position horizontale, la couleur, la taille, l'opacité et la bordure des marqueurs ; un clic sur un marqueur ouvre la fiche de l'acteur), le tableau des mêmes données, une lecture par segment, puis les sources et un lexique bilingue.</li>
+      <li><b>Un rapport d'étape 2</b> — une bande de quatre chiffres clés dont un « choc », la définition du marché et sa ventilation, le choix motivé des grilles d'analyse, puis une carte par framework avec son diagramme.</li>
+      <li><b>Un rapport d'étape 3</b> — le projet positionné : sa valeur sur chaque dimension et pourquoi, un lien vers le graphique enrichi, et l'analyse de l'endroit où il atterrit.</li>
+      <li><b>Un rapport d'étape 4</b> — le verdict GO / NO GO en tête, la synthèse du marché et du positionnement, un SWOT, les quatre P du marketing mix, les recommandations et les cibles de partenariat ou de rachat.</li>
+      <li><b>Le sélecteur de langue</b>, en bas de chaque page : une page non encore traduite reste grisée plutôt que de mener à une impasse.</li>
+    </ul>
+
+    <!-- ─────────────────────────────── 4. Vocabulary ───────────────────────────────────── -->
+    <h2 class="doc-section-h" id="vocabulary" style="margin-top:52px"><span class="doc-part">Partie 4</span>Vocabulary</h2>
     <p>Les mots qui nomment les parties du projet. Le même mot est employé à l’oral, dans cette documentation et dans
       le code — noms de dossiers, de fichiers et de balises compris.</p>
     <table class="vocab">
       <thead><tr><th>Terme (FR)</th><th>Term (EN)</th><th>Définition</th></tr></thead>
       <tbody>
-      <tr><td>Agent</td><td>Agent</td><td>Claude Code en local, qui orchestre les skills avec le contexte d’un marché. Toute l’intelligence tourne hors ligne ; le site, lui, est entièrement statique.</td></tr>
       <tr><td>Acteur</td><td>Player</td><td>Une entreprise présente sur un marché, relevée et comparée par l’agent. Un acteur sans données chiffrées est listé visiblement, jamais omis.</td></tr>
+      <tr><td>Agent</td><td>Agent</td><td>Claude Code en local, qui orchestre les skills avec le contexte d’un marché. Toute l’intelligence tourne hors ligne ; le site, lui, est entièrement statique.</td></tr>
+      <tr><td>Cadre d’analyse</td><td>Framework</td><td>Une grille d’analyse appliquée à un marché à l’étape 2 (TAM/SAM/SOM, Porter, chaîne de valeur, PESTEL…). Les cadres retenus sont choisis par des règles, jamais cochés par habitude ; le rapport ne montre que ceux qui ont été retenus.</td></tr>
       <tr><td>Canevas de données</td><td>Data canvas</td><td>Les données structurées d’un run — acteurs, dimensions, valeurs — qui alimentent les graphiques et les étapes suivantes. Dans le code : <code>data.json</code>, un par run.</td></tr>
       <tr><td>Dimension</td><td>Dimension</td><td>Un axe de comparaison des acteurs d’un marché (prix, audience, positionnement…).</td></tr>
+      <tr><td>Enrichissement</td><td>Enrichment</td><td>L’ajout d’un projet positionné au graphique d’un run déjà publié. Strictement additif — c’est la seule exception au principe des runs figés.</td></tr>
       <tr><td>Estimation</td><td>Estimate</td><td>Une valeur non sourcée, toujours précédée de « ~ ». Jamais présentée comme un chiffre établi.</td></tr>
+      <tr><td>Étape</td><td>Step</td><td>L’un des quatre temps du pipeline : Read the Market, Present the Market, Position MY product in the Market, Strategy recommendation. Une étape fait une chose, produit un livrable daté et nourrit la suivante.</td></tr>
+      <tr><td>Graphique de positionnement</td><td>Positioning chart</td><td>Le graphique interactif d’un rapport d’étape 1, où chaque acteur est un marqueur et où l’on choisit ce que représentent hauteur, position, couleur, taille, opacité et bordure. Dans le code il s’appelle <code>positioning-chart</code> ; les contrats de l’agent le désignent aussi par sa place dans le rapport, « 2b ».</td></tr>
       <tr><td>Marché</td><td>Market</td><td>Le sujet d’une veille (chaussure, apps de perte de poids…). Chaque marché a sa page et son dossier, et accumule ses runs.</td></tr>
+      <tr><td>Panel</td><td>Panel</td><td>L’ensemble d’acteurs comparables retenu pour estimer des parts quand le marché ne publie aucun chiffre commun. Les parts se lisent alors <i>au sein du panel</i>, pas du marché entier — le rapport le dit toujours.</td></tr>
+      <tr><td>Projet positionné</td><td>Positioned project</td><td>Mon produit, tel qu’il figure sur le graphique d’un marché après l’étape 3 : marqueur ✺, part de marché à 0 %, valeurs déclaratives signalées comme telles.</td></tr>
       <tr><td>Run</td><td>Run</td><td>Une exécution datée d’une étape : un rapport figé, publié sur la page de son marché et <strong>jamais modifié ensuite</strong>. L’évolution d’un marché se lit en comparant ses runs.</td></tr>
       <tr><td>Skill</td><td>Skill</td><td>Le nom interne d’une étape du pipeline : les dossiers de runs commencent par <code>s1-</code> à <code>s4-</code> et la page d’un marché est balisée <code>RUNS-SKILL1</code>… Même chose qu’une étape, vue du code.</td></tr>
       <tr><td>Source</td><td>Source</td><td>La référence datée d’où vient une information. Les pages brutes sont jetées après le run : la traçabilité passe entièrement par les sources, en annexe.</td></tr>
-      <tr><td>Étape</td><td>Step</td><td>L’un des quatre temps du pipeline : Read the Market, Present the Market, Position MY product in the Market, Strategy recommendation. Une étape fait une chose, produit un livrable daté et nourrit la suivante.</td></tr>
+      <tr><td>Verdict</td><td>Verdict</td><td>La conclusion binaire d’un rapport d’étape 4 : <b>GO</b> ou <b>NO GO</b>, décidée en dernier mais affichée en premier. Elle doit pouvoir dire non — une condition nuance le verdict, elle ne l’adoucit jamais.</td></tr>
       </tbody>
     </table>
+
+    <p class="note" style="margin-top:34px;font-size:13px;opacity:.65">Mis à jour le 24 septembre 2026.</p>
   </main>
 
 

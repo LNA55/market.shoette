@@ -3,31 +3,94 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>How it works — Competitive intelligence</title>
-  <meta name="description" content="How My Market Data works: an agent reads markets in four steps and publishes dated reports — runs — that accumulate cycle after cycle.">
+  <title>Product documentation — Competitive intelligence</title>
+  <meta name="description" content="Product documentation for My Market Data: what the tool is for, how it is built, what each screen contains, and the project's vocabulary.">
   <link rel="alternate" hreflang="fr" href="https://market.shoette.com/how-it-works/">
   <link rel="alternate" hreflang="en" href="https://market.shoette.com/en/how-it-works/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../assets/site.css">
+<style>
+/* Vocabulary table — “Vocabulary” section of the product documentation (23/09/2026). */
+.vocab{width:100%;border-collapse:collapse;margin:18px 0 6px;font-size:.95rem}
+.vocab th{text-align:left;font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;opacity:.55;font-weight:700;
+  padding:0 18px 10px 0;border-bottom:1px solid rgba(128,128,128,.3)}
+.vocab td{padding:12px 18px 12px 0;border-bottom:1px solid rgba(128,128,128,.18);vertical-align:top;line-height:1.5}
+.vocab td:first-child{white-space:nowrap;font-weight:600}
+.vocab td:nth-child(2){white-space:nowrap;opacity:.65}
+.vocab td:last-child{opacity:.88}
+@media(max-width:640px){.vocab,.vocab tbody,.vocab tr,.vocab td{display:block;width:100%}
+  .vocab thead{display:none}.vocab tr{padding:12px 0;border-bottom:1px solid rgba(128,128,128,.18)}
+  .vocab td{border:0;padding:2px 0}.vocab td:nth-child(2){font-style:italic}}
+/* Sub-headings and contents of the four parts (product wrap-up, 24/09/2026). */
+.doc-sub{font-size:17px;font-weight:700;letter-spacing:-.01em;margin:30px 0 10px}
+.doc-toc{display:flex;flex-wrap:wrap;gap:8px 18px;margin:14px 0 0;padding:0;list-style:none;
+  font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12.5px}
+.doc-toc a{opacity:.7;text-decoration:none;border-bottom:1px solid rgba(128,128,128,.35)}
+.doc-toc a:hover{opacity:1}
+.doc-part{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.13em;
+  text-transform:uppercase;opacity:.5;font-weight:600;display:block;margin:0 0 6px}
+</style>
 </head>
 <body>
-<script src="../../assets/siteheader.js"></script>
+<script src="../../assets/siteheader.js" data-crumb="accueil"></script>
 <div class="shell">
 
   <main>
     <section class="hero">
-      <span class="kicker">Documentation</span>
+      <span class="kicker">Product documentation</span>
       <h1>How it works</h1>
-      <p style="margin:6px 0 0"><a href="#vocabulary">Vocabulary</a></p>
       <p class="lede">An agent reads markets, step by step, and publishes its readings here — dated, sourced, comparable over time.</p>
+      <ul class="doc-toc">
+        <li><a href="#business">Business summary</a></li>
+        <li><a href="#admin">Admin documentation</a></li>
+        <li><a href="#produit">Product documentation</a></li>
+        <li><a href="#vocabulary">Vocabulary</a></li>
+      </ul>
     </section>
 
-    <h2 class="doc-section-h">The idea</h2>
+    <!-- ─────────────────────────────── 1. Business summary ────────────────────────────── -->
+    <h2 class="doc-section-h" id="business" style="margin-top:52px"><span class="doc-part">Part 1</span>Business summary</h2>
+    <p><b>My Market Data answers one plain question: “what does this market actually look like, and what place could my product take in it?”</b> — without paying for a consultancy study, and without spending weeks on it. An agent reads the market, identifies its players, estimates their shares, applies the relevant analysis frameworks, then places a project within it and closes with a frank recommendation, one that is able to say no.</p>
+    <p>The tool serves its author first, testing her own projects before she commits to them — but it is built for any market: everything specific to a subject lives in the data, never in the code. Its value rests on three commitments: <b>dated, frozen reports</b>, which make a market's evolution readable from one cycle to the next; <b>sources cited systematically</b> and estimates flagged as such; and <b>a verdict that decides</b>, where an ordinary market study merely describes.</p>
+
+    <!-- ─────────────────────────────── 2. Admin documentation ─────────────────────────── -->
+    <h2 class="doc-section-h" id="admin" style="margin-top:52px"><span class="doc-part">Part 2</span>Admin documentation</h2>
+    <p>How the tool is built — enough to pick it up again after months away.</p>
+
+    <h3 class="doc-sub">Architecture</h3>
+    <ul class="kpis" style="margin:10px 0 0">
+      <li><b>A fully static site.</b> Everything is built locally by the agent, then published by a plain file mirror. No server-side processing, with the single exception of access control.</li>
+      <li><b>One page per run, self-contained.</b> Each report carries its own styles: it stays readable exactly as published, even when the site's design moves on afterwards.</li>
+      <li><b>A shared chrome, injected.</b> The header, breadcrumb, four-step bar and footer come from three shared scripts — the site's configuration (brand, markets, pages, labels) sits in a single block at the top of the footer script. Changing the navigation means changing that block, never the forty pages.</li>
+      <li><b>Navigation pages share one stylesheet</b> (home, market pages, this documentation). Reports, by contrast, are deliberately independent.</li>
+      <li><b>The positioning chart is a separately versioned engine</b>, reused as-is by every run: it never changes while a report is being produced.</li>
+    </ul>
+
+    <h3 class="doc-sub">Technical choices, and why</h3>
+    <ul class="kpis" style="margin:10px 0 0">
+      <li><b>A run's data exists twice</b> — inside the page and in a file beside it, strictly identical. The page stands on its own; the file stays usable by a spreadsheet or by the next step.</li>
+      <li><b>Reports are frozen, but their style is not.</b> An old report can be restyled; its figures are never touched. One exception, tightly framed: step 3 adds a project to an existing report's chart, changing nothing else.</li>
+      <li><b>Language is read from the address</b> (French at the root, <code>/en/</code> in English) rather than from local storage: a shared link opens in the right language, and an untranslated page falls back cleanly to its French version.</li>
+      <li><b>Market pages have marked zones</b> that only the agent rewrites; the rest of the page belongs to its author and is never overwritten.</li>
+    </ul>
+
+    <h3 class="doc-sub">Known pitfalls</h3>
+    <ul class="kpis" style="margin:10px 0 0">
+      <li><b>The order of the redirect rules matters.</b> Access control catches everything: it must stay the last rule, otherwise old addresses stop being redirected.</li>
+      <li><b>A redirect rule containing a space must be quoted</b> — without that the server rejects the whole file and the entire site goes down. Any new rule is tested first in a throwaway folder.</li>
+      <li><b>Publishing never deletes anything remotely.</b> A file removed locally survives online until it is explicitly taken down.</li>
+      <li><b>Checking the live site requires being signed in</b>: an anonymous request now sees only the sign-in page.</li>
+    </ul>
+
+    <!-- ─────────────────────────────── 3. Product documentation ───────────────────────── -->
+    <h2 class="doc-section-h" id="produit" style="margin-top:52px"><span class="doc-part">Part 3</span>Product documentation</h2>
+
+    <h3 class="doc-sub">The idea</h3>
     <p>My Market Data is powered by a <b>competitive-intelligence agent</b>, designed to be reusable on any market. Its process is split into <b>steps</b>: each does one precise thing, produces a dated deliverable, and feeds the next. The agent works offline — research, analysis, report-building — then publishes the result on this fully static site.</p>
 
-    <h2 class="doc-section-h" style="margin-top:48px">The pipeline, in four steps</h2>
+    <h3 class="doc-sub">The pipeline, in four steps</h3>
     <ul class="kpis" style="margin:10px 0 0">
       <li><b><a href="focus-step-1/">Step 1 — Read the Market</a></b>: clear the ground of the market — its reading grids, its main players, the first orders of magnitude.</li>
       <li><b><a href="focus-step-2/">Step 2 — Present the Market</a></b>: present the market through its key business KPIs and the analysis frameworks relevant to <i>that</i> market.</li>
@@ -35,33 +98,54 @@
       <li><b><a href="focus-step-4/">Step 4 — Strategy recommendation</a></b>: conclude — strategic recommendations aligned with my goals.</li>
     </ul>
 
-    <h2 class="doc-section-h" style="margin-top:48px">Runs</h2>
+    <h3 class="doc-sub">Runs</h3>
     <p>Each execution of a step produces a <b><i>run</i></b>: a frozen, dated report, published on its market's page. Runs are never modified after publication — they snapshot the market at a given moment. Cycle after cycle, they accumulate: <b>a market's evolution is read by comparing its runs</b>.</p>
 
-    <h2 class="doc-section-h" style="margin-top:48px">Data</h2>
+    <h3 class="doc-sub">Data</h3>
     <ul class="kpis" style="margin:10px 0 0">
       <li><b>Structured data is kept</b> — each run carries its data canvas (players, dimensions, values), versioned, which feeds the charts and the next steps.</li>
       <li><b>Raw data is not kept</b> — articles and pages consulted are discarded after the run; traceability goes through the sources, all referenced and dated in an appendix.</li>
       <li><b>Estimates are flagged</b> — the “~” prefix accompanies any estimated value, and a player with no quantified data is listed visibly, never silently omitted.</li>
     </ul>
-    <h2 class="doc-section-h" id="vocabulary" style="margin-top:48px">Vocabulary</h2>
+
+    <h3 class="doc-sub">The site's screens</h3>
+    <ul class="kpis" style="margin:10px 0 0">
+      <li><b>The home page</b> — the list of markets covered, each with its number of runs and the date of the latest one.</li>
+      <li><b>A market page</b> — that market's runs, arranged by step (1 to 4), oldest first. A step without a run says so explicitly.</li>
+      <li><b>A step 1 report</b> — assumptions, executive summary and a five-dimension reading grid, a market-share × growth scatter, the <b>interactive positioning chart</b> (you choose what the height, horizontal position, color, size, opacity and border of the markers stand for; clicking a marker opens that player's card), the same data as a table, a reading by segment, then sources and a bilingual glossary.</li>
+      <li><b>A step 2 report</b> — a band of four key figures, one of them a “shock”, the market definition and its breakdown, the reasoned choice of analysis frameworks, then one card per framework with its diagram.</li>
+      <li><b>A step 3 report</b> — the positioned project: its value on each dimension and why, a link to the enriched chart, and an analysis of where it lands.</li>
+      <li><b>A step 4 report</b> — the GO / NO GO verdict up front, the market and positioning summaries, a SWOT, the four Ps of the marketing mix, the recommendations and the partnership or acquisition targets.</li>
+      <li><b>The language switcher</b>, at the foot of every page: a page not yet translated stays greyed out rather than leading to a dead end.</li>
+    </ul>
+
+    <!-- ─────────────────────────────── 4. Vocabulary ───────────────────────────────────── -->
+    <h2 class="doc-section-h" id="vocabulary" style="margin-top:52px"><span class="doc-part">Part 4</span>Vocabulary</h2>
     <p>The words that name the parts of the project. The same word is used out loud, in this documentation and in the
       code — folder, file and tag names included.</p>
     <table class="vocab">
       <thead><tr><th>Term (EN)</th><th>Terme (FR)</th><th>Definition</th></tr></thead>
       <tbody>
       <tr><td>Agent</td><td>Agent</td><td>Claude Code running locally, orchestrating the skills with a market's context. All the reasoning happens offline; the site itself is fully static.</td></tr>
-      <tr><td>Player</td><td>Acteur</td><td>A company present on a market, gathered and compared by the agent. A player with no quantified data is listed visibly, never omitted.</td></tr>
       <tr><td>Data canvas</td><td>Canevas de données</td><td>The structured data of a run — players, dimensions, values — feeding the charts and the following steps. In the code: <code>data.json</code>, one per run.</td></tr>
       <tr><td>Dimension</td><td>Dimension</td><td>An axis along which the players of a market are compared (price, audience, positioning…).</td></tr>
+      <tr><td>Enrichment</td><td>Enrichissement</td><td>Adding a positioned project to the chart of an already-published run. Strictly additive — the one exception to the frozen-runs principle.</td></tr>
       <tr><td>Estimate</td><td>Estimation</td><td>A value with no source, always prefixed with “~”. Never presented as an established figure.</td></tr>
+      <tr><td>Framework</td><td>Cadre d’analyse</td><td>An analysis grid applied to a market at step 2 (TAM/SAM/SOM, Porter, value chain, PESTEL…). Retained frameworks are chosen by rules, never ticked out of habit; the report shows only those retained.</td></tr>
       <tr><td>Market</td><td>Marché</td><td>The subject of a watch (footwear, weight-loss apps…). Each market has its page and its folder, and accumulates its runs.</td></tr>
+      <tr><td>Panel</td><td>Panel</td><td>The set of comparable players used to estimate shares when a market publishes no common figure. Shares then read <i>within the panel</i>, not the whole market — the report always says so.</td></tr>
+      <tr><td>Player</td><td>Acteur</td><td>A company present on a market, gathered and compared by the agent. A player with no quantified data is listed visibly, never omitted.</td></tr>
+      <tr><td>Positioned project</td><td>Projet positionné</td><td>My product as it appears on a market's chart after step 3: a ✺ marker, 0 % market share, declarative values flagged as such.</td></tr>
+      <tr><td>Positioning chart</td><td>Graphique de positionnement</td><td>The interactive chart of a step 1 report, where each player is a marker and you choose what height, position, color, size, opacity and border stand for. In the code it is <code>positioning-chart</code>; the agent's contracts also call it by its place in the report, “2b”.</td></tr>
       <tr><td>Run</td><td>Run</td><td>A dated execution of a step: a frozen report, published on its market's page and <strong>never modified afterwards</strong>. A market's evolution is read by comparing its runs.</td></tr>
       <tr><td>Skill</td><td>Skill</td><td>The internal name of a pipeline step: run folders start with <code>s1-</code> to <code>s4-</code> and a market page is tagged <code>RUNS-SKILL1</code>… The same thing as a step, seen from the code.</td></tr>
       <tr><td>Source</td><td>Source</td><td>The dated reference an information comes from. Raw pages are discarded after the run: traceability goes entirely through the sources, in an appendix.</td></tr>
       <tr><td>Step</td><td>Étape</td><td>One of the four moments of the pipeline: Read the Market, Present the Market, Position MY product in the Market, Strategy recommendation. A step does one thing, produces a dated deliverable and feeds the next one.</td></tr>
+      <tr><td>Verdict</td><td>Verdict</td><td>The binary conclusion of a step 4 report: <b>GO</b> or <b>NO GO</b>, decided last but shown first. It has to be able to say no — a condition qualifies the verdict, it never softens it.</td></tr>
       </tbody>
     </table>
+
+    <p class="note" style="margin-top:34px;font-size:13px;opacity:.65">Updated 24 September 2026.</p>
   </main>
 
 

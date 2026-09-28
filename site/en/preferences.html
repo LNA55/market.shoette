@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Preferences — My Market Data</title>
+  <meta name="description" content="The settings chosen for My Market Data: languages, access, indexing, audience measurement, writing and data conventions. An information page, read-only.">
+  <link rel="alternate" hreflang="fr" href="https://market.shoette.com/preferences.html">
+  <link rel="alternate" hreflang="en" href="https://market.shoette.com/en/preferences.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/site.css">
+<style>
+/* Key/value table of preferences — read-only. */
+.pref{width:100%;border-collapse:collapse;margin:14px 0 6px;font-size:.95rem}
+.pref th{text-align:left;font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;opacity:.55;font-weight:700;
+  padding:0 18px 10px 0;border-bottom:1px solid rgba(128,128,128,.3)}
+.pref td{padding:12px 18px 12px 0;border-bottom:1px solid rgba(128,128,128,.18);vertical-align:top;line-height:1.55}
+.pref td:first-child{width:30%;font-weight:600}
+.pref td:last-child{opacity:.88}
+@media(max-width:640px){.pref,.pref tbody,.pref tr,.pref td{display:block;width:100%}
+  .pref thead{display:none}.pref tr{padding:12px 0;border-bottom:1px solid rgba(128,128,128,.18)}
+  .pref td{border:0;padding:2px 0}.pref td:first-child{width:auto}}
+</style>
+</head>
+<body>
+<script src="../assets/siteheader.js" data-crumb="accueil"></script>
+<div class="shell">
+
+  <main>
+    <section class="hero">
+      <span class="kicker">Preferences</span>
+      <h1>Preferences</h1>
+      <p class="lede">The settings actually in force on this site. An information page, <b>read-only</b>: nothing is configured here.</p>
+    </section>
+
+    <h2 class="doc-section-h" style="margin-top:44px">Languages</h2>
+    <table class="pref">
+      <thead><tr><th>Setting</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td>Reference language</td><td>French — runs are written in the language of the request, French by default.</td></tr>
+        <tr><td>Available languages</td><td>French and English. Language is derived from the URL: French at the root, English under <code>/en/</code>. The switcher sits in the footer.</td></tr>
+        <tr><td>Default view</td><td><b>English</b> on the home page and on the “e-commerce personalization” market; French everywhere else. A provisional setting (6 September 2026): French stays reachable through the FR link in the footer, and that choice is then remembered.</td></tr>
+        <tr><td>Translated pages</td><td>The home page, the documentation and its four focus pages, the corporate pages, the “weight-loss apps” market (6 runs out of 7) and the “e-commerce personalization” market (market page + run S1). An untranslated page falls back to its French version rather than to an empty page.</td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="doc-section-h" style="margin-top:44px">Access and visibility</h2>
+    <table class="pref">
+      <thead><tr><th>Setting</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td>Access</td><td><b>Entirely private</b> since 18 September 2026: every page, every dataset and every stylesheet goes through the access control shared by all projects. No public page. Permissions are managed elsewhere, in the accounts area.</td></tr>
+        <tr><td>Indexing</td><td><code>noindex, nofollow, noarchive</code> on every response, redirects included. The site appears in no search engine.</td></tr>
+        <tr><td>Audience measurement</td><td>Cloudflare Web Analytics, <b>cookieless</b> and without any personal identifier. Measurement is disabled locally, so working previews never skew the figures.</td></tr>
+        <tr><td>Cookies set</td><td>One only, functional: the language preference, when a reader clicks “FR” or “EN”. No advertising or tracking cookie.</td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="doc-section-h" style="margin-top:44px">Content covered</h2>
+    <table class="pref">
+      <thead><tr><th>Setting</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td>Markets covered</td><td>Four: mobile weight-loss assistance apps · greeting &amp; social cards (United States) · micro-ticket seed capital · e-commerce personalization SaaS tools.</td></tr>
+        <tr><td>Runs published</td><td>Thirteen, split 7 · 1 · 1 · 4. Two markets have been through all four pipeline steps; two have step 1 only.</td></tr>
+        <tr><td>Cadence</td><td>No automatic schedule: every run is triggered on demand. A run is never modified once published.</td></tr>
+        <tr><td>Reference period</td><td>Chosen run by run (6 months, 1 year or 3 years) according to the pace of the market, and justified in the report.</td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="doc-section-h" style="margin-top:44px">Writing conventions</h2>
+    <table class="pref">
+      <thead><tr><th>Setting</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td>Estimated values</td><td>A “~” prefix on every estimate; “—” when the figure could not be found. An estimate is never presented as an established number.</td></tr>
+        <tr><td>Units</td><td>Spelled out — “billion $”, “million $” — never abbreviated, to rule out any misreading.</td></tr>
+        <tr><td>Glosses</td><td>A defined term takes French quotation marks « … » in French and <i>italics</i> in English. Acronyms are spelled out at first use.</td></tr>
+        <tr><td>Reading width</td><td>A fluid column that follows the width of the screen, identical across all run pages (decision of 6 September 2026).</td></tr>
+        <tr><td>Typefaces</td><td>Hanken Grotesk (body), IBM Plex Mono (labels and figures), Instrument Serif (framework questions).</td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="doc-section-h" style="margin-top:44px">Data</h2>
+    <table class="pref">
+      <thead><tr><th>Setting</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td>Structured data</td><td>Kept: each run carries its own data canvas, versioned alongside its report. No database.</td></tr>
+        <tr><td>Raw data</td><td>Not kept: the pages and articles consulted are discarded after the run. Traceability runs entirely through the sources, referenced and dated in the appendix.</td></tr>
+        <tr><td>Personal data</td><td>None is collected by the site.</td></tr>
+        <tr><td>Hosting</td><td>OVH (France). Fully static site: no server-side processing beyond access control.</td></tr>
+      </tbody>
+    </table>
+
+    <p class="note" style="margin-top:34px;font-size:13px;opacity:.65">Updated 24 September 2026.</p>
+  </main>
+</div>
+  <script src="../assets/sitefoot.js"></script>
+</body>
+</html>
